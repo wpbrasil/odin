@@ -1,0 +1,1 @@
+Tema base para WordPress.
