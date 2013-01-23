@@ -1,0 +1,151 @@
+/* =Wordpress Core
+-------------------------------------------------------------- */
+
+/* Alinhamento */
+.alignleft {
+    display: inline;
+    float: left;
+    margin-right: $textMarginBottom;
+}
+
+.alignright {
+    display: inline;
+    float: right;
+    margin-left: $textMarginBottom;
+}
+
+.aligncenter {
+    clear: both;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Imagens */
+img {
+    &[class*="align"],
+    &[class*="wp-image-"],
+    &[class*="attachment-"] {
+        height: auto; /* Faz altura e largura serem dimensionadas corretamente */
+    }
+
+    &.size-full,
+    &.size-large {
+        max-width: 97.5%; /* Evita que a imagem passe a area total reservada */
+        width: auto; /* Evita problemas de alongamento da imagem no IE8 */
+        height: auto; /* Faz altura e largura serem dimensionadas corretamente */
+    }
+
+    &.wp-smiley {
+        border: none;
+        margin-bottom: 0;
+        margin-top: 0;
+        padding: 0;
+    }
+
+    &.alignleft,
+    &.alignright,
+    &.aligncenter {
+        margin-bottom: $textMarginBottom;
+    }
+
+    &#wpstats {
+        display: none; /* Remove a carinha feliz do WP.com Stats :) */
+    }
+}
+
+p img,
+.wp-caption {
+    margin-top: 0.4em;
+}
+
+.wp-caption {
+    background: #eee;
+    margin-bottom: $textMarginBottom;
+    max-width: 96%;
+    padding: 9px;
+
+    img {
+        display: block;
+        margin: 0 auto;
+        max-width: 98%;
+    }
+}
+
+.wp-caption .wp-caption-text,
+.gallery-caption {
+    color: #666;
+    font-family: Georgia, serif;
+    font-size: 12px;
+}
+
+.wp-caption .wp-caption-text {
+    margin-bottom: 0.6em;
+    padding: 10px 0 5px 40px;
+    position: relative;
+
+    &:before {
+        color: #666;
+        content: '\2014';
+        font-size: 14px;
+        font-style: normal;
+        font-weight: bold;
+        margin-right: 5px;
+        position: absolute;
+        left: 10px;
+        top: 7px;
+    }
+}
+
+.gallery {
+    margin: 0 auto $textMarginBottom;
+
+    .gallery-item {
+        float: left;
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .gallery-caption {
+        margin-left: 0;
+    }
+}
+
+/* === Widgets === */
+
+/* Calendar Widget */
+.widget_calendar #wp-calendar {
+    color: #555;
+    width: 100%;
+    text-align: center;
+
+    a {
+        font-weight: bold;
+    }
+
+    caption,
+    td,
+    th {
+        text-align: center;
+    }
+
+    caption {
+        font-size: 11px;
+        font-weight: 500;
+        padding: 5px 0 3px 0;
+        text-transform: uppercase;
+    }
+
+    th {
+        background: #f4f4f4;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        font-weight: bold;
+    }
+
+    tfoot td {
+        background: #f4f4f4;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+    }
+}

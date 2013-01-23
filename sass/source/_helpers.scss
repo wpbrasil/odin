@@ -1,0 +1,23 @@
+/* =CSS Helpers
+-------------------------------------------------------------- */
+
+/* Clearfix */
+.clearfix {
+    @include clearfix;
+}
+
+.clear {
+    clear: both;
+}
+
+/* Hidden content and show */
+.not-visible {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}

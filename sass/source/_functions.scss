@@ -1,0 +1,20 @@
+//
+// Functions
+//
+
+// Headings Levels font-size
+// @param int $n number of level
+// @return int size of the heading
+//
+@function headingsLevels($n) {
+    @return $headingFontSize - (2 * $n);
+}
+
+//
+// Headings Levels line-height
+// @param int $n number of level
+// @return int line height
+//
+@function headingsLineHeight($n) {
+    @return $n + 7;
+}

@@ -1,0 +1,239 @@
+/* =Global
+-------------------------------------------------------------- */
+
+html {
+    overflow-y: scroll;
+}
+body {
+    color: $defaultColor;
+    background: $bodyBg;
+    font: $defaultFontSize $defaultFontFamily;
+    line-height: $defaultLineHeight;
+}
+
+/* =Headings
+-------------------------------------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    clear: both;
+    font-family: $headingFontFamily;
+}
+h1 {
+    font-size: $headingFontSize;
+    line-height: headingsLineHeight($headingFontSize);
+}
+h2 {
+    font-size: headingsLevels(1);
+    line-height: headingsLineHeight(headingsLevels(1));
+}
+h3 {
+    font-size: headingsLevels(2);
+    line-height: headingsLineHeight(headingsLevels(2));
+}
+h4 {
+    font-size: headingsLevels(3);
+    line-height: headingsLineHeight(headingsLevels(3));
+}
+h5 {
+    font-size: headingsLevels(4);
+    line-height: headingsLineHeight(headingsLevels(4));
+}
+h6 {
+    font-size: headingsLevels(5);
+    line-height: headingsLineHeight(headingsLevels(5));
+}
+hr {
+    background-color: $hrBg;
+    border: 0;
+    height: 1px;
+    margin-bottom: $textMarginBottom;
+}
+
+/* =Text Elements
+-------------------------------------------------------------- */
+
+p {
+    margin-bottom: $textMarginBottom;
+}
+ul,
+ol {
+    margin: 0 0 $textMarginBottom $textMarginLeft;
+}
+ul {
+    list-style: $ulStyle;
+}
+ol {
+    list-style-type: $olStyle;
+}
+ol ol {
+    list-style: $olx2Style;
+}
+ol ol ol {
+    list-style: $olx3Style;
+}
+ol ol ol ol {
+    list-style: $olx4Style;
+}
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+    margin-bottom: 0;
+}
+dl {
+    margin: 0 $textMarginBottom;
+}
+dt {
+    font-weight: bold;
+}
+dd {
+    margin-bottom: $textMarginBottom;
+}
+strong {
+    font-weight: bold;
+}
+cite,
+em,
+i {
+    font-style: italic;
+}
+blockquote {
+    color: $quoteColor;
+    font-family: $quoteFont;
+    font-style: $quoteFontStyle;
+    font-weight: normal;
+    margin: $quoteMargin;
+    position: relative;
+    &:before {
+        content: "\201C";
+        position: absolute;
+        top: 5px;
+        left: -30px;
+        font-size: $quoteBeforeFontSize;
+        color: $quoteBeforeColor;
+    }
+    & em,
+    & i,
+    & cite {
+        font-style: normal;
+    }
+    & cite {
+        color: $quoteCiteColor;
+        font: $quoteCiteFont;
+        font-weight: 300;
+        padding-left: 20px;
+        position: relative;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+    & cite:before {
+        color: $quoteCiteBeforeColor;
+        content: '\2014';
+        font-size: 13px;
+        font-style: normal;
+        font-weight: bold;
+        margin-right: 5px;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+}
+code,
+kbd,
+samp,
+var {
+    background: $codeBg;
+    font: $codeFont;
+}
+pre,
+pre code {
+    background: $preBg;
+    color: $preColor;
+    font: $preFont;
+    margin-bottom: $textMarginBottom;
+    overflow: auto;
+    padding: $prePadding;
+}
+abbr,
+acronym,
+dfn {
+    border-bottom: $abbrBorder;
+    cursor: help;
+}
+address {
+    display: block;
+    margin: 0 0 $textMarginBottom;
+}
+ins {
+    background: $insBg;
+    text-decoration: none;
+}
+sup,
+sub {
+    font-size: $supsubFontSize;
+    height: 0;
+    line-height: $supsubLineHeight;
+    position: relative;
+    vertical-align: baseline;
+}
+sup {
+    bottom: 1ex;
+}
+sub {
+    top: .5ex;
+}
+
+/* =Links
+-------------------------------------------------------------- */
+
+a {
+    color: $linkColor;
+    text-decoration: none;
+    &:focus,
+    &:active,
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+/* =Form elements
+-------------------------------------------------------------- */
+
+input[type="text"],
+input[type="password"],
+textarea,
+select {
+    background: $formBg;
+    border: $formBorder;
+    color: $formColor;
+    font: $defaultFontSize $defaultFontFamily;
+    line-height: $defaultLineHeight;
+    padding: $formPadding;
+}
+textarea {
+    width: 98%;
+}
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
+    color: $formFocusColor;
+}
+input[type="submit"],
+input[type="reset"],
+button {
+    cursor: pointer;
+}
+
+/* =Frames
+-------------------------------------------------------------- */
+
+embed,
+iframe,
+object {
+    max-width: 100%;
+}

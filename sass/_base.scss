@@ -1,0 +1,93 @@
+// Fonts Default
+$arial: Arial, Verdana, sans-serif;
+$georgia: Georgia, Cambria, "Times New Roman", Times, serif;
+$helvetica: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$lucida-grande: "Lucida Grande", Tahoma, Verdana, Arial, sans-serif;
+$monospace: "Bitstream Vera Sans Mono", Consolas, Courier, monospace;
+$verdana: Verdana, Geneva, sans-serif;
+
+// Body Styles
+$bodyBg: #fff;
+
+// Default styles
+$defaultColor: #333;
+$defaultFontFamily: $arial;
+$defaultFontSize: 13px;
+$defaultLineHeight: 20px;
+
+// Link
+$linkColor: #006699;
+
+// Heading Styles
+$headingFontFamily: $arial;
+$headingFontSize: 25px;
+
+// Text Styles
+$textMarginBottom: 1.625em;
+$textMarginLeft: 2.5em;
+
+// Forms
+$formBg: #f4f4f4;
+$formBorder: 1px solid #ccc;
+$formColor: #666;
+$formPadding: 4px;
+$formFocusColor: #333;
+
+// Lists
+$ulStyle: disc;
+$olStyle: decimal;
+$olx2Style: upper-alpha;
+$olx3Style: lower-roman;
+$olx4Style: lower-alpha;
+
+// hr
+$hrBg: #ccc;
+
+// Blockquote
+$quoteColor: $defaultColor;
+$quoteFont: Georgia, "Bitstream Charter", serif;
+$quoteMargin: 0 3em;
+$quoteFontStyle: italic;
+$quoteBeforeColor: #666;
+$quoteBeforeFontSize: 60px;
+$quoteCiteColor: #666;
+$quoteCiteFont: 12px Arial, Verdana, sans-serif;
+$quoteCiteBeforeColor: #666;
+
+// Code
+$codeBg: #f4f4f4;
+$codeFont: 13px Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+
+// Pre
+$preBg: #111;
+$preColor: #fff;
+$preFont: 13px/20px "Courier 10 Pitch", Courier, monospace;
+$prePadding: 0.75em $textMarginBottom;
+
+// Abbr
+$abbrBorder: 1px dotted #666;
+
+// Ins
+$insBg: #fff9c0;
+
+// Sup and Sub
+$supsubFontSize: 10px;
+$supsubLineHeight: 1;
+
+// Table
+$tableBorderSide: bottom;
+$tableBorderWidth: 1px;
+$tableBorderStyle: solid;
+$tableBorderColor: #ddd;
+
+$thBorderSide: none;
+$thBorderWidth: 1px;
+$thBorderStyle: solid;
+$thBorderColor: #ddd;
+$thPadding: 0 10px;
+
+$tdBorderSide: top;
+$tdBorderWidth: 1px;
+$tdBorderStyle: solid;
+$tdBorderColor: #ddd;
+$tdPadding: 5px 10px;

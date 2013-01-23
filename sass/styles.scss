@@ -1,0 +1,32 @@
+/*!
+Theme Name: Odin
+Theme URI: https://github.com/wpbrasil/odin
+Description: Tema base para desenvolvimento em WordPress.
+Author: Grupo WordPress Brasil
+Author URI: http://www.facebook.com/groups/wordpress.brasil/
+Version: 0.1
+Tags: base theme
+
+License: GPLv2
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+// Compass plugins
+@import "compass/css3";
+
+// Base configuration
+@import "base";
+@import "source/functions";
+@import "source/mixins";
+
+// Global styles
+@import "source/global";
+
+// WordPress Core styles
+@import "source/wpcore";
+
+// CSS Helpers
+@import "source/helpers";
+
+// Print styles
+@import "source/print";
