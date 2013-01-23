@@ -4,7 +4,7 @@
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                 <?php get_template_part( 'loop' ); ?>
             <?php endwhile; ?>
-            <?php echo _base_pagination(); ?>
+            <?php echo odin_pagination(); ?>
         <?php else : ?>
             <?php get_template_part( 'no-results' ); ?>
         <?php endif; ?>

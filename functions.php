@@ -66,3 +66,8 @@ function odin_enqueue_scripts() {
 }
 
 add_action( 'wp_enqueue_scripts', 'odin_enqueue_scripts' );
+
+/**
+ * Theme tools
+ */
+require_once get_template_directory() . '/inc/tools.php';
