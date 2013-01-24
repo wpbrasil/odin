@@ -81,3 +81,13 @@ require_once get_template_directory() . '/inc/tools.php';
  * Add Custom post_thumbnails tools.
  */
 require_once get_template_directory() . '/inc/thumbnails.php';
+
+/**
+ * WP optimize functions.
+ */
+require_once get_template_directory() . '/inc/optimize.php';
+
+/**
+ * WP Custom Admin.
+ */
+require_once get_template_directory() . '/inc/admin.php';

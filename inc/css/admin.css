@@ -1,0 +1,16 @@
+/**
+ * Custom admin styles.
+ */
+#footer-upgrade {
+    visibility: hidden !important;
+}
+
+#footer-left {
+    float: right !important;
+}
+
+#contextual-help-link-wrap,
+#wp-version-message,
+#normal-sortables #dashboard_right_now .inside .versions p {
+    display: none !important;
+}
