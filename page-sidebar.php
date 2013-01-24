@@ -16,6 +16,11 @@ get_header();
                     <?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'P&aacute;ginas:', 'odin' ) . '</span>', 'after' => '</div>' ) ); ?>
                 </div><!-- .entry-content -->
             </article>
+            <?php
+                if ( 'open' == $post->comment_status ) {
+                    comments_template( '', true );
+                }
+            ?>
         <?php endwhile; ?>
     </div><!-- #content -->
 </div><!-- #primary -->
