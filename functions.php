@@ -21,6 +21,34 @@ function odin_setup_features() {
             'main-menu' => __( 'Menu Principal', 'odin' )
         )
     );
+	
+	/**
+     * Support Custom Header.
+     */
+	$default = array(
+		'width'        			 => 0,
+		'height'       			 => 0,
+		'flex-height'            => false,
+		'flex-width'             => false,
+		'header-text'            => false,
+		'default-image' => get_template_directory_uri() . '/images/default-header.jpg',
+		'uploads'       => true,
+	);
+	add_theme_support( 'custom-header', $default );
+	
+	/**
+     * Support Custom Background.
+     */
+	$defaults = array(
+		'default-color'          => '',
+		'default-image' => get_template_directory_uri() . '/images/default-background.jpg',	
+	);
+	add_theme_support( 'custom-background', $defaults );
+	
+	/**
+     * Support Custom Editor Style.
+     */
+	add_editor_style('custom-editor-style.css');
 
     /**
      * Add support for multiple languages
