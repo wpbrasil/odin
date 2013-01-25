@@ -21,7 +21,7 @@ function odin_setup_features() {
             'main-menu' => __( 'Menu Principal', 'odin' )
         )
     );
-	
+
 	/**
      * Support Custom Header.
      */
@@ -35,16 +35,16 @@ function odin_setup_features() {
 		'uploads'       => true,
 	);
 	add_theme_support( 'custom-header', $default );
-	
+
 	/**
      * Support Custom Background.
      */
 	$defaults = array(
 		'default-color'          => '',
-		'default-image' => get_template_directory_uri() . '/images/default-background.jpg',	
+		'default-image' => get_template_directory_uri() . '/images/default-background.jpg',
 	);
 	add_theme_support( 'custom-background', $defaults );
-	
+
 	/**
      * Support Custom Editor Style.
      */
@@ -119,3 +119,8 @@ require_once get_template_directory() . '/inc/optimize.php';
  * WP Custom Admin.
  */
 require_once get_template_directory() . '/inc/admin.php';
+
+/**
+ * Socialite.
+ */
+require_once get_template_directory() . '/inc/socialite.php';

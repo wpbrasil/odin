@@ -17,6 +17,7 @@
         <?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'P&aacute;ginas:', 'odin' ) . '</span>', 'after' => '</div>' ) ); ?>
     </div><!-- .entry-content -->
     <footer class="entry-meta">
+        <?php echo odin_socialite_horizontal( get_the_title(), get_permalink(), get_the_post_thumbnail( $post->ID, 'thumbnail' ) ); ?>
         <span><?php _e( 'Publicado em: ', 'odin' ); the_category(', '); ?></span>
         <?php the_tags( '<span>' . __( ' e marcado ', 'odin' ), ', ', '</span>' ); ?>
         <?php if ( comments_open() && ! post_password_required() ) : ?>
