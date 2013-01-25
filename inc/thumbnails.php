@@ -28,7 +28,7 @@ add_theme_support( 'post-thumbnails' );
 function aq_resize( $url, $width, $height = null, $crop = null, $single = true ) {
 
     //validate inputs
-    if ( !$url or !$width ) return false;
+    if ( ! $url or ! $width ) return false;
 
     //define upload path & dir
     $upload_info = wp_upload_dir();
@@ -43,7 +43,7 @@ function aq_resize( $url, $width, $height = null, $crop = null, $single = true )
     $img_path = $upload_dir . $rel_path;
 
     //check if img path exists, and is an image indeed
-    if ( !file_exists( $img_path ) or !getimagesize( $img_path ) ) return false;
+    if ( ! file_exists( $img_path ) or ! getimagesize( $img_path ) ) return false;
 
     //get image info
     $info = pathinfo( $img_path );
@@ -60,7 +60,7 @@ function aq_resize( $url, $width, $height = null, $crop = null, $single = true )
     $dst_rel_path = str_replace( '.'.$ext, '', $rel_path );
     $destfilename = "{$upload_dir}{$dst_rel_path}-{$suffix}.{$ext}";
 
-    if ( !$dst_h ) {
+    if ( ! $dst_h ) {
         //can't resize, so return original url
         $img_url = $url;
         $dst_w = $orig_w;
@@ -83,7 +83,7 @@ function aq_resize( $url, $width, $height = null, $crop = null, $single = true )
 
             $resized_file = $editor->save();
 
-            if ( !is_wp_error( $resized_file ) ) {
+            if ( ! is_wp_error( $resized_file ) ) {
                 $resized_rel_path = str_replace( $upload_dir, '', $resized_file['path'] );
                 $img_url = $upload_url . $resized_rel_path;
             } else {
@@ -93,7 +93,7 @@ function aq_resize( $url, $width, $height = null, $crop = null, $single = true )
         } else {
 
             $resized_img_path = image_resize( $img_path, $width, $height, $crop ); // Fallback foo
-            if ( !is_wp_error( $resized_img_path ) ) {
+            if ( ! is_wp_error( $resized_img_path ) ) {
                 $resized_rel_path = str_replace( $upload_dir, '', $resized_img_path );
                 $img_url = $upload_url . $resized_rel_path;
             } else {
@@ -150,7 +150,7 @@ function odin_autoset_featured() {
     global $post;
     if ( isset( $post->ID ) ) {
         $already_has_thumb = has_post_thumbnail( $post->ID );
-        if ( !$already_has_thumb ) {
+        if ( ! $already_has_thumb ) {
             $attached_image = get_children( 'post_parent=' . $post->ID . '&post_type=attachment&post_mime_type=image&numberposts=1' );
             if ( $attached_image ) {
                 foreach ( $attached_image as $attachment_id => $attachment ) {
