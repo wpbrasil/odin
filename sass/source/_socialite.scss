@@ -1,0 +1,56 @@
+/* =Socialite
+-------------------------------------------------------------- */
+
+.social-buttons {
+    @include clearfix;
+    display: block;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    & > li {
+        display: block;
+        margin: 0;
+        padding: 10px 0;
+        float: left;
+    }
+
+    .socialite {
+        display: block;
+        position: relative;
+    }
+
+    .socialite-loaded {
+        background: none !important;
+    }
+
+    .twitter-share {
+        margin-right: 35px;
+        @include sprite-sprite(twitter-share);
+    }
+
+    .googleplus-one {
+        margin-right: 30px;
+        @include sprite-sprite(googleplus-one);
+    }
+
+    .pinterest-pinit {
+        margin-right: 30px;
+        @include sprite-sprite(pinterest-pinit);
+    }
+
+    .facebook-like {
+        @include sprite-sprite(facebook-like);
+    }
+
+    embed,
+    iframe,
+    object {
+        max-width: none;
+    }
+}
+
+#fb-root {
+    // As vezes este elemento cria uma barra de rolagem horizontal no site.
+    display: none;
+}
