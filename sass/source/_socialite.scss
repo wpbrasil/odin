@@ -1,18 +1,70 @@
 /* =Socialite
 -------------------------------------------------------------- */
+$socialite-layout: smart;
+$socialite-repeat: no-repeat;
+$socialite-sprite-dimensions: true;
+$socialite-sprite-base-class: '.socialite-sprites';
+@import "socialite/*.png";
 
 .social-buttons {
+
     @include clearfix;
     display: block;
     list-style: none;
     padding: 0;
     margin: 0;
 
-    & > li {
-        display: block;
-        margin: 0;
-        padding: 10px 0;
-        float: left;
+    &.horizontal {
+        & > li {
+            display: block;
+            margin: 0;
+            padding: 10px 0;
+            float: left;
+        }
+
+        .twitter-share {
+            margin-right: 35px;
+            @include socialite-sprite(twitter-horizontal);
+        }
+
+        .googleplus-one {
+            margin-right: 30px;
+            @include socialite-sprite(googleplus-horizontal);
+        }
+
+        .pinterest-pinit {
+            margin-right: 30px;
+            @include socialite-sprite(pinterest-horizontal);
+        }
+
+        .facebook-like {
+            @include socialite-sprite(facebook-horizontal);
+        }
+    }
+
+    &.vertical {
+        & > li {
+            display: block;
+            margin: 0;
+            padding: 10px 0;
+            float: left;
+        }
+
+        .twitter-share {
+            @include socialite-sprite(twitter-vertical);
+        }
+
+        .googleplus-one {
+            @include socialite-sprite(googleplus-vertical);
+        }
+
+        .pinterest-pinit {
+            @include socialite-sprite(pinterest-vertical);
+        }
+
+        .facebook-like {
+            @include socialite-sprite(facebook-vertical);
+        }
     }
 
     .socialite {
@@ -24,25 +76,6 @@
         background: none !important;
     }
 
-    .twitter-share {
-        margin-right: 35px;
-        @include sprite-sprite(twitter-share);
-    }
-
-    .googleplus-one {
-        margin-right: 30px;
-        @include sprite-sprite(googleplus-one);
-    }
-
-    .pinterest-pinit {
-        margin-right: 30px;
-        @include sprite-sprite(pinterest-pinit);
-    }
-
-    .facebook-like {
-        @include sprite-sprite(facebook-like);
-    }
-
     embed,
     iframe,
     object {
@@ -51,6 +84,6 @@
 }
 
 #fb-root {
-    // As vezes este elemento cria uma barra de rolagem horizontal no site.
+    // As vezes isso causa rolagem horizontal na página
     display: none;
 }
