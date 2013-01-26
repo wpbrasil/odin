@@ -515,10 +515,18 @@ html {
 }
 
 body {
+  *zoom: 1;
   color: #333333;
   background: white;
   font: 13px Arial, Verdana, sans-serif;
   line-height: 20px;
+}
+body:before, body:after {
+  content: "";
+  display: table;
+}
+body:after {
+  clear: both;
 }
 
 /* =Headings

@@ -54,6 +54,18 @@ function odin_setup_features() {
      * Add support for multiple languages
      */
     load_theme_textdomain( 'odin', $template_dir . '/languages' );
+
+    /**
+     * Add support for infinite scroll
+     */
+        add_theme_support( 'infinite-scroll', array(
+            'type'           => 'scroll',
+            'footer_widgets' => false,
+            'container'      => 'content',
+            'wrapper'        => false,
+            'render'         => false,
+            'posts_per_page' => get_option('posts_per_page')
+        ) );
 }
 
 add_action( 'after_setup_theme', 'odin_setup_features' );
@@ -119,8 +131,3 @@ require_once get_template_directory() . '/inc/optimize.php';
  * WP Custom Admin.
  */
 require_once get_template_directory() . '/inc/admin.php';
-
-/**
- * Socialite.
- */
-require_once get_template_directory() . '/inc/socialite.php';

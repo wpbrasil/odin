@@ -5,6 +5,7 @@ html {
     overflow-y: scroll;
 }
 body {
+    @include clearfix;
     color: $defaultColor;
     background: $bodyBg;
     font: $defaultFontSize $defaultFontFamily;
