@@ -20,7 +20,7 @@ $correction: 0.5 / $min-width * 100 !default;
 }
 
 // Set $total-width to 100% for a fluid layout
-$total-width: gridsystem-width($columns);
+$total-width: gridsystem-width($columns) !default;
 
 @mixin row($columns:$columns) {
     display: block;
