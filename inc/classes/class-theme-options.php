@@ -28,33 +28,18 @@ class Odin_Theme_Options {
     /**
      * Settings construct.
      *
-     * @param string $page_title    Page title.
-     * @param string $slug          Page slug.
-     * @param string $capability    User capability.
-     * @param mixed  $type          Menu type (menu or submenu).
-     * @param string $icon          Screen icon ID.
-     * @param string $parent_slug   Page parent slug or file name (works only with type = submenu).
-     * @param mixed  $menu_icon     Menu icon url (works only withtype = menu).
-     * @param mixed  $menu_position Page position (works only with type = submenu).
+     * @param string $page_title Page title.
+     * @param string $slug       Page slug.
+     * @param string $capability User capability.
      */
     public function __construct(
-        $page_title,
-        $slug,
-        $capability    = 'manage_options',
-        $type          = 'submenu',
-        $icon          = 'themes',
-        $parent_slug   = '',
-        $menu_icon     = null,
-        $menu_position = null
+        $page_title = 'Theme Settings',
+        $slug       = 'odin-settings',
+        $capability = 'manage_options'
     ) {
-        $this->page_title    = $page_title;
-        $this->slug          = $slug;
-        $this->capability    = $capability;
-        $this->type          = $type;
-        $this->icon          = $icon;
-        $this->parent_slug   = $parent_slug != '' ? $parent_slug : 'themes.php';
-        $this->menu_icon     = $menu_icon;
-        $this->menu_position = $menu_position;
+        $this->page_title = $page_title;
+        $this->slug       = $slug;
+        $this->capability = $capability;
 
         // Actions.
         add_action( 'admin_menu', array( &$this, 'add_page' ) );
@@ -71,31 +56,13 @@ class Odin_Theme_Options {
      * @return void.
      */
     public function add_page() {
-
-        switch ( $this->type ) {
-            case 'submenu':
-                add_submenu_page(
-                    $this->parent_slug,
-                    $this->page_title,
-                    $this->page_title,
-                    $this->capability,
-                    $this->slug,
-                    array( &$this, 'settings_page' )
-                );
-                break;
-
-            default:
-                add_menu_page(
-                    $this->page_title,
-                    $this->page_title,
-                    $this->capability,
-                    $this->slug,
-                    array( &$this, 'settings_page' ),
-                    $this->menu_icon,
-                    $this->menu_position
-                );
-                break;
-        }
+        add_theme_page(
+            $this->page_title,
+            $this->page_title,
+            $this->capability,
+            $this->slug,
+            array( &$this, 'settings_page' )
+        );
     }
 
     /**
@@ -140,7 +107,7 @@ class Odin_Theme_Options {
      * @return string Current tab ID.
      */
     protected function get_current_tab() {
-        if ( isset($_GET['tab'] ) ) {
+        if ( isset( $_GET['tab'] ) ) {
             $current_tab = $_GET['tab'];
         } else {
             $current_tab = $this->_tabs[0]['id'];
@@ -200,7 +167,7 @@ class Odin_Theme_Options {
 
             <?php
                 // Display themes screen icon.
-                screen_icon( $this->icon );
+                screen_icon( 'themes' );
 
                 // Get current tag.
                 $current_tab = $this->get_current_tab();
