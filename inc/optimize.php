@@ -2,22 +2,31 @@
 /**
  * Generates the title of the site optimized for SEO.
  */
-function odin_site_title() {
+function odin_wp_title( $title, $sep ) {
     global $page, $paged;
 
-    wp_title( '|', true, 'right' );
+    if ( is_feed() ) {
+        return $title;
+    }
 
-    bloginfo( 'name' );
+    // Add the blog name
+    $title .= get_bloginfo( 'name' );
 
+    // Add the blog description for the home/front page.
     $site_description = get_bloginfo( 'description', 'display' );
-    if ( $site_description && ( is_home() || is_front_page() ) ) {
-        echo ' | ' . $site_description;
+    if ( $site_description && ( is_home() || is_front_page() ) ){
+        $title .= " $sep $site_description";
     }
 
+    // Add a page number if necessary:
     if ( $paged >= 2 || $page >= 2 ) {
-        echo ' | ' . sprintf( __( 'P&aacute;gina %s', 'odin' ), max( $paged, $page ) );
+        $title .= " $sep " . sprintf( __( 'P&aacute;gina %s', 'odin' ), max( $paged, $page ) );
     }
+
+    return $title;
 }
+
+add_filter( 'wp_title', 'odin_wp_title', 10, 2 );
 
 /**
  * Cleanup wp_head().
