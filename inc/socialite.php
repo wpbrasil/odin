@@ -37,7 +37,7 @@ function odin_socialite_twitter( $text, $url, $user = '', $type = 'horizontal' )
  * @return [type]       [description]
  */
 function odin_socialite_googleplus( $url, $type = 'medium' ) {
-    return '<a href="https://plus.google.com/share?url=' . urlencode( $url ) . '" class="socialite googleplus-one" data-type="' . $type . '" data-href="' . $url . '" rel="nofollow" target="_blank"></a>';
+    return '<a href="https://plus.google.com/share?url=' . urlencode( $url ) . '" class="socialite googleplus-one" data-size="' . $type . '" data-href="' . $url . '" rel="nofollow" target="_blank"></a>';
 }
 
 /**
