@@ -31,13 +31,11 @@ class Odin_Post_Type {
      * @param string $name       Singular name.
      * @param string $slug       Post type slug.
      * @param string $sex        Sex of Post Type.
-     * @param string $textdomain Text Domain.
      */
-    public function __construct( $name, $slug, $sex = 'm', $textdomain = 'odin' ) {
+    public function __construct( $name, $slug, $sex = 'm' ) {
         $this->name = $name;
         $this->slug = $slug;
         $this->sex  = $sex;
-        $this->textdomain = $textdomain;
 
         // Register post type.
         add_action( 'init', array( &$this, 'register_post_type' ) );
@@ -68,30 +66,30 @@ class Odin_Post_Type {
      */
     protected function labels() {
         $default = array(
-            'name'               => sprintf( __( '%ss', $this->textdomain ), $this->name ),
-            'singular_name'      => __( $this->name, $this->textdomain ),
-            'view_item'          => sprintf( __( 'Ver %s', $this->textdomain ), $this->name ),
-            'edit_item'          => sprintf( __( 'Editar %s', $this->textdomain ), $this->name ),
-            'search_items'       => sprintf( __( 'Pesquisar %s', $this->textdomain ), $this->name ),
-            'update_item'        => sprintf( __( 'Atualizar %s', $this->textdomain ), $this->name ),
-            'parent_item_colon'  => sprintf( __( 'Parente %s:', $this->textdomain ), $this->name ),
-            'menu_name'          => __( $this->name, $this->textdomain )
+            'name'               => sprintf( __( '%ss', 'odin' ), $this->name ),
+            'singular_name'      => sprintf( __( '%s', 'odin' ), $this->name ),
+            'view_item'          => sprintf( __( 'Ver %s', 'odin' ), $this->name ),
+            'edit_item'          => sprintf( __( 'Editar %s', 'odin' ), $this->name ),
+            'search_items'       => sprintf( __( 'Pesquisar %s', 'odin' ), $this->name ),
+            'update_item'        => sprintf( __( 'Atualizar %s', 'odin' ), $this->name ),
+            'parent_item_colon'  => sprintf( __( 'Parente %s:', 'odin' ), $this->name ),
+            'menu_name'          => sprintf( __( '%s', 'odin' ), $this->name ),
         );
 
         if ( 'm' == $this->sex ) {
-            $default['add_new'] = __( 'Adicionar Novo', $this->textdomain );
-            $default['add_new_item'] =  sprintf( __( 'Adicionar novo %s', $this->textdomain ), $this->name );
-            $default['new_item'] = sprintf( __( 'Novo %s', $this->textdomain ), $this->name );
-            $default['all_items'] = sprintf( __( 'Todos os %s', $this->textdomain ), $this->name );
-            $default['not_found'] =  sprintf( __( 'Nenhum %s foi encontrando', $this->textdomain ), $this->name );
-            $default['not_found_in_trash'] = sprintf( __( 'Nenhum %s encontrado na Lixeira', $this->textdomain ), $this->name );
+            $default['add_new'] = __( 'Adicionar Novo', 'odin' );
+            $default['add_new_item'] =  sprintf( __( 'Adicionar novo %s', 'odin' ), $this->name );
+            $default['new_item'] = sprintf( __( 'Novo %s', 'odin' ), $this->name );
+            $default['all_items'] = sprintf( __( 'Todos os %s', 'odin' ), $this->name );
+            $default['not_found'] =  sprintf( __( 'Nenhum %s foi encontrando', 'odin' ), $this->name );
+            $default['not_found_in_trash'] = sprintf( __( 'Nenhum %s encontrado na Lixeira', 'odin' ), $this->name );
         } else {
-            $default['add_new']  = __( 'Adicionar Nova', $this->textdomain );
-            $default['add_new_item'] =  sprintf( __( 'Adicionar nova %s', $this->textdomain ), $this->name );
-            $default['new_item'] = sprintf( __( 'Nova %s', $this->textdomain ), $this->name );
-            $default['all_items'] = sprintf( __( 'Todas as %s', $this->textdomain ), $this->name );
-            $default['not_found'] =  sprintf( __( 'Nenhuma %s foi encontranda', $this->textdomain ), $this->name );
-            $default['not_found_in_trash'] = sprintf( __( 'Nenhuma %s encontrada na Lixeira', $this->textdomain ), $this->name );
+            $default['add_new']  = __( 'Adicionar Nova', 'odin' );
+            $default['add_new_item'] =  sprintf( __( 'Adicionar nova %s', 'odin' ), $this->name );
+            $default['new_item'] = sprintf( __( 'Nova %s', 'odin' ), $this->name );
+            $default['all_items'] = sprintf( __( 'Todas as %s', 'odin' ), $this->name );
+            $default['not_found'] =  sprintf( __( 'Nenhuma %s foi encontranda', 'odin' ), $this->name );
+            $default['not_found_in_trash'] = sprintf( __( 'Nenhuma %s encontrada na Lixeira', 'odin' ), $this->name );
         }
 
         return array_merge( $default, $this->_labels );
