@@ -131,3 +131,8 @@ require_once get_template_directory() . '/inc/optimize.php';
  * WP Custom Admin.
  */
 require_once get_template_directory() . '/inc/admin.php';
+
+/**
+ * Theme Options Class.
+ */
+// require_once get_template_directory() . '/inc/classes/class-theme-options.php';
