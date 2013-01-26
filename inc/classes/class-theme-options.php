@@ -105,8 +105,12 @@ class Odin_Theme_Options {
      */
     function scripts() {
         wp_enqueue_script( 'jquery' );
-        wp_enqueue_script( 'farbtastic' );
-        wp_enqueue_style( 'farbtastic' );
+
+        // Color Picker.
+        wp_enqueue_style( 'wp-color-picker' );
+        wp_enqueue_script( 'wp-color-picker' );
+
+        // Media Upload.
         wp_enqueue_script( 'media-upload' );
         wp_enqueue_script( 'thickbox' );
         wp_enqueue_style( 'thickbox' );
@@ -500,22 +504,16 @@ class Odin_Theme_Options {
         // Sets current option.
         $current = $this->get_option( $tab, $id, $args['default'] );
 
-        $html = sprintf( '<input type="text" id="color-%1$s" name="%2$s[%1$s]" value="%3$s" class="regular-text" style="width: 70px" />', $id, $tab, $current );
+        $html = sprintf( '<input type="text" id="%1$s" name="%2$s[%1$s]" value="%3$s" />', $id, $tab, $current );
 
         // Displays option description.
         if ( $args['description'] ) {
             $html .= sprintf( '<p class="description">%s</p>', $args['description'] );
         }
 
-        $html .= sprintf( '<div id="farbtasticbox-%s"></div>', $id );
-
         $html .= '<script type="text/javascript">';
             $html .= 'jQuery(document).ready(function($) {';
-                $html .= sprintf( '$("#farbtasticbox-%s").hide();', $id );
-                $html .= sprintf( '$("#farbtasticbox-%1$s").farbtastic("#color-%1$s");', $id );
-                $html .= sprintf( '$("#color-%s").click(function(){', $id );
-                    $html .= sprintf( '$("#farbtasticbox-%s").slideToggle()', $id );
-                $html .= '});';
+                $html .= sprintf( '$("#%s").wpColorPicker();', $id );
             $html .= '});';
         $html .= '</script>';
 
