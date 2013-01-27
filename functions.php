@@ -173,12 +173,12 @@ require_once get_template_directory() . '/inc/admin.php';
  * Use in loop:
  * <?php echo odin_socialite_horizontal( get_the_title(), get_permalink(), get_the_post_thumbnail( $post->ID, 'thumbnail' ) ); ?>
  */
-//require_once get_template_directory() . '/inc/socialite.php';
+// require_once get_template_directory() . '/inc/socialite/socialite-init.php';
 
 /**
  * Colorbox.
  */
-require_once get_template_directory() . '/inc/colorbox/colorbox-init.php';
+// require_once get_template_directory() . '/inc/colorbox/colorbox-init.php';
 
 /**
  * Theme Options Class.

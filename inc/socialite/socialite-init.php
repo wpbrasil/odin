@@ -7,8 +7,11 @@
  * Load socialite script.
  */
 function odin_socialite_scripts() {
-    wp_register_script( 'socialite', get_template_directory_uri() . '/js/socialite.min.js', array( 'jquery' ), null, true );
+    wp_register_script( 'socialite', get_template_directory_uri() . '/inc/socialite/js/socialite.min.js', array( 'jquery' ), null, true );
     wp_enqueue_script( 'socialite' );
+
+    wp_register_style( 'socialite', get_template_directory_uri() . '/inc/socialite/css/socialite.css', array(), null, 'all' );
+    wp_enqueue_style( 'socialite' );
 }
 
 add_action( 'wp_enqueue_scripts', 'odin_socialite_scripts' );
