@@ -66,6 +66,21 @@ function odin_setup_features() {
         'render'         => false,
         'posts_per_page' => get_option( 'posts_per_page' )
     ) );
+
+    /**
+     * Add support for Post Formats.
+     */
+    // add_theme_support( 'post-formats', array(
+    //     'aside',
+    //     'gallery',
+    //     'link',
+    //     'image',
+    //     'quote',
+    //     'status',
+    //     'video',
+    //     'audio',
+    //     'chat'
+    // ) );
 }
 
 add_action( 'after_setup_theme', 'odin_setup_features' );
