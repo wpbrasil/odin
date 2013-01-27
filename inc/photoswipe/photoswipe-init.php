@@ -4,7 +4,7 @@
  */
 
 /**
- * Load socialite script.
+ * Load photoswipe script.
  */
 function odin_photoswipe_scripts() {
     wp_enqueue_script( 'jquery');
