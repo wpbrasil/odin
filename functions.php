@@ -118,6 +118,11 @@ function odin_enqueue_scripts() {
     if ( is_singular() && get_option( 'thread_comments' ) ) {
         wp_enqueue_script( 'comment-reply' );
     }
+
+    if ( is_single() ) {
+        wp_register_script( 'validate', $template_url . '/js/jquery.validate.min.js', array(), null, true );
+        wp_enqueue_script( 'validate' );
+    }
 }
 
 add_action( 'wp_enqueue_scripts', 'odin_enqueue_scripts' );
