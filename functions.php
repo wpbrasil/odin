@@ -108,6 +108,15 @@ function odin_enqueue_scripts() {
 add_action( 'wp_enqueue_scripts', 'odin_enqueue_scripts' );
 
 /**
+ * Flush Rewrite Rules for new CPTs and Taxonomies.
+ */
+function odin_flush_rewrite() {
+    flush_rewrite_rules();
+}
+
+add_action( 'after_switch_theme', 'odin_flush_rewrite' );
+
+/**
  * Comments loop.
  */
 require_once get_template_directory() . '/inc/comments-loop.php';
