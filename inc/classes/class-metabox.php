@@ -13,6 +13,15 @@ class Odin_Metabox {
 
     protected $fields = array();
 
+    /**
+     * Metaboxs construct.
+     *
+     * @param string $id        HTML 'id' attribute of the edit screen section.
+     * @param string $title     Title of the edit screen section, visible to user.
+     * @param string $post_type The type of Write screen on which to show the edit screen section.
+     * @param string $context   The part of the page where the edit screen section should be shown ('normal', 'advanced', or 'side').
+     * @param string $priority  The priority within the context where the boxes should show ('high', 'core', 'default' or 'low').
+     */
     public function __construct( $id, $title, $post_type = 'post', $context = 'normal', $priority = 'high' ) {
         $this->id        = $id;
         $this->title     = $title;
@@ -28,6 +37,9 @@ class Odin_Metabox {
         add_action( 'save_post', array( &$this, 'save' ) );
     }
 
+    /**
+     * Add the metabox in edit screens.
+     */
     public function add() {
         add_meta_box(
             $this->id,
@@ -39,10 +51,22 @@ class Odin_Metabox {
         );
     }
 
+    /**
+     * Set metabox fields.
+     *
+     * @param array $fields Metabox fields.
+     */
     public function set_fields( $fields = array() ) {
         $this->fields = $fields;
     }
 
+    /**
+     * Metabox view.
+     *
+     * @param  object $post Post object.
+     *
+     * @return string       Metabox HTML fields.
+     */
     public function metabox( $post ) {
         // Use nonce for verification.
         wp_nonce_field( basename( __FILE__ ), $this->nonce );
@@ -76,6 +100,14 @@ class Odin_Metabox {
 
     }
 
+    /**
+     * Process metabox fields.
+     *
+     * @param  array $args    Field arguments
+     * @param  int   $post_id ID of the current post type.
+     *
+     * @return string          HTML field.
+     */
     protected function process_fields( $args, $post_id ) {
         $id = $args['id'];
         $current = get_post_meta( $post_id, $id, true );
@@ -101,18 +133,51 @@ class Odin_Metabox {
 
     }
 
+    /**
+     * Text field.
+     *
+     * @param  string $id      Field id.
+     * @param  string $current Field current value.
+     *
+     * @return string          HTML field.
+     */
     protected function field_text( $id, $current ) {
         return sprintf( '<input type="text" id="%1$s" name="%1$s" value="%2$s" class="regular-text" />', $id, esc_attr( $current ) );
     }
 
+    /**
+     * Textarea field.
+     *
+     * @param  string $id      Field id.
+     * @param  string $current Field current value.
+     *
+     * @return string          HTML field.
+     */
     protected function field_textarea( $id, $current ) {
         return sprintf( '<textarea id="%1$s" name="%1$s" cols="60" rows="4">%2$s</textarea><br />', $id, esc_attr( $current ) );
     }
 
+    /**
+     * Checkbox field.
+     *
+     * @param  string $id      Field id.
+     * @param  string $current Field current value.
+     *
+     * @return string          HTML field.
+     */
     protected function field_checkbox( $id, $current ) {
         return sprintf( '<input type="checkbox" id="%1$s" name="%1$s" value="1"%2$s />', $id, checked( 1, $current, false ) );
     }
 
+    /**
+     * Select field.
+     *
+     * @param  string $id      Field id.
+     * @param  string $current Field current value.
+     * @param  array  $options Array with field options.
+     *
+     * @return string          HTML field.
+     */
     protected function field_select( $id, $current, $options ) {
         $html = sprintf( '<select id="%1$s" name="%1$s">', $id );
 
@@ -125,6 +190,15 @@ class Odin_Metabox {
         return $html;
     }
 
+    /**
+     * Radio field.
+     *
+     * @param  string $id      Field id.
+     * @param  string $current Field current value.
+     * @param  array  $options Array with field options.
+     *
+     * @return string          HTML field.
+     */
     protected function field_radio( $id, $current, $options ) {
         $html = '';
 
@@ -135,6 +209,13 @@ class Odin_Metabox {
         return $html;
     }
 
+    /**
+     * Save metabox data.
+     *
+     * @param  int $post_id Current post type ID.
+     *
+     * @return void
+     */
     public function save( $post_id ) {
         // Verify nonce.
         if ( ! isset( $_POST[$this->nonce] ) || ! wp_verify_nonce( $_POST[$this->nonce], basename(__FILE__) ) ) {
