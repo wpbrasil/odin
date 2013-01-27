@@ -178,7 +178,7 @@ require_once get_template_directory() . '/inc/admin.php';
 /**
  * Colorbox.
  */
-// require_once get_template_directory() . '/inc/colorbox.php';
+require_once get_template_directory() . '/inc/colorbox/colorbox-init.php';
 
 /**
  * Theme Options Class.
