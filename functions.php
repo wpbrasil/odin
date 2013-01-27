@@ -11,8 +11,6 @@ if ( ! isset( $content_width ) ) {
  */
 function odin_setup_features() {
 
-    $template_dir = get_template_directory();
-
     /**
      * Register nav menus.
      */
@@ -22,50 +20,52 @@ function odin_setup_features() {
         )
     );
 
-	/**
+    /**
      * Support Custom Header.
      */
-	$default = array(
-		'width'        			 => 0,
-		'height'       			 => 0,
-		'flex-height'            => false,
-		'flex-width'             => false,
-		'header-text'            => false,
-		'default-image' => get_template_directory_uri() . '/images/default-header.jpg',
-		'uploads'       => true,
-	);
-	add_theme_support( 'custom-header', $default );
+    $default = array(
+        'width'         => 0,
+        'height'        => 0,
+        'flex-height'   => false,
+        'flex-width'    => false,
+        'header-text'   => false,
+        'default-image' => get_template_directory_uri() . '/images/default-header.jpg',
+        'uploads'       => true,
+    );
 
-	/**
+    add_theme_support( 'custom-header', $default );
+
+    /**
      * Support Custom Background.
      */
-	$defaults = array(
-		'default-color'          => '',
-		'default-image' => get_template_directory_uri() . '/images/default-background.jpg',
-	);
-	add_theme_support( 'custom-background', $defaults );
+    $defaults = array(
+        'default-color' => '',
+        'default-image' => get_template_directory_uri() . '/images/default-background.jpg',
+    );
 
-	/**
+    add_theme_support( 'custom-background', $defaults );
+
+    /**
      * Support Custom Editor Style.
      */
-	add_editor_style('custom-editor-style.css');
+    add_editor_style( 'custom-editor-style.css' );
 
     /**
-     * Add support for multiple languages
+     * Add support for multiple languages.
      */
-    load_theme_textdomain( 'odin', $template_dir . '/languages' );
+    load_theme_textdomain( 'odin', get_template_directory() . '/languages' );
 
     /**
-     * Add support for infinite scroll
+     * Add support for infinite scroll.
      */
-        add_theme_support( 'infinite-scroll', array(
-            'type'           => 'scroll',
-            'footer_widgets' => false,
-            'container'      => 'content',
-            'wrapper'        => false,
-            'render'         => false,
-            'posts_per_page' => get_option('posts_per_page')
-        ) );
+    add_theme_support( 'infinite-scroll', array(
+        'type'           => 'scroll',
+        'footer_widgets' => false,
+        'container'      => 'content',
+        'wrapper'        => false,
+        'render'         => false,
+        'posts_per_page' => get_option( 'posts_per_page' )
+    ) );
 }
 
 add_action( 'after_setup_theme', 'odin_setup_features' );
