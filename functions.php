@@ -176,6 +176,11 @@ require_once get_template_directory() . '/inc/admin.php';
 //require_once get_template_directory() . '/inc/socialite.php';
 
 /**
+ * Colorbox.
+ */
+require_once get_template_directory() . '/inc/colorbox.php';
+
+/**
  * Theme Options Class.
  */
 // require_once get_template_directory() . '/inc/classes/class-theme-options.php';
