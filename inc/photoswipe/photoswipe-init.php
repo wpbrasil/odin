@@ -21,5 +21,3 @@ function odin_photoswipe_scripts() {
 }
 
 add_action( 'wp_enqueue_scripts', 'odin_photoswipe_scripts' );
-
-?>
