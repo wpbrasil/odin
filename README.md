@@ -8,3 +8,4 @@ Tema base para WordPress.
 * Compass/Sass
 * normalize.css
 * aq_resize
+* [bxSlider](http://bxslider.com/)

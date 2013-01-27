@@ -111,6 +111,12 @@ function odin_enqueue_scripts() {
     $template_url = get_template_directory_uri();
 
     wp_enqueue_script( 'jquery');
+
+    // bxSlider.
+    // wp_register_script( 'bxslider', $template_url . '/js/jquery.bxslider.min.js', array(), null, true );
+    // wp_enqueue_script( 'bxslider' );
+
+    // General scripts.
     wp_register_script( 'odin-main', $template_url . '/js/main.js', array(), null, true );
     wp_enqueue_script( 'odin-main' );
 
