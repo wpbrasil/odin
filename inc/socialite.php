@@ -7,8 +7,7 @@
  * Load socialite script.
  */
 function odin_socialite_scripts() {
-    wp_enqueue_script( 'jquery');
-    wp_register_script( 'socialite', get_template_directory_uri() . '/js/socialite.min.js', array(), null, true );
+    wp_register_script( 'socialite', get_template_directory_uri() . '/js/socialite.min.js', array( 'jquery' ), null, true );
     wp_enqueue_script( 'socialite' );
 }
 
