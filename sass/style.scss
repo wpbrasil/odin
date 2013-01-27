@@ -5,7 +5,7 @@ Description: Tema base para desenvolvimento em WordPress.
 Author: Grupo WordPress Brasil
 Author URI: http://www.facebook.com/groups/wordpress.brasil/
 Version: 0.1
-
+Tags: light, gray, white, one-column, two-columns, right-sidebar, flexible-width, custom-background, custom-header, custom-menu, editor-style, featured-images, flexible-header, full-width-template, post-formats, sticky-post, theme-options, translation-ready
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -38,6 +38,29 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 // Socialite
 //@import "source/socialite";
+
+/* =Header
+-------------------------------------------------------------- */
+
+/* =Content
+-------------------------------------------------------------- */
+
+.sticky {
+    font-size: 100%;
+}
+
+/* =Comments
+-------------------------------------------------------------- */
+
+.bypostauthor {
+    font-size: 100%;
+}
+
+/* =Sidebar
+-------------------------------------------------------------- */
+
+/* =Footer
+-------------------------------------------------------------- */
 
 // Print styles
 @import "source/print";
