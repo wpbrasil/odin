@@ -154,3 +154,4 @@ require_once get_template_directory() . '/inc/admin.php';
  */
 // require_once get_template_directory() . '/inc/classes/class-theme-options.php';
 // require_once get_template_directory() . '/inc/classes/class-post-type.php';
+// require_once get_template_directory() . '/inc/classes/class-taxonomy.php';
