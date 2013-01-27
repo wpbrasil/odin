@@ -181,6 +181,11 @@ require_once get_template_directory() . '/inc/admin.php';
 // require_once get_template_directory() . '/inc/colorbox/colorbox-init.php';
 
 /**
+ * Photoswipe
+ */
+// require_once get_template_directory() . '/inc/photoswipe/photoswipe-init.php';
+
+/**
  * Theme Options Class.
  */
 // require_once get_template_directory() . '/inc/classes/class-theme-options.php';
