@@ -880,6 +880,14 @@ p img,
   margin-left: 0;
 }
 
+/* Conteudo */
+.sticky {
+}
+
+/* Comentarios */
+.bypostauthor {
+}
+
 /* === Widgets === */
 /* Calendar Widget */
 .widget_calendar #wp-calendar {
