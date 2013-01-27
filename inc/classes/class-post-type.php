@@ -30,7 +30,7 @@ class Odin_Post_Type {
      *
      * @param string $name       Singular name.
      * @param string $slug       Post type slug.
-     * @param string $sex        Sex of Post Type.
+     * @param string $sex        Sex of Post Type ('m' for male and 'f' female).
      */
     public function __construct( $name, $slug, $sex = 'm' ) {
         $this->name = $name;
@@ -124,7 +124,7 @@ class Odin_Post_Type {
     /**
      * Register Post Type.
      *
-     * @return void.
+     * @return void
      */
     public function register_post_type() {
         register_post_type( $this->slug, $this->arguments() );
