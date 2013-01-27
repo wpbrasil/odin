@@ -84,7 +84,7 @@ class Odin_Metabox {
                 echo sprintf( '<th><label for="%s">%s</label></th>', $field['id'], $field['name'] );
 
                 echo '<td>';
-                echo $this->process_fields( $field, $id );
+                $this->process_fields( $field, $id );
 
                 if ( isset( $field['description'] ) ) {
                     echo sprintf( ' <span class="description">%s</span>', $field['description'] );
@@ -111,26 +111,30 @@ class Odin_Metabox {
     protected function process_fields( $args, $post_id ) {
         $id = $args['id'];
         $current = get_post_meta( $post_id, $id, true );
+        $options = isset( $args['options'] ) ? $args['options'] : '';
+        $type = $args['type'];
 
-        switch ( $args['type'] ) {
+        switch ( $type ) {
+            case 'text':
+                echo $this->field_text( $id, $current );
+                break;
             case 'textarea':
-                return $this->field_textarea( $id, $current );
+                echo $this->field_textarea( $id, $current );
                 break;
             case 'checkbox':
-                return $this->field_checkbox( $id, $current );
+                echo $this->field_checkbox( $id, $current );
                 break;
             case 'select':
-                return $this->field_select( $id, $current, $args['options'] );
+                echo $this->field_select( $id, $current, $options );
                 break;
             case 'radio':
-                return $this->field_radio( $id, $current, $args['options'] );
+                echo $this->field_radio( $id, $current, $options );
                 break;
 
             default:
-                return $this->field_text( $id, $current );
+                do_action( 'odin_metabox_' . $this->id, $type, $id, $current, $options );
                 break;
         }
-
     }
 
     /**
@@ -247,7 +251,7 @@ class Odin_Metabox {
 }
 
 // Testes:
-// $box = new Odin_Metabox( 'teste', 'Teste' );
+// $box = new Odin_Metabox( 'test', 'Teste' );
 // $box->set_fields(
 //     array(
 //         array(
@@ -282,7 +286,7 @@ class Odin_Metabox {
 //             )
 //         ),
 //         array(
-//             'id' => 'teste_radio',
+//             'id' => 'test_radio',
 //             'name' => 'Test Radio',
 //             'description' => 'Descrição do campo Radio',
 //             'type' => 'radio',
@@ -293,6 +297,12 @@ class Odin_Metabox {
 //                 'opt4' => 'Opção 04',
 //                 'opt5' => 'Opção 05',
 //             )
-//         ),
+//         )
 //     )
 // );
+
+// function odin_custom_metabox_fields( $type, $id, $current, $options ) {
+//     // Custom fields.
+// }
+
+// add_action( 'odin_metabox_test', 'odin_custom_metabox_fields', 1, 4 );
