@@ -242,8 +242,14 @@ class Odin_Metabox {
 
         foreach ( $this->fields as $field ) {
             $name = $field['id'];
+            $old = get_post_meta( $post_id, $name, true );
+            $new = $_POST[$name];
 
-            update_post_meta( $post_id, $name, $_POST[$name] );
+            if ( $new && $new != $old ) {
+                update_post_meta( $post_id, $name, $new );
+            } elseif ( '' == $new && $old ) {
+                delete_post_meta( $post_id, $name, $old );
+            }
         }
 
     }
