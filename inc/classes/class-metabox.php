@@ -87,7 +87,7 @@ class Odin_Metabox {
                 $this->process_fields( $field, $id );
 
                 if ( isset( $field['description'] ) ) {
-                    echo sprintf( ' <span class="description">%s</span>', $field['description'] );
+                    echo sprintf( '<br /><span class="description">%s</span>', $field['description'] );
                 }
 
                 echo '</td>';
@@ -136,6 +136,9 @@ class Odin_Metabox {
             case 'editor':
                 $this->field_editor( $id, $current );
                 break;
+            case 'upload':
+                $this->field_upload( $id, $current );
+                break;
 
             default:
                 do_action( 'odin_metabox_' . $this->id, $type, $id, $current, $options );
@@ -164,7 +167,7 @@ class Odin_Metabox {
      * @return string          HTML field.
      */
     protected function field_textarea( $id, $current ) {
-        echo sprintf( '<textarea id="%1$s" name="%1$s" cols="60" rows="4">%2$s</textarea><br />', $id, esc_attr( $current ) );
+        echo sprintf( '<textarea id="%1$s" name="%1$s" cols="60" rows="4">%2$s</textarea>', $id, esc_attr( $current ) );
     }
 
     /**
@@ -238,7 +241,7 @@ class Odin_Metabox {
             $image = $image[0];
         }
 
-        $html .= sprintf( '<input name="%1$s" type="hidden" class="odin_upload_image" value="%2$s" /><img src="%3$s" class="odin_preview_image" alt="" /><br /><input class="odin_upload_image_button button" type="button" value="%4$s" /><small> <a href="#" class="odin_clear_image_button">%5$s</a></small><br />', $id, $current, $image, __( 'Selecionar imagem', 'odin' ), __( 'Remover imagem', 'odin' ) );
+        $html .= sprintf( '<input name="%1$s" type="hidden" class="odin_upload_image" value="%2$s" /><img src="%3$s" class="odin_preview_image" alt="" /><br /><input class="odin_upload_image_button button" type="button" value="%4$s" /><small> <a href="#" class="odin_clear_image_button">%5$s</a></small>', $id, $current, $image, __( 'Selecionar imagem', 'odin' ), __( 'Remover imagem', 'odin' ) );
 
         echo $html;
     }
@@ -255,6 +258,20 @@ class Odin_Metabox {
         echo '<div style="max-width: 600px;">';
             wp_editor( wpautop( $current ), $id, array( 'textarea_rows' => 10 ) );
         echo '</div>';
+    }
+
+    /**
+     * Upload field.
+     *
+     * @param  string $id      Field id.
+     * @param  string $current Field current value.
+     *
+     * @return string          HTML field.
+     */
+    protected function field_upload( $id, $current ) {
+        $html = sprintf( '<input type="text" id="%1$s" name="%1$s" value="%2$s" class="regular-text" /> <input class="button odin_upload_button" type="button" value="%3$s" />', $id, esc_url( $current ), __( 'Selecionar arquivo', 'odin' ) );
+
+        echo $html;
     }
 
     /**
@@ -369,6 +386,12 @@ add_action( 'admin_enqueue_scripts', 'odin_metabox_scripts' );
 //             'name' => 'Test Editor',
 //             'description' => 'Descrição do campo Editor.',
 //             'type' => 'editor'
+//         ),
+//         array(
+//             'id' => 'test_upload',
+//             'name' => 'Test File',
+//             'description' => 'Descrição do campo File.',
+//             'type' => 'upload'
 //         )
 //     )
 // );

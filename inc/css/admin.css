@@ -15,6 +15,9 @@
     display: none !important;
 }
 
+/**
+ * Metabox.
+ */
 .odin_preview_image {
     max-width: 150px;
     height: auto;

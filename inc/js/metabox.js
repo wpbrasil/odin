@@ -23,4 +23,19 @@ jQuery(document).ready(function($) {
         $(this).parent().siblings(".odin_preview_image").attr("src", defaultImage);
         return false;
     });
+
+    /**
+     * Upload.
+     */
+    $(".odin_upload_button").click(function() {
+        uploadID = $(this).prev("input");
+        formfield = $(this).attr("name");
+        tb_show("", "media-upload.php?post_id=&amp;type=image&amp;TB_iframe=true");
+        return false;
+    });
+    window.send_to_editor = function(html) {
+        imgurl = $("img", html).attr("src");
+        uploadID.val(imgurl);
+        tb_remove();
+    }
 });
