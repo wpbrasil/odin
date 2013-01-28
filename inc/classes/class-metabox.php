@@ -116,22 +116,25 @@ class Odin_Metabox {
 
         switch ( $type ) {
             case 'text':
-                echo $this->field_text( $id, $current );
+                $this->field_text( $id, $current );
                 break;
             case 'textarea':
-                echo $this->field_textarea( $id, $current );
+                $this->field_textarea( $id, $current );
                 break;
             case 'checkbox':
-                echo $this->field_checkbox( $id, $current );
+                $this->field_checkbox( $id, $current );
                 break;
             case 'select':
-                echo $this->field_select( $id, $current, $options );
+                $this->field_select( $id, $current, $options );
                 break;
             case 'radio':
-                echo $this->field_radio( $id, $current, $options );
+                $this->field_radio( $id, $current, $options );
                 break;
             case 'image':
-                echo $this->field_image( $id, $current );
+                $this->field_image( $id, $current );
+                break;
+            case 'editor':
+                $this->field_editor( $id, $current );
                 break;
 
             default:
@@ -149,7 +152,7 @@ class Odin_Metabox {
      * @return string          HTML field.
      */
     protected function field_text( $id, $current ) {
-        return sprintf( '<input type="text" id="%1$s" name="%1$s" value="%2$s" class="regular-text" />', $id, esc_attr( $current ) );
+        echo sprintf( '<input type="text" id="%1$s" name="%1$s" value="%2$s" class="regular-text" />', $id, esc_attr( $current ) );
     }
 
     /**
@@ -161,7 +164,7 @@ class Odin_Metabox {
      * @return string          HTML field.
      */
     protected function field_textarea( $id, $current ) {
-        return sprintf( '<textarea id="%1$s" name="%1$s" cols="60" rows="4">%2$s</textarea><br />', $id, esc_attr( $current ) );
+        echo sprintf( '<textarea id="%1$s" name="%1$s" cols="60" rows="4">%2$s</textarea><br />', $id, esc_attr( $current ) );
     }
 
     /**
@@ -173,7 +176,7 @@ class Odin_Metabox {
      * @return string          HTML field.
      */
     protected function field_checkbox( $id, $current ) {
-        return sprintf( '<input type="checkbox" id="%1$s" name="%1$s" value="1"%2$s />', $id, checked( 1, $current, false ) );
+        echo sprintf( '<input type="checkbox" id="%1$s" name="%1$s" value="1"%2$s />', $id, checked( 1, $current, false ) );
     }
 
     /**
@@ -194,7 +197,7 @@ class Odin_Metabox {
 
         $html .= '</select>';
 
-        return $html;
+        echo $html;
     }
 
     /**
@@ -213,7 +216,7 @@ class Odin_Metabox {
             $html .= sprintf( '<input type="radio" id="%1$s_%2$s" name="%1$s" value="%2$s"%3$s /><label for="%1$s_%2$s"> %4$s</label><br />', $id, $key, checked( $current, $key, false ), $label );
         }
 
-        return $html;
+        echo $html;
     }
 
     /**
@@ -237,7 +240,21 @@ class Odin_Metabox {
 
         $html .= sprintf( '<input name="%1$s" type="hidden" class="odin_upload_image" value="%2$s" /><img src="%3$s" class="odin_preview_image" alt="" /><br /><input class="odin_upload_image_button button" type="button" value="%4$s" /><small> <a href="#" class="odin_clear_image_button">%5$s</a></small><br />', $id, $current, $image, __( 'Selecionar imagem', 'odin' ), __( 'Remover imagem', 'odin' ) );
 
-        return $html;
+        echo $html;
+    }
+
+    /**
+     * Editor field.
+     *
+     * @param  string $id      Field id.
+     * @param  string $current Field current value.
+     *
+     * @return string          HTML field.
+     */
+    protected function field_editor( $id, $current ) {
+        echo '<div style="max-width: 600px;">';
+            wp_editor( wpautop( $current ), $id, array( 'textarea_rows' => 10 ) );
+        echo '</div>';
     }
 
     /**
@@ -249,7 +266,7 @@ class Odin_Metabox {
      */
     public function save( $post_id ) {
         // Verify nonce.
-        if ( ! isset( $_POST[$this->nonce] ) || ! wp_verify_nonce( $_POST[$this->nonce], basename(__FILE__) ) ) {
+        if ( ! isset( $_POST[$this->nonce] ) || ! wp_verify_nonce( $_POST[$this->nonce], basename( __FILE__ ) ) ) {
             return $post_id;
         }
 
@@ -346,6 +363,12 @@ add_action( 'admin_enqueue_scripts', 'odin_metabox_scripts' );
 //             'name' => 'Test Image',
 //             'description' => 'Descrição do campo Image.',
 //             'type' => 'image'
+//         ),
+//         array(
+//             'id' => 'test_editor',
+//             'name' => 'Test Editor',
+//             'description' => 'Descrição do campo Editor.',
+//             'type' => 'editor'
 //         )
 //     )
 // );
