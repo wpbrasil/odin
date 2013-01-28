@@ -139,6 +139,9 @@ class Odin_Metabox {
             case 'upload':
                 $this->field_upload( $id, $current );
                 break;
+            case 'color':
+                $this->field_color( $id, $current );
+                break;
 
             default:
                 do_action( 'odin_metabox_' . $this->id, $type, $id, $current, $options );
@@ -275,6 +278,20 @@ class Odin_Metabox {
     }
 
     /**
+     * Color field.
+     *
+     * @param  string $id      Field id.
+     * @param  string $current Field current value.
+     *
+     * @return string          HTML field.
+     */
+    protected function field_color( $id, $current ) {
+        $html = sprintf( '<input type="text" id="%1$s" name="%1$s" value="%2$s" class="odin_color_field" />', $id, esc_attr( $current ) );
+
+        echo $html;
+    }
+
+    /**
      * Save metabox data.
      *
      * @param  int $post_id Current post type ID.
@@ -323,81 +340,8 @@ class Odin_Metabox {
 function odin_metabox_scripts() {
     wp_register_script( 'metabox', get_template_directory_uri() . '/inc/js/metabox.js', array( 'jquery' ), null, true );
     wp_enqueue_script( 'metabox' );
+    wp_enqueue_style( 'wp-color-picker' );
+    wp_enqueue_script( 'wp-color-picker' );
 }
 
 add_action( 'admin_enqueue_scripts', 'odin_metabox_scripts' );
-
-// Testes:
-// $box = new Odin_Metabox( 'test', 'Teste' );
-// $box->set_fields(
-//     array(
-//         array(
-//             'id' => 'test_text',
-//             'name' => 'Test Text',
-//             'description' => 'Descrição do campo text',
-//             'type' => 'text'
-//         ),
-//         array(
-//             'id' => 'test_textarea',
-//             'name' => 'Test Textarea',
-//             'description' => 'Descrição do campo textarea',
-//             'type' => 'textarea'
-//         ),
-//         array(
-//             'id' => 'test_checkbox',
-//             'name' => 'Test Checkbox',
-//             'description' => 'Descrição do campo checkbox',
-//             'type' => 'checkbox'
-//         ),
-//         array(
-//             'id' => 'test_select',
-//             'name' => 'Test Select',
-//             'description' => 'Descrição do campo Select',
-//             'type' => 'select',
-//             'options' => array(
-//                 'opt1' => 'Opção 01',
-//                 'opt2' => 'Opção 02',
-//                 'opt3' => 'Opção 03',
-//                 'opt4' => 'Opção 04',
-//                 'opt5' => 'Opção 05',
-//             )
-//         ),
-//         array(
-//             'id' => 'test_radio',
-//             'name' => 'Test Radio',
-//             'description' => 'Descrição do campo Radio',
-//             'type' => 'radio',
-//             'options' => array(
-//                 'opt1' => 'Opção 01',
-//                 'opt2' => 'Opção 02',
-//                 'opt3' => 'Opção 03',
-//                 'opt4' => 'Opção 04',
-//                 'opt5' => 'Opção 05',
-//             )
-//         ),
-//         array(
-//             'id' => 'test_image',
-//             'name' => 'Test Image',
-//             'description' => 'Descrição do campo Image.',
-//             'type' => 'image'
-//         ),
-//         array(
-//             'id' => 'test_editor',
-//             'name' => 'Test Editor',
-//             'description' => 'Descrição do campo Editor.',
-//             'type' => 'editor'
-//         ),
-//         array(
-//             'id' => 'test_upload',
-//             'name' => 'Test File',
-//             'description' => 'Descrição do campo File.',
-//             'type' => 'upload'
-//         )
-//     )
-// );
-
-// function odin_custom_metabox_fields( $type, $id, $current, $options ) {
-//     // Custom fields.
-// }
-
-// add_action( 'odin_metabox_test', 'odin_custom_metabox_fields', 1, 4 );

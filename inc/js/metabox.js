@@ -38,4 +38,9 @@ jQuery(document).ready(function($) {
         uploadID.val(imgurl);
         tb_remove();
     }
+
+    /**
+     * Color Picker.
+     */
+    $(".odin_color_field").wpColorPicker();
 });
