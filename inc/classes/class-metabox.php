@@ -326,7 +326,8 @@ class Odin_Metabox {
         foreach ( $this->fields as $field ) {
             $name = $field['id'];
             $old = get_post_meta( $post_id, $name, true );
-            $new = $_POST[$name];
+
+            $new = apply_filters( 'odin_save_metabox_' . $this->id, $_POST[$name] );
 
             if ( $new && $new != $old ) {
                 update_post_meta( $post_id, $name, $new );
