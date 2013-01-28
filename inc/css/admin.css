@@ -14,3 +14,8 @@
 #normal-sortables #dashboard_right_now .inside .versions p {
     display: none !important;
 }
+
+.odin_preview_image {
+    max-width: 150px;
+    height: auto;
+}

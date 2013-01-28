@@ -130,6 +130,9 @@ class Odin_Metabox {
             case 'radio':
                 echo $this->field_radio( $id, $current, $options );
                 break;
+            case 'image':
+                echo $this->field_image( $id, $current );
+                break;
 
             default:
                 do_action( 'odin_metabox_' . $this->id, $type, $id, $current, $options );
@@ -214,6 +217,30 @@ class Odin_Metabox {
     }
 
     /**
+     * Image field.
+     *
+     * @param  string $id      Field id.
+     * @param  string $current Field current value.
+     *
+     * @return string          HTML field.
+     */
+    protected function field_image( $id, $current ) {
+
+        // Gets placeholder image.
+        $image = get_template_directory_uri() . '/inc/images/placeholder.png';
+        $html = '<span class="odin_default_image" style="display: none;">' . $image . '</span>';
+
+        if ( $current ) {
+            $image = wp_get_attachment_image_src( $current, 'thumbnail' );
+            $image = $image[0];
+        }
+
+        $html .= sprintf( '<input name="%1$s" type="hidden" class="odin_upload_image" value="%2$s" /><img src="%3$s" class="odin_preview_image" alt="" /><br /><input class="odin_upload_image_button button" type="button" value="%4$s" /><small> <a href="#" class="odin_clear_image_button">%5$s</a></small><br />', $id, $current, $image, __( 'Selecionar imagem', 'odin' ), __( 'Remover imagem', 'odin' ) );
+
+        return $html;
+    }
+
+    /**
      * Save metabox data.
      *
      * @param  int $post_id Current post type ID.
@@ -255,6 +282,16 @@ class Odin_Metabox {
     }
 
 }
+
+/**
+ * Load metabox scripts.
+ */
+function odin_metabox_scripts() {
+    wp_register_script( 'metabox', get_template_directory_uri() . '/inc/js/metabox.js', array( 'jquery' ), null, true );
+    wp_enqueue_script( 'metabox' );
+}
+
+add_action( 'admin_enqueue_scripts', 'odin_metabox_scripts' );
 
 // Testes:
 // $box = new Odin_Metabox( 'test', 'Teste' );
@@ -303,6 +340,12 @@ class Odin_Metabox {
 //                 'opt4' => 'Opção 04',
 //                 'opt5' => 'Opção 05',
 //             )
+//         ),
+//         array(
+//             'id' => 'test_image',
+//             'name' => 'Test Image',
+//             'description' => 'Descrição do campo Image.',
+//             'type' => 'image'
 //         )
 //     )
 // );
