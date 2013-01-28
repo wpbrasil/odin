@@ -110,9 +110,14 @@ class Odin_Metabox {
      */
     protected function process_fields( $args, $post_id ) {
         $id = $args['id'];
-        $current = get_post_meta( $post_id, $id, true );
         $options = isset( $args['options'] ) ? $args['options'] : '';
         $type = $args['type'];
+
+        // Gets current value or default.
+        $current = get_post_meta( $post_id, $id, true );
+        if ( ! $current ) {
+            $current = isset( $args['default'] ) ? $args['default'] : '';
+        }
 
         switch ( $type ) {
             case 'text':
