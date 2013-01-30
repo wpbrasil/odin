@@ -29,7 +29,7 @@ function odin_setup_features() {
         'flex-height'   => false,
         'flex-width'    => false,
         'header-text'   => false,
-        'default-image' => get_template_directory_uri() . '/images/default-header.jpg',
+        'default-image' => '',
         'uploads'       => true,
     );
 
@@ -40,7 +40,7 @@ function odin_setup_features() {
      */
     $defaults = array(
         'default-color' => '',
-        'default-image' => get_template_directory_uri() . '/images/default-background.jpg',
+        'default-image' => '',
     );
 
     add_theme_support( 'custom-background', $defaults );

@@ -16,10 +16,9 @@
 <![endif]-->
 <?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?> id="custom-background-css" itemscope="" itemtype="http://schema.org/WebPage">
+<body <?php body_class(); ?> itemscope="" itemtype="http://schema.org/WebPage">
     <div class="wrapper">
         <header id="header" role="banner">
-        	<img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="" />
             <?php if ( is_home() ) : ?>
                 <hgroup>
                     <h1 class="site-title"><a href="<?php echo home_url(); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
@@ -29,6 +28,11 @@
                 <div class="site-title"><a href="<?php echo home_url(); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></div>
                 <div class="site-description"><?php bloginfo( 'description' ); ?></div>
             <?php endif ?>
+
+            <?php $header_image = get_header_image();
+            if ( ! empty( $header_image ) ) : ?>
+                <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( $header_image ); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="" /></a>
+            <?php endif; ?>
             <nav id="main-menu" role="navigation">
                 <?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?>
             </nav><!-- #main-menu -->
