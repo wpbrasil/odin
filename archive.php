@@ -3,7 +3,7 @@
     <section id="content" role="main">
         <?php if ( have_posts() ) : ?>
             <header class="page-header">
-                <h1 class="page-title">
+                <h1 class="page-title" itemprop="name headline">
                     <?php
                         if ( is_day() ) {
                             echo __( 'Arquivos di&aacute;rios: ', 'odin' ) . '<span>' . get_the_date() . '</span>';
