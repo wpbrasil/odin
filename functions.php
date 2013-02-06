@@ -81,6 +81,11 @@ function odin_setup_features() {
     //     'audio',
     //     'chat'
     // ) );
+    
+    /**
+     * Support The Excerpt on pages.
+     */
+    // add_post_type_support( 'page', 'excerpt' );
 }
 
 add_action( 'after_setup_theme', 'odin_setup_features' );
