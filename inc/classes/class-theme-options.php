@@ -16,14 +16,14 @@ class Odin_Theme_Options {
      *
      * @var array
      */
-    private $_tabs = array();
+    protected $tabs = array();
 
     /**
      * Settings fields.
      *
      * @var array
      */
-    private $_fields = array();
+    protected $fields = array();
 
     /**
      * Settings construct.
@@ -89,7 +89,7 @@ class Odin_Theme_Options {
      * @param array $tabs Settings tabs.
      */
     public function set_tabs( $tabs ) {
-        $this->_tabs = $tabs;
+        $this->tabs = $tabs;
     }
 
     /**
@@ -98,7 +98,7 @@ class Odin_Theme_Options {
      * @param array $fields Settings fields.
      */
     public function set_fields( $fields ) {
-        $this->_fields = $fields;
+        $this->fields = $fields;
     }
 
     /**
@@ -110,7 +110,7 @@ class Odin_Theme_Options {
         if ( isset( $_GET['tab'] ) ) {
             $current_tab = $_GET['tab'];
         } else {
-            $current_tab = $this->_tabs[0]['id'];
+            $current_tab = $this->tabs[0]['id'];
         }
 
         return $current_tab;
@@ -143,7 +143,7 @@ class Odin_Theme_Options {
 
         $html = '<h2 class="nav-tab-wrapper">';
 
-        foreach ( $this->_tabs as $tab ) {
+        foreach ( $this->tabs as $tab ) {
 
             $current = ( $current_tab == $tab['id'] ) ? ' nav-tab-active' : '';
 
@@ -182,7 +182,7 @@ class Odin_Theme_Options {
             <form method="post" action="options.php">
 
                 <?php
-                    foreach ( $this->_tabs as $tabs ) {
+                    foreach ( $this->tabs as $tabs ) {
                         if ( $current_tab == $tabs['id'] ) {
 
                             // Prints nonce, action and options_page fields.
@@ -212,7 +212,7 @@ class Odin_Theme_Options {
     public function create_settings() {
 
         // Register settings fields.
-        foreach ( $this->_fields as $section => $items ) {
+        foreach ( $this->fields as $section => $items ) {
 
             // Register settings sections.
             add_settings_section(
@@ -249,7 +249,7 @@ class Odin_Theme_Options {
         }
 
         // Register settings.
-        foreach ( $this->_tabs as $tabs ) {
+        foreach ( $this->tabs as $tabs ) {
             if ( isset( $tabs['validate'] ) && $tabs['validate'] == false ) {
                 register_setting( $tabs['id'], $tabs['id'] );
             } else {
