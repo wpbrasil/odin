@@ -252,12 +252,7 @@ class Odin_Theme_Options {
 
         // Register settings.
         foreach ( $this->tabs as $tabs ) {
-            if ( isset( $tabs['validate'] ) && $tabs['validate'] == false ) {
-                register_setting( $tabs['id'], $tabs['id'] );
-            } else {
-                register_setting( $tabs['id'], $tabs['id'], array( &$this, 'validate_input' ) );
-            }
-
+            register_setting( $tabs['id'], $tabs['id'], array( &$this, 'validate_input' ) );
         }
     }
 
@@ -521,6 +516,7 @@ class Odin_Theme_Options {
      * @return string        The collection of sanitized values.
      */
     public function validate_input( $input ) {
+
         // Create our array for storing the validated options
         $output = array();
 
@@ -530,13 +526,11 @@ class Odin_Theme_Options {
             // Check to see if the current option has a value. If so, process it.
             if ( isset( $input[$key] ) ) {
 
-                // Strip all HTML and PHP tags and properly handle quoted strings
-                $output[$key] = strip_tags( stripslashes( $input[$key] ) );
+                // Filter for validation.
+                $output[$key] = apply_filters( 'odin_theme_options_validate_' . $this->slug, $value );
             }
         }
 
-        // Return the array processing any additional functions filtered by this action
-        return apply_filters( 'cs_framework_settings_validate_input', $output, $input );
+        return $output;
     }
-
 }
