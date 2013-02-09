@@ -13,8 +13,8 @@
  */
 function odin_pagination( $mid = 2, $end = 1, $show = false ) {
 
-    // Prevent show pagination number if Infinite Scroll of JetPack is active
-    if ( !isset( $_GET[ 'infinity' ] ) == 0) {
+    // Prevent show pagination number if Infinite Scroll of JetPack is active.
+    if ( ! isset( $_GET[ 'infinity' ] ) ) {
 
         global $wp_query;
         $total_pages = $wp_query->max_num_pages;
