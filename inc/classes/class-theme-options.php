@@ -276,11 +276,11 @@ class Odin_Theme_Options {
     }
 
     /**
-     * Text input callback.
+     * Text field callback.
      *
      * @param array $args Arguments from the option.
      */
-    function callback_text( $args ) {
+    public function callback_text( $args ) {
         $tab = $args['tab'];
         $id = $args['id'];
 
@@ -301,11 +301,11 @@ class Odin_Theme_Options {
     }
 
     /**
-     * Textarea input callback.
+     * Textarea field callback.
      *
      * @param array $args Arguments from the option.
      */
-    function callback_textarea( $args ) {
+    public function callback_textarea( $args ) {
         $tab = $args['tab'];
         $id = $args['id'];
 
@@ -323,11 +323,11 @@ class Odin_Theme_Options {
     }
 
     /**
-     * Editor callback.
+     * Editor field callback.
      *
      * @param array $args Arguments from the option.
      */
-    function callback_editor( $args ) {
+    public function callback_editor( $args ) {
         $tab = $args['tab'];
         $id = $args['id'];
 
@@ -350,11 +350,11 @@ class Odin_Theme_Options {
     }
 
     /**
-     * Checkbox input callback.
+     * Checkbox field callback.
      *
      * @param array $args Arguments from the option.
      */
-    function callback_checkbox( $args ) {
+    public function callback_checkbox( $args ) {
         $tab = $args['tab'];
         $id = $args['id'];
 
@@ -372,11 +372,11 @@ class Odin_Theme_Options {
     }
 
     /**
-     * Multicheckbox input callback.
+     * Multicheckbox field callback.
      *
      * @param array $args Arguments from the option.
      */
-    function callback_multicheckbox( $args ) {
+    public function callback_multicheckbox( $args ) {
         $tab = $args['tab'];
         $id = $args['id'];
 
@@ -400,11 +400,11 @@ class Odin_Theme_Options {
     }
 
     /**
-     * Radio input callback.
+     * Radio field callback.
      *
      * @param array $args Arguments from the option.
      */
-    function callback_radio( $args ) {
+    public function callback_radio( $args ) {
         $tab = $args['tab'];
         $id = $args['id'];
 
@@ -429,11 +429,11 @@ class Odin_Theme_Options {
     }
 
     /**
-     * Select input callback.
+     * Select field callback.
      *
      * @param array $args Arguments from the option.
      */
-    function callback_select( $args ) {
+    public function callback_select( $args ) {
         $tab = $args['tab'];
         $id = $args['id'];
 
@@ -457,11 +457,11 @@ class Odin_Theme_Options {
     }
 
     /**
-     * Color input callback.
+     * Color field callback.
      *
      * @param array $args Arguments from the option.
      */
-    function callback_color( $args ) {
+    public function callback_color( $args ) {
         $tab = $args['tab'];
         $id = $args['id'];
 
@@ -479,11 +479,11 @@ class Odin_Theme_Options {
     }
 
     /**
-     * Upload input callback.
+     * Upload field callback.
      *
      * @param array $args Arguments from the option.
      */
-    function callback_upload( $args ) {
+    public function callback_upload( $args ) {
         $tab = $args['tab'];
         $id = $args['id'];
 
@@ -501,11 +501,42 @@ class Odin_Theme_Options {
     }
 
     /**
+     * Image field callback.
+     *
+     * @param array $args Arguments from the option.
+     */
+    public function callback_image( $args ) {
+        $tab = $args['tab'];
+        $id = $args['id'];
+
+        // Sets current option.
+        $current = $this->get_option( $tab, $id, $args['default'] );
+
+        // Gets placeholder image.
+        $image = get_template_directory_uri() . '/inc/images/placeholder.png';
+        $html = '<span class="odin-default-image" style="display: none;">' . $image . '</span>';
+
+        if ( $current ) {
+            $image = wp_get_attachment_image_src( $current, 'thumbnail' );
+            $image = $image[0];
+        }
+
+        $html .= sprintf( '<input id="%1$s" name="%2$s[%1$s]" type="hidden" class="odin-upload-image" value="%3$s" /><img src="%4$s" class="odin-preview-image" alt="" /><br /><input id="%1$s-button" class="odin-upload-image-button button" type="button" value="%5$s" /><small> <a href="#" class="odin-clear-image-button">%6$s</a></small>', $id, $tab, $current, $image, __( 'Selecionar imagem', 'odin' ), __( 'Remover imagem', 'odin' ) );
+
+        // Displays option description.
+        if ( $args['description'] ) {
+            $html .= sprintf( '<p class="description">%s</p>', $args['description'] );
+        }
+
+        echo $html;
+    }
+
+    /**
      * HTML callback.
      *
      * @param array $args Arguments from the option.
      */
-    function callback_html( $args ) {
+    public function callback_html( $args ) {
         echo $args['description'];
     }
 

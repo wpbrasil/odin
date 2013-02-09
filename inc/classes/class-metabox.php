@@ -249,7 +249,7 @@ class Odin_Metabox {
             $image = $image[0];
         }
 
-        $html .= sprintf( '<input name="%1$s" type="hidden" class="odin-upload-image" value="%2$s" /><img src="%3$s" class="odin-preview-image" alt="" /><br /><input class="odin-upload-image-button button" type="button" value="%4$s" /><small> <a href="#" class="odin-clear-image-button">%5$s</a></small>', $id, $current, $image, __( 'Selecionar imagem', 'odin' ), __( 'Remover imagem', 'odin' ) );
+        $html .= sprintf( '<input id="%1$s" name="%1$s" type="hidden" class="odin-upload-image" value="%2$s" /><img src="%3$s" class="odin-preview-image" alt="" /><br /><input id="%1$s-button" class="odin-upload-image-button button" type="button" value="%4$s" /><small> <a href="#" class="odin-clear-image-button">%5$s</a></small>', $id, $current, $image, __( 'Selecionar imagem', 'odin' ), __( 'Remover imagem', 'odin' ) );
 
         echo $html;
     }
