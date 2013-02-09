@@ -3,7 +3,7 @@
  * Custom admin css.
  */
 function odin_admin_css() {
-    wp_register_style( 'dfw-admin-styles', get_template_directory_uri() . '/inc/css/admin.css' );
+    wp_register_style( 'dfw-admin-styles', get_template_directory_uri() . '/core/css/admin.css' );
     wp_enqueue_style( 'dfw-admin-styles' );
 }
 

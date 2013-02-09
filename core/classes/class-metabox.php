@@ -241,7 +241,7 @@ class Odin_Metabox {
     protected function field_image( $id, $current ) {
 
         // Gets placeholder image.
-        $image = get_template_directory_uri() . '/inc/images/placeholder.png';
+        $image = get_template_directory_uri() . '/core/images/placeholder.png';
         $html = '<span class="odin_default_image" style="display: none;">' . $image . '</span>';
 
         if ( $current ) {
@@ -344,7 +344,7 @@ class Odin_Metabox {
  * Load metabox scripts.
  */
 function odin_metabox_scripts() {
-    wp_register_script( 'odin-admin', get_template_directory_uri() . '/inc/js/admin.js', array( 'jquery' ), null, true );
+    wp_register_script( 'odin-admin', get_template_directory_uri() . '/core/js/admin.js', array( 'jquery' ), null, true );
     wp_enqueue_script( 'odin-admin' );
     wp_enqueue_style( 'wp-color-picker' );
     wp_enqueue_script( 'wp-color-picker' );

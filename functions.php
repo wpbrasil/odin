@@ -155,12 +155,12 @@ require_once get_template_directory() . '/inc/comments-loop.php';
 /**
  * Theme tools
  */
-require_once get_template_directory() . '/inc/tools.php';
+require_once get_template_directory() . '/core/tools.php';
 
 /**
  * Add Custom post_thumbnails tools.
  */
-require_once get_template_directory() . '/inc/thumbnails.php';
+require_once get_template_directory() . '/core/thumbnails.php';
 
 /**
  * Custom Related Posts Image.
@@ -190,12 +190,12 @@ function odin_related_posts_custom_thumbnails( $thumbnail ) {
 /**
  * WP optimize functions.
  */
-require_once get_template_directory() . '/inc/optimize.php';
+require_once get_template_directory() . '/core/optimize.php';
 
 /**
  * WP Custom Admin.
  */
-require_once get_template_directory() . '/inc/admin.php';
+require_once get_template_directory() . '/core/admin.php';
 
 /**
  * Socialite.
@@ -203,22 +203,22 @@ require_once get_template_directory() . '/inc/admin.php';
  * Use in loop:
  * <?php echo odin_socialite_horizontal( get_the_title(), get_permalink(), get_the_post_thumbnail( $post->ID, 'thumbnail' ) ); ?>
  */
-// require_once get_template_directory() . '/inc/socialite/socialite-init.php';
+// require_once get_template_directory() . '/core/socialite/socialite-init.php';
 
 /**
  * Colorbox.
  */
-// require_once get_template_directory() . '/inc/colorbox/colorbox-init.php';
+// require_once get_template_directory() . '/core/colorbox/colorbox-init.php';
 
 /**
  * Photoswipe
  */
-// require_once get_template_directory() . '/inc/photoswipe/photoswipe-init.php';
+// require_once get_template_directory() . '/core/photoswipe/photoswipe-init.php';
 
 /**
  * Theme Options Class.
  */
-// require_once get_template_directory() . '/inc/classes/class-theme-options.php';
-// require_once get_template_directory() . '/inc/classes/class-post-type.php';
-// require_once get_template_directory() . '/inc/classes/class-taxonomy.php';
-// require_once get_template_directory() . '/inc/classes/class-metabox.php';
+// require_once get_template_directory() . '/core/classes/class-theme-options.php';
+// require_once get_template_directory() . '/core/classes/class-post-type.php';
+// require_once get_template_directory() . '/core/classes/class-taxonomy.php';
+// require_once get_template_directory() . '/core/classes/class-metabox.php';

@@ -81,7 +81,7 @@ class Odin_Theme_Options {
         wp_enqueue_style( 'thickbox' );
 
         // Theme Options.
-        wp_register_script( 'odin-admin', get_template_directory_uri() . '/inc/js/admin.js', array( 'jquery' ), null, true );
+        wp_register_script( 'odin-admin', get_template_directory_uri() . '/core/js/admin.js', array( 'jquery' ), null, true );
         wp_enqueue_script( 'odin-admin' );
     }
 
@@ -513,7 +513,7 @@ class Odin_Theme_Options {
         $current = $this->get_option( $tab, $id, $args['default'] );
 
         // Gets placeholder image.
-        $image = get_template_directory_uri() . '/inc/images/placeholder.png';
+        $image = get_template_directory_uri() . '/core/images/placeholder.png';
         $html = '<span class="odin-default-image" style="display: none;">' . $image . '</span>';
 
         if ( $current ) {
