@@ -153,3 +153,42 @@ function odin_related_posts( $display = 'category', $qty = 5, $title = 'Artigos 
     }
 }
 
+/**
+ * Custom excerpt for content or title.
+ *
+ * Usage:
+ * Place: <?php echo odin_excerpt( '', value ); ?>
+ *
+ * @param string $type  Sets excerpt or title.
+ * @param int    $limit Sets the length of excerpt.
+ *
+ * @return string       Return the excerpt.
+ */
+function odin_excerpt( $type = 'excerpt', $limit = '40' ) {
+    $limit = (int) $limit;
+
+    // Breaking the string and turns it into an array limiting by size.
+    switch ( $type ) {
+        case 'title':
+            $excerpt = explode( ' ', get_the_title(), $limit );
+            break;
+
+        default :
+            $excerpt = explode( ' ', get_the_excerpt(), $limit );
+            break;
+    }
+
+    // Checks whether the number of items in the array is smaller than the defined.
+    if ( count( $excerpt ) >= $limit ) {
+        // Pop the element off the end of array.
+        array_pop( $excerpt );
+        $excerpt = implode( ' ', $excerpt ) . '...';
+    } else {
+        $excerpt = implode( ' ', $excerpt );
+    }
+
+    // Makes cleaning the string.
+    $excerpt = preg_replace( '`\[[^\]]*\]`', '', $excerpt );
+
+    return $excerpt;
+}
