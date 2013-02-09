@@ -249,7 +249,7 @@ class Odin_Metabox {
             $image = $image[0];
         }
 
-        $html .= sprintf( '<input name="%1$s" type="hidden" class="odin_upload_image" value="%2$s" /><img src="%3$s" class="odin_preview_image" alt="" /><br /><input class="odin_upload_image_button button" type="button" value="%4$s" /><small> <a href="#" class="odin_clear_image_button">%5$s</a></small>', $id, $current, $image, __( 'Selecionar imagem', 'odin' ), __( 'Remover imagem', 'odin' ) );
+        $html .= sprintf( '<input name="%1$s" type="hidden" class="odin-upload-image" value="%2$s" /><img src="%3$s" class="odin-preview-image" alt="" /><br /><input class="odin-upload-image-button button" type="button" value="%4$s" /><small> <a href="#" class="odin-clear-image-button">%5$s</a></small>', $id, $current, $image, __( 'Selecionar imagem', 'odin' ), __( 'Remover imagem', 'odin' ) );
 
         echo $html;
     }
@@ -277,7 +277,7 @@ class Odin_Metabox {
      * @return string          HTML field.
      */
     protected function field_upload( $id, $current ) {
-        $html = sprintf( '<input type="text" id="%1$s" name="%1$s" value="%2$s" class="regular-text" /> <input class="button odin_upload_button" type="button" value="%3$s" />', $id, esc_url( $current ), __( 'Selecionar arquivo', 'odin' ) );
+        $html = sprintf( '<input type="text" id="%1$s" name="%1$s" value="%2$s" class="regular-text" /> <input class="button odin-upload-button" type="button" value="%3$s" />', $id, esc_url( $current ), __( 'Selecionar arquivo', 'odin' ) );
 
         echo $html;
     }
@@ -291,7 +291,7 @@ class Odin_Metabox {
      * @return string          HTML field.
      */
     protected function field_color( $id, $current ) {
-        $html = sprintf( '<input type="text" id="%1$s" name="%1$s" value="%2$s" class="odin_color_field" />', $id, esc_attr( $current ) );
+        $html = sprintf( '<input type="text" id="%1$s" name="%1$s" value="%2$s" class="odin-color-field" />', $id, esc_attr( $current ) );
 
         echo $html;
     }
@@ -344,8 +344,8 @@ class Odin_Metabox {
  * Load metabox scripts.
  */
 function odin_metabox_scripts() {
-    wp_register_script( 'metabox', get_template_directory_uri() . '/inc/js/metabox.js', array( 'jquery' ), null, true );
-    wp_enqueue_script( 'metabox' );
+    wp_register_script( 'odin-admin', get_template_directory_uri() . '/inc/js/admin.js', array( 'jquery' ), null, true );
+    wp_enqueue_script( 'odin-admin' );
     wp_enqueue_style( 'wp-color-picker' );
     wp_enqueue_script( 'wp-color-picker' );
 }

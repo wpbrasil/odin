@@ -16,9 +16,9 @@
 }
 
 /**
- * Metabox.
+ * Metabox and Theme Options.
  */
-.odin_preview_image {
-    max-width: 150px;
-    height: auto;
+.odin-preview-image {
+    width: 150px;
+    height: 150px;
 }
