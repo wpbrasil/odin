@@ -18,9 +18,6 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 @import "source/functions";
 @import "source/mixins";
 
-// Grid System
-@import "source/grid";
-
 // Normalize.css
 @import "source/normalize";
 
@@ -35,6 +32,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 // CSS Helpers
 @import "source/helpers";
+
+// Grid System
+// @import "source/grid";
 
 /* =Header
 -------------------------------------------------------------- */
