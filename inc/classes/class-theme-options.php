@@ -71,8 +71,6 @@ class Odin_Theme_Options {
      * @return void
      */
     function scripts() {
-        wp_enqueue_script( 'jquery' );
-
         // Color Picker.
         wp_enqueue_style( 'wp-color-picker' );
         wp_enqueue_script( 'wp-color-picker' );
@@ -81,6 +79,10 @@ class Odin_Theme_Options {
         wp_enqueue_script( 'media-upload' );
         wp_enqueue_script( 'thickbox' );
         wp_enqueue_style( 'thickbox' );
+
+        // Theme Options.
+        wp_register_script( 'odin-admin', get_template_directory_uri() . '/inc/js/admin.js', array( 'jquery' ), null, true );
+        wp_enqueue_script( 'odin-admin' );
     }
 
     /**
@@ -471,18 +473,12 @@ class Odin_Theme_Options {
         // Sets current option.
         $current = $this->get_option( $tab, $id, $args['default'] );
 
-        $html = sprintf( '<input type="text" id="%1$s" name="%2$s[%1$s]" value="%3$s" />', $id, $tab, $current );
+        $html = sprintf( '<input type="text" id="%1$s" name="%2$s[%1$s]" value="%3$s" class="odin-color-field" />', $id, $tab, $current );
 
         // Displays option description.
         if ( $args['description'] ) {
             $html .= sprintf( '<p class="description">%s</p>', $args['description'] );
         }
-
-        $html .= '<script type="text/javascript">';
-            $html .= 'jQuery(document).ready(function($) {';
-                $html .= sprintf( '$("#%s").wpColorPicker();', $id );
-            $html .= '});';
-        $html .= '</script>';
 
         echo $html;
     }
@@ -499,30 +495,12 @@ class Odin_Theme_Options {
         // Sets current option.
         $current = esc_url( $this->get_option( $tab, $id, $args['default'] ) );
 
-        $html = sprintf( '<input type="text" id="color-%1$s" name="%2$s[%1$s]" value="%3$s" class="regular-text" />', $id, $tab, $current );
-
-        $html .= sprintf( '<input class="button" id="%s_button" type="button" value="%s" />', $id, __( 'Selecionar arquivo', '_base' ) );
+        $html = sprintf( '<input type="text" id="%1$s" name="%2$s[%1$s]" value="%3$s" class="regular-text" /> <input class="button odin-upload-button" id="%1$s-button" type="button" value="%4$s" />', $id, $tab, $current, __( 'Selecionar arquivo', 'odin' ) );
 
         // Displays option description.
         if ( $args['description'] ) {
             $html .= sprintf( '<p class="description">%s</p>', $args['description'] );
         }
-
-        $html .= '<script type="text/javascript">';
-            $html .= 'jQuery(document).ready(function($) {';
-                $html .= sprintf( '$("#%s_button").click(function() {', $id );
-                    $html .= 'uploadID = $(this).prev("input");';
-                    $html .= sprintf( 'formfield = $("color-%s").attr("name");', $id );
-                    $html .= 'tb_show("", "media-upload.php?post_id=&amp;type=image&amp;TB_iframe=true");';
-                    $html .= 'return false;';
-                $html .= '});';
-                $html .= 'window.send_to_editor = function(html) {';
-                    $html .= 'imgurl = $("img", html).attr("src");';
-                    $html .= 'uploadID.val(imgurl);';
-                    $html .= 'tb_remove();';
-                $html .= '}';
-            $html .= '});';
-        $html .= '</script>';
 
         echo $html;
     }
