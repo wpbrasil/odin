@@ -81,7 +81,7 @@ function odin_setup_features() {
     //     'audio',
     //     'chat'
     // ) );
-    
+
     /**
      * Support The Excerpt on pages.
      */
@@ -161,6 +161,31 @@ require_once get_template_directory() . '/inc/tools.php';
  * Add Custom post_thumbnails tools.
  */
 require_once get_template_directory() . '/inc/thumbnails.php';
+
+/**
+ * Custom Related Posts Image.
+ *
+ * Use this filter for use aq_resize() in place of the_post_thumbnails().
+ *
+ * @param  string $thumbnail the_post_thumbnail().
+ *
+ * @return string            Custom thumbnails.
+ */
+function odin_related_posts_custom_thumbnails( $thumbnail ) {
+    // Edit these variables:
+    $width  = 100;
+    $height = 100;
+    $crop   = true;
+
+    if ( get_post_thumbnail_id() ) {
+        $url = wp_get_attachment_url( get_post_thumbnail_id(), 'full' );
+        $image = aq_resize( $url, $width, $height, $crop );
+
+        return '<img class="wp-image-thumb" src="' . $image . '" width="' . $width . '" height="' . $height . '" alt="' . get_the_title() . '" />';
+    }
+}
+
+// add_filter( 'odin_related_posts', 'odin_related_posts_custom_thumbnails' );
 
 /**
  * WP optimize functions.
