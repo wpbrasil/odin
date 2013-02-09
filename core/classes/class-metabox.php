@@ -11,6 +11,11 @@
  */
 class Odin_Metabox {
 
+    /**
+     * Metaboxs fields.
+     *
+     * @var array
+     */
     protected $fields = array();
 
     /**

@@ -16,14 +16,14 @@ class Odin_Post_Type {
      *
      * @var array
      */
-    protected $_labels = array();
+    protected $labels = array();
 
     /**
      * Post type arguments.
      *
      * @var array
      */
-    protected $_arguments = array();
+    protected $arguments = array();
 
     /**
      * Construct Post Type.
@@ -47,7 +47,7 @@ class Odin_Post_Type {
      * @param array $labels Custom labels.
      */
     public function set_labels( $labels = array() ) {
-        $this->_labels = $labels;
+        $this->labels = $labels;
     }
 
     /**
@@ -56,7 +56,7 @@ class Odin_Post_Type {
      * @param array $arguments Custom arguments.
      */
     public function set_arguments( $arguments = array() ) {
-        $this->_arguments = $arguments;
+        $this->arguments = $arguments;
     }
 
     /**
@@ -92,7 +92,7 @@ class Odin_Post_Type {
             $default['not_found_in_trash'] = sprintf( __( 'Nenhuma %s encontrada na Lixeira', 'odin' ), $this->name );
         }
 
-        return array_merge( $default, $this->_labels );
+        return array_merge( $default, $this->labels );
     }
 
     /**
@@ -118,7 +118,7 @@ class Odin_Post_Type {
             'capability_type'     => 'post'
         );
 
-        return array_merge( $default, $this->_arguments );
+        return array_merge( $default, $this->arguments );
     }
 
     /**

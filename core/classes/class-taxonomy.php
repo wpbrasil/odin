@@ -16,14 +16,14 @@ class Odin_Taxonomy {
      *
      * @var array
      */
-    protected $_labels = array();
+    protected $labels = array();
 
     /**
      * Taxonomy arguments.
      *
      * @var array
      */
-    protected $_arguments = array();
+    protected $arguments = array();
 
     /**
      * Construct Taxonomy.
@@ -49,7 +49,7 @@ class Odin_Taxonomy {
      * @param array $labels Custom labels.
      */
     public function set_labels( $labels = array() ) {
-        $this->_labels = $labels;
+        $this->labels = $labels;
     }
 
     /**
@@ -58,7 +58,7 @@ class Odin_Taxonomy {
      * @param array $arguments Custom arguments.
      */
     public function set_arguments( $arguments = array() ) {
-        $this->_arguments = $arguments;
+        $this->arguments = $arguments;
     }
 
     /**
@@ -94,7 +94,7 @@ class Odin_Taxonomy {
             $default['choose_from_most_used'] = sprintf( __( 'Escolha entre as %ss mais utilizadas', 'odin' ), $this->name );
         }
 
-        return array_merge( $default, $this->_labels );
+        return array_merge( $default, $this->labels );
     }
 
     /**
@@ -113,7 +113,7 @@ class Odin_Taxonomy {
             'show_tagcloud'     => true,
         );
 
-        return array_merge( $default, $this->_arguments );
+        return array_merge( $default, $this->arguments );
     }
 
     /**
