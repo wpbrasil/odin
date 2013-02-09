@@ -190,12 +190,12 @@ function odin_related_posts_custom_thumbnails( $thumbnail ) {
 /**
  * WP optimize functions.
  */
-require_once get_template_directory() . '/core/optimize.php';
+require_once get_template_directory() . '/inc/optimize.php';
 
 /**
  * WP Custom Admin.
  */
-require_once get_template_directory() . '/core/admin.php';
+require_once get_template_directory() . '/inc/admin.php';
 
 /**
  * Socialite.

@@ -3,7 +3,7 @@
  * Custom admin css.
  */
 function odin_admin_css() {
-    wp_register_style( 'dfw-admin-styles', get_template_directory_uri() . '/core/css/admin.css' );
+    wp_register_style( 'dfw-admin-styles', get_template_directory_uri() . '/inc/css/custom-admin.css' );
     wp_enqueue_style( 'dfw-admin-styles' );
 }
 
@@ -32,7 +32,7 @@ add_filter( 'admin_footer_text', 'odin_admin_footer' );
  * Custom login logo.
  */
 function odin_admin_login_logo() {
-    echo '<link rel="stylesheet" href="' . get_stylesheet_directory_uri() . '/inc/css/login.css">';
+    echo '<link rel="stylesheet" href="' . get_stylesheet_directory_uri() . '/inc/css/custom-admin.css">';
 }
 
 add_action( 'login_head', 'odin_admin_login_logo' );

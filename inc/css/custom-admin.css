@@ -1,4 +1,11 @@
 /**
+ * Custom login styles.
+ */
+.login h1 a {
+    background: url('../images/logo-login.png') 50% 50% no-repeat !important;
+}
+
+/**
  * Custom admin styles.
  */
 #footer-upgrade {
@@ -13,12 +20,4 @@
 #wp-version-message,
 #normal-sortables #dashboard_right_now .inside .versions p {
     display: none !important;
-}
-
-/**
- * Metabox and Theme Options.
- */
-.odin-preview-image {
-    width: 150px;
-    height: 150px;
 }
