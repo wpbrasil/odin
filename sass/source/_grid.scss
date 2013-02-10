@@ -1,56 +1,93 @@
-//////////////////////////////////////////////////
-// Semantic.gs for SCSS: http://sass-lang.com/ //
-////////////////////////////////////////////////
+// ------------------------------------------------------------- //
+// Odin Grid System v1.0 |  Licence WTFPL - http://www.wtfpl.net //
+// ------------------------------------------------------------- //
 
-// Defaults which you can freely override
-$column-width: 60px !default;
-$gutter-width: 20px !default;
+// Variables.
 $columns: 12 !default;
+$page-width: 1180px !default;
+$column-width: $page-width / $columns !default;
+$column-padding: 20px !default;
+$grid-type: elastic !default; // Grid type: elastic ou static.
 
-// Add support to IE 6 and 7.
+// Add support to IE7.
 $iesupport: false !default;
-// Enable sub-pixel fix for IE6 & 7.
-// See http://tylertate.com/blog/2012/01/05/subpixel-rounding.html
-$min-width: 999999 !default;
-$correction: 0.5 / $min-width * 100 !default;
+// Fuck, magic, mystic and sexy number for IE7 fix xD
+$correction: 0.022;
 
-// Utility function — you should never need to modify this
-@function gridsystem-width($columns:$columns) {
-    @return ($column-width * $columns) + ($gutter-width * $columns);
-}
-
-// Set $total-width to 100% for a fluid layout
-$total-width: gridsystem-width($columns) !default;
-
-@mixin row($columns:$columns) {
-    display: block;
-    width: $total-width*(($gutter-width + gridsystem-width($columns))/gridsystem-width($columns));
-    margin: 0 $total-width*((($gutter-width*.5)/gridsystem-width($columns))*-1);
-
-    @if $iesupport {
-        *width: $total-width*(($gutter-width + gridsystem-width($columns))/gridsystem-width($columns))-$correction;
-        *margin: 0 $total-width*((($gutter-width*.5)/gridsystem-width($columns))*-1)-$correction;
+// Sets the container and clean the float.
+@mixin container( $type: $grid-type ) {
+    @include clearfix();
+    @if elastic == $grid-type {
+        max-width: $page-width;
+    } @else {
+        width: $page-width;
     }
-
-    @include clearfix;
+    position: relative;
+    margin: 0 auto;
 }
 
-@mixin column($x,$columns:$columns) {
-    display: inline;
+// Generates the columns of the grid.
+@mixin span-column( $column: $columns, $padding: $column-padding, $type: $grid-type, $max-width: $page-width ) {
+    @if elastic == $grid-type {
+        width: percentage( ( ( $column-width * $column ) - $padding ) / $max-width );
+        margin-right: percentage( ( $column-padding / 2 ) / $page-width );
+        margin-left: percentage( ( $column-padding / 2 ) / $page-width );
+
+        @if $iesupport {
+            *width: percentage( ( ( $column-width * $column ) - $padding ) / $max-width )  - $correction;
+            *margin-right: percentage( ( $column-padding / 2 ) / $page-width ) - $correction;
+            *margin-left: percentage( ( $column-padding / 2 ) / $page-width ) - $correction;
+        }
+    } @else {
+        width: ( $column-width * $column ) - $padding;
+        margin-right: ( $padding / 2 );
+        margin-left: ( $padding / 2 );
+    }
     float: left;
-    width: $total-width*(((($gutter-width+$column-width)*$x)-$gutter-width) / gridsystem-width($columns));
-    margin: 0 $total-width*(($gutter-width*.5)/gridsystem-width($columns));
+}
 
-    @if $iesupport {
-        *width: $total-width*(((($gutter-width+$column-width)*$x)-$gutter-width) / gridsystem-width($columns))-$correction;
-        *margin: 0 $total-width*(($gutter-width*.5)/gridsystem-width($columns))-$correction;
+// Push the column.
+@mixin push( $offset: 1, $type: $grid-type, $width: $page-width ) {
+    @if elastic == $grid-type {
+        left: percentage( ( $column-width * $offset ) / $width );
+
+        @if $iesupport {
+            *left: percentage( ( $column-width * $offset ) / $width ) - $correction;
+        }
+    } @else {
+        left: $column-width * $offset;
+    }
+    position: relative;
+}
+
+// Pull the column.
+@mixin pull( $offset: 1, $type: $grid-type, $width: $page-width ) {
+    @if elastic == $grid-type {
+        left: - percentage( ( $column-width * $offset ) / $width );
+
+        @if $iesupport {
+            *left: - percentage( ( $column-width * $offset ) / $width ) + $correction;
+        }
+    } @else {
+        left: - $column-width * $offset;
+    }
+    position: relative;
+}
+
+// Breakpoint.
+@mixin breakpoint( $max-width ) {
+    @media screen and ( max-width: $max-width ) {
+        @content;
     }
 }
 
-@mixin push($offset:1) {
-    margin-left: $total-width*((($gutter-width+$column-width)*$offset) / gridsystem-width($columns)) + $total-width*(($gutter-width*.5)/gridsystem-width($columns));
-}
-
-@mixin pull($offset:1) {
-    margin-right: $total-width*((($gutter-width+$column-width)*$offset) / gridsystem-width($columns)) + $total-width*(($gutter-width*.5)/gridsystem-width($columns));
+// Board classes to reset the grid when it is responsive.
+@mixin join_classes( $class, $total: $columns ) {
+    $classes: ();
+    @for $i from 1 through $total {
+        $classes: join( $classes, unquote( "#{$class}#{$i} " ), comma );
+    }
+    #{$classes} {
+        @content;
+    }
 }
