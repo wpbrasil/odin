@@ -121,7 +121,9 @@ function odin_thumbnail( $width, $height, $alt, $crop = true ) {
         $url = wp_get_attachment_url( $thumb, 'full' );
         $image = aq_resize( $url, $width, $height, $crop );
 
-        return '<img class="wp-image-thumb" src="' . $image . '" width="' . esc_attr( $width ) . '" height="' . esc_attr( $height ) . '" alt="' . esc_attr( $alt ) . '" />';
+        $html = '<img class="wp-image-thumb" src="' . $image . '" width="' . esc_attr( $width ) . '" height="' . esc_attr( $height ) . '" alt="' . esc_attr( $alt ) . '" />';
+
+        return apply_filters( 'odin_thumbnail_html', $html );
     }
 }
 

@@ -48,4 +48,5 @@ function odin_lazyload_placeholder( $content ) {
 
 add_filter( 'the_content', 'odin_lazyload_placeholder', 99 );
 add_filter( 'post_thumbnail_html', 'odin_lazyload_placeholder', 11 );
+add_filter( 'odin_thumbnail_html', 'odin_lazyload_placeholder' );
 add_filter( 'get_avatar', 'odin_lazyload_placeholder', 11 );
