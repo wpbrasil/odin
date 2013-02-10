@@ -211,9 +211,14 @@ require_once get_template_directory() . '/inc/admin.php';
 // require_once get_template_directory() . '/core/colorbox/colorbox-init.php';
 
 /**
- * Photoswipe
+ * Photoswipe.
  */
 // require_once get_template_directory() . '/core/photoswipe/photoswipe-init.php';
+
+/**
+ * LazyLoad.
+ */
+// require_once get_template_directory() . '/core/lazyload/lazyload-init.php';
 
 /**
  * Theme Options Class.

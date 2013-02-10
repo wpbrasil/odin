@@ -9,3 +9,4 @@ Tema base para WordPress.
 * normalize.css
 * aq_resize
 * [bxSlider](http://bxslider.com/)
+* [Lazy Load](http://www.appelsiini.net/projects/lazyload)
