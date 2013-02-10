@@ -1,15 +1,19 @@
 # Odin Base Theme #
 
-* [Url do Tema](https://github.com/wpbrasil/odin-grid-system)
-* [Grupo Wordpress Brasil](https://www.facebook.com/groups/wordpress.brasil)
+* [URL do Tema](https://github.com/wpbrasil/odin-grid-system)
+* [Grupo WordPress Brasil](https://www.facebook.com/groups/wordpress.brasil)
 
 ## Descrição do Projeto ##
 
-Bem vindos ao Odin, um tema base desenvolvido pelo [Grupo Wordpress Brasil](https://www.facebook.com/groups/wordpress.brasil), para auxiliar no desenvolvimento ágil de temas para Wordpress.  
+Bem vindos ao Odin, um tema base desenvolvido pelo [Grupo WordPress Brasil](https://www.facebook.com/groups/wordpress.brasil), para auxiliar no desenvolvimento ágil de temas para WordPress.  
 
 ## Instalação ##
 
-Envie a pasta "odin" para a pasta de temas padrão do Wordpress `wp-content/themes` ou simplesmente envie o arquivo zipado utilizando o instalador de temas do Wordpress.
+Envie a pasta "odin" para a pasta de temas padrão do WordPress `wp-content/themes` ou simplesmente envie o arquivo zipado utilizando o instalador de temas do WordPress.
+
+## Documentação ##
+
+Informações de como usar as classes e funções do Odin na [Wiki Oficial](https://github.com/wpbrasil/odin/wiki/_pages)
 
 ## Referências ##
 
