@@ -5,7 +5,7 @@
 
 ## Descrição do Projeto ##
 
-Bem vindos ao Odin, um tema base desenvolvido pelo [Grupo Wordpress Brasil](https://www.facebook.com/groups/wordpress.brasil), para auxiliar no desenvolvimento ágil de temas para Wordpress.  
+Bem vindos ao Odin, um tema base desenvolvido pelo [Grupo Wordpress Brasil](https://www.facebook.com/groups/wordpress.brasil), para auxiliar no desenvolvimento ágil de temas para Wordpress.
 
 ## Instalação ##
 
@@ -46,5 +46,5 @@ Mais detalhes de como contribuir e enviar Pull Requests em [GitHub Collaborating
 
 Copyright 2013 - Grupo WordPress Brasil.
 
-O código PHP esta licenciado sob a Licença [GPLv2](http://www.gnu.org/licenses/gpl-2.0.txt).  
+O código PHP esta licenciado sob a Licença [GPLv2](http://www.gnu.org/licenses/gpl-2.0.txt).
 Todos os arquivos CSS, SCSS, JS, imagens e outros não incluindo arquivos PHP estão licenciados como [MIT](http://opensource.org/licenses/MIT) ou pela licença especificada dentro de seus arquivos.
