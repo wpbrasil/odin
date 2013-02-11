@@ -28,7 +28,7 @@ add_action( 'wp_enqueue_scripts', 'odin_lazyload_scripts' );
  */
 function odin_lazyload_placeholder( $content ) {
     // Removes behavior in feeds, previews, mobile.
-    if ( is_feed() || is_preview() || wp_is_mobile() ) {
+    if ( is_feed() || is_preview() || wp_is_mobile() || is_admin() ) {
         return $content;
     }
 
