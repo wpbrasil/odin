@@ -181,7 +181,9 @@ function odin_related_posts_custom_thumbnails( $thumbnail ) {
         $url = wp_get_attachment_url( get_post_thumbnail_id(), 'full' );
         $image = aq_resize( $url, $width, $height, $crop );
 
-        return '<img class="wp-image-thumb" src="' . $image . '" width="' . $width . '" height="' . $height . '" alt="' . get_the_title() . '" />';
+        $html = '<img class="wp-image-thumb" src="' . $image . '" width="' . $width . '" height="' . $height . '" alt="' . get_the_title() . '" />';
+
+        return apply_filters( 'odin_thumbnail_html', $html );
     }
 }
 
