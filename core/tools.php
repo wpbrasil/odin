@@ -219,9 +219,12 @@ function odin_breadcrumbs( $homepage = 'In&iacute;cio', $delimiter = '&raquo;' )
 
             // Checks if is a custom post type.
             if ( 'post' != $post->post_type ) {
-                // Gets post type taxonomies.
-                $taxonomy = get_object_taxonomies( $post->post_type );
+                $post_type = get_post_type_object($post->post_type);
 
+                echo '<strong itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb/"><a itemprop="url" href="' . get_post_type_archive_link($post_type->name) . '"><span itemprop="title">' . $post_type->label . '</span></a></strong> ' . $delimiter . ' ';
+
+                // Gets post type taxonomies.
+                $taxonomy = get_object_taxonomies( $post_type->name );
                 if ( $taxonomy ) {
                     // Gets post terms.
                     $term = get_the_terms( $post->ID, $taxonomy[0] ) ? array_shift( get_the_terms( $post->ID, $taxonomy[0] ) ) : '';
