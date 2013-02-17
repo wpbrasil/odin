@@ -192,3 +192,174 @@ function odin_excerpt( $type = 'excerpt', $limit = '40' ) {
 
     return $excerpt;
 }
+
+/**
+ * Breadcrumbs.
+ *
+ * @param  string $homepage  Homepage name.
+ * @param  string $delimiter Breadcrumb item separator.
+ *
+ * @return string            HTML of breadcrumbs.
+ */
+function odin_breadcrumbs( $homepage = 'In&iacute;cio', $delimiter = '&raquo;' ) {
+    // Default html.
+    $current_before = '<span itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb/">';
+    $current_after  = '</span>';
+
+    if ( ! is_home() && ! is_front_page() || is_paged() ) {
+        global $post;
+
+        // First level.
+        echo '<p id="breadcrumbs" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">';
+        echo '<span itemprop="title"><a href="' . home_url() . '" rel="nofollow" itemprop="url"><span itemprop="title">' . $homepage . '</span></a></span> ' . $delimiter . ' ';
+
+        // Single post.
+        if ( is_single() && ! is_attachment() ) {
+            global $post;
+
+            // Checks if is a custom post type.
+            if ( 'post' != $post->post_type ) {
+                // Gets post type taxonomies.
+                $taxonomy = get_object_taxonomies( $post->post_type );
+
+                if ( $taxonomy ) {
+                    // Gets post terms.
+                    $term = get_the_terms( $post->ID, $taxonomy[0] ) ? array_shift( get_the_terms( $post->ID, $taxonomy[0] ) ) : '';
+
+                    if ( $term ) {
+                        echo '<strong itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb/"><a itemprop="url" href="' . get_term_link( $term ) . '"><span itemprop="title">' . $term->name . '</span></a></strong> ' . $delimiter . ' ';
+                    }
+                }
+            } else {
+                $category = get_the_category();
+                $category = $category[0];
+
+                echo '<span itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" href="' . get_category_link( $category->term_id ) . '"><span itemprop="title">' . $category->name . '</span></a></span> ' . $delimiter . ' ';
+            }
+
+            echo $current_before . '<strong class="current" itemprop="title">' . get_the_title() . '</strong>' . $current_after;
+
+        // Single attachment.
+        } elseif ( is_attachment() ) {
+            $parent   = get_post( $post->post_parent );
+            $category = get_the_category( $parent->ID );
+            $category = $category[0];
+
+            echo '<span itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb/"><a itemprop="url" href="' . get_category_link( $category->term_id ) . '"><span itemprop="title">' . $category->name . '</span></a></span> ' . $delimiter . ' ';
+
+            echo '<strong itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb/"><a itemprop="url" href="' . get_permalink( $parent ) . '"><span itemprop="title">' . $parent->post_title . '</span></a></strong> ' . $delimiter . ' ';
+
+            echo $current_before . get_the_title() . $current_after;
+
+        // Page without parents.
+        } elseif ( is_page() && ! $post->post_parent ) {
+            echo $current_before . get_the_title() . $current_after;
+
+        // Page with parents.
+        } elseif ( is_page() && $post->post_parent ) {
+            $parent_id   = $post->post_parent;
+            $breadcrumbs = array();
+
+            while ( $parent_id ) {
+                $page = get_page( $parent_id );
+
+                $breadcrumbs[] = '<strong itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" href="' . get_permalink( $page->ID ) . '"><span itemprop="title">' . get_the_title( $page->ID ) . '</span></a></strong>';
+                $parent_id  = $page->post_parent;
+            }
+
+            $breadcrumbs = array_reverse( $breadcrumbs );
+
+            foreach ( $breadcrumbs as $crumb ) {
+                echo $crumb . ' ' . $delimiter . ' ';
+            }
+
+            echo $current_before . get_the_title() . $current_after;
+
+        // Category archive.
+        } elseif ( is_category() ) {
+            global $wp_query;
+
+            $category_object  = $wp_query->get_queried_object();
+            $category_id      = $category_object->term_id;
+            $current_category = get_category( $category_id );
+            $parent_category  = get_category( $current_category->parent );
+
+            // Displays parent category.
+            if ( 0 != $current_category->parent ) {
+                echo get_category_parents( $parent_category, TRUE, ' ' . $delimiter . ' ' );
+            }
+
+            printf( __( '%sCategoria: %s%s', 'odin' ), $current_before, single_cat_title( '', false ), $current_after );
+
+        // Tags archive.
+        } elseif ( is_tag() ) {
+            printf( __( '%sTag: %s%s', 'odin' ), $current_before, single_tag_title( '', false ), $current_after );
+
+        // Custom post type archive.
+        } elseif ( is_post_type_archive() ) {
+            echo $current_before . post_type_archive_title( '', false ) . $current_after;
+
+        // Search page.
+        } elseif ( is_search() ) {
+            printf( __( '%sResultado da busca por: &quot;%s&quot;%s', 'odin' ), $current_before, get_search_query(), $current_after );
+
+        // Author archive.
+        } elseif ( is_author() ) {
+            global $author;
+            $userdata = get_userdata( $author );
+
+            echo $current_before . __( 'Artigos postados por', 'odin' ) . ' ' . $userdata->display_name . $current_after;
+
+        // Archives per days.
+        } elseif ( is_day() ) {
+            echo '<span itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb/"><a itemprop="url" href="' . get_year_link( get_the_time( 'Y' ) ) . '"><span itemprop="title">' . get_the_time( 'Y' ) . '</span></a></span> ' . $delimiter . ' ';
+
+            echo '<span itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" href="' . get_month_link( get_the_time( 'Y' ),get_the_time( 'm' ) ) . '"><span itemprop="title">' . get_the_time( 'F' ) . '</span></a></span> ' . $delimiter . ' ';
+
+            echo $current_before . '<strong class="current" itemprop="title">' . get_the_time( 'd' ) . $current_after . '</strong>';
+
+        // Archives per month.
+        } elseif ( is_month() ) {
+            echo '<span itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" href="' . get_year_link( get_the_time( 'Y' ) ) . '"><span itemprop="title">' . get_the_time( 'Y' ) . '</span></a></span> ' . $delimiter . ' ';
+
+            echo $current_before . '<strong class="current" itemprop="title">' . get_the_time( 'F' ) . $current_after . '</strong>';
+
+        // Archives per year.
+        } elseif ( is_year() ) {
+            echo $current_before . '<strong class="current" itemprop="title">' . get_the_time( 'Y' ) . $current_after . '</strong>';
+
+        // Archive fallback for custom taxonomies.
+        } elseif ( is_archive() ) {
+            global $wp_query;
+
+            $current_object = $wp_query->get_queried_object();
+            $taxonomy        = get_taxonomy( $current_object->taxonomy );
+            $term_name       = $current_object->name;
+
+            // Displays parent term.
+            if ( 0 != $current_object->parent ) {
+                $parent_term = get_term( $current_object->parent, $current_object->taxonomy );
+
+                echo '<span itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb/"><a itemprop="url" href="' . get_term_link( $parent_term ) . '"><span itemprop="title">' . $parent_term->name . '</span></a></span> ' . $delimiter . ' ';
+            }
+
+            echo $current_before . $taxonomy->label . ': ' . $term_name . $current_after;
+
+        // 404 page.
+        } elseif ( is_404() ) {
+            echo $current_before . __(' Erro 404', 'odin' ) . $current_after;
+        }
+
+        // Gets pagination.
+        if ( get_query_var( 'paged' ) ) {
+
+            if ( is_archive() ) {
+                echo ' (' . sprintf( __( 'P&aacute;gina %s', 'odin' ), get_query_var('paged') ) . ')';
+            } else {
+                printf( __( 'P&aacute;gina %s', 'odin' ), get_query_var('paged') );
+            }
+        }
+
+        echo '</p>';
+    }
+}
