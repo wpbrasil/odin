@@ -363,3 +363,14 @@ function odin_breadcrumbs( $homepage = 'In&iacute;cio', $delimiter = '&raquo;' )
         echo '</p>';
     }
 }
+
+/**
+ * Debug variables.
+ *
+ * @param  mixed $variable Object or Array for debug.
+ *
+ * @return string          Human-readable information.
+ */
+function odin_debug( $variable ) {
+    echo '<pre>' . print_r( $variable, true ) . '</pre>';
+}
