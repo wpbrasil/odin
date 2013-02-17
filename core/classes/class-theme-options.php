@@ -46,7 +46,7 @@ class Odin_Theme_Options {
         add_action( 'admin_init', array( &$this, 'create_settings' ) );
 
         if ( isset( $_GET['page'] ) && $_GET['page'] == $slug ) {
-            add_action( 'admin_init', array( &$this, 'scripts' ) );
+            add_action( 'admin_enqueue_scripts', array( &$this, 'scripts' ) );
         }
     }
 

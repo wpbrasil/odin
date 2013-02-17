@@ -7,7 +7,7 @@ function odin_admin_css() {
     wp_enqueue_style( 'dfw-admin-styles' );
 }
 
-add_action( 'admin_init', 'odin_admin_css' );
+add_action( 'admin_enqueue_scripts', 'odin_admin_css' );
 
 /**
  * Remove logo from admin bar.
