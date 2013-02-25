@@ -1,6 +1,6 @@
 # Odin Base Theme #
 
-* [URL do Tema](https://github.com/wpbrasil/odin-grid-system)
+* [URL do Tema](https://github.com/wpbrasil/odin)
 * [Grupo WordPress Brasil](https://www.facebook.com/groups/wordpress.brasil)
 
 ## Descrição do Projeto ##
