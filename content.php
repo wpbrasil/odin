@@ -13,7 +13,7 @@
         </div><!-- .entry-meta -->
     </header><!-- .entry-header -->
     <div class="entry-content">
-        <? if(has_post_thumbnail()) the_post_thumbnail('thumbnail'); ?>
+        <?php if ( has_post_thumbnail() ) the_post_thumbnail( 'thumbnail' ); ?>
         <?php the_content( __( 'Continue lendo <span class="meta-nav">&rarr;</span>', 'odin' ) ); ?>
         <?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'P&aacute;ginas:', 'odin' ) . '</span>', 'after' => '</div>' ) ); ?>
     </div><!-- .entry-content -->
