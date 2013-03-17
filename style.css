@@ -947,6 +947,390 @@ textarea.error {
   border-color: #c36573;
 }
 
+
+/* ==========================================================================
+   Structure
+   ========================================================================== */
+
+   body {
+
+   }
+   .page {
+
+   /* Header */
+   }
+   header {
+
+   }
+   #header hgroup {
+
+   }
+   .site-title {
+
+   }
+   .site-title a {
+
+   }
+   .site-title a:hover {
+
+   }
+   .site-title a:active {
+
+   }
+   .site-title a:focus {
+
+   }
+
+   .site-description {
+
+   } 
+   nav#main-navigation {
+
+   }
+
+   /* Assistive text */
+   .assistive-text {
+    
+   }
+   #access a.assistive-text:active,
+   #access a.assistive-text:focus {
+    
+   }
+
+   /* Menu */
+   #main-navigation {
+
+   }
+
+   #main-navigation ul {
+
+   }
+   #main-navigation li {
+
+   }
+   #main-navigation a {
+
+   }
+   #main-navigation ul ul {
+
+   }
+   #main-navigation ul ul ul {
+
+   }
+   #main-navigation ul ul a {
+
+   }
+   #main-navigation li:hover > a,
+   #main-navigation ul ul :hover > a,
+   #main-navigation a:focus {
+
+   }
+   #main-navigation li:hover > a,
+   #main-navigation a:focus {
+    
+   }
+   #main-navigation ul li:hover > ul {
+    
+   }
+   #main-navigation .current-menu-item > a,
+   #main-navigation .current-menu-ancestor > a,
+   #main-navigation .current_page_item > a,
+   #main-navigation .current_page_ancestor > a {
+    
+   }
+
+   /* Search Form */
+   #searchform {
+   
+   }
+   #searchform div {
+   
+   }
+   #s {
+   
+   }
+   #s:focus {
+   
+   }
+   #searchsubmit {
+   
+   }
+   .only-search #searchform {
+    
+   }
+   .only-search #s {
+    
+   }
+   .only-search #s,
+   .only-search #s:focus {
+    
+   }
+   .only-search #s:focus {
+    
+   }
+   .with-image #searchform {
+    
+   }
+   .only-search + #access div {
+    
+   }
+
+   /* Content */
+   #primary {
+
+   }
+   #content {
+
+   }
+   #secondary {
+
+   }  
+   .entry-title {
+
+   }
+   .entry-title a {
+
+   }
+   .entry-title a:hover,
+   .entry-title a:focus,
+   .entry-title a:active {
+
+   }
+   .hentry,
+   .no-results {
+
+   }
+   .hentry:last-child,
+   .no-results {
+
+   }
+   .entry-meta {
+
+   }
+   .entry-meta a {
+
+   }
+   #content .entry-content {
+
+   }
+   .entry-content table,
+   .comment-content table {
+   
+   }
+   .entry-content th,
+   .comment-content th {
+   
+   }
+   .entry-content td,
+   .comment-content td {
+    
+   }
+   .entry-content #s {
+    
+   }
+
+   /* Comments */
+   .comment-content ul,
+   .comment-content ol {
+  
+   }
+   .comment-content ul ul,
+   .comment-content ol ol,
+   .comment-content ul ol,
+   .comment-content ol ul {
+   
+   }
+
+   /* Full Width */
+   .no-sidebar {
+
+   }
+   .no-sidebar #content {
+
+   }
+
+   /* Singular */
+   .singular #primary {
+  
+   }
+   .singular #content,
+   .left-sidebar.singular #content {
+  
+   }
+   .singular .entry-header,
+   .singular .entry-content,
+   .singular footer.entry-meta,
+   .singular #comments-title {
+   
+   }
+
+   /* Attachments */
+   .singular .image-attachment .entry-content {
+   
+   }
+   .singular .image-attachment .entry-description {
+   
+   }
+
+   /* error404 */
+   .error404 #primary {
+   
+    }
+   .error404 #primary #content {
+   
+    }
+
+   /* Sidebar */
+   aside {
+
+   }
+   
+   }
+   .widget {
+   
+   }
+   .widget-title {
+   
+   }
+   .widget ul {
+   
+   }
+   .widget ul ul {
+   
+   }
+   .widget ul li {
+   
+   }
+   .widget a {
+   
+   }
+   .widget a:hover,
+   .widget a:focus,
+   .widget a:active {
+   
+   }
+
+   /* Search Widget */
+   .widget_search form {
+   
+   }
+   .widget_search #s {
+   
+   }
+   .widget_search #searchsubmit {
+   
+   }
+   .widget_search #searchsubmit:active {
+   
+   }
+  
+   /* Ephemera Widget */
+   section.ephemera ol,
+   .widget_twentyeleven_ephemera ol {
+   
+   }
+   .widget_twentyeleven_ephemera .widget-entry-title {
+  
+   }
+   .widget_twentyeleven_ephemera .comments-link a,
+   .widget_twentyeleven_ephemera .comments-link > span {
+    
+   }
+   section.ephemera .entry-title .comments-link a:hover,
+   .widget_twentyeleven_ephemera .entry-title .comments-link a:hover {
+   }
+   section.ephemera .entry-title a span {
+   
+   }
+
+   /* Twitter */
+   .widget_twitter li {
+  
+   }
+   .widget_twitter .timesince {
+  
+   }
+
+   /* Widget Image */ 
+   .widget_image img {
+  
+   }
+
+   /* Calendar Widget */
+
+   .widget_calendar #wp-calendar {
+  
+   }
+   .widget_calendar #wp-calendar caption,
+   .widget_calendar #wp-calendar td,
+   .widget_calendar #wp-calendar th {
+  
+   }
+   .widget_calendar #wp-calendar caption {
+  
+   }
+   .widget_calendar #wp-calendar th {
+   
+   }
+   .widget_calendar #wp-calendar tfoot td {
+  
+   }
+
+   /* Forms */
+   input[type=text],
+   input[type=password],
+   input[type=email],
+   input[type=url],
+   input[type=number],
+   input[type=tel],
+   textarea {
+    background: #fafafa;
+    -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+    border: 1px solid #ddd;
+    color: #888;
+   }
+   input[type=text]:focus,
+   input[type=password]:focus,
+   input[type=email]:focus,
+   input[type=url]:focus,
+   input[type=number]:focus,
+   input[type=tel]:focus,
+   textarea:focus {
+    color: #373737;
+   }
+   textarea {
+    padding-left: 3px;
+    width: 98%;
+   }
+   input[type=text],
+   input[type=password],
+   input[type=email],
+   input[type=url],
+   input[type=number],
+   input[type=tel] {
+    padding: 3px;
+   }
+   input#s {
+    background: url(images/search.png) no-repeat 5px 6px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    font-size: 14px;
+    height: 22px;
+    line-height: 1.2em;
+    padding: 4px 10px 4px 28px;
+   }
+   input#searchsubmit {
+    display: none;
+   }
+
+   /* Footer */
+   footer {
+
+   }
+
+
 /* =CSS Helpers
 -------------------------------------------------------------- */
 /* Clearfix */
@@ -1023,6 +1407,8 @@ textarea.error {
 -------------------------------------------------------------- */
 /* =Footer
 -------------------------------------------------------------- */
+
+
 /* ==========================================================================
    Print styles.
    Inlined to avoid required HTTP connection: h5bp.com/r
