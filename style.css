@@ -990,7 +990,11 @@ textarea.error {
 
    /* Assistive text */
    .assistive-text {
-    
+      font:0/0 a;
+	   color:transparent;
+	   text-shadow:none;
+	   background-color:transparent;
+	   border:0;
    }
    #access a.assistive-text:active,
    #access a.assistive-text:focus {
@@ -1184,8 +1188,7 @@ textarea.error {
    aside {
 
    }
-   
-   }
+
    .widget {
    
    }
