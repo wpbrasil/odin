@@ -159,6 +159,18 @@ abbr[title] {
   border-bottom: 1px dotted;
 }
 
+@media screen and (max-width: 600px) {
+
+	abbr[title] {
+		border-bottom: none;
+	}
+
+	abbr[title]:after {
+		content: " (" attr(title) ")";
+	}
+
+}
+
 /**
  * Address style set to `bolder` in Firefox 3+, Safari 4/5, and Chrome.
  */
