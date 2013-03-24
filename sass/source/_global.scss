@@ -207,6 +207,10 @@ a {
 
 input[type="text"],
 input[type="password"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="tel"],
 textarea,
 select {
     background: $formBg;
@@ -215,15 +219,16 @@ select {
     font: $defaultFontSize $defaultFontFamily;
     line-height: $defaultLineHeight;
     padding: $formPadding;
+
+    &:focus {
+        color: $formFocusColor;
+    }
 }
+
 textarea {
     width: 98%;
 }
-input[type="text"]:focus,
-textarea:focus,
-select:focus {
-    color: $formFocusColor;
-}
+
 input[type="submit"],
 input[type="reset"],
 button {
