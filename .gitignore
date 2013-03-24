@@ -1,7 +1,7 @@
-.sass-cache/*
 .DS_Store
 nbproject/*
 *.tmproj
 *.sublime-project
 *.sublime-workspace
 *.sublime-projectcompletions
+build/.sass-cache/*
