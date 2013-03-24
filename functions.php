@@ -1,5 +1,10 @@
 <?php
 /**
+ * Grunt Support.
+ */
+define( 'ODIN_GRUNT_SUPPORT', false );
+
+/**
  * Sets content width.
  */
 if ( ! isset( $content_width ) ) {
@@ -122,8 +127,13 @@ function odin_enqueue_scripts() {
     // wp_enqueue_script( 'bxslider' );
 
     // General scripts.
-    wp_register_script( 'odin-main', $template_url . '/js/main.js', array(), null, true );
-    wp_enqueue_script( 'odin-main' );
+    if ( false == ODIN_GRUNT_SUPPORT ) {
+        wp_register_script( 'odin-main', $template_url . '/js/main.js', array(), null, true );
+        wp_enqueue_script( 'odin-main' );
+    } else {
+        wp_register_script( 'odin-main-min', $template_url . '/js/main.min.js', array(), null, true );
+        wp_enqueue_script( 'odin-main-min' );
+    }
 
     // Load Thread comments WordPress script.
     if ( is_singular() && get_option( 'thread_comments' ) ) {

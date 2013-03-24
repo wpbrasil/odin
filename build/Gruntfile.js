@@ -3,10 +3,6 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
 
-        // live reload, in case you want to change the port or anything
-        livereload: {
-        },
-
         // javascript linting with jshint
         jshint: {
             options: {
@@ -37,7 +33,11 @@ module.exports = function(grunt) {
             dist: {
                 files: {
                     '../js/main.min.js': [
-                        '../js/libs/*.js',
+                        '../core/colorbox/js/*.js', // Colorbox
+                        '../core/lazyload/js/*.js', // LazyLoad
+                        // '../core/photoswipe/js/*.js', // Photoswipe
+                        '../core/socialite/js/*.js', // Socialite
+                        '../js/libs/*.js', // Project libs includes
                         '../js/main.js'
                     ]
                 }
@@ -55,15 +55,19 @@ module.exports = function(grunt) {
             }
         },
 
-        // regarde to watch for changes and trigger compass, jshint, uglify and live reload
-        regarde: {
+        // watch for changes and trigger compass, jshint and uglify
+        watch: {
             compass: {
-                files: '../scss/**/*',
-                tasks: ['compass', 'livereload']
+                files: [
+                    '../sass/**'
+                ],
+                tasks: ['compass']
             },
             js: {
-                files: '<%= jshint.all %>',
-                tasks: ['jshint', 'uglify', 'livereload']
+                files: [
+                    '<%= jshint.all %>'
+                ],
+                tasks: ['jshint', 'uglify']
             }
         },
 
@@ -85,28 +89,17 @@ module.exports = function(grunt) {
     });
 
     // load tasks
-    grunt.loadNpmTasks('grunt-contrib-livereload');
+    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
-    grunt.loadNpmTasks('grunt-regarde');
-    // grunt.loadNpmTasks('grunt-filesize');
 
     // register task
     grunt.registerTask('default', [
         'jshint',
         'compass',
         'uglify'
-    ]);
-
-    // watch task
-    grunt.registerTask('watch', [
-        'livereload-start',
-        'jshint',
-        'compass',
-        'uglify',
-        'regarde'
     ]);
 
 };
