@@ -5,3 +5,4 @@ nbproject/*
 *.sublime-workspace
 *.sublime-projectcompletions
 build/.sass-cache/*
+build/node_modules/*
