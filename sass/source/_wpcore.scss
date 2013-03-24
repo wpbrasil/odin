@@ -1,7 +1,7 @@
 /* =Wordpress Core
 -------------------------------------------------------------- */
 
-/* Alinhamento */
+/* Alignment */
 .alignleft {
     display: inline;
     float: left;
@@ -21,23 +21,35 @@
     margin-right: auto;
 }
 
-/* Imagens */
+/* Images */
 img {
     &[class*="align"],
     &[class*="wp-image-"],
     &[class*="attachment-"] {
-        height: auto; /* Faz altura e largura serem dimensionadas corretamente */
+        height: auto; /* Does height and width are scaled correctly */
     }
 
     &.size-full,
     &.size-large {
-        max-width: 97.5%; /* Evita que a imagem passe a area total reservada */
-        width: auto; /* Evita problemas de alongamento da imagem no IE8 */
-        height: auto; /* Faz altura e largura serem dimensionadas corretamente */
+        max-width: 97.5%; /* Prevents the image passes the total area reserved */
+        width: auto; /* Avoids problems of stretching the image in IE8 */
+        height: auto; /* Does height and width are scaled correctly */
     }
 
-    &.wp-smiley {
+    img.header-image,
+    img.wp-post-image {
+        max-width: 100%;
+        height: auto;
+    }
+
+    &.wp-smiley, .rsswidget & {
         border: none;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
         margin-bottom: 0;
         margin-top: 0;
         padding: 0;
@@ -50,7 +62,12 @@ img {
     }
 
     &#wpstats {
-        display: none; /* Remove a carinha feliz do WP.com Stats :) */
+        display: none; /* Remove WP.com Stats smile :) */
+    }
+
+    .comment-content &,
+    .widget & {
+        max-width: 100%;
     }
 }
 
@@ -111,6 +128,11 @@ p img,
     }
 }
 
+/* Override the Twitter embed fixed width */
+.twitter-tweet-rendered {
+    max-width: 100% !important;
+}
+
 /* === Widgets === */
 
 /* Calendar Widget */
@@ -148,311 +170,4 @@ p img,
         border-top: 1px solid #ccc;
         border-bottom: 1px solid #ccc;
     }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-img,
-.comment-content img,
-.widget img {
-    max-width: 100%; /* Fluid images for posts, comments, and widgets */
-}
-img[class*="align"],
-img[class*="wp-image-"],
-img[class*="attachment-"] {
-    height: auto; /* Make sure images with WordPress-added height and width attributes are scaled correctly */
-}
-img.size-full,
-img.size-large,
-img.header-image,
-img.wp-post-image {
-    max-width: 100%;
-    height: auto; /* Make sure images with WordPress-added height and width attributes are scaled correctly */
-}
-
-/* Make sure videos and embeds fit their containers */
-embed,
-iframe,
-object,
-video {
-    max-width: 100%;
-}
-.twitter-tweet-rendered {
-    max-width: 100% !important; /* Override the Twitter embed fixed width */
-}
-
-/* Images */
-.alignleft {
-    float: left;
-    margin: 0 1em 1em 0;
-}
-.alignright {
-    float: right;
-    margin: 0 0 1em 1em;
-}
-.aligncenter {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-img,
-.comment-content img,
-.widget img,
-img.header-image,
-.author-avatar img,
-img.wp-post-image {
-    /* Add fancy borders to all WordPress-added images but not things like badges and icons and the like */
-    border-radius: 3px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-}
-.wp-caption {
-    background: #fafafa;
-    border: 1px solid #f0f0f0;
-    max-width: 100%; /* Keep wide captions from overflowing their container. */
-    margin-bottom: 20px;
-    padding: 4px;
-}
-.wp-caption .wp-caption-text,
-.gallery-caption,
-.entry-caption {
-    font-style: italic;
-    font-size: 1.4em;
-    line-height: 2;
-    color: #757575;
-    text-align: center;
-    margin-bottom: 0;
-}
-.wp-caption img {
-    margin: 0;
-    display: block;
-}
-img.wp-smiley,
-.rsswidget img {
-    border: 0;
-    border-radius: 0;
-    box-shadow: none;
-    margin-bottom: 0;
-    margin-top: 0;
-    padding: 0;
-}
-dl.gallery-item {
-    margin: 0;
-}
-.gallery-item a,
-.gallery-caption {
-    width: 90%;
-}
-.gallery-item a {
-    display: block;
-}
-.gallery-caption a {
-    display: inline;
-}
-.gallery-icon a {
-    &:hover {
-        background: transparent !important;
-    }
-}
-.gallery-columns-1 .gallery-item a {
-    max-width: 100%;
-    width: auto;
-}
-.gallery .gallery-icon img {
-    height: auto;
-    max-width: 90%;
-    padding: 5%;
-}
-.gallery-columns-1 .gallery-icon img {
-    padding: 3%;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    margin: 1.714285714em 0;
-    line-height: 1.714285714;
-    // color: $green_volts;
-    // font-family: $proxima;
-    font-weight: 600;
-
-}
-h1 {
-    font-size: 3em;
-    line-height: 1.5;
-}
-h2 {
-    font-size: 2.7em;
-    line-height: 1.6;
-}
-h3 {
-    font-size: 2.4em;
-    line-height: 1.846153846;
-}
-h4 {
-    font-size: 2.1em;
-    line-height: 1.846153846;
-}
-h5 {
-    font-size: 1.8em;
-    line-height: 1.846153846;
-}
-h6 {
-    font-size: 1.5em;
-    line-height: 1.846153846;
-}
-p {
-    line-height: 1.714285714;
-    margin: 0;
-    margin-bottom: 2.4em
-}
-ol,
-ul {
-    font-size: 1.4em;
-    line-height: 1.714285714;
-    margin: 0;
-    margin-bottom: 2.4em;
-    padding-left: 0;
-}
-ul ul,
-ol ol,
-ul ol,
-ol ul {
-    margin-bottom: 0;
-}
-ul {
-    list-style: disc outside;
-}
-ol {
-    list-style: decimal outside;
-}
-li {
-    margin: 0;
-    margin-left: 3.6em;
-}
-blockquote {
-    margin-bottom: 2.4em;
-    padding: 2.4em;
-    font-style: italic;
-}
-blockquote p:last-child {
-    margin-bottom: 0;
-}
-code {
-    font-family: Consolas, Monaco, Lucida Console, monospace;
-    font-size: 1.4em;
-    line-height: 2;
-}
-pre {
-    border: 1px solid #ededed;
-    color: #666;
-    font-family: Consolas, Monaco, Lucida Console, monospace;
-    font-size: 1.4em;
-    line-height: 1.714285714;
-    margin: 1.714285714em 0;
-    overflow: auto;
-    padding: 2.4em;
-}
-pre code {
-    display: block;
-}
-abbr,
-dfn,
-acronym {
-    border-bottom: 1px dotted #666;
-    cursor: help;
-}
-address {
-    display: block;
-    line-height: 1.714285714;
-    margin: 0;
-    margin-bottom: 2.4em;
-}
-img.alignleft {
-    margin: 0.857142857em 1.714285714em 0.857142857em 0;
-}
-img.alignright {
-    margin: 0.857142857em 0 0.857142857em 1.714285714em;
-}
-img.aligncenter {
-    margin-top: 1.2em;
-    margin-bottom: 1.2em;
-}
-embed,
-iframe,
-object,
-video {
-    margin-bottom: 2.4em;
-}
-dl {
-    margin: 0 2.4em;
-}
-dt {
-    font-weight: bold;
-    line-height: 1.714285714;
-}
-dd {
-    line-height: 1.714285714;
-    margin-bottom: 1.714285714em;
-}
-table {
-    border-bottom: 1px solid #ededed;
-    color: #757575;
-    font-size: 1.4em;
-    line-height: 2;
-    margin: 0 0 1.714285714em;
-    width: 100%;
-}
-table caption {
-    font-size: 1.6em;
-    margin: 1.714285714em 0;
-}
-td {
-    border-top: 1px solid #ededed;
-    padding: 6px 10px 6px 0;
-}
-
-
-/* Formulário de senha para posts protegidos */
-form input[type="password"] {
-    border: 1px solid #999;
-    padding: 3px;
-
-    &:focus {
-        background: #f0f0f0;
-        border-color: #333;
-        color: #333;
-        outline: 0 none;
-    }
-}
-
-form input[type="submit"] {
-    background: #555;
-    border: 1px solid #999;
-    color: #fff;
-    padding: 3px 5px;
 }

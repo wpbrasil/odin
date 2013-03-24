@@ -87,16 +87,20 @@ $insBg: #fff9c0;
 $supsubFontSize: 10px;
 $supsubLineHeight: 1;
 
-
 // Mark
 $markBg: #ff0;
 $markColor: #000;
 
 // Table
-$tableBorderSide: bottom;
-$tableBorderWidth: 1px;
-$tableBorderStyle: solid;
-$tableBorderColor: #ddd;
+$tableBorder: 1px solid #ededed;
+$tableColor: $defaultColor;
+$tableFontSize: $defaultFontSize;
+$tableLineHeight: $defaultLineHeight;
+$tableMargin: 0 0 $textMarginBottom;
+$tableWidth: 100%;
+
+$tableCaptionFontSize: 1.6em;
+$tableCaptionMargin: 1.5em 0;
 
 $thBorderSide: none;
 $thBorderWidth: 1px;

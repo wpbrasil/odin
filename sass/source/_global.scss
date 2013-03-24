@@ -30,30 +30,37 @@ h6 {
     clear: both;
     font-family: $headingFontFamily;
 }
+
 h1 {
     font-size: $headingFontSize;
     line-height: headingsLineHeight($headingFontSize);
 }
+
 h2 {
     font-size: headingsLevels(1);
     line-height: headingsLineHeight(headingsLevels(1));
 }
+
 h3 {
     font-size: headingsLevels(2);
     line-height: headingsLineHeight(headingsLevels(2));
 }
+
 h4 {
     font-size: headingsLevels(3);
     line-height: headingsLineHeight(headingsLevels(3));
 }
+
 h5 {
     font-size: headingsLevels(4);
     line-height: headingsLineHeight(headingsLevels(4));
 }
+
 h6 {
     font-size: headingsLevels(5);
     line-height: headingsLineHeight(headingsLevels(5));
 }
+
 hr {
     background-color: $hrBg;
     border: 0;
@@ -69,50 +76,63 @@ hr {
 p {
     margin-bottom: $textMarginBottom;
 }
+
 ul,
 ol {
     margin: 0 0 $textMarginBottom $textMarginLeft;
 }
+
 ul {
     list-style: $ulStyle;
 }
+
 ol {
     list-style-type: $olStyle;
+
+    ol {
+        list-style: $olx2Style;
+
+        ol {
+            list-style: $olx3Style;
+
+            ol {
+                list-style: $olx4Style;
+            }
+        }
+    }
 }
-ol ol {
-    list-style: $olx2Style;
-}
-ol ol ol {
-    list-style: $olx3Style;
-}
-ol ol ol ol {
-    list-style: $olx4Style;
-}
+
 ul ul,
 ol ol,
 ul ol,
 ol ul {
     margin-bottom: 0;
 }
+
 dl {
     margin: 0 $textMarginBottom;
 }
+
 dt {
     font-weight: bold;
 }
+
 dd {
     margin-bottom: $textMarginBottom;
 }
+
 b,
 strong {
     font-weight: bold;
 }
+
 i,
 em,
 dfn,
 cite {
     font-style: italic;
 }
+
 blockquote {
     color: $quoteColor;
     font-family: $quoteFont;
@@ -128,11 +148,13 @@ blockquote {
         font-size: $quoteBeforeFontSize;
         color: $quoteBeforeColor;
     }
+
     & em,
     & i,
     & cite {
         font-style: normal;
     }
+
     & cite {
         color: $quoteCiteColor;
         font: $quoteCiteFont;
@@ -142,6 +164,7 @@ blockquote {
         letter-spacing: 0.05em;
         text-transform: uppercase;
     }
+
     & cite:before {
         color: $quoteCiteBeforeColor;
         content: '\2014';
@@ -154,14 +177,17 @@ blockquote {
         top: 0;
     }
 }
+
 q {
     quotes: none;
+
+    &:before,
+    &:after {
+        content: '';
+        content: none;
+    }
 }
-q:before,
-q:after {
-    content: '';
-    content: none;
-}
+
 code,
 kbd,
 samp,
@@ -169,6 +195,7 @@ var {
     background: $codeBg;
     font: $codeFont;
 }
+
 pre,
 pre code {
     background: $preBg;
@@ -181,20 +208,26 @@ pre code {
     white-space: pre-wrap;
     word-wrap: break-word;
 }
+
+
 abbr,
 acronym,
 dfn {
     border-bottom: $abbrBorder;
     cursor: help;
 }
+
+
 address {
     display: block;
     margin: 0 0 $textMarginBottom;
 }
+
 ins {
     background: $insBg;
     text-decoration: none;
 }
+
 sup,
 sub {
     font-size: $supsubFontSize;
@@ -203,19 +236,24 @@ sub {
     position: relative;
     vertical-align: baseline;
 }
+
 sup {
     bottom: 1ex;
 }
+
 sub {
     top: .5ex;
 }
+
 mark {
     background: $markBg;
     color: $markColor;
 }
+
 small {
     font-size: 80%;
 }
+
 img {
     border: $imgBorder;
     -ms-interpolation-mode: bicubic;
@@ -245,8 +283,23 @@ a {
 -------------------------------------------------------------- */
 
 table {
+    border-bottom: $tableBorder;
     border-collapse: collapse;
     border-spacing: 0;
+    color: $tableColor;
+    font-size: $tableFontSize;
+    line-height: $tableLineHeight;
+    margin: $tableMargin;
+    width: $tableWidth;
+
+    caption {
+        font-size: $tableCaptionFontSize;
+        margin: $tableCaptionMargin;
+    }
+}
+
+td {
+    padding: $tdPadding;
 }
 
 /* =Form elements
@@ -335,7 +388,6 @@ input[type="reset"] {
     *overflow: visible;
 }
 
-
 button[disabled],
 html input[disabled] {
     cursor: default;
@@ -346,7 +398,8 @@ html input[disabled] {
 
 embed,
 iframe,
-object {
+object,
+video {
     max-width: 100%;
 }
 
