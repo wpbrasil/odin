@@ -7,6 +7,11 @@ if ( ! isset( $content_width ) ) {
 }
 
 /**
+ * WooCommerce Support
+ */
+add_theme_support( 'woocommerce' );
+
+/**
  * Setup theme features
  */
 function odin_setup_features() {
