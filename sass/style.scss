@@ -51,7 +51,8 @@ $iesupport: true;
 }
 
 .site-title {
-    @extend h1;
+    font-size: $headingFontSize;
+    line-height: headingsLineHeight($headingFontSize);
 
     a {
 
@@ -63,7 +64,8 @@ $iesupport: true;
 }
 
 .site-description {
-    @extend h2;
+    font-size: headingsLevels(1);
+    line-height: headingsLineHeight(headingsLevels(1));
     margin-bottom: 1em;
 }
 

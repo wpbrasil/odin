@@ -14,8 +14,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
    License: none (public domain)
 */
 html, body, div, span, applet, object, iframe,
-h1,
-.site-title, h2, .site-description, h3, h4, h5, h6, p, blockquote, pre,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
@@ -89,9 +88,8 @@ body:after {
 
 /* =Headings
 -------------------------------------------------------------- */
-h1, .site-title,
+h1,
 h2,
-.site-description,
 h3,
 h4,
 h5,
@@ -100,12 +98,12 @@ h6 {
   font-family: Arial, Verdana, sans-serif;
 }
 
-h1, .site-title {
+h1 {
   font-size: 25px;
   line-height: 32px;
 }
 
-h2, .site-description {
+h2 {
   font-size: 23px;
   line-height: 30px;
 }
@@ -731,7 +729,14 @@ p img,
   float: left;
 }
 
+.site-title {
+  font-size: 25px;
+  line-height: 32px;
+}
+
 .site-description {
+  font-size: 23px;
+  line-height: 30px;
   margin-bottom: 1em;
 }
 
@@ -1147,13 +1152,12 @@ textarea.error {
 
   p,
   h2,
-  .site-description,
   h3 {
     orphans: 3;
     widows: 3;
   }
 
-  h2, .site-description,
+  h2,
   h3 {
     page-break-after: avoid;
   }
