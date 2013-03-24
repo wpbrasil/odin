@@ -1,4 +1,4 @@
-<div id="comments" class="content-wrap">
+<div id="comments" class="content-wrap" itemscope itemtype="http://schema.org/Comment">
     <?php if ( post_password_required() ) : ?>
         <span class="nopassword"><?php _e( 'Este post &eacute; protegido por senha. Digite a senha para ver todos os coment&aacute;rios.', 'odin' ); ?></span>
 </div><!-- #comments -->
