@@ -190,21 +190,26 @@ function odin_related_posts_custom_thumbnails( $thumbnail ) {
 // add_filter( 'odin_related_posts', 'odin_related_posts_custom_thumbnails' );
 
 /**
- * WooCommerce Support.
+ * WooCommerce and Jigoshop theme support.
  */
-add_theme_support( 'woocommerce' );
+function odin_woocommerce_jigoshop_content_wrapper() {
+  echo '<div id="primary"><div id="content" role="main">';
+}
+
+function odin_woocommerce_jigoshop_content_wrapper_end() {
+  echo '</div></div>';
+}
 
 /**
- * Jigoshop Support.
+ * WooCommerce.
  */
-function odin_jigoshop_output_content_wrapper() {
-    echo '<div id="primary"><div id="content" role="main">';
-}
+// add_theme_support( 'woocommerce' );
+// add_action( 'woocommerce_before_main_content', 'odin_woocommerce_jigoshop_content_wrapper', 10 );
+// add_action( 'woocommerce_after_main_content', 'odin_woocommerce_jigoshop_content_wrapper_end', 10 );
 
-function odin_jigoshop_output_content_wrapper_end() {
-    echo '</div></div>';
-}
-
+/**
+ * Jigoshop.
+ */
 // add_action( 'jigoshop_before_main_content', 'odin_jigoshop_output_content_wrapper', 10 );
 // add_action( 'jigoshop_after_main_content', 'odin_jigoshop_output_content_wrapper_end', 10 );
 
