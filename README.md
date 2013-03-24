@@ -54,6 +54,12 @@ Mais detalhes de como contribuir e enviar Pull Requests em [GitHub Collaborating
 
 [Como colaborar com projetos opensource com GitHub](http://www.youtube.com/watch?v=H3olaBo83As)
 
+## Changelog ##
+
+#### v1.0.0 - 24/03/2013 ####
+
+* Primeiro release.
+
 ## Copyright e Licença ##
 
 Copyright 2013 - Grupo WordPress Brasil.
