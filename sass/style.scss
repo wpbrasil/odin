@@ -39,11 +39,129 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 /* =Header
 -------------------------------------------------------------- */
 
+#header {
+
+    hgroup {
+
+    }
+}
+
+.site-title {
+
+    a {
+
+        &:hover {
+
+        }
+    }
+
+}
+
+.site-description {
+
+}
+
+/* =Navigation
+-------------------------------------------------------------- */
+
+#main-navigation {
+
+    a {
+
+    }
+
+    ul {
+
+        ul {
+
+            ul {
+
+            }
+        }
+    }
+
+    li {
+
+    }
+
+
+    li:hover > a,
+    ul ul :hover > a,
+    a:focus {
+
+    }
+
+    ul li:hover > ul {
+
+    }
+
+    .current-menu-item > a,
+    .current-menu-ancestor > a,
+    .current_page_item > a,
+    .current_page_ancestor > a {
+
+    }
+}
+
+
+/* =Search Form
+-------------------------------------------------------------- */
+
+#searchform {
+
+}
+
+#s {
+
+}
+
+#searchsubmit {
+
+}
+
 /* =Content
 -------------------------------------------------------------- */
 
+#primary {
+
+}
+
+#content {
+
+}
+
+#secondary {
+
+}
+
+.entry-title {
+
+    a {
+
+        &:hover {
+
+        }
+    }
+}
+
+.entry-meta {
+
+    a {
+
+    }
+}
+
+.entry-content {
+
+}
+
 .sticky {
     font-size: 100%;
+}
+
+/* Full Width */
+.no-sidebar {
+
 }
 
 /* =Comments
@@ -53,11 +171,43 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
     font-size: 100%;
 }
 
-/* =Sidebar
+/* =Sidebar and Widgets
 -------------------------------------------------------------- */
+
+.widget {
+
+    a {
+
+        &:hover {
+
+        }
+    }
+
+    ul {
+
+        ul {
+
+        }
+
+        li {
+
+        }
+    }
+}
 
 /* =Footer
 -------------------------------------------------------------- */
+
+#footer {
+
+}
+
+/* =Error 404 page
+-------------------------------------------------------------- */
+
+.error404 {
+
+}
 
 // Print styles
 @import "source/print";
