@@ -1054,6 +1054,37 @@ textarea.error {
   float: left;
 }
 
+/* =Responsive Styles
+-------------------------------------------------------------- */
+.mobile-only {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .mobile-only {
+    display: block;
+  }
+
+  #primary {
+    width: 96.61017%;
+    margin-right: 1.69492%;
+    margin-left: 1.69492%;
+    *width: 96.58817%;
+    *margin-right: 1.67292%;
+    *margin-left: 1.67292%;
+    float: left;
+  }
+
+  #secondary {
+    width: 96.61017%;
+    margin-right: 1.69492%;
+    margin-left: 1.69492%;
+    *width: 96.58817%;
+    *margin-right: 1.67292%;
+    *margin-left: 1.67292%;
+    float: left;
+  }
+}
 /* ==========================================================================
    Print styles.
    Inlined to avoid required HTTP connection: h5bp.com/r

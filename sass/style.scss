@@ -387,5 +387,26 @@ $iesupport: true;
     }
 }
 
+/* =Responsive Styles
+-------------------------------------------------------------- */
+
+.mobile-only {
+    display: none;
+}
+
+@include breakpoint( 600px ) {
+    .mobile-only {
+        display: block;
+    }
+
+    #primary {
+        @include span-column(12);
+    }
+
+    #secondary {
+        @include span-column(12);
+    }
+}
+
 // Print styles
 @import "source/print";
