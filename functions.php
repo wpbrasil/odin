@@ -7,11 +7,6 @@ if ( ! isset( $content_width ) ) {
 }
 
 /**
- * WooCommerce Support
- */
-add_theme_support( 'woocommerce' );
-
-/**
  * Setup theme features
  */
 function odin_setup_features() {
@@ -193,6 +188,25 @@ function odin_related_posts_custom_thumbnails( $thumbnail ) {
 }
 
 // add_filter( 'odin_related_posts', 'odin_related_posts_custom_thumbnails' );
+
+/**
+ * WooCommerce Support.
+ */
+add_theme_support( 'woocommerce' );
+
+/**
+ * Jigoshop Support.
+ */
+function odin_jigoshop_output_content_wrapper() {
+    echo '<div id="primary"><div id="content" role="main">';
+}
+
+function odin_jigoshop_output_content_wrapper_end() {
+    echo '</div></div>';
+}
+
+// add_action( 'jigoshop_before_main_content', 'odin_jigoshop_output_content_wrapper', 10 );
+// add_action( 'jigoshop_after_main_content', 'odin_jigoshop_output_content_wrapper_end', 10 );
 
 /**
  * WP optimize functions.
