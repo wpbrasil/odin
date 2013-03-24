@@ -164,6 +164,30 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 }
 
+/* =Pagination
+-------------------------------------------------------------- */
+
+.page-nav {
+    text-align: center;
+    margin-top: 15px;
+
+    a, span {
+        background: #eee;
+        border: 1px solid #ddd;
+        display: inline-block;
+        padding: 5px 10px;
+        margin: 5px 2px;
+    }
+
+    .current {
+        background: #e0e0e0;
+    }
+
+    .infinite-scroll & {
+        display: none;
+    }
+}
+
 /* =Comments
 -------------------------------------------------------------- */
 

@@ -745,6 +745,26 @@ textarea.error {
 }
 
 /* Full Width */
+/* =Pagination
+-------------------------------------------------------------- */
+.page-nav {
+  text-align: center;
+  margin-top: 15px;
+}
+.page-nav a, .page-nav span {
+  background: #eee;
+  border: 1px solid #dddddd;
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 5px 2px;
+}
+.page-nav .current {
+  background: #e0e0e0;
+}
+.infinite-scroll .page-nav {
+  display: none;
+}
+
 /* =Comments
 -------------------------------------------------------------- */
 .bypostauthor {
