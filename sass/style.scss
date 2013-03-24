@@ -215,6 +215,26 @@ $iesupport: true;
     font-size: 100%;
 }
 
+.entry-attachment {
+    .attachment {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    #nav-below {
+        .nav-next {
+            float: right;
+        }
+        .nav-previous {
+            float: left;
+        }
+    }
+}
+
+.entry-caption {
+    color: #666;
+}
+
 /* =Pagination
 -------------------------------------------------------------- */
 
