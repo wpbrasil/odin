@@ -15,6 +15,14 @@ Envie a pasta "odin" para a pasta de temas padrão do WordPress `wp-content/them
 
 Informações de como usar as classes e funções do Odin na [Wiki Oficial](https://github.com/wpbrasil/odin/wiki/_pages)
 
+## Suportes a plugins ##
+
+Odin suporta nativamente os plugins:
+
+* [WooCommerce](http://wordpress.org/extend/plugins/woocommerce/)
+* [Jigoshop](http://wordpress.org/extend/plugins/jigoshop/)
+* [JetPack](http://wordpress.org/extend/plugins/jetpack/) Infinite Scroll
+
 ## Referências ##
 
 * [HTML5shiv](https://github.com/aFarkas/html5shiv)
