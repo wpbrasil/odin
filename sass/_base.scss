@@ -17,6 +17,10 @@ $defaultLineHeight: 20px;
 
 // Link
 $linkColor: #006699;
+$linkOutline: none;
+$linkFocusOutline: thin dotted;
+$linkTextDecorator: none;
+$linkHoverTextDecorator: underline;
 
 // Heading Styles
 $headingFontFamily: $arial;
@@ -26,12 +30,21 @@ $headingFontSize: 25px;
 $textMarginBottom: 1.625em;
 $textMarginLeft: 2.5em;
 
+// Img
+$imgBorder: 0;
+
 // Forms
 $formBg: #f4f4f4;
+$formFontSize: $defaultFontSize;
+$formFontLineHeight: $defaultLineHeight;
+$formFontFamily: $defaultFontFamily;
 $formBorder: 1px solid #ccc;
 $formColor: #666;
 $formPadding: 4px;
 $formFocusColor: #333;
+$fieldsetBorder: 1px solid #c0c0c0;
+$fieldsetMargin: 0 2px;
+$fieldsetPadding: 0.35em 0.625em 0.75em;
 
 // Lists
 $ulStyle: disc;
@@ -73,6 +86,11 @@ $insBg: #fff9c0;
 // Sup and Sub
 $supsubFontSize: 10px;
 $supsubLineHeight: 1;
+
+
+// Mark
+$markBg: #ff0;
+$markColor: #000;
 
 // Table
 $tableBorderSide: bottom;

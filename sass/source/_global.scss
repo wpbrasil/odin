@@ -4,12 +4,18 @@
 html {
     overflow-y: scroll;
 }
+
+/*
+ * 1. Prevent iOS text size adjust after orientation change, without disabling user zoom.
+ */
 body {
     @include clearfix;
     color: $defaultColor;
     background: $bodyBg;
     font: $defaultFontSize $defaultFontFamily;
     line-height: $defaultLineHeight;
+    -webkit-text-size-adjust: 100%; /* 1 */
+    -ms-text-size-adjust: 100%; /* 1 */
 }
 
 /* =Headings
@@ -51,6 +57,8 @@ h6 {
 hr {
     background-color: $hrBg;
     border: 0;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
     height: 1px;
     margin-bottom: $textMarginBottom;
 }
@@ -95,12 +103,14 @@ dt {
 dd {
     margin-bottom: $textMarginBottom;
 }
+b,
 strong {
     font-weight: bold;
 }
-cite,
+i,
 em,
-i {
+dfn,
+cite {
     font-style: italic;
 }
 blockquote {
@@ -144,6 +154,14 @@ blockquote {
         top: 0;
     }
 }
+q {
+    quotes: none;
+}
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
 code,
 kbd,
 samp,
@@ -159,6 +177,9 @@ pre code {
     margin-bottom: $textMarginBottom;
     overflow: auto;
     padding: $prePadding;
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }
 abbr,
 acronym,
@@ -188,22 +209,95 @@ sup {
 sub {
     top: .5ex;
 }
+mark {
+    background: $markBg;
+    color: $markColor;
+}
+small {
+    font-size: 80%;
+}
+img {
+    border: $imgBorder;
+    -ms-interpolation-mode: bicubic;
+}
 
 /* =Links
 -------------------------------------------------------------- */
 
 a {
     color: $linkColor;
-    text-decoration: none;
+    text-decoration: $linkTextDecorator;
     &:focus,
     &:active,
     &:hover {
-        text-decoration: underline;
+        text-decoration: $linkHoverTextDecorator;
+    }
+    &:active,
+    &:hover {
+        outline: $linkOutline;
+    }
+    &:focus {
+        outline: $linkFocusOutline;
     }
 }
 
 /* =Form elements
 -------------------------------------------------------------- */
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* =Form elements
+-------------------------------------------------------------- */
+
+fieldset {
+    border: $fieldsetBorder;
+    margin: $fieldsetMargin;
+    padding: $fieldsetPadding;
+}
+
+legend {
+    border: 0;
+    padding: 0;
+    white-space: normal;
+    *margin-left: -7px;
+}
+
+button,
+input,
+select,
+textarea {
+    vertical-align: baseline;
+    *vertical-align: middle;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    box-sizing: border-box;
+    padding: 0;
+    *height: 13px;
+    *width: 13px;
+}
+
+input[type="search"] {
+    -webkit-appearance: textfield;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
 
 input[type="text"],
 input[type="password"],
@@ -211,12 +305,13 @@ input[type="number"],
 input[type="email"],
 input[type="url"],
 input[type="tel"],
+input[type="search"],
 textarea,
 select {
     background: $formBg;
     border: $formBorder;
     color: $formColor;
-    font: $defaultFontSize $defaultFontFamily;
+    font: $formFontSize/$formFontLineHeight $formFontFamily;
     line-height: $defaultLineHeight;
     padding: $formPadding;
 
@@ -227,12 +322,23 @@ select {
 
 textarea {
     width: 98%;
+    overflow: auto;
+    vertical-align: top;
 }
 
+button,
+html input[type="button"]
 input[type="submit"],
-input[type="reset"],
-button {
+input[type="reset"] {
+    -webkit-appearance: button;
     cursor: pointer;
+    *overflow: visible;
+}
+
+
+button[disabled],
+html input[disabled] {
+    cursor: default;
 }
 
 /* =Frames
@@ -242,4 +348,38 @@ embed,
 iframe,
 object {
     max-width: 100%;
+}
+
+/* =HTML5
+-------------------------------------------------------------- */
+
+nav ul,
+nav ol {
+    list-style: none;
+    list-style-image: none;
+}
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+figure {
+    margin: 0;
+}
+
+audio,
+canvas,
+video {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+
+audio:not([controls]) {
+    display: none;
+    height: 0;
+}
+
+[hidden] {
+    display: none;
 }
