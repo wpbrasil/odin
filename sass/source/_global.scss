@@ -5,17 +5,14 @@ html {
     overflow-y: scroll;
 }
 
-/*
- * 1. Prevent iOS text size adjust after orientation change, without disabling user zoom.
- */
 body {
     @include clearfix;
     color: $defaultColor;
     background: $bodyBg;
     font: $defaultFontSize $defaultFontFamily;
     line-height: $defaultLineHeight;
-    -webkit-text-size-adjust: 100%; /* 1 */
-    -ms-text-size-adjust: 100%; /* 1 */
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
 }
 
 /* =Headings
@@ -283,7 +280,6 @@ a {
 -------------------------------------------------------------- */
 
 table {
-    border-bottom: $tableBorder;
     border-collapse: collapse;
     border-spacing: 0;
     color: $tableColor;
@@ -364,8 +360,9 @@ select {
     background: $formBg;
     border: $formBorder;
     color: $formColor;
-    font: $formFontSize/$formFontLineHeight $formFontFamily;
-    line-height: $defaultLineHeight;
+    font-family: $formFontFamily;
+    font-size: $formFontSize;
+    line-height: $formFontLineHeight;
     padding: $formPadding;
 
     &:focus {
@@ -380,12 +377,26 @@ textarea {
 }
 
 button,
-html input[type="button"]
+html input[type="button"],
 input[type="submit"],
 input[type="reset"] {
     -webkit-appearance: button;
     cursor: pointer;
     *overflow: visible;
+
+    background: $buttonBg;
+    border: $buttonBorder;
+    color: $buttonColor;
+    font-family: $buttonFontFamily;
+    font-size: $buttonFontSize;
+    line-height: $buttonFontLineHeight;
+    padding: $buttonPadding;
+
+    &:hover {
+        background: $buttonHoverBg;
+        border: $buttonHoverBorder;
+        color: $buttonHoverColor;
+    }
 }
 
 button[disabled],

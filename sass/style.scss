@@ -27,19 +27,23 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 // WordPress Core styles
 @import "source/wpcore";
 
-// Comments.
-@import "source/comments";
-
 // CSS Helpers
 @import "source/helpers";
 
 // Grid System
-// @import "source/grid";
+@import "source/grid";
+$columns: 12;
+$page-width: 1180px;
+$column-width: $page-width / $columns;
+$column-padding: 40px;
+$grid-type: elastic;
+$iesupport: true;
 
 /* =Header
 -------------------------------------------------------------- */
 
 #header {
+    @include span-column(12);
 
     hgroup {
 
@@ -47,6 +51,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 }
 
 .site-title {
+    @extend h1;
 
     a {
 
@@ -58,51 +63,75 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 }
 
 .site-description {
-
+    @extend h2;
+    margin-bottom: 1em;
 }
 
 /* =Navigation
 -------------------------------------------------------------- */
 
 #main-navigation {
+    @include clearfix();
+    background: desaturate($linkColor, 30%);
+    margin-bottom: $textMarginBottom;
 
     a {
-
-    }
-
-    ul {
-
-        ul {
-
-            ul {
-
-            }
-        }
+        color: #fff;
+        display: block;
+        font-size: 15px;
+        line-height: 22px;
+        padding: 10px;
     }
 
     li {
+        float: left;
+        margin: 0;
+        position: relative;
+    }
 
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        ul {
+            background: darken($linkColor, 5%);
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+
+            a {
+                width: 150px;
+            }
+
+            li {
+                float: none;
+            }
+
+            ul {
+                top: 0;
+                left: 100%;
+            }
+        }
     }
 
 
     li:hover > a,
     ul ul :hover > a,
-    a:focus {
-
-    }
-
-    ul li:hover > ul {
-
-    }
-
+    a:focus,
     .current-menu-item > a,
     .current-menu-ancestor > a,
     .current_page_item > a,
     .current_page_ancestor > a {
+        background: darken($linkColor, 10%);
+        text-decoration: none;
+    }
 
+    ul li:hover > ul {
+        display: block;
     }
 }
-
 
 /* =Search Form
 -------------------------------------------------------------- */
@@ -122,8 +151,21 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 /* =Content
 -------------------------------------------------------------- */
 
-#primary {
+.wrapper {
+    @include container();
+}
 
+#main {
+    @include clearfix();
+}
+
+#primary {
+    @include span-column(8);
+
+    /* Full Width */
+    &.no-sidebar {
+        @include span-column(12);
+    }
 }
 
 #content {
@@ -131,10 +173,11 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 }
 
 #secondary {
-
+    @include span-column(4);
 }
 
 .entry-title {
+    margin-bottom: 0.4em;
 
     a {
 
@@ -144,7 +187,16 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
     }
 }
 
+.page-header {
+    margin-bottom: 1em;
+}
+
+.page-title {
+
+}
+
 .entry-meta {
+    margin-bottom: $textMarginBottom;
 
     a {
 
@@ -152,16 +204,15 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 }
 
 .entry-content {
+    @include clearfix();
 
+    .gallery-item {
+        width: 150px;
+    }
 }
 
 .sticky {
     font-size: 100%;
-}
-
-/* Full Width */
-.no-sidebar {
-
 }
 
 /* =Pagination
@@ -191,14 +242,79 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 /* =Comments
 -------------------------------------------------------------- */
 
+@import "source/comments";
+
+.commentlist {
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    line-height: 22px;
+
+    li.comment, li.pingback {
+        @include clearfix();
+        list-style: none;
+        margin-bottom: 10px;
+    }
+
+    .comment-meta {
+        color: #666;
+        font-size: 12px;
+        line-height: 15px;
+
+        .fn {
+            font-size: 13px;
+            font-weight: 600;
+        }
+        a, .fn {
+            color: #444;
+
+            &:hover {
+                color: $linkColor;
+                text-decoration: none;
+            }
+        }
+    }
+    .comment-author {
+        img {
+            float: left;
+            display: block;
+            margin-right: 10px;
+        }
+    }
+
+    .comment-awaiting-moderation {
+        margin-top: 5px;
+        font-weight: bold;
+        color: #333;
+    }
+}
+
 .bypostauthor {
     font-size: 100%;
+}
+
+.required {
+    color: #c00;
+}
+
+#commentform {
+    font-size: 13px;
+    line-height: 22px;
+
+    label {
+        display: block;
+    }
+
+    p {
+        margin-bottom: 10px;
+    }
 }
 
 /* =Sidebar and Widgets
 -------------------------------------------------------------- */
 
 .widget {
+    margin-bottom: $textMarginBottom;
 
     a {
 
@@ -219,11 +335,21 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
     }
 }
 
+/* .widgettitle is a WordPress default */
+.widgettitle,
+.widget-title {
+    margin-bottom: 10px;
+}
+
 /* =Footer
 -------------------------------------------------------------- */
 
 #footer {
-
+    @include span-column(12);
+    border-top: 1px solid #ddd;
+    margin-top: 20px;
+    padding: 20px 0 20px;
+    text-align: center;
 }
 
 /* =Error 404 page
@@ -231,6 +357,13 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 .error404 {
 
+    #searchform {
+        margin-bottom: $textMarginBottom;
+    }
+
+    .widget {
+        @include span-column(3);
+    }
 }
 
 // Print styles

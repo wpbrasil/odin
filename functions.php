@@ -101,7 +101,7 @@ function odin_widgets_init() {
             'description' => __( 'Sidebar Principal do site', 'odin' ),
             'before_widget' => '<aside id="%1$s" class="widget %2$s">',
             'after_widget' => '</aside>',
-            'before_title' => '<h3 class="widget-title">',
+            'before_title' => '<h3 class="widgettitle widget-title">',
             'after_title' => '</h3>',
         )
     );

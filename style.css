@@ -14,7 +14,8 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
    License: none (public domain)
 */
 html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+h1,
+.site-title, h2, .site-description, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
@@ -69,9 +70,6 @@ html {
   overflow-y: scroll;
 }
 
-/*
- * 1. Prevent iOS text size adjust after orientation change, without disabling user zoom.
- */
 body {
   *zoom: 1;
   color: #333333;
@@ -79,9 +77,7 @@ body {
   font: 13px Arial, Verdana, sans-serif;
   line-height: 20px;
   -webkit-text-size-adjust: 100%;
-  /* 1 */
   -ms-text-size-adjust: 100%;
-  /* 1 */
 }
 body:before, body:after {
   content: "";
@@ -93,8 +89,9 @@ body:after {
 
 /* =Headings
 -------------------------------------------------------------- */
-h1,
+h1, .site-title,
 h2,
+.site-description,
 h3,
 h4,
 h5,
@@ -103,12 +100,12 @@ h6 {
   font-family: Arial, Verdana, sans-serif;
 }
 
-h1 {
+h1, .site-title {
   font-size: 25px;
   line-height: 32px;
 }
 
-h2 {
+h2, .site-description {
   font-size: 23px;
   line-height: 30px;
 }
@@ -337,7 +334,6 @@ a:focus {
 /* =Form elements
 -------------------------------------------------------------- */
 table {
-  border-bottom: 1px solid #ededed;
   border-collapse: collapse;
   border-spacing: 0;
   color: #333333;
@@ -416,7 +412,8 @@ select {
   background: #f4f4f4;
   border: 1px solid #cccccc;
   color: #666666;
-  font: 0.65 Arial, Verdana, sans-serif;
+  font-family: Arial, Verdana, sans-serif;
+  font-size: 13px;
   line-height: 20px;
   padding: 4px;
 }
@@ -439,12 +436,27 @@ textarea {
 }
 
 button,
-html input[type="button"]
+html input[type="button"],
 input[type="submit"],
 input[type="reset"] {
   -webkit-appearance: button;
   cursor: pointer;
   *overflow: visible;
+  background: #dbdbdb;
+  border: 1px solid #bbbbbb;
+  color: #444444;
+  font-family: Arial, Verdana, sans-serif;
+  font-size: 13px;
+  line-height: 20px;
+  padding: 4px;
+}
+button:hover,
+html input[type="button"]:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+  background: #cecece;
+  border: 1px solid #bbbbbb;
+  color: #444444;
 }
 
 button[disabled],
@@ -649,31 +661,6 @@ p img,
 }
 
 /* Search Widget */
-/* =Comments
--------------------------------------------------------------- */
-/**
- * Comment Validation.
- */
-label.error {
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  -o-border-radius: 4px;
-  border-radius: 4px;
-  text-shadow: 0 1px 0 white;
-  background-color: #f2dede;
-  border: 1px solid #d28994;
-  color: #9e3d4c;
-  display: block;
-  padding: 5px;
-  margin: 5px 0;
-}
-
-input.error,
-textarea.error {
-  border-color: #c36573;
-}
-
 /* =CSS Helpers
 -------------------------------------------------------------- */
 /* Clearfix */
@@ -734,17 +721,171 @@ textarea.error {
 
 /* =Header
 -------------------------------------------------------------- */
+#header {
+  width: 96.61017%;
+  margin-right: 1.69492%;
+  margin-left: 1.69492%;
+  *width: 96.58817%;
+  *margin-right: 1.67292%;
+  *margin-left: 1.67292%;
+  float: left;
+}
+
+.site-description {
+  margin-bottom: 1em;
+}
+
 /* =Navigation
 -------------------------------------------------------------- */
+#main-navigation {
+  *zoom: 1;
+  background: #175e82;
+  margin-bottom: 1.625em;
+}
+#main-navigation:before, #main-navigation:after {
+  content: "";
+  display: table;
+}
+#main-navigation:after {
+  clear: both;
+}
+#main-navigation a {
+  color: #fff;
+  display: block;
+  font-size: 15px;
+  line-height: 22px;
+  padding: 10px;
+}
+#main-navigation li {
+  float: left;
+  margin: 0;
+  position: relative;
+}
+#main-navigation ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#main-navigation ul ul {
+  background: #005580;
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
+#main-navigation ul ul a {
+  width: 150px;
+}
+#main-navigation ul ul li {
+  float: none;
+}
+#main-navigation ul ul ul {
+  top: 0;
+  left: 100%;
+}
+#main-navigation li:hover > a,
+#main-navigation ul ul :hover > a,
+#main-navigation a:focus,
+#main-navigation .current-menu-item > a,
+#main-navigation .current-menu-ancestor > a,
+#main-navigation .current_page_item > a,
+#main-navigation .current_page_ancestor > a {
+  background: #004466;
+  text-decoration: none;
+}
+#main-navigation ul li:hover > ul {
+  display: block;
+}
+
 /* =Search Form
 -------------------------------------------------------------- */
 /* =Content
 -------------------------------------------------------------- */
+.wrapper {
+  *zoom: 1;
+  max-width: 1180px;
+  position: relative;
+  margin: 0 auto;
+}
+.wrapper:before, .wrapper:after {
+  content: "";
+  display: table;
+}
+.wrapper:after {
+  clear: both;
+}
+
+#main {
+  *zoom: 1;
+}
+#main:before, #main:after {
+  content: "";
+  display: table;
+}
+#main:after {
+  clear: both;
+}
+
+#primary {
+  width: 63.27684%;
+  margin-right: 1.69492%;
+  margin-left: 1.69492%;
+  *width: 63.25484%;
+  *margin-right: 1.67292%;
+  *margin-left: 1.67292%;
+  float: left;
+  /* Full Width */
+}
+#primary.no-sidebar {
+  width: 96.61017%;
+  margin-right: 1.69492%;
+  margin-left: 1.69492%;
+  *width: 96.58817%;
+  *margin-right: 1.67292%;
+  *margin-left: 1.67292%;
+  float: left;
+}
+
+#secondary {
+  width: 29.9435%;
+  margin-right: 1.69492%;
+  margin-left: 1.69492%;
+  *width: 29.9215%;
+  *margin-right: 1.67292%;
+  *margin-left: 1.67292%;
+  float: left;
+}
+
+.entry-title {
+  margin-bottom: 0.4em;
+}
+
+.page-header {
+  margin-bottom: 1em;
+}
+
+.entry-meta {
+  margin-bottom: 1.625em;
+}
+
+.entry-content {
+  *zoom: 1;
+}
+.entry-content:before, .entry-content:after {
+  content: "";
+  display: table;
+}
+.entry-content:after {
+  clear: both;
+}
+.entry-content .gallery-item {
+  width: 150px;
+}
+
 .sticky {
   font-size: 100%;
 }
 
-/* Full Width */
 /* =Pagination
 -------------------------------------------------------------- */
 .page-nav {
@@ -767,16 +908,136 @@ textarea.error {
 
 /* =Comments
 -------------------------------------------------------------- */
+/**
+ * Comment Validation.
+ */
+label.error {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  text-shadow: 0 1px 0 white;
+  background-color: #f2dede;
+  border: 1px solid #d28994;
+  color: #9e3d4c;
+  display: block;
+  padding: 5px;
+  margin: 5px 0;
+}
+
+input.error,
+textarea.error {
+  border-color: #c36573;
+}
+
+.commentlist {
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  line-height: 22px;
+}
+.commentlist li.comment, .commentlist li.pingback {
+  *zoom: 1;
+  list-style: none;
+  margin-bottom: 10px;
+}
+.commentlist li.comment:before, .commentlist li.comment:after, .commentlist li.pingback:before, .commentlist li.pingback:after {
+  content: "";
+  display: table;
+}
+.commentlist li.comment:after, .commentlist li.pingback:after {
+  clear: both;
+}
+.commentlist .comment-meta {
+  color: #666;
+  font-size: 12px;
+  line-height: 15px;
+}
+.commentlist .comment-meta .fn {
+  font-size: 13px;
+  font-weight: 600;
+}
+.commentlist .comment-meta a, .commentlist .comment-meta .fn {
+  color: #444;
+}
+.commentlist .comment-meta a:hover, .commentlist .comment-meta .fn:hover {
+  color: #006699;
+  text-decoration: none;
+}
+.commentlist .comment-author img {
+  float: left;
+  display: block;
+  margin-right: 10px;
+}
+.commentlist .comment-awaiting-moderation {
+  margin-top: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
 .bypostauthor {
   font-size: 100%;
 }
 
+.required {
+  color: #c00;
+}
+
+#commentform {
+  font-size: 13px;
+  line-height: 22px;
+}
+#commentform label {
+  display: block;
+}
+#commentform p {
+  margin-bottom: 10px;
+}
+
 /* =Sidebar and Widgets
 -------------------------------------------------------------- */
+.widget {
+  margin-bottom: 1.625em;
+}
+
+/* .widgettitle is a WordPress default */
+.widgettitle,
+.widget-title {
+  margin-bottom: 10px;
+}
+
 /* =Footer
 -------------------------------------------------------------- */
+#footer {
+  width: 96.61017%;
+  margin-right: 1.69492%;
+  margin-left: 1.69492%;
+  *width: 96.58817%;
+  *margin-right: 1.67292%;
+  *margin-left: 1.67292%;
+  float: left;
+  border-top: 1px solid #dddddd;
+  margin-top: 20px;
+  padding: 20px 0 20px;
+  text-align: center;
+}
+
 /* =Error 404 page
 -------------------------------------------------------------- */
+.error404 #searchform {
+  margin-bottom: 1.625em;
+}
+.error404 .widget {
+  width: 21.61017%;
+  margin-right: 1.69492%;
+  margin-left: 1.69492%;
+  *width: 21.58817%;
+  *margin-right: 1.67292%;
+  *margin-left: 1.67292%;
+  float: left;
+}
+
 /* ==========================================================================
    Print styles.
    Inlined to avoid required HTTP connection: h5bp.com/r
@@ -839,12 +1100,13 @@ textarea.error {
 
   p,
   h2,
+  .site-description,
   h3 {
     orphans: 3;
     widows: 3;
   }
 
-  h2,
+  h2, .site-description,
   h3 {
     page-break-after: avoid;
   }

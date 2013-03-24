@@ -42,6 +42,18 @@ $formBorder: 1px solid #ccc;
 $formColor: #666;
 $formPadding: 4px;
 $formFocusColor: #333;
+
+$buttonBg: darken($formBg, 10%);
+$buttonFontSize: $defaultFontSize;
+$buttonFontLineHeight: $defaultLineHeight;
+$buttonFontFamily: $defaultFontFamily;
+$buttonBorder: 1px solid #bbb;
+$buttonColor: #444;
+$buttonPadding: 4px;
+$buttonHoverBg: darken($formBg, 15%);
+$buttonHoverBorder: 1px solid #bbb;
+$buttonHoverColor: #444;
+
 $fieldsetBorder: 1px solid #c0c0c0;
 $fieldsetMargin: 0 2px;
 $fieldsetPadding: 0.35em 0.625em 0.75em;
