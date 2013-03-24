@@ -30,7 +30,7 @@ Odin suporta nativamente os plugins:
 * [Respond.js](https://github.com/scottjehl/Respond)
 * [Sass](http://sass-lang.com/)
 * [Compass](http://compass-style.org/)
-* [normalize.css](http://necolas.github.com/normalize.css/)
+* [Grunt.js](http://gruntjs.com/)
 * [aq_resize](https://github.com/sy4mil/Aqua-Resizer)
 * [bxSlider](http://bxslider.com/)
 * [Socialite.js](http://socialitejs.com/)
