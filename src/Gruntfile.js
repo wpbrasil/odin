@@ -87,6 +87,34 @@ module.exports = function(grunt) {
             }
         },
 
+        // deploy via rsync
+        rsync: {
+            staging: {
+                src: "../",
+                dest: "~/PATH/wp-content/themes/odin",
+                host: "user@host.com",
+                recursive: true,
+                syncDest: true,
+                exclude: [
+                    '**.DS_Store',
+                    '**Thumbs.db',
+                    '.git/',
+                    '.gitignore',
+                    'sass/',
+                    'src/',
+                    'README.md'
+                ]
+            },
+            production: {
+                src: "../",
+                dest: "~/PATH/wp-content/themes/odin",
+                host: "user@host.com",
+                recursive: true,
+                syncDest: true,
+                exclude: '<%= rsync.staging.exclude %>'
+            }
+        },
+
         // ftp deploy
         // ref: https://npmjs.org/package/grunt-ftp-deploy
         'ftp-deploy': {
@@ -124,7 +152,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
-
+    grunt.loadNpmTasks('grunt-rsync');
     grunt.loadNpmTasks('grunt-ftp-deploy');
 
     // register task
