@@ -5,7 +5,7 @@
 
 ## Descrição do Projeto ##
 
-Bem vindos ao Odin, um tema base desenvolvido pelo [Grupo Wordpress Brasil](https://www.facebook.com/groups/wordpress.brasil), para auxiliar no desenvolvimento ágil de temas para Wordpress.
+Bem vindos ao Odin, um tema base desenvolvido pelo [Grupo WordPress Brasil](https://www.facebook.com/groups/wordpress.brasil), para auxiliar no desenvolvimento ágil de temas para WordPress.
 
 ## Instalação ##
 
