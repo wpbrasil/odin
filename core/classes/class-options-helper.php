@@ -27,6 +27,31 @@ class Odin_Options_Helper {
     private $option_child_value = '';
 
     /**
+     * Options Helper construct.
+     *
+     * @param string  $option_father Option Father.
+     * @param string  $option_child  Option Child.
+     * @return void
+     */
+    public function __construct( $option_father, $option_child ) {
+
+        /**
+         * Set the option father property.
+         */
+        $this->set_option_father( $option_father );
+
+        /**
+         * Set the option child property.
+         */
+        $this->set_option_child( $option_child );
+
+        /**
+         * Discover the option child value.
+         */
+        $this->get_option_value();
+    }
+
+    /**
      * Getter of Option Father.
      *
      * @return string option_father property.
@@ -81,31 +106,6 @@ class Odin_Options_Helper {
      */
     public function set_option_child_value( $option_child_value ) {
         $this->option_child_value = $option_child_value;
-    }
-
-    /**
-     * Options Helper construct.
-     *
-     * @param string  $option_father Option Father.
-     * @param string  $option_child  Option Child.
-     * @return void
-     */
-    public function __construct( $option_father, $option_child ) {
-
-        /**
-         * Set the option father property.
-         */
-        $this->set_option_father( $option_father );
-
-        /**
-         * Set the option child property.
-         */
-        $this->set_option_child( $option_child );
-
-        /**
-         * Discover the option child value.
-         */
-        $this->get_option_value();
     }
 
     /**
