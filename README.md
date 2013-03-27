@@ -78,15 +78,9 @@ Mais detalhes de como contribuir e enviar Pull Requests em [GitHub Collaborating
 * Added Grunt FTP.
 * Added Grunt rsync.
 
-* Adicionada classe Odin_Options_Helper.
-* Adicionado Grunt FTP.
-* Adicionado Grunt rsync.
-
 #### v1.0.0 - 24/03/2013 ####
 
 * First Release.
-
-* Primeiro release.
 
 ## Copyright and License - Copyright e Licença ##
 
