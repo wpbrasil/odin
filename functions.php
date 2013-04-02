@@ -122,6 +122,9 @@ function odin_enqueue_scripts() {
 
     wp_enqueue_script( 'jquery');
 
+    wp_register_script( 'fitvids', $template_url . '/js/jquery.fitvids.min.js', array(), null, true );
+    wp_enqueue_script( 'fitvids' );
+
     // bxSlider.
     // wp_register_script( 'bxslider', $template_url . '/js/jquery.bxslider.min.js', array(), null, true );
     // wp_enqueue_script( 'bxslider' );
