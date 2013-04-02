@@ -46,6 +46,7 @@ Odin suporta nativamente os plugins:
 * [PhotoSwipe](http://www.photoswipe.com/)
 * [Lazy Load](http://www.appelsiini.net/projects/lazyload)
 * [jQuery Validation](https://github.com/jzaefferer/jquery-validation)
+* [FitVids](https://github.com/davatron5000/FitVids.js)
 * [Odin Grid System](https://github.com/wpbrasil/odin-grid-system)
 
 ## Report Bugs and Sugestions - Informe Bugs e Sugestões ##
@@ -71,6 +72,10 @@ Mais detalhes de como contribuir e enviar Pull Requests em [GitHub Collaborating
 [Como colaborar com projetos opensource com GitHub](http://www.youtube.com/watch?v=H3olaBo83As)
 
 ## Changelog ##
+
+#### v1.2.0 - 02/04/2013 ####
+
+* Added FitVids.
 
 #### v1.1.0 - 27/03/2013 ####
 

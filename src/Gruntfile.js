@@ -37,6 +37,7 @@ module.exports = function(grunt) {
                         '../core/lazyload/js/*.js', // LazyLoad
                         // '../core/photoswipe/js/*.js', // Photoswipe
                         '../core/socialite/js/*.js', // Socialite
+                        '../js/jquery.fitvids.min.js', // FitVids
                         '../js/libs/*.js', // Project libs includes
                         '../js/main.js'
                     ]
