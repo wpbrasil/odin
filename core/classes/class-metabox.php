@@ -117,6 +117,7 @@ class Odin_Metabox {
         $id = $args['id'];
         $options = isset( $args['options'] ) ? $args['options'] : '';
         $type = $args['type'];
+        $editor_options = $args['editor_options'];
 
         // Gets current value or default.
         $current = get_post_meta( $post_id, $id, true );
@@ -144,7 +145,7 @@ class Odin_Metabox {
                 $this->field_image( $id, $current );
                 break;
             case 'editor':
-                $this->field_editor( $id, $current );
+                $this->field_editor( $id, $current, $editor_options );
                 break;
             case 'upload':
                 $this->field_upload( $id, $current );
@@ -267,9 +268,9 @@ class Odin_Metabox {
      *
      * @return string          HTML field.
      */
-    protected function field_editor( $id, $current ) {
+    protected function field_editor( $id, $current, $editor_options = array() ) {
         echo '<div style="max-width: 600px;">';
-            wp_editor( wpautop( $current ), $id, array( 'textarea_rows' => 10 ) );
+            wp_editor( wpautop( $current ), $id, $editor_options );
         echo '</div>';
     }
 
