@@ -73,6 +73,10 @@ Mais detalhes de como contribuir e enviar Pull Requests em [GitHub Collaborating
 
 ## Changelog ##
 
+#### v1.2.1 - 14/04/2013 ####
+
+* Added `options` argument in editor of Metabox class and Theme Options class.
+
 #### v1.2.0 - 02/04/2013 ####
 
 * Added FitVids.
