@@ -125,7 +125,7 @@ class Odin_Theme_Options {
         }
         $url .= '://';
 
-        if ( $_SERVER['SERVER_PORT'] != '80' ) {
+        if ( '80' != $_SERVER['SERVER_PORT'] ) {
             $url .= $_SERVER['SERVER_NAME'] . ' : ' . $_SERVER['SERVER_PORT'] . $_SERVER['PHP_SELF'];
         } else {
             $url .= $_SERVER['SERVER_NAME'] . $_SERVER['PHP_SELF'];
@@ -282,13 +282,13 @@ class Odin_Theme_Options {
      */
     public function callback_text( $args ) {
         $tab = $args['tab'];
-        $id = $args['id'];
+        $id  = $args['id'];
 
         // Sets current option.
         $current = esc_html( $this->get_option( $tab, $id, $args['default'] ) );
 
         // Sets input size.
-        $size = isset( $args['size'] ) && !is_null( $args['size'] ) ? $args['size'] : 'regular';
+        $size = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
 
         $html = sprintf( '<input type="text" id="%1$s" name="%2$s[%1$s]" value="%3$s" class="%4$s-text" />', $id, $tab, $current, $size );
 
@@ -307,7 +307,7 @@ class Odin_Theme_Options {
      */
     public function callback_textarea( $args ) {
         $tab = $args['tab'];
-        $id = $args['id'];
+        $id  = $args['id'];
 
         // Sets current option.
         $current = esc_textarea( $this->get_option( $tab, $id, $args['default'] ) );
@@ -362,7 +362,7 @@ class Odin_Theme_Options {
      */
     public function callback_checkbox( $args ) {
         $tab = $args['tab'];
-        $id = $args['id'];
+        $id  = $args['id'];
 
         // Sets current option.
         $current = $this->get_option( $tab, $id, $args['default'] );
@@ -384,7 +384,7 @@ class Odin_Theme_Options {
      */
     public function callback_multicheckbox( $args ) {
         $tab = $args['tab'];
-        $id = $args['id'];
+        $id  = $args['id'];
 
         $html = '';
         foreach( $args['options'] as $key => $label ) {
@@ -412,7 +412,7 @@ class Odin_Theme_Options {
      */
     public function callback_radio( $args ) {
         $tab = $args['tab'];
-        $id = $args['id'];
+        $id  = $args['id'];
 
         // Sets current option.
         $current = $this->get_option( $tab, $id, $args['default'] );
@@ -441,7 +441,7 @@ class Odin_Theme_Options {
      */
     public function callback_select( $args ) {
         $tab = $args['tab'];
-        $id = $args['id'];
+        $id  = $args['id'];
 
         // Sets current option.
         $current = $this->get_option( $tab, $id, $args['default'] );
@@ -469,7 +469,7 @@ class Odin_Theme_Options {
      */
     public function callback_color( $args ) {
         $tab = $args['tab'];
-        $id = $args['id'];
+        $id  = $args['id'];
 
         // Sets current option.
         $current = $this->get_option( $tab, $id, $args['default'] );
@@ -491,7 +491,7 @@ class Odin_Theme_Options {
      */
     public function callback_upload( $args ) {
         $tab = $args['tab'];
-        $id = $args['id'];
+        $id  = $args['id'];
 
         // Sets current option.
         $current = esc_url( $this->get_option( $tab, $id, $args['default'] ) );
@@ -513,14 +513,14 @@ class Odin_Theme_Options {
      */
     public function callback_image( $args ) {
         $tab = $args['tab'];
-        $id = $args['id'];
+        $id  = $args['id'];
 
         // Sets current option.
         $current = $this->get_option( $tab, $id, $args['default'] );
 
         // Gets placeholder image.
         $image = get_template_directory_uri() . '/core/images/placeholder.png';
-        $html = '<span class="odin-default-image" style="display: none;">' . $image . '</span>';
+        $html  = '<span class="odin-default-image" style="display: none;">' . $image . '</span>';
 
         if ( $current ) {
             $image = wp_get_attachment_image_src( $current, 'thumbnail' );
