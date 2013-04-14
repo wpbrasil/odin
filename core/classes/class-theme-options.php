@@ -328,18 +328,24 @@ class Odin_Theme_Options {
      * @param array $args Arguments from the option.
      */
     public function callback_editor( $args ) {
-        $tab = $args['tab'];
-        $id = $args['id'];
+        $tab     = $args['tab'];
+        $id      = $args['id'];
+        $options = $args['options'];
 
         // Sets current option.
         $current = wpautop( $this->get_option( $tab, $id, $args['default'] ) );
 
         // Sets input size.
-        $size = isset( $args['size'] ) && !is_null( $args['size'] ) ? $args['size'] : '600px';
+        $size = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : '600px';
+
+        // Set default options.
+        if ( empty( $options ) ) {
+            $options = array( 'textarea_rows' => 10 );
+        }
 
         echo '<div style="width: ' . $size . ';">';
 
-            wp_editor( $current, $tab . '[' . $id . ']', array( 'textarea_rows' => 10 ) );
+            wp_editor( $current, $tab . '[' . $id . ']', $options );
 
         echo '</div>';
 
