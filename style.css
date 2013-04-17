@@ -647,14 +647,14 @@ p img,
 }
 .widget_calendar #wp-calendar th {
   background: #f4f4f4;
-  border-top: 1px solid #cccccc;
-  border-bottom: 1px solid #cccccc;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
   font-weight: bold;
 }
 .widget_calendar #wp-calendar tfoot td {
   background: #f4f4f4;
-  border-top: 1px solid #cccccc;
-  border-bottom: 1px solid #cccccc;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
 
 /* Search Widget */
@@ -914,7 +914,7 @@ p img,
 }
 .page-nav a, .page-nav span {
   background: #eee;
-  border: 1px solid #dddddd;
+  border: 1px solid #ddd;
   display: inline-block;
   padding: 5px 10px;
   margin: 5px 2px;
@@ -1037,7 +1037,7 @@ textarea.error {
   *margin-right: 1.67292%;
   *margin-left: 1.67292%;
   float: left;
-  border-top: 1px solid #dddddd;
+  border-top: 1px solid #ddd;
   margin-top: 20px;
   padding: 20px 0 20px;
   text-align: center;
@@ -1096,7 +1096,7 @@ textarea.error {
 @media print {
   * {
     background: transparent !important;
-    color: black !important;
+    color: #000 !important;
     /* Black prints faster: h5bp.com/s */
     box-shadow: none !important;
     text-shadow: none !important;
@@ -1127,7 +1127,7 @@ textarea.error {
   }
 
   pre, blockquote {
-    border: 1px solid #999999;
+    border: 1px solid #999;
     page-break-inside: avoid;
   }
 

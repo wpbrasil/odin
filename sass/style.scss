@@ -14,24 +14,24 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 @import "compass/css3";
 
 // Base configuration
-@import "base";
-@import "source/functions";
-@import "source/mixins";
+@import "settings";
+@import "utilities/functions";
+@import "utilities/mixins";
 
 // Reset
-@import "source/reset";
+@import "partials/reset";
 
 // Global styles
-@import "source/global";
+@import "partials/global";
 
 // WordPress Core styles
-@import "source/wpcore";
+@import "wordpress/core";
 
 // CSS Helpers
-@import "source/helpers";
+@import "utilities/helpers";
 
 // Grid System
-@import "source/grid";
+@import "utilities/grid";
 $columns: 12;
 $page-width: 1180px;
 $column-width: $page-width / $columns;
@@ -265,7 +265,7 @@ $iesupport: true;
 /* =Comments
 -------------------------------------------------------------- */
 
-@import "source/comments";
+@import "wordpress/comments";
 
 .commentlist {
     margin: 0;
@@ -411,4 +411,4 @@ $iesupport: true;
 }
 
 // Print styles
-@import "source/print";
+@import "partials/print";
