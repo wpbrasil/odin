@@ -3,43 +3,57 @@
 /**
  * Pagination.
  *
- * @global array $wp_query Global wordpress query tag.
+ * @global array $wp_query   Current WP Query.
+ * @global array $wp_rewrite URL rewrite rules.
  *
- * @param int $mid         Total of items that will show along with the current page.
- * @param int $end         Total of items displayed for the last few pages.
- * @param bool $show       Show all items.
+ * @param int $mid           Total of items that will show along with the current page.
+ * @param int $end           Total of items displayed for the last few pages.
+ * @param bool $show         Show all items.
  *
- * @return string          Return the pagination.
+ * @return string            Return the pagination.
  */
 function odin_pagination( $mid = 2, $end = 1, $show = false ) {
 
     // Prevent show pagination number if Infinite Scroll of JetPack is active.
     if ( ! isset( $_GET[ 'infinity' ] ) ) {
 
-        global $wp_query;
+        global $wp_query, $wp_rewrite;
         $total_pages = $wp_query->max_num_pages;
 
         if ( $total_pages > 1 ) {
             $current_page = max( 1, get_query_var( 'paged' ) );
+            $url_base = $wp_rewrite->pagination_base;
+            $big = 999999999; // Need an unlikely integer.
 
-            $pagination = '<div class="page-nav">';
-            $pagination .= paginate_links( array(
-                'base' => get_pagenum_link(1) . '%_%',
-                'format' => '/page/%#%',
-                'current' => $current_page,
-                'total' => $total_pages,
-                'show_all' => $show,
-                'end_size' => $end,
-                'mid_size' => $mid,
-                'prev_text' => __( '&laquo; Anterior', 'odin' ),
-                'next_text' => __( 'Pr&oacute;ximo &raquo;', 'odin' ),
-                    ));
-            $pagination .= '</div>';
+            // Sets the URL format.
+            if ( $wp_rewrite->permalink_structure ) {
+                $format = '?paged=%#%';
+            } else {
+                $format = '/' . $url_base . '/%#%';
+            }
+
+            // Sets the paginate_links arguments.
+            $arguments = apply_filters( 'odin_pagination_args', array(
+                    'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+                    'format' => $format,
+                    'current' => $current_page,
+                    'total' => $total_pages,
+                    'show_all' => $show,
+                    'end_size' => $end,
+                    'mid_size' => $mid,
+                    'prev_text' => __( '&laquo; Anterior', 'odin' ),
+                    'next_text' => __( 'Pr&oacute;ximo &raquo;', 'odin' ),
+                )
+            );
+
+            $pagination = '<div class="page-nav">' . paginate_links( $arguments ) . '</div>';
 
             // Prevents duplicate bars in the middle of the url.
-            $html = str_replace( '//page/', '/page/', $pagination );
+            if ( $url_base ) {
+                $pagination = str_replace( '//' . $url_base . '/', '/' . $url_base . '/', $pagination );
+            }
 
-            return $html;
+            return $pagination;
         }
     }
 }
