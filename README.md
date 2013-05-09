@@ -11,7 +11,7 @@ Bem vindos ao Odin, um tema base desenvolvido pelo [Grupo WordPress Brasil](http
 
 ## Installation - Instalação ##
 
-Send the folter "odin" to the default themes folder from WordPress `wp-content/themes` or send the zipball using the WordPress Theme Installer.
+Send the folder "odin" to the default themes folder from WordPress `wp-content/themes` or send the zipball using the WordPress Theme Installer.
 
 Envie a pasta "odin" para a pasta de temas padrão do WordPress `wp-content/themes` ou simplesmente envie o arquivo zipado utilizando o instalador de temas do WordPress.
 
@@ -21,7 +21,7 @@ Informations about how-to use the classes and functions from Odin is on the [Off
 
 Informações de como usar as classes e funções do Odin na [Wiki Oficial](https://github.com/wpbrasil/odin/wiki/_pages)
 
-## Plugins Support - Suportes a plugins ##
+## Plugins Support - Suporte a plugins ##
 
 Odin supports natively these plugins:
 
@@ -49,9 +49,9 @@ Odin suporta nativamente os plugins:
 * [FitVids](https://github.com/davatron5000/FitVids.js)
 * [Odin Grid System](https://github.com/wpbrasil/odin-grid-system)
 
-## Report Bugs and Sugestions - Informe Bugs e Sugestões ##
+## Bugs and Sugestions - Bugs e Sugestões ##
 
-The Odin Framework is an **Open Source** project. Anone can (and should) help us to improve it.
+The Odin Framework is an **Open Source** project. Anyone can (and should) help us to improve it.
 
 Report bugs or do suggestions using the [Issues/Project Forum](https://github.com/wpbrasil/odin/issues)
 
@@ -59,13 +59,13 @@ O Odin é um projeto **Open Source**. Qualquer um pode (e deveria) ajudar a melh
 
 Reporte bugs ou faça sugestões utilizando o [Issues/Fórum do Projeto](https://github.com/wpbrasil/odin/issues)
 
-## Contribute with the Project - Contribua com o Projeto ##
+## Contribute to the Project - Contribua com o Projeto ##
 
-To contribute, just click on the **Fork** button, create a *Branch*, improve the code and send a **Pull Request**.
+To contribute, just click on the **Fork** button, create a *Branch*, improve the code and send it with a **Pull Request**.
 
 More details about how to contribute and send Pull Requests in [GitHub Collaborating](https://help.github.com/categories/63/articles).
 
-Para contribuir basta clicar no botão **Fork**, criar um *Branch*, arrumar o código e enviar um **Pull Request**.
+Para contribuir basta clicar no botão **Fork**, criar um *Branch*, arrumar o código e enviá-lo com um **Pull Request**.
 
 Mais detalhes de como contribuir e enviar Pull Requests em [GitHub Collaborating](https://help.github.com/categories/63/articles).
 
