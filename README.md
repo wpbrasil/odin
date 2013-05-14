@@ -73,6 +73,10 @@ Mais detalhes de como contribuir e enviar Pull Requests em [GitHub Collaborating
 
 ## Changelog ##
 
+#### v1.2.3 - 14/05/2013 ####
+
+* Fixed core admin.js.
+
 #### v1.2.2 - 14/04/2013 ####
 
 * Improved file structure in SASS folder.
