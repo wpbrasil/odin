@@ -13,6 +13,11 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 // Compass plugins
 @import "compass/css3";
 
+// Twitter Boostrap
+$iconSpritePath: "images/bootstrap/glyphicons-halflings.png";
+$iconWhiteSpritePath: "images/bootstrap/glyphicons-halflings-white.png";
+@import "bootstrap/bootstrap";
+
 // Base configuration
 @import "settings";
 @import "utilities/functions";
