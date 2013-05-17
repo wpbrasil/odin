@@ -70,67 +70,7 @@ $textMarginLeft: 2.5em;
 -------------------------------------------------------------- */
 
 #main-navigation {
-    @include clearfix();
-    background: desaturate($linkColor, 30%);
-    margin-bottom: $textMarginBottom;
 
-    a {
-        color: #fff;
-        display: block;
-        font-size: 15px;
-        line-height: 22px;
-        padding: 10px;
-    }
-
-    li {
-        float: left;
-        margin: 0;
-        position: relative;
-    }
-
-    ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-
-        ul {
-            background: darken($linkColor, 5%);
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            z-index: 9999;
-
-            a {
-                width: 150px;
-            }
-
-            li {
-                float: none;
-            }
-
-            ul {
-                top: 0;
-                left: 100%;
-            }
-        }
-    }
-
-
-    li:hover > a,
-    ul ul :hover > a,
-    a:focus,
-    .current-menu-item > a,
-    .current-menu-ancestor > a,
-    .current_page_item > a,
-    .current_page_ancestor > a {
-        background: darken($linkColor, 10%);
-        text-decoration: none;
-    }
-
-    ul li:hover > ul {
-        display: block;
-    }
 }
 
 /* =Search Form
