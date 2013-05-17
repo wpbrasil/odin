@@ -18,37 +18,21 @@ $iconSpritePath: "images/bootstrap/glyphicons-halflings.png";
 $iconWhiteSpritePath: "images/bootstrap/glyphicons-halflings-white.png";
 @import "bootstrap/bootstrap";
 
-// Base configuration
-@import "settings";
-@import "utilities/functions";
-@import "utilities/mixins";
-
-// Reset
-@import "partials/reset";
-
-// Global styles
-@import "partials/global";
+// Odin SCSS base configuration
+$textMarginBottom: 1.625em;
+$textMarginLeft: 2.5em;
 
 // WordPress Core styles
 @import "wordpress/core";
 
-// CSS Helpers
+// Odin CSS Helpers
 @import "utilities/helpers";
-
-// Grid System
-@import "utilities/grid";
-$columns: 12;
-$page-width: 1180px;
-$column-width: $page-width / $columns;
-$column-padding: 40px;
-$grid-type: elastic;
-$iesupport: true;
 
 /* =Header
 -------------------------------------------------------------- */
 
 #header {
-    @include span-column(12);
+
 
     hgroup {
 
@@ -56,8 +40,8 @@ $iesupport: true;
 }
 
 .site-title {
-    font-size: $headingFontSize;
-    line-height: headingsLineHeight($headingFontSize);
+    font-size: $baseFontSize * 2.75; // ~38px
+    line-height: $baseLineHeight * 2;
 
     a {
 
@@ -160,7 +144,7 @@ $iesupport: true;
 -------------------------------------------------------------- */
 
 .wrapper {
-    @include container();
+
 }
 
 #main {
@@ -168,11 +152,11 @@ $iesupport: true;
 }
 
 #primary {
-    @include span-column(8);
+
 
     /* Full Width */
     &.no-sidebar {
-        @include span-column(12);
+
     }
 }
 
@@ -181,7 +165,7 @@ $iesupport: true;
 }
 
 #secondary {
-    @include span-column(4);
+
 }
 
 .entry-title {
@@ -373,7 +357,7 @@ $iesupport: true;
 -------------------------------------------------------------- */
 
 #footer {
-    @include span-column(12);
+
     border-top: 1px solid #ddd;
     margin-top: 20px;
     padding: 20px 0 20px;
@@ -390,30 +374,14 @@ $iesupport: true;
     }
 
     .widget {
-        @include span-column(3);
+
     }
 }
 
 /* =Responsive Styles
 -------------------------------------------------------------- */
 
-.mobile-only {
-    display: none;
-}
-
-@include breakpoint( 600px ) {
-    .mobile-only {
-        display: block;
-    }
-
-    #primary {
-        @include span-column(12);
-    }
-
-    #secondary {
-        @include span-column(12);
-    }
-}
+@import "bootstrap/responsive";
 
 // Print styles
 @import "partials/print";
