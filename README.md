@@ -33,6 +33,7 @@ Odin suporta nativamente os plugins:
 
 ## References - Referências ##
 
+* [Twitter Bootstrap](https://github.com/twitter/bootstrap)
 * [HTML5shiv](https://github.com/aFarkas/html5shiv)
 * [matchMedia() polyfill](https://github.com/paulirish/matchMedia.js/)
 * [Respond.js](https://github.com/scottjehl/Respond)
@@ -47,7 +48,6 @@ Odin suporta nativamente os plugins:
 * [Lazy Load](http://www.appelsiini.net/projects/lazyload)
 * [jQuery Validation](https://github.com/jzaefferer/jquery-validation)
 * [FitVids](https://github.com/davatron5000/FitVids.js)
-* [Odin Grid System](https://github.com/wpbrasil/odin-grid-system)
 
 ## Bugs and Sugestions - Bugs e Sugestões ##
 
@@ -73,14 +73,20 @@ Mais detalhes de como contribuir e enviar Pull Requests em [GitHub Collaborating
 
 ## Changelog ##
 
+#### v1.3.0 - 17/05/2013 ####
+
+* Added Twitter Bootstrap.
+* Removed old SASS files.
+* Added Grunt task to updated and install the Twitter Bootstrap.
+
 #### v1.2.6 - 17/05/2013 ####
 
-* Reordered the functions.php to load scripts always last
-* Fix in the Photoswipe
+* Reordered the functions.php to load scripts always last.
+* Fixed the Photoswipe.
 
 #### v1.2.5 - 16/05/2013 ####
 
-* Fix Photoswipe featue
+* Fixed the Photoswipe feature.
 
 #### v1.2.4 - 15/05/2013 ####
 

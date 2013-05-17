@@ -36,3 +36,7 @@ Fazer o Grunt.js assistir o seu projeto:
 Comprimir todas as imagens da pasta `images/`:
 
     $ grunt imagemin
+
+Atualizar os arquivos do Twitter Bootstrap:
+
+    $ grunt bootstrap
