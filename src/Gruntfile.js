@@ -1,4 +1,5 @@
 'use strict';
+
 module.exports = function(grunt) {
 
     grunt.initConfig({
@@ -144,6 +145,62 @@ module.exports = function(grunt) {
                     '../**/README.md'
                 ]
             }
+        },
+
+        // downloads dependencies
+        curl: {
+            bootstrap: {
+                src: 'https://github.com/jlong/sass-twitter-bootstrap/archive/master.zip',
+                dest: 'tmp/bootstrap.zip'
+            }
+        },
+
+        // unzip files
+        unzip: {
+            bootstrap_scss: {
+                src: 'tmp/bootstrap.zip',
+                dest: 'tmp/'
+            }
+        },
+
+        // renames and moves directories and files
+        rename: {
+            bootstrap_scss: {
+                src: 'tmp/sass-twitter-bootstrap-master/lib',
+                dest: '../sass/bootstrap'
+            },
+            bootstrap_js: {
+                src: 'tmp/sass-twitter-bootstrap-master/js',
+                dest: '../js/bootstrap'
+            },
+            bootstrap_img: {
+                src: 'tmp/sass-twitter-bootstrap-master/img',
+                dest: '../images/bootstrap'
+            },
+            bootstrapscss_to_bootstrap_scss: {
+                src: '../sass/bootstrap/bootstrap.scss',
+                dest: '../sass/bootstrap/_bootstrap.scss'
+            },
+            responsivescss_to_responsive_scss: {
+                src: '../sass/bootstrap/responsive.scss',
+                dest: '../sass/bootstrap/_responsive.scss'
+            }
+        },
+
+        // cleans directories and files
+        clean: {
+            prepare: [
+                "tmp",
+                "../sass/bootstrap/",
+                "../js/bootstrap/",
+                "../images/bootstrap/"
+            ],
+            bootstrap: [
+                "../sass/bootstrap/tests/",
+                "../js/bootstrap/tests/",
+                "../js/bootstrap/.jshintrc",
+                "tmp"
+            ]
         }
     });
 
@@ -156,11 +213,31 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-rsync');
     grunt.loadNpmTasks('grunt-ftp-deploy');
 
+    // extra tasks
+    grunt.loadNpmTasks('grunt-curl');
+    grunt.loadNpmTasks('grunt-zip');
+    grunt.loadNpmTasks('grunt-rename');
+    grunt.loadNpmTasks('grunt-clean');
+
     // register task
     grunt.registerTask('default', [
         'jshint',
         'compass',
         'uglify'
+    ]);
+
+    // bootstrap task
+    grunt.registerTask('bootstrap', [
+        'clean:prepare',
+        'curl:bootstrap',
+        'unzip:bootstrap_scss',
+        'rename:bootstrap_scss',
+        'rename:bootstrap_js',
+        'rename:bootstrap_img',
+        'rename:bootstrapscss_to_bootstrap_scss',
+        'rename:responsivescss_to_responsive_scss',
+        'clean:bootstrap',
+        'compass'
     ]);
 
 };
