@@ -148,16 +148,11 @@ $textMarginLeft: 2.5em;
 }
 
 #main {
-    @include clearfix();
+
 }
 
 #primary {
 
-
-    /* Full Width */
-    &.no-sidebar {
-
-    }
 }
 
 #content {

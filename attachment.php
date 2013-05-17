@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<div id="primary" class="no-sidebar">
+<div id="primary" class="span12">
     <div id="content" role="main" itemscope itemtype="http://schema.org/MediaObject">
         <?php while ( have_posts() ) : the_post(); ?>
             <article <?php post_class(); ?>>

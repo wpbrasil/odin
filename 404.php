@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<div id="primary" class="no-sidebar">
+<div id="primary" class="span12">
     <div id="content" role="main">
         <article class="post error404 not-found">
             <header class="entry-header">

@@ -6116,22 +6116,6 @@ p img,
 -------------------------------------------------------------- */
 /* =Content
 -------------------------------------------------------------- */
-#main {
-  *zoom: 1;
-}
-#main:before, #main:after {
-  display: table;
-  content: "";
-  line-height: 0;
-}
-#main:after {
-  clear: both;
-}
-
-#primary {
-  /* Full Width */
-}
-
 .entry-title {
   margin-bottom: 0.4em;
 }

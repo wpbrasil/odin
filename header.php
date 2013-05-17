@@ -7,7 +7,7 @@
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title><?php wp_title( '|', true, 'right' ); ?></title>
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
@@ -18,7 +18,7 @@
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?> itemscope="" itemtype="http://schema.org/WebPage">
-    <div class="wrapper">
+    <div class="container">
         <header id="header" role="banner">
             <?php if ( is_home() ) : ?>
                 <hgroup>
@@ -39,4 +39,4 @@
                 <?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?>
             </nav><!-- #main-menu -->
         </header><!-- #header -->
-        <div id="main">
+        <div id="main" class="row">
