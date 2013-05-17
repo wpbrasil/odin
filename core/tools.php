@@ -243,7 +243,7 @@ function odin_breadcrumbs( $homepage = 'In&iacute;cio', $delimiter = '<span clas
                 echo '<li itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" href="' . get_category_link( $category->term_id ) . '"><span itemprop="title">' . $category->name . '</span></a>' . $delimiter . '</li>';
             }
 
-            echo $current_before . '<span class="current" itemprop="title">' . get_the_title() . '</span>' . $current_after;
+            echo $current_before . '<span class="active" itemprop="title">' . get_the_title() . '</span>' . $current_after;
 
         // Single attachment.
         } elseif ( is_attachment() ) {
@@ -322,17 +322,17 @@ function odin_breadcrumbs( $homepage = 'In&iacute;cio', $delimiter = '<span clas
 
             echo '<li itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" href="' . get_month_link( get_the_time( 'Y' ),get_the_time( 'm' ) ) . '"><span itemprop="title">' . get_the_time( 'F' ) . '</span></a>' . $delimiter . '</li>';
 
-            echo $current_before . '<span class="current" itemprop="title">' . get_the_time( 'd' ) . $current_after . '</span>';
+            echo $current_before . '<span class="active" itemprop="title">' . get_the_time( 'd' ) . $current_after . '</span>';
 
         // Archives per month.
         } elseif ( is_month() ) {
             echo '<li itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" href="' . get_year_link( get_the_time( 'Y' ) ) . '"><span itemprop="title">' . get_the_time( 'Y' ) . '</span></a>' . $delimiter . '</li>';
 
-            echo $current_before . '<span class="current" itemprop="title">' . get_the_time( 'F' ) . $current_after . '</span>';
+            echo $current_before . '<span class="active" itemprop="title">' . get_the_time( 'F' ) . $current_after . '</span>';
 
         // Archives per year.
         } elseif ( is_year() ) {
-            echo $current_before . '<span class="current" itemprop="title">' . get_the_time( 'Y' ) . $current_after . '</span>';
+            echo $current_before . '<span class="active" itemprop="title">' . get_the_time( 'Y' ) . $current_after . '</span>';
 
         // Archive fallback for custom taxonomies.
         } elseif ( is_archive() ) {
