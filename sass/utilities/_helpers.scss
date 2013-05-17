@@ -45,3 +45,8 @@
     width: auto;
     z-index: 100000;
 }
+
+/* Remove margin left */
+.no-margin-left {
+    margin-left: 0 !important;
+}
