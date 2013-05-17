@@ -28,6 +28,12 @@ $textMarginLeft: 2.5em;
 // Odin CSS Helpers
 @import "utilities/helpers";
 
+/* =General
+-------------------------------------------------------------- */
+html {
+    overflow-y: scroll;
+}
+
 /* =Header
 -------------------------------------------------------------- */
 
