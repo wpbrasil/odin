@@ -1908,36 +1908,42 @@ table {
   border-spacing: 0;
 }
 
-.table {
+.table, .entry-content table {
   width: 100%;
   margin-bottom: 20px;
 }
-.table th,
-.table td {
+.table th, .entry-content table th,
+.table td,
+.entry-content table td {
   padding: 8px;
   line-height: 20px;
   text-align: left;
   vertical-align: top;
   border-top: 1px solid #dddddd;
 }
-.table th {
+.table th, .entry-content table th {
   font-weight: bold;
 }
-.table thead th {
+.table thead th, .entry-content table thead th {
   vertical-align: bottom;
 }
-.table caption + thead tr:first-child th,
+.table caption + thead tr:first-child th, .entry-content table caption + thead tr:first-child th,
 .table caption + thead tr:first-child td,
+.entry-content table caption + thead tr:first-child td,
 .table colgroup + thead tr:first-child th,
+.entry-content table colgroup + thead tr:first-child th,
 .table colgroup + thead tr:first-child td,
+.entry-content table colgroup + thead tr:first-child td,
 .table thead:first-child tr:first-child th,
-.table thead:first-child tr:first-child td {
+.entry-content table thead:first-child tr:first-child th,
+.table thead:first-child tr:first-child td,
+.entry-content table thead:first-child tr:first-child td {
   border-top: 0;
 }
-.table tbody + tbody {
+.table tbody + tbody, .entry-content table tbody + tbody {
   border-top: 2px solid #dddddd;
 }
-.table .table {
+.table .table, .entry-content table .table, .table .entry-content table, .entry-content .table table, .entry-content table table {
   background-color: white;
 }
 
@@ -2029,8 +2035,9 @@ table {
   border-top-right-radius: 4px;
 }
 
-.table-striped tbody > tr:nth-child(odd) > td,
-.table-striped tbody > tr:nth-child(odd) > th {
+.table-striped tbody > tr:nth-child(odd) > td, .entry-content table tbody > tr:nth-child(odd) > td,
+.table-striped tbody > tr:nth-child(odd) > th,
+.entry-content table tbody > tr:nth-child(odd) > th {
   background-color: #f9f9f9;
 }
 
@@ -2048,89 +2055,101 @@ table th[class*="span"],
   margin-left: 0;
 }
 
-.table td.span1,
-.table th.span1 {
+.table td.span1, .entry-content table td.span1,
+.table th.span1,
+.entry-content table th.span1 {
   float: none;
   width: 44px;
   margin-left: 0;
 }
-.table td.span2,
-.table th.span2 {
+.table td.span2, .entry-content table td.span2,
+.table th.span2,
+.entry-content table th.span2 {
   float: none;
   width: 124px;
   margin-left: 0;
 }
-.table td.span3,
-.table th.span3 {
+.table td.span3, .entry-content table td.span3,
+.table th.span3,
+.entry-content table th.span3 {
   float: none;
   width: 204px;
   margin-left: 0;
 }
-.table td.span4,
-.table th.span4 {
+.table td.span4, .entry-content table td.span4,
+.table th.span4,
+.entry-content table th.span4 {
   float: none;
   width: 284px;
   margin-left: 0;
 }
-.table td.span5,
-.table th.span5 {
+.table td.span5, .entry-content table td.span5,
+.table th.span5,
+.entry-content table th.span5 {
   float: none;
   width: 364px;
   margin-left: 0;
 }
-.table td.span6,
-.table th.span6 {
+.table td.span6, .entry-content table td.span6,
+.table th.span6,
+.entry-content table th.span6 {
   float: none;
   width: 444px;
   margin-left: 0;
 }
-.table td.span7,
-.table th.span7 {
+.table td.span7, .entry-content table td.span7,
+.table th.span7,
+.entry-content table th.span7 {
   float: none;
   width: 524px;
   margin-left: 0;
 }
-.table td.span8,
-.table th.span8 {
+.table td.span8, .entry-content table td.span8,
+.table th.span8,
+.entry-content table th.span8 {
   float: none;
   width: 604px;
   margin-left: 0;
 }
-.table td.span9,
-.table th.span9 {
+.table td.span9, .entry-content table td.span9,
+.table th.span9,
+.entry-content table th.span9 {
   float: none;
   width: 684px;
   margin-left: 0;
 }
-.table td.span10,
-.table th.span10 {
+.table td.span10, .entry-content table td.span10,
+.table th.span10,
+.entry-content table th.span10 {
   float: none;
   width: 764px;
   margin-left: 0;
 }
-.table td.span11,
-.table th.span11 {
+.table td.span11, .entry-content table td.span11,
+.table th.span11,
+.entry-content table th.span11 {
   float: none;
   width: 844px;
   margin-left: 0;
 }
-.table td.span12,
-.table th.span12 {
+.table td.span12, .entry-content table td.span12,
+.table th.span12,
+.entry-content table th.span12 {
   float: none;
   width: 924px;
   margin-left: 0;
 }
 
-.table tbody tr.success > td {
+.table tbody tr.success > td, .entry-content table tbody tr.success > td {
   background-color: #dff0d8;
 }
-.table tbody tr.error > td {
+.table tbody tr.error > td, .entry-content table tbody tr.error > td {
   background-color: #f2dede;
 }
-.table tbody tr.warning > td {
+.table tbody tr.warning > td, .entry-content table tbody tr.warning > td {
   background-color: #fcf8e3;
 }
-.table tbody tr.info > td {
+.table tbody tr.info > td, .entry-content table tbody tr.info > td {
   background-color: #d9edf7;
 }
 
