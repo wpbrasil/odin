@@ -73,6 +73,11 @@ Mais detalhes de como contribuir e enviar Pull Requests em [GitHub Collaborating
 
 ## Changelog ##
 
+#### v1.2.6 - 17/05/2013 ####
+
+* Reordered the functions.php to load scripts always last
+* Fix in the Photoswipe
+
 #### v1.2.5 - 16/05/2013 ####
 
 * Fix Photoswipe featue

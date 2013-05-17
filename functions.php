@@ -115,46 +115,6 @@ function odin_widgets_init() {
 add_action( 'widgets_init', 'odin_widgets_init' );
 
 /**
- * Load site scripts.
- */
-function odin_enqueue_scripts() {
-    $template_url = get_template_directory_uri();
-
-    wp_enqueue_script( 'jquery');
-
-    // bxSlider.
-    // wp_register_script( 'bxslider', $template_url . '/js/jquery.bxslider.min.js', array(), null, true );
-    // wp_enqueue_script( 'bxslider' );
-
-    // General scripts.
-    if ( false == ODIN_GRUNT_SUPPORT ) {
-
-        // FitVids.
-        wp_register_script( 'fitvids', $template_url . '/js/jquery.fitvids.min.js', array(), null, true );
-        wp_enqueue_script( 'fitvids' );
-
-        // Main jQuery.
-        wp_register_script( 'odin-main', $template_url . '/js/main.js', array(), null, true );
-        wp_enqueue_script( 'odin-main' );
-    } else {
-        wp_register_script( 'odin-main-min', $template_url . '/js/main.min.js', array(), null, true );
-        wp_enqueue_script( 'odin-main-min' );
-    }
-
-    // Load Thread comments WordPress script.
-    if ( is_singular() && get_option( 'thread_comments' ) ) {
-        wp_enqueue_script( 'comment-reply' );
-    }
-
-    if ( is_single() ) {
-        wp_register_script( 'validate', $template_url . '/js/jquery.validate.min.js', array(), null, true );
-        wp_enqueue_script( 'validate' );
-    }
-}
-
-add_action( 'wp_enqueue_scripts', 'odin_enqueue_scripts' );
-
-/**
  * Flush Rewrite Rules for new CPTs and Taxonomies.
  */
 function odin_flush_rewrite() {
@@ -255,7 +215,7 @@ require_once get_template_directory() . '/inc/admin.php';
 /**
  * Photoswipe.
  */
-// require_once get_template_directory() . '/core/photoswipe/photoswipe-init.php';
+ require_once get_template_directory() . '/core/photoswipe/photoswipe-init.php';
 
 /**
  * LazyLoad.
@@ -270,3 +230,43 @@ require_once get_template_directory() . '/inc/admin.php';
 // require_once get_template_directory() . '/core/classes/class-post-type.php';
 // require_once get_template_directory() . '/core/classes/class-taxonomy.php';
 // require_once get_template_directory() . '/core/classes/class-metabox.php';
+
+/**
+ * Load site scripts.
+ */
+function odin_enqueue_scripts() {
+    $template_url = get_template_directory_uri();
+
+    wp_enqueue_script( 'jquery');
+
+    // bxSlider.
+    // wp_register_script( 'bxslider', $template_url . '/js/jquery.bxslider.min.js', array(), null, true );
+    // wp_enqueue_script( 'bxslider' );
+
+    // General scripts.
+    if ( false == ODIN_GRUNT_SUPPORT ) {
+    
+        // FitVids.
+        wp_register_script( 'fitvids', $template_url . '/js/jquery.fitvids.min.js', array(), null, true );
+        wp_enqueue_script( 'fitvids' );
+
+        // Main jQuery.
+        wp_register_script( 'odin-main', $template_url . '/js/main.js', array(), null, true );
+        wp_enqueue_script( 'odin-main' );
+    } else {
+        wp_register_script( 'odin-main-min', $template_url . '/js/main.min.js', array(), null, true );
+        wp_enqueue_script( 'odin-main-min' );
+    }        
+
+    // Load Thread comments WordPress script.
+    if ( is_singular() && get_option( 'thread_comments' ) ) {
+        wp_enqueue_script( 'comment-reply' );
+    }
+
+    if ( is_single() ) {
+        wp_register_script( 'validate', $template_url . '/js/jquery.validate.min.js', array(), null, true );
+        wp_enqueue_script( 'validate' );
+    }
+}
+
+add_action( 'wp_enqueue_scripts', 'odin_enqueue_scripts' );
