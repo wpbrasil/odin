@@ -41,12 +41,13 @@ function odin_pagination( $mid = 2, $end = 1, $show = false ) {
                     'show_all' => $show,
                     'end_size' => $end,
                     'mid_size' => $mid,
+                    'type' => 'list',
                     'prev_text' => __( '&laquo; Anterior', 'odin' ),
                     'next_text' => __( 'Pr&oacute;ximo &raquo;', 'odin' ),
                 )
             );
 
-            $pagination = '<div class="page-nav">' . paginate_links( $arguments ) . '</div>';
+            $pagination = '<div class="pagination">' . paginate_links( $arguments ) . '</div>';
 
             // Prevents duplicate bars in the middle of the url.
             if ( $url_base ) {
