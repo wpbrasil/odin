@@ -33,5 +33,20 @@
         <span class="nocomments"><?php _e( 'Os coment&aacute;rios est&atilde;o fechados.', 'odin' ); ?></span>
     <?php endif; ?>
 
-    <?php comment_form( array( 'comment_notes_after' => '' ) ); ?>
+    <?php
+        $commenter = wp_get_current_commenter();
+        $req = get_option( 'require_name_email' );
+        $aria_req = ( $req ? " aria-required='true'" : '' );
+
+        comment_form(
+        array(
+            'comment_notes_after' => '',
+            'comment_field' => '<div class="comment-form-comment control-group"><label class="control-label" for="comment">' . _x( 'Coment&aacute;rio', 'odin' ) . '</label><div class="controls"><textarea id="comment" name="comment" cols="45" rows="8" class="input-block-level" aria-required="true"></textarea></div></div>',
+            'fields' => apply_filters( 'comment_form_default_fields', array(
+                'author' => '<div class="comment-form-author control-group">' . '<label class="control-label" for="author">' . __( 'Nome', 'odin' ) . ( $req ? '<span class="required"> *</span>' : '' ) . '</label><div class="controls"><input class="span3" id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' /></div></div>',
+                'email' => '<div class="comment-form-email control-group"><label class="control-label" for="email">' . __( 'E-mail', 'odin' ) . ( $req ? '<span class="required"> *</span>' : '' ) . '</label><div class="controls"><input class="span3" id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' /></div></div>',
+                'url' => '<div class="comment-form-url control-group"><label class="control-label" for="url">' . __( 'Website', 'odin' ) . '</label>' . '<div class="controls"><input class="span3" id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" /></div></div>' ) )
+        )
+    ); ?>
 </div><!-- #comments -->
+

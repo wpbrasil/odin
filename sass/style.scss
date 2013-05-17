@@ -361,6 +361,15 @@ $textMarginLeft: 2.5em;
     }
 }
 
+/* =Forms
+-------------------------------------------------------------- */
+
+input[type="submit"],
+input[type="reset"],
+button {
+    @extend .btn;
+}
+
 /* =Responsive Styles
 -------------------------------------------------------------- */
 
