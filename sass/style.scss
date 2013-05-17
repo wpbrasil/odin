@@ -33,10 +33,19 @@ $textMarginLeft: 2.5em;
 
 #header {
 
-
     hgroup {
 
     }
+}
+
+.site-title,
+.site-description {
+    margin: ($baseLineHeight / 2) 0;
+    font-family: $headingsFontFamily;
+    font-weight: $headingsFontWeight;
+    line-height: $baseLineHeight;
+    color: $headingsColor;
+    text-rendering: optimizelegibility; // Fix the character spacing for headings
 }
 
 .site-title {
@@ -53,9 +62,8 @@ $textMarginLeft: 2.5em;
 }
 
 .site-description {
-    font-size: headingsLevels(1);
-    line-height: headingsLineHeight(headingsLevels(1));
-    margin-bottom: 1em;
+    font-size: $baseFontSize * 2.25; // ~32px
+    line-height: $baseLineHeight * 2;
 }
 
 /* =Navigation

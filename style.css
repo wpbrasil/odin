@@ -6244,15 +6244,24 @@ p img,
 
 /* =Header
 -------------------------------------------------------------- */
+.site-title,
+.site-description {
+  margin: 10px 0;
+  font-family: inherit;
+  font-weight: bold;
+  line-height: 20px;
+  color: inherit;
+  text-rendering: optimizelegibility;
+}
+
 .site-title {
   font-size: 38.5px;
   line-height: 40px;
 }
 
 .site-description {
-  font-size: headingsLevels(1);
-  line-height: headingsLineHeight(headingsLevels(1));
-  margin-bottom: 1em;
+  font-size: 31.5px;
+  line-height: 40px;
 }
 
 /* =Navigation
