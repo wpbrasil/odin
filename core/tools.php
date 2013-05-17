@@ -204,17 +204,17 @@ function odin_excerpt( $type = 'excerpt', $limit = 40 ) {
  *
  * @return string            HTML of breadcrumbs.
  */
-function odin_breadcrumbs( $homepage = 'In&iacute;cio', $delimiter = '&raquo;' ) {
+function odin_breadcrumbs( $homepage = 'In&iacute;cio', $delimiter = '<span class="divider">/</span>' ) {
     // Default html.
-    $current_before = '<span itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb/">';
-    $current_after  = '</span>';
+    $current_before = '<li itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb/">';
+    $current_after  = '</li>';
 
     if ( ! is_home() && ! is_front_page() || is_paged() ) {
         global $post;
 
         // First level.
-        echo '<p id="breadcrumbs" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">';
-        echo '<span itemprop="title"><a href="' . home_url() . '" rel="nofollow" itemprop="url"><span itemprop="title">' . $homepage . '</span></a></span> ' . $delimiter . ' ';
+        echo '<ul id="breadcrumbs" class="breadcrumb" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">';
+        echo '<li itemprop="title"><a href="' . home_url() . '" rel="nofollow" itemprop="url"><span itemprop="title">' . $homepage . '</span></a>' . $delimiter . '</li>';
 
         // Single post.
         if ( is_single() && ! is_attachment() ) {
@@ -224,7 +224,7 @@ function odin_breadcrumbs( $homepage = 'In&iacute;cio', $delimiter = '&raquo;' )
             if ( 'post' != $post->post_type ) {
                 $post_type = get_post_type_object($post->post_type);
 
-                echo '<strong itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb/"><a itemprop="url" href="' . get_post_type_archive_link($post_type->name) . '"><span itemprop="title">' . $post_type->label . '</span></a></strong> ' . $delimiter . ' ';
+                echo '<span itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb/"><a itemprop="url" href="' . get_post_type_archive_link($post_type->name) . '"><span itemprop="title">' . $post_type->label . '</span></a></span> ' . $delimiter . ' ';
 
                 // Gets post type taxonomies.
                 $taxonomy = get_object_taxonomies( $post_type->name );
@@ -233,17 +233,17 @@ function odin_breadcrumbs( $homepage = 'In&iacute;cio', $delimiter = '&raquo;' )
                     $term = get_the_terms( $post->ID, $taxonomy[0] ) ? array_shift( get_the_terms( $post->ID, $taxonomy[0] ) ) : '';
 
                     if ( $term ) {
-                        echo '<strong itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb/"><a itemprop="url" href="' . get_term_link( $term ) . '"><span itemprop="title">' . $term->name . '</span></a></strong> ' . $delimiter . ' ';
+                        echo '<span itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb/"><a itemprop="url" href="' . get_term_link( $term ) . '"><span itemprop="title">' . $term->name . '</span></a></span> ' . $delimiter . ' ';
                     }
                 }
             } else {
                 $category = get_the_category();
                 $category = $category[0];
 
-                echo '<span itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" href="' . get_category_link( $category->term_id ) . '"><span itemprop="title">' . $category->name . '</span></a></span> ' . $delimiter . ' ';
+                echo '<li itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" href="' . get_category_link( $category->term_id ) . '"><span itemprop="title">' . $category->name . '</span></a>' . $delimiter . '</li>';
             }
 
-            echo $current_before . '<strong class="current" itemprop="title">' . get_the_title() . '</strong>' . $current_after;
+            echo $current_before . '<span class="current" itemprop="title">' . get_the_title() . '</span>' . $current_after;
 
         // Single attachment.
         } elseif ( is_attachment() ) {
@@ -251,9 +251,9 @@ function odin_breadcrumbs( $homepage = 'In&iacute;cio', $delimiter = '&raquo;' )
             $category = get_the_category( $parent->ID );
             $category = $category[0];
 
-            echo '<span itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb/"><a itemprop="url" href="' . get_category_link( $category->term_id ) . '"><span itemprop="title">' . $category->name . '</span></a></span> ' . $delimiter . ' ';
+            echo '<li itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb/"><a itemprop="url" href="' . get_category_link( $category->term_id ) . '"><span itemprop="title">' . $category->name . '</span></a>' . $delimiter . '</li>';
 
-            echo '<strong itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb/"><a itemprop="url" href="' . get_permalink( $parent ) . '"><span itemprop="title">' . $parent->post_title . '</span></a></strong> ' . $delimiter . ' ';
+            echo '<span itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb/"><a itemprop="url" href="' . get_permalink( $parent ) . '"><span itemprop="title">' . $parent->post_title . '</span></a></span> ' . $delimiter . ' ';
 
             echo $current_before . get_the_title() . $current_after;
 
@@ -269,7 +269,7 @@ function odin_breadcrumbs( $homepage = 'In&iacute;cio', $delimiter = '&raquo;' )
             while ( $parent_id ) {
                 $page = get_page( $parent_id );
 
-                $breadcrumbs[] = '<strong itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" href="' . get_permalink( $page->ID ) . '"><span itemprop="title">' . get_the_title( $page->ID ) . '</span></a></strong>';
+                $breadcrumbs[] = '<span itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" href="' . get_permalink( $page->ID ) . '"><span itemprop="title">' . get_the_title( $page->ID ) . '</span></a></span>';
                 $parent_id  = $page->post_parent;
             }
 
@@ -318,21 +318,21 @@ function odin_breadcrumbs( $homepage = 'In&iacute;cio', $delimiter = '&raquo;' )
 
         // Archives per days.
         } elseif ( is_day() ) {
-            echo '<span itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb/"><a itemprop="url" href="' . get_year_link( get_the_time( 'Y' ) ) . '"><span itemprop="title">' . get_the_time( 'Y' ) . '</span></a></span> ' . $delimiter . ' ';
+            echo '<li itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb/"><a itemprop="url" href="' . get_year_link( get_the_time( 'Y' ) ) . '"><span itemprop="title">' . get_the_time( 'Y' ) . '</span></a>' . $delimiter . '</li>';
 
-            echo '<span itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" href="' . get_month_link( get_the_time( 'Y' ),get_the_time( 'm' ) ) . '"><span itemprop="title">' . get_the_time( 'F' ) . '</span></a></span> ' . $delimiter . ' ';
+            echo '<li itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" href="' . get_month_link( get_the_time( 'Y' ),get_the_time( 'm' ) ) . '"><span itemprop="title">' . get_the_time( 'F' ) . '</span></a>' . $delimiter . '</li>';
 
-            echo $current_before . '<strong class="current" itemprop="title">' . get_the_time( 'd' ) . $current_after . '</strong>';
+            echo $current_before . '<span class="current" itemprop="title">' . get_the_time( 'd' ) . $current_after . '</span>';
 
         // Archives per month.
         } elseif ( is_month() ) {
-            echo '<span itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" href="' . get_year_link( get_the_time( 'Y' ) ) . '"><span itemprop="title">' . get_the_time( 'Y' ) . '</span></a></span> ' . $delimiter . ' ';
+            echo '<li itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" href="' . get_year_link( get_the_time( 'Y' ) ) . '"><span itemprop="title">' . get_the_time( 'Y' ) . '</span></a>' . $delimiter . '</li>';
 
-            echo $current_before . '<strong class="current" itemprop="title">' . get_the_time( 'F' ) . $current_after . '</strong>';
+            echo $current_before . '<span class="current" itemprop="title">' . get_the_time( 'F' ) . $current_after . '</span>';
 
         // Archives per year.
         } elseif ( is_year() ) {
-            echo $current_before . '<strong class="current" itemprop="title">' . get_the_time( 'Y' ) . $current_after . '</strong>';
+            echo $current_before . '<span class="current" itemprop="title">' . get_the_time( 'Y' ) . $current_after . '</span>';
 
         // Archive fallback for custom taxonomies.
         } elseif ( is_archive() ) {
@@ -346,7 +346,7 @@ function odin_breadcrumbs( $homepage = 'In&iacute;cio', $delimiter = '&raquo;' )
             if ( 0 != $current_object->parent ) {
                 $parent_term = get_term( $current_object->parent, $current_object->taxonomy );
 
-                echo '<span itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb/"><a itemprop="url" href="' . get_term_link( $parent_term ) . '"><span itemprop="title">' . $parent_term->name . '</span></a></span> ' . $delimiter . ' ';
+                echo '<li itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb/"><a itemprop="url" href="' . get_term_link( $parent_term ) . '"><span itemprop="title">' . $parent_term->name . '</span></a>' . $delimiter . '</li>';
             }
 
             echo $current_before . $taxonomy->label . ': ' . $term_name . $current_after;
@@ -366,7 +366,7 @@ function odin_breadcrumbs( $homepage = 'In&iacute;cio', $delimiter = '&raquo;' )
             }
         }
 
-        echo '</p>';
+        echo '</ul>';
     }
 }
 
