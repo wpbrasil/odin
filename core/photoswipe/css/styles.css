@@ -1,9 +1,3 @@
-body { padding: 0; margin: 0; background: #DFDCD1; font-family: "Lucida Grande", Helvetica, Arial,Verdana, sans-serif; color: #444340; }
-h1 { font-size: 1.3em; padding: 15px 10px; margin: 0; }
-h2 { font-size: 1.1em; padding: 10px; margin: 0; }
-img { border: none; }
-a { color: #444340; }
-
 #Header { background: #EEBF02; height: 61px; padding: 0; border-bottom: 1px solid #3c3c3c;  }
 #Header img { display: block; margin: 0 auto 0; }
 

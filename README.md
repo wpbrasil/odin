@@ -73,6 +73,10 @@ Mais detalhes de como contribuir e enviar Pull Requests em [GitHub Collaborating
 
 ## Changelog ##
 
+#### v1.2.5 - 16/05/2013 ####
+
+* Fix Photoswipe featue
+
 #### v1.2.4 - 15/05/2013 ####
 
 * Updated aq_resize to version 1.1.7.
