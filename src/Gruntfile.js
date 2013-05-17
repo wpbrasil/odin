@@ -43,7 +43,7 @@ module.exports = function(grunt) {
                         '../js/main.js'
                     ]
                 }
-            }
+            },
         },
 
         // compass and scss
@@ -150,14 +150,22 @@ module.exports = function(grunt) {
         // downloads dependencies
         curl: {
             bootstrap: {
-                src: 'https://github.com/jlong/sass-twitter-bootstrap/archive/master.zip',
+                src: 'http://twitter.github.io/bootstrap/assets/bootstrap.zip',
                 dest: 'tmp/bootstrap.zip'
+            },
+            bootstrap_sass: {
+                src: 'https://github.com/jlong/sass-twitter-bootstrap/archive/master.zip',
+                dest: 'tmp/bootstrap-sass.zip'
             }
         },
 
         // unzip files
         unzip: {
             bootstrap_scss: {
+                src: 'tmp/bootstrap-sass.zip',
+                dest: 'tmp/'
+            },
+            bootstrap: {
                 src: 'tmp/bootstrap.zip',
                 dest: 'tmp/'
             }
@@ -170,8 +178,8 @@ module.exports = function(grunt) {
                 dest: '../sass/bootstrap'
             },
             bootstrap_js: {
-                src: 'tmp/sass-twitter-bootstrap-master/js',
-                dest: '../js/bootstrap'
+                src: 'tmp/bootstrap/js/bootstrap.min.js',
+                dest: '../js/bootstrap.min.js'
             },
             bootstrap_img: {
                 src: 'tmp/sass-twitter-bootstrap-master/img',
@@ -192,7 +200,7 @@ module.exports = function(grunt) {
             prepare: [
                 "tmp",
                 "../sass/bootstrap/",
-                "../js/bootstrap/",
+                "../js/bootstrap.min.js",
                 "../images/bootstrap/"
             ],
             bootstrap: [
@@ -230,6 +238,8 @@ module.exports = function(grunt) {
     grunt.registerTask('bootstrap', [
         'clean:prepare',
         'curl:bootstrap',
+        'curl:bootstrap_sass',
+        'unzip:bootstrap',
         'unzip:bootstrap_scss',
         'rename:bootstrap_scss',
         'rename:bootstrap_js',
