@@ -8,3 +8,4 @@ src/.sass-cache/*
 src/node_modules/*
 src/.ftppass
 src/Gruntfileprod.js
+src/tmp/*
