@@ -141,6 +141,10 @@ function odin_enqueue_scripts() {
         wp_enqueue_script( 'odin-main-min' );
     }
 
+    // Twitter Bootstrap.
+    wp_register_script( 'bootstrap', $template_url . '/js/bootstrap.min.js', array(), null, true );
+    wp_enqueue_script( 'bootstrap' );
+
     // Load Thread comments WordPress script.
     if ( is_singular() && get_option( 'thread_comments' ) ) {
         wp_enqueue_script( 'comment-reply' );
@@ -265,6 +269,7 @@ require_once get_template_directory() . '/inc/admin.php';
 /**
  * Theme Options Class.
  */
+require_once get_template_directory() . '/core/classes/class-bootstrap-nav.php';
 // require_once get_template_directory() . '/core/classes/class-theme-options.php';
 // require_once get_template_directory() . '/core/classes/class-options-helper.php';
 // require_once get_template_directory() . '/core/classes/class-post-type.php';
