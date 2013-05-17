@@ -215,7 +215,7 @@ require_once get_template_directory() . '/inc/admin.php';
 /**
  * Photoswipe.
  */
- require_once get_template_directory() . '/core/photoswipe/photoswipe-init.php';
+// require_once get_template_directory() . '/core/photoswipe/photoswipe-init.php';
 
 /**
  * LazyLoad.

@@ -78,6 +78,7 @@ Mais detalhes de como contribuir e enviar Pull Requests em [GitHub Collaborating
 * Added Twitter Bootstrap.
 * Removed old SASS files.
 * Added Grunt task to updated and install the Twitter Bootstrap.
+* Refixed the Photoswipe.
 
 #### v1.2.6 - 17/05/2013 ####
 
