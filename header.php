@@ -49,6 +49,10 @@
 
                         */ ?>
                         <div class="nav-collapse collapse">
+                            <form method="get" class="navbar-search pull-right" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
+                                <label for="navbar-search" class="assistive-text"><?php _e( 'Buscar:', 'odin' ); ?></label>
+                                <input type="text" class="input-large search-query" name="s" id="navbar-search" placeholder="<?php _e( 'Buscar:', 'odin' ); ?>" />
+                            </form>
                             <?php
                                 wp_nav_menu(
                                     array(
