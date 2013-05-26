@@ -32,6 +32,8 @@ class Odin_Taxonomy {
      * @param string $slug        Taxonomy slug.
      * @param string $object_type Name of the object type for the taxonomy object.
      * @param string $sex         Sex of taxonomy ('m' for male and 'f' female).
+     *
+     * @return void
      */
     public function __construct( $name, $slug, $object_type, $sex = 'm' ) {
         $this->name        = $name;
@@ -47,6 +49,8 @@ class Odin_Taxonomy {
      * Set custom labels.
      *
      * @param array $labels Custom labels.
+     *
+     * @return void
      */
     public function set_labels( $labels = array() ) {
         $this->labels = $labels;
@@ -56,6 +60,8 @@ class Odin_Taxonomy {
      * Set custom arguments.
      *
      * @param array $arguments Custom arguments.
+     *
+     * @return void
      */
     public function set_arguments( $arguments = array() ) {
         $this->arguments = $arguments;
