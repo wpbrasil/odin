@@ -158,12 +158,12 @@ function odin_autoset_featured() {
     }
 }
 
-add_action( 'the_post', 'odin_autoset_featured' );
-add_action( 'save_post', 'odin_autoset_featured' );
-add_action( 'draft_to_publish', 'odin_autoset_featured' );
-add_action( 'new_to_publish', 'odin_autoset_featured' );
-add_action( 'pending_to_publish', 'odin_autoset_featured' );
-add_action( 'future_to_publish', 'odin_autoset_featured' );
+// add_action( 'the_post', 'odin_autoset_featured' );
+// add_action( 'save_post', 'odin_autoset_featured' );
+// add_action( 'draft_to_publish', 'odin_autoset_featured' );
+// add_action( 'new_to_publish', 'odin_autoset_featured' );
+// add_action( 'pending_to_publish', 'odin_autoset_featured' );
+// add_action( 'future_to_publish', 'odin_autoset_featured' );
 
 /**
  * Custom Related Posts Image.
