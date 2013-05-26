@@ -155,14 +155,14 @@ if ( ! function_exists( 'aq_resize' ) ) {
  * @param string  $alt    Alt attribute of the image.
  * @param bool    $crop   Image crop.
  *
- * @return string         Return the post thumbnail
+ * @return string         Return the post thumbnail.
  */
 function odin_thumbnail( $width, $height, $alt, $crop = true ) {
     $thumb = get_post_thumbnail_id();
 
     if ( $thumb ) {
         $url = wp_get_attachment_url( $thumb, 'full' );
-        $image = aq_resize( $url, $width, $height, $crop );
+        $image = aq_resize( $url, $width, $height, $crop, true, true );
 
         $html = '<img class="wp-image-thumb" src="' . $image . '" width="' . esc_attr( $width ) . '" height="' . esc_attr( $height ) . '" alt="' . esc_attr( $alt ) . '" />';
 
