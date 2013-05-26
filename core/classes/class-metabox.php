@@ -26,6 +26,8 @@ class Odin_Metabox {
      * @param string $post_type The type of Write screen on which to show the edit screen section.
      * @param string $context   The part of the page where the edit screen section should be shown ('normal', 'advanced', or 'side').
      * @param string $priority  The priority within the context where the boxes should show ('high', 'core', 'default' or 'low').
+     *
+     * @return void
      */
     public function __construct( $id, $title, $post_type = 'post', $context = 'normal', $priority = 'high' ) {
         $this->id        = $id;
@@ -44,6 +46,8 @@ class Odin_Metabox {
 
     /**
      * Add the metabox in edit screens.
+     *
+     * @return void
      */
     public function add() {
         add_meta_box(
@@ -60,6 +64,8 @@ class Odin_Metabox {
      * Set metabox fields.
      *
      * @param array $fields Metabox fields.
+     *
+     * @return void
      */
     public function set_fields( $fields = array() ) {
         $this->fields = $fields;
@@ -106,7 +112,7 @@ class Odin_Metabox {
     }
 
     /**
-     * Process metabox fields.
+     * Process the metabox fields.
      *
      * @param  array $args    Field arguments
      * @param  int   $post_id ID of the current post type.
@@ -120,9 +126,8 @@ class Odin_Metabox {
 
         // Gets current value or default.
         $current = get_post_meta( $post_id, $id, true );
-        if ( ! $current ) {
+        if ( ! $current )
             $current = isset( $args['default'] ) ? $args['default'] : '';
-        }
 
         switch ( $type ) {
             case 'text':
@@ -270,9 +275,8 @@ class Odin_Metabox {
     protected function field_editor( $id, $current, $options ) {
 
         // Set default options.
-        if ( empty( $options ) ) {
+        if ( empty( $options ) )
             $options = array( 'textarea_rows' => 10 );
-        }
 
         echo '<div style="max-width: 600px;">';
             wp_editor( wpautop( $current ), $id, $options );
@@ -316,14 +320,12 @@ class Odin_Metabox {
      */
     public function save( $post_id ) {
         // Verify nonce.
-        if ( ! isset( $_POST[$this->nonce] ) || ! wp_verify_nonce( $_POST[$this->nonce], basename( __FILE__ ) ) ) {
+        if ( ! isset( $_POST[$this->nonce] ) || ! wp_verify_nonce( $_POST[$this->nonce], basename( __FILE__ ) ) )
             return $post_id;
-        }
 
         // Verify if this is an auto save routine.
-        if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+        if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
             return $post_id;
-        }
 
         // Check permissions.
         if ( $this->post_type == $_POST['post_type'] ) {
@@ -340,11 +342,11 @@ class Odin_Metabox {
 
             $new = apply_filters( 'odin_save_metabox_' . $this->id, $_POST[$name] );
 
-            if ( $new && $new != $old ) {
+            if ( $new && $new != $old )
                 update_post_meta( $post_id, $name, $new );
-            } elseif ( '' == $new && $old ) {
+            elseif ( '' == $new && $old )
                 delete_post_meta( $post_id, $name, $old );
-            }
+
         }
 
     }
