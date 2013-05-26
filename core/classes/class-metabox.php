@@ -56,10 +56,27 @@ class Odin_Metabox {
         $screen = get_current_screen();
 
         if ( $this->post_type === $screen->id ) {
+            // Scripts.
             wp_register_script( 'odin-admin', get_template_directory_uri() . '/core/js/admin.js', array( 'jquery' ), null, true );
             wp_enqueue_script( 'odin-admin' );
-            wp_enqueue_style( 'wp-color-picker' );
             wp_enqueue_script( 'wp-color-picker' );
+            wp_enqueue_script( 'jquery-ui-sortable' );
+
+            // Styles.
+            wp_register_style( 'odin-admin', get_template_directory_uri() . '/core/css/admin.css', array(), null, 'all' );
+            wp_enqueue_style( 'odin-admin' );
+            wp_enqueue_style( 'wp-color-picker' );
+
+            // Localize strings.
+            wp_localize_script(
+                'odin-admin',
+                'odin_admin_params',
+                array(
+                    'gallery_title'  => __( 'Adicionar imagens na galeria', 'odin' ),
+                    'gallery_button' => __( 'Adicionar na galeria', 'odin' ),
+                    'gallery_remove' => __( 'Remover imagem', 'odin' )
+                )
+            );
         }
     }
 
@@ -136,7 +153,7 @@ class Odin_Metabox {
      * @param  array $args    Field arguments
      * @param  int   $post_id ID of the current post type.
      *
-     * @return string          HTML field.
+     * @return string          HTML of the field.
      */
     protected function process_fields( $args, $post_id ) {
         $id = $args['id'];
@@ -164,17 +181,20 @@ class Odin_Metabox {
             case 'radio':
                 $this->field_radio( $id, $current, $options );
                 break;
-            case 'image':
-                $this->field_image( $id, $current );
-                break;
             case 'editor':
                 $this->field_editor( $id, $current, $options );
+                break;
+            case 'color':
+                $this->field_color( $id, $current );
                 break;
             case 'upload':
                 $this->field_upload( $id, $current );
                 break;
-            case 'color':
-                $this->field_color( $id, $current );
+            case 'image':
+                $this->field_image( $id, $current );
+                break;
+            case 'image_plupload':
+                $this->field_image_plupload( $id, $current );
                 break;
 
             default:
@@ -189,7 +209,7 @@ class Odin_Metabox {
      * @param  string $id      Field id.
      * @param  string $current Field current value.
      *
-     * @return string          HTML field.
+     * @return string          HTML of the field.
      */
     protected function field_text( $id, $current ) {
         echo sprintf( '<input type="text" id="%1$s" name="%1$s" value="%2$s" class="regular-text" />', $id, esc_attr( $current ) );
@@ -201,7 +221,7 @@ class Odin_Metabox {
      * @param  string $id      Field id.
      * @param  string $current Field current value.
      *
-     * @return string          HTML field.
+     * @return string          HTML of the field.
      */
     protected function field_textarea( $id, $current ) {
         echo sprintf( '<textarea id="%1$s" name="%1$s" cols="60" rows="4">%2$s</textarea>', $id, esc_attr( $current ) );
@@ -213,7 +233,7 @@ class Odin_Metabox {
      * @param  string $id      Field id.
      * @param  string $current Field current value.
      *
-     * @return string          HTML field.
+     * @return string          HTML of the field.
      */
     protected function field_checkbox( $id, $current ) {
         echo sprintf( '<input type="checkbox" id="%1$s" name="%1$s" value="1"%2$s />', $id, checked( 1, $current, false ) );
@@ -226,7 +246,7 @@ class Odin_Metabox {
      * @param  string $current Field current value.
      * @param  array  $options Array with field options.
      *
-     * @return string          HTML field.
+     * @return string          HTML of the field.
      */
     protected function field_select( $id, $current, $options ) {
         $html = sprintf( '<select id="%1$s" name="%1$s">', $id );
@@ -247,7 +267,7 @@ class Odin_Metabox {
      * @param  string $current Field current value.
      * @param  array  $options Array with field options.
      *
-     * @return string          HTML field.
+     * @return string          HTML of the field.
      */
     protected function field_radio( $id, $current, $options ) {
         $html = '';
@@ -260,12 +280,59 @@ class Odin_Metabox {
     }
 
     /**
+     * Editor field.
+     *
+     * @param  string $id      Field id.
+     * @param  string $current Field current value.
+     *
+     * @return string          HTML of the field.
+     */
+    protected function field_editor( $id, $current, $options ) {
+
+        // Set default options.
+        if ( empty( $options ) )
+            $options = array( 'textarea_rows' => 10 );
+
+        echo '<div style="max-width: 600px;">';
+            wp_editor( wpautop( $current ), $id, $options );
+        echo '</div>';
+    }
+
+    /**
+     * Color field.
+     *
+     * @param  string $id      Field id.
+     * @param  string $current Field current value.
+     *
+     * @return string          HTML of the field.
+     */
+    protected function field_color( $id, $current ) {
+        $html = sprintf( '<input type="text" id="%1$s" name="%1$s" value="%2$s" class="odin-color-field" />', $id, esc_attr( $current ) );
+
+        echo $html;
+    }
+
+    /**
+     * Upload field.
+     *
+     * @param  string $id      Field id.
+     * @param  string $current Field current value.
+     *
+     * @return string          HTML of the field.
+     */
+    protected function field_upload( $id, $current ) {
+        $html = sprintf( '<input type="text" id="%1$s" name="%1$s" value="%2$s" class="regular-text" /> <input class="button odin-upload-button" type="button" value="%3$s" />', $id, esc_url( $current ), __( 'Selecionar arquivo', 'odin' ) );
+
+        echo $html;
+    }
+
+    /**
      * Image field.
      *
      * @param  string $id      Field id.
      * @param  string $current Field current value.
      *
-     * @return string          HTML field.
+     * @return string          HTML of the field.
      */
     protected function field_image( $id, $current ) {
 
@@ -284,48 +351,38 @@ class Odin_Metabox {
     }
 
     /**
-     * Editor field.
+     * Image plupload field.
      *
      * @param  string $id      Field id.
      * @param  string $current Field current value.
      *
-     * @return string          HTML field.
+     * @return string          HTML of the field.
      */
-    protected function field_editor( $id, $current, $options ) {
+    protected function field_image_plupload( $id, $current ) {
+        $html = '<div class="odin-gallery-container">';
+            $html .= '<ul class="odin-gallery-images">';
+                if ( ! empty( $current ) ) {
+                    // Gets the current images.
+                    $attachments = array_filter( explode( ',', $current ) );
 
-        // Set default options.
-        if ( empty( $options ) )
-            $options = array( 'textarea_rows' => 10 );
+                    if ( $attachments ) {
+                        foreach ( $attachments as $attachment_id ) {
+                            $html .= sprintf( '<li class="image" data-attachment_id="%1$s">%2$s<ul class="actions"><li><a href="#" class="delete" title="%3$s">X</a></li></ul></li>',
+                                $attachment_id,
+                                wp_get_attachment_image( $attachment_id, 'thumbnail' ),
+                                __( 'Remover imagem', 'odin' )
+                            );
+                        }
+                    }
+                }
+            $html .= '</ul><div class="clear"></div>';
 
-        echo '<div style="max-width: 600px;">';
-            wp_editor( wpautop( $current ), $id, $options );
-        echo '</div>';
-    }
+            // Adds the hidden input.
+            $html .= sprintf( '<input type="hidden" class="odin-gallery-field" name="%s" value="%s" />', $id, $current );
 
-    /**
-     * Upload field.
-     *
-     * @param  string $id      Field id.
-     * @param  string $current Field current value.
-     *
-     * @return string          HTML field.
-     */
-    protected function field_upload( $id, $current ) {
-        $html = sprintf( '<input type="text" id="%1$s" name="%1$s" value="%2$s" class="regular-text" /> <input class="button odin-upload-button" type="button" value="%3$s" />', $id, esc_url( $current ), __( 'Selecionar arquivo', 'odin' ) );
-
-        echo $html;
-    }
-
-    /**
-     * Color field.
-     *
-     * @param  string $id      Field id.
-     * @param  string $current Field current value.
-     *
-     * @return string          HTML field.
-     */
-    protected function field_color( $id, $current ) {
-        $html = sprintf( '<input type="text" id="%1$s" name="%1$s" value="%2$s" class="odin-color-field" />', $id, esc_attr( $current ) );
+            // Adds "adds images in gallery" url.
+            $html .= sprintf( '<p class="odin-gallery-add hide-if-no-js"><a href="#">%s</a></p>', __( 'Adicionar imagens na galeria', 'odin' ) );
+        $html .= '</div>';
 
         echo $html;
     }

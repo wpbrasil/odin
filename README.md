@@ -73,6 +73,14 @@ Mais detalhes de como contribuir e enviar Pull Requests em [GitHub Collaborating
 
 ## Changelog ##
 
+#### v1.4.0 - 26/05/2013 ####
+
+* Added Image plupload field in Odin_Metabox class.
+* Optimized the loading of scripts in `class-metabox.php`.
+* Fixed the plurals in `class-post-type.php` and `class-taxonomy.php`.
+* Moved the `odin_autoset_featured()` function to `functions.php`.
+* Fixed code standards.
+
 #### v1.3.0 - 17/05/2013 ####
 
 * Added Twitter Bootstrap.
