@@ -77,19 +77,19 @@ class Odin_Taxonomy {
             'update_item'         => sprintf( __( 'Atualizar %s', 'odin' ), $this->name ),
             'parent_item'         => sprintf( __( 'Parente %s:', 'odin' ), $this->name ),
             'parent_item_colon'   => sprintf( __( 'Parente %s:', 'odin' ), $this->name ),
-            'menu_name'           => sprintf( __( '%s', 'odin' ), $this->name ),
+            'menu_name'           => sprintf( __( '%ss', 'odin' ), $this->name ),
         );
 
         if ( 'm' == $this->sex ) {
             $default['add_new_item'] =  sprintf( __( 'Adicionar novo %s', 'odin' ), $this->name );
             $default['new_item_name'] = sprintf( __( 'Novo %s', 'odin' ), $this->name );
-            $default['all_items'] = sprintf( __( 'Todos os %s', 'odin' ), $this->name );
+            $default['all_items'] = sprintf( __( 'Todos os %ss', 'odin' ), $this->name );
             $default['separate_items_with_commas'] = sprintf( __( 'Separe os %ss com v&iacute;rgulas', 'odin' ), $this->name );
             $default['choose_from_most_used'] = sprintf( __( 'Escolha entre os %ss mais utilizados', 'odin' ), $this->name );
         } else {
             $default['add_new_item'] =  sprintf( __( 'Adicionar nova %s', 'odin' ), $this->name );
             $default['new_item_name'] = sprintf( __( 'Nova %s', 'odin' ), $this->name );
-            $default['all_items'] = sprintf( __( 'Todas as %s', 'odin' ), $this->name );
+            $default['all_items'] = sprintf( __( 'Todas as %ss', 'odin' ), $this->name );
             $default['separate_items_with_commas'] = sprintf( __( 'Separe as %ss com v&iacute;rgulas', 'odin' ), $this->name );
             $default['choose_from_most_used'] = sprintf( __( 'Escolha entre as %ss mais utilizadas', 'odin' ), $this->name );
         }

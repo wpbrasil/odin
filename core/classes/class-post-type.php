@@ -73,21 +73,21 @@ class Odin_Post_Type {
             'search_items'       => sprintf( __( 'Pesquisar %s', 'odin' ), $this->name ),
             'update_item'        => sprintf( __( 'Atualizar %s', 'odin' ), $this->name ),
             'parent_item_colon'  => sprintf( __( 'Parente %s:', 'odin' ), $this->name ),
-            'menu_name'          => sprintf( __( '%s', 'odin' ), $this->name ),
+            'menu_name'          => sprintf( __( '%ss', 'odin' ), $this->name ),
         );
 
         if ( 'm' == $this->sex ) {
             $default['add_new'] = __( 'Adicionar Novo', 'odin' );
             $default['add_new_item'] =  sprintf( __( 'Adicionar novo %s', 'odin' ), $this->name );
             $default['new_item'] = sprintf( __( 'Novo %s', 'odin' ), $this->name );
-            $default['all_items'] = sprintf( __( 'Todos os %s', 'odin' ), $this->name );
+            $default['all_items'] = sprintf( __( 'Todos os %ss', 'odin' ), $this->name );
             $default['not_found'] =  sprintf( __( 'Nenhum %s foi encontrando', 'odin' ), $this->name );
             $default['not_found_in_trash'] = sprintf( __( 'Nenhum %s encontrado na Lixeira', 'odin' ), $this->name );
         } else {
             $default['add_new']  = __( 'Adicionar Nova', 'odin' );
             $default['add_new_item'] =  sprintf( __( 'Adicionar nova %s', 'odin' ), $this->name );
             $default['new_item'] = sprintf( __( 'Nova %s', 'odin' ), $this->name );
-            $default['all_items'] = sprintf( __( 'Todas as %s', 'odin' ), $this->name );
+            $default['all_items'] = sprintf( __( 'Todas as %ss', 'odin' ), $this->name );
             $default['not_found'] =  sprintf( __( 'Nenhuma %s foi encontranda', 'odin' ), $this->name );
             $default['not_found_in_trash'] = sprintf( __( 'Nenhuma %s encontrada na Lixeira', 'odin' ), $this->name );
         }
