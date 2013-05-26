@@ -42,6 +42,25 @@ class Odin_Metabox {
 
         // Save Metaboxs.
         add_action( 'save_post', array( &$this, 'save' ) );
+
+        // Load scripts.
+        add_action( 'admin_enqueue_scripts', array( &$this, 'scripts' ) );
+    }
+
+    /**
+     * Load metabox scripts.
+     *
+     * @return void
+     */
+    public function scripts() {
+        $screen = get_current_screen();
+
+        if ( $this->post_type === $screen->id ) {
+            wp_register_script( 'odin-admin', get_template_directory_uri() . '/core/js/admin.js', array( 'jquery' ), null, true );
+            wp_enqueue_script( 'odin-admin' );
+            wp_enqueue_style( 'wp-color-picker' );
+            wp_enqueue_script( 'wp-color-picker' );
+        }
     }
 
     /**
@@ -352,15 +371,3 @@ class Odin_Metabox {
     }
 
 }
-
-/**
- * Load metabox scripts.
- */
-function odin_metabox_scripts() {
-    wp_register_script( 'odin-admin', get_template_directory_uri() . '/core/js/admin.js', array( 'jquery' ), null, true );
-    wp_enqueue_script( 'odin-admin' );
-    wp_enqueue_style( 'wp-color-picker' );
-    wp_enqueue_script( 'wp-color-picker' );
-}
-
-add_action( 'admin_enqueue_scripts', 'odin_metabox_scripts' );
