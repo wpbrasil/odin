@@ -31,6 +31,7 @@ class Odin_Options_Helper {
      *
      * @param string  $option_father Option Father.
      * @param string  $option_child  Option Child.
+     *
      * @return void
      */
     public function __construct( $option_father, $option_child ) {
@@ -82,6 +83,7 @@ class Odin_Options_Helper {
      * Setter of Option Father.
      *
      * @param string  $option_father Option father.
+     *
      * @return void
      */
     public function set_option_father( $option_father ) {
@@ -92,6 +94,7 @@ class Odin_Options_Helper {
      * Setter of Option Child.
      *
      * @param string  $option_child Option child.
+     *
      * @return void
      */
     public function set_option_child( $option_child ) {
@@ -102,6 +105,7 @@ class Odin_Options_Helper {
      * Setter of Option Child Value.
      *
      * @param string  $option_child_value Option child value.
+     *
      * @return void
      */
     public function set_option_child_value( $option_child_value ) {
