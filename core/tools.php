@@ -26,11 +26,10 @@ function odin_pagination( $mid = 2, $end = 1, $show = false ) {
             $big = 999999999; // Need an unlikely integer.
 
             // Sets the URL format.
-            if ( $wp_rewrite->permalink_structure ) {
+            if ( $wp_rewrite->permalink_structure )
                 $format = '?paged=%#%';
-            } else {
+            else
                 $format = '/' . $url_base . '/%#%';
-            }
 
             // Sets the paginate_links arguments.
             $arguments = apply_filters( 'odin_pagination_args', array(
@@ -50,9 +49,8 @@ function odin_pagination( $mid = 2, $end = 1, $show = false ) {
             $pagination = '<div class="pagination">' . paginate_links( $arguments ) . '</div>';
 
             // Prevents duplicate bars in the middle of the url.
-            if ( $url_base ) {
+            if ( $url_base )
                 $pagination = str_replace( '//' . $url_base . '/', '/' . $url_base . '/', $pagination );
-            }
 
             return $pagination;
         }
@@ -93,9 +91,8 @@ function odin_related_posts( $display = 'category', $qty = 5, $title = 'Artigos 
                 $show = true;
 
                 $tag_ids = array();
-                foreach ( $tags as $individual_tag ) {
+                foreach ( $tags as $individual_tag )
                     $tag_ids[] = $individual_tag->term_id;
-                }
 
                 $args = array(
                     'tag__in' => $tag_ids,
@@ -115,9 +112,8 @@ function odin_related_posts( $display = 'category', $qty = 5, $title = 'Artigos 
                 $show = true;
 
                 $category_ids = array();
-                foreach ( $categories as $individual_category ) {
+                foreach ( $categories as $individual_category )
                     $category_ids[] = $individual_category->term_id;
-                }
 
                 $args = array(
                     'category__in' => $category_ids,
