@@ -45,15 +45,15 @@ class Odin_Theme_Options {
         add_action( 'admin_menu', array( &$this, 'add_page' ) );
         add_action( 'admin_init', array( &$this, 'create_settings' ) );
 
-        if ( isset( $_GET['page'] ) && $_GET['page'] == $slug ) {
+        if ( isset( $_GET['page'] ) && $_GET['page'] == $slug )
             add_action( 'admin_enqueue_scripts', array( &$this, 'scripts' ) );
-        }
+
     }
 
     /**
      * Add Settings Theme page.
      *
-     * @return void.
+     * @return void
      */
     public function add_page() {
         add_theme_page(
@@ -109,27 +109,25 @@ class Odin_Theme_Options {
      * @return string Current tab ID.
      */
     protected function get_current_tab() {
-        if ( isset( $_GET['tab'] ) ) {
+        if ( isset( $_GET['tab'] ) )
             $current_tab = $_GET['tab'];
-        } else {
+        else
             $current_tab = $this->tabs[0]['id'];
-        }
 
         return $current_tab;
     }
 
     private function get_current_url() {
         $url = 'http';
-        if ( isset( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] == 'on' ) {
+        if ( isset( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] == 'on' )
             $url .= 's';
-        }
+
         $url .= '://';
 
-        if ( '80' != $_SERVER['SERVER_PORT'] ) {
+        if ( '80' != $_SERVER['SERVER_PORT'] )
             $url .= $_SERVER['SERVER_NAME'] . ' : ' . $_SERVER['SERVER_PORT'] . $_SERVER['PHP_SELF'];
-        } else {
+        else
             $url .= $_SERVER['SERVER_NAME'] . $_SERVER['PHP_SELF'];
-        }
 
         return esc_url( $url );
     }
@@ -160,7 +158,7 @@ class Odin_Theme_Options {
     /**
      * Built settings page.
      *
-     * @return void.
+     * @return void
      */
     public function settings_page() {
         ?>
@@ -209,7 +207,7 @@ class Odin_Theme_Options {
     /**
      * Create settings.
      *
-     * @return void.
+     * @return void
      */
     public function create_settings() {
 
@@ -261,15 +259,15 @@ class Odin_Theme_Options {
      *
      * @param  string $tab     Tab that the option belongs
      * @param  string $id      Option ID.
-     * @param  string $default Default option
+     * @param  string $default Default option.
+     *
      * @return array           Item options.
      */
     protected function get_option( $tab, $id, $default = '' ) {
         $options = get_option( $tab );
 
-        if ( isset( $options[$id] ) ) {
+        if ( isset( $options[$id] ) )
             $default = $options[$id];
-        }
 
         return $default;
 
@@ -279,6 +277,8 @@ class Odin_Theme_Options {
      * Text field callback.
      *
      * @param array $args Arguments from the option.
+     *
+     * @return string Text field HTML.
      */
     public function callback_text( $args ) {
         $tab = $args['tab'];
@@ -292,10 +292,9 @@ class Odin_Theme_Options {
 
         $html = sprintf( '<input type="text" id="%1$s" name="%2$s[%1$s]" value="%3$s" class="%4$s-text" />', $id, $tab, $current, $size );
 
-        // Displays option description.
-        if ( $args['description'] ) {
+        // Displays the description.
+        if ( $args['description'] )
             $html .= sprintf( '<p class="description">%s</p>', $args['description'] );
-        }
 
         echo $html;
     }
@@ -304,6 +303,8 @@ class Odin_Theme_Options {
      * Textarea field callback.
      *
      * @param array $args Arguments from the option.
+     *
+     * @return string Textarea field HTML.
      */
     public function callback_textarea( $args ) {
         $tab = $args['tab'];
@@ -314,10 +315,9 @@ class Odin_Theme_Options {
 
         $html = sprintf( '<textarea id="%1$s" name="%2$s[%1$s]" rows="5" cols="50">%3$s</textarea>', $id, $tab, $current );
 
-        // Displays option description.
-        if ( $args['description'] ) {
+        // Displays the description.
+        if ( $args['description'] )
             $html .= sprintf( '<p class="description">%s</p>', $args['description'] );
-        }
 
         echo $html;
     }
@@ -326,6 +326,8 @@ class Odin_Theme_Options {
      * Editor field callback.
      *
      * @param array $args Arguments from the option.
+     *
+     * @return string Editor field HTML.
      */
     public function callback_editor( $args ) {
         $tab     = $args['tab'];
@@ -339,9 +341,8 @@ class Odin_Theme_Options {
         $size = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : '600px';
 
         // Set default options.
-        if ( empty( $options ) ) {
+        if ( empty( $options ) )
             $options = array( 'textarea_rows' => 10 );
-        }
 
         echo '<div style="width: ' . $size . ';">';
 
@@ -349,16 +350,17 @@ class Odin_Theme_Options {
 
         echo '</div>';
 
-        // Displays option description.
-        if ( $args['description'] ) {
+        // Displays the description.
+        if ( $args['description'] )
             echo sprintf( '<p class="description">%s</p>', $args['description'] );
-        }
     }
 
     /**
      * Checkbox field callback.
      *
      * @param array $args Arguments from the option.
+     *
+     * @return string Checkbox field HTML.
      */
     public function callback_checkbox( $args ) {
         $tab = $args['tab'];
@@ -369,10 +371,9 @@ class Odin_Theme_Options {
 
         $html = sprintf( '<input type="checkbox" id="%1$s" name="%2$s[%1$s]" value="1"%3$s />', $id, $tab, checked( 1, $current, false ) );
 
-        // Displays option description.
-        if ( $args['description'] ) {
+        // Displays the description.
+        if ( $args['description'] )
             $html .= sprintf( '<label for="%s"> %s</label>', $id, $args['description'] );
-        }
 
         echo $html;
     }
@@ -381,6 +382,8 @@ class Odin_Theme_Options {
      * Multicheckbox field callback.
      *
      * @param array $args Arguments from the option.
+     *
+     * @return string Multicheckbox field HTML.
      */
     public function callback_multicheckbox( $args ) {
         $tab = $args['tab'];
@@ -397,10 +400,9 @@ class Odin_Theme_Options {
             $html .= sprintf( '<label for="%s"> %s</label><br />', $item_id, $label );
         }
 
-        // Displays option description.
-        if ( $args['description'] ) {
+        // Displays the description.
+        if ( $args['description'] )
             $html .= sprintf( '<p class="description">%s</p>', $args['description'] );
-        }
 
         echo $html;
     }
@@ -409,6 +411,8 @@ class Odin_Theme_Options {
      * Radio field callback.
      *
      * @param array $args Arguments from the option.
+     *
+     * @return string Radio field HTML.
      */
     public function callback_radio( $args ) {
         $tab = $args['tab'];
@@ -426,10 +430,9 @@ class Odin_Theme_Options {
             $html .= sprintf( '<label for="%s"> %s</label><br />', $item_id, $label );
         }
 
-        // Displays option description.
-        if ( $args['description'] ) {
+        // Displays the description.
+        if ( $args['description'] )
             $html .= sprintf( '<p class="description">%s</p>', $args['description'] );
-        }
 
         echo $html;
     }
@@ -438,6 +441,8 @@ class Odin_Theme_Options {
      * Select field callback.
      *
      * @param array $args Arguments from the option.
+     *
+     * @return string Select field HTML.
      */
     public function callback_select( $args ) {
         $tab = $args['tab'];
@@ -454,10 +459,9 @@ class Odin_Theme_Options {
         }
         $html .= '</select>';
 
-        // Displays option description.
-        if ( $args['description'] ) {
+        // Displays the description.
+        if ( $args['description'] )
             $html .= sprintf( '<p class="description">%s</p>', $args['description'] );
-        }
 
         echo $html;
     }
@@ -466,6 +470,8 @@ class Odin_Theme_Options {
      * Color field callback.
      *
      * @param array $args Arguments from the option.
+     *
+     * @return string Color field HTML.
      */
     public function callback_color( $args ) {
         $tab = $args['tab'];
@@ -476,10 +482,9 @@ class Odin_Theme_Options {
 
         $html = sprintf( '<input type="text" id="%1$s" name="%2$s[%1$s]" value="%3$s" class="odin-color-field" />', $id, $tab, $current );
 
-        // Displays option description.
-        if ( $args['description'] ) {
+        // Displays the description.
+        if ( $args['description'] )
             $html .= sprintf( '<p class="description">%s</p>', $args['description'] );
-        }
 
         echo $html;
     }
@@ -488,6 +493,8 @@ class Odin_Theme_Options {
      * Upload field callback.
      *
      * @param array $args Arguments from the option.
+     *
+     * @return string Upload field HTML.
      */
     public function callback_upload( $args ) {
         $tab = $args['tab'];
@@ -498,10 +505,9 @@ class Odin_Theme_Options {
 
         $html = sprintf( '<input type="text" id="%1$s" name="%2$s[%1$s]" value="%3$s" class="regular-text" /> <input class="button odin-upload-button" id="%1$s-button" type="button" value="%4$s" />', $id, $tab, $current, __( 'Selecionar arquivo', 'odin' ) );
 
-        // Displays option description.
-        if ( $args['description'] ) {
+        // Displays the description.
+        if ( $args['description'] )
             $html .= sprintf( '<p class="description">%s</p>', $args['description'] );
-        }
 
         echo $html;
     }
@@ -510,6 +516,8 @@ class Odin_Theme_Options {
      * Image field callback.
      *
      * @param array $args Arguments from the option.
+     *
+     * @return string Image field HTML.
      */
     public function callback_image( $args ) {
         $tab = $args['tab'];
@@ -529,10 +537,9 @@ class Odin_Theme_Options {
 
         $html .= sprintf( '<input id="%1$s" name="%2$s[%1$s]" type="hidden" class="odin-upload-image" value="%3$s" /><img src="%4$s" class="odin-preview-image" style="height: 150px; width: 150px;" alt="" /><br /><input id="%1$s-button" class="odin-upload-image-button button" type="button" value="%5$s" /><small> <a href="#" class="odin-clear-image-button">%6$s</a></small>', $id, $tab, $current, $image, __( 'Selecionar imagem', 'odin' ), __( 'Remover imagem', 'odin' ) );
 
-        // Displays option description.
-        if ( $args['description'] ) {
+        // Displays the description.
+        if ( $args['description'] )
             $html .= sprintf( '<p class="description">%s</p>', $args['description'] );
-        }
 
         echo $html;
     }
@@ -541,6 +548,8 @@ class Odin_Theme_Options {
      * HTML callback.
      *
      * @param array $args Arguments from the option.
+     *
+     * @return string HTML.
      */
     public function callback_html( $args ) {
         echo $args['description'];
@@ -550,6 +559,7 @@ class Odin_Theme_Options {
      * Sanitization fields callback.
      *
      * @param  string $input The unsanitized collection of options.
+     *
      * @return string        The collection of sanitized values.
      */
     public function validate_input( $input ) {
@@ -561,11 +571,9 @@ class Odin_Theme_Options {
         foreach ( $input as $key => $value ) {
 
             // Check to see if the current option has a value. If so, process it.
-            if ( isset( $input[$key] ) ) {
-
-                // Filter for validation.
+            if ( isset( $input[$key] ) )
                 $output[$key] = apply_filters( 'odin_theme_options_validate_' . $this->slug, $value );
-            }
+
         }
 
         return $output;
