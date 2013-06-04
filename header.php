@@ -35,7 +35,7 @@
                 <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( $header_image ); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="" /></a>
             <?php endif; ?>
             <nav id="main-navigation" class="navbar" role="navigation">
-                <a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Pular para o conte&uacute;do', 'odin' ); ?>"><?php _e( 'Pular para o conte&uacute;do', 'odin' ); ?></a>
+                <a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to content', 'odin' ); ?>"><?php _e( 'Skip to content', 'odin' ); ?></a>
                 <div class="navbar-inner">
                     <div class="container">
                         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -50,8 +50,8 @@
                         */ ?>
                         <div class="nav-collapse collapse">
                             <form method="get" class="navbar-search pull-right" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
-                                <label for="navbar-search" class="assistive-text"><?php _e( 'Buscar:', 'odin' ); ?></label>
-                                <input type="text" class="input-large search-query" name="s" id="navbar-search" placeholder="<?php _e( 'Buscar:', 'odin' ); ?>" />
+                                <label for="navbar-search" class="assistive-text"><?php _e( 'Search:', 'odin' ); ?></label>
+                                <input type="text" class="input-large search-query" name="s" id="navbar-search" placeholder="<?php _e( 'Search:', 'odin' ); ?>" />
                             </form>
                             <?php
                                 wp_nav_menu(

@@ -6,13 +6,13 @@
                 <h1 class="page-title" itemprop="name headline">
                     <?php
                         if ( is_day() ) {
-                            echo __( 'Arquivos di&aacute;rios: ', 'odin' ) . '<span>' . get_the_date() . '</span>';
+                            echo __( 'Daily Archives: ', 'odin' ) . '<span>' . get_the_date() . '</span>';
                         } elseif ( is_month() ) {
-                            echo __( 'Arquivos Mensais: ', 'odin' ) . '<span>' . get_the_date( 'F Y' ) . '</span>';
+                            echo __( 'Monthly Archives: ', 'odin' ) . '<span>' . get_the_date( 'F Y' ) . '</span>';
                         } elseif ( is_year() ) {
-                            echo __( 'Arquivos anuais: ', 'odin' ) . '<span>' . get_the_date( 'Y' ) . '</span>';
+                            echo __( 'Yearly Archives: ', 'odin' ) . '<span>' . get_the_date( 'Y' ) . '</span>';
                         } else {
-                            _e( 'Arquivos do Blog', 'odin' );
+                            _e( 'Blog Archives', 'odin' );
                         }
                     ?>
                 </h1>

@@ -2,17 +2,17 @@
 <div id="primary" class="span12">
     <div id="content" role="main">
         <article class="post error404 not-found">
+                <h1 class="entry-title"><?php _e( 'This is embarrassing, no?', 'odin' ); ?></h1>
             <header class="entry-header">
-                <h1 class="entry-title"><?php _e( 'Isso &eacute; embara&ccedil;oso, n&atilde;o?', 'odin' ); ?></h1>
             </header>
             <div class="entry-content">
-                <p><?php _e( 'Parece que n&atilde;o encontramos o que voc&ecirc; est&aacute; procurando. Talvez a busca, ou um dos links abaixo, possa ajudar.', 'odin' ); ?></p>
+                <p><?php _e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'odin' ); ?></p>
                 <?php get_search_form(); ?>
                 <div class="span3 no-margin-left">
                     <?php the_widget( 'WP_Widget_Recent_Posts', array( 'number' => 10 ), array( 'widget_id' => '404' ) ); ?>
                 </div>
                 <div class="widget span3">
-                    <h2 class="widgettitle"><?php _e( 'Categorias mais usadas', 'odin' ); ?></h2>
+                    <h2 class="widgettitle"><?php _e( 'Most Used Categories', 'odin' ); ?></h2>
                     <ul>
                         <?php wp_list_categories( array( 'orderby' => 'count', 'order' => 'DESC', 'show_count' => 1, 'title_li' => '', 'number' => 10 ) ); ?>
                     </ul>

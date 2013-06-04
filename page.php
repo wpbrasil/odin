@@ -8,7 +8,7 @@
                 </header><!-- .entry-header -->
                 <div class="entry-content">
                     <?php the_content(); ?>
-                    <?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'P&aacute;ginas:', 'odin' ) . '</span>', 'after' => '</div>' ) ); ?>
+                    <?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'odin' ) . '</span>', 'after' => '</div>' ) ); ?>
                 </div><!-- .entry-content -->
             </article>
             <?php

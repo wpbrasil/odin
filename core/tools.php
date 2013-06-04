@@ -41,8 +41,8 @@ function odin_pagination( $mid = 2, $end = 1, $show = false ) {
                     'end_size' => $end,
                     'mid_size' => $mid,
                     'type' => 'list',
-                    'prev_text' => __( '&laquo; Anterior', 'odin' ),
-                    'next_text' => __( 'Pr&oacute;ximo &raquo;', 'odin' ),
+                    'prev_text' => __( '&laquo; Previous', 'odin' ),
+                    'next_text' => __( 'Next &raquo;', 'odin' ),
                 )
             );
 
@@ -291,7 +291,7 @@ function odin_breadcrumbs( $homepage = 'In&iacute;cio', $delimiter = '<span clas
                 echo get_category_parents( $parent_category, TRUE, ' ' . $delimiter . ' ' );
             }
 
-            printf( __( '%sCategoria: %s%s', 'odin' ), $current_before, single_cat_title( '', false ), $current_after );
+            printf( __( '%sCategory: %s%s', 'odin' ), $current_before, single_cat_title( '', false ), $current_after );
 
         // Tags archive.
         } elseif ( is_tag() ) {
@@ -303,14 +303,14 @@ function odin_breadcrumbs( $homepage = 'In&iacute;cio', $delimiter = '<span clas
 
         // Search page.
         } elseif ( is_search() ) {
-            printf( __( '%sResultado da busca por: &quot;%s&quot;%s', 'odin' ), $current_before, get_search_query(), $current_after );
+            printf( __( '%sSearch result for: &quot;%s&quot;%s', 'odin' ), $current_before, get_search_query(), $current_after );
 
         // Author archive.
         } elseif ( is_author() ) {
             global $author;
             $userdata = get_userdata( $author );
 
-            echo $current_before . __( 'Artigos postados por', 'odin' ) . ' ' . $userdata->display_name . $current_after;
+            echo $current_before . __( 'Posted by', 'odin' ) . ' ' . $userdata->display_name . $current_after;
 
         // Archives per days.
         } elseif ( is_day() ) {
@@ -349,16 +349,16 @@ function odin_breadcrumbs( $homepage = 'In&iacute;cio', $delimiter = '<span clas
 
         // 404 page.
         } elseif ( is_404() ) {
-            echo $current_before . __(' Erro 404', 'odin' ) . $current_after;
+            echo $current_before . __('404 Error', 'odin' ) . $current_after;
         }
 
         // Gets pagination.
         if ( get_query_var( 'paged' ) ) {
 
             if ( is_archive() ) {
-                echo ' (' . sprintf( __( 'P&aacute;gina %s', 'odin' ), get_query_var('paged') ) . ')';
+                echo ' (' . sprintf( __( 'Page %s', 'odin' ), get_query_var('paged') ) . ')';
             } else {
-                printf( __( 'P&aacute;gina %s', 'odin' ), get_query_var('paged') );
+                printf( __( 'Page %s', 'odin' ), get_query_var('paged') );
             }
         }
 

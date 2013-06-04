@@ -72,9 +72,9 @@ class Odin_Metabox {
                 'odin-admin',
                 'odin_admin_params',
                 array(
-                    'gallery_title'  => __( 'Adicionar imagens na galeria', 'odin' ),
-                    'gallery_button' => __( 'Adicionar na galeria', 'odin' ),
-                    'gallery_remove' => __( 'Remover imagem', 'odin' )
+                    'gallery_title'  => __( 'Add images in gallery', 'odin' ),
+                    'gallery_button' => __( 'Add in gallery', 'odin' ),
+                    'gallery_remove' => __( 'Remove image', 'odin' )
                 )
             );
         }
@@ -321,7 +321,7 @@ class Odin_Metabox {
      * @return string          HTML of the field.
      */
     protected function field_upload( $id, $current ) {
-        $html = sprintf( '<input type="text" id="%1$s" name="%1$s" value="%2$s" class="regular-text" /> <input class="button odin-upload-button" type="button" value="%3$s" />', $id, esc_url( $current ), __( 'Selecionar arquivo', 'odin' ) );
+        $html = sprintf( '<input type="text" id="%1$s" name="%1$s" value="%2$s" class="regular-text" /> <input class="button odin-upload-button" type="button" value="%3$s" />', $id, esc_url( $current ), __( 'Select file', 'odin' ) );
 
         echo $html;
     }
@@ -345,7 +345,7 @@ class Odin_Metabox {
             $image = $image[0];
         }
 
-        $html .= sprintf( '<input id="%1$s" name="%1$s" type="hidden" class="odin-upload-image" value="%2$s" /><img src="%3$s" class="odin-preview-image" style="height: 150px; width: 150px;" alt="" /><br /><input id="%1$s-button" class="odin-upload-image-button button" type="button" value="%4$s" /><small> <a href="#" class="odin-clear-image-button">%5$s</a></small>', $id, $current, $image, __( 'Selecionar imagem', 'odin' ), __( 'Remover imagem', 'odin' ) );
+        $html .= sprintf( '<input id="%1$s" name="%1$s" type="hidden" class="odin-upload-image" value="%2$s" /><img src="%3$s" class="odin-preview-image" style="height: 150px; width: 150px;" alt="" /><br /><input id="%1$s-button" class="odin-upload-image-button button" type="button" value="%4$s" /><small> <a href="#" class="odin-clear-image-button">%5$s</a></small>', $id, $current, $image, __( 'Select image', 'odin' ), __( 'Remove image', 'odin' ) );
 
         echo $html;
     }
@@ -370,7 +370,7 @@ class Odin_Metabox {
                             $html .= sprintf( '<li class="image" data-attachment_id="%1$s">%2$s<ul class="actions"><li><a href="#" class="delete" title="%3$s">X</a></li></ul></li>',
                                 $attachment_id,
                                 wp_get_attachment_image( $attachment_id, 'thumbnail' ),
-                                __( 'Remover imagem', 'odin' )
+                                __( 'Remove image', 'odin' )
                             );
                         }
                     }
@@ -381,7 +381,7 @@ class Odin_Metabox {
             $html .= sprintf( '<input type="hidden" class="odin-gallery-field" name="%s" value="%s" />', $id, $current );
 
             // Adds "adds images in gallery" url.
-            $html .= sprintf( '<p class="odin-gallery-add hide-if-no-js"><a href="#">%s</a></p>', __( 'Adicionar imagens na galeria', 'odin' ) );
+            $html .= sprintf( '<p class="odin-gallery-add hide-if-no-js"><a href="#">%s</a></p>', __( 'Add images in gallery', 'odin' ) );
         $html .= '</div>';
 
         echo $html;

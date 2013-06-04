@@ -21,7 +21,7 @@ function odin_setup_features() {
      */
     register_nav_menus(
         array(
-            'main-menu' => __( 'Menu Principal', 'odin' )
+            'main-menu' => __( 'Main Menu', 'odin' )
         )
     );
 
@@ -101,9 +101,9 @@ add_action( 'after_setup_theme', 'odin_setup_features' );
 function odin_widgets_init() {
     register_sidebar(
         array(
-            'name' => __( 'Sidebar Principal', 'odin' ),
+            'name' => __( 'Main Sidebar', 'odin' ),
             'id' => 'main-sidebar',
-            'description' => __( 'Sidebar Principal do site', 'odin' ),
+            'description' => __( 'Site Main Sidebar', 'odin' ),
             'before_widget' => '<aside id="%1$s" class="widget %2$s">',
             'after_widget' => '</aside>',
             'before_title' => '<h3 class="widgettitle widget-title">',

@@ -3,7 +3,7 @@
     <section id="content" role="main">
         <?php if ( have_posts() ) : ?>
             <header class="page-header">
-                <h1 class="page-title" itemprop="name headline"><?php echo __( 'Arquivos da Tag: ', 'odin' ) . '<span>' . single_tag_title( '', false ) . '</span>'; ?></h1>
+                <h1 class="page-title" itemprop="name headline"><?php echo __( 'Tag Archives: ', 'odin' ) . '<span>' . single_tag_title( '', false ) . '</span>'; ?></h1>
                 <?php
                     $tag_description = tag_description();
                     if ( ! empty( $tag_description ) ) {
