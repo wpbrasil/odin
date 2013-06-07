@@ -6,7 +6,7 @@
             <header class="entry-header">
             </header>
             <div class="entry-content">
-                <p><?php _e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'odin' ); ?></p>
+                <p><?php _e( 'It seems we can not find what you were looking for. Maybe a search or the links below can help.', 'odin' ); ?></p>
                 <?php get_search_form(); ?>
                 <div class="span3 no-margin-left">
                     <?php the_widget( 'WP_Widget_Recent_Posts', array( 'number' => 10 ), array( 'widget_id' => '404' ) ); ?>

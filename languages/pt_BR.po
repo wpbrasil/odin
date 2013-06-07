@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Odin 1.4.0\n"
-"POT-Creation-Date: 2013-06-04 10:11-0300\n"
-"PO-Revision-Date: 2013-06-04 10:20-0300\n"
+"POT-Creation-Date: 2013-06-07 18:43-0300\n"
+"PO-Revision-Date: 2013-06-07 18:53-0300\n"
 "Last-Translator: Rafael Funchal <rafaelfunchal@gmail.com>\n"
 "Language-Team: WordPress Brasil Group\n"
 "MIME-Version: 1.0\n"
@@ -21,11 +21,11 @@ msgstr "Isso é embaraçoso, não?"
 
 #: ../404.php:9
 msgid ""
-"It looks like nothing was found at this location. Maybe try one of the links "
-"below or a search?"
+"It seems we can not find what you were looking for. Maybe a search or the "
+"links below can help."
 msgstr ""
-"Parece que não conseguimos encontrar o que você estava procurando. Talvez "
-"uma pesquisa ou utilizar os links abaixo ajude?"
+"Parece que não conseguimos encontrar o que você estava procurando. Talvez, "
+"uma pesquisa ou os links abaixo possam ajudar."
 
 #: ../404.php:15
 msgid "Most Used Categories"
@@ -33,19 +33,19 @@ msgstr "Categorias mais usadas"
 
 #: ../archive.php:9
 msgid "Daily Archives: "
-msgstr "Arquivo Diário:"
+msgstr "Arquivos Diários:"
 
 #: ../archive.php:11
 msgid "Monthly Archives: "
-msgstr "Arquivo Mensal:"
+msgstr "Arquivos Mensais:"
 
 #: ../archive.php:13
 msgid "Yearly Archives: "
-msgstr "Arquivo Anual:"
+msgstr "Arquivos Anuais:"
 
 #: ../archive.php:15
 msgid "Blog Archives"
-msgstr "Arquivo do Blog"
+msgstr "Arquivos do Blog"
 
 #: ../attachment.php:12
 #, php-format
@@ -85,7 +85,7 @@ msgstr "&larr; Imagem anterior"
 
 #: ../author.php:6
 msgid "Author Archives: "
-msgstr "Arquivo do Autor:"
+msgstr "Arquivos do Autor:"
 
 #: ../author.php:11
 msgid "About "
@@ -124,7 +124,7 @@ msgstr "&larr; Comentários Antigos"
 
 #: ../comments.php:19 ../comments.php:28
 msgid "New Comments &rarr;"
-msgstr "Novo Comentários &rarr;"
+msgstr "Novos Comentários &rarr;"
 
 #: ../comments.php:33
 msgid "Comments closed."
@@ -209,15 +209,15 @@ msgstr "Pesquisar:"
 
 #: ../no-results.php:3
 msgid "Nothing Found"
-msgstr "Nada encontrado"
+msgstr "Nada Encontrado"
 
 #: ../no-results.php:6
 msgid ""
 "No results were found for the requested archive. Maybe a search can help you "
 "to find any related post."
 msgstr ""
-"Nada encontrado para o arquivo selecioado. Talvez uma pesquisa possa ajudar "
-"a encontrar um post relacionado."
+"Nada encontrado para o arquivo selecionado. Talvez uma pesquisa possa ajudá-"
+"lo a encontrar um post relacionado."
 
 #: ../search.php:6
 msgid "Search results for: "
@@ -229,7 +229,7 @@ msgstr "Pesquisa"
 
 #: ../single-custom_type.php:15
 msgid "All post by "
-msgstr "Todos os posts de"
+msgstr "Todos os posts por"
 
 #: ../single-custom_type.php:17 ../single.php:13
 msgid "| Posted in"
@@ -272,7 +272,7 @@ msgstr "%sTag: %s%s"
 #: ../core/tools.php:306
 #, php-format
 msgid "%sSearch result for: &quot;%s&quot;%s"
-msgstr "%sResultado da busca por: &quot;%s&quot;%s"
+msgstr "%sResultado da busca para: &quot;%s&quot;%s"
 
 #: ../core/tools.php:313
 msgid "Posted by"
@@ -434,4 +434,11 @@ msgstr "Seu comentário está aguardando moderação."
 
 #: ../inc/comments-loop.php:30
 msgid "Respond"
-msgstr "Responda"
+msgstr "Responder"
+
+#~ msgid ""
+#~ "It looks like nothing was found at this location. Maybe try one of the "
+#~ "links below or a search?"
+#~ msgstr ""
+#~ "Parece que não conseguimos encontrar o que você estava procurando. Talvez "
+#~ "uma pesquisa ou utilizar os links abaixo ajude?"
