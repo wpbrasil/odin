@@ -188,7 +188,7 @@ class Odin_Metabox {
                 $this->field_editor( $id, $current, $options );
                 break;
             case 'color':
-                $this->field_color( $id, $current );
+                $this->field_input( $id, $current, array( 'class' => 'odin-color-field' ) );
                 break;
             case 'upload':
                 $this->field_upload( $id, $current );
@@ -304,20 +304,6 @@ class Odin_Metabox {
         echo '<div style="max-width: 600px;">';
             wp_editor( wpautop( $current ), $id, $options );
         echo '</div>';
-    }
-
-    /**
-     * Color field.
-     *
-     * @param  string $id      Field id.
-     * @param  string $current Field current value.
-     *
-     * @return string          HTML of the field.
-     */
-    protected function field_color( $id, $current ) {
-        $html = sprintf( '<input type="text" id="%1$s" name="%1$s" value="%2$s" class="odin-color-field" />', $id, esc_attr( $current ) );
-
-        echo $html;
     }
 
     /**
