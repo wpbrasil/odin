@@ -281,6 +281,17 @@ class Odin_Theme_Options {
      * @return string Text field HTML.
      */
     public function callback_text( $args ) {
+        $this->callback_input( $args );
+    }
+
+    /**
+     * Input field callback.
+     *
+     * @param array $args Arguments from the option.
+     *
+     * @return string Input field HTML.
+     */
+    public function callback_input( $args ) {
         $tab = $args['tab'];
         $id  = $args['id'];
 
@@ -290,7 +301,19 @@ class Odin_Theme_Options {
         // Sets input size.
         $size = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
 
-        $html = sprintf( '<input type="text" id="%1$s" name="%2$s[%1$s]" value="%3$s" class="%4$s-text" />', $id, $tab, $current, $size );
+        // Sets input type.
+        $type = isset( $args['options']['type'] ) ? $args['options']['type'] : 'text';
+
+        // Sets input class.
+        $class = isset( $args['options']['class'] ) ? ' ' . $args['options']['class'] : '';
+
+        // Sets input styles.
+        $styles = isset( $args['options']['styles'] ) ? ' style="' . $args['options']['styles'] . '"' : '';
+
+        $html = sprintf(
+            '<input type="%5$s" id="%1$s" name="%2$s[%1$s]" value="%3$s" class="%4$s-text%6$s"%7$s />',
+            $id, $tab, $current, $size, $type, $class, $styles
+        );
 
         // Displays the description.
         if ( $args['description'] )
@@ -474,19 +497,9 @@ class Odin_Theme_Options {
      * @return string Color field HTML.
      */
     public function callback_color( $args ) {
-        $tab = $args['tab'];
-        $id  = $args['id'];
-
-        // Sets current option.
-        $current = $this->get_option( $tab, $id, $args['default'] );
-
-        $html = sprintf( '<input type="text" id="%1$s" name="%2$s[%1$s]" value="%3$s" class="odin-color-field" />', $id, $tab, $current );
-
-        // Displays the description.
-        if ( $args['description'] )
-            $html .= sprintf( '<p class="description">%s</p>', $args['description'] );
-
-        echo $html;
+        $args['size'] = 'custom';
+        $args['options'] = array( 'class' => 'odin-color-field' );
+        $this->callback_input( $args );
     }
 
     /**
