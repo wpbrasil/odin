@@ -80,9 +80,25 @@ class Odin_Theme_Options {
         wp_enqueue_script( 'thickbox' );
         wp_enqueue_style( 'thickbox' );
 
+        // jQuery UI.
+        wp_enqueue_script( 'jquery-ui-sortable' );
+
         // Theme Options.
+        wp_register_style( 'odin-admin', get_template_directory_uri() . '/core/css/admin.css', array(), null, 'all' );
+        wp_enqueue_style( 'odin-admin' );
         wp_register_script( 'odin-admin', get_template_directory_uri() . '/core/js/admin.js', array( 'jquery' ), null, true );
         wp_enqueue_script( 'odin-admin' );
+
+        // Localize strings.
+        wp_localize_script(
+            'odin-admin',
+            'odin_admin_params',
+            array(
+                'gallery_title'  => __( 'Add images in gallery', 'odin' ),
+                'gallery_button' => __( 'Add in gallery', 'odin' ),
+                'gallery_remove' => __( 'Remove image', 'odin' )
+            )
+        );
     }
 
     /**
@@ -271,6 +287,17 @@ class Odin_Theme_Options {
 
         return $default;
 
+    }
+
+    /**
+     * Text field callback.
+     *
+     * @param array $args Arguments from the option.
+     *
+     * @return string Text field HTML.
+     */
+    public function callback_text( $args ) {
+        $this->callback_input( $args );
     }
 
     /**
@@ -538,6 +565,52 @@ class Odin_Theme_Options {
         }
 
         $html .= sprintf( '<input id="%1$s" name="%2$s[%1$s]" type="hidden" class="odin-upload-image" value="%3$s" /><img src="%4$s" class="odin-preview-image" style="height: 150px; width: 150px;" alt="" /><br /><input id="%1$s-button" class="odin-upload-image-button button" type="button" value="%5$s" /><small> <a href="#" class="odin-clear-image-button">%6$s</a></small>', $id, $tab, $current, $image, __( 'Select image', 'odin' ), __( 'Remove image', 'odin' ) );
+
+        // Displays the description.
+        if ( $args['description'] )
+            $html .= sprintf( '<p class="description">%s</p>', $args['description'] );
+
+        echo $html;
+    }
+
+    /**
+     * Image Plupload field callback.
+     *
+     * @param array $args Arguments from the option.
+     *
+     * @return string Image Plupload field HTML.
+     */
+    public function callback_image_plupload( $args ) {
+        $tab = $args['tab'];
+        $id  = $args['id'];
+
+        // Sets current option.
+        $current = $this->get_option( $tab, $id, $args['default'] );
+
+        $html = '<div class="odin-gallery-container">';
+            $html .= '<ul class="odin-gallery-images">';
+                if ( ! empty( $current ) ) {
+                    // Gets the current images.
+                    $attachments = array_filter( explode( ',', $current ) );
+
+                    if ( $attachments ) {
+                        foreach ( $attachments as $attachment_id ) {
+                            $html .= sprintf( '<li class="image" data-attachment_id="%1$s">%2$s<ul class="actions"><li><a href="#" class="delete" title="%3$s">X</a></li></ul></li>',
+                                $attachment_id,
+                                wp_get_attachment_image( $attachment_id, 'thumbnail' ),
+                                __( 'Remove image', 'odin' )
+                            );
+                        }
+                    }
+                }
+            $html .= '</ul><div class="clear"></div>';
+
+            // Adds the hidden input.
+            $html .= sprintf( '<input type="hidden" id="%1$s" name="%2$s[%1$s]" value="%s" class="odin-gallery-field" />', $id, $tab, $current );
+
+            // Adds "adds images in gallery" url.
+            $html .= sprintf( '<p class="odin-gallery-add hide-if-no-js"><a href="#">%s</a></p>', __( 'Add images in gallery', 'odin' ) );
+        $html .= '</div>';
 
         // Displays the description.
         if ( $args['description'] )
