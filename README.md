@@ -73,6 +73,14 @@ Mais detalhes de como contribuir e enviar Pull Requests em [GitHub Collaborating
 
 ## Changelog ##
 
+#### v1.5.0 - 13/06/2013 ####
+
+* Added Image plupload field in Odin_Theme_Options class.
+* Added Input field type in Odin_Theme_Options class and Odin_Metabox class.
+* Optimized the Odin_Theme_Options class and Odin_Metabox class.
+* Modified the default language to en_US.
+* Added pt_BR translation.
+
 #### v1.4.0 - 26/05/2013 ####
 
 * Added Image plupload field in Odin_Metabox class.
