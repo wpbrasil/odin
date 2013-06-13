@@ -167,7 +167,10 @@ class Odin_Metabox {
 
         switch ( $type ) {
             case 'text':
-                $this->field_text( $id, $current );
+                $this->field_input( $id, $current, array( 'type' => 'text' ) );
+                break;
+            case 'input':
+                $this->field_input( $id, $current, $options );
                 break;
             case 'textarea':
                 $this->field_textarea( $id, $current );
@@ -204,15 +207,20 @@ class Odin_Metabox {
     }
 
     /**
-     * Text field.
+     * Input field.
      *
      * @param  string $id      Field id.
      * @param  string $current Field current value.
+     * @param  array  $options Array with field options.
      *
      * @return string          HTML of the field.
      */
-    protected function field_text( $id, $current ) {
-        echo sprintf( '<input type="text" id="%1$s" name="%1$s" value="%2$s" class="regular-text" />', $id, esc_attr( $current ) );
+    protected function field_input( $id, $current, $options ) {
+        $type = isset( $options['type'] ) ? $options['type'] : 'text';
+        $class = isset( $options['class'] ) ? $options['class'] : 'regular-text';
+        $styles = isset( $options['styles'] ) ? ' style="' . $options['styles'] . '"' : '';
+
+        echo sprintf( '<input type="%3$s" id="%1$s" name="%1$s" value="%2$s" class="%4$s"%5$s />', $id, esc_attr( $current ), $type, $class, $styles );
     }
 
     /**
