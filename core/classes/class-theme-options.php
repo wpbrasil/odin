@@ -606,7 +606,7 @@ class Odin_Theme_Options {
             $html .= '</ul><div class="clear"></div>';
 
             // Adds the hidden input.
-            $html .= sprintf( '<input type="hidden" id="%1$s" name="%2$s[%1$s]" value="%s" class="odin-gallery-field" />', $id, $tab, $current );
+            $html .= sprintf( '<input type="hidden" id="%1$s" name="%2$s[%1$s]" value="%3$s" class="odin-gallery-field" />', $id, $tab, $current );
 
             // Adds "adds images in gallery" url.
             $html .= sprintf( '<p class="odin-gallery-add hide-if-no-js"><a href="#">%s</a></p>', __( 'Add images in gallery', 'odin' ) );
