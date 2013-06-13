@@ -274,17 +274,6 @@ class Odin_Theme_Options {
     }
 
     /**
-     * Text field callback.
-     *
-     * @param array $args Arguments from the option.
-     *
-     * @return string Text field HTML.
-     */
-    public function callback_text( $args ) {
-        $this->callback_input( $args );
-    }
-
-    /**
      * Input field callback.
      *
      * @param array $args Arguments from the option.
