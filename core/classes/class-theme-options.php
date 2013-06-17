@@ -76,7 +76,7 @@ class Odin_Theme_Options {
         wp_enqueue_script( 'wp-color-picker' );
 
         // Media Upload.
-        wp_enqueue_script( 'media-upload' );
+        wp_enqueue_media();
         wp_enqueue_script( 'thickbox' );
         wp_enqueue_style( 'thickbox' );
 

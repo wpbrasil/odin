@@ -21,6 +21,11 @@
     width: 150px;
 }
 
+.odin-gallery-images img {
+    height: 150px;
+    width: 150px;
+}
+
 .odin-gallery-images .wc-metabox-sortable-placeholder {
     border: 4px dashed #ddd;
 }
