@@ -74,7 +74,9 @@ class Odin_Metabox {
                 array(
                     'gallery_title'  => __( 'Add images in gallery', 'odin' ),
                     'gallery_button' => __( 'Add in gallery', 'odin' ),
-                    'gallery_remove' => __( 'Remove image', 'odin' )
+                    'gallery_remove' => __( 'Remove image', 'odin' ),
+                    'upload_title'   => __( 'Choose a file', 'odin' ),
+                    'upload_button'  => __( 'Add file', 'odin' ),
                 )
             );
         }

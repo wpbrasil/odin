@@ -4,32 +4,44 @@
  * Theme Options and Metaboxes.
  */
 jQuery(document).ready(function($) {
-    // Stores the original information of the send_to_editor().
-    var default_send_to_editor = window.send_to_editor;
 
     /**
      * Image field.
      */
-    $(".odin-upload-image-button").on('click', function() {
-        formfield = $(this).siblings(".odin-upload-image");
-        preview = $(this).siblings(".odin-preview-image");
-        tb_show("", "media-upload.php?type=image&TB_iframe=true");
+    $(".odin-upload-image-button").on('click', function(e) {
+        e.preventDefault();
 
-        // Restore send_to_editor() when tb closed.
-        $("#TB_window").bind('tb_unload', function() {
-            window.send_to_editor = default_send_to_editor;
+        var upload_frame,
+            upload_input = $(this).siblings(".odin-upload-image"),
+            upload_preview = $(this).siblings(".odin-preview-image");
+
+        // If the media frame already exists, reopen it.
+        if (upload_frame) {
+            upload_frame.open();
+
+            return;
+        }
+
+        // Create the media frame.
+        upload_frame = wp.media.frames.downloadable_file = wp.media({
+            title: odin_admin_params.upload_title,
+            button: {
+                text: odin_admin_params.upload_button
+            },
+            multiple: false,
+            library: {
+                type: "image"
+            }
         });
 
-        window.send_to_editor = function(html) {
-            imgurl = $("img", html).attr("src");
-            classes = $("img", html).attr("class");
-            id = classes.replace(/(.*?)wp-image-/, "");
-            formfield.val(id);
-            preview.attr("src", imgurl);
-            tb_remove();
-        };
+        upload_frame.on("select", function() {
+            attachment = upload_frame.state().get('selection').first().toJSON();
+            upload_preview.attr("src", attachment.url);
+            upload_input.val(attachment.id);
+        });
 
-        return false;
+        // Finally, open the modal.
+        upload_frame.open();
     });
 
     $(".odin-clear-image-button").click(function() {
@@ -44,23 +56,35 @@ jQuery(document).ready(function($) {
     /**
      * Upload.
      */
-    $(".odin-upload-button").on('click', function() {
-        uploadID = $(this).prev("input");
-        formfield = $(this).attr("name");
-        tb_show("", "media-upload.php?post_id=&amp;type=image&amp;TB_iframe=true");
+    $(".odin-upload-button").on('click', function(e) {
+        e.preventDefault();
 
-        // Restore send_to_editor() when tb closed.
-        $("#TB_window").bind('tb_unload', function() {
-            window.send_to_editor = default_send_to_editor;
+        var upload_frame,
+            upload_input = $(this).prev("input");
+
+        // If the media frame already exists, reopen it.
+        if (upload_frame) {
+            upload_frame.open();
+
+            return;
+        }
+
+        // Create the media frame.
+        upload_frame = wp.media.frames.downloadable_file = wp.media({
+            title: odin_admin_params.upload_title,
+            button: {
+                text: odin_admin_params.upload_button
+            },
+            multiple: false
         });
 
-        window.send_to_editor = function(html) {
-            imgurl = $("img", html).attr("src");
-            uploadID.val(imgurl);
-            tb_remove();
-        };
+        upload_frame.on("select", function() {
+            attachment = upload_frame.state().get('selection').first().toJSON();
+            upload_input.val(attachment.url);
+        });
 
-        return false;
+        // Finally, open the modal.
+        upload_frame.open();
     });
 
     /**
@@ -93,7 +117,10 @@ jQuery(document).ready(function($) {
             button: {
                 text: odin_admin_params.gallery_button
             },
-            multiple: true
+            multiple: true,
+            library: {
+                type: "image"
+            }
         });
 
         // When an image is selected, run a callback.
