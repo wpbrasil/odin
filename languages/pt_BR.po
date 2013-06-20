@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Odin v1.5.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-06-07 18:43-0300\n"
-"PO-Revision-Date: 2013-06-19 04:33:59+0000\n"
+"PO-Revision-Date: 2013-06-20 03:19:24+0000\n"
 "Last-Translator: Rafael Funchal <rafaelfunchal@gmail.com>\n"
 "Language-Team: WordPress Brasil Group\n"
 "MIME-Version: 1.0\n"
@@ -116,11 +116,6 @@ msgstr "1 Comentário"
 msgid "% Comments"
 msgstr "% Comentários"
 
-#: comments.php:13
-#@ odin
-msgid " to "
-msgstr " para "
-
 #: comments.php:18
 #: comments.php:27
 #@ odin
@@ -139,6 +134,7 @@ msgid "Comments closed."
 msgstr "Comentários não são permitidos."
 
 #. gettext fix: identical singular and plural forms found, that may be ambiguous! Please check the code!
+#: comments.php:44
 #: content.php:25
 #@ odin
 msgid "Comment"
@@ -160,38 +156,6 @@ msgstr "E-mail"
 #@ odin
 msgid "Website"
 msgstr "Website"
-
-#: content.php:4
-#@ odin
-msgid "Permalink to "
-msgstr "Link permanente para"
-
-#: content.php:7
-#: single-custom_type.php:13
-#: single.php:9
-#@ odin
-msgid "By "
-msgstr "Por"
-
-#: content.php:9
-#@ odin
-msgid "All posts of "
-msgstr "Todos os posts de"
-
-#: content.php:11
-#@ odin
-msgid " | Posted in "
-msgstr " | Publicado em "
-
-#: content.php:21
-#@ odin
-msgid "Posted in: "
-msgstr "Publicado em:"
-
-#: content.php:22
-#@ odin
-msgid " and tagged as "
-msgstr " e marcado como "
 
 #: footer.php:3
 #@ odin
@@ -246,33 +210,11 @@ msgstr "Nada encontrado para o arquivo selecionado. Talvez uma pesquisa possa aj
 msgid "Search"
 msgstr "Pesquisa"
 
-#: single-custom_type.php:15
-#@ odin
-msgid "All post by "
-msgstr "Todos os posts por"
-
 #: single-custom_type.php:17
 #: single.php:13
 #@ odin
 msgid "| Posted in"
 msgstr "| Publicado em"
-
-#: single-custom_type.php:26
-#: single.php:22
-#@ odin
-msgid "Posted in "
-msgstr "Publicado em"
-
-#: single-custom_type.php:27
-#: single.php:23
-#@ odin
-msgid "and tagged as "
-msgstr "e marcado como"
-
-#: single.php:11
-#@ odin
-msgid "All posts by "
-msgstr "Todos posts de"
 
 #: core/tools.php:44
 #@ odin
@@ -476,11 +418,6 @@ msgid "Choose from %ss most used"
 msgstr "Escolher entre os  %ss mais usados"
 
 #: inc/comments-loop.php:12
-#@ odin
-msgid "Pingback: "
-msgstr "Pingback: "
-
-#: inc/comments-loop.php:12
 #: inc/comments-loop.php:22
 #@ odin
 msgid "Edit"
@@ -536,12 +473,6 @@ msgstr "Arquivo do Autor:"
 msgid "Category Archives:"
 msgstr "Arquivo da Categoria:"
 
-#: comments.php:44
-#@ default
-msgctxt "odin"
-msgid "Comment"
-msgstr ""
-
 #: core/classes/class-metabox.php:78
 #: core/classes/class-theme-options.php:100
 #@ odin
@@ -563,4 +494,48 @@ msgstr "Resultados de busca por:"
 #@ odin
 msgid "Tag Archives:"
 msgstr "Arquivo da Tag:"
+
+#: comments.php:13
+#@ odin
+msgid "to"
+msgstr "para"
+
+#: content.php:4
+#@ odin
+msgid "Permalink to"
+msgstr "Link permanente para"
+
+#: content.php:7
+#: single-custom_type.php:13
+#: single.php:9
+#@ odin
+msgid "By"
+msgstr "Por"
+
+#: content.php:11
+#: content.php:21
+#: single-custom_type.php:26
+#: single.php:22
+#@ odin
+msgid "Posted in"
+msgstr "Publicado em"
+
+#: inc/comments-loop.php:12
+#@ odin
+msgid "Pingback:"
+msgstr "Pingback:"
+
+#: content.php:9
+#: single-custom_type.php:15
+#: single.php:11
+#@ odin
+msgid "All posts by"
+msgstr "Todos posts de"
+
+#: content.php:22
+#: single-custom_type.php:27
+#: single.php:23
+#@ odin
+msgid "and tagged as"
+msgstr "e marcado como"
 

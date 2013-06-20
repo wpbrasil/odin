@@ -10,7 +10,7 @@
         <h2 id="comments-title">
             <?php
             comments_number( __( '0 Comments', 'odin' ), __( '1 Comment', 'odin' ), __( '% Comments', 'odin' ) );
-            echo __( ' to ', 'odin' ) . '<span>&quot;' . get_the_title() . '&quot;</span>';
+            echo ' ' . __( 'to', 'odin' ) . ' <span>&quot;' . get_the_title() . '&quot;</span>';
             ?>
         </h2>
         <?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
@@ -41,7 +41,7 @@
         comment_form(
         array(
             'comment_notes_after' => '',
-            'comment_field' => '<div class="comment-form-comment control-group"><label class="control-label" for="comment">' . _x( 'Comment', 'odin' ) . '</label><div class="controls"><textarea id="comment" name="comment" cols="45" rows="8" class="input-block-level" aria-required="true"></textarea></div></div>',
+            'comment_field' => '<div class="comment-form-comment control-group"><label class="control-label" for="comment">' . __( 'Comment', 'odin' ) . '</label><div class="controls"><textarea id="comment" name="comment" cols="45" rows="8" class="input-block-level" aria-required="true"></textarea></div></div>',
             'fields' => apply_filters( 'comment_form_default_fields', array(
                 'author' => '<div class="comment-form-author control-group">' . '<label class="control-label" for="author">' . __( 'Name', 'odin' ) . ( $req ? '<span class="required"> *</span>' : '' ) . '</label><div class="controls"><input class="span3" id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' /></div></div>',
                 'email' => '<div class="comment-form-email control-group"><label class="control-label" for="email">' . __( 'E-mail', 'odin' ) . ( $req ? '<span class="required"> *</span>' : '' ) . '</label><div class="controls"><input class="span3" id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' /></div></div>',
