@@ -4,13 +4,13 @@ Theme URI: https://github.com/wpbrasil/odin
 Description: Tema base para desenvolvimento em WordPress.
 Author: Grupo WordPress Brasil
 Author URI: http://www.facebook.com/groups/wordpress.brasil/
-Version: 1.5.0
+Version: 1.5.1
 Tags: light, gray, white, one-column, two-columns, right-sidebar, flexible-width, custom-background, custom-header, custom-menu, editor-style, featured-images, flexible-header, full-width-template, post-formats, sticky-post, theme-options, translation-ready
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 /*
- * Bootstrap v2.3.1
+ * Bootstrap v2.3.2
  *
  * Copyright 2012 Twitter, Inc
  * Licensed under the Apache License v2.0
@@ -2895,6 +2895,15 @@ table th[class*="span"],
 }
 .open > .dropdown-menu {
   display: block;
+}
+
+.dropdown-backdrop {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 990;
 }
 
 .pull-right > .dropdown-menu {
@@ -6476,7 +6485,7 @@ textarea.error {
 /* =Responsive Styles
 -------------------------------------------------------------- */
 /*
- * Bootstrap Responsive v2.3.1
+ * Bootstrap Responsive v2.3.2
  *
  * Copyright 2012 Twitter, Inc
  * Licensed under the Apache License v2.0
