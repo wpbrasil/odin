@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Odin v1.5.0\n"
+"Project-Id-Version: Odin v1.5.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-06-07 18:43-0300\n"
-"PO-Revision-Date: 2013-06-20 03:19:24+0000\n"
+"PO-Revision-Date: 2013-06-22 02:31:07+0000\n"
 "Last-Translator: Rafael Funchal <rafaelfunchal@gmail.com>\n"
 "Language-Team: WordPress Brasil Group\n"
 "MIME-Version: 1.0\n"
@@ -88,11 +88,6 @@ msgstr "Próxima imagem &rarr;"
 #@ odin
 msgid "&larr; Previous image"
 msgstr "&larr; Imagem anterior"
-
-#: author.php:11
-#@ odin
-msgid "About "
-msgstr "Sobre"
 
 #: comments.php:3
 #@ odin
@@ -538,4 +533,9 @@ msgstr "Todos posts de"
 #@ odin
 msgid "and tagged as"
 msgstr "e marcado como"
+
+#: author.php:11
+#@ odin
+msgid "About"
+msgstr "Sobre"
 

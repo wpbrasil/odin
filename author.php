@@ -8,7 +8,7 @@
             <?php rewind_posts(); ?>
             <?php if ( get_the_author_meta( 'description' ) ) : ?>
                 <div class="author-info">
-                    <h2><?php echo __( 'About ', 'odin' ) . get_the_author(); ?></h2>
+                    <h2><?php echo __( 'About', 'odin' ) . ' ' . get_the_author(); ?></h2>
                     <span class="author-avatar" itemprop="image"><?php echo get_avatar( get_the_author_meta( 'ID' ), 60 ); ?></span>
                     <span class="author-description" itemprop="description"><?php the_author_meta( 'description' ); ?></span>
                 </div><!-- .author-info -->
