@@ -7,7 +7,7 @@
  * @package  Odin
  * @category Post Types
  * @author   WPBrasil
- * @version  1.0
+ * @version  1.6.0
  */
 class Odin_Post_Type {
 
@@ -30,14 +30,12 @@ class Odin_Post_Type {
      *
      * @param string $name       Singular name.
      * @param string $slug       Post type slug.
-     * @param string $sex        Sex of Post Type ('m' for male and 'f' female).
      *
      * @return void
      */
-    public function __construct( $name, $slug, $sex = 'm' ) {
+    public function __construct( $name, $slug ) {
         $this->name = $name;
         $this->slug = $slug;
-        $this->sex  = $sex;
 
         // Register post type.
         add_action( 'init', array( &$this, 'register_post_type' ) );
@@ -80,23 +78,13 @@ class Odin_Post_Type {
             'update_item'        => sprintf( __( 'Update %s', 'odin' ), $this->name ),
             'parent_item_colon'  => sprintf( __( 'Parent %s:', 'odin' ), $this->name ),
             'menu_name'          => sprintf( __( '%ss', 'odin' ), $this->name ),
+            'add_new'            => __( 'Add New', 'odin' ),
+            'add_new_item'       => sprintf( __( 'Add New %s', 'odin' ), $this->name ),
+            'new_item'           => sprintf( __( 'New %s', 'odin' ), $this->name ),
+            'all_items'          => sprintf( __( 'All %ss', 'odin' ), $this->name ),
+            'not_found'          => sprintf( __( 'No %s found', 'odin' ), $this->name ),
+            'not_found_in_trash' => sprintf( __( 'No %s found in Trash', 'odin' ), $this->name )
         );
-
-        if ( 'm' == $this->sex ) {
-            $default['add_new'] = __( 'Add New', 'odin' );
-            $default['add_new_item'] =  sprintf( __( 'Add New %s', 'odin' ), $this->name );
-            $default['new_item'] = sprintf( __( 'New %s', 'odin' ), $this->name );
-            $default['all_items'] = sprintf( __( 'All %ss', 'odin' ), $this->name );
-            $default['not_found'] =  sprintf( __( 'No %s found', 'odin' ), $this->name );
-            $default['not_found_in_trash'] = sprintf( __( 'No %s found in Trash', 'odin' ), $this->name );
-        } else {
-            $default['add_new']  = __( 'Add New', 'odin' );
-            $default['add_new_item'] =  sprintf( __( 'Add New %s', 'odin' ), $this->name );
-            $default['new_item'] = sprintf( __( 'New %s', 'odin' ), $this->name );
-            $default['all_items'] = sprintf( __( 'All %ss', 'odin' ), $this->name );
-            $default['not_found'] =  sprintf( __( 'No %s found', 'odin' ), $this->name );
-            $default['not_found_in_trash'] = sprintf( __( 'No %s found in Trash', 'odin' ), $this->name );
-        }
 
         return array_merge( $default, $this->labels );
     }

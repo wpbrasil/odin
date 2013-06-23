@@ -7,7 +7,7 @@
  * @package  Odin
  * @category Taxonomy
  * @author   WPBrasil
- * @version  1.0
+ * @version  1.6
  */
 class Odin_Taxonomy {
 
@@ -31,15 +31,13 @@ class Odin_Taxonomy {
      * @param string $name        The singular name of the taxonomy.
      * @param string $slug        Taxonomy slug.
      * @param string $object_type Name of the object type for the taxonomy object.
-     * @param string $sex         Sex of taxonomy ('m' for male and 'f' female).
      *
      * @return void
      */
-    public function __construct( $name, $slug, $object_type, $sex = 'm' ) {
+    public function __construct( $name, $slug, $object_type ) {
         $this->name        = $name;
         $this->slug        = $slug;
         $this->object_type = $object_type;
-        $this->sex         = $sex;
 
         // Register Taxonomy.
         add_action( 'init', array( &$this, 'register_taxonomy' ) );
@@ -74,31 +72,22 @@ class Odin_Taxonomy {
      */
     protected function labels() {
         $default = array(
-            'name'                => sprintf( __( '%ss', 'odin' ), $this->name ),
-            'singular_name'       => sprintf( __( '%s', 'odin' ), $this->name ),
-            'add_or_remove_items' => sprintf( __( 'Add or Remove %ss', 'odin' ), $this->name ),
-            'view_item'           => sprintf( __( 'View %s', 'odin' ), $this->name ),
-            'edit_item'           => sprintf( __( 'Edit %s', 'odin' ), $this->name ),
-            'search_items'        => sprintf( __( 'Search %s', 'odin' ), $this->name ),
-            'update_item'         => sprintf( __( 'Update %s', 'odin' ), $this->name ),
-            'parent_item'         => sprintf( __( 'Parent %s:', 'odin' ), $this->name ),
-            'parent_item_colon'   => sprintf( __( 'Parent %s:', 'odin' ), $this->name ),
-            'menu_name'           => sprintf( __( '%ss', 'odin' ), $this->name ),
+            'name'                       => sprintf( __( '%ss', 'odin' ), $this->name ),
+            'singular_name'              => sprintf( __( '%s', 'odin' ), $this->name ),
+            'add_or_remove_items'        => sprintf( __( 'Add or Remove %ss', 'odin' ), $this->name ),
+            'view_item'                  => sprintf( __( 'View %s', 'odin' ), $this->name ),
+            'edit_item'                  => sprintf( __( 'Edit %s', 'odin' ), $this->name ),
+            'search_items'               => sprintf( __( 'Search %s', 'odin' ), $this->name ),
+            'update_item'                => sprintf( __( 'Update %s', 'odin' ), $this->name ),
+            'parent_item'                => sprintf( __( 'Parent %s:', 'odin' ), $this->name ),
+            'parent_item_colon'          => sprintf( __( 'Parent %s:', 'odin' ), $this->name ),
+            'menu_name'                  => sprintf( __( '%ss', 'odin' ), $this->name ),
+            'add_new_item'               => sprintf( __( 'Add New %s', 'odin' ), $this->name ),
+            'new_item_name'              => sprintf( __( 'New %s', 'odin' ), $this->name ),
+            'all_items'                  => sprintf( __( 'All %ss', 'odin' ), $this->name ),
+            'separate_items_with_commas' => sprintf( __( 'Separate %ss with comma', 'odin' ), $this->name ),
+            'choose_from_most_used'      => sprintf( __( 'Choose from %ss most used', 'odin' ), $this->name )
         );
-
-        if ( 'm' == $this->sex ) {
-            $default['add_new_item'] =  sprintf( __( 'Add New %s', 'odin' ), $this->name );
-            $default['new_item_name'] = sprintf( __( 'New %s', 'odin' ), $this->name );
-            $default['all_items'] = sprintf( __( 'All %ss', 'odin' ), $this->name );
-            $default['separate_items_with_commas'] = sprintf( __( 'Separate %ss with comma', 'odin' ), $this->name );
-            $default['choose_from_most_used'] = sprintf( __( 'Choose from %ss most used', 'odin' ), $this->name );
-        } else {
-            $default['add_new_item'] =  sprintf( __( 'Add New %s', 'odin' ), $this->name );
-            $default['new_item_name'] = sprintf( __( 'New %s', 'odin' ), $this->name );
-            $default['all_items'] = sprintf( __( 'All %ss', 'odin' ), $this->name );
-            $default['separate_items_with_commas'] = sprintf( __( 'Separate %ss with comma', 'odin' ), $this->name );
-            $default['choose_from_most_used'] = sprintf( __( 'Choose from %ss most used', 'odin' ), $this->name );
-        }
 
         return array_merge( $default, $this->labels );
     }

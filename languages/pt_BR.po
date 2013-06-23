@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Odin v1.5.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-06-07 18:43-0300\n"
-"PO-Revision-Date: 2013-06-22 02:31:07+0000\n"
+"PO-Revision-Date: 2013-06-23 01:18:22+0000\n"
 "Last-Translator: Rafael Funchal <rafaelfunchal@gmail.com>\n"
 "Language-Team: WordPress Brasil Group\n"
 "MIME-Version: 1.0\n"
@@ -293,124 +293,113 @@ msgstr "Selecionar arquivo"
 msgid "Select image"
 msgstr "Selecionar imagem"
 
-#: core/classes/class-post-type.php:75
-#: core/classes/class-post-type.php:82
-#: core/classes/class-taxonomy.php:77
-#: core/classes/class-taxonomy.php:86
+#: core/classes/class-post-type.php:73
+#: core/classes/class-post-type.php:80
+#: core/classes/class-taxonomy.php:75
+#: core/classes/class-taxonomy.php:84
 #, php-format
 #@ odin
 msgid "%ss"
 msgstr "%ss"
 
-#: core/classes/class-post-type.php:76
-#: core/classes/class-taxonomy.php:78
+#: core/classes/class-post-type.php:74
+#: core/classes/class-taxonomy.php:76
 #, php-format
 #@ odin
 msgid "%s"
 msgstr "%s"
 
-#: core/classes/class-post-type.php:77
-#: core/classes/class-taxonomy.php:80
+#: core/classes/class-post-type.php:75
+#: core/classes/class-taxonomy.php:78
 #, php-format
 #@ odin
 msgid "View %s"
 msgstr "Ver %s"
 
-#: core/classes/class-post-type.php:78
-#: core/classes/class-taxonomy.php:81
+#: core/classes/class-post-type.php:76
+#: core/classes/class-taxonomy.php:79
 #, php-format
 #@ odin
 msgid "Edit %s"
 msgstr "Editar %s"
 
-#: core/classes/class-post-type.php:79
-#: core/classes/class-taxonomy.php:82
+#: core/classes/class-post-type.php:77
+#: core/classes/class-taxonomy.php:80
 #, php-format
 #@ odin
 msgid "Search %s"
 msgstr "Pesquisar %s"
 
-#: core/classes/class-post-type.php:80
-#: core/classes/class-taxonomy.php:83
+#: core/classes/class-post-type.php:78
+#: core/classes/class-taxonomy.php:81
 #, php-format
 #@ odin
 msgid "Update %s"
 msgstr "Atualizar  %s"
 
-#: core/classes/class-post-type.php:81
-#: core/classes/class-taxonomy.php:84
-#: core/classes/class-taxonomy.php:85
+#: core/classes/class-post-type.php:79
+#: core/classes/class-taxonomy.php:82
+#: core/classes/class-taxonomy.php:83
 #, php-format
 #@ odin
 msgid "Parent %s:"
-msgstr "Parente  %s"
+msgstr "Parente %s"
 
-#: core/classes/class-post-type.php:86
-#: core/classes/class-post-type.php:93
+#: core/classes/class-post-type.php:81
 #@ odin
 msgid "Add New"
 msgstr "Adicionar Novo"
 
-#: core/classes/class-post-type.php:87
-#: core/classes/class-post-type.php:94
-#: core/classes/class-taxonomy.php:90
-#: core/classes/class-taxonomy.php:96
+#: core/classes/class-post-type.php:82
+#: core/classes/class-taxonomy.php:85
 #, php-format
 #@ odin
 msgid "Add New %s"
 msgstr "Adicionar Novo %s"
 
-#: core/classes/class-post-type.php:88
-#: core/classes/class-post-type.php:95
-#: core/classes/class-taxonomy.php:91
-#: core/classes/class-taxonomy.php:97
+#: core/classes/class-post-type.php:83
+#: core/classes/class-taxonomy.php:86
 #, php-format
 #@ odin
 msgid "New %s"
 msgstr "Novo %s"
 
-#: core/classes/class-post-type.php:89
-#: core/classes/class-post-type.php:96
-#: core/classes/class-taxonomy.php:92
-#: core/classes/class-taxonomy.php:98
+#: core/classes/class-post-type.php:84
+#: core/classes/class-taxonomy.php:87
 #, php-format
 #@ odin
 msgid "All %ss"
-msgstr "Todos os %s"
+msgstr "Todos os %ss"
 
-#: core/classes/class-post-type.php:90
-#: core/classes/class-post-type.php:97
+#: core/classes/class-post-type.php:85
 #, php-format
 #@ odin
 msgid "No %s found"
 msgstr "Nenhum %s encontrado"
 
-#: core/classes/class-post-type.php:91
-#: core/classes/class-post-type.php:98
+#: core/classes/class-post-type.php:86
 #, php-format
 #@ odin
 msgid "No %s found in Trash"
 msgstr "Nenhum %s encontrado na Lixeira"
 
-#: core/classes/class-taxonomy.php:79
+#: core/classes/class-taxonomy.php:77
 #, php-format
 #@ odin
 msgid "Add or Remove %ss"
-msgstr "Adicionar ou Remover  %ss"
+msgstr "Adicionar ou Remover %ss"
 
-#: core/classes/class-taxonomy.php:93
-#: core/classes/class-taxonomy.php:99
+#: core/classes/class-taxonomy.php:88
 #, php-format
 #@ odin
 msgid "Separate %ss with comma"
-msgstr "Separe  %ss com vírgula"
+msgstr "Separe %ss com vírgula"
 
-#: core/classes/class-taxonomy.php:94
-#: core/classes/class-taxonomy.php:100
+#: core/classes/class-taxonomy.php:89
 #, php-format
 #@ odin
 msgid "Choose from %ss most used"
-msgstr "Escolher entre os  %ss mais usados"
+msgstr "Escolher entre os %ss mais usados"
 
 #: inc/comments-loop.php:12
 #: inc/comments-loop.php:22
