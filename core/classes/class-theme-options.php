@@ -135,6 +135,11 @@ class Odin_Theme_Options {
         return $current_tab;
     }
 
+    /**
+     * Get the menu current URL.
+     *
+     * @return string Current URL.
+     */
     private function get_current_url() {
         $url = 'http';
         if ( isset( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] == 'on' )
