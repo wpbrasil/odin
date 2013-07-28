@@ -376,3 +376,31 @@ function odin_breadcrumbs( $homepage = 'In&iacute;cio', $delimiter = '<span clas
 function odin_debug( $variable ) {
     echo '<pre>' . print_r( $variable, true ) . '</pre>';
 }
+
+/**
+ * Menu Fallback.
+ *
+ * @param  array $args Menu arguments.
+ *
+ * @return string      Menu in HTML.
+ */
+function odin_menu_fallback( $args ) {
+    if ( ! current_user_can( 'manage_options' ) )
+        return;
+
+    extract( $args );
+
+    $link = sprintf( '%s<a href="%s">%s%s%s</a>%s', $link_before, admin_url( 'nav-menus.php' ), $before, __( 'Add a menu', 'odin' ), $after, $link_after );
+
+    if ( false !== stripos( $items_wrap, '<ul' ) || false !== stripos( $items_wrap, '<ol' ) )
+        $link = '<li>' . $link . '</li>';
+
+    $output = sprintf( $items_wrap, $menu_id, $menu_class, $link );
+    if ( ! empty ( $container ) )
+        $output  = sprintf( '<%1$s class="%2$s" id="%3$s">%5$s</%1$s>', $container, $container_class, $container_id, $output );
+
+    if ( $echo )
+        echo $output;
+
+    return $output;
+}

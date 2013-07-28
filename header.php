@@ -57,9 +57,10 @@
                                 wp_nav_menu(
                                     array(
                                         'theme_location' => 'main-menu',
+                                        'depth'          => 2,
                                         'container'      => false,
                                         'menu_class'     => 'nav',
-                                        'fallback_cb'    => 'wp_page_menu',
+                                        'fallback_cb'    => 'odin_menu_fallback',
                                         'walker'         => new Odin_Bootstrap_Nav_Walker()
                                     )
                                 );

@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Odin v1.5.1\n"
+"Project-Id-Version: Odin v1.6.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-06-07 18:43-0300\n"
-"PO-Revision-Date: 2013-06-23 01:18:22+0000\n"
+"PO-Revision-Date: 2013-07-28 01:11:21+0000\n"
 "Last-Translator: Rafael Funchal <rafaelfunchal@gmail.com>\n"
 "Language-Team: WordPress Brasil Group\n"
 "MIME-Version: 1.0\n"
@@ -260,7 +260,7 @@ msgstr "Página %s"
 #: core/classes/class-metabox.php:75
 #: core/classes/class-metabox.php:380
 #: core/classes/class-theme-options.php:97
-#: core/classes/class-theme-options.php:614
+#: core/classes/class-theme-options.php:619
 #@ odin
 msgid "Add images in gallery"
 msgstr "Adicionar imagens na galeria"
@@ -275,20 +275,20 @@ msgstr "Adicionar na galeria"
 #: core/classes/class-metabox.php:344
 #: core/classes/class-metabox.php:369
 #: core/classes/class-theme-options.php:99
-#: core/classes/class-theme-options.php:569
-#: core/classes/class-theme-options.php:603
+#: core/classes/class-theme-options.php:574
+#: core/classes/class-theme-options.php:608
 #@ odin
 msgid "Remove image"
 msgstr "Remover imagem"
 
 #: core/classes/class-metabox.php:320
-#: core/classes/class-theme-options.php:537
+#: core/classes/class-theme-options.php:542
 #@ odin
 msgid "Select file"
 msgstr "Selecionar arquivo"
 
 #: core/classes/class-metabox.php:344
-#: core/classes/class-theme-options.php:569
+#: core/classes/class-theme-options.php:574
 #@ odin
 msgid "Select image"
 msgstr "Selecionar imagem"
@@ -527,4 +527,9 @@ msgstr "e marcado como"
 #@ odin
 msgid "About"
 msgstr "Sobre"
+
+#: core/tools.php:393
+#@ odin
+msgid "Add a menu"
+msgstr "Adicionar um menu"
 
