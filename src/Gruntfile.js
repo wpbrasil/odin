@@ -1,6 +1,5 @@
-'use strict';
-
 module.exports = function(grunt) {
+"use strict";
 
     grunt.initConfig({
 
@@ -43,7 +42,7 @@ module.exports = function(grunt) {
                         '../js/main.js'
                     ]
                 }
-            },
+            }
         },
 
         // compass and scss
@@ -249,5 +248,4 @@ module.exports = function(grunt) {
         'clean:bootstrap',
         'compass'
     ]);
-
 };
