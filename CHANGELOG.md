@@ -1,5 +1,13 @@
 ## Changelog ##
 
+#### v1.7.0 - 27/07/2013 ####
+
+* Fixed the main navigation.
+* Updated the Odin_Bootstrap_Nav_Walker class.
+* Updated the Twitter Bootstrap files.
+* Fixed the Gruntfile.js.
+* Improved the code.
+
 #### v1.6.0 - 22/06/2013 ####
 
 * Fixed the translation.
