@@ -5,23 +5,20 @@
 function odin_wp_title( $title, $sep ) {
     global $page, $paged;
 
-    if ( is_feed() ) {
+    if ( is_feed() )
         return $title;
-    }
 
     // Add the blog name
     $title .= get_bloginfo( 'name' );
 
     // Add the blog description for the home/front page.
     $site_description = get_bloginfo( 'description', 'display' );
-    if ( $site_description && ( is_home() || is_front_page() ) ){
-        $title .= " $sep $site_description";
-    }
+    if ( $site_description && ( is_home() || is_front_page() ) )
+        $title .= ' ' . $sep . ' ' . $site_description;
 
     // Add a page number if necessary:
-    if ( $paged >= 2 || $page >= 2 ) {
+    if ( $paged >= 2 || $page >= 2 )
         $title .= " $sep " . sprintf( __( 'Page %s', 'odin' ), max( $paged, $page ) );
-    }
 
     return $title;
 }
@@ -67,9 +64,8 @@ add_filter( 'the_generator', 'odin_rss_version' );
  * Remove injected CSS for recent comments widget.
  */
 function odin_remove_wp_widget_recent_comments_style() {
-    if ( has_filter( 'wp_head', 'wp_widget_recent_comments_style' ) ) {
+    if ( has_filter( 'wp_head', 'wp_widget_recent_comments_style' ) )
         remove_filter( 'wp_head', 'wp_widget_recent_comments_style' );
-    }
 }
 
 add_filter( 'wp_head', 'odin_remove_wp_widget_recent_comments_style', 1);
@@ -79,9 +75,9 @@ add_filter( 'wp_head', 'odin_remove_wp_widget_recent_comments_style', 1);
  */
 function odin_remove_recent_comments_style() {
     global $wp_widget_factory;
-    if ( isset( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'] ) ) {
+
+    if ( isset( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'] ) )
         remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' ) );
-    }
 }
 
 add_action( 'wp_head', 'odin_remove_recent_comments_style', 1 );
@@ -101,6 +97,7 @@ add_filter( 'gallery_style', 'odin_gallery_style' );
 function odin_modify_category_rel( $text ) {
     $search = array( 'rel="category"', 'rel="category tag"' );
     $text = str_replace( $search, 'rel="nofollow"', $text );
+
     return $text;
 }
 

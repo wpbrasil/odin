@@ -14,6 +14,7 @@ add_action( 'admin_enqueue_scripts', 'odin_admin_css' );
  */
 function odin_admin_adminbar_remove_logo() {
     global $wp_admin_bar;
+
     $wp_admin_bar->remove_menu( 'wp-logo' );
 }
 

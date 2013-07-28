@@ -4,6 +4,7 @@
  */
 function odin_comment_loop( $comment, $args, $depth ) {
     $GLOBALS['comment'] = $comment;
+
     switch ( $comment->comment_type ) {
         case 'pingback' :
         case 'trackback' :

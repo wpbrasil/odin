@@ -18,6 +18,7 @@ function odin_pagination( $mid = 2, $end = 1, $show = false ) {
     if ( ! isset( $_GET[ 'infinity' ] ) ) {
 
         global $wp_query, $wp_rewrite;
+
         $total_pages = $wp_query->max_num_pages;
 
         if ( $total_pages > 1 ) {
