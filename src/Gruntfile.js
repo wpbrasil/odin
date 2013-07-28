@@ -149,8 +149,8 @@ module.exports = function(grunt) {
         // downloads dependencies
         curl: {
             bootstrap: {
-                src: 'http://twitter.github.io/bootstrap/assets/bootstrap.zip',
-                dest: 'tmp/bootstrap.zip'
+                src: 'http://twitter.github.io/bootstrap/2.3.2/assets/js/bootstrap.min.js',
+                dest: 'tmp/bootstrap.min.js'
             },
             bootstrap_sass: {
                 src: 'https://github.com/jlong/sass-twitter-bootstrap/archive/master.zip',
@@ -163,10 +163,6 @@ module.exports = function(grunt) {
             bootstrap_scss: {
                 src: 'tmp/bootstrap-sass.zip',
                 dest: 'tmp/'
-            },
-            bootstrap: {
-                src: 'tmp/bootstrap.zip',
-                dest: 'tmp/'
             }
         },
 
@@ -177,20 +173,12 @@ module.exports = function(grunt) {
                 dest: '../sass/bootstrap'
             },
             bootstrap_js: {
-                src: 'tmp/bootstrap/js/bootstrap.min.js',
+                src: 'tmp/bootstrap.min.js',
                 dest: '../js/bootstrap.min.js'
             },
             bootstrap_img: {
                 src: 'tmp/sass-twitter-bootstrap-master/img',
                 dest: '../images/bootstrap'
-            },
-            bootstrapscss_to_bootstrap_scss: {
-                src: '../sass/bootstrap/bootstrap.scss',
-                dest: '../sass/bootstrap/_bootstrap.scss'
-            },
-            responsivescss_to_responsive_scss: {
-                src: '../sass/bootstrap/responsive.scss',
-                dest: '../sass/bootstrap/_responsive.scss'
             }
         },
 
@@ -206,6 +194,8 @@ module.exports = function(grunt) {
                 "../sass/bootstrap/tests/",
                 "../js/bootstrap/tests/",
                 "../js/bootstrap/.jshintrc",
+                "../sass/bootstrap/bootstrap.scss",
+                "../sass/bootstrap/responsive.scss",
                 "tmp"
             ]
         }
@@ -238,13 +228,10 @@ module.exports = function(grunt) {
         'clean:prepare',
         'curl:bootstrap',
         'curl:bootstrap_sass',
-        'unzip:bootstrap',
         'unzip:bootstrap_scss',
         'rename:bootstrap_scss',
         'rename:bootstrap_js',
         'rename:bootstrap_img',
-        'rename:bootstrapscss_to_bootstrap_scss',
-        'rename:responsivescss_to_responsive_scss',
         'clean:bootstrap',
         'compass'
     ]);
