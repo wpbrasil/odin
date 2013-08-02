@@ -20,7 +20,7 @@ class Odin_Bootstrap_Nav_Walker extends Walker_Nav_Menu {
      * @param string  $output Passed by reference. Used to append additional content.
      * @param int     $depth  Depth of page. Used for padding.
      */
-    function start_lvl( &$output, $depth ) {
+    function start_lvl( &$output, $depth = 0, $args = array() ) {
         $indent = str_repeat( "\t", $depth );
         $output .= "\n$indent<ul class=\"dropdown-menu\">\n";
     }
