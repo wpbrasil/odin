@@ -99,7 +99,7 @@ jQuery(document).ready(function($) {
         e.preventDefault();
 
         var gallery_frame,
-            gallery_wrap = $(this).parent(".odin-gallery-container");
+            gallery_wrap = $(this).parent(".odin-gallery-container"),
             image_gallery_ids = $(".odin-gallery-field", gallery_wrap),
             images = $("ul.odin-gallery-images", gallery_wrap),
             attachment_ids = image_gallery_ids.val();
