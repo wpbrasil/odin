@@ -1,9 +1,13 @@
 ## Changelog ##
 
+#### v1.7.1 - 02/08/2013 ####
+
+* Fixed `Odin_Bootstrap_Nav_Walker` class to improved compatibility with WordPress 3.6.
+
 #### v1.7.0 - 27/07/2013 ####
 
 * Fixed the main navigation.
-* Updated the Odin_Bootstrap_Nav_Walker class.
+* Updated the `Odin_Bootstrap_Nav_Walker` class.
 * Updated the Twitter Bootstrap files.
 * Fixed the Gruntfile.js.
 * Improved the code.
