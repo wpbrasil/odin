@@ -9,7 +9,7 @@
  * @package  Odin
  * @category Bootstrap
  * @author   WPBrasil
- * @version  1.7.0
+ * @version  1.7.1
  */
 class Odin_Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 
