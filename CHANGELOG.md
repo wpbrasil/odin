@@ -1,6 +1,10 @@
 ## Changelog ##
 
-#### v1.7.1 - 02/08/2013 ####
+#### v1.7.2 - 02/08/2013 ####
+
+* Improved the Core JavaScript.
+
+#### v1.7.1 - 01/08/2013 ####
 
 * Fixed `Odin_Bootstrap_Nav_Walker` class to improved compatibility with WordPress 3.6.
 
