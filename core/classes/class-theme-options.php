@@ -289,8 +289,8 @@ class Odin_Theme_Options {
     protected function get_option( $tab, $id, $default = '' ) {
         $options = get_option( $tab );
 
-        if ( isset( $options[$id] ) )
-            $default = $options[$id];
+        if ( isset( $options[ $id ] ) )
+            $default = $options[ $id ];
 
         return $default;
 

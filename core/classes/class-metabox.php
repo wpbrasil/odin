@@ -135,9 +135,8 @@ class Odin_Metabox {
                 echo '<td>';
                 $this->process_fields( $field, $id );
 
-                if ( isset( $field['description'] ) ) {
+                if ( isset( $field['description'] ) )
                     echo sprintf( '<br /><span class="description">%s</span>', $field['description'] );
-                }
 
                 echo '</td>';
             }
@@ -261,9 +260,8 @@ class Odin_Metabox {
     protected function field_select( $id, $current, $options ) {
         $html = sprintf( '<select id="%1$s" name="%1$s">', $id );
 
-        foreach( $options as $key => $label ) {
+        foreach( $options as $key => $label )
             $html .= sprintf( '<option value="%s"%s>%s</option>', $key, selected( $current, $key, false ), $label );
-        }
 
         $html .= '</select>';
 
@@ -282,9 +280,8 @@ class Odin_Metabox {
     protected function field_radio( $id, $current, $options ) {
         $html = '';
 
-        foreach( $options as $key => $label ) {
+        foreach( $options as $key => $label )
             $html .= sprintf( '<input type="radio" id="%1$s_%2$s" name="%1$s" value="%2$s"%3$s /><label for="%1$s_%2$s"> %4$s</label><br />', $id, $key, checked( $current, $key, false ), $label );
-        }
 
         echo $html;
     }
@@ -392,7 +389,7 @@ class Odin_Metabox {
      */
     public function save( $post_id ) {
         // Verify nonce.
-        if ( ! isset( $_POST[$this->nonce] ) || ! wp_verify_nonce( $_POST[$this->nonce], basename( __FILE__ ) ) )
+        if ( ! isset( $_POST[ $this->nonce ] ) || ! wp_verify_nonce( $_POST[ $this->nonce ], basename( __FILE__ ) ) )
             return $post_id;
 
         // Verify if this is an auto save routine.
@@ -401,9 +398,9 @@ class Odin_Metabox {
 
         // Check permissions.
         if ( $this->post_type == $_POST['post_type'] ) {
-            if ( ! current_user_can( 'edit_page', $post_id ) ) {
+            if ( ! current_user_can( 'edit_page', $post_id ) )
                 return $post_id;
-            }
+
         } elseif ( ! current_user_can( 'edit_post', $post_id ) ) {
             return $post_id;
         }
@@ -412,7 +409,7 @@ class Odin_Metabox {
             $name = $field['id'];
             $old = get_post_meta( $post_id, $name, true );
 
-            $new = apply_filters( 'odin_save_metabox_' . $this->id, $_POST[$name] );
+            $new = apply_filters( 'odin_save_metabox_' . $this->id, $_POST[ $name ] );
 
             if ( $new && $new != $old )
                 update_post_meta( $post_id, $name, $new );

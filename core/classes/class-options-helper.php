@@ -120,7 +120,7 @@ class Odin_Options_Helper {
     private function get_option_value() {
         $option_father_object = get_option( $this->option_father );
 
-        $option_value = $option_father_object[$this->option_child];
+        $option_value = $option_father_object[ $this->option_child ];
 
         $this->set_option_child_value( $option_value );
     }
