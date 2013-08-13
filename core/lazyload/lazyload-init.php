@@ -40,7 +40,7 @@ function odin_lazyload_placeholder( $content ) {
     }
 
     // Placeholder image.
-    $placeholder = apply_filters( 'odin_lazyload_placeholder', get_template_directory_uri() . '/core/images/lazyload.gif' );
+    $placeholder = apply_filters( 'odin_lazyload_placeholder', get_template_directory_uri() . '/core/assets/images/lazyload.gif' );
 
     // This is a pretty simple regex, but it works.
     $content = preg_replace( '#<img([^>]+?)src=[\'"]?([^\'"\s>]+)[\'"]?([^>]*)>#', sprintf( '<img${1}src="%s" data-original="${2}"${3}><noscript><img${1}src="${2}"${3}></noscript>', $placeholder ), $content );

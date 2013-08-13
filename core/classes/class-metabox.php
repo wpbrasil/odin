@@ -67,8 +67,8 @@ class Odin_Metabox {
             wp_enqueue_script( 'jquery-ui-sortable' );
 
             // Metabox.
-            wp_enqueue_script( 'odin-admin', get_template_directory_uri() . '/core/js/admin.js', array( 'jquery' ), null, true );
-            wp_enqueue_style( 'odin-admin', get_template_directory_uri() . '/core/css/admin.css', array(), null, 'all' );
+            wp_enqueue_script( 'odin-admin', get_template_directory_uri() . '/core/assets/js/admin.js', array( 'jquery' ), null, true );
+            wp_enqueue_style( 'odin-admin', get_template_directory_uri() . '/core/assets/css/admin.css', array(), null, 'all' );
 
             // Localize strings.
             wp_localize_script(
@@ -333,7 +333,7 @@ class Odin_Metabox {
     protected function field_image( $id, $current ) {
 
         // Gets placeholder image.
-        $image = get_template_directory_uri() . '/core/images/placeholder.png';
+        $image = get_template_directory_uri() . '/core/assets/images/placeholder.png';
         $html = '<span class="odin_default_image" style="display: none;">' . $image . '</span>';
 
         if ( $current ) {
