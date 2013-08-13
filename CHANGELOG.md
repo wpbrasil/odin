@@ -1,5 +1,9 @@
 ## Changelog ##
 
+#### v1.x.x - xx/xx/2013 ####
+
+* Added .editorconfig file.
+
 #### v1.7.2 - 02/08/2013 ####
 
 * Improved the Core JavaScript.

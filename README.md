@@ -48,6 +48,7 @@ Odin suporta nativamente os plugins:
 * [Lazy Load](http://www.appelsiini.net/projects/lazyload)
 * [jQuery Validation](https://github.com/jzaefferer/jquery-validation)
 * [FitVids](https://github.com/davatron5000/FitVids.js)
+* [EditorConfig](http://editorconfig.org/)
 
 ## Bugs and Sugestions - Bugs e Sugestões ##
 
