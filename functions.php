@@ -268,37 +268,29 @@ function odin_enqueue_scripts() {
     wp_enqueue_script( 'jquery');
 
     // bxSlider.
-    // wp_register_script( 'bxslider', $template_url . '/js/jquery.bxslider.min.js', array(), null, true );
-    // wp_enqueue_script( 'bxslider' );
+    // wp_enqueue_script( 'bxslider', $template_url . '/js/jquery.bxslider.min.js', array(), null, true );
 
     // General scripts.
     if ( false == ODIN_GRUNT_SUPPORT ) {
 
         // FitVids.
-        wp_register_script( 'fitvids', $template_url . '/js/jquery.fitvids.min.js', array(), null, true );
-        wp_enqueue_script( 'fitvids' );
+        wp_enqueue_script( 'fitvids', $template_url . '/assets/js/jquery.fitvids.min.js', array(), null, true );
 
         // Main jQuery.
-        wp_register_script( 'odin-main', $template_url . '/js/main.js', array(), null, true );
-        wp_enqueue_script( 'odin-main' );
+        wp_enqueue_script( 'odin-main', $template_url . '/assets/js/main.js', array(), null, true );
     } else {
-        wp_register_script( 'odin-main-min', $template_url . '/js/main.min.js', array(), null, true );
-        wp_enqueue_script( 'odin-main-min' );
+        wp_enqueue_script( 'odin-main-min', $template_url . '/assets/js/main.min.js', array(), null, true );
     }
 
     // Twitter Bootstrap.
-    wp_register_script( 'bootstrap', $template_url . '/js/bootstrap.min.js', array(), null, true );
-    wp_enqueue_script( 'bootstrap' );
+    wp_enqueue_script( 'bootstrap', $template_url . '/assets/js/bootstrap.min.js', array(), null, true );
 
     // Load Thread comments WordPress script.
-    if ( is_singular() && get_option( 'thread_comments' ) ) {
+    if ( is_singular() && get_option( 'thread_comments' ) )
         wp_enqueue_script( 'comment-reply' );
-    }
 
-    if ( is_single() ) {
-        wp_register_script( 'validate', $template_url . '/js/jquery.validate.min.js', array(), null, true );
-        wp_enqueue_script( 'validate' );
-    }
+    if ( is_single() )
+        wp_enqueue_script( 'validate', $template_url . '/assets/js/jquery.validate.min.js', array(), null, true );
 }
 
 add_action( 'wp_enqueue_scripts', 'odin_enqueue_scripts', 1 );

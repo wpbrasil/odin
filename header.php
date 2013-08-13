@@ -11,9 +11,9 @@
 <title><?php wp_title( '|', true, 'right' ); ?></title>
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-<link href="<?php echo get_template_directory_uri(); ?>/images/favicon.ico" rel="shortcut icon" />
+<link href="<?php echo get_template_directory_uri(); ?>/assets/images/favicon.ico" rel="shortcut icon" />
 <!--[if lt IE 9]>
-<script src="<?php echo get_template_directory_uri(); ?>/js/html5.min.js" type="text/javascript"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/assets/html5.min.js" type="text/javascript"></script>
 <![endif]-->
 <?php wp_head(); ?>
 </head>

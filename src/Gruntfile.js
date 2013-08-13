@@ -24,7 +24,7 @@ module.exports = function(grunt) {
             },
             all: [
                 "Gruntfile.js",
-                "../js/main.js"
+                "../js/assets/main.js"
             ]
         },
 
@@ -32,14 +32,14 @@ module.exports = function(grunt) {
         uglify: {
             dist: {
                 files: {
-                    "../js/main.min.js": [
+                    "../js/assets/main.min.js": [
                         "../core/colorbox/js/*.js", // Colorbox
                         "../core/lazyload/js/*.js", // LazyLoad
                         // "../core/photoswipe/js/*.js", // Photoswipe
                         "../core/socialite/js/*.js", // Socialite
-                        "../js/jquery.fitvids.min.js", // FitVids
-                        "../js/libs/*.js", // Project libs includes
-                        "../js/main.js"
+                        "../assets/js/jquery.fitvids.min.js", // FitVids
+                        "../assets/js/libs/*.js", // Project libs includes
+                        "../assets/js/main.js"
                     ]
                 }
             }
@@ -60,7 +60,7 @@ module.exports = function(grunt) {
         watch: {
             compass: {
                 files: [
-                    "../sass/**"
+                    "../assets/sass/**"
                 ],
                 tasks: ["compass"]
             },
@@ -81,9 +81,9 @@ module.exports = function(grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: "../images/",
-                    src: "../images/**",
-                    dest: "../images/"
+                    cwd: "../assets/images/",
+                    src: "../assets/images/**",
+                    dest: "../assets/images/"
                 }]
             }
         },
@@ -132,7 +132,7 @@ module.exports = function(grunt) {
                     "../**Thumbs.db",
                     "../.git/*",
                     "../.gitignore",
-                    "../sass/*",
+                    "../assets/sass/*",
                     "../src/*",
                     "../src/.sass-cache/*",
                     "../src/node_modules/*",
@@ -170,15 +170,15 @@ module.exports = function(grunt) {
         rename: {
             bootstrap_scss: {
                 src: "tmp/sass-twitter-bootstrap-master/lib",
-                dest: "../sass/bootstrap"
+                dest: "../assets/sass/bootstrap"
             },
             bootstrap_js: {
                 src: "tmp/bootstrap.min.js",
-                dest: "../js/bootstrap.min.js"
+                dest: "../assets/js/bootstrap.min.js"
             },
             bootstrap_img: {
                 src: "tmp/sass-twitter-bootstrap-master/img",
-                dest: "../images/bootstrap"
+                dest: "../assets/images/bootstrap"
             }
         },
 
