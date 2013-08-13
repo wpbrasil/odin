@@ -77,17 +77,13 @@ class Odin_Theme_Options {
 
         // Media Upload.
         wp_enqueue_media();
-        wp_enqueue_script( 'thickbox' );
-        wp_enqueue_style( 'thickbox' );
 
         // jQuery UI.
         wp_enqueue_script( 'jquery-ui-sortable' );
 
         // Theme Options.
-        wp_register_style( 'odin-admin', get_template_directory_uri() . '/core/css/admin.css', array(), null, 'all' );
-        wp_enqueue_style( 'odin-admin' );
-        wp_register_script( 'odin-admin', get_template_directory_uri() . '/core/js/admin.js', array( 'jquery' ), null, true );
-        wp_enqueue_script( 'odin-admin' );
+        wp_enqueue_style( 'odin-admin', get_template_directory_uri() . '/core/css/admin.css', array(), null, 'all' );
+        wp_enqueue_script( 'odin-admin', get_template_directory_uri() . '/core/js/admin.js', array( 'jquery' ), null, true );
 
         // Localize strings.
         wp_localize_script(
