@@ -80,7 +80,7 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: "<%= dirs.img %>/",
-                    src: "<%= dirs.img %>/**",
+                    src: "**",
                     dest: "<%= dirs.img %>/"
                 }]
             }
