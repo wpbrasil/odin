@@ -1,42 +1,75 @@
-## Grunt.js ##
+# Grunt.js #
+> O Grunt é uma ferramenta capaz de automatizar diversas tarefas, como: concatenação, minificação e validação de arquivos, otimização de imagem, testes unitários, deploy de arquivos por ftp ou rsync, entre outras.
 
-Para usar o **Odin** com o Grunt.js é necessário ter instalado o [Node.js](http://nodejs.org/).
+O Grunt vem integrado ao **Odin**, e para utilizá-lo é necessário ter instalado o [Node.js](http://nodejs.org/).
 
-## Instalação Node.js ##
+## Instalação Node ##
 
-* [Instalação do Node.js](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager)
+Clique [aqui](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager) para instalar o Node na sua máquina.
 
-## Instalação do Grunt.js ##
+## Instalação do Grunt ##
 
+Com o Node instalado na sua máquina, você precisa instalar o Grunt. Execute o comando abaixo, para iniciar a instalação do Grunt.
+
+	```bash
     $ sudo npm install -g grunt-cli
+    ```
 
-## Instalação dos pacotes do Grunt.js no Odin ##
+## Instalação dos pacotes do Grunt no Odin ##
 
+Com o Grunt instalado, é hora de instalar as dependências responsáveis pela execução das tarefas do Grunt no seu projeto.
+
+	```bash
     $ cd ROOT_PATH/wp-content/themes/odin/src/
     $ sudo npm install
+    ```
 
 ## Configuração no functions.php ##
 
-Para usar os arquivos de JavaScript comprimidos pelo Grunt.js você deve ativar esse suporte no `functions.php` do **Odin** da seguinte forma:
+Para usar os arquivos de JavaScript minificados pelo *Grunt* você deve ativar esse suporte no arquivo `functions.php` do **Odin** da seguinte forma:
 
-    define( 'ODIN_GRUNT_SUPPORT', true );
+	```php
+	define( 'ODIN_GRUNT_SUPPORT', true );
+	```
 
-## Comandos ##
+## Tarefas Disponíveis ##
 
 *ATENÇÃO: Todos os comandos a seguir devem ser executados dentro da pasta `src`*.
 
-Compilar arquivos do SASS e JavaScripts:
+### Compilar arquivos do Sass, minificar e validar scripts: ###
 
+	```bash
     $ grunt
+    ```
 
-Fazer o Grunt.js assistir o seu projeto:
+### Observar as mudanças no seu projeto ###
 
+	```bash
     $ grunt watch
+    ```
 
-Comprimir todas as imagens da pasta `images/`:
+### Comprimir imagens na pasta `images/`: ###
 
-    $ grunt imagemin
+	```bash
+    $ grunt optimize
+    ```
 
-Atualizar os arquivos do Twitter Bootstrap:
+### Atualizar os arquivos do Twitter Bootstrap: ###
 
+	```bash
     $ grunt bootstrap
+    ```
+
+### Fazer o deploy dos arquivos: ###
+
+#### 1. via FTP ####
+
+	```bash
+    $ grunt ftp
+    ```
+
+#### 2. via rsync ####
+
+	```bash
+    $ grunt rsync
+	```

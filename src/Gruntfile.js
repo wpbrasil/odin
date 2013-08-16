@@ -1,30 +1,28 @@
-module.exports = function(grunt) {
 "use strict";
 
-    grunt.initConfig({
+module.exports = function(grunt) {
+
+    require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
+
+    var odinConfig = {
+
+        // setting folder templates
+        dirs: {
+            js:   "../assets/js",
+            sass: "../assets/sass",
+            img:  "../assets/images",
+            core: "../core",
+            tmp: "tmp"
+        },
 
         // javascript linting with jshint
         jshint: {
             options: {
-                "bitwise": true,
-                "eqeqeq": true,
-                "eqnull": true,
-                "immed": true,
-                "newcap": true,
-                "es5": true,
-                "esnext": true,
-                "latedef": true,
-                "noarg": true,
-                "node": true,
-                "undef": true,
-                "browser": true,
-                "trailing": true,
-                "jquery": true,
-                "curly": true
+                jshintrc: ".jshintrc"
             },
             all: [
                 "Gruntfile.js",
-                "../js/assets/main.js"
+                "<%= dirs.js %>/main.js"
             ]
         },
 
@@ -32,20 +30,20 @@ module.exports = function(grunt) {
         uglify: {
             dist: {
                 files: {
-                    "../js/assets/main.min.js": [
-                        "../core/colorbox/js/*.js", // Colorbox
-                        "../core/lazyload/js/*.js", // LazyLoad
-                        // "../core/photoswipe/js/*.js", // Photoswipe
-                        "../core/socialite/js/*.js", // Socialite
-                        "../assets/js/jquery.fitvids.min.js", // FitVids
-                        "../assets/js/libs/*.js", // Project libs includes
-                        "../assets/js/main.js"
+                    "<%= dirs.js %>/main.min.js": [
+                        // "<%= dirs.core %>/photoswipe/js/*.js",   // Photoswipe
+                        "<%= dirs.core %>/colorbox/js/*.js",        // Colorbox
+                        "<%= dirs.core %>/lazyload/js/*.js",        // LazyLoad
+                        "<%= dirs.core %>/socialite/js/*.js",       // Socialite
+                        "<%= dirs.js %>/jquery.fitvids.min.js",     // FitVids
+                        "<%= dirs.js %>/libs/*.js",                 // External libs/pugins
+                        "<%= dirs.js %>/main.js"                    // Custom JavaScript
                     ]
                 }
             }
         },
 
-        // compass and scss
+        // compile scss/sass files to CSS
         compass: {
             dist: {
                 options: {
@@ -60,7 +58,7 @@ module.exports = function(grunt) {
         watch: {
             compass: {
                 files: [
-                    "../assets/sass/**"
+                    "<%= dirs.sass %>/**"
                 ],
                 tasks: ["compass"]
             },
@@ -81,9 +79,9 @@ module.exports = function(grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: "../assets/images/",
-                    src: "../assets/images/**",
-                    dest: "../assets/images/"
+                    cwd: "<%= dirs.img %>/",
+                    src: "<%= dirs.img %>/**",
+                    dest: "<%= dirs.img %>/"
                 }]
             }
         },
@@ -149,85 +147,95 @@ module.exports = function(grunt) {
         // downloads dependencies
         curl: {
             bootstrap: {
-                src: "http://twitter.github.io/bootstrap/2.3.2/assets/js/bootstrap.min.js",
-                dest: "tmp/bootstrap.min.js"
+                src: "http://getbootstrap.com/2.3.2/assets/bootstrap.zip",
+                dest: "<%= dirs.tmp %>/bootstrap.zip"
             },
             bootstrap_sass: {
                 src: "https://github.com/jlong/sass-twitter-bootstrap/archive/master.zip",
-                dest: "tmp/bootstrap-sass.zip"
+                dest: "<%= dirs.tmp %>/bootstrap-sass.zip"
             }
         },
 
         // unzip files
         unzip: {
+            bootstrap: {
+                src: "<%= dirs.tmp %>/bootstrap.zip",
+                dest: "<%= dirs.tmp %>/"
+            },
             bootstrap_scss: {
-                src: "tmp/bootstrap-sass.zip",
-                dest: "tmp/"
+                src: "<%= dirs.tmp %>/bootstrap-sass.zip",
+                dest: "<%= dirs.tmp %>/"
             }
         },
 
         // renames and moves directories and files
         rename: {
             bootstrap_scss: {
-                src: "tmp/sass-twitter-bootstrap-master/lib",
-                dest: "../assets/sass/bootstrap"
+                src: "<%= dirs.tmp %>/sass-twitter-bootstrap-master/lib",
+                dest: "<%= dirs.sass %>/bootstrap"
             },
             bootstrap_js: {
-                src: "tmp/bootstrap.min.js",
-                dest: "../assets/js/bootstrap.min.js"
+                src: "<%= dirs.tmp %>/bootstrap/js/bootstrap.min.js",
+                dest: "<%= dirs.js %>/bootstrap.min.js"
             },
             bootstrap_img: {
-                src: "tmp/sass-twitter-bootstrap-master/img",
-                dest: "../assets/images/bootstrap"
+                src: "<%= dirs.tmp %>/sass-twitter-bootstrap-master/img",
+                dest: "<%= dirs.img %>/bootstrap"
             }
         },
 
-        // cleans directories and files
+        // clean directories and files
         clean: {
             prepare: [
-                "tmp",
-                "../sass/bootstrap/",
-                "../js/bootstrap.min.js",
-                "../images/bootstrap/"
+                "<%= dirs.tmp %>",
+                "<%= dirs.sass %>/bootstrap/",
+                "<%= dirs.js %>/bootstrap.min.js",
+                "<%= dirs.img %>/bootstrap/"
             ],
             bootstrap: [
-                "../sass/bootstrap/tests/",
-                "../js/bootstrap/tests/",
-                "../js/bootstrap/.jshintrc",
-                "../sass/bootstrap/bootstrap.scss",
-                "../sass/bootstrap/responsive.scss",
-                "tmp"
+                "<%= dirs.sass %>/bootstrap/tests/",
+                "<%= dirs.js %>/bootstrap/tests/",
+                "<%= dirs.js %>/bootstrap/.jshintrc",
+                "<%= dirs.sass %>/bootstrap/bootstrap.scss",
+                "<%= dirs.sass %>/bootstrap/responsive.scss",
+                "<%= dirs.tmp %>"
             ]
         }
-    });
+    };
 
-    // load tasks
-    grunt.loadNpmTasks("grunt-contrib-watch");
-    grunt.loadNpmTasks("grunt-contrib-jshint");
-    grunt.loadNpmTasks("grunt-contrib-uglify");
-    grunt.loadNpmTasks("grunt-contrib-compass");
-    grunt.loadNpmTasks("grunt-contrib-imagemin");
-    grunt.loadNpmTasks("grunt-rsync");
-    grunt.loadNpmTasks("grunt-ftp-deploy");
 
-    // extra tasks
-    grunt.loadNpmTasks("grunt-curl");
-    grunt.loadNpmTasks("grunt-zip");
-    grunt.loadNpmTasks("grunt-rename");
-    grunt.loadNpmTasks("grunt-clean");
+    // Initialize Grunt Config
+    // --------------------------
+    grunt.initConfig(odinConfig);
 
-    // register task
+
+
+    // Register Tasks
+    // --------------------------
+
+    // Default Task
     grunt.registerTask("default", [
         "jshint",
         "compass",
         "uglify"
     ]);
 
-    // bootstrap task
+    // Watch Task
+    grunt.registerTask("watch", ["watch"]);
+
+    // Optimize Images Task
+    grunt.registerTask("optimize", ["imagemin"]);
+
+    // Deploy Tasks
+    grunt.registerTask("ftp", ["ftp-deploy"]);
+    grunt.registerTask("rsync", ["rsync"]);
+
+    // Bootstrap Task
     grunt.registerTask("bootstrap", [
         "clean:prepare",
         "curl:bootstrap",
         "curl:bootstrap_sass",
+        "unzip:bootstrap",
         "unzip:bootstrap_scss",
         "rename:bootstrap_scss",
         "rename:bootstrap_js",
@@ -235,4 +243,5 @@ module.exports = function(grunt) {
         "clean:bootstrap",
         "compass"
     ]);
+
 };

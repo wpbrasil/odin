@@ -1,12 +1,61 @@
+# Useful `.gitignore` templates:
+#   - https://github.com/github/gitignore
+
+
+# OSX       taken from: https://github.com/github/gitignore/blob/master/Global/OSX.gitignore
+# ----------------------------------------------------------------------------------------------
+._*
+.AppleDouble
 .DS_Store
-nbproject/*
-*.tmproj
+.localized
+.LSOverride
+.Spotlight-V100
+.Trashes
+Icon
+
+# Windows   taken from: https://github.com/github/gitignore/blob/master/Global/Windows.gitignore
+# ----------------------------------------------------------------------------------------------
+Desktop.ini
+ehthumbs.db
+Thumbs.db
+
+# Linux     taken from: https://github.com/github/gitignore/blob/master/Global/Linux.gitignore
+# ----------------------------------------------------------------------------------------------
+*~
+
+# Tags      taken from: https://github.com/github/gitignore/blob/master/Global/Tags.gitignore
+# ----------------------------------------------------------------------------------------------
+# Ignore tags created by etags and ctags
+TAGS
+tags
+
+# Vim       taken from: https://github.com/github/gitignore/blob/master/Global/vim.gitignore
+# ----------------------------------------------------------------------------------------------
+.*.sw[a-z]
+.netrwhist
+*.un~
+Session.vim
+
+# Sublime    taken from: https://github.com/github/gitignore/blob/master/Global/SublimeText.gitignore
+# ----------------------------------------------------------------------------------------------
 *.sublime-project
 *.sublime-workspace
 *.sublime-projectcompletions
+
+# TextMate    taken from: https://github.com/github/gitignore/blob/master/Global/TextMate.gitignore
+# ----------------------------------------------------------------------------------------------
+*.tmproj
+*.tmproject
+tmtags
+
+# NetBeans   taken from: https://github.com/github/gitignore/blob/master/Global/NetBeans.gitignore
+# ----------------------------------------------------------------------------------------------
+nbproject/*
+
+# Project
+# ----------------------------------------------------------------------------------------------
 src/.sass-cache/*
 src/node_modules/*
 src/.ftppass
-src/Gruntfileprod.js
 src/tmp/*
-js/main.min.js
+assets/js/main.min.js
