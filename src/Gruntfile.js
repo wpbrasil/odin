@@ -203,11 +203,9 @@ module.exports = function(grunt) {
         }
     };
 
-
     // Initialize Grunt Config
     // --------------------------
     grunt.initConfig(odinConfig);
-
 
 
     // Register Tasks
@@ -220,15 +218,11 @@ module.exports = function(grunt) {
         "uglify"
     ]);
 
-    // Watch Task
-    grunt.registerTask("watch", ["watch"]);
-
     // Optimize Images Task
     grunt.registerTask("optimize", ["imagemin"]);
 
     // Deploy Tasks
     grunt.registerTask("ftp", ["ftp-deploy"]);
-    grunt.registerTask("rsync", ["rsync"]);
 
     // Bootstrap Task
     grunt.registerTask("bootstrap", [
@@ -244,4 +238,9 @@ module.exports = function(grunt) {
         "compass"
     ]);
 
+    // Short aliases
+    grunt.registerTask("w", ["watch"]);
+    grunt.registerTask("o", ["optimize"]);
+    grunt.registerTask("f", ["ftp"]);
+    grunt.registerTask("r", ["rsync"]);
 };
