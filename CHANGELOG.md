@@ -3,6 +3,9 @@
 #### v1.x.x - xx/xx/2013 ####
 
 * Added .editorconfig file.
+* Improved the Gruntfile.js.
+* Improved the .gitignore.
+* Added .jshintrc.
 
 #### v1.7.2 - 02/08/2013 ####
 
