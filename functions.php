@@ -270,9 +270,6 @@ function odin_enqueue_scripts() {
     // bxSlider.
     // wp_enqueue_script( 'bxslider', $template_url . '/js/jquery.bxslider.min.js', array(), null, true );
 
-    wp_enqueue_script( 'colorbox' );
-    wp_enqueue_style( 'colorbox-style-3' );
-
     // General scripts.
     if ( false == ODIN_GRUNT_SUPPORT ) {
 

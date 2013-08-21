@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<div id="primary" class="span8">
+<div id="primary" class="col-md-8">
     <section id="content" role="main">
         <?php if ( have_posts() ) : ?>
             <header class="page-header">
