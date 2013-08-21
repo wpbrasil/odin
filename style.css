@@ -6282,6 +6282,12 @@ img.wp-smiley, .rsswidget img {
 img.alignleft, img.alignright, img.aligncenter {
   margin-bottom: 10px;
 }
+
+/* Avoid overflowing the content area */
+img.alignnone {
+  max-width: 100%;
+}
+
 img#wpstats {
   display: none;
   /* Remove WP.com Stats smile :) */
