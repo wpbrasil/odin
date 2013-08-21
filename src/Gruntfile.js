@@ -8,9 +8,10 @@ module.exports = function(grunt) {
 
         // setting folder templates
         dirs: {
-            js:   "../assets/js",
+            js: "../assets/js",
             sass: "../assets/sass",
-            img:  "../assets/images",
+            images: "../assets/images",
+            fonts: "../assets/fonts",
             core: "../core",
             tmp: "tmp"
         },
@@ -31,13 +32,27 @@ module.exports = function(grunt) {
             dist: {
                 files: {
                     "<%= dirs.js %>/main.min.js": [
-                        // "<%= dirs.core %>/photoswipe/js/*.js",   // Photoswipe
-                        "<%= dirs.core %>/colorbox/js/*.js",        // Colorbox
-                        "<%= dirs.core %>/lazyload/js/*.js",        // LazyLoad
-                        "<%= dirs.core %>/socialite/js/*.js",       // Socialite
-                        "<%= dirs.js %>/jquery.fitvids.min.js",     // FitVids
-                        "<%= dirs.js %>/libs/*.js",                 // External libs/pugins
-                        "<%= dirs.js %>/main.js"                    // Custom JavaScript
+                        "<%= dirs.js %>/jquery.fitvids.min.js", // FitVids
+                        "<%= dirs.js %>/libs/*.js",             // External libs/pugins
+                        "<%= dirs.js %>/main.js"                // Custom JavaScript
+                    ]
+                }
+            },
+            bootstrap: {
+                files: {
+                    "<%= dirs.js %>/bootstrap.min.js": [
+                        '<%= dirs.js %>/bootstrap/transition.js',
+                        '<%= dirs.js %>/bootstrap/alert.js',
+                        '<%= dirs.js %>/bootstrap/button.js',
+                        '<%= dirs.js %>/bootstrap/carousel.js',
+                        '<%= dirs.js %>/bootstrap/collapse.js',
+                        '<%= dirs.js %>/bootstrap/dropdown.js',
+                        '<%= dirs.js %>/bootstrap/modal.js',
+                        '<%= dirs.js %>/bootstrap/tooltip.js',
+                        '<%= dirs.js %>/bootstrap/popover.js',
+                        '<%= dirs.js %>/bootstrap/scrollspy.js',
+                        '<%= dirs.js %>/bootstrap/tab.js',
+                        '<%= dirs.js %>/bootstrap/affix.js'
                     ]
                 }
             }
@@ -79,9 +94,9 @@ module.exports = function(grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: "<%= dirs.img %>/",
+                    cwd: "<%= dirs.images %>/",
                     src: "**",
-                    dest: "<%= dirs.img %>/"
+                    dest: "<%= dirs.images %>/"
                 }]
             }
         },
@@ -146,22 +161,14 @@ module.exports = function(grunt) {
 
         // downloads dependencies
         curl: {
-            bootstrap: {
-                src: "http://getbootstrap.com/2.3.2/assets/bootstrap.zip",
-                dest: "<%= dirs.tmp %>/bootstrap.zip"
-            },
             bootstrap_sass: {
-                src: "https://github.com/jlong/sass-twitter-bootstrap/archive/master.zip",
+                src: "https://github.com/jlong/sass-bootstrap/archive/master.zip",
                 dest: "<%= dirs.tmp %>/bootstrap-sass.zip"
             }
         },
 
         // unzip files
         unzip: {
-            bootstrap: {
-                src: "<%= dirs.tmp %>/bootstrap.zip",
-                dest: "<%= dirs.tmp %>/"
-            },
             bootstrap_scss: {
                 src: "<%= dirs.tmp %>/bootstrap-sass.zip",
                 dest: "<%= dirs.tmp %>/"
@@ -171,16 +178,16 @@ module.exports = function(grunt) {
         // renames and moves directories and files
         rename: {
             bootstrap_scss: {
-                src: "<%= dirs.tmp %>/sass-twitter-bootstrap-master/lib",
+                src: "<%= dirs.tmp %>/sass-bootstrap-master/lib",
                 dest: "<%= dirs.sass %>/bootstrap"
             },
             bootstrap_js: {
-                src: "<%= dirs.tmp %>/bootstrap/js/bootstrap.min.js",
-                dest: "<%= dirs.js %>/bootstrap.min.js"
+                src: "<%= dirs.tmp %>/sass-bootstrap-master/js",
+                dest: "<%= dirs.js %>/bootstrap"
             },
-            bootstrap_img: {
-                src: "<%= dirs.tmp %>/sass-twitter-bootstrap-master/img",
-                dest: "<%= dirs.img %>/bootstrap"
+            bootstrap_fonts: {
+                src: "<%= dirs.tmp %>/sass-bootstrap-master/fonts",
+                dest: "<%= dirs.fonts %>/bootstrap"
             }
         },
 
@@ -189,11 +196,10 @@ module.exports = function(grunt) {
             prepare: [
                 "<%= dirs.tmp %>",
                 "<%= dirs.sass %>/bootstrap/",
-                "<%= dirs.js %>/bootstrap.min.js",
-                "<%= dirs.img %>/bootstrap/"
+                "<%= dirs.js %>/bootstrap/",
+                "<%= dirs.fonts %>/bootstrap/"
             ],
             bootstrap: [
-                "<%= dirs.sass %>/bootstrap/tests/",
                 "<%= dirs.js %>/bootstrap/tests/",
                 "<%= dirs.js %>/bootstrap/.jshintrc",
                 "<%= dirs.sass %>/bootstrap/bootstrap.scss",
@@ -227,14 +233,13 @@ module.exports = function(grunt) {
     // Bootstrap Task
     grunt.registerTask("bootstrap", [
         "clean:prepare",
-        "curl:bootstrap",
         "curl:bootstrap_sass",
-        "unzip:bootstrap",
         "unzip:bootstrap_scss",
         "rename:bootstrap_scss",
         "rename:bootstrap_js",
-        "rename:bootstrap_img",
+        "rename:bootstrap_fonts",
         "clean:bootstrap",
+        "uglify:bootstrap",
         "compass"
     ]);
 
