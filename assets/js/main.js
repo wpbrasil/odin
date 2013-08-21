@@ -4,6 +4,12 @@ jQuery(document).ready(function($) {
     // Examples in: http://bxslider.com/
     // $('#slideshow').bxSlider();
     $('.entry-content').fitVids();
+    $(".entry-content a[href$='.jpg'], .entry-content a[href$='.png'], .entry-content a[href$='.gif']").colorbox({
+        rel: 'gallery',
+        current: false,
+        width: "80%",
+        height: "80%"
+    });
 });
 
 
