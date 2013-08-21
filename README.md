@@ -33,7 +33,7 @@ Odin suporta nativamente os plugins:
 
 ## References - Referências ##
 
-* [Twitter Bootstrap](https://github.com/twitter/bootstrap)
+* [Twitter Bootstrap](http://getbootstrap.com/)
 * [HTML5shiv](https://github.com/aFarkas/html5shiv)
 * [matchMedia() polyfill](https://github.com/paulirish/matchMedia.js/)
 * [Respond.js](https://github.com/scottjehl/Respond)
@@ -42,10 +42,6 @@ Odin suporta nativamente os plugins:
 * [Grunt.js](http://gruntjs.com/)
 * [aq_resize](https://github.com/sy4mil/Aqua-Resizer)
 * [bxSlider](http://bxslider.com/)
-* [Socialite.js](http://socialitejs.com/)
-* [ColorBox](http://www.jacklmoore.com/colorbox)
-* [PhotoSwipe](http://www.photoswipe.com/)
-* [Lazy Load](http://www.appelsiini.net/projects/lazyload)
 * [jQuery Validation](https://github.com/jzaefferer/jquery-validation)
 * [FitVids](https://github.com/davatron5000/FitVids.js)
 * [EditorConfig](http://editorconfig.org/)

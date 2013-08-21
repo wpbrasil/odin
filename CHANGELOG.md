@@ -1,11 +1,13 @@
 ## Changelog ##
 
-#### v1.x.x - xx/xx/2013 ####
+#### v1.8.0 - 21/08/2013 ####
 
 * Added .editorconfig file.
 * Improved the Gruntfile.js.
 * Improved the .gitignore.
 * Added .jshintrc.
+* Added Bootstrap 3.0.
+* Removed Colorbox, Socialite.js, LazyLoad and PhotoSwipe from Odin's core.
 
 #### v1.7.2 - 02/08/2013 ####
 
