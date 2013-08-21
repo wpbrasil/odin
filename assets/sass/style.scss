@@ -17,69 +17,61 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 -------------------------------------------------------------- */
 
 // Twitter Boostrap
-$iconSpritePath: "assets/images/bootstrap/glyphicons-halflings.png";
-$iconWhiteSpritePath: "assets/images/bootstrap/glyphicons-halflings-white.png";
+$icon-font-path: "assets/fonts/";
 
 // Core variables and mixins
-@import "bootstrap/variables"; // Modify this for custom colors, font-sizes, etc
+@import "bootstrap/variables";
 @import "bootstrap/mixins";
 
-// CSS Reset
-@import "bootstrap/reset";
+// Reset
+@import "bootstrap/normalize";
 
-// Grid system and page structure
+// Core CSS
 @import "bootstrap/scaffolding";
-@import "bootstrap/grid";
-@import "bootstrap/layouts";
-
-// Base CSS
 @import "bootstrap/type";
 @import "bootstrap/code";
-@import "bootstrap/forms";
+@import "bootstrap/grid";
 @import "bootstrap/tables";
-
-// Components: common
-@import "bootstrap/sprites";
-@import "bootstrap/dropdowns";
-@import "bootstrap/wells";
-@import "bootstrap/component-animations";
-@import "bootstrap/close";
-
-// Components: Buttons & Alerts
+@import "bootstrap/forms";
 @import "bootstrap/buttons";
-@import "bootstrap/button-groups";
-@import "bootstrap/alerts"; // Note: alerts share common CSS with buttons and thus have styles in buttons
 
-// Components: Nav
+// Components
+@import "bootstrap/component-animations";
+@import "bootstrap/glyphicons";
+@import "bootstrap/dropdowns";
+@import "bootstrap/button-groups";
+@import "bootstrap/input-groups";
 @import "bootstrap/navs";
 @import "bootstrap/navbar";
 @import "bootstrap/breadcrumbs";
 @import "bootstrap/pagination";
 @import "bootstrap/pager";
+@import "bootstrap/labels";
+@import "bootstrap/badges";
+@import "bootstrap/jumbotron";
+@import "bootstrap/thumbnails";
+@import "bootstrap/alerts";
+@import "bootstrap/progress-bars";
+@import "bootstrap/media";
+@import "bootstrap/list-group";
+@import "bootstrap/panels";
+@import "bootstrap/wells";
+@import "bootstrap/close";
 
-// Components: Popovers
+// Components w/ JavaScript
 @import "bootstrap/modals";
 @import "bootstrap/tooltip";
 @import "bootstrap/popovers";
-
-// Components: Misc
-@import "bootstrap/thumbnails";
-@import "bootstrap/media";
-@import "bootstrap/labels-badges";
-@import "bootstrap/progress-bars";
-@import "bootstrap/accordion";
 @import "bootstrap/carousel";
-@import "bootstrap/hero-unit";
 
 // Utility classes
-@import "bootstrap/utilities"; // Has to be last to override when necessary
+@import "bootstrap/utilities";
 
 /* =Odin styles
 -------------------------------------------------------------- */
 
 // Odin SCSS base configuration
-$textMarginBottom: 1.625em;
-$textMarginLeft: 2.5em;
+$text-margin-bottom: $line-height-computed / 2;
 
 // WordPress Core styles
 @import "wordpress/core";
@@ -105,17 +97,16 @@ html {
 
 .site-title,
 .site-description {
-    margin: ($baseLineHeight / 2) 0;
-    font-family: $headingsFontFamily;
-    font-weight: $headingsFontWeight;
-    line-height: $baseLineHeight;
-    color: $headingsColor;
+    margin: ($line-height-base / 2) 0;
+    font-family: $headings-font-family;
+    font-weight: $headings-font-weight;
+    line-height: $line-height-base;
     text-rendering: optimizelegibility; // Fix the character spacing for headings
 }
 
 .site-title {
-    font-size: $baseFontSize * 2.75; // ~38px
-    line-height: $baseLineHeight * 2;
+    font-size: $font-size-base * 2.75; // ~38px
+    line-height: $line-height-base * 2;
 
     a {
 
@@ -127,8 +118,8 @@ html {
 }
 
 .site-description {
-    font-size: $baseFontSize * 2.25; // ~32px
-    line-height: $baseLineHeight * 2;
+    font-size: $font-size-base * 2.25; // ~32px
+    line-height: $line-height-base * 2;
 }
 
 /* =Navigation
@@ -196,7 +187,7 @@ html {
 }
 
 .entry-meta {
-    margin-bottom: $textMarginBottom;
+    margin-bottom: $text-margin-bottom;
 
     a {
 
@@ -282,7 +273,7 @@ html {
             color: #444;
 
             &:hover {
-                color: $linkColor;
+                color: $link-color;
                 text-decoration: none;
             }
         }
@@ -327,7 +318,7 @@ html {
 -------------------------------------------------------------- */
 
 .widget {
-    margin-bottom: $textMarginBottom;
+    margin-bottom: $text-margin-bottom;
 
     a {
 
@@ -370,7 +361,7 @@ html {
 .error404 {
 
     #searchform {
-        margin-bottom: $textMarginBottom;
+        margin-bottom: $text-margin-bottom;
     }
 }
 
@@ -386,28 +377,9 @@ button {
 /* =Responsive Styles
 -------------------------------------------------------------- */
 
-// RESPONSIVE CLASSES
-// ------------------
-
 @import "bootstrap/responsive-utilities";
 
-// MEDIA QUERIES
-// ------------------
+/* =Print Styles
+-------------------------------------------------------------- */
 
-// Large desktops
-@import "bootstrap/responsive-1200px-min";
-
-// Tablets to regular desktops
-@import "bootstrap/responsive-768px-979px";
-
-// Phones to portrait tablets and narrow desktops
-@import "bootstrap/responsive-767px-max";
-
-// RESPONSIVE NAVBAR
-// ------------------
-
-// From 979px and below, show a button to toggle navbar contents
-@import "bootstrap/responsive-navbar";
-
-// Print styles
-@import "partials/print";
+@import "bootstrap/print";

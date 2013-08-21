@@ -5,13 +5,13 @@
 .alignleft {
     display: inline;
     float: left;
-    margin-right: $textMarginBottom;
+    margin-right: $text-margin-bottom;
 }
 
 .alignright {
     display: inline;
     float: right;
-    margin-left: $textMarginBottom;
+    margin-left: $text-margin-bottom;
 }
 
 .aligncenter {
@@ -58,7 +58,7 @@ img {
     &.alignleft,
     &.alignright,
     &.aligncenter {
-        margin-bottom: $textMarginBottom;
+        margin-bottom: $text-margin-bottom;
     }
 
     &#wpstats {
@@ -78,7 +78,7 @@ p img,
 
 .wp-caption {
     background: #eee;
-    margin-bottom: $textMarginBottom;
+    margin-bottom: $text-margin-bottom;
     max-width: 96%;
     padding: 9px;
 
@@ -115,7 +115,7 @@ p img,
 }
 
 .gallery {
-    margin: 0 auto $textMarginBottom;
+    margin: 0 auto $text-margin-bottom;
 
     .gallery-item {
         float: left;
