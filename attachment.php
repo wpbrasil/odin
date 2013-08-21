@@ -16,7 +16,9 @@
                 </header><!-- .entry-header -->
                 <div class="entry-content">
                     <?php if ( ! empty( $post->post_parent ) ) : ?>
-                        <p class="page-title" itemprop="associatedMedia"><a href="<?php echo get_permalink( $post->post_parent ); ?>" title="<?php echo esc_attr( sprintf( __( 'Back to %s', 'odin' ), strip_tags( get_the_title( $post->post_parent ) ) ) ); ?>" rel="gallery"><?php printf( __( '<span class="meta-nav">&larr;</span> %s', 'odin' ), get_the_title( $post->post_parent ) ); ?></a></p>
+                        <ul class="pager page-title" itemprop="associatedMedia">
+                            <li class="previous"><a href="<?php echo get_permalink( $post->post_parent ); ?>" title="<?php echo esc_attr( sprintf( __( 'Back to %s', 'odin' ), strip_tags( get_the_title( $post->post_parent ) ) ) ); ?>" rel="gallery"><?php printf( __( '<span class="meta-nav">&larr;</span> %s', 'odin' ), get_the_title( $post->post_parent ) ); ?></a></li>
+                        </ul><!-- .pager -->
                     <?php endif; ?>
                     <div class="entry-attachment">
                         <?php if ( wp_attachment_is_image() ) : ?>
@@ -24,10 +26,10 @@
                             <div class="entry-caption" itemprop="description"><em><?php if ( ! empty( $post->post_excerpt ) ) the_excerpt(); ?></em></div>
                             <?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'odin' ) ); ?>
                             <?php wp_link_pages( array( 'before' => '<br class="clear" /><div class="page-link"><span>' . __( 'Pages:', 'odin' ) . '</span>', 'after' => '</div>' ) ); ?>
-                            <div id="nav-below" class="navigationc clearfix">
-                                <div class="nav-next"><?php next_image_link( false, __( 'Next image &rarr;', 'odin' ) ); ?></div>
-                                <div class="nav-previous"><?php previous_image_link( false, __( '&larr; Previous image', 'odin' ) ); ?></div>
-                            </div><!-- #nav-below -->
+                            <ul class="pager">
+                                <li class="previous"><?php previous_image_link( false, __( '&larr; Previous image', 'odin' ) ); ?></li>
+                                <li class="next"><?php next_image_link( false, __( 'Next image &rarr;', 'odin' ) ); ?></li>
+                            </ul><!-- .pager -->
                         <?php else : ?>
                             <a href="<?php echo wp_get_attachment_url(); ?>" title="<?php the_title_attribute(); ?>" rel="attachment" itemprop="contentURL"><?php echo basename( get_permalink() ); ?></a>
                         <?php endif; ?>

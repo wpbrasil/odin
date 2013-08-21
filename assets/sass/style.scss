@@ -73,8 +73,11 @@ $icon-font-path: "assets/fonts/";
 // Odin SCSS base configuration
 $text-margin-bottom: $line-height-computed / 2;
 
-// WordPress Core styles
+// WordPress Core Styles
 @import "wordpress/core";
+
+// Odin Core Styles
+@import "odin/core";
 
 // Odin CSS Helpers
 @import "utilities/helpers";
@@ -90,36 +93,25 @@ html {
 
 #header {
 
-    hgroup {
-
-    }
 }
 
 .site-title,
 .site-description {
-    margin: ($line-height-base / 2) 0;
-    font-family: $headings-font-family;
-    font-weight: $headings-font-weight;
-    line-height: $line-height-base;
-    text-rendering: optimizelegibility; // Fix the character spacing for headings
+    margin-top: $line-height-computed;
+    margin-bottom: ($line-height-computed / 2);
 }
 
 .site-title {
-    font-size: $font-size-base * 2.75; // ~38px
-    line-height: $line-height-base * 2;
-
     a {
 
         &:hover {
 
         }
     }
-
 }
 
 .site-description {
-    font-size: $font-size-base * 2.25; // ~32px
-    line-height: $line-height-base * 2;
+
 }
 
 /* =Navigation
@@ -234,7 +226,7 @@ html {
 /* =Pagination
 -------------------------------------------------------------- */
 
-.pagination {
+.pagination-wrap {
     text-align: center;
     margin-top: 15px;
 
@@ -363,15 +355,6 @@ html {
     #searchform {
         margin-bottom: $text-margin-bottom;
     }
-}
-
-/* =Forms
--------------------------------------------------------------- */
-
-input[type="submit"],
-input[type="reset"],
-button {
-    @extend .btn;
 }
 
 /* =Responsive Styles

@@ -1,5 +1,7 @@
-<form method="get" id="searchform" class="form-search" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
-    <label for="s" class="assistive-text"><?php _e( 'Search', 'odin' ); ?></label>
-    <input type="text" class="input-medium search-query" name="s" id="s" />
-    <input type="submit" class="btn" value="<?php esc_attr_e( 'Search', 'odin' ); ?>" />
+<form method="get" id="searchform" class="form-inline" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
+    <div class="form-group">
+        <label for="s" class="sr-only"><?php _e( 'Search', 'odin' ); ?></label>
+        <input type="text" class="form-control" name="s" id="s" />
+    </div>
+    <input type="submit" class="btn btn-default" value="<?php esc_attr_e( 'Search', 'odin' ); ?>" />
 </form>
