@@ -7,9 +7,8 @@ define( 'ODIN_GRUNT_SUPPORT', false );
 /**
  * Sets content width.
  */
-if ( ! isset( $content_width ) ) {
+if ( ! isset( $content_width ) )
     $content_width = 600;
-}
 
 /**
  * Setup theme features
@@ -227,27 +226,9 @@ require_once get_template_directory() . '/inc/optimize.php';
 require_once get_template_directory() . '/inc/admin.php';
 
 /**
- * Socialite.
- *
- * Use in loop:
- * <?php echo odin_socialite_horizontal( get_the_title(), get_permalink(), get_the_post_thumbnail( $post->ID, 'thumbnail' ) ); ?>
+ * Odin LazyLoad support.
  */
-// require_once get_template_directory() . '/core/socialite/socialite-init.php';
-
-/**
- * Colorbox.
- */
-// require_once get_template_directory() . '/core/colorbox/colorbox-init.php';
-
-/**
- * Photoswipe.
- */
-// require_once get_template_directory() . '/core/photoswipe/photoswipe-init.php';
-
-/**
- * LazyLoad.
- */
-// require_once get_template_directory() . '/core/lazyload/lazyload-init.php';
+// add_filter( 'odin_thumbnail_html', 'odin_lazyload_placeholder' );
 
 /**
  * Theme Options Class.
