@@ -8,7 +8,7 @@ function odin_wp_title( $title, $sep ) {
     if ( is_feed() )
         return $title;
 
-    // Add the blog name
+    // Add the blog name.
     $title .= get_bloginfo( 'name' );
 
     // Add the blog description for the home/front page.
@@ -18,7 +18,7 @@ function odin_wp_title( $title, $sep ) {
 
     // Add a page number if necessary:
     if ( $paged >= 2 || $page >= 2 )
-        $title .= " $sep " . sprintf( __( 'Page %s', 'odin' ), max( $paged, $page ) );
+        $title .= ' ' . $sep . ' ' . sprintf( __( 'Page %s', 'odin' ), max( $paged, $page ) );
 
     return $title;
 }
@@ -29,22 +29,30 @@ add_filter( 'wp_title', 'odin_wp_title', 10, 2 );
  * Cleanup wp_head().
  */
 function odin_head_cleanup() {
-    // category feeds.
+    // Category feeds.
     // remove_action( 'wp_head', 'feed_links_extra', 3 );
-    // post and comment feeds.
+
+    // Post and comment feeds.
     // remove_action( 'wp_head', 'feed_links', 2 );
+
     // EditURI link.
     remove_action( 'wp_head', 'rsd_link' );
-    // windows live writer.
+
+    // Windows live writer.
     remove_action( 'wp_head', 'wlwmanifest_link' );
-    // index link.
+
+    // Index link.
     remove_action( 'wp_head', 'index_rel_link' );
-    // previous link.
+
+    // Previous link.
     remove_action( 'wp_head', 'parent_post_rel_link', 10, 0 );
-    // start link.
+
+    // Start link.
     remove_action( 'wp_head', 'start_post_rel_link', 10, 0 );
-    // links for adjacent posts.
+
+    // Links for adjacent posts.
     remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
+
     // WP version.
     remove_action( 'wp_head', 'wp_generator' );
 }
@@ -54,11 +62,7 @@ add_action( 'init', 'odin_head_cleanup' );
 /**
  * Remove WP version from RSS.
  */
-function odin_rss_version() {
-    return '';
-}
-
-add_filter( 'the_generator', 'odin_rss_version' );
+add_filter( 'the_generator', '__return_false' );
 
 /**
  * Remove injected CSS for recent comments widget.
