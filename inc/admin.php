@@ -65,3 +65,8 @@ function odin_admin_remove_dashboard_widgets() {
 }
 
 add_action( 'wp_dashboard_setup', 'odin_admin_remove_dashboard_widgets' );
+
+/**
+ * Remove Welcome Panel.
+ */
+remove_action( 'welcome_panel', 'wp_welcome_panel' );
