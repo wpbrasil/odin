@@ -6260,8 +6260,7 @@ body.modal-open {
   /* Avoids problems of stretching the image in IE8 */
 }
 
-img img.header-image,
-img img.wp-post-image {
+img.header-image, img.wp-post-image {
   max-width: 100%;
   height: auto;
 }
