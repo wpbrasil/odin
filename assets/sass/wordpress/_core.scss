@@ -123,6 +123,13 @@ p img,
     }
 }
 
+/* Content */
+
+.hentry {
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+}
+
 /* Override the Twitter embed fixed width */
 .twitter-tweet-rendered {
     max-width: 100% !important;
