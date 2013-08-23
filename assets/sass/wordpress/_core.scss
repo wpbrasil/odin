@@ -117,6 +117,7 @@ p img,
         float: left;
         margin-top: 10px;
         text-align: center;
+        width: 150px;
     }
 
     .gallery-caption {
@@ -130,6 +131,35 @@ p img,
 .widget {
     -ms-word-wrap: break-word;
     word-wrap: break-word;
+}
+
+.entry-content {
+    @include clearfix();
+
+    table {
+        @extend .table;
+        @extend .table-striped;
+    }
+}
+
+.entry-attachment {
+    .attachment {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    #nav-below {
+        .nav-next {
+            float: right;
+        }
+        .nav-previous {
+            float: left;
+        }
+    }
+}
+
+.entry-caption {
+    color: #666;
 }
 
 /* Override the Twitter embed fixed width */

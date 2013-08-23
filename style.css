@@ -6335,6 +6335,7 @@ p img,
   float: left;
   margin-top: 10px;
   text-align: center;
+  width: 150px;
 }
 .gallery .gallery-caption {
   margin-left: 0;
@@ -6345,6 +6346,31 @@ p img,
 .widget {
   -ms-word-wrap: break-word;
   word-wrap: break-word;
+}
+
+.entry-content:before, .entry-content:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+.entry-content:after {
+  clear: both;
+}
+
+.entry-attachment .attachment {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.entry-attachment #nav-below .nav-next {
+  float: right;
+}
+.entry-attachment #nav-below .nav-previous {
+  float: left;
+}
+
+.entry-caption {
+  color: #666;
 }
 
 /* Override the Twitter embed fixed width */
@@ -6501,36 +6527,8 @@ html {
   margin-bottom: 10px;
 }
 
-.entry-content:before, .entry-content:after {
-  content: " ";
-  /* 1 */
-  display: table;
-  /* 2 */
-}
-.entry-content:after {
-  clear: both;
-}
-.entry-content .gallery-item {
-  width: 150px;
-}
-
 .sticky {
   font-size: 100%;
-}
-
-.entry-attachment .attachment {
-  text-align: center;
-  margin-bottom: 10px;
-}
-.entry-attachment #nav-below .nav-next {
-  float: right;
-}
-.entry-attachment #nav-below .nav-previous {
-  float: left;
-}
-
-.entry-caption {
-  color: #666;
 }
 
 /* =Pagination
