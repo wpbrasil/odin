@@ -87,16 +87,12 @@ function odin_remove_recent_comments_style() {
 add_action( 'wp_head', 'odin_remove_recent_comments_style', 1 );
 
 /**
- * remove injected CSS from gallery
+ * Remove injected CSS from gallery.
  */
-function odin_gallery_style( $css ) {
-    return preg_replace( "!<style type='text/css'>(.*?)</style>!s", '', $css );
-}
-
-add_filter( 'gallery_style', 'odin_gallery_style' );
+add_filter( 'use_default_gallery_style', '__return_false' );
 
 /**
- * Add rel="nofollow" and remove rel="category"
+ * Add rel="nofollow" and remove rel="category".
  */
 function odin_modify_category_rel( $text ) {
     $search = array( 'rel="category"', 'rel="category tag"' );
@@ -109,7 +105,7 @@ add_filter( 'wp_list_categories', 'odin_modify_category_rel' );
 add_filter( 'the_category', 'odin_modify_category_rel' );
 
 /**
- * Add rel="nofollow" and remove rel="tag"
+ * Add rel="nofollow" and remove rel="tag".
  */
 function odin_modify_tag_rel( $taglink ) {
     return str_replace( 'rel="tag">', 'rel="nofollow">', $taglink );
@@ -119,6 +115,6 @@ add_filter( 'wp_tag_cloud', 'odin_modify_tag_rel' );
 add_filter( 'the_tags', 'odin_modify_tag_rel' );
 
 /**
- * Add feed link
+ * Add feed link.
  */
 add_theme_support( 'automatic-feed-links' );
