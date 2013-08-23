@@ -73,10 +73,9 @@ p img,
 }
 
 .wp-caption {
-    background: #eee;
+    @extend .thumbnail;
     margin-bottom: $text-margin-bottom;
     max-width: 96%;
-    padding: 9px;
 
     img {
         display: inline-block;
@@ -93,7 +92,7 @@ p img,
 }
 
 .wp-caption .wp-caption-text {
-    margin-bottom: 0.6em;
+    margin-bottom: 0;
     padding: 10px 0 5px 40px;
     position: relative;
 
