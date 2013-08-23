@@ -27,13 +27,8 @@ img {
     &[class*="wp-image-"],
     &[class*="attachment-"] {
         height: auto; /* Does height and width are scaled correctly */
-    }
-
-    &.size-full,
-    &.size-large {
         max-width: 97.5%; /* Prevents the image passes the total area reserved */
         width: auto; /* Avoids problems of stretching the image in IE8 */
-        height: auto; /* Does height and width are scaled correctly */
     }
 
     img.header-image,
@@ -83,9 +78,9 @@ p img,
     padding: 9px;
 
     img {
-        display: block;
+        display: inline-block;
         margin: 0 auto;
-        max-width: 98%;
+        max-width: 100%;
     }
 }
 

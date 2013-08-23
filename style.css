@@ -6253,14 +6253,10 @@ body.modal-open {
 img[class*="align"], img[class*="wp-image-"], img[class*="attachment-"] {
   height: auto;
   /* Does height and width are scaled correctly */
-}
-img.size-full, img.size-large {
   max-width: 97.5%;
   /* Prevents the image passes the total area reserved */
   width: auto;
   /* Avoids problems of stretching the image in IE8 */
-  height: auto;
-  /* Does height and width are scaled correctly */
 }
 img img.header-image,
 img img.wp-post-image {
@@ -6282,12 +6278,6 @@ img.wp-smiley, .rsswidget img {
 img.alignleft, img.alignright, img.aligncenter {
   margin-bottom: 10px;
 }
-
-/* Avoid overflowing the content area */
-img.alignnone {
-  max-width: 100%;
-}
-
 img#wpstats {
   display: none;
   /* Remove WP.com Stats smile :) */
@@ -6308,9 +6298,9 @@ p img,
   padding: 9px;
 }
 .wp-caption img {
-  display: block;
+  display: inline-block;
   margin: 0 auto;
-  max-width: 98%;
+  max-width: 100%;
 }
 
 .wp-caption .wp-caption-text,
