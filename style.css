@@ -6250,7 +6250,8 @@ body.modal-open {
 }
 
 /* Images */
-img[class*="align"], img[class*="wp-image-"], img[class*="attachment-"] {
+.hentry img,
+.widget img {
   height: auto;
   /* Does height and width are scaled correctly */
   max-width: 97.5%;
@@ -6258,6 +6259,7 @@ img[class*="align"], img[class*="wp-image-"], img[class*="attachment-"] {
   width: auto;
   /* Avoids problems of stretching the image in IE8 */
 }
+
 img img.header-image,
 img img.wp-post-image {
   max-width: 100%;
@@ -6340,7 +6342,8 @@ p img,
 }
 
 /* Content */
-.hentry {
+.hentry,
+.widget {
   -ms-word-wrap: break-word;
   word-wrap: break-word;
 }

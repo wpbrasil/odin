@@ -22,15 +22,16 @@
 }
 
 /* Images */
-img {
-    &[class*="align"],
-    &[class*="wp-image-"],
-    &[class*="attachment-"] {
+.hentry,
+.widget {
+    img {
         height: auto; /* Does height and width are scaled correctly */
         max-width: 97.5%; /* Prevents the image passes the total area reserved */
         width: auto; /* Avoids problems of stretching the image in IE8 */
     }
+}
 
+img {
     img.header-image,
     img.wp-post-image {
         max-width: 100%;
@@ -125,7 +126,8 @@ p img,
 
 /* Content */
 
-.hentry {
+.hentry,
+.widget {
     -ms-word-wrap: break-word;
     word-wrap: break-word;
 }
