@@ -1,5 +1,12 @@
 ## Changelog ##
 
+#### v1.8.1 - 23/08/2013 ####
+
+* Fixed image max size.
+* Fixed word-wrap for .hentry.
+* Fixed galleries styles.
+* Fixed wp-caption styles.
+
 #### v1.8.0 - 21/08/2013 ####
 
 * Added .editorconfig file.
