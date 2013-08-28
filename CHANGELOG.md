@@ -1,5 +1,10 @@
 ## Changelog ##
 
+#### v1.x.x - xx/xx/2013 ####
+
+* Updated sass-bootstrap.
+* Created grunt compress task.
+
 #### v1.8.1 - 23/08/2013 ####
 
 * Fixed image max size.
