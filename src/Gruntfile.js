@@ -6,6 +6,9 @@ module.exports = function(grunt) {
 
     var odinConfig = {
 
+        // gets the package vars
+        pkg: grunt.file.readJSON("package.json"),
+
         // setting folder templates
         dirs: {
             js: "../assets/js",
@@ -159,6 +162,24 @@ module.exports = function(grunt) {
             }
         },
 
+        // zip the theme
+        zip: {
+            dist: {
+                cwd: "../",
+                src: [
+                    "../**",
+                    "!../src/**",
+                    "!../**.md",
+                    "!<%= dirs.sass %>/**",
+                    "!<%= dirs.js %>/bootstrap/**",
+                    "!<%= dirs.js %>/libs/**",
+                    "!<%= dirs.js %>/main.js",
+                    "!../**.zip"
+                ],
+                dest: "../<%= pkg.name %>.zip"
+            }
+        },
+
         // downloads dependencies
         curl: {
             bootstrap_sass: {
@@ -230,6 +251,12 @@ module.exports = function(grunt) {
     // Deploy Tasks
     grunt.registerTask("ftp", ["ftp-deploy"]);
 
+    // Compress
+    grunt.registerTask("compress", [
+        "default",
+        "zip"
+    ]);
+
     // Bootstrap Task
     grunt.registerTask("bootstrap", [
         "clean:prepare",
@@ -248,4 +275,5 @@ module.exports = function(grunt) {
     grunt.registerTask("o", ["optimize"]);
     grunt.registerTask("f", ["ftp"]);
     grunt.registerTask("r", ["rsync"]);
+    grunt.registerTask("c", ["compress"]);
 };
