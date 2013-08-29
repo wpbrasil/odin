@@ -260,7 +260,11 @@ require_once get_template_directory() . '/core/classes/class-bootstrap-nav.php';
 function odin_enqueue_scripts() {
     $template_url = get_template_directory_uri();
 
-    wp_enqueue_script( 'jquery');
+    // Loads Odin main stylesheet.
+    wp_enqueue_style( 'odin-style', get_stylesheet_uri(), array(), null, 'all' );
+
+    // jQuery.
+    wp_enqueue_script( 'jquery' );
 
     // bxSlider.
     // wp_enqueue_script( 'bxslider', $template_url . '/js/jquery.bxslider.min.js', array(), null, true );
@@ -289,3 +293,17 @@ function odin_enqueue_scripts() {
 }
 
 add_action( 'wp_enqueue_scripts', 'odin_enqueue_scripts', 1 );
+
+/**
+ * Odin custom stylesheet URI.
+ *
+ * @param  string $uri Default URI.
+ * @param  string $dir Stylesheet directory URI.
+ *
+ * @return string      New URI.
+ */
+function odin_stylesheet_uri( $uri, $dir ) {
+    return $dir . '/assets/css/style.css';
+}
+
+add_filter( 'stylesheet_uri', 'odin_stylesheet_uri', 10, 2 );
