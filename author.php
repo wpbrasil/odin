@@ -1,4 +1,14 @@
-<?php get_header(); ?>
+<?php
+/**
+ * The template for displaying Author archive pages.
+ *
+ * Learn more: http://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package Odin
+ * @since 1.9.0
+ */
+
+get_header(); ?>
 <div id="primary" class="col-md-8">
     <section id="content" role="main" itemscope="" itemtype="http://schema.org/Person">
         <?php if ( have_posts() ) : the_post(); ?>

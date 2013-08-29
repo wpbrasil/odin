@@ -1,5 +1,9 @@
 <?php
 /**
+ * Odin admin functions.
+ */
+
+/**
  * Custom admin scripts.
  */
 function odin_admin_scripts() {

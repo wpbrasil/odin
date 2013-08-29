@@ -1,5 +1,9 @@
 <?php
 /**
+ * Odin optimize functions.
+ */
+
+/**
  * Generates the title of the site optimized for SEO.
  */
 function odin_wp_title( $title, $sep ) {

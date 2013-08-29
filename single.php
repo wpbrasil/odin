@@ -1,4 +1,12 @@
-<?php get_header(); ?>
+<?php
+/**
+ * The Template for displaying all single posts.
+ *
+ * @package Odin
+ * @since 1.9.0
+ */
+
+get_header(); ?>
 <div id="primary" class="col-md-8">
     <div id="content" role="main">
         <?php while ( have_posts() ) : the_post(); ?>

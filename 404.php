@@ -1,4 +1,12 @@
-<?php get_header(); ?>
+<?php
+/**
+ * The template for displaying 404 pages (Not Found).
+ *
+ * @package Odin
+ * @since 1.9.0
+ */
+
+get_header(); ?>
 <div id="primary" class="col-md-12">
     <div id="content" role="main">
         <article class="post error404 not-found">

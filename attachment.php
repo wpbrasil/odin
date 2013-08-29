@@ -1,4 +1,14 @@
-<?php get_header(); ?>
+<?php
+/**
+ * The template for displaying attachments.
+ *
+ * Learn more: http://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package Odin
+ * @since 1.9.0
+ */
+
+get_header(); ?>
 <div id="primary" class="col-md-12">
     <div id="content" role="main" itemscope itemtype="http://schema.org/MediaObject">
         <?php while ( have_posts() ) : the_post(); ?>

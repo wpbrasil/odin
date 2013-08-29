@@ -1,3 +1,13 @@
+<?php
+/**
+ * The sidebar containing the secondary widget area, displays on homepage, archives and posts.
+ *
+ * If no active widgets in this sidebar, it will shows Recent Posts, Archives and Tag Cloud widgets.
+ *
+ * @package Odin
+ * @since 1.9.0
+ */
+?>
 <div id="secondary" class="widget-area col-md-4 hidden-xs" role="complementary" itemscope="" itemtype="http://schema.org/WPSideBar">
     <?php if ( ! dynamic_sidebar( 'main-sidebar' ) ) : ?>
         <?php the_widget( 'WP_Widget_Recent_Posts', array( 'number' => 10 ) ); ?>

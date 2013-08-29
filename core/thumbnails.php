@@ -1,4 +1,8 @@
 <?php
+/**
+ * Odin thumbnail functions.
+ */
+
 /*
  * Add post_thumbnails suport.
  */

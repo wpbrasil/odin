@@ -1,4 +1,7 @@
 <?php
+/**
+ * Odin tools.
+ */
 
 /**
  * Pagination.

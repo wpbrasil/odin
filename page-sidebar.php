@@ -1,7 +1,13 @@
 <?php
 /**
- * Template Name: P&aacute;gina com sidebar
+ * Template Name: With Sidebar
+ *
+ * The template for displaying pages with sidebar.
+ *
+ * @package Odin
+ * @since 1.9.0
  */
+
 get_header();
 ?>
 <div id="primary" class="col-md-8">

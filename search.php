@@ -1,4 +1,12 @@
-<?php get_header(); ?>
+<?php
+/**
+ * The template for displaying Search Results pages.
+ *
+ * @package Odin
+ * @since 1.9.0
+ */
+
+get_header(); ?>
 <div id="primary" class="col-md-8">
     <section id="content" role="main">
         <?php if ( have_posts() ) : ?>

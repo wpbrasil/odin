@@ -1,3 +1,13 @@
+<?php
+/**
+ * The template for displaying Comments.
+ *
+ * The area of the page that contains comments and the comment form.
+ *
+ * @package Odin
+ * @since 1.9.0
+ */
+?>
 <div id="comments" class="content-wrap" itemscope itemtype="http://schema.org/Comment">
     <?php if ( post_password_required() ) : ?>
         <span class="nopassword"><?php _e( 'This post is password protected. Enter the password to view all comments.', 'odin' ); ?></span>
@@ -49,4 +59,3 @@
         )
     ); ?>
 </div><!-- #comments -->
-

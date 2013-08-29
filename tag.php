@@ -1,4 +1,16 @@
-<?php get_header(); ?>
+<?php
+/**
+ * The template for displaying Tag pages.
+ *
+ * Used to display archive-type pages for posts in a tag.
+ *
+ * Learn more: http://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package Odin
+ * @since 1.9.0
+ */
+
+get_header(); ?>
 <div id="primary" class="col-md-8">
     <section id="content" role="main">
         <?php if ( have_posts() ) : ?>

@@ -1,7 +1,7 @@
 {
   "name": "odin",
   "description": "Tema base para desenvolvimento em WordPress",
-  "version": "1.0.0",
+  "version": "1.9.0",
   "title": "Odin Framework",
   "homepage": "http://wpod.in/",
   "main": "Gruntfile.js",
