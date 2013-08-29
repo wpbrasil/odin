@@ -1,0 +1,16 @@
+/**
+ * Variables configuration
+ */
+
+// Compass plugins
+@import "compass/css3";
+
+// Boostrap custom variables
+$icon-font-path: "assets/fonts/";
+
+// Boostrap Core variables and mixins
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+
+// Odin variables
+$text-margin-bottom: $line-height-computed / 2;

@@ -66,7 +66,7 @@ function odin_setup_features() {
     /**
      * Support Custom Editor Style.
      */
-    add_editor_style( 'custom-editor-style.css' );
+    add_editor_style( 'assets/css/editor-style.css' );
 
     /**
      * Add support for multiple languages.

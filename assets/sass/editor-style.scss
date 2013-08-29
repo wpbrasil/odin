@@ -1,0 +1,38 @@
+/*!
+Theme Name: Odin
+Description: Used to style the TinyMCE editor.
+*/
+
+// Odin variables configuration.
+@import "config";
+
+/* =Bootstrap Styles
+-------------------------------------------------------------- */
+
+// Reset
+@import "bootstrap/normalize";
+
+// Core CSS
+@import "bootstrap/scaffolding";
+@import "bootstrap/type";
+@import "bootstrap/code";
+@import "bootstrap/grid";
+@import "bootstrap/tables";
+@import "bootstrap/forms";
+
+// Components
+@import "bootstrap/thumbnails";
+
+// Odin WordPress Core
+@import "wordpress/core";
+
+/* =Custom Editor Styles
+-------------------------------------------------------------- */
+
+body {
+    padding: 10px;
+}
+
+table {
+    @extend .table;
+}
