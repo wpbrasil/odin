@@ -5,6 +5,9 @@
 * Updated sass-bootstrap.
 * Created grunt compress task.
 * Fixed Bootstrap support to WooCommerce and Jigoshop.
+* Improved the templates inline documentation.
+* Created a editor-style.css file.
+* Improved the scss files.
 
 #### v1.8.1 - 23/08/2013 ####
 

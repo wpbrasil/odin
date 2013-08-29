@@ -57,7 +57,7 @@ Description: Odin main stylesheet.
 -------------------------------------------------------------- */
 
 // WordPress Core Styles
-@import "wordpress/core";
+@import "wordpress/wordpress";
 
 // Odin Core Styles
 @import "odin/core";
@@ -187,8 +187,6 @@ html {
 
 /* =Comments
 -------------------------------------------------------------- */
-
-@import "wordpress/comments";
 
 .commentlist {
     margin: 0;

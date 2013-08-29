@@ -24,7 +24,9 @@ Description: Used to style the TinyMCE editor.
 @import "bootstrap/thumbnails";
 
 // Odin WordPress Core
-@import "wordpress/core";
+@import "wordpress/alignment";
+@import "wordpress/galleries";
+@import "wordpress/images";
 
 /* =Custom Editor Styles
 -------------------------------------------------------------- */

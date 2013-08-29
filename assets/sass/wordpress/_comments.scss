@@ -1,6 +1,5 @@
-/**
- * Comment Validation.
- */
+/* Comment Validation */
+
 label.error {
     @include border-radius(4px);
     @include text-shadow(0 1px 0 #fff);
