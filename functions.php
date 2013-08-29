@@ -195,11 +195,11 @@ function odin_related_posts_custom_thumbnails( $thumbnail ) {
  * WooCommerce and Jigoshop theme support.
  */
 function odin_woocommerce_jigoshop_content_wrapper() {
-    echo '<div id="primary" class="span8"><div id="content" role="main">';
+    echo '<div id="primary" class="col-md-8">';
 }
 
 function odin_woocommerce_jigoshop_content_wrapper_end() {
-    echo '</div></div>';
+    echo '</div>';
 }
 
 /**
