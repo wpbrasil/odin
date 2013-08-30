@@ -264,7 +264,7 @@ class Odin_Metabox {
     protected function field_checkbox( $id, $current, $options ) {
         $required = isset( $options['required'] ) ? ' required="required"' : '';
 
-        echo sprintf( '<input type="checkbox" id="%1$s" name="%1$s" value="1"%2$s />', $id, checked( 1, $current, false ) );
+        echo sprintf( '<input type="checkbox" id="%1$s" name="%1$s" value="1"%2$s%3$s />', $id, checked( 1, $current, false ), $required );
     }
 
     /**
