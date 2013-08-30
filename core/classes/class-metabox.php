@@ -261,7 +261,9 @@ class Odin_Metabox {
      *
      * @return string          HTML of the field.
      */
-    protected function field_checkbox( $id, $current ) {
+    protected function field_checkbox( $id, $current, $options ) {
+        $required = isset( $options['required'] ) ? ' required="required"' : '';
+
         echo sprintf( '<input type="checkbox" id="%1$s" name="%1$s" value="1"%2$s />', $id, checked( 1, $current, false ) );
     }
 
@@ -275,7 +277,12 @@ class Odin_Metabox {
      * @return string          HTML of the field.
      */
     protected function field_select( $id, $current, $options ) {
-        $html = sprintf( '<select id="%1$s" name="%1$s">', $id );
+        if( isset( $options['required'] ) ) {
+            $required = ' required="required"';
+            unset( $options['required'] );
+        }
+
+        $html = sprintf( '<select id="%1$s" name="%1$s"%1$s>', $id, $required );
 
         foreach( $options as $key => $label )
             $html .= sprintf( '<option value="%s"%s>%s</option>', $key, selected( $current, $key, false ), $label );
@@ -296,9 +303,13 @@ class Odin_Metabox {
      */
     protected function field_radio( $id, $current, $options ) {
         $html = '';
+        if( isset( $options['required'] ) ) {
+            $required = ' required="required"';
+            unset( $options['required'] );
+        }
 
         foreach( $options as $key => $label )
-            $html .= sprintf( '<input type="radio" id="%1$s_%2$s" name="%1$s" value="%2$s"%3$s /><label for="%1$s_%2$s"> %4$s</label><br />', $id, $key, checked( $current, $key, false ), $label );
+            $html .= sprintf( '<input type="radio" id="%1$s_%2$s" name="%1$s" value="%2$s"%3$s%5$s /><label for="%1$s_%2$s"> %4$s</label><br />', $id, $key, checked( $current, $key, false ), $label, $required );
 
         echo $html;
     }
