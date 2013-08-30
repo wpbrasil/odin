@@ -6471,6 +6471,22 @@ p img,
 }
 
 /* Search Widget */
+/* =Wordpress Core Shortcodes
+-------------------------------------------------------------- */
+/* Video Shortcode */
+.wp-video-shortcode {
+  max-width: 100%;
+}
+.wp-video-shortcode:before, .wp-video-shortcode:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+.wp-video-shortcode:after {
+  clear: both;
+}
+
 /* =Odin Core Styles
 -------------------------------------------------------------- */
 /* Fix pagination */
