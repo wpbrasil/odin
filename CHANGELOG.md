@@ -14,6 +14,7 @@
 * Added image.php.
 * Added video.php.
 * Added styles to force video shortcode to be responsive.
+* Fixed the $icon-font-path.
 
 #### v1.8.1 - 23/08/2013 ####
 
