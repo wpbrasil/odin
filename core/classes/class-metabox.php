@@ -223,8 +223,12 @@ class Odin_Metabox {
         $type = isset( $options['type'] ) ? $options['type'] : 'text';
         $class = isset( $options['class'] ) ? $options['class'] : 'regular-text';
         $styles = isset( $options['styles'] ) ? ' style="' . $options['styles'] . '"' : '';
+        $min = isset( $options['min'] ) ? ' min="' . $options['min'] . '"' : '';
+        $max = isset( $options['max'] ) ? ' max="' . $options['max'] . '"' : '';
+        $step = isset( $options['step'] ) ? ' step="' . $options['step'] . '"' : '';
+        $placeholder = isset( $options['placeholder'] ) ? ' placeholder="' . $options['placeholder'] . '"' : '';
 
-        echo sprintf( '<input type="%3$s" id="%1$s" name="%1$s" value="%2$s" class="%4$s"%5$s />', $id, esc_attr( $current ), $type, $class, $styles );
+        echo sprintf( '<input type="%3$s" id="%1$s" name="%1$s" value="%2$s" class="%4$s"%5$s%6$s%7$s%8$s%9$s />', $id, esc_attr( $current ), $type, $class, $styles, $min, $max, $step, $placeholder );
     }
 
     /**
@@ -235,8 +239,12 @@ class Odin_Metabox {
      *
      * @return string          HTML of the field.
      */
-    protected function field_textarea( $id, $current ) {
-        echo sprintf( '<textarea id="%1$s" name="%1$s" cols="60" rows="4">%2$s</textarea>', $id, esc_attr( $current ) );
+    protected function field_textarea( $id, $current, $options ) {
+        $class = isset( $options['class'] ) ? ' class="' . $options['class'] . '"' : '';
+        $styles = isset( $options['styles'] ) ? ' style="' . $options['styles'] . '"' : '';
+        $placeholder = isset( $options['placeholder'] ) ? ' placeholder="' . $options['placeholder'] . '"' : '';
+
+        echo sprintf( '<textarea id="%1$s" name="%1$s" cols="60" rows="4"%3$s%4$s%5$s>%2$s</textarea>', $id, esc_attr( $current ), $class, $styles, $placeholder );
     }
 
     /**
