@@ -123,7 +123,9 @@ class Odin_Metabox {
         // Use nonce for verification.
         wp_nonce_field( basename( __FILE__ ), $this->nonce );
 
-        $id = $post->ID;
+        $post_id = $post->ID;
+
+        do_action( 'odin_metabox_table_before_' . $this->id, $post_id );
 
         echo '<table class="form-table">';
 
@@ -136,7 +138,7 @@ class Odin_Metabox {
                 echo sprintf( '<th><label for="%s">%s</label></th>', $field['id'], $field['name'] );
 
                 echo '<td>';
-                $this->process_fields( $field, $id );
+                $this->process_fields( $field, $post_id );
 
                 if ( isset( $field['description'] ) )
                     echo sprintf( '<br /><span class="description">%s</span>', $field['description'] );
@@ -148,6 +150,8 @@ class Odin_Metabox {
         }
 
         echo '</table>';
+
+        do_action( 'odin_metabox_table_after_' . $this->id, $post_id );
 
     }
 
