@@ -216,13 +216,13 @@ class Odin_Metabox {
     }
 
     /**
-     * Build the field attributes.
+     * Build field attributes.
      *
      * @param  array $attrs Attributes as array.
      *
      * @return string       Attributes as string.
      */
-    protected function build_attributes( $attrs ) {
+    protected function build_field_attributes( $attrs ) {
         $attributes = '';
 
         if ( ! empty( $attrs ) ) {
@@ -246,7 +246,7 @@ class Odin_Metabox {
         if ( ! isset( $attrs['type'] ) )
             $attrs['type'] = 'text';
 
-        echo sprintf( '<input id="%1$s" name="%1$s" value="%2$s"%3$s />', $id, esc_attr( $current ), $this->build_attributes( $attrs ) );
+        echo sprintf( '<input id="%1$s" name="%1$s" value="%2$s"%3$s />', $id, esc_attr( $current ), $this->build_field_attributes( $attrs ) );
     }
 
     /**
@@ -259,7 +259,7 @@ class Odin_Metabox {
      * @return string          HTML of the field.
      */
     protected function field_textarea( $id, $current, $attrs ) {
-        echo sprintf( '<textarea id="%1$s" name="%1$s" cols="60" rows="4"%3$s>%2$s</textarea>', $id, esc_attr( $current ), $this->build_attributes( $attrs ) );
+        echo sprintf( '<textarea id="%1$s" name="%1$s" cols="60" rows="4"%3$s>%2$s</textarea>', $id, esc_attr( $current ), $this->build_field_attributes( $attrs ) );
     }
 
     /**
@@ -272,7 +272,7 @@ class Odin_Metabox {
      * @return string          HTML of the field.
      */
     protected function field_checkbox( $id, $current, $attrs ) {
-        echo sprintf( '<input type="checkbox" id="%1$s" name="%1$s" value="1"%2$s%3$s />', $id, checked( 1, $current, false ), $this->build_attributes( $attrs ) );
+        echo sprintf( '<input type="checkbox" id="%1$s" name="%1$s" value="1"%2$s%3$s />', $id, checked( 1, $current, false ), $this->build_field_attributes( $attrs ) );
     }
 
     /**
@@ -286,7 +286,7 @@ class Odin_Metabox {
      * @return string          HTML of the field.
      */
     protected function field_select( $id, $current, $options, $attrs ) {
-        $html = sprintf( '<select id="%1$s" name="%1$s"%2$s>', $id, $this->build_attributes( $attrs ) );
+        $html = sprintf( '<select id="%1$s" name="%1$s"%2$s>', $id, $this->build_field_attributes( $attrs ) );
 
         foreach ( $options as $key => $label )
             $html .= sprintf( '<option value="%s"%s>%s</option>', $key, selected( $current, $key, false ), $label );
@@ -310,7 +310,7 @@ class Odin_Metabox {
         $html = '';
 
         foreach ( $options as $key => $label )
-            $html .= sprintf( '<input type="radio" id="%1$s_%2$s" name="%1$s" value="%2$s"%3$s%5$s /><label for="%1$s_%2$s"> %4$s</label><br />', $id, $key, checked( $current, $key, false ), $label, $this->build_attributes( $attrs ) );
+            $html .= sprintf( '<input type="radio" id="%1$s_%2$s" name="%1$s" value="%2$s"%3$s%5$s /><label for="%1$s_%2$s"> %4$s</label><br />', $id, $key, checked( $current, $key, false ), $label, $this->build_field_attributes( $attrs ) );
 
         echo $html;
     }
@@ -344,7 +344,7 @@ class Odin_Metabox {
      * @return string          HTML of the field.
      */
     protected function field_upload( $id, $current, $attrs ) {
-        echo sprintf( '<input type="text" id="%1$s" name="%1$s" value="%2$s" class="regular-text"%4$s /> <input class="button odin-upload-button" type="button" value="%3$s" />', $id, esc_url( $current ), __( 'Select file', 'odin' ), $this->build_attributes( $attrs ) );
+        echo sprintf( '<input type="text" id="%1$s" name="%1$s" value="%2$s" class="regular-text"%4$s /> <input class="button odin-upload-button" type="button" value="%3$s" />', $id, esc_url( $current ), __( 'Select file', 'odin' ), $this->build_field_attributes( $attrs ) );
     }
 
     /**
