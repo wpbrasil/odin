@@ -7,7 +7,7 @@
  * @package  Odin
  * @category Metabox
  * @author   WPBrasil
- * @version  1.0
+ * @version  1.9.0
  */
 class Odin_Metabox {
 
@@ -160,10 +160,10 @@ class Odin_Metabox {
      * @return string          HTML of the field.
      */
     protected function process_fields( $args, $post_id ) {
-        $id = $args['id'];
+        $id      = $args['id'];
+        $type    = $args['type'];
         $options = isset( $args['options'] ) ? $args['options'] : '';
-        $attrs = isset( $args['attrs'] ) ? $args['attrs'] : null;
-        $type = $args['type'];
+        $attrs   = isset( $args['attrs'] ) ? $args['attrs'] : array();
 
         // Gets current value or default.
         $current = get_post_meta( $post_id, $id, true );
@@ -172,10 +172,10 @@ class Odin_Metabox {
 
         switch ( $type ) {
             case 'text':
-                $this->field_input( $id, $current, array( 'type' => 'text' ), $attrs );
+                $this->field_input( $id, $current, array_merge( array( 'class' => 'regular-text' ), $attrs ) );
                 break;
             case 'input':
-                $this->field_input( $id, $current, $options, $attrs );
+                $this->field_input( $id, $current, $attrs );
                 break;
             case 'textarea':
                 $this->field_textarea( $id, $current, $attrs );
@@ -193,10 +193,10 @@ class Odin_Metabox {
                 $this->field_editor( $id, $current, $options );
                 break;
             case 'color':
-                $this->field_input( $id, $current, array( 'class' => 'odin-color-field' ), $attrs );
+                $this->field_input( $id, $current, array_merge( array( 'class' => 'odin-color-field' ), $attrs ) );
                 break;
             case 'upload':
-                $this->field_upload( $id, $current );
+                $this->field_upload( $id, $current, $attrs );
                 break;
             case 'image':
                 $this->field_image( $id, $current );
@@ -212,25 +212,37 @@ class Odin_Metabox {
     }
 
     /**
+     * Build the field attributes.
+     *
+     * @param  array $attrs Attributes as array.
+     *
+     * @return string       Attributes as string.
+     */
+    protected function build_attributes( $attrs ) {
+        $attributes = '';
+
+        if ( ! empty( $attrs ) ) {
+            foreach ( $attrs as $key => $attr )
+                $attributes .= ' ' . $key . '="' . $attr . '"';
+        }
+
+        return $attributes;
+    }
+
+    /**
      * Input field.
      *
      * @param  string $id      Field id.
      * @param  string $current Field current value.
-     * @param  array  $options Array with field options.
+     * @param  array  $attrs   Array with field attributes.
      *
      * @return string          HTML of the field.
      */
-    protected function field_input( $id, $current, $options, $attrs ) {
-        $type = isset( $options['type'] ) ? $options['type'] : 'text';
-        $attributes = '';
+    protected function field_input( $id, $current, $attrs ) {
+        if ( ! isset( $attrs['type'] ) )
+            $attrs['type'] = 'text';
 
-        if( isset( $attrs ) ) {
-            foreach( $attrs as $key => $attr ) {
-                $attributes .= ' ' . $key . '="' . $attr . '"';
-            }
-        }
-
-        echo sprintf( '<input type="%3$s" id="%1$s" name="%1$s" value="%2$s"%4$s />', $id, esc_attr( $current ), $type, $attributes );
+        echo sprintf( '<input id="%1$s" name="%1$s" value="%2$s"%3$s />', $id, esc_attr( $current ), $this->build_attributes( $attrs ) );
     }
 
     /**
@@ -238,19 +250,12 @@ class Odin_Metabox {
      *
      * @param  string $id      Field id.
      * @param  string $current Field current value.
+     * @param  array  $attrs   Array with field attributes.
      *
      * @return string          HTML of the field.
      */
     protected function field_textarea( $id, $current, $attrs ) {
-        $attributes = '';
-
-        if( isset( $attrs ) ) {
-            foreach( $attrs as $key => $attr ) {
-                $attributes .= ' ' . $key . '="' . $attr . '"';
-            }
-        }
-
-        echo sprintf( '<textarea id="%1$s" name="%1$s" cols="60" rows="4"%3$s>%2$s</textarea>', $id, esc_attr( $current ), $attributes );
+        echo sprintf( '<textarea id="%1$s" name="%1$s" cols="60" rows="4"%3$s>%2$s</textarea>', $id, esc_attr( $current ), $this->build_attributes( $attrs ) );
     }
 
     /**
@@ -258,19 +263,12 @@ class Odin_Metabox {
      *
      * @param  string $id      Field id.
      * @param  string $current Field current value.
+     * @param  array  $attrs   Array with field attributes.
      *
      * @return string          HTML of the field.
      */
     protected function field_checkbox( $id, $current, $attrs ) {
-        $attributes = '';
-
-        if( isset( $attrs ) ) {
-            foreach( $attrs as $key => $attr ) {
-                $attributes .= ' ' . $key . '="' . $attr . '"';
-            }
-        }
-
-        echo sprintf( '<input type="checkbox" id="%1$s" name="%1$s" value="1"%2$s%3$s />', $id, checked( 1, $current, false ), $attributes );
+        echo sprintf( '<input type="checkbox" id="%1$s" name="%1$s" value="1"%2$s%3$s />', $id, checked( 1, $current, false ), $this->build_attributes( $attrs ) );
     }
 
     /**
@@ -278,22 +276,15 @@ class Odin_Metabox {
      *
      * @param  string $id      Field id.
      * @param  string $current Field current value.
-     * @param  array  $options Array with field options.
+     * @param  array  $options Array with select options.
+     * @param  array  $attrs   Array with field attributes.
      *
      * @return string          HTML of the field.
      */
     protected function field_select( $id, $current, $options, $attrs ) {
-        $attributes = '';
+        $html = sprintf( '<select id="%1$s" name="%1$s"%2$s>', $id, $this->build_attributes( $attrs ) );
 
-        if( isset( $attrs ) ) {
-            foreach( $attrs as $key => $attr ) {
-                $attributes .= ' ' . $key . '="' . $attr . '"';
-            }
-        }
-
-        $html = sprintf( '<select id="%1$s" name="%1$s"%1$s>', $id, $required, $attributes );
-
-        foreach( $options as $key => $label )
+        foreach ( $options as $key => $label )
             $html .= sprintf( '<option value="%s"%s>%s</option>', $key, selected( $current, $key, false ), $label );
 
         $html .= '</select>';
@@ -306,22 +297,16 @@ class Odin_Metabox {
      *
      * @param  string $id      Field id.
      * @param  string $current Field current value.
-     * @param  array  $options Array with field options.
+     * @param  array  $options Array with input options.
+     * @param  array  $attrs   Array with field attributes.
      *
      * @return string          HTML of the field.
      */
     protected function field_radio( $id, $current, $options, $attrs ) {
         $html = '';
-        $attributes = '';
 
-        if( isset( $attrs ) ) {
-            foreach( $attrs as $key => $attr ) {
-                $attributes .= ' ' . $key . '="' . $attr . '"';
-            }
-        }
-
-        foreach( $options as $key => $label )
-            $html .= sprintf( '<input type="radio" id="%1$s_%2$s" name="%1$s" value="%2$s"%3$s%5$s /><label for="%1$s_%2$s"> %4$s</label><br />', $id, $key, checked( $current, $key, false ), $label, $attributes );
+        foreach ( $options as $key => $label )
+            $html .= sprintf( '<input type="radio" id="%1$s_%2$s" name="%1$s" value="%2$s"%3$s%5$s /><label for="%1$s_%2$s"> %4$s</label><br />', $id, $key, checked( $current, $key, false ), $label, $this->build_attributes( $attrs ) );
 
         echo $html;
     }
@@ -331,11 +316,11 @@ class Odin_Metabox {
      *
      * @param  string $id      Field id.
      * @param  string $current Field current value.
+     * @param  array  $options Array with wp_editor options.
      *
      * @return string          HTML of the field.
      */
     protected function field_editor( $id, $current, $options ) {
-
         // Set default options.
         if ( empty( $options ) )
             $options = array( 'textarea_rows' => 10 );
@@ -350,13 +335,12 @@ class Odin_Metabox {
      *
      * @param  string $id      Field id.
      * @param  string $current Field current value.
+     * @param  array  $attrs   Array with field attributes.
      *
      * @return string          HTML of the field.
      */
-    protected function field_upload( $id, $current ) {
-        $html = sprintf( '<input type="text" id="%1$s" name="%1$s" value="%2$s" class="regular-text" /> <input class="button odin-upload-button" type="button" value="%3$s" />', $id, esc_url( $current ), __( 'Select file', 'odin' ) );
-
-        echo $html;
+    protected function field_upload( $id, $current, $attrs ) {
+        echo sprintf( '<input type="text" id="%1$s" name="%1$s" value="%2$s" class="regular-text"%4$s /> <input class="button odin-upload-button" type="button" value="%3$s" />', $id, esc_url( $current ), __( 'Select file', 'odin' ), $this->build_attributes( $attrs ) );
     }
 
     /**
@@ -371,7 +355,7 @@ class Odin_Metabox {
 
         // Gets placeholder image.
         $image = get_template_directory_uri() . '/core/assets/images/placeholder.png';
-        $html = '<span class="odin_default_image" style="display: none;">' . $image . '</span>';
+        $html  = '<span class="odin_default_image" style="display: none;">' . $image . '</span>';
 
         if ( $current ) {
             $image = wp_get_attachment_image_src( $current, 'thumbnail' );
@@ -455,7 +439,6 @@ class Odin_Metabox {
                 update_post_meta( $post_id, $name, $new );
             elseif ( '' == $new && $old )
                 delete_post_meta( $post_id, $name, $old );
-
         }
 
     }

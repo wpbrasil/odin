@@ -8,10 +8,7 @@
 * Improved the templates inline documentation.
 * Created a editor-style.css file.
 * Improved the scss files.
-
-#### v1.8.2 - 29/08/2013 ####
-
-* Added option __attr__ to insert attributes in metabox fields.ß
+* Added param attr to insert attributes in metabox fields.
 
 #### v1.8.1 - 23/08/2013 ####
 
