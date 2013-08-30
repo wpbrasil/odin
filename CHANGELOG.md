@@ -1,6 +1,6 @@
 ## Changelog ##
 
-#### v1.x.x - xx/xx/2013 ####
+#### v1.9.0 - 30/08/2013 ####
 
 * Updated sass-bootstrap.
 * Created grunt compress task.
@@ -9,6 +9,11 @@
 * Created a editor-style.css file.
 * Improved the scss files.
 * Added param attr to insert attributes in metabox fields.
+* Removed attachment.php.
+* Added audio.php.
+* Added image.php.
+* Added video.php.
+* Added styles to force video shortcode to be responsive.
 
 #### v1.8.1 - 23/08/2013 ####
 
