@@ -210,7 +210,7 @@ class Odin_Metabox {
                 break;
 
             default:
-                do_action( 'odin_metabox_' . $this->id, $type, $id, $current, $options, $attrs );
+                do_action( 'odin_metabox_field_' . $this->id, $type, $id, $current, $options, $attrs );
                 break;
         }
     }
