@@ -226,9 +226,12 @@ class Odin_Metabox {
         $min = isset( $options['min'] ) ? ' min="' . $options['min'] . '"' : '';
         $max = isset( $options['max'] ) ? ' max="' . $options['max'] . '"' : '';
         $step = isset( $options['step'] ) ? ' step="' . $options['step'] . '"' : '';
+        $required = isset( $options['required'] ) ? ' required="required"' : '';
+        $pattern = isset( $options['pattern'] ) ? ' pattern="' . $options['pattern'] . '"' : '';
+        $title = isset( $options['title'] ) ? ' title="' . $options['title'] . '"' : '';
         $placeholder = isset( $options['placeholder'] ) ? ' placeholder="' . $options['placeholder'] . '"' : '';
 
-        echo sprintf( '<input type="%3$s" id="%1$s" name="%1$s" value="%2$s" class="%4$s"%5$s%6$s%7$s%8$s%9$s />', $id, esc_attr( $current ), $type, $class, $styles, $min, $max, $step, $placeholder );
+        echo sprintf( '<input type="%3$s" id="%1$s" name="%1$s" value="%2$s" class="%4$s"%5$s%6$s%7$s%8$s%9$s%10$s%11$s%12$s />', $id, esc_attr( $current ), $type, $class, $styles, $min, $max, $step, $required, $pattern, $title, $placeholder );
     }
 
     /**
@@ -242,9 +245,12 @@ class Odin_Metabox {
     protected function field_textarea( $id, $current, $options ) {
         $class = isset( $options['class'] ) ? ' class="' . $options['class'] . '"' : '';
         $styles = isset( $options['styles'] ) ? ' style="' . $options['styles'] . '"' : '';
+        $required = isset( $options['required'] ) ? ' required="required"' : '';
+        $pattern = isset( $options['pattern'] ) ? ' pattern="' . $options['pattern'] . '"' : '';
+        $title = isset( $options['title'] ) ? ' title="' . $options['title'] . '"' : '';
         $placeholder = isset( $options['placeholder'] ) ? ' placeholder="' . $options['placeholder'] . '"' : '';
 
-        echo sprintf( '<textarea id="%1$s" name="%1$s" cols="60" rows="4"%3$s%4$s%5$s>%2$s</textarea>', $id, esc_attr( $current ), $class, $styles, $placeholder );
+        echo sprintf( '<textarea id="%1$s" name="%1$s" cols="60" rows="4"%3$s%4$s%5$s%6$s%7$s%8$s>%2$s</textarea>', $id, esc_attr( $current ), $class, $styles, $required, $pattern, $title, $placeholder );
     }
 
     /**
