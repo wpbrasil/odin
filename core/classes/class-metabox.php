@@ -162,6 +162,7 @@ class Odin_Metabox {
     protected function process_fields( $args, $post_id ) {
         $id = $args['id'];
         $options = isset( $args['options'] ) ? $args['options'] : '';
+        $attrs = isset( $args['attrs'] ) ? $args['attrs'] : null;
         $type = $args['type'];
 
         // Gets current value or default.
@@ -171,28 +172,28 @@ class Odin_Metabox {
 
         switch ( $type ) {
             case 'text':
-                $this->field_input( $id, $current, array( 'type' => 'text' ) );
+                $this->field_input( $id, $current, array( 'type' => 'text' ), $attrs );
                 break;
             case 'input':
-                $this->field_input( $id, $current, $options );
+                $this->field_input( $id, $current, $options, $attrs );
                 break;
             case 'textarea':
-                $this->field_textarea( $id, $current );
+                $this->field_textarea( $id, $current, $attrs );
                 break;
             case 'checkbox':
-                $this->field_checkbox( $id, $current );
+                $this->field_checkbox( $id, $current, $attrs );
                 break;
             case 'select':
-                $this->field_select( $id, $current, $options );
+                $this->field_select( $id, $current, $options, $attrs );
                 break;
             case 'radio':
-                $this->field_radio( $id, $current, $options );
+                $this->field_radio( $id, $current, $options, $attrs );
                 break;
             case 'editor':
                 $this->field_editor( $id, $current, $options );
                 break;
             case 'color':
-                $this->field_input( $id, $current, array( 'class' => 'odin-color-field' ) );
+                $this->field_input( $id, $current, array( 'class' => 'odin-color-field' ), $attrs );
                 break;
             case 'upload':
                 $this->field_upload( $id, $current );
@@ -205,7 +206,7 @@ class Odin_Metabox {
                 break;
 
             default:
-                do_action( 'odin_metabox_' . $this->id, $type, $id, $current, $options );
+                do_action( 'odin_metabox_' . $this->id, $type, $id, $current, $options, $attrs );
                 break;
         }
     }
@@ -219,19 +220,17 @@ class Odin_Metabox {
      *
      * @return string          HTML of the field.
      */
-    protected function field_input( $id, $current, $options ) {
+    protected function field_input( $id, $current, $options, $attrs ) {
         $type = isset( $options['type'] ) ? $options['type'] : 'text';
-        $class = isset( $options['class'] ) ? $options['class'] : 'regular-text';
-        $styles = isset( $options['styles'] ) ? ' style="' . $options['styles'] . '"' : '';
-        $min = isset( $options['min'] ) ? ' min="' . $options['min'] . '"' : '';
-        $max = isset( $options['max'] ) ? ' max="' . $options['max'] . '"' : '';
-        $step = isset( $options['step'] ) ? ' step="' . $options['step'] . '"' : '';
-        $required = isset( $options['required'] ) ? ' required="required"' : '';
-        $pattern = isset( $options['pattern'] ) ? ' pattern="' . $options['pattern'] . '"' : '';
-        $title = isset( $options['title'] ) ? ' title="' . $options['title'] . '"' : '';
-        $placeholder = isset( $options['placeholder'] ) ? ' placeholder="' . $options['placeholder'] . '"' : '';
+        $attributes = '';
 
-        echo sprintf( '<input type="%3$s" id="%1$s" name="%1$s" value="%2$s" class="%4$s"%5$s%6$s%7$s%8$s%9$s%10$s%11$s%12$s />', $id, esc_attr( $current ), $type, $class, $styles, $min, $max, $step, $required, $pattern, $title, $placeholder );
+        if( isset( $attrs ) ) {
+            foreach( $attrs as $key => $attr ) {
+                $attributes .= ' ' . $key . '="' . $attr . '"';
+            }
+        }
+
+        echo sprintf( '<input type="%3$s" id="%1$s" name="%1$s" value="%2$s"%4$s />', $id, esc_attr( $current ), $type, $attributes );
     }
 
     /**
@@ -242,15 +241,16 @@ class Odin_Metabox {
      *
      * @return string          HTML of the field.
      */
-    protected function field_textarea( $id, $current, $options ) {
-        $class = isset( $options['class'] ) ? ' class="' . $options['class'] . '"' : '';
-        $styles = isset( $options['styles'] ) ? ' style="' . $options['styles'] . '"' : '';
-        $required = isset( $options['required'] ) ? ' required="required"' : '';
-        $pattern = isset( $options['pattern'] ) ? ' pattern="' . $options['pattern'] . '"' : '';
-        $title = isset( $options['title'] ) ? ' title="' . $options['title'] . '"' : '';
-        $placeholder = isset( $options['placeholder'] ) ? ' placeholder="' . $options['placeholder'] . '"' : '';
+    protected function field_textarea( $id, $current, $attrs ) {
+        $attributes = '';
 
-        echo sprintf( '<textarea id="%1$s" name="%1$s" cols="60" rows="4"%3$s%4$s%5$s%6$s%7$s%8$s>%2$s</textarea>', $id, esc_attr( $current ), $class, $styles, $required, $pattern, $title, $placeholder );
+        if( isset( $attrs ) ) {
+            foreach( $attrs as $key => $attr ) {
+                $attributes .= ' ' . $key . '="' . $attr . '"';
+            }
+        }
+
+        echo sprintf( '<textarea id="%1$s" name="%1$s" cols="60" rows="4"%3$s>%2$s</textarea>', $id, esc_attr( $current ), $attributes );
     }
 
     /**
@@ -261,10 +261,16 @@ class Odin_Metabox {
      *
      * @return string          HTML of the field.
      */
-    protected function field_checkbox( $id, $current, $options ) {
-        $required = isset( $options['required'] ) ? ' required="required"' : '';
+    protected function field_checkbox( $id, $current, $attrs ) {
+        $attributes = '';
 
-        echo sprintf( '<input type="checkbox" id="%1$s" name="%1$s" value="1"%2$s%3$s />', $id, checked( 1, $current, false ), $required );
+        if( isset( $attrs ) ) {
+            foreach( $attrs as $key => $attr ) {
+                $attributes .= ' ' . $key . '="' . $attr . '"';
+            }
+        }
+
+        echo sprintf( '<input type="checkbox" id="%1$s" name="%1$s" value="1"%2$s%3$s />', $id, checked( 1, $current, false ), $attributes );
     }
 
     /**
@@ -276,13 +282,16 @@ class Odin_Metabox {
      *
      * @return string          HTML of the field.
      */
-    protected function field_select( $id, $current, $options ) {
-        if( isset( $options['required'] ) ) {
-            $required = ' required="required"';
-            unset( $options['required'] );
+    protected function field_select( $id, $current, $options, $attrs ) {
+        $attributes = '';
+
+        if( isset( $attrs ) ) {
+            foreach( $attrs as $key => $attr ) {
+                $attributes .= ' ' . $key . '="' . $attr . '"';
+            }
         }
 
-        $html = sprintf( '<select id="%1$s" name="%1$s"%1$s>', $id, $required );
+        $html = sprintf( '<select id="%1$s" name="%1$s"%1$s>', $id, $required, $attributes );
 
         foreach( $options as $key => $label )
             $html .= sprintf( '<option value="%s"%s>%s</option>', $key, selected( $current, $key, false ), $label );
@@ -301,15 +310,18 @@ class Odin_Metabox {
      *
      * @return string          HTML of the field.
      */
-    protected function field_radio( $id, $current, $options ) {
+    protected function field_radio( $id, $current, $options, $attrs ) {
         $html = '';
-        if( isset( $options['required'] ) ) {
-            $required = ' required="required"';
-            unset( $options['required'] );
+        $attributes = '';
+
+        if( isset( $attrs ) ) {
+            foreach( $attrs as $key => $attr ) {
+                $attributes .= ' ' . $key . '="' . $attr . '"';
+            }
         }
 
         foreach( $options as $key => $label )
-            $html .= sprintf( '<input type="radio" id="%1$s_%2$s" name="%1$s" value="%2$s"%3$s%5$s /><label for="%1$s_%2$s"> %4$s</label><br />', $id, $key, checked( $current, $key, false ), $label, $required );
+            $html .= sprintf( '<input type="radio" id="%1$s_%2$s" name="%1$s" value="%2$s"%3$s%5$s /><label for="%1$s_%2$s"> %4$s</label><br />', $id, $key, checked( $current, $key, false ), $label, $attributes );
 
         echo $html;
     }
