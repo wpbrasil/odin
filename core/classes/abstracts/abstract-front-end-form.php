@@ -90,11 +90,11 @@ abstract class Odin_Front_End_Form {
     /**
      * Set success message.
      *
-     * @param array $success Form success message.
+     * @param string $success Form success message.
      *
      * @return void
      */
-    protected function set_success_message( $success = array() ) {
+    public function set_success_message( $success = '' ) {
         $this->success = $success;
     }
 
@@ -262,12 +262,16 @@ abstract class Odin_Front_End_Form {
      * @return string Error messages.
      */
     protected function display_success_message() {
-        $html = '<div class="alert alert-success">';
-        if ( ! empty( $this->success ) )
-            $html .= '<p>' . $this->success . '</p>';
-        else
-            $html .= '<p>' . __( 'Form submitted successfully!', 'odin' ) . '</p>';
-        $html .= '</div>';
+        $html = '';
+
+        if ( isset( $_GET['valid'] ) && 1 == $_GET['valid'] ) {
+            $html .= '<div class="alert alert-success">';
+            if ( ! empty( $this->success ) )
+                $html .= '<p>' . $this->success . '</p>';
+            else
+                $html .= '<p>' . __( 'Form submitted successfully!', 'odin' ) . '</p>';
+            $html .= '</div>';
+        }
 
         return $html;
     }
@@ -456,19 +460,6 @@ abstract class Odin_Front_End_Form {
     }
 
     /**
-     * Clean the form submitted data.
-     *
-     * @return array Form submitted data.
-     */
-    protected function clean_submitted_form_data() {
-        // Checks the form method.
-        if ( 'get' == $this->method )
-           unset( $_GET );
-        else
-            unset( $_POST );
-    }
-
-    /**
      * Validates the form data.
      *
      * @return void
@@ -508,8 +499,36 @@ abstract class Odin_Front_End_Form {
         }
 
         // Sets the errors.
-        if ( ! empty( $errors ) )
+        if ( ! empty( $errors ) ) {
             $this->set_errors( $errors );
+
+            // Remove valid param.
+            if ( isset( $_GET['valid'] ) && 1 == $_GET['valid'] )
+                unset( $_GET['valid'] );
+        }
+    }
+
+    /**
+     * Redirect to current page.
+     *
+     * @return void
+     */
+    protected function redirect_to_current_page() {
+        $url = 'http';
+        if ( isset( $_SERVER['HTTPS'] ) && 'on' == $_SERVER['HTTPS'] )
+            $url .= 's';
+
+        $url .= '://';
+
+        if ( '80' != $_SERVER['SERVER_PORT'] )
+            $url .= $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . $_SERVER['REQUEST_URI'];
+        else
+            $url .= $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+
+        // Redirect to current page.
+        wp_redirect( add_query_arg( 'valid', '1', $url ) );
+
+        exit();
     }
 
     /**
@@ -518,28 +537,39 @@ abstract class Odin_Front_End_Form {
      * @return string Form HTML.
      */
     public function render() {
-        $html = sprintf(
+        $html = '';
+
+        // Validates the form data.
+        $this->validate_form_data();
+
+        // Set messages.
+        $submitted_data = $this->submitted_form_data();
+        if ( ! empty( $submitted_data ) ) {
+
+            // Checks if the data is valid.
+            if ( $this->is_valid() ) {
+                // Hook actions here.
+                do_action( 'odin_front_end_form_submitted_data_' . $this->id, $this->get_submitted_data() );
+
+                // Prevent form resubmission on page refresh.
+                $this->redirect_to_current_page();
+            } else {
+                // Display error messages.
+                $html .= $this->display_error_messages();
+            }
+        }
+
+        // Display success message.
+        $html .= $this->display_success_message();
+
+        // Generate the form.
+        $html .= sprintf(
             '<form id="%s" action="%s" method="%s"%s>',
             $this->id,
             $this->action,
             $this->method,
             $this->process_attributes( array_merge( array( 'class' => 'form' ), $this->attributes ) )
         );
-
-            // Validates the form data.
-            $this->validate_form_data();
-
-            // Set messages.
-            $submitted_data = $this->submitted_form_data();
-            if ( ! empty( $submitted_data ) ) {
-                if ( $this->is_valid() ) {
-                    $html .= $this->display_success_message();
-                    do_action( 'odin_front_end_form_submitted_data_' . $this->id, $this->get_submitted_data() );
-                    $this->clean_submitted_form_data();
-                } else {
-                    $html .= $this->display_error_messages();
-                }
-            }
 
             $html .= do_action( 'odin_front_end_form_before_fields_' . $this->id );
             $html .= $this->process_fields();
