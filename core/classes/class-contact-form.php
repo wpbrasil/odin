@@ -115,10 +115,8 @@ class Odin_Contact_Form extends Odin_Front_End_Form {
      * @return string                 Mail HTML message.
      */
     protected function build_mail_message( $submitted_data ) {
-        $message = '';
-
         // Sets the message header.
-        $message .= do_action( 'odin_contact_form_message_header_' . $this->id );
+        $message = apply_filters( 'odin_contact_form_message_header_' . $this->id, '' );
 
         // Gets the submitted data.
         $data = $this->process_submitted_form_data( $submitted_data );
@@ -132,7 +130,7 @@ class Odin_Contact_Form extends Odin_Front_End_Form {
         }
 
         // Sets the message footer.
-        $message .= do_action( 'odin_contact_form_message_footer_' . $this->id );
+        $message .= apply_filters( 'odin_contact_form_message_footer_' . $this->id, '' );
 
         return $message;
     }
