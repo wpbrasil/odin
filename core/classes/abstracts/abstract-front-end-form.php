@@ -472,10 +472,6 @@ abstract class Odin_Front_End_Form {
                             if ( ! is_email( $value ) )
                                 $errors[] = sprintf( __( '%s must be an email address valid.', 'odin' ), '<strong>' . $label . '</strong>' );
                             break;
-                        case 'file':
-                            if ( ! validate_file( $value ) )
-                                $errors[] = sprintf( __( '%s must be a file valid.', 'odin' ), '<strong>' . $label . '</strong>' );
-                            break;
 
                         default:
                             $custom_message = do_action( 'odin_front_end_form_valid_' . $this->id . '_' . $id, $label, $value );
