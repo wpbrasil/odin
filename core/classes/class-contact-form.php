@@ -146,8 +146,6 @@ class Odin_Contact_Form extends Odin_Front_End_Form {
 
             // Send mail.
             wp_mail( $this->to, 'The subject', $message, $headers );
-
-            echo '<pre>' . print_r( $message . $this->content_type, true ) . '</pre>';
         }
     }
 
