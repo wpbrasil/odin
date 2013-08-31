@@ -19,6 +19,13 @@ class Odin_Contact_Form extends Odin_Front_End_Form {
     protected $content_type = 'text/plain';
 
     /**
+     * Mail subject.
+     *
+     * @var string
+     */
+    protected $subject = '';
+
+    /**
      * Contact Form construct.
      *
      * @param string $id         Form id.
@@ -51,6 +58,15 @@ class Odin_Contact_Form extends Odin_Front_End_Form {
     }
 
     /**
+     * Set the mail subject.
+     *
+     * @param string $subject Mail subject.
+     */
+    public function set_subject( $subject ) {
+        $this->subject = $subject;
+    }
+
+    /**
      * Process the sent form data.
      *
      * @param  array $submitted_data Submitted data.
@@ -64,8 +80,8 @@ class Odin_Contact_Form extends Odin_Front_End_Form {
         if ( ! empty( $this->fields ) && ! empty( $submitted_data ) ) {
             foreach ( $this->fields as $fieldset ) {
                 foreach ( $fieldset['fields'] as $field ) {
-                    $id       = $field['id'];
-                    $label    = isset( $field['label'] ) ? $field['label'] : $id;
+                    $id    = $field['id'];
+                    $label = isset( $field['label'] ) ? $field['label'] : $id;
 
                     $data[ $label ] = $submitted_data[ $id ];
                 }
@@ -106,6 +122,43 @@ class Odin_Contact_Form extends Odin_Front_End_Form {
     }
 
     /**
+     * Build the mail subject.
+     *
+     * @param  array  $submitted_data Form submitted data.
+     *
+     * @return string                 Mail subject.
+     */
+    protected function build_mail_subject( $submitted_data ) {
+        if ( ! empty( $this->subject ) ) {
+            $subject = $this->subject;
+
+            // Create the placeholders.
+            $placeholders = array_merge(
+                array(
+                    'form_id' => $this->id,
+                    'sent_date' => date( get_option( 'date_format' ) ),
+                    'sent_time' => date( get_option( 'time_format' ) )
+                ),
+                $submitted_data
+            );
+
+            // Process the placeholders.
+            foreach ( $placeholders as $placeholder => $value )
+                $subject = str_replace( '%' . $placeholder . '%', sanitize_text_field( $value ), $subject );
+
+            return $subject;
+        } else {
+            // Default subject.
+            return sprintf(
+                __( 'Message sent by the form %s in %s at %s', 'odin' ),
+                $this->id,
+                date( get_option( 'date_format' ) ),
+                date( get_option( 'time_format' ) )
+            );
+        }
+    }
+
+    /**
      * Format the mail headers.
      *
      * @return array Mail headers.
@@ -141,11 +194,17 @@ class Odin_Contact_Form extends Odin_Front_End_Form {
      */
     public function send_mail( $submitted_data ) {
         if ( ! empty( $submitted_data ) ) {
+            // Mail subject.
+            $subject = $this->build_mail_subject( $submitted_data );
+
+            // Mail message.
             $message = $this->build_mail_message( $submitted_data );
+
+            // Mail headers.
             $headers = $this->format_mail_headers();
 
             // Send mail.
-            wp_mail( $this->to, 'The subject', $message, $headers );
+            wp_mail( $this->to, $subject, $message, $headers );
         }
     }
 
