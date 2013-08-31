@@ -184,7 +184,7 @@ abstract class Odin_Front_End_Form {
                             break;
 
                         default:
-
+                            $html .= do_action( 'odin_front_end_form_field_' . $this->id, $id, $label, $default, $description, $attributes, $options );
                             break;
                     }
                 }
