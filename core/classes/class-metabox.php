@@ -167,7 +167,7 @@ class Odin_Metabox {
         $id      = $args['id'];
         $type    = $args['type'];
         $options = isset( $args['options'] ) ? $args['options'] : '';
-        $attrs   = isset( $args['attrs'] ) ? $args['attrs'] : array();
+        $attrs   = isset( $args['attributes'] ) ? $args['attributes'] : array();
 
         // Gets current value or default.
         $current = get_post_meta( $post_id, $id, true );
