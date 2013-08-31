@@ -26,6 +26,13 @@ class Odin_Contact_Form extends Odin_Front_End_Form {
     protected $subject = '';
 
     /**
+     * Mail Reply-To.
+     *
+     * @var string
+     */
+    protected $reply_to = '';
+
+    /**
      * Contact Form construct.
      *
      * @param string $id         Form id.
@@ -64,6 +71,15 @@ class Odin_Contact_Form extends Odin_Front_End_Form {
      */
     public function set_subject( $subject ) {
         $this->subject = $subject;
+    }
+
+    /**
+     * Mail Reply-To.
+     *
+     * @var string
+     */
+    public function set_reply_to( $reply_to ) {
+        $this->reply_to = $reply_to;
     }
 
     /**
@@ -161,9 +177,11 @@ class Odin_Contact_Form extends Odin_Front_End_Form {
     /**
      * Format the mail headers.
      *
+     * @param  array  $submitted_data Form submitted data.
+     *
      * @return array Mail headers.
      */
-    protected function format_mail_headers() {
+    protected function format_mail_headers( $submitted_data ) {
         $headers = array();
 
         // Cc.
@@ -177,6 +195,10 @@ class Odin_Contact_Form extends Odin_Front_End_Form {
             foreach ( $this->bcc as $bcc )
                 $headers[] = 'Bcc: ' . $bcc;
         }
+
+        // Reply-To.
+        if ( ! empty( $this->reply_to ) )
+            $headers[] = 'Reply-To: ' . sanitize_email( $submitted_data[ $this->reply_to ] );
 
         // Content type.
         if ( 'text/html' == $this->content_type )
@@ -201,7 +223,7 @@ class Odin_Contact_Form extends Odin_Front_End_Form {
             $message = $this->build_mail_message( $submitted_data );
 
             // Mail headers.
-            $headers = $this->format_mail_headers();
+            $headers = $this->format_mail_headers( $submitted_data );
 
             // Send mail.
             wp_mail( $this->to, $subject, $message, $headers );
