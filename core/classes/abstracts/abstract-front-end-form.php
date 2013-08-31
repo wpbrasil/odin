@@ -257,6 +257,11 @@ abstract class Odin_Front_End_Form {
         return $html;
     }
 
+    protected function required_field_alert( $attributes ) {
+        if ( isset( $attributes['required'] ) )
+            return ' <span class="text-danger">*</span>';
+    }
+
     /**
      * Input field.
      *
@@ -278,7 +283,7 @@ abstract class Odin_Front_End_Form {
             $attributes['class'] = 'form-control';
 
         $html = '<div class="form-group">';
-        $html .= sprintf( '<label for="%s">%s</label>', $id, $label );
+        $html .= sprintf( '<label for="%s">%s%s</label>', $id, $label, $this->required_field_alert( $attributes ) );
         $html .= sprintf( '<input id="%1$s" name="%1$s" value="%2$s"%3$s />', $id, $default, $this->process_attributes( $attributes ) );
         $html .= ! empty( $description ) ? '<span class="help-block">' . $description . '</span>' : '';
         $html .= '</div>';
@@ -303,7 +308,7 @@ abstract class Odin_Front_End_Form {
             $attributes['class'] = 'form-control';
 
         $html = '<div class="form-group">';
-        $html .= sprintf( '<label for="%s">%s</label>', $id, $label );
+        $html .= sprintf( '<label for="%s">%s%s</label>', $id, $label, $this->required_field_alert( $attributes ) );
         $html .= sprintf( '<textarea id="%1$s" name="%1$s" cols="60" rows="4"%2$s>%3$s</textarea>', $id, $this->process_attributes( $attributes ), $default );
         $html .= ! empty( $description ) ? '<span class="help-block">' . $description . '</span>' : '';
         $html .= '</div>';
@@ -330,7 +335,7 @@ abstract class Odin_Front_End_Form {
         $html = '<div class="checkbox">';
         $html .= '<label>';
         $html .= sprintf( '<input type="checkbox" id="%1$s" name="%1$s" value="1"%2$s />', $id, $this->process_attributes( $attributes ) );
-        $html .= ' ' . $label . '</label>';
+        $html .= ' ' . $label . $this->required_field_alert( $attributes ) . '</label>';
         $html .= ! empty( $description ) ? '<span class="help-block">' . $description . '</span>' : '';
         $html .= '</div>';
 
@@ -355,7 +360,7 @@ abstract class Odin_Front_End_Form {
             $attributes['class'] = 'form-control';
 
         $html = '<div class="form-group">';
-        $html .= sprintf( '<label for="%s">%s</label>', $id, $label );
+        $html .= sprintf( '<label for="%s">%s%s</label>', $id, $label, $this->required_field_alert( $attributes ) );
         $html .= sprintf( '<select id="%1$s" name="%1$s"%2$s>', $id, $this->process_attributes( $attributes ) );
 
         foreach ( $options as $value => $name ) {
@@ -386,7 +391,7 @@ abstract class Odin_Front_End_Form {
      */
     protected function field_radio( $id, $label, $default, $description, $attributes, $options ) {
         $html = '<div class="form-group">';
-        $html .= '<label>' . $label . '</label>';
+        $html .= '<label>' . $label . $this->required_field_alert( $attributes ) . '</label>';
         $html .= '<div class="form-radio-group">';
 
         foreach ( $options as $value => $label ) {
