@@ -202,21 +202,25 @@ abstract class Odin_Front_End_Form {
      * @return string Form buttons HTML.
      */
     protected function process_buttons() {
-        $html = '';
+        $html = '<div class="btn-group">';
 
         if ( ! empty( $this->buttons ) ) {
             foreach ( $this->buttons as $button ) {
                 $attributes = isset( $button['attributes'] ) ? $button['attributes'] : array( 'class' => 'btn btn-primary' );
 
                 $html .= sprintf(
-                    '<button id="%s" type="%s"%s>%s</button> ',
+                    '<button id="%s" type="%s"%s>%s</button>',
                     $button['id'],
                     $button['type'],
                     $this->process_attributes( $attributes ),
                     $button['label']
                 );
             }
+        } else {
+            $html .= '<button type="submit" class="btn btn-primary">' . __( 'Submit', 'odin' ) . '</button>';
         }
+
+        $html .= '</div>';
 
         return $html;
     }
