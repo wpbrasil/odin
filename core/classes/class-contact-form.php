@@ -144,7 +144,7 @@ class Odin_Contact_Form extends Odin_Front_End_Form {
 
             // Process the placeholders.
             foreach ( $placeholders as $placeholder => $value )
-                $subject = str_replace( '%' . $placeholder . '%', sanitize_text_field( $value ), $subject );
+                $subject = str_replace( '[' . $placeholder . ']', sanitize_text_field( $value ), $subject );
 
             return $subject;
         } else {
