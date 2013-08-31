@@ -445,6 +445,19 @@ abstract class Odin_Front_End_Form {
     }
 
     /**
+     * Clean the form submitted data.
+     *
+     * @return array Form submitted data.
+     */
+    protected function clean_submitted_form_data() {
+        // Checks the form method.
+        if ( 'get' == $this->method )
+           unset( $_GET );
+        else
+            unset( $_POST );
+    }
+
+    /**
      * Validates the form data.
      *
      * @return void
@@ -508,10 +521,12 @@ abstract class Odin_Front_End_Form {
             // Set messages.
             $submitted_data = $this->submitted_form_data();
             if ( ! empty( $submitted_data ) ) {
-                if ( $this->is_valid() )
+                if ( $this->is_valid() ) {
                     $html .= $this->display_success_message();
-                else
+                    $this->clean_submitted_form_data();
+                } else {
                     $html .= $this->display_error_messages();
+                }
             }
 
             $html .= do_action( 'odin_front_end_form_before_fields_' . $this->id );
