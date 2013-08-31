@@ -182,7 +182,7 @@ class Odin_Contact_Form extends Odin_Front_End_Form {
         if ( 'text/html' == $this->content_type )
             $headers[] = 'Content-type: text/html; charset=' . get_bloginfo( 'charset' );
 
-        return $headers;
+        return apply_filters( 'odin_contact_form_mail_headers_' . $this->id, $headers );
     }
 
     /**
