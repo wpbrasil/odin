@@ -26,6 +26,20 @@ abstract class Odin_Front_End_Form {
     protected $buttons = array();
 
     /**
+     * Form errors.
+     *
+     * @var array
+     */
+    protected $errors = array();
+
+    /**
+     * Form success.
+     *
+     * @var string
+     */
+    protected $success = '';
+
+    /**
      * Form construct.
      *
      * @param string $id         Form id.
@@ -43,7 +57,7 @@ abstract class Odin_Front_End_Form {
     /**
      * Set form fields.
      *
-     * @param array $fields form fields.
+     * @param array $fields Form fields.
      *
      * @return void
      */
@@ -54,12 +68,34 @@ abstract class Odin_Front_End_Form {
     /**
      * Set form buttons.
      *
-     * @param array $buttons form buttons.
+     * @param array $buttons Form buttons.
      *
      * @return void
      */
     public function set_buttons( $buttons = array() ) {
         $this->buttons = $buttons;
+    }
+
+    /**
+     * Set errors.
+     *
+     * @param array $errors Form errors.
+     *
+     * @return void
+     */
+    protected function set_errors( $errors = array() ) {
+        $this->errors = $errors;
+    }
+
+    /**
+     * Set success message.
+     *
+     * @param array $success Form success message.
+     *
+     * @return void
+     */
+    protected function set_success_message( $success = array() ) {
+        $this->success = $success;
     }
 
     /**
@@ -114,8 +150,12 @@ abstract class Odin_Front_End_Form {
                     $description = isset( $field['description'] ) ? $field['description'] : '';
                     $attributes  = isset( $field['attributes'] ) ? $field['attributes'] : array();
                     $options     = isset( $field['options'] ) ? $field['options'] : '';
+                    $required    = isset( $field['required'] ) && $field['required'] ? true : false;
                     $default     = isset( $field['default'] ) ? $field['default'] : '';
                     $default     = $this->default_field( $id, $default );
+
+                    if ( $required )
+                        $attributes = array_merge( array( 'required' => 'required' ), $attributes );
 
                     switch ( $type ) {
                         case 'text':
@@ -140,7 +180,7 @@ abstract class Odin_Front_End_Form {
                             $html .= $this->field_select( $id, $label, $default, $description, $attributes, $options );
                             break;
                         case 'radio':
-                            $html .= $this->field_radio( $id, $default, $description, $attributes, $options );
+                            $html .= $this->field_radio( $id, $label, $default, $description, $attributes, $options );
                             break;
 
                         default:
@@ -177,6 +217,42 @@ abstract class Odin_Front_End_Form {
                 );
             }
         }
+
+        return $html;
+    }
+
+    /**
+     * Display error messages.
+     *
+     * @return string Error messages.
+     */
+    protected function display_error_messages() {
+        $html = '';
+
+        if ( ! empty( $this->errors ) ) {
+            $html .= '<div class="alert alert-danger">';
+
+            foreach ( $this->errors as $error )
+                $html .= '<p>' . $error . '</p>';
+
+            $html .= '</div>';
+        }
+
+        return $html;
+    }
+
+    /**
+     * Display success message.
+     *
+     * @return string Error messages.
+     */
+    protected function display_success_message() {
+        $html = '<div class="alert alert-success">';
+        if ( ! empty( $this->success ) )
+            $html .= '<p>' . $this->success . '</p>';
+        else
+            $html .= '<p>' . __( 'Form submitted successfully!', 'odin' ) . '</p>';
+        $html .= '</div>';
 
         return $html;
     }
@@ -300,6 +376,7 @@ abstract class Odin_Front_End_Form {
      * Radio field.
      *
      * @param  string $id          Field id.
+     * @param  string $label       Field label.
      * @param  string $default     Default value.
      * @param  string $description Field description.
      * @param  array  $attributes  Array with field attributes.
@@ -307,8 +384,10 @@ abstract class Odin_Front_End_Form {
      *
      * @return string              HTML of the field.
      */
-    protected function field_radio( $id, $default, $description, $attributes, $options ) {
-        $html = '';
+    protected function field_radio( $id, $label, $default, $description, $attributes, $options ) {
+        $html = '<div class="form-group">';
+        $html .= '<label>' . $label . '</label>';
+        $html .= '<div class="form-radio-group">';
 
         foreach ( $options as $value => $label ) {
             // Set the checked attribute.
@@ -321,9 +400,69 @@ abstract class Odin_Front_End_Form {
             $html .= sprintf( '<label><input type="radio" id="%1$s-%2$s" name="%1$s" value="%2$s"%4$s /> %3$s</label>', $id, $value, $label, $this->process_attributes( $attributes ) );
             $html .= '</div>';
         }
+        $html .= '</div>';
+
         $html .= ! empty( $description ) ? '<span class="help-block">' . $description . '</span>' : '';
 
+        $html .= '</div>';
+
         return $html;
+    }
+
+    /**
+     * Checks if the form data is valid.
+     *
+     * @return bool
+     */
+    protected function is_valid() {
+        $valid = empty( $this->errors ) ? true : false;
+
+        return $valid;
+    }
+
+    /**
+     * Gests the form submitted data.
+     *
+     * @return array Form submitted data.
+     */
+    protected function submitted_form_data() {
+        // Checks the form method.
+        if ( 'get' == $this->method )
+            $data = $_GET;
+        else
+            $data = $_POST;
+
+        return $data;
+    }
+
+    /**
+     * Validates the form data.
+     *
+     * @return void
+     */
+    protected function validate_form_data() {
+        $errors = array();
+
+        // Sets the data.
+        $data = $this->submitted_form_data();
+
+        if ( ! empty( $this->fields ) && ! empty( $data ) ) {
+            foreach ( $this->fields as $fieldset ) {
+                foreach ( $fieldset['fields'] as $field ) {
+                    $id       = $field['id'];
+                    $type     = $field['type'];
+                    $label    = isset( $field['label'] ) ? $field['label'] : '';
+                    $required = isset( $field['required'] ) && $field['required'] ? true : false;
+
+                    if ( $required && empty( $data[ $id ] ) )
+                        $errors[] = sprintf( __( '%s is required.', 'odin' ), '<strong>' . $label . '</strong>' );
+                }
+            }
+        }
+
+        // Sets the errors.
+        if ( ! empty( $errors ) )
+            $this->set_errors( $errors );
     }
 
     /**
@@ -339,6 +478,18 @@ abstract class Odin_Front_End_Form {
             $this->method,
             $this->process_attributes( array_merge( array( 'class' => 'form' ), $this->attributes ) )
         );
+
+            // Validates the form data.
+            $this->validate_form_data();
+
+            // Set messages.
+            $submitted_data = $this->submitted_form_data();
+            if ( ! empty( $submitted_data ) ) {
+                if ( $this->is_valid() )
+                    $html .= $this->display_success_message();
+                else
+                    $html .= $this->display_error_messages();
+            }
 
             $html .= do_action( 'odin_front_end_form_before_fields_' . $this->id );
             $html .= $this->process_fields();
