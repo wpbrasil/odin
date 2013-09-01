@@ -1,5 +1,11 @@
 ## Changelog ##
 
+#### v2.0.0 - xx/xx/2013 ####
+
+* Changed attrs to attributes in Odin_Metabox fields options.
+* Changed name to label in Odin_Metabox fields options.
+* Refactored the Odin_Theme_Options class.
+
 #### v1.9.0 - 30/08/2013 ####
 
 * Updated sass-bootstrap.

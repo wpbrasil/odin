@@ -7,7 +7,7 @@
  * @package  Odin
  * @category Options
  * @author   WPBrasil
- * @version  1.0
+ * @version  2.0.0
  */
 class Odin_Theme_Options {
 
@@ -28,26 +28,19 @@ class Odin_Theme_Options {
     /**
      * Settings construct.
      *
-     * @param string $page_title Page title.
-     * @param string $slug       Page slug.
+     * @param string $id         Page id.
+     * @param string $title      Page title.
      * @param string $capability User capability.
      */
-    public function __construct(
-        $page_title = 'Theme Settings',
-        $slug       = 'odin-settings',
-        $capability = 'manage_options'
-    ) {
-        $this->page_title = $page_title;
-        $this->slug       = $slug;
+    public function __construct( $id, $title, $capability = 'manage_options' ) {
+        $this->id         = $id;
+        $this->title      = $title;
         $this->capability = $capability;
 
         // Actions.
         add_action( 'admin_menu', array( &$this, 'add_page' ) );
         add_action( 'admin_init', array( &$this, 'create_settings' ) );
-
-        if ( isset( $_GET['page'] ) && $_GET['page'] == $slug )
-            add_action( 'admin_enqueue_scripts', array( &$this, 'scripts' ) );
-
+        add_action( 'admin_enqueue_scripts', array( &$this, 'scripts' ) );
     }
 
     /**
@@ -57,10 +50,10 @@ class Odin_Theme_Options {
      */
     public function add_page() {
         add_theme_page(
-            $this->page_title,
-            $this->page_title,
+            $this->title,
+            $this->title,
             $this->capability,
-            $this->slug,
+            $this->id,
             array( &$this, 'settings_page' )
         );
     }
@@ -71,32 +64,36 @@ class Odin_Theme_Options {
      * @return void
      */
     function scripts() {
-        // Color Picker.
-        wp_enqueue_style( 'wp-color-picker' );
-        wp_enqueue_script( 'wp-color-picker' );
+        // Checks if is the settings page.
+        if ( isset( $_GET['page'] ) && $this->id == $_GET['page'] ) {
 
-        // Media Upload.
-        wp_enqueue_media();
+            // Color Picker.
+            wp_enqueue_style( 'wp-color-picker' );
+            wp_enqueue_script( 'wp-color-picker' );
 
-        // jQuery UI.
-        wp_enqueue_script( 'jquery-ui-sortable' );
+            // Media Upload.
+            wp_enqueue_media();
 
-        // Theme Options.
-        wp_enqueue_style( 'odin-admin', get_template_directory_uri() . '/core/assets/css/admin.css', array(), null, 'all' );
-        wp_enqueue_script( 'odin-admin', get_template_directory_uri() . '/core/assets/js/admin.js', array( 'jquery' ), null, true );
+            // jQuery UI.
+            wp_enqueue_script( 'jquery-ui-sortable' );
 
-        // Localize strings.
-        wp_localize_script(
-            'odin-admin',
-            'odin_admin_params',
-            array(
-                'gallery_title'  => __( 'Add images in gallery', 'odin' ),
-                'gallery_button' => __( 'Add in gallery', 'odin' ),
-                'gallery_remove' => __( 'Remove image', 'odin' ),
-                'upload_title'   => __( 'Choose a file', 'odin' ),
-                'upload_button'  => __( 'Add file', 'odin' ),
-            )
-        );
+            // Theme Options.
+            wp_enqueue_style( 'odin-admin', get_template_directory_uri() . '/core/assets/css/admin.css', array(), null, 'all' );
+            wp_enqueue_script( 'odin-admin', get_template_directory_uri() . '/core/assets/js/admin.js', array( 'jquery' ), null, true );
+
+            // Localize strings.
+            wp_localize_script(
+                'odin-admin',
+                'odin_admin_params',
+                array(
+                    'gallery_title'  => __( 'Add images in gallery', 'odin' ),
+                    'gallery_button' => __( 'Add in gallery', 'odin' ),
+                    'gallery_remove' => __( 'Remove image', 'odin' ),
+                    'upload_title'   => __( 'Choose a file', 'odin' ),
+                    'upload_button'  => __( 'Add file', 'odin' ),
+                )
+            );
+        }
     }
 
     /**
@@ -138,7 +135,7 @@ class Odin_Theme_Options {
      */
     private function get_current_url() {
         $url = 'http';
-        if ( isset( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] == 'on' )
+        if ( isset( $_SERVER['HTTPS'] ) && 'on' == $_SERVER['HTTPS'] )
             $url .= 's';
 
         $url .= '://';
@@ -166,7 +163,7 @@ class Odin_Theme_Options {
 
             $current = ( $current_tab == $tab['id'] ) ? ' nav-tab-active' : '';
 
-            $html .= sprintf( '<a href="%s?page=%s&amp;tab=%s" class="nav-tab%s">%s</a>', $this->get_current_url(), $this->slug, $tab['id'], $current, $tab['title'] );
+            $html .= sprintf( '<a href="%s?page=%s&amp;tab=%s" class="nav-tab%s">%s</a>', $this->get_current_url(), $this->id, $tab['id'], $current, $tab['title'] );
         }
 
         $html .= '</h2>';
@@ -209,6 +206,8 @@ class Odin_Theme_Options {
 
                             // Prints settings sections and settings fields.
                             do_settings_sections( $tabs['id'] );
+
+                            break;
                         }
                     }
 
@@ -241,19 +240,18 @@ class Odin_Theme_Options {
                 $items['tab']
             );
 
-            foreach ( $items['options'] as $option ) {
+            foreach ( $items['fields'] as $option ) {
 
                 $type = isset( $option['type'] ) ? $option['type'] : 'text';
 
                 $args = array(
                     'id'          => $option['id'],
                     'tab'         => $items['tab'],
-                    'description' => isset( $option['description'] ) ? $option['description'] : '',
-                    'name'        => $option['label'],
                     'section'     => $section,
-                    'size'        => isset( $option['size'] ) ? $option['size'] : null,
                     'options'     => isset( $option['options'] ) ? $option['options'] : '',
-                    'default'     => isset( $option['default'] ) ? $option['default'] : ''
+                    'default'     => isset( $option['default'] ) ? $option['default'] : '',
+                    'attributes'  => isset( $option['attributes'] ) ? $option['attributes'] : array(),
+                    'description' => isset( $option['description'] ) ? $option['description'] : ''
                 );
 
                 add_settings_field(
@@ -268,9 +266,8 @@ class Odin_Theme_Options {
         }
 
         // Register settings.
-        foreach ( $this->tabs as $tabs ) {
+        foreach ( $this->tabs as $tabs )
             register_setting( $tabs['id'], $tabs['id'], array( &$this, 'validate_input' ) );
-        }
     }
 
     /**
@@ -293,14 +290,21 @@ class Odin_Theme_Options {
     }
 
     /**
-     * Text field callback.
+     * Build field attributes.
      *
-     * @param array $args Arguments from the option.
+     * @param  array $attrs Attributes as array.
      *
-     * @return string Text field HTML.
+     * @return string       Attributes as string.
      */
-    public function callback_text( $args ) {
-        $this->callback_input( $args );
+    protected function build_field_attributes( $attrs ) {
+        $attributes = '';
+
+        if ( ! empty( $attrs ) ) {
+            foreach ( $attrs as $key => $attr )
+                $attributes .= ' ' . $key . '="' . $attr . '"';
+        }
+
+        return $attributes;
     }
 
     /**
@@ -311,34 +315,38 @@ class Odin_Theme_Options {
      * @return string Input field HTML.
      */
     public function callback_input( $args ) {
-        $tab = $args['tab'];
-        $id  = $args['id'];
+        $tab   = $args['tab'];
+        $id    = $args['id'];
+        $attrs = $args['attributes'];
+
+        // Sets default type.
+        if ( ! isset( $attrs['type'] ) )
+            $attrs['type'] = 'text';
 
         // Sets current option.
         $current = esc_html( $this->get_option( $tab, $id, $args['default'] ) );
 
-        // Sets input size.
-        $size = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
-
-        // Sets input type.
-        $type = isset( $args['options']['type'] ) ? $args['options']['type'] : 'text';
-
-        // Sets input class.
-        $class = isset( $args['options']['class'] ) ? ' ' . $args['options']['class'] : '';
-
-        // Sets input styles.
-        $styles = isset( $args['options']['styles'] ) ? ' style="' . $args['options']['styles'] . '"' : '';
-
-        $html = sprintf(
-            '<input type="%5$s" id="%1$s" name="%2$s[%1$s]" value="%3$s" class="%4$s-text%6$s"%7$s />',
-            $id, $tab, $current, $size, $type, $class, $styles
-        );
+        $html = sprintf( '<input id="%1$s" name="%2$s[%1$s]" value="%3$s"%4$s />', $id, $tab, $current, $this->build_field_attributes( $attrs ) );
 
         // Displays the description.
         if ( $args['description'] )
             $html .= sprintf( '<p class="description">%s</p>', $args['description'] );
 
         echo $html;
+    }
+
+    /**
+     * Text field callback.
+     *
+     * @param array $args Arguments from the option.
+     *
+     * @return string Text field HTML.
+     */
+    public function callback_text( $args ) {
+        // Sets regular text class.
+        $args['attributes']['class'] = 'regular-text';
+
+        $this->callback_input( $args );
     }
 
     /**
@@ -349,13 +357,14 @@ class Odin_Theme_Options {
      * @return string Textarea field HTML.
      */
     public function callback_textarea( $args ) {
-        $tab = $args['tab'];
-        $id  = $args['id'];
+        $tab   = $args['tab'];
+        $id    = $args['id'];
+        $attrs = $args['attributes'];
 
         // Sets current option.
         $current = esc_textarea( $this->get_option( $tab, $id, $args['default'] ) );
 
-        $html = sprintf( '<textarea id="%1$s" name="%2$s[%1$s]" rows="5" cols="50">%3$s</textarea>', $id, $tab, $current );
+        $html = sprintf( '<textarea id="%1$s" name="%2$s[%1$s]" rows="5" cols="50"%4$s>%3$s</textarea>', $id, $tab, $current, $this->build_field_attributes( $attrs ) );
 
         // Displays the description.
         if ( $args['description'] )
@@ -379,14 +388,11 @@ class Odin_Theme_Options {
         // Sets current option.
         $current = wpautop( $this->get_option( $tab, $id, $args['default'] ) );
 
-        // Sets input size.
-        $size = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : '600px';
-
         // Set default options.
         if ( empty( $options ) )
             $options = array( 'textarea_rows' => 10 );
 
-        echo '<div style="width: ' . $size . ';">';
+        echo '<div style="width: 600px;">';
 
             wp_editor( $current, $tab . '[' . $id . ']', $options );
 
@@ -405,46 +411,18 @@ class Odin_Theme_Options {
      * @return string Checkbox field HTML.
      */
     public function callback_checkbox( $args ) {
-        $tab = $args['tab'];
-        $id  = $args['id'];
+        $tab   = $args['tab'];
+        $id    = $args['id'];
+        $attrs = $args['attributes'];
 
         // Sets current option.
         $current = $this->get_option( $tab, $id, $args['default'] );
 
-        $html = sprintf( '<input type="checkbox" id="%1$s" name="%2$s[%1$s]" value="1"%3$s />', $id, $tab, checked( 1, $current, false ) );
+        $html = sprintf( '<input type="checkbox" id="%1$s" name="%2$s[%1$s]" value="1"%3$s%4$s />', $id, $tab, checked( 1, $current, false ), $this->build_field_attributes( $attrs ) );
 
         // Displays the description.
         if ( $args['description'] )
             $html .= sprintf( '<label for="%s"> %s</label>', $id, $args['description'] );
-
-        echo $html;
-    }
-
-    /**
-     * Multicheckbox field callback.
-     *
-     * @param array $args Arguments from the option.
-     *
-     * @return string Multicheckbox field HTML.
-     */
-    public function callback_multicheckbox( $args ) {
-        $tab = $args['tab'];
-        $id  = $args['id'];
-
-        $html = '';
-        foreach( $args['options'] as $key => $label ) {
-            $item_id = $id . '_' . $key;
-
-            // Sets current option.
-            $current = $this->get_option( $tab, $item_id, $args['default'] );
-
-            $html .= sprintf( '<input type="checkbox" id="%1$s" name="%2$s[%1$s]" value="1"%3$s />', $item_id, $tab, checked( $current, 1, false ) );
-            $html .= sprintf( '<label for="%s"> %s</label><br />', $item_id, $label );
-        }
-
-        // Displays the description.
-        if ( $args['description'] )
-            $html .= sprintf( '<p class="description">%s</p>', $args['description'] );
 
         echo $html;
     }
@@ -457,8 +435,9 @@ class Odin_Theme_Options {
      * @return string Radio field HTML.
      */
     public function callback_radio( $args ) {
-        $tab = $args['tab'];
-        $id  = $args['id'];
+        $tab   = $args['tab'];
+        $id    = $args['id'];
+        $attrs = $args['attributes'];
 
         // Sets current option.
         $current = $this->get_option( $tab, $id, $args['default'] );
@@ -468,7 +447,7 @@ class Odin_Theme_Options {
             $item_id = $id . '_' . $key;
             $key = sanitize_title( $key );
 
-            $html .= sprintf( '<input type="radio" id="%1$s_%3$s" name="%2$s[%1$s]" value="%3$s"%4$s />', $id, $tab, $key, checked( $current, $key, false ) );
+            $html .= sprintf( '<input type="radio" id="%1$s_%3$s" name="%2$s[%1$s]" value="%3$s"%4$s%5$s />', $id, $tab, $key, checked( $current, $key, false ), $this->build_field_attributes( $attrs ) );
             $html .= sprintf( '<label for="%s"> %s</label><br />', $item_id, $label );
         }
 
@@ -487,13 +466,14 @@ class Odin_Theme_Options {
      * @return string Select field HTML.
      */
     public function callback_select( $args ) {
-        $tab = $args['tab'];
-        $id  = $args['id'];
+        $tab   = $args['tab'];
+        $id    = $args['id'];
+        $attrs = $args['attributes'];
 
         // Sets current option.
         $current = $this->get_option( $tab, $id, $args['default'] );
 
-        $html = sprintf( '<select id="%1$s" name="%2$s[%1$s]">', $id, $tab );
+        $html = sprintf( '<select id="%1$s" name="%2$s[%1$s]"%3$s>', $id, $tab, $this->build_field_attributes( $attrs ) );
         foreach( $args['options'] as $key => $label ) {
             $key = sanitize_title( $key );
 
@@ -516,8 +496,9 @@ class Odin_Theme_Options {
      * @return string Color field HTML.
      */
     public function callback_color( $args ) {
-        $args['size'] = 'custom';
-        $args['options'] = array( 'class' => 'odin-color-field' );
+        // Sets color class.
+        $args['attributes']['class'] = 'odin-color-field';
+
         $this->callback_input( $args );
     }
 
@@ -529,13 +510,14 @@ class Odin_Theme_Options {
      * @return string Upload field HTML.
      */
     public function callback_upload( $args ) {
-        $tab = $args['tab'];
-        $id  = $args['id'];
+        $tab   = $args['tab'];
+        $id    = $args['id'];
+        $attrs = $args['attributes'];
 
         // Sets current option.
         $current = esc_url( $this->get_option( $tab, $id, $args['default'] ) );
 
-        $html = sprintf( '<input type="text" id="%1$s" name="%2$s[%1$s]" value="%3$s" class="regular-text" /> <input class="button odin-upload-button" id="%1$s-button" type="button" value="%4$s" />', $id, $tab, $current, __( 'Select file', 'odin' ) );
+        $html = sprintf( '<input type="text" id="%1$s" name="%2$s[%1$s]" value="%3$s" class="regular-text"%5$s /> <input class="button odin-upload-button" id="%1$s-button" type="button" value="%4$s" />', $id, $tab, $current, __( 'Select file', 'odin' ), $this->build_field_attributes( $attrs ) );
 
         // Displays the description.
         if ( $args['description'] )
@@ -642,15 +624,15 @@ class Odin_Theme_Options {
      */
     public function validate_input( $input ) {
 
-        // Create our array for storing the validated options
+        // Create our array for storing the validated options.
         $output = array();
 
-        // Loop through each of the incoming options
+        // Loop through each of the incoming options.
         foreach ( $input as $key => $value ) {
 
             // Check to see if the current option has a value. If so, process it.
-            if ( isset( $input[$key] ) )
-                $output[$key] = apply_filters( 'odin_theme_options_validate_' . $this->slug, $value );
+            if ( isset( $input[ $key ] ) )
+                $output[ $key ] = apply_filters( 'odin_theme_options_validate_' . $this->id, $value, $key );
 
         }
 
