@@ -133,9 +133,9 @@ class Odin_Metabox {
             echo '<tr valign="top">';
 
             if ( 'title' == $field['type'] ) {
-                echo sprintf( '<th colspan="2"><strong>%s</strong></th>', $field['name'] );
+                echo sprintf( '<th colspan="2"><strong>%s</strong></th>', $field['label'] );
             } else {
-                echo sprintf( '<th><label for="%s">%s</label></th>', $field['id'], $field['name'] );
+                echo sprintf( '<th><label for="%s">%s</label></th>', $field['id'], $field['label'] );
 
                 echo '<td>';
                 $this->process_fields( $field, $post_id );
