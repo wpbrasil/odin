@@ -534,6 +534,7 @@ abstract class Odin_Front_End_Form {
 
     /**
      * Process form after success.
+     * Hook this in the WordPress init action.
      *
      * @return void.
      */
