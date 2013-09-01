@@ -124,7 +124,7 @@ class Odin_Contact_Form extends Odin_Front_End_Form {
         // Sets the message content.
         foreach ( $data as $label => $value ) {
             if ( 'text/html' == $this->content_type )
-                $message .= sprintf( '<strong>%s:</strong>%s', strip_tags( $label ), wpautop( strip_tags( $value ) ) );
+                $message .= sprintf( '<strong>%s:</strong>%s', wp_kses( $label, array() ), wpautop( wp_kses( $value, array() ) ) );
             else
                 $message .= sanitize_text_field( $label . ': ' . $value ) . PHP_EOL;
         }
