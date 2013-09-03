@@ -269,6 +269,9 @@ function odin_enqueue_scripts() {
     // bxSlider.
     // wp_enqueue_script( 'bxslider', $template_url . '/js/jquery.bxslider.min.js', array(), null, true );
 
+    // Twitter Bootstrap.
+    wp_enqueue_script( 'bootstrap', $template_url . '/assets/js/bootstrap.min.js', array(), null, true );
+
     // General scripts.
     if ( false == ODIN_GRUNT_SUPPORT ) {
 
@@ -280,9 +283,6 @@ function odin_enqueue_scripts() {
     } else {
         wp_enqueue_script( 'odin-main-min', $template_url . '/assets/js/main.min.js', array(), null, true );
     }
-
-    // Twitter Bootstrap.
-    wp_enqueue_script( 'bootstrap', $template_url . '/assets/js/bootstrap.min.js', array(), null, true );
 
     // Load Thread comments WordPress script.
     if ( is_singular() && get_option( 'thread_comments' ) )
