@@ -29,22 +29,58 @@ class Odin_Metabox {
      *
      * @return void
      */
-    public function __construct( $id, $title, $post_type = 'post', $context = 'normal', $priority = 'high' ) {
+    public function __construct( $id, $title, $post_type = 'post', $context = 'normal', $priority = 'high', $multiple = false, $is_clone = false ) {
+        global $post_id;
+
         $this->id        = $id;
         $this->title     = $title;
         $this->post_type = $post_type;
         $this->context   = $context;
         $this->priority  = $priority;
         $this->nonce     = $id . '_nonce';
+        $this->is_clone  = $is_clone;
 
-        // Add Metabox.
-        add_action( 'add_meta_boxes', array( &$this, 'add' ) );
+        if( !$multiple ) {
+            // Add Metabox.
+            add_action( 'add_meta_boxes', array( &$this, 'add' ) );
 
-        // Save Metaboxs.
-        add_action( 'save_post', array( &$this, 'save' ) );
+            // Save Metaboxs.
+            add_action( 'save_post', array( &$this, 'save' ) );
 
-        // Load scripts.
-        add_action( 'admin_enqueue_scripts', array( &$this, 'scripts' ) );
+            // Load scripts.
+            add_action( 'admin_enqueue_scripts', array( &$this, 'scripts' ) );
+
+        }
+        else{
+
+            // Função para adicionar/remover metaboxes
+            add_action( 'save_post', array( &$this, 'save_multiple' ) );
+
+           $metaboxes_ids = array();
+
+           $post_metaboxes_ids = get_post_meta ( $post_id , $id . '_metaboxes_ids' , true );
+           if( $post_metaboxes_ids != '' ) 
+                $metaboxes_ids = explode( ',' , $post_metaboxes_ids );
+
+           if( count( $metaboxes_ids ) == 0 ){
+                $metaboxes_ids[0] = 0;
+                update_post_meta ( $post_id , $id . '_metaboxes_ids' , 0 );
+           }
+
+            foreach( $metaboxes_ids as $mid ){
+
+                $this->multiple[$mid] = new Odin_Metabox(
+                    $this->id . '_' . $mid, // Slug/ID do Metabox (obrigatório)
+                    $this->title, // Nome do Metabox  (obrigatório)
+                    $this->post_type, // Slug do Post Type (opcional)
+                    $this->context, // Contexto (opções: normal, advanced, ou side) (opcional)
+                    $this->priority, // Prioridade (opções: high, core, default ou low) (opcional)
+                    false,
+                    true
+                );
+            }
+        }
+
     }
 
     /**
@@ -109,7 +145,34 @@ class Odin_Metabox {
      * @return void
      */
     public function set_fields( $fields = array() ) {
-        $this->fields = $fields;
+
+
+        if( count ($this->multiple) > 0 ){
+
+            //para cada metabox
+            foreach( $this->multiple as $mid => $value){
+
+                $multiple_fields = $fields;
+
+                //adicionar sufixo ao id de cada campo com base no id fornecido
+                foreach( $multiple_fields as $key => $field ){
+                    
+                    $multiple_fields[$key][ 'id' ] = $field[ 'id' ] . '_' . $mid;
+
+                }
+
+                $this->multiple[ $mid ]->fields =  $multiple_fields ;
+
+            }
+
+        }
+        else{
+
+             $this->fields = $fields;
+
+        }
+
+
     }
 
     /**
@@ -150,6 +213,19 @@ class Odin_Metabox {
         }
 
         echo '</table>';
+
+        //Se for um clone exibir botões para adicionar/excluir
+        if( $this->is_clone ){
+
+            echo '<div class="multiple_metaboxes_actions multiple_metaboxes_' . get_post_type() . '">';
+            
+            echo '<button value="Novo Metabox" name="add_new_metabox_after_' . $this->id . '" type="submit" class="button button-primary" value="Novo Metabox"/>Novo</button>';
+            
+            echo '<button name="remove_metabox_' . $this->id . '" type="submit" class="button" value="Remover Metabox"/>Remover</button>';
+            
+            echo '</div>';
+
+        }
 
         do_action( 'odin_metabox_table_after_' . $this->id, $post_id );
 
@@ -446,5 +522,111 @@ class Odin_Metabox {
         }
 
     }
+
+    
+    /**
+     * Save multiple metabox data.
+     *
+     * @param  int $post_id Current post type ID.
+     *
+     * @return void
+     */
+    public function save_multiple( $post_id ) {
+
+        $novo_meta_box_arr = array_keys ($_POST , 'Novo Metabox' );
+
+        //Se for enviado no post um valor 'Novo Metabox' então criar um novo meta box
+        if( count( $novo_meta_box_arr ) > 0 ){
+
+            $novo_meta_box = array_shift( $novo_meta_box_arr );
+
+            //remove a parte fixa
+            $novo_meta_box = str_replace( 'add_new_metabox_after_', '', $novo_meta_box);
+
+            $novo_meta_box_partes = explode( '_', $novo_meta_box );
+
+
+            // última parte é o mid
+            $mid = $novo_meta_box_partes[ count( $novo_meta_box_partes ) - 1  ];
+
+            // o restante é o nome do metabox
+            unset( $novo_meta_box_partes[ count( $novo_meta_box_partes ) - 1  ] );
+            
+            $metabox_name = implode( '_' , $novo_meta_box_partes );
+
+            $current_mids = get_post_meta( $post_id , $metabox_name . '_metaboxes_ids'  , true );
+
+            $current_mids_arr = array();
+
+            if( $current_mids != '' ){
+
+                $current_mids_arr = explode( ',' , $current_mids );
+
+            }
+
+            //gera um mid random e verifica se não está duplicado
+            do{
+
+                $new_mid = rand( 0 , 100 );
+
+            
+            }while( in_array( $new_mid, $current_mids_arr) );
+
+
+            // adiciona mid ao array de mid
+            array_push( $current_mids_arr, $new_mid );
+
+            //atualiza o meta correspondente
+            update_post_meta( $post_id , $metabox_name . '_metaboxes_ids'  , implode( ',' , $current_mids_arr ) );
+        }
+
+        $remover_meta_box_arr = array_keys ($_POST , 'Remover Metabox' );
+
+
+        //Se for enviado no post um valor 'Remover Metabox' então remover o respectivo meta box
+        if( count( $remover_meta_box_arr ) > 0 ){
+
+            $remover_meta_box = array_shift( $remover_meta_box_arr );
+
+            //remove a parte fixa
+            $remover_meta_box = str_replace( 'remove_metabox_', '', $remover_meta_box);
+
+            $remover_meta_box_partes = explode( '_', $remover_meta_box );
+
+
+            // última parte é o mid
+            $mid = $remover_meta_box_partes[ count( $remover_meta_box_partes ) - 1  ];
+
+            // o restante é o nome do metabox
+            unset( $remover_meta_box_partes[ count( $remover_meta_box_partes ) - 1  ] );
+            
+            $metabox_name = implode( '_' , $remover_meta_box_partes );
+
+            // /echo 'mid'.$mid . $metabox_name . '<br/>';
+
+            $current_mids = get_post_meta( $post_id , $metabox_name . '_metaboxes_ids'  , true );
+
+            $current_mids_arr = array();
+
+            if( $current_mids != '' ){
+
+                $current_mids_arr = explode( ',' , $current_mids );
+
+            }
+
+            $pos_mid = array_search( $mid , $current_mids_arr ) ;
+            if( $pos_mid !== false ){  
+
+                unset( $current_mids_arr[ $pos_mid ]  );
+
+            }
+
+            update_post_meta( $post_id , $metabox_name . '_metaboxes_ids'  , implode( ',' , $current_mids_arr ) );
+
+
+        }
+
+    }
+
 
 }
