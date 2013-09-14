@@ -106,29 +106,35 @@ module.exports = function(grunt) {
 
         // deploy via rsync
         rsync: {
-            staging: {
-                src: "../",
-                dest: "~/PATH/wp-content/themes/odin",
-                host: "user@host.com",
-                recursive: true,
-                syncDest: true,
+            options: {
+                args: ["--verbose"],
                 exclude: [
                     "**.DS_Store",
                     "**Thumbs.db",
+                    ".editorconfig",
                     ".git/",
                     ".gitignore",
+                    ".jshintrc",
                     "sass/",
                     "src/",
                     "README.md"
-                ]
+                ],
+                recursive: true,
+                syncDest: true
+            },
+            staging: {
+                options: {
+                    src: "../",
+                    dest: "~/PATH/wp-content/themes/odin",
+                    host: "user@host.com",
+                }
             },
             production: {
-                src: "../",
-                dest: "~/PATH/wp-content/themes/odin",
-                host: "user@host.com",
-                recursive: true,
-                syncDest: true,
-                exclude: "<%= rsync.staging.exclude %>"
+                options: {
+                    src: "../",
+                    dest: "~/PATH/wp-content/themes/odin",
+                    host: "user@host.com",
+                }
             }
         },
 
@@ -233,7 +239,6 @@ module.exports = function(grunt) {
     // Initialize Grunt Config
     // --------------------------
     grunt.initConfig(odinConfig);
-
 
     // Register Tasks
     // --------------------------
