@@ -130,7 +130,7 @@ class Odin_Post_Form extends Odin_Front_End_Form {
                 $term = apply_filters( 'odin_post_form_term_data_' . $this->id, $submitted_data[ $term ] );
 
                 // Save term.
-                wp_set_post_terms( $post_id, $submitted_data[ $term ], $taxonomy );
+                wp_set_post_terms( $post_id, $term, $taxonomy );
             }
         }
     }
