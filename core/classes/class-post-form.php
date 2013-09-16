@@ -105,8 +105,13 @@ class Odin_Post_Form extends Odin_Front_End_Form {
      */
     protected function save_custom_fields( $post_id, $submitted_data ) {
         if ( ! empty( $this->custom_fields ) ) {
-            foreach ( $this->custom_fields as $key )
-                update_post_meta( $post_id, $key, $submitted_data[ $key ] );
+            foreach ( $this->custom_fields as $key ) {
+                // Apply filter to sanitization.
+                $data = apply_filters( 'odin_post_form_custom_field_data_' . $this->id, $submitted_data[ $key ] );
+
+                // Save custom field.
+                update_post_meta( $post_id, $key, $data );
+            }
         }
     }
 
@@ -120,8 +125,13 @@ class Odin_Post_Form extends Odin_Front_End_Form {
      */
     protected function save_terms( $post_id, $submitted_data ) {
         if ( ! empty( $this->terms ) ) {
-            foreach ( $this->terms as $taxonomy => $term )
+            foreach ( $this->terms as $taxonomy => $term ) {
+                // Apply filter to sanitization.
+                $term = apply_filters( 'odin_post_form_term_data_' . $this->id, $submitted_data[ $term ] );
+
+                // Save term.
                 wp_set_post_terms( $post_id, $submitted_data[ $term ], $taxonomy );
+            }
         }
     }
 
