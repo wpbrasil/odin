@@ -378,9 +378,12 @@ abstract class Odin_Front_End_Form {
         if ( ! isset( $attributes['class'] ) )
             $attributes['class'] = 'form-control';
 
+        // If multiple add a array in the option.
+        $multiple = ( in_array( 'multiple', $attributes ) ) ? '[]' : '';
+
         $html = '<div class="form-group">';
         $html .= sprintf( '<label for="%s">%s%s</label>', $id, $label, $this->required_field_alert( $attributes ) );
-        $html .= sprintf( '<select id="%1$s" name="%1$s"%2$s>', $id, $this->process_attributes( $attributes ) );
+        $html .= sprintf( '<select id="%1$s" name="%1$s%2$s"%3$s>', $id, $multiple, $this->process_attributes( $attributes ) );
 
         foreach ( $options as $value => $name ) {
             // Set the selected attribute.
