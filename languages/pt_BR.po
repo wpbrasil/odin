@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Odin v1.9.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-06-07 18:43-0300\n"
-"PO-Revision-Date: 2013-09-01 01:48:14+0000\n"
+"PO-Revision-Date: 2013-09-16 20:49:57+0000\n"
 "Last-Translator: Rafael Funchal <rafaelfunchal@gmail.com>\n"
 "Language-Team: WordPress Brasil Group\n"
 "MIME-Version: 1.0\n"
@@ -558,13 +558,13 @@ msgstr "Enviar"
 msgid "Form submitted successfully!"
 msgstr "Formulário enviado com sucesso!"
 
-#: core/classes/abstracts/abstract-front-end-form.php:483
+#: core/classes/abstracts/abstract-front-end-form.php:486
 #, php-format
 #@ odin
 msgid "%s is required."
 msgstr "%s é um campo obrigatório."
 
-#: core/classes/abstracts/abstract-front-end-form.php:488
+#: core/classes/abstracts/abstract-front-end-form.php:491
 #, php-format
 #@ odin
 msgid "%s must be an email address valid."
