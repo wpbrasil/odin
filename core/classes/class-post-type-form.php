@@ -33,6 +33,13 @@ class Odin_Post_Type_Form extends Odin_Front_End_Form {
     var $custom_fields = array();
 
     /**
+     * Post type terms.
+     *
+     * @var array
+     */
+    var $terms = array();
+
+    /**
      * Post Type Form construct.
      *
      * @param string $id          Form id.
@@ -75,8 +82,17 @@ class Odin_Post_Type_Form extends Odin_Front_End_Form {
      *
      * @param string $custom_fields Title field.
      */
-    public function set_custom_fields( $custom_fields ) {
+    public function set_custom_fields( $custom_fields = array() ) {
         $this->custom_fields = $custom_fields;
+    }
+
+    /**
+     * Set the post type terms.
+     *
+     * @param string $terms Terms.
+     */
+    public function set_terms( $terms = array() ) {
+        $this->terms = $terms;
     }
 
     /**
@@ -91,6 +107,21 @@ class Odin_Post_Type_Form extends Odin_Front_End_Form {
         if ( ! empty( $this->custom_fields ) ) {
             foreach ( $this->custom_fields as $key )
                 update_post_meta( $post_id, $key, $submitted_data[ $key ] );
+        }
+    }
+
+    /**
+     * Save terms.
+     *
+     * @param  int    $post_id        Post ID.
+     * @param  array  $submitted_data Submitted form data.
+     *
+     * @return void
+     */
+    protected function save_terms( $post_id, $submitted_data ) {
+        if ( ! empty( $this->terms ) ) {
+            foreach ( $this->terms as $taxonomy => $term )
+                wp_set_post_terms( $post_id, $submitted_data[ $term ], $taxonomy );
         }
     }
 
@@ -111,10 +142,15 @@ class Odin_Post_Type_Form extends Odin_Front_End_Form {
             ) );
 
             // Save post.
-            $new_post = wp_insert_post( $post_data );
+            $post_id = wp_insert_post( $post_data );
 
             // Save custom fields.
-            $this->save_custom_fields( $new_post, $submitted_data );
+            $this->save_custom_fields( $post_id, $submitted_data );
+
+            // Save terms.
+            $this->save_terms( $post_id, $submitted_data );
+
+            do_action( 'odin_post_type_form_after_save_post_' . $this->id, $post_id, $submitted_data );
         }
     }
 }
