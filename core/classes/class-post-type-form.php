@@ -106,7 +106,7 @@ class Odin_Post_Type_Form extends Odin_Front_End_Form {
             $post_data = apply_filters( 'odin_post_type_form_insert_post_' . $this->id, array(
                 'post_content' => $submitted_data[ $this->content_field ],
                 'post_status'  => $this->post_status,
-                'post_title'   => wp_kses( $submitted_data[ $this->title_field ], array() ),
+                'post_title'   => sanitize_text_field( $submitted_data[ $this->title_field ] ),
                 'post_type'    => $this->post_type,
             ) );
 
