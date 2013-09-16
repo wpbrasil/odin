@@ -16,14 +16,21 @@ class Odin_Post_Type_Form extends Odin_Front_End_Form {
      *
      * @var array
      */
-    var $content_field;
+    var $content_field = '';
 
     /**
      * Post type title field.
      *
      * @var array
      */
-    var $title_field;
+    var $title_field = '';
+
+    /**
+     * Post type custom fields.
+     *
+     * @var array
+     */
+    var $custom_fields = array();
 
     /**
      * Post Type Form construct.
@@ -64,6 +71,30 @@ class Odin_Post_Type_Form extends Odin_Front_End_Form {
     }
 
     /**
+     * Set the post type custom fields.
+     *
+     * @param string $custom_fields Title field.
+     */
+    public function set_custom_fields( $custom_fields ) {
+        $this->custom_fields = $custom_fields;
+    }
+
+    /**
+     * Save custom fields.
+     *
+     * @param  int    $post_id        Post ID.
+     * @param  array  $submitted_data Submitted form data.
+     *
+     * @return void
+     */
+    protected function save_custom_fields( $post_id, $submitted_data ) {
+        if ( ! empty( $this->custom_fields ) ) {
+            foreach ( $this->custom_fields as $key )
+                update_post_meta( $post_id, $key, $submitted_data[ $key ] );
+        }
+    }
+
+    /**
      * Save post.
      *
      * @param  array $submitted_data Submitted form data.
@@ -79,7 +110,11 @@ class Odin_Post_Type_Form extends Odin_Front_End_Form {
                 'post_type'    => $this->post_type,
             ) );
 
+            // Save post.
             $new_post = wp_insert_post( $post_data );
+
+            // Save custom fields.
+            $this->save_custom_fields( $new_post, $submitted_data );
         }
     }
 }
