@@ -473,7 +473,10 @@ class Odin_Theme_Options {
         // Sets current option.
         $current = $this->get_option( $tab, $id, $args['default'] );
 
-        $html = sprintf( '<select id="%1$s" name="%2$s[%1$s]"%3$s>', $id, $tab, $this->build_field_attributes( $attrs ) );
+        // If multiple add a array in the option.
+        $multiple = ( in_array( 'multiple', $attributes ) ) ? '[]' : '';
+
+        $html = sprintf( '<select id="%1$s" name="%2$s[%1$s]%3$s"%4$s>', $id, $tab, $multiple, $this->build_field_attributes( $attrs ) );
         foreach( $args['options'] as $key => $label ) {
             $key = sanitize_title( $key );
 
