@@ -46,3 +46,13 @@ input[type="color"] {
     @extend .form-control;
     display: inline;
 }
+
+.form-radio-group .radio {
+    &:first-child {
+        margin-top: 0;
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
