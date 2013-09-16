@@ -2,9 +2,14 @@
 
 #### v2.0.0 - xx/xx/2013 ####
 
-* Changed attrs to attributes in Odin_Metabox fields options.
-* Changed name to label in Odin_Metabox fields options.
-* Refactored the Odin_Theme_Options class.
+* Changed attrs to attributes in `Odin_Metabox` fields options.
+* Changed name to label in `Odin_Metabox` fields options.
+* Refactored the `Odin_Theme_Options` class.
+* Added `Odin_Front_End_Form` abstract class.
+* Added `Odin_Contact_Form` class.
+* Added `Odin_Post_Form` class.
+* Removed `hgroup`s.
+* Fixed select mutiple fields in `Odin_Metabox` and `Odin_Theme_Options`.
 
 #### v1.9.0 - 30/08/2013 ####
 
