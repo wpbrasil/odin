@@ -536,12 +536,12 @@ abstract class Odin_Front_End_Form {
     }
 
     /**
-     * Process form after success.
+     * Form init.
      * Hook this in the WordPress init action.
      *
      * @return void.
      */
-    public function process_form_after_success() {
+    public function init() {
         $submitted_data = $this->submitted_form_data();
 
         if ( ! empty( $submitted_data ) && isset( $submitted_data['odin_form_action'] ) && $this->id == $submitted_data['odin_form_action'] ) {
