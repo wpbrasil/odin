@@ -1,49 +1,49 @@
 <?php
 /**
- * Odin_Post_Type_Form class.
+ * Odin_Post_Form class.
  *
- * Built Front End Post Type Forms.
+ * Built Front End Post Forms.
  *
  * @package  Odin
- * @category Post Type Form
+ * @category Post Form
  * @author   WPBrasil
  * @version  2.0.0
  */
-class Odin_Post_Type_Form extends Odin_Front_End_Form {
+class Odin_Post_Form extends Odin_Front_End_Form {
 
     /**
-     * Post type content field.
+     * Post content field.
      *
      * @var array
      */
     var $content_field = '';
 
     /**
-     * Post type title field.
+     * Post title field.
      *
      * @var array
      */
     var $title_field = '';
 
     /**
-     * Post type custom fields.
+     * Post custom fields.
      *
      * @var array
      */
     var $custom_fields = array();
 
     /**
-     * Post type terms.
+     * Post terms.
      *
      * @var array
      */
     var $terms = array();
 
     /**
-     * Post Type Form construct.
+     * Post Form construct.
      *
      * @param string $id          Form id.
-     * @param string $post_type   Post type ID/Slug.
+     * @param string $post_type   Post type Slug/Name.
      * @param string $post_status Post status.
      * @param array  $attributes  Form attributes.
      */
@@ -60,7 +60,7 @@ class Odin_Post_Type_Form extends Odin_Front_End_Form {
     }
 
     /**
-     * Set the post type content field.
+     * Set the post content field.
      *
      * @param string $content_field Content field.
      */
@@ -69,7 +69,7 @@ class Odin_Post_Type_Form extends Odin_Front_End_Form {
     }
 
     /**
-     * Set the post type title field.
+     * Set the post title field.
      *
      * @param string $title_field Title field.
      */
@@ -78,7 +78,7 @@ class Odin_Post_Type_Form extends Odin_Front_End_Form {
     }
 
     /**
-     * Set the post type custom fields.
+     * Set the post custom fields.
      *
      * @param string $custom_fields Title field.
      */
@@ -87,7 +87,7 @@ class Odin_Post_Type_Form extends Odin_Front_End_Form {
     }
 
     /**
-     * Set the post type terms.
+     * Set the post terms.
      *
      * @param string $terms Terms.
      */
@@ -134,7 +134,7 @@ class Odin_Post_Type_Form extends Odin_Front_End_Form {
      */
     public function save_post( $submitted_data ) {
         if ( ! empty( $submitted_data ) ) {
-            $post_data = apply_filters( 'odin_post_type_form_insert_post_' . $this->id, array(
+            $post_data = apply_filters( 'odin_post_form_insert_data_' . $this->id, array(
                 'post_content' => $submitted_data[ $this->content_field ],
                 'post_status'  => $this->post_status,
                 'post_title'   => sanitize_text_field( $submitted_data[ $this->title_field ] ),
@@ -150,7 +150,7 @@ class Odin_Post_Type_Form extends Odin_Front_End_Form {
             // Save terms.
             $this->save_terms( $post_id, $submitted_data );
 
-            do_action( 'odin_post_type_form_after_save_post_' . $this->id, $post_id, $submitted_data );
+            do_action( 'odin_post_form_after_save_' . $this->id, $post_id, $submitted_data );
         }
     }
 }
