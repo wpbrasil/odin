@@ -239,11 +239,11 @@ abstract class Odin_Front_End_Form {
     /**
      * Display error messages.
      *
-     * @return string Error messages.
+     * @param string $html Form HTML.
+     *
+     * @return string      Error messages.
      */
-    protected function display_error_messages() {
-        $html = '';
-
+    public function display_error_messages( $html ) {
         if ( ! empty( $this->errors ) ) {
             $html .= '<div class="alert alert-danger">';
 
@@ -259,16 +259,16 @@ abstract class Odin_Front_End_Form {
     /**
      * Display success message.
      *
-     * @return string Error messages.
+     * @return string      Success message.
      */
     protected function display_success_message() {
         $html = '';
 
         if ( isset( $_GET['success'] ) && 1 == $_GET['success'] ) {
             $html .= '<div class="alert alert-success">';
-            if ( ! empty( $this->success ) )
-                $html .= '<p>' . $this->success . '</p>';
-            else
+            // if ( ! empty( $this->success ) )
+                // $html .= '<p>' . $this->success . '</p>';
+            // else
                 $html .= '<p>' . __( 'Form submitted successfully!', 'odin' ) . '</p>';
             $html .= '</div>';
         }
@@ -541,17 +541,19 @@ abstract class Odin_Front_End_Form {
     public function process_form_after_success() {
         $submitted_data = $this->submitted_form_data();
 
-        if (
-            ! empty( $submitted_data )
-            && isset( $submitted_data['odin_form_action']  )
-            && $this->id == $submitted_data['odin_form_action']
-            && $this->is_valid()
-        ) {
-            // Hook to process submitted form data.
-            do_action( 'odin_front_end_form_submitted_data_' . $this->id, $this->get_submitted_data() );
+        if ( ! empty( $submitted_data ) && isset( $submitted_data['odin_form_action'] ) && $this->id == $submitted_data['odin_form_action'] ) {
+            // Validates the form data.
+            $this->validate_form_data();
 
-            // Redirect after submit.
-            $this->redirect_to_current_page();
+            if ( $this->is_valid() ) {
+                // Hook to process submitted form data.
+                do_action( 'odin_front_end_form_submitted_data_' . $this->id, $this->get_submitted_data() );
+
+                // Redirect after submit.
+                $this->redirect_to_current_page();
+            } else {
+                add_filter( 'odin_front_end_form_messages_' . $this->id, array( $this, 'display_error_messages' ) );
+            }
         }
     }
 
@@ -563,13 +565,8 @@ abstract class Odin_Front_End_Form {
     public function render() {
         $html = '';
 
-        // Validates the form data.
-        $this->validate_form_data();
-
         // Display error messages.
-        $submitted_data = $this->submitted_form_data();
-        if ( ! empty( $submitted_data ) && ! $this->is_valid() )
-            $html .= $this->display_error_messages();
+        $html .= apply_filters( 'odin_front_end_form_messages_' . $this->id, $html );
 
         // Display success message.
         $html .= $this->display_success_message();
