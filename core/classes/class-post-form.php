@@ -149,7 +149,7 @@ class Odin_Post_Form extends Odin_Front_End_Form {
                 'post_status'  => $this->post_status,
                 'post_title'   => sanitize_text_field( $submitted_data[ $this->title_field ] ),
                 'post_type'    => $this->post_type,
-            ) );
+            ), $submitted_data );
 
             // Save post.
             $post_id = wp_insert_post( $post_data );
