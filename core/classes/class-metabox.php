@@ -7,7 +7,7 @@
  * @package  Odin
  * @category Metabox
  * @author   WPBrasil
- * @version  2.0.0
+ * @version  2.0.1
  */
 class Odin_Metabox {
 
@@ -440,7 +440,7 @@ class Odin_Metabox {
             $name = $field['id'];
             $old = get_post_meta( $post_id, $name, true );
 
-            $new = apply_filters( 'odin_save_metabox_' . $this->id, $_POST[ $name ] );
+            $new = apply_filters( 'odin_save_metabox_' . $this->id, $_POST[ $name ], $name );
 
             if ( $new && $new != $old )
                 update_post_meta( $post_id, $name, $new );
