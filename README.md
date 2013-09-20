@@ -1,7 +1,8 @@
-# Odin Base Theme / Odin Tema Base #
+# Odin Framework #
 
-* [Theme Official URL - URL do Tema](https://github.com/wpbrasil/odin)
-* [WordPress Brasil Group on Facebook - Grupo WordPress Brasil](https://www.facebook.com/groups/wordpress.brasil)
+* [Website](http://wpod.in/)
+* [GitHub](https://github.com/wpbrasil/odin)
+* [WordPress Brasil Group on Facebook](https://www.facebook.com/groups/wordpress.brasil)
 
 ## Project Description - Descrição do Projeto ##
 
