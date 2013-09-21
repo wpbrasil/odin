@@ -134,11 +134,9 @@ class Odin_Metabox {
 
             if ( 'title' == $field['type'] ) {
                 echo sprintf( '<th colspan="2"><strong>%s</strong></th>', $field['label'] );
-            }
-            elseif( 'separator' == $field['type'] ) {
+            } elseif ( 'separator' == $field['type'] ) {
                 echo sprintf( '<td colspan="2"><span id="odin-metabox-separator-%s" class="odin-metabox-separator"></span></td>', $field['id'] );
-            }
-            else {
+            } else {
                 echo sprintf( '<th><label for="%s">%s</label></th>', $field['id'], $field['label'] );
 
                 echo '<td>';
