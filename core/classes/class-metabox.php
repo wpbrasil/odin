@@ -289,7 +289,7 @@ class Odin_Metabox {
      */
     protected function field_select( $id, $current, $options, $attrs ) {
         // If multiple add a array in the option.
-        $multiple = ( in_array( 'multiple', $attributes ) ) ? '[]' : '';
+        $multiple = ( in_array( 'multiple', $attrs ) ) ? '[]' : '';
 
         $html = sprintf( '<select id="%1$s" name="%1$s%2$s"%3$s>', $id, $multiple, $this->build_field_attributes( $attrs ) );
 
