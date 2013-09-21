@@ -266,9 +266,9 @@ abstract class Odin_Front_End_Form {
 
         if ( isset( $_GET['success'] ) && 1 == $_GET['success'] ) {
             $html .= '<div class="alert alert-success">';
-            // if ( ! empty( $this->success ) )
-                // $html .= '<p>' . $this->success . '</p>';
-            // else
+            if ( ! empty( $this->success ) )
+                $html .= '<p>' . $this->success . '</p>';
+            else
                 $html .= '<p>' . __( 'Form submitted successfully!', 'odin' ) . '</p>';
             $html .= '</div>';
         }
@@ -512,11 +512,11 @@ abstract class Odin_Front_End_Form {
     }
 
     /**
-     * Redirect to current page.
+     * Current page.
      *
-     * @return void
+     * @return string Currente Page URL.
      */
-    protected function redirect_to_current_page() {
+    protected function get_current_page() {
         $url = 'http';
         if ( isset( $_SERVER['HTTPS'] ) && 'on' == $_SERVER['HTTPS'] )
             $url .= 's';
@@ -528,9 +528,21 @@ abstract class Odin_Front_End_Form {
         else
             $url .= $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 
-        // Redirect to current page.
+        return $url;
+    }
+
+    /**
+     * Redirect to current page.
+     *
+     * @return void
+     */
+    protected function redirect() {
         @ob_clean();
-        wp_redirect( add_query_arg( 'success', '1', $url ), 303 );
+
+        $url = $this->get_current_page();
+        $url = apply_filters( 'odin_front_end_form_redirect_' . $this->id, add_query_arg( 'success', '1', $url ) );
+
+        wp_redirect( $url, 303 );
 
         exit;
     }
@@ -553,7 +565,7 @@ abstract class Odin_Front_End_Form {
                 do_action( 'odin_front_end_form_submitted_data_' . $this->id, $this->get_submitted_data() );
 
                 // Redirect after submit.
-                $this->redirect_to_current_page();
+                $this->redirect();
             } else {
                 add_filter( 'odin_front_end_form_messages_' . $this->id, array( $this, 'display_error_messages' ) );
             }
