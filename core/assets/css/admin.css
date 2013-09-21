@@ -1,6 +1,6 @@
-/**
- * Theme Options styles and Metaboxes styles.
- */
+/* =Gallery styles.
+-------------------------------------------------------------- */
+
 .odin-gallery-images .image,
 .odin-gallery-images .add,
 .odin-gallery-images .wc-metabox-sortable-placeholder {
@@ -65,4 +65,13 @@
 
 .odin-gallery-images .image .actions li a:hover {
     background: #ddd;
+}
+
+/* =Separator
+-------------------------------------------------------------- */
+
+.odin-metabox-separator {
+    border-bottom: 1px solid #fff;
+    border-top: 1px solid #dfdfdf;
+    display: block;
 }

@@ -134,6 +134,8 @@ class Odin_Metabox {
 
             if ( 'title' == $field['type'] ) {
                 echo sprintf( '<th colspan="2"><strong>%s</strong></th>', $field['label'] );
+            } elseif ( 'separator' == $field['type'] ) {
+                echo sprintf( '<td colspan="2"><span id="odin-metabox-separator-%s" class="odin-metabox-separator"></span></td>', $field['id'] );
             } else {
                 echo sprintf( '<th><label for="%s">%s</label></th>', $field['id'], $field['label'] );
 
@@ -287,7 +289,7 @@ class Odin_Metabox {
      */
     protected function field_select( $id, $current, $options, $attrs ) {
         // If multiple add a array in the option.
-        $multiple = ( in_array( 'multiple', $attributes ) ) ? '[]' : '';
+        $multiple = ( in_array( 'multiple', $attrs ) ) ? '[]' : '';
 
         $html = sprintf( '<select id="%1$s" name="%1$s%2$s"%3$s>', $id, $multiple, $this->build_field_attributes( $attrs ) );
 
