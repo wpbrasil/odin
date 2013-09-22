@@ -67,6 +67,10 @@
     background: #ddd;
 }
 
+.odin-form-table .description {
+    display: block;
+}
+
 /* =Separator
 -------------------------------------------------------------- */
 
