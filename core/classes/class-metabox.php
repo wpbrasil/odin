@@ -127,7 +127,7 @@ class Odin_Metabox {
 
         do_action( 'odin_metabox_header_' . $this->id, $post_id );
 
-        echo apply_filters( 'odin_metabox_container_before_' . $this->id, '<table class="form-table">' );
+        echo apply_filters( 'odin_metabox_container_before_' . $this->id, '<table class="form-table odin-form-table">' );
 
         foreach ( $this->fields as $field ) {
             echo apply_filters( 'odin_metabox_wrap_before_' . $this->id, '<tr valign="top">', $field );
@@ -145,7 +145,7 @@ class Odin_Metabox {
                 $this->process_fields( $field, $post_id );
 
                 if ( isset( $field['description'] ) )
-                    echo sprintf( '<br /><span class="description">%s</span>', $field['description'] );
+                    echo sprintf( '<span class="description">%s</span>', $field['description'] );
 
                 echo apply_filters( 'odin_metabox_field_after_' . $this->id, '</td>', $field );
             }
