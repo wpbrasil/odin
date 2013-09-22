@@ -1,9 +1,11 @@
-/*global odin_admin_params */
+/* global odin_admin_params, wp */
 
 /**
  * Theme Options and Metaboxes.
  */
 jQuery(document).ready(function($) {
+
+    var attachment;
 
     /**
      * Image field.

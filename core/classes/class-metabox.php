@@ -132,7 +132,9 @@ class Odin_Metabox {
         foreach ( $this->fields as $field ) {
             echo apply_filters( 'odin_metabox_wrap_before_' . $this->id, '<tr valign="top">', $field );
 
-            if ( 'title' == $field['type'] ) {
+            if( 'repeater' == $field['type'] ) {
+                $this->process_repeater( $field, $post_id );
+            } elseif ( 'title' == $field['type'] ) {
                 $title = sprintf( '<th colspan="2"><strong>%s</strong></th>', $field['label'] );
             } elseif ( 'separator' == $field['type'] ) {
                 $title = sprintf( '<td colspan="2"><span id="odin-metabox-separator-%s" class="odin-metabox-separator"></span></td>', $field['id'] );
@@ -157,6 +159,44 @@ class Odin_Metabox {
 
         do_action( 'odin_metabox_footer_' . $this->id, $post_id );
 
+    }
+
+    /**
+     * Process repeater area
+     *
+     * @param  array $args    Field arguments
+     * @param  int   $post_id ID of the current post type.
+     *
+     * @return string          HTML of the field.
+     */
+    protected function process_repeater( $args, $post_id ) {
+        echo apply_filters( 'odin_metabox_repeater_before_' . $this->id, '<td colspan="2"><table class="form-table odin-form-table">', $args );
+
+        foreach( $args['fields'] as $field ) {
+            echo '<tr>';
+
+            if ( 'title' == $field['type'] ) {
+                $title = sprintf( '<th colspan="2"><strong>%s</strong></th>', $field['label'] );
+            } elseif ( 'separator' == $field['type'] ) {
+                $title = sprintf( '<td colspan="2"><span id="odin-metabox-separator-%s" class="odin-metabox-separator"></span></td>', $field['id'] );
+            } else {
+                $title = sprintf( '<th><label for="%s">%s</label></th>', $field['id'], $field['label'] );
+
+                echo apply_filters( 'odin_metabox_field_title_' . $this->id, $title, $field );
+
+                echo apply_filters( 'odin_metabox_field_before_' . $this->id, '<td>', $field );
+                $this->process_fields( $field, $post_id );
+
+                if ( isset( $field['description'] ) )
+                    echo sprintf( '<span class="description">%s</span>', $field['description'] );
+
+                echo apply_filters( 'odin_metabox_field_after_' . $this->id, '</td>', $field );
+            }
+
+            echo '</tr>';
+        }
+
+        echo apply_filters( 'odin_metabox_repeater_after_' . $this->id, '</table></td>', $args );
     }
 
     /**
