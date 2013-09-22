@@ -188,7 +188,6 @@ class Odin_Metabox {
         echo apply_filters( 'odin_metabox_repeater_container_content_before_' . $args['id'], '<table class="form-table odin-form-table">', $args );
 
         foreach( $args['fields'] as $field ) {
-            // $field['class'] = isset( $field['class'] ) ? $field['class'] . ' odin-repeater-field' : 'odin-repeater-field';
             $field['attributes']['data-odin-repeater'] = 'true';
 
             echo apply_filters( 'odin_metabox_repeater_wrap_before_' . $args['id'], '<tr valign="top">', $args );
@@ -200,9 +199,9 @@ class Odin_Metabox {
             } else {
                 $title = sprintf( '<th><label for="%s">%s</label></th>', $field['id'], $field['label'] );
 
-                echo apply_filters( 'odin_metabox_repeater_field_title_' . $this->id, $title, $field );
+                echo apply_filters( 'odin_metabox_repeater_field_title_' . $field['id'], $title, $field );
 
-                echo apply_filters( 'odin_metabox_repeater_field_before_' . $this->id, '<td>', $field );
+                echo apply_filters( 'odin_metabox_repeater_field_before_' . $field['id'], '<td>', $field );
                 $this->process_fields( $field, $post_id );
 
                 if ( isset( $field['description'] ) )
@@ -221,7 +220,8 @@ class Odin_Metabox {
 
         // Action container
         echo apply_filters( 'odin_metabox_repeater_action_before_' . $args['id'], '<div class="odin-repeater-container-action-' . $args['id'] . '">', $args );
-            echo sprintf( '<a id="button-add-repeater-area-%s" class="button button-primary button-large button-add-repeater-area">%s</a>', $args['id'], $button_text );
+            // echo sprintf( '<button type="submit" id="button-add-repeater-area-%s" class="button button-primary button-large button-add-repeater-area">%s</button>', $args['id'], $button_text );
+            echo '<input type="hidden" value="1" name="odin_repeat" />';
         echo apply_filters( 'odin_metabox_repeater_action_after_' . $args['id'], '</div>', $args );
 
         // div.odin-repeater-container

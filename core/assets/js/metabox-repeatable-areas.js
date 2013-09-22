@@ -62,7 +62,7 @@
 			 *-------------------------------------------------------------------------------------*/
 			init_events : function() {
 
-				$( 'a.button-add-repeater-area' ).on( 'click', this.add_new_repeatable_area );
+				$( '.button-add-repeater-area' ).on( 'click', this.add_new_repeatable_area );
 
 			}, // init_events
 
@@ -89,7 +89,7 @@
 					$repeatable_area = $repeatable_container.find( 'div.odin-repeater-area' ).eq(0),
 					$clone = $repeatable_area.clone();
 
-				console.log( $clone );
+				// console.log( $clone );
 				$this.before( $clone );
 
 			} // add_new_repeatable_area
