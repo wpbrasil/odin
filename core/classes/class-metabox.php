@@ -125,35 +125,37 @@ class Odin_Metabox {
 
         $post_id = $post->ID;
 
-        do_action( 'odin_metabox_table_before_' . $this->id, $post_id );
+        do_action( 'odin_metabox_header_' . $this->id, $post_id );
 
-        echo '<table class="form-table">';
+        echo apply_filters( 'odin_metabox_container_before_' . $this->id, '<table class="form-table">' );
 
         foreach ( $this->fields as $field ) {
-            echo '<tr valign="top">';
+            echo apply_filters( 'odin_metabox_wrap_before_' . $this->id, '<tr valign="top">' );
 
             if ( 'title' == $field['type'] ) {
-                echo sprintf( '<th colspan="2"><strong>%s</strong></th>', $field['label'] );
+                $title = sprintf( '<th colspan="2"><strong>%s</strong></th>', $field['label'] );
             } elseif ( 'separator' == $field['type'] ) {
-                echo sprintf( '<td colspan="2"><span id="odin-metabox-separator-%s" class="odin-metabox-separator"></span></td>', $field['id'] );
+                $title = sprintf( '<td colspan="2"><span id="odin-metabox-separator-%s" class="odin-metabox-separator"></span></td>', $field['id'] );
             } else {
-                echo sprintf( '<th><label for="%s">%s</label></th>', $field['id'], $field['label'] );
+                $title = sprintf( '<th><label for="%s">%s</label></th>', $field['id'], $field['label'] );
 
-                echo '<td>';
+                echo apply_filters( 'odin_metabox_field_title_' . $this->id, $title, $field );
+
+                echo apply_filters( 'odin_metabox_field_before_' . $this->id, '<td>' );
                 $this->process_fields( $field, $post_id );
 
                 if ( isset( $field['description'] ) )
                     echo sprintf( '<br /><span class="description">%s</span>', $field['description'] );
 
-                echo '</td>';
+                echo apply_filters( 'odin_metabox_field_after_' . $this->id, '</td>' );
             }
 
-            echo '</tr>';
+            echo apply_filters( 'odin_metabox_wrap_after_' . $this->id, '</tr>' );
         }
 
-        echo '</table>';
+        echo apply_filters( 'odin_metabox_container_after_' . $this->id, '</table>' );
 
-        do_action( 'odin_metabox_table_after_' . $this->id, $post_id );
+        do_action( 'odin_metabox_footer_' . $this->id, $post_id );
 
     }
 
