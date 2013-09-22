@@ -86,10 +86,10 @@
 
 				var $this = $( this ),
 					$repeatable_container = $this.closest( 'div.odin-repeater-container' ),
-					$repeatable_area    = $repeatable_container.filter( ':first-child' ).find( 'div.odin-repeater-area' ),
+					$repeatable_area = $repeatable_container.find( 'div.odin-repeater-area' ).eq(0),
 					$clone = $repeatable_area.clone();
 
-				console.log( $repeatable_container );
+				console.log( $clone );
 				$this.before( $clone );
 
 			} // add_new_repeatable_area
