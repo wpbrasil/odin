@@ -135,10 +135,17 @@ class Odin_Metabox {
 
             if( 'repeater' == $field['type'] ) {
                 $this->process_repeater( $field, $post_id );
+
             } elseif ( 'title' == $field['type'] ) {
-                $title = sprintf( '<th colspan="2"><strong>%s</strong></th>', $field['label'] );
+                echo apply_filters( 'odin_metabox_field_before_' . $this->id, '<th colspan="2">', $field );
+                    echo sprintf( '<strong>%s</strong>', $field['label'] );
+                echo apply_filters( 'odin_metabox_field_after_' . $this->id, '</th>', $field );
+
             } elseif ( 'separator' == $field['type'] ) {
-                $title = sprintf( '<td colspan="2"><span id="odin-metabox-separator-%s" class="odin-metabox-separator"></span></td>', $field['id'] );
+                echo apply_filters( 'odin_metabox_field_before_' . $this->id, '<tdc colspan="2">', $field );
+                    echo sprintf( '<span id="odin-metabox-separator-%s" class="odin-metabox-separator"></span>', $field['id'] );
+                echo apply_filters( 'odin_metabox_field_after_' . $this->id, '</td>', $field );
+
             } else {
                 $title = sprintf( '<th><label for="%s">%s</label></th>', $field['id'], $field['label'] );
 
@@ -173,7 +180,10 @@ class Odin_Metabox {
     protected function process_repeater( $args, $post_id ) {
         $button_text = isset( $args['button_text'] ) ? $args['button_text'] : __( 'Add new item', 'odin' );
 
-        echo apply_filters( 'odin_metabox_repeater_container_before_' . $args['id'], '<td colspan="2"><div class="odin-repeater-container">', $args );
+        echo apply_filters( 'odin_metabox_repeater_container_before_' . $args['id'], '<td colspan="2">', $args );
+
+        echo '<div class="odin-repeater-container">';
+        echo '<div class="odin-repeater-area">';
 
         echo apply_filters( 'odin_metabox_repeater_container_content_before_' . $args['id'], '<table class="form-table odin-form-table">', $args );
 
@@ -206,12 +216,18 @@ class Odin_Metabox {
 
         echo apply_filters( 'odin_metabox_repeater_container_content_after_' . $args['id'], '</table>', $args );
 
+        // div.odin-repeater-area
+        echo '</div>';
+
         // Action container
         echo apply_filters( 'odin_metabox_repeater_action_before_' . $args['id'], '<div class="odin-repeater-container-action-' . $args['id'] . '">', $args );
-            echo sprintf( '<a id="button-add-repeater-item-%s" class="button button-primary button-large button-add-repeater-item">%s</a>', $args['id'], $button_text );
+            echo sprintf( '<a id="button-add-repeater-area-%s" class="button button-primary button-large button-add-repeater-area">%s</a>', $args['id'], $button_text );
         echo apply_filters( 'odin_metabox_repeater_action_after_' . $args['id'], '</div>', $args );
 
-        echo apply_filters( 'odin_metabox_repeater_container_after_' . $args['id'], '</div></td>', $args );
+        // div.odin-repeater-container
+        echo '</div>';
+
+        echo apply_filters( 'odin_metabox_repeater_container_after_' . $args['id'], '</td>', $args );
     }
 
     /**

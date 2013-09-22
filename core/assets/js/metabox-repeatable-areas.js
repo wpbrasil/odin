@@ -62,7 +62,7 @@
 			 *-------------------------------------------------------------------------------------*/
 			init_events : function() {
 
-				$( 'a.add-new-repeatable-area' ).on( 'click', this.add_new_repeatable_area );
+				$( 'a.button-add-repeater-area' ).on( 'click', this.add_new_repeatable_area );
 
 			}, // init_events
 
@@ -84,7 +84,13 @@
 			 *-------------------------------------------------------------------------------------*/
 			add_new_repeatable_area : function( e ) {
 
-				var $this = $( this );
+				var $this = $( this ),
+					$repeatable_container = $this.closest( 'div.odin-repeater-container' ),
+					$repeatable_area    = $repeatable_container.filter( ':first-child' ).find( 'div.odin-repeater-area' ),
+					$clone = $repeatable_area.clone();
+
+				console.log( $repeatable_container );
+				$this.before( $clone );
 
 			} // add_new_repeatable_area
 
