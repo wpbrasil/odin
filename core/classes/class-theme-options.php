@@ -474,7 +474,7 @@ class Odin_Theme_Options {
         $current = $this->get_option( $tab, $id, $args['default'] );
 
         // If multiple add a array in the option.
-        $multiple = ( in_array( 'multiple', $attributes ) ) ? '[]' : '';
+        $multiple = ( in_array( 'multiple', $attrs ) ) ? '[]' : '';
 
         $html = sprintf( '<select id="%1$s" name="%2$s[%1$s]%3$s"%4$s>', $id, $tab, $multiple, $this->build_field_attributes( $attrs ) );
         foreach( $args['options'] as $key => $label ) {
