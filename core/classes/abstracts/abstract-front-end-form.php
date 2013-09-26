@@ -148,10 +148,10 @@ abstract class Odin_Front_End_Form {
         $html = '';
 
         if ( ! empty( $this->fields ) ) {
-            foreach ( $this->fields as $fieldset ) {
+            foreach ( $this->fields as $key => $fieldset ) {
                 $fieldset_attributes  = isset( $fieldset['attributes'] ) ? $fieldset['attributes'] : array();
 
-                $html .= sprintf( '<fieldset %s>', $this->process_attributes( $fieldset_attributes ) );
+                $html .= sprintf( '<fieldset id="odin-form-fieldset-%s" %s>', $key, $this->process_attributes( $fieldset_attributes ) );
                 $html .= isset( $fieldset['legend'] ) ? '<legend>' . $fieldset['legend'] . '</legend>' : '';
 
                 foreach ( $fieldset['fields'] as $field ) {
