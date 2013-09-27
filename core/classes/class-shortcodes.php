@@ -35,6 +35,7 @@ class Odin_Shortcodes {
         add_shortcode( 'tab_dropdown', array( $this, 'tab_dropdown' ) );
         add_shortcode( 'tab_contents', array( $this, 'tab_contents' ) );
         add_shortcode( 'tab_content', array( $this, 'tab_content' ) );
+        add_shortcode( 'tooltip', array( $this, 'tooltip' ) );
         add_shortcode( 'clear', array( $this, 'clear' ) );
     }
 
@@ -48,17 +49,22 @@ class Odin_Shortcodes {
      */
     function button( $atts, $content = null ) {
         extract( shortcode_atts( array(
-            'type'  => 'default',
-            'size'  => false,
-            'link'  => '#',
-            'class' => false
+            'type'      => 'default',
+            'size'      => false,
+            'link'      => '#',
+            'class'     => false,
+            'tooltip'   => false,
+            'direction' => 'top'
         ), $atts ) );
 
         $html = '<a href="' . $link . '" class="btn';
         $html .= ( $type ) ? ' btn-' . $type : '';
         $html .= ( $size ) ? ' btn-' . $size : '';
         $html .= ( $class ) ? ' ' . $class : '';
-        $html .= '">';
+        $html .= ( $tooltip ) ? ' odin-tooltip' : '';
+        $html .= '"';
+        $html .= ( $tooltip ) ? ' data-placement="' . $direction . '" data-toggle="tooltip" data-original-title="' . $tooltip . '"' : '';
+        $html .= '>';
         $html .= do_shortcode( $content );
         $html .= '</a>';
 
@@ -436,6 +442,27 @@ class Odin_Shortcodes {
         $html .= do_shortcode( $content );
         $html .= '</div>';
 
+        return $html;
+    }
+
+    /**
+     * Tooltip shortcode.
+     *
+     * @param  array  $atts    Shortcode attributes.
+     * @param  string $content Content.
+     *
+     * @return string          Tooltip HTML.
+     */
+    function tooltip( $atts, $content = null ) {
+        extract( shortcode_atts( array(
+            'title'     => '',
+            'link'      => '#',
+            'direction' => 'top'
+        ), $atts ) );
+
+        $html = '<a class="odin-tooltip" data-original-title="' . $title . '" href="' . $link .'" data-placement="' . $direction . '" data-toggle="tooltip">';
+        $html .= do_shortcode( $content );
+        $html .= '</a>';
         return $html;
     }
 

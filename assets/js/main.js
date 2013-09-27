@@ -8,9 +8,14 @@ jQuery(document).ready(function($) {
     /**
      * Odin Core shortcodes
      */
+
+    // Tabs.
     $(".odin-tabs a").click(function(e) {
         e.preventDefault();
         $(this).tab("show");
     });
+
+    // Tooltip.
+    $(".odin-tooltip").tooltip();
 
 });
