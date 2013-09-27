@@ -6373,6 +6373,10 @@ textarea.error {
   width: auto;
   /* Avoids problems of stretching the image in IE8 */
 }
+.hentry .odin-gmap img,
+.widget .odin-gmap img {
+  max-width: none;
+}
 
 img.header-image, img.wp-post-image {
   max-width: 100%;

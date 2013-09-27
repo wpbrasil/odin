@@ -37,6 +37,7 @@ class Odin_Shortcodes {
         add_shortcode( 'tab_content', array( $this, 'tab_content' ) );
         add_shortcode( 'accordions', array( $this, 'accordions' ) );
         add_shortcode( 'accordion', array( $this, 'accordion' ) );
+        add_shortcode( 'gmap', array( $this, 'gmap' ) );
         add_shortcode( 'tooltip', array( $this, 'tooltip' ) );
         add_shortcode( 'clear', array( $this, 'clear' ) );
     }
@@ -519,6 +520,141 @@ class Odin_Shortcodes {
         $html = '<a class="odin-tooltip" data-original-title="' . $title . '" href="' . $link .'" data-placement="' . $direction . '" data-toggle="tooltip">';
         $html .= do_shortcode( $content );
         $html .= '</a>';
+
+        return $html;
+    }
+
+    /**
+     * Google Maps shortcode.
+     *
+     * @param  array  $atts    Shortcode attributes.
+     * @param  string $content Content.
+     *
+     * @return string          Google Maps HTML.
+     */
+    function gmap( $atts, $content = null ) {
+        extract( shortcode_atts( array(
+            'id'                => 'odin_gmap',
+            'latitude'          => '0',
+            'longitude'         => '0',
+            'zoom'              => '10',
+            'width'             => '600',
+            'height'            => '400',
+            'maptype'           => 'ROADMAP',
+            'address'           => false,
+            'kml'               => false,
+            'kmlautofit'        => true,
+            'marker'            => false,
+            'markerimage'       => false,
+            'traffic'           => false,
+            'bike'              => false,
+            'fusion'            => false,
+            'infowindow'        => false,
+            'infowindowdefault' => true,
+            'directions'        => false,
+            'hidecontrols'      => 'false',
+            'scale'             => 'false',
+            'scrollwheel'       => 'true'
+        ), $atts ) );
+
+        // JS var.
+        $id = str_replace( '-', '_', $id );
+
+        $html = '<div class="odin-gmap" id="' . $id . '" style="width: ' . $width . 'px; height: ' . $height . 'px;"></div>';
+
+        $js = '<script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=false"></script>';
+        $html .= apply_filters( 'odin_gmap_shortcode_js_' . $id, $js );
+        $html .= '<script type="text/javascript">
+            var latlng = new google.maps.LatLng(' . $latitude . ', ' . $longitude . ');
+            var myOptions = {
+                zoom: ' . $zoom . ',
+                center: latlng,
+                scrollwheel: ' . $scrollwheel .',
+                scaleControl: ' . $scale .',
+                disableDefaultUI: ' . $hidecontrols .',
+                mapTypeId: google.maps.MapTypeId.' . $maptype . '
+            };
+            var ' . $id . ' = new google.maps.Map(document.getElementById("' . $id . '"),
+            myOptions);';
+
+        // Kml.
+        if ( $kml ) {
+            if ( $kmlautofit ) {
+                $html .= 'var kmlLayerOptions = {preserveViewport:true};';
+            } else {
+                $html .= 'var kmlLayerOptions = {preserveViewport:false};';
+            }
+
+            $html .= 'var kmllayer = new google.maps.KmlLayer("' . html_entity_decode( $kml ) . '", kmlLayerOptions);
+                kmllayer.setMap(' . $id . ');';
+        }
+
+        // Traffic.
+        if ( $traffic )
+            $html .= 'var trafficLayer = new google.maps.TrafficLayer();trafficLayer.setMap(' . $id . ');';
+
+        // Bike.
+        if ( $bike )
+            $html .= 'var bikeLayer = new google.maps.BicyclingLayer();bikeLayer.setMap(' . $id . ');';
+
+        // Fusion tables.
+        if ( $fusion )
+            $html .= 'var fusionLayer = new google.maps.FusionTablesLayer(' . $fusion . ');fusionLayer.setMap(' . $id . ');';
+
+        // Address.
+        if ( $address ) {
+            $html .= 'var geocoder_' . $id . ' = new google.maps.Geocoder();var address = \'' . $address . '\';geocoder_' . $id . '.geocode( { \'address\': address}, function(results, status) { if (status == google.maps.GeocoderStatus.OK) {' . $id . '.setCenter(results[0].geometry.location);';
+
+            if ( $marker ) {
+                // Add custom image.
+                if ( $markerimage )
+                    $html .= 'var image = "'. $markerimage .'";';
+
+                $html .= 'var marker = new google.maps.Marker({ map: ' . $id . ',';
+                if ( $markerimage )
+                    $html .= 'icon: image,';
+
+                $html .= 'position: ' . $id . '.getCenter() });';
+
+                // Infowindow
+                if ( $infowindow ) {
+                    // First convert and decode html chars.
+                    $thiscontent = htmlspecialchars_decode( $infowindow );
+                    $html .= 'var contentString = "' . $thiscontent . '";var infowindow = new google.maps.InfoWindow({content: contentString});google.maps.event.addListener(marker, \'click\', function() { infowindow.open(' . $id . ',marker);});';
+
+                    // Infowindow default
+                    if ( $infowindowdefault )
+                        $html .= 'infowindow.open(' . $id . ', marker);';
+                }
+            }
+
+            $html .= '} else { document.getElementById(' . $id . ').style.display = "block"; }});';
+        }
+
+        // Marker: show if address is not specified.
+        if ( $marker && $address ) {
+            // Add custom image.
+            if ( $markerimage )
+                $html .= 'var image = "'. $markerimage .'";';
+
+            $html .= 'var marker = new google.maps.Marker({ map: ' . $id . ',';
+
+            if ( $markerimage )
+                $html .= 'icon: image,';
+
+            $html .= 'position: ' . $id . '.getCenter()});';
+
+            // Infowindow.
+            if ( $infowindow ) {
+                $html .= 'var contentString = "' . $infowindow . '";var infowindow = new google.maps.InfoWindow({content: contentString});google.maps.event.addListener(marker, \'click\', function() {infowindow.open(' . $id . ',marker);});';
+
+                // Infowindow default
+                if ( $infowindowdefault )
+                    $html .= 'infowindow.open(' . $id . ',marker);';
+            }
+        }
+
+        $html .= '</script>';
 
         return $html;
     }
