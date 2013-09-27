@@ -35,6 +35,8 @@ class Odin_Shortcodes {
         add_shortcode( 'tab_dropdown', array( $this, 'tab_dropdown' ) );
         add_shortcode( 'tab_contents', array( $this, 'tab_contents' ) );
         add_shortcode( 'tab_content', array( $this, 'tab_content' ) );
+        add_shortcode( 'accordions', array( $this, 'accordions' ) );
+        add_shortcode( 'accordion', array( $this, 'accordion' ) );
         add_shortcode( 'tooltip', array( $this, 'tooltip' ) );
         add_shortcode( 'clear', array( $this, 'clear' ) );
     }
@@ -446,6 +448,60 @@ class Odin_Shortcodes {
     }
 
     /**
+     * Accordions shortcode.
+     *
+     * @param  array  $atts    Shortcode attributes.
+     * @param  string $content Content.
+     *
+     * @return string          Accordions HTML.
+     */
+    function accordions( $atts, $content = null ) {
+        extract( shortcode_atts( array(
+            'id' => 'odin-accordion',
+        ), $atts ) );
+
+        $html = '<div class="panel-group odin-accordion" id="' . $id . '">';
+        $html .= str_replace( '<br />', '', do_shortcode( $content ) );
+        $html .= '</div>';
+
+        return $html;
+    }
+
+    /**
+     * Accordion shortcode.
+     *
+     * @param  array  $atts    Shortcode attributes.
+     * @param  string $content Content.
+     *
+     * @return string          Accordion HTML.
+     */
+    function accordion( $atts, $content = null ) {
+        extract( shortcode_atts( array(
+            'id'     => 'odin-accordion',
+            'title'  => '',
+            'active' => false
+        ), $atts ) );
+
+        $accordion = sanitize_title( $title );
+
+        $html = '<div class="panel panel-default">';
+        $html .= '<div class="panel-heading"><h4 class="panel-title">';
+        $html .= '<a class="accordion-toggle" data-toggle="collapse" data-parent="#' . $id . '" href="#' . $accordion . '">';
+        $html .= $title;
+        $html .= '</a>';
+        $html .= '</h4></div>';
+        $html .= '<div id="' . $accordion . '" class="panel-collapse collapse';
+        $html .= ( $active ) ? ' in">' : '">';
+        $html .= '<div class="panel-body">';
+        $html .= do_shortcode( $content );
+        $html .= '</div>';
+        $html .= '</div>';
+        $html .= '</div>';
+
+        return $html;
+    }
+
+    /**
      * Tooltip shortcode.
      *
      * @param  array  $atts    Shortcode attributes.
@@ -463,6 +519,7 @@ class Odin_Shortcodes {
         $html = '<a class="odin-tooltip" data-original-title="' . $title . '" href="' . $link .'" data-placement="' . $direction . '" data-toggle="tooltip">';
         $html .= do_shortcode( $content );
         $html .= '</a>';
+
         return $html;
     }
 
