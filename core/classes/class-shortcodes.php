@@ -671,13 +671,12 @@ class Odin_Shortcodes {
         extract( shortcode_atts( array(
             'data'  => '',
             'size'  => '150x150',
-            'title' => '',
-            'alt'   => ''
+            'title' => ''
         ), $atts ) );
 
         $url = 'http://api.qrserver.com/v1/create-qr-code/?data=' . rawurlencode( $data ) . '&size=' . $size;
 
-        return '<img src="' . $url . '" title="' . $title . '" alt="' . $alt . '" />';
+        return '<img src="' . $url . '" title="' . $title . '" title="' . $title . '" />';
     }
 
     /**
