@@ -39,6 +39,7 @@ class Odin_Shortcodes {
         add_shortcode( 'accordion', array( $this, 'accordion' ) );
         add_shortcode( 'gmap', array( $this, 'gmap' ) );
         add_shortcode( 'tooltip', array( $this, 'tooltip' ) );
+        add_shortcode( 'qrcode', array( $this, 'qrcode' ) );
         add_shortcode( 'clear', array( $this, 'clear' ) );
     }
 
@@ -660,10 +661,29 @@ class Odin_Shortcodes {
     }
 
     /**
+     * QR Code shortcode.
+     *
+     * @param  array  $atts    Shortcode attributes.
+     *
+     * @return string          QR Code HTML.
+     */
+    function qrcode( $atts ) {
+        extract( shortcode_atts( array(
+            'data'  => '',
+            'size'  => '150x150',
+            'title' => '',
+            'alt'   => ''
+        ), $atts ) );
+
+        $url = 'http://api.qrserver.com/v1/create-qr-code/?data=' . rawurlencode( $data ) . '&size=' . $size;
+
+        return '<img src="' . $url . '" title="' . $title . '" alt="' . $alt . '" />';
+    }
+
+    /**
      * Clear Float shortcode.
      *
      * @param  array  $atts    Shortcode attributes.
-     * @param  string $content Content.
      *
      * @return string          Clear Float HTML.
      */
