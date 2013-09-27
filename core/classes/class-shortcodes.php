@@ -481,12 +481,13 @@ class Odin_Shortcodes {
         extract( shortcode_atts( array(
             'id'     => 'odin-accordion',
             'title'  => '',
+            'type'   => 'default',
             'active' => false
         ), $atts ) );
 
         $accordion = sanitize_title( $title );
 
-        $html = '<div class="panel panel-default">';
+        $html = '<div class="panel panel-' . $type . '">';
         $html .= '<div class="panel-heading"><h4 class="panel-title">';
         $html .= '<a class="accordion-toggle" data-toggle="collapse" data-parent="#' . $id . '" href="#' . $accordion . '">';
         $html .= $title;
