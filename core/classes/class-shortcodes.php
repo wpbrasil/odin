@@ -566,18 +566,7 @@ class Odin_Shortcodes {
 
         $js = '<script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=false"></script>';
         $html .= apply_filters( 'odin_gmap_shortcode_js_' . $id, $js );
-        $html .= '<script type="text/javascript">
-            var latlng = new google.maps.LatLng(' . $latitude . ', ' . $longitude . ');
-            var myOptions = {
-                zoom: ' . $zoom . ',
-                center: latlng,
-                scrollwheel: ' . $scrollwheel .',
-                scaleControl: ' . $scale .',
-                disableDefaultUI: ' . $hidecontrols .',
-                mapTypeId: google.maps.MapTypeId.' . $maptype . '
-            };
-            var ' . $id . ' = new google.maps.Map(document.getElementById("' . $id . '"),
-            myOptions);';
+        $html .= '<script type="text/javascript">var latlng = new google.maps.LatLng(' . $latitude . ', ' . $longitude . ');var myOptions = {zoom: ' . $zoom . ',center: latlng,scrollwheel: ' . $scrollwheel .',scaleControl: ' . $scale .',disableDefaultUI: ' . $hidecontrols .',mapTypeId: google.maps.MapTypeId.' . $maptype . '};var ' . $id . ' = new google.maps.Map(document.getElementById("' . $id . '"), myOptions);';
 
         // Kml.
         if ( $kml ) {
