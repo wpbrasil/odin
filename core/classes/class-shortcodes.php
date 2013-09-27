@@ -30,6 +30,11 @@ class Odin_Shortcodes {
         add_shortcode( 'panel_heading', array( $this, 'panel_heading' ) );
         add_shortcode( 'panel_body', array( $this, 'panel_body' ) );
         add_shortcode( 'panel_footer', array( $this, 'panel_footer' ) );
+        add_shortcode( 'tabs', array( $this, 'tabs' ) );
+        add_shortcode( 'tab', array( $this, 'tab' ) );
+        add_shortcode( 'tab_dropdown', array( $this, 'tab_dropdown' ) );
+        add_shortcode( 'tab_contents', array( $this, 'tab_contents' ) );
+        add_shortcode( 'tab_content', array( $this, 'tab_content' ) );
         add_shortcode( 'clear', array( $this, 'clear' ) );
     }
 
@@ -332,6 +337,106 @@ class Odin_Shortcodes {
      */
     function panel_footer( $atts, $content = null ) {
         return '<div class="panel-footer">' . do_shortcode( $content ) . '</div>';
+    }
+
+    /**
+     * Tabs shortcode.
+     *
+     * @param  array  $atts    Shortcode attributes.
+     * @param  string $content Content.
+     *
+     * @return string          Tabs HTML.
+     */
+    function tabs( $atts, $content = null ) {
+        return '<ul class="nav nav-tabs odin-tabs">' . str_replace( '<br />', '', do_shortcode( $content ) ) . '</ul>';
+    }
+
+    /**
+     * Tab shortcode.
+     *
+     * @param  array  $atts    Shortcode attributes.
+     * @param  string $content Content.
+     *
+     * @return string          Tab HTML.
+     */
+    function tab( $atts, $content = null ) {
+        extract( shortcode_atts( array(
+            'id'     => '',
+            'active' => false
+        ), $atts ) );
+
+        $html = '<li';
+        $html .= ( $active ) ? ' class="active"' : '';
+        $html .= '>';
+        $html .= '<a href="#' . $id . '">';
+        $html .= do_shortcode( $content );
+        $html .= '</a>';
+        $html .= '</li>';
+
+        return $html;
+    }
+
+    /**
+     * Tab Dropdown shortcode.
+     *
+     * @param  array  $atts    Shortcode attributes.
+     * @param  string $content Content.
+     *
+     * @return string          Tab Dropdown HTML.
+     */
+    function tab_dropdown( $atts, $content = null ) {
+        extract( shortcode_atts( array(
+            'title' => '',
+        ), $atts ) );
+
+        $id = sanitize_title( $title );
+
+        $html = '<li class="dropdown">';
+        $html .= '<a href="#" id="' . $id . '" class="dropdown-toggle" data-toggle="dropdown">';
+        $html .= $title;
+        $html .= ' <b class="caret"></b>';
+        $html .= '</a>';
+        $html .= '<ul class="dropdown-menu" role="menu" aria-labelledby="' . $id . '">';
+        $html .= do_shortcode( $content );
+        $html .= '</ul>';
+        $html .= '</li>';
+
+        return $html;
+    }
+
+    /**
+     * Tabs Contents shortcode.
+     *
+     * @param  array  $atts    Shortcode attributes.
+     * @param  string $content Content.
+     *
+     * @return string          Tabs Contents HTML.
+     */
+    function tab_contents( $atts, $content = null ) {
+        return '<div class="tab-content">' . str_replace( '<br />', '', do_shortcode( $content ) ) . '</div>';
+    }
+
+    /**
+     * Tabs Content shortcode.
+     *
+     * @param  array  $atts    Shortcode attributes.
+     * @param  string $content Content.
+     *
+     * @return string          Tabs Content HTML.
+     */
+    function tab_content( $atts, $content = null ) {
+        extract( shortcode_atts( array(
+            'id' => '',
+            'active' => false,
+        ), $atts ) );
+
+        $html = '<div class="tab-pane';
+        $html .= ( $active ) ? ' active"' : '"';
+        $html .= ' id="' . $id . '">';
+        $html .= do_shortcode( $content );
+        $html .= '</div>';
+
+        return $html;
     }
 
     /**
