@@ -248,6 +248,7 @@ require_once get_template_directory() . '/inc/admin.php';
  * Theme Options Class.
  */
 require_once get_template_directory() . '/core/classes/class-bootstrap-nav.php';
+require_once get_template_directory() . '/core/classes/class-shortcodes.php';
 // require_once get_template_directory() . '/core/classes/class-theme-options.php';
 // require_once get_template_directory() . '/core/classes/class-options-helper.php';
 // require_once get_template_directory() . '/core/classes/class-post-type.php';

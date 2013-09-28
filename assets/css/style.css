@@ -1429,12 +1429,17 @@ th {
   background-color: white;
 }
 
-.table-condensed thead > tr > th,
+.table-condensed thead > tr > th, .entry-content .table-condensed thead > tr > th,
 .table-condensed thead > tr > td,
+.entry-content .table-condensed thead > tr > td,
 .table-condensed tbody > tr > th,
+.entry-content .table-condensed tbody > tr > th,
 .table-condensed tbody > tr > td,
+.entry-content .table-condensed tbody > tr > td,
 .table-condensed tfoot > tr > th,
-.table-condensed tfoot > tr > td {
+.entry-content .table-condensed tfoot > tr > th,
+.table-condensed tfoot > tr > td,
+.entry-content .table-condensed tfoot > tr > td {
   padding: 5px;
 }
 
@@ -1454,9 +1459,8 @@ th {
   border-bottom-width: 2px;
 }
 
-.table-striped > tbody > tr:nth-child(odd) > td, .entry-content table > tbody > tr:nth-child(odd) > td,
-.table-striped > tbody > tr:nth-child(odd) > th,
-.entry-content table > tbody > tr:nth-child(odd) > th {
+.table-striped > tbody > tr:nth-child(odd) > td,
+.table-striped > tbody > tr:nth-child(odd) > th {
   background-color: #f9f9f9;
 }
 
@@ -6368,6 +6372,10 @@ textarea.error {
   /* Prevents the image passes the total area reserved */
   width: auto;
   /* Avoids problems of stretching the image in IE8 */
+}
+.hentry .odin-gmap img,
+.widget .odin-gmap img {
+  max-width: none;
 }
 
 img.header-image, img.wp-post-image {
