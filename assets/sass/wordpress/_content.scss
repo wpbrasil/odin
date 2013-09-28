@@ -11,7 +11,10 @@
 
     table {
         @extend .table;
-        @extend .table-striped;
+    }
+
+    .table-condensed {
+        @extend .table-condensed;
     }
 }
 
