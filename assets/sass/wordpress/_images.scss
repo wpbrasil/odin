@@ -7,11 +7,6 @@
         max-width: 97.5%; /* Prevents the image passes the total area reserved */
         width: auto; /* Avoids problems of stretching the image in IE8 */
     }
-
-    // Fix odin gmaps shortcode
-    .odin-gmap img {
-        max-width: none;
-    }
 }
 
 img {

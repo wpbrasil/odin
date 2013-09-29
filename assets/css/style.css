@@ -6373,10 +6373,6 @@ textarea.error {
   width: auto;
   /* Avoids problems of stretching the image in IE8 */
 }
-.hentry .odin-gmap img,
-.widget .odin-gmap img {
-  max-width: none;
-}
 
 img.header-image, img.wp-post-image {
   max-width: 100%;
@@ -6522,6 +6518,12 @@ input[type="color"] {
 }
 .form-radio-group .radio:last-child {
   margin-bottom: 0;
+}
+
+/* Shortcodes */
+.hentry .odin-map img,
+.widget .odin-map img {
+  max-width: none !important;
 }
 
 /* =CSS Helpers

@@ -56,3 +56,13 @@ input[type="color"] {
         margin-bottom: 0;
     }
 }
+
+/* Shortcodes */
+
+.hentry,
+.widget {
+    // Fix odin gmaps shortcode
+    .odin-map img {
+        max-width: none !important;
+    }
+}
