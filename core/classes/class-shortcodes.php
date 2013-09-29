@@ -553,7 +553,6 @@ class Odin_Shortcodes {
             'fusion'            => false,
             'infowindow'        => false,
             'infowindowdefault' => true,
-            'directions'        => false,
             'hidecontrols'      => 'false',
             'scale'             => 'false',
             'scrollwheel'       => 'true'
