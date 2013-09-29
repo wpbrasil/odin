@@ -1,6 +1,22 @@
 ## Changelog ##
 
-#### v2.0.0 - xx/xx/2013 ####
+#### v2.1.0 - 29/09/2013 ####
+
+* Added `Odin_Shortcodes` class.
+* Added $name in `odin_save_metabox_*` filter in `Odin_Metabox` class.
+* Addded `odin_front_end_form_redirect_*` in `Odin_Front_End_Form` class.
+* Added `separator` field type in `Odin_Metabox` class.
+* Added `odin_metabox_container_before_*` filter in `Odin_Metabox` class.
+* Added `odin_metabox_wrap_before_*` filter in `Odin_Metabox` class.
+* Added `odin_metabox_field_title_*` filter in `Odin_Metabox` class.
+* Added `odin_metabox_field_before_*` filter in `Odin_Metabox` class.
+* Added `odin_metabox_field_after_*` filter in `Odin_Metabox` class.
+* Added `odin_metabox_wrap_after_*` filter in `Odin_Metabox` class.
+* Added `odin_metabox_container_after_*` filter in `Odin_Metabox` class.
+* Fixed select field in `Odin_Metabox` class and `Odin_Theme_Options` class.
+* Added id in fieldset in `Odin_Front_End_Form` class.
+
+#### v2.0.0 - 16/09/2013 ####
 
 * Changed attrs to attributes in `Odin_Metabox` fields options.
 * Changed name to label in `Odin_Metabox` fields options.

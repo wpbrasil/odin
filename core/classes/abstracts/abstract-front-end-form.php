@@ -7,7 +7,7 @@
  * @package  Odin
  * @category Front-end Form
  * @author   WPBrasil
- * @version  2.0.0
+ * @version  2.1.0
  */
 abstract class Odin_Front_End_Form {
 

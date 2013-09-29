@@ -7,7 +7,7 @@
  * @package  Odin
  * @category Metabox
  * @author   WPBrasil
- * @version  2.0.1
+ * @version  2.1.0
  */
 class Odin_Metabox {
 
