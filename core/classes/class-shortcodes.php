@@ -37,7 +37,7 @@ class Odin_Shortcodes {
         add_shortcode( 'tab_content', array( $this, 'tab_content' ) );
         add_shortcode( 'accordions', array( $this, 'accordions' ) );
         add_shortcode( 'accordion', array( $this, 'accordion' ) );
-        add_shortcode( 'gmap', array( $this, 'gmap' ) );
+        add_shortcode( 'map', array( $this, 'map' ) );
         add_shortcode( 'tooltip', array( $this, 'tooltip' ) );
         add_shortcode( 'qrcode', array( $this, 'qrcode' ) );
         add_shortcode( 'clear', array( $this, 'clear' ) );
@@ -534,9 +534,9 @@ class Odin_Shortcodes {
      *
      * @return string          Google Maps HTML.
      */
-    function gmap( $atts, $content = null ) {
+    function map( $atts, $content = null ) {
         extract( shortcode_atts( array(
-            'id'                => 'odin_gmap',
+            'id'                => 'odin_map',
             'latitude'          => '0',
             'longitude'         => '0',
             'zoom'              => '10',
@@ -561,10 +561,10 @@ class Odin_Shortcodes {
         // JS var.
         $id = str_replace( '-', '_', $id );
 
-        $html = '<div class="odin-gmap" id="' . $id . '" style="width: ' . $width . 'px; height: ' . $height . 'px;"></div>';
+        $html = '<div class="odin-map" id="' . $id . '" style="width: ' . $width . 'px; height: ' . $height . 'px;"></div>';
 
         $js = '<script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=false"></script>';
-        $html .= apply_filters( 'odin_gmap_shortcode_js_' . $id, $js );
+        $html .= apply_filters( 'odin_map_shortcode_js_' . $id, $js );
         $html .= '<script type="text/javascript">var latlng = new google.maps.LatLng(' . $latitude . ', ' . $longitude . ');var myOptions = {zoom: ' . $zoom . ',center: latlng,scrollwheel: ' . $scrollwheel .',scaleControl: ' . $scale .',disableDefaultUI: ' . $hidecontrols .',mapTypeId: google.maps.MapTypeId.' . $maptype . '};var ' . $id . ' = new google.maps.Map(document.getElementById("' . $id . '"), myOptions);';
 
         // Kml.
