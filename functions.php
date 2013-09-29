@@ -10,7 +10,7 @@
  * see http://codex.wordpress.org/Plugin_API
  *
  * @package Odin
- * @since 1.9.0
+ * @since 2.1.0
  */
 
 /**
@@ -254,6 +254,9 @@ require_once get_template_directory() . '/core/classes/class-shortcodes.php';
 // require_once get_template_directory() . '/core/classes/class-post-type.php';
 // require_once get_template_directory() . '/core/classes/class-taxonomy.php';
 // require_once get_template_directory() . '/core/classes/class-metabox.php';
+// require_once get_template_directory() . '/core/classes/abstracts/abstract-front-end-form.php';
+// require_once get_template_directory() . '/core/classes/class-contact-form.php';
+// require_once get_template_directory() . '/core/classes/class-post-form.php';
 
 /**
  * Load site scripts.
