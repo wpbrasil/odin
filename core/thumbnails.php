@@ -181,19 +181,20 @@ if ( ! function_exists( 'aq_resize' ) ) {
  *
  * @param int     $width  Width of the image.
  * @param int     $height Height of the image.
+ * @param string  $class  Class attribute of the image.
  * @param string  $alt    Alt attribute of the image.
  * @param bool    $crop   Image crop.
  *
  * @return string         Return the post thumbnail.
  */
-function odin_thumbnail( $width, $height, $alt, $crop = true ) {
+function odin_thumbnail( $width, $height, $class, $alt, $crop = true ) {
     $thumb = get_post_thumbnail_id();
 
     if ( $thumb ) {
         $url = wp_get_attachment_url( $thumb, 'full' );
         $image = aq_resize( $url, $width, $height, $crop, true, true );
 
-        $html = '<img class="wp-image-thumb img-responsive" src="' . $image . '" width="' . esc_attr( $width ) . '" height="' . esc_attr( $height ) . '" alt="' . esc_attr( $alt ) . '" />';
+        $html = '<img class="wp-image-thumb img-responsive '.$class.'" src="' . $image . '" width="' . esc_attr( $width ) . '" height="' . esc_attr( $height ) . '" alt="' . esc_attr( $alt ) . '" />';
 
         return apply_filters( 'odin_thumbnail_html', $html );
     }
