@@ -271,7 +271,7 @@ function odin_enqueue_scripts() {
     wp_enqueue_script( 'jquery' );
 
     // bxSlider.
-    // wp_enqueue_script( 'bxslider', $template_url . '/js/jquery.bxslider.min.js', array(), null, true );
+    // wp_enqueue_script( 'bxslider', $template_url . '/assets/js/jquery.bxslider.min.js', array(), null, true );
 
     // Twitter Bootstrap.
     wp_enqueue_script( 'bootstrap', $template_url . '/assets/js/bootstrap.min.js', array(), null, true );
