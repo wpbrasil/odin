@@ -326,9 +326,15 @@ abstract class Odin_Front_End_Form {
         if ( ! isset( $attributes['class'] ) )
             $attributes['class'] = 'form-control';
 
+        if( ! isset( $attributes['cols'] ) )
+            $attributes['cols'] = '60';
+
+        if( ! isset( $attributes['rows'] ) )
+            $attributes['rows'] = '4';
+
         $html = '<div class="form-group">';
         $html .= sprintf( '<label for="%s">%s%s</label>', $id, $label, $this->required_field_alert( $attributes ) );
-        $html .= sprintf( '<textarea id="%1$s" name="%1$s" cols="60" rows="4"%2$s>%3$s</textarea>', $id, $this->process_attributes( $attributes ), $default );
+        $html .= sprintf( '<textarea id="%1$s" name="%1$s"%2$s>%3$s</textarea>', $id, $this->process_attributes( $attributes ), $default );
         $html .= ! empty( $description ) ? '<span class="help-block">' . $description . '</span>' : '';
         $html .= '</div>';
 
