@@ -7,7 +7,7 @@
  * @package  Odin
  * @category Post Form
  * @author   WPBrasil
- * @version  2.0.0
+ * @version  2.1.0
  */
 class Odin_Post_Form extends Odin_Front_End_Form {
 
@@ -16,28 +16,28 @@ class Odin_Post_Form extends Odin_Front_End_Form {
      *
      * @var array
      */
-    var $content_field = '';
+    protected $content_field = '';
 
     /**
      * Post title field.
      *
      * @var array
      */
-    var $title_field = '';
+    protected $title_field = '';
 
     /**
      * Post custom fields.
      *
      * @var array
      */
-    var $custom_fields = array();
+    protected $custom_fields = array();
 
     /**
      * Post terms.
      *
      * @var array
      */
-    var $terms = array();
+    protected $terms = array();
 
     /**
      * Post Form construct.
