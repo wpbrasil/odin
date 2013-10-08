@@ -25,6 +25,20 @@ if ( ! isset( $content_width ) )
     $content_width = 600;
 
 /**
+ * Odin Classes.
+ */
+require_once get_template_directory() . '/core/classes/class-bootstrap-nav.php';
+require_once get_template_directory() . '/core/classes/class-shortcodes.php';
+// require_once get_template_directory() . '/core/classes/class-theme-options.php';
+// require_once get_template_directory() . '/core/classes/class-options-helper.php';
+// require_once get_template_directory() . '/core/classes/class-post-type.php';
+// require_once get_template_directory() . '/core/classes/class-taxonomy.php';
+// require_once get_template_directory() . '/core/classes/class-metabox.php';
+// require_once get_template_directory() . '/core/classes/abstracts/abstract-front-end-form.php';
+// require_once get_template_directory() . '/core/classes/class-contact-form.php';
+// require_once get_template_directory() . '/core/classes/class-post-form.php';
+
+/**
  * Setup theme features
  */
 function odin_setup_features() {
@@ -243,20 +257,6 @@ require_once get_template_directory() . '/inc/admin.php';
  * Odin LazyLoad support.
  */
 // add_filter( 'odin_thumbnail_html', 'odin_lazyload_placeholder' );
-
-/**
- * Theme Options Class.
- */
-require_once get_template_directory() . '/core/classes/class-bootstrap-nav.php';
-require_once get_template_directory() . '/core/classes/class-shortcodes.php';
-// require_once get_template_directory() . '/core/classes/class-theme-options.php';
-// require_once get_template_directory() . '/core/classes/class-options-helper.php';
-// require_once get_template_directory() . '/core/classes/class-post-type.php';
-// require_once get_template_directory() . '/core/classes/class-taxonomy.php';
-// require_once get_template_directory() . '/core/classes/class-metabox.php';
-// require_once get_template_directory() . '/core/classes/abstracts/abstract-front-end-form.php';
-// require_once get_template_directory() . '/core/classes/class-contact-form.php';
-// require_once get_template_directory() . '/core/classes/class-post-form.php';
 
 /**
  * Load site scripts.
