@@ -1,5 +1,9 @@
 ## Changelog ##
 
+#### v2.2.0 - xx/xx/2013 ####
+
+* Updated the Bootstrap Menu Walker.
+
 #### v2.1.0 - 29/09/2013 ####
 
 * Added `Odin_Shortcodes` class.
