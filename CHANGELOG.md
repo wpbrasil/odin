@@ -4,6 +4,19 @@
 
 * Updated the Bootstrap Menu Walker.
 
+#### v2.1.1 - 18/10/2013 ####
+
+* Improved the gmap shortcode.
+* Added `$class` param to `odin_thumbnail` function.
+* Fixed the bxSlider enqueue script.
+* Added dinamic attributes cols and rows for textarea in `Odin_Metabox` class.
+* Improved the variables in `Odin_Post_Form` class.
+* Added support to mp6 admin theme.
+* Updated the Bootstrap menu walker.
+* Removed the `force` param in grunt compass task.
+* Updated the grunt packages.
+* Fixed the Odin URL in `footer.php`.
+
 #### v2.1.0 - 29/09/2013 ####
 
 * Added `Odin_Shortcodes` class.
