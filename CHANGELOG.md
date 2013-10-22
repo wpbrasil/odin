@@ -16,6 +16,7 @@
 * Removed the `force` param in grunt compass task.
 * Updated the grunt packages.
 * Fixed the Odin URL in `footer.php`.
+* Fixed the Custom login styles logo in `inc/assets/css/custom-admin.css`.
 
 #### v2.1.0 - 29/09/2013 ####
 
