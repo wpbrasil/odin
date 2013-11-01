@@ -35,6 +35,7 @@ Odin suporta nativamente os plugins:
 ## References - Referências ##
 
 * [Twitter Bootstrap](http://getbootstrap.com/)
+* [Sass Twitter Bootstrap](https://github.com/jlong/sass-bootstrap)
 * [HTML5shiv](https://github.com/aFarkas/html5shiv)
 * [matchMedia() polyfill](https://github.com/paulirish/matchMedia.js/)
 * [Respond.js](https://github.com/scottjehl/Respond)
