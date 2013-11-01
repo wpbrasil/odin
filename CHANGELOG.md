@@ -2,7 +2,7 @@
 
 #### v2.2.0 - xx/xx/2013 ####
 
-#### v2.1.2 - xx/xx/2013 ####
+#### v2.1.2 - 31/10/2013 ####
 
 * Updated the Bootstrap to version 3.0.1.
 * Updated the Bootstrap Menu Walker.
