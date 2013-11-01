@@ -2,7 +2,12 @@
 
 #### v2.2.0 - xx/xx/2013 ####
 
+#### v2.1.2 - xx/xx/2013 ####
+
+* Updated the Bootstrap to version 2.0.1.
 * Updated the Bootstrap Menu Walker.
+* Fixed the admin logo for MP6.
+* Added attributes to edit the rows and cols for textarea in all core classes.
 
 #### v2.1.1 - 18/10/2013 ####
 
