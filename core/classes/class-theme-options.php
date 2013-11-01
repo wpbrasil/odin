@@ -361,10 +361,16 @@ class Odin_Theme_Options {
         $id    = $args['id'];
         $attrs = $args['attributes'];
 
+        if ( ! isset( $attrs['cols'] ) )
+            $attrs['cols'] = '60';
+
+        if ( ! isset( $attrs['rows'] ) )
+            $attrs['rows'] = '5';
+
         // Sets current option.
         $current = esc_textarea( $this->get_option( $tab, $id, $args['default'] ) );
 
-        $html = sprintf( '<textarea id="%1$s" name="%2$s[%1$s]" rows="5" cols="50"%4$s>%3$s</textarea>', $id, $tab, $current, $this->build_field_attributes( $attrs ) );
+        $html = sprintf( '<textarea id="%1$s" name="%2$s[%1$s]"%4$s>%3$s</textarea>', $id, $tab, $current, $this->build_field_attributes( $attrs ) );
 
         // Displays the description.
         if ( $args['description'] )

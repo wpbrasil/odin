@@ -263,7 +263,13 @@ class Odin_Metabox {
      * @return string          HTML of the field.
      */
     protected function field_textarea( $id, $current, $attrs ) {
-        echo sprintf( '<textarea id="%1$s" name="%1$s" cols="60" rows="4"%3$s>%2$s</textarea>', $id, esc_attr( $current ), $this->build_field_attributes( $attrs ) );
+        if ( ! isset( $attrs['cols'] ) )
+            $attrs['cols'] = '60';
+
+        if ( ! isset( $attrs['rows'] ) )
+            $attrs['rows'] = '5';
+
+        echo sprintf( '<textarea id="%1$s" name="%1$s"%3$s>%2$s</textarea>', $id, esc_attr( $current ), $this->build_field_attributes( $attrs ) );
     }
 
     /**

@@ -326,10 +326,10 @@ abstract class Odin_Front_End_Form {
         if ( ! isset( $attributes['class'] ) )
             $attributes['class'] = 'form-control';
 
-        if( ! isset( $attributes['cols'] ) )
+        if ( ! isset( $attributes['cols'] ) )
             $attributes['cols'] = '60';
 
-        if( ! isset( $attributes['rows'] ) )
+        if ( ! isset( $attributes['rows'] ) )
             $attributes['rows'] = '4';
 
         $html = '<div class="form-group">';
