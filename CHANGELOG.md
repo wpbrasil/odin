@@ -2,6 +2,10 @@
 
 #### v2.2.0 - xx/xx/2013 ####
 
+#### v2.1.3 - 10/11/2013 ####
+
+* Updated the Boostrap to version 3.0.2.
+
 #### v2.1.2 - 31/10/2013 ####
 
 * Updated the Bootstrap to version 3.0.1.
