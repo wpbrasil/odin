@@ -7,7 +7,7 @@
  * @package  Odin
  * @category Post Types
  * @author   WPBrasil
- * @version  1.6.0
+ * @version  2.1.4
  */
 class Odin_Post_Type {
 

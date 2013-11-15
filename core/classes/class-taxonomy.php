@@ -7,7 +7,7 @@
  * @package  Odin
  * @category Taxonomy
  * @author   WPBrasil
- * @version  1.6
+ * @version  2.1.4
  */
 class Odin_Taxonomy {
 

@@ -14,15 +14,11 @@
  */
 
 /**
- * Grunt Support.
- */
-define( 'ODIN_GRUNT_SUPPORT', false );
-
-/**
  * Sets content width.
  */
-if ( ! isset( $content_width ) )
+if ( ! isset( $content_width ) ) {
 	$content_width = 600;
+}
 
 /**
  * Odin Classes.
@@ -172,10 +168,13 @@ require_once get_template_directory() . '/core/thumbnails.php';
  */
 function odin_autoset_featured() {
 	global $post;
+
 	if ( isset( $post->ID ) ) {
 		$already_has_thumb = has_post_thumbnail( $post->ID );
+
 		if ( ! $already_has_thumb ) {
 			$attached_image = get_children( 'post_parent=' . $post->ID . '&post_type=attachment&post_mime_type=image&numberposts=1' );
+
 			if ( $attached_image ) {
 				foreach ( $attached_image as $attachment_id => $attachment ) {
 					set_post_thumbnail( $post->ID, $attachment_id );
@@ -277,23 +276,23 @@ function odin_enqueue_scripts() {
 	wp_enqueue_script( 'bootstrap', $template_url . '/assets/js/bootstrap.min.js', array(), null, true );
 
 	// General scripts.
-	if ( false == ODIN_GRUNT_SUPPORT ) {
+	// FitVids.
+	wp_enqueue_script( 'fitvids', $template_url . '/assets/js/jquery.fitvids.min.js', array(), null, true );
 
-		// FitVids.
-		wp_enqueue_script( 'fitvids', $template_url . '/assets/js/jquery.fitvids.min.js', array(), null, true );
+	// Main jQuery.
+	wp_enqueue_script( 'odin-main', $template_url . '/assets/js/main.js', array(), null, true );
 
-		// Main jQuery.
-		wp_enqueue_script( 'odin-main', $template_url . '/assets/js/main.js', array(), null, true );
-	} else {
-		wp_enqueue_script( 'odin-main-min', $template_url . '/assets/js/main.min.js', array(), null, true );
-	}
+	// Grunt main file with FitVids.
+	// wp_enqueue_script( 'odin-main-min', $template_url . '/assets/js/main.min.js', array(), null, true );
 
 	// Load Thread comments WordPress script.
-	if ( is_singular() && get_option( 'thread_comments' ) )
+	if ( is_singular() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
+	}
 
-	if ( is_single() )
+	if ( is_single() ) {
 		wp_enqueue_script( 'validate', $template_url . '/assets/js/jquery.validate.min.js', array(), null, true );
+	}
 }
 
 add_action( 'wp_enqueue_scripts', 'odin_enqueue_scripts', 1 );

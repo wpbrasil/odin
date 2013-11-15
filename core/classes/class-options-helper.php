@@ -7,7 +7,7 @@
  * @package  Odin
  * @category Options
  * @author   WPBrasil
- * @version  1.0
+ * @version  2.1.4
  */
 class Odin_Options_Helper {
 

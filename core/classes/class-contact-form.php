@@ -7,7 +7,7 @@
  * @package  Odin
  * @category Contact Form
  * @author   WPBrasil
- * @version  2.0.0
+ * @version  2.1.4
  */
 class Odin_Contact_Form extends Odin_Front_End_Form {
 
@@ -60,8 +60,9 @@ class Odin_Contact_Form extends Odin_Front_End_Form {
 	 * @param string $content_type Mail content type.
 	 */
 	public function set_content_type( $content_type ) {
-		if ( 'html' == $content_type )
+		if ( 'html' == $content_type ) {
 			$this->content_type = 'text/html';
+		}
 	}
 
 	/**
@@ -123,10 +124,11 @@ class Odin_Contact_Form extends Odin_Front_End_Form {
 
 		// Sets the message content.
 		foreach ( $data as $label => $value ) {
-			if ( 'text/html' == $this->content_type )
+			if ( 'text/html' == $this->content_type ) {
 				$message .= sprintf( '<strong>%s:</strong>%s', wp_kses( $label, array() ), wpautop( wp_kses( $value, array() ) ) );
-			else
+			} else {
 				$message .= sanitize_text_field( $label . ': ' . $value ) . PHP_EOL;
+			}
 		}
 
 		// Sets the message footer.
@@ -157,8 +159,9 @@ class Odin_Contact_Form extends Odin_Front_End_Form {
 			);
 
 			// Process the placeholders.
-			foreach ( $placeholders as $placeholder => $value )
+			foreach ( $placeholders as $placeholder => $value ) {
 				$subject = str_replace( '[' . $placeholder . ']', sanitize_text_field( $value ), $subject );
+			}
 
 			return $subject;
 		} else {
@@ -184,23 +187,27 @@ class Odin_Contact_Form extends Odin_Front_End_Form {
 
 		// Cc.
 		if ( ! empty( $this->cc ) ) {
-			foreach ( $this->cc as $cc )
+			foreach ( $this->cc as $cc ) {
 				$headers[] = 'Cc: ' . $cc;
+			}
 		}
 
 		// Bc.
 		if ( ! empty( $this->bcc ) ) {
-			foreach ( $this->bcc as $bcc )
+			foreach ( $this->bcc as $bcc ) {
 				$headers[] = 'Bcc: ' . $bcc;
+			}
 		}
 
 		// Reply-To.
-		if ( ! empty( $this->reply_to ) )
+		if ( ! empty( $this->reply_to ) ) {
 			$headers[] = 'Reply-To: ' . sanitize_email( $submitted_data[ $this->reply_to ] );
+		}
 
 		// Content type.
-		if ( 'text/html' == $this->content_type )
+		if ( 'text/html' == $this->content_type ) {
 			$headers[] = 'Content-type: text/html; charset=' . get_bloginfo( 'charset' );
+		}
 
 		return apply_filters( 'odin_contact_form_mail_headers_' . $this->id, $headers );
 	}

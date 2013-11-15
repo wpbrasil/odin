@@ -7,7 +7,7 @@
  * @package  Odin
  * @category Metabox
  * @author   WPBrasil
- * @version  2.1.0
+ * @version  2.1.4
  */
 class Odin_Metabox {
 
@@ -175,8 +175,9 @@ class Odin_Metabox {
 
 		// Gets current value or default.
 		$current = get_post_meta( $post_id, $id, true );
-		if ( ! $current )
+		if ( ! $current ) {
 			$current = isset( $args['default'] ) ? $args['default'] : '';
+		}
 
 		switch ( $type ) {
 			case 'text':
@@ -230,8 +231,9 @@ class Odin_Metabox {
 		$attributes = '';
 
 		if ( ! empty( $attrs ) ) {
-			foreach ( $attrs as $key => $attr )
+			foreach ( $attrs as $key => $attr ) {
 				$attributes .= ' ' . $key . '="' . $attr . '"';
+			}
 		}
 
 		return $attributes;
@@ -247,8 +249,9 @@ class Odin_Metabox {
 	 * @return string          HTML of the field.
 	 */
 	protected function field_input( $id, $current, $attrs ) {
-		if ( ! isset( $attrs['type'] ) )
+		if ( ! isset( $attrs['type'] ) ) {
 			$attrs['type'] = 'text';
+		}
 
 		echo sprintf( '<input id="%1$s" name="%1$s" value="%2$s"%3$s />', $id, esc_attr( $current ), $this->build_field_attributes( $attrs ) );
 	}
@@ -263,11 +266,13 @@ class Odin_Metabox {
 	 * @return string          HTML of the field.
 	 */
 	protected function field_textarea( $id, $current, $attrs ) {
-		if ( ! isset( $attrs['cols'] ) )
+		if ( ! isset( $attrs['cols'] ) ) {
 			$attrs['cols'] = '60';
+		}
 
-		if ( ! isset( $attrs['rows'] ) )
+		if ( ! isset( $attrs['rows'] ) ) {
 			$attrs['rows'] = '5';
+		}
 
 		echo sprintf( '<textarea id="%1$s" name="%1$s"%3$s>%2$s</textarea>', $id, esc_attr( $current ), $this->build_field_attributes( $attrs ) );
 	}
@@ -339,8 +344,9 @@ class Odin_Metabox {
 	 */
 	protected function field_editor( $id, $current, $options ) {
 		// Set default options.
-		if ( empty( $options ) )
+		if ( empty( $options ) ) {
 			$options = array( 'textarea_rows' => 10 );
+		}
 
 		echo '<div style="max-width: 600px;">';
 			wp_editor( wpautop( $current ), $id, $options );
@@ -430,18 +436,20 @@ class Odin_Metabox {
 	 */
 	public function save( $post_id ) {
 		// Verify nonce.
-		if ( ! isset( $_POST[ $this->nonce ] ) || ! wp_verify_nonce( $_POST[ $this->nonce ], basename( __FILE__ ) ) )
+		if ( ! isset( $_POST[ $this->nonce ] ) || ! wp_verify_nonce( $_POST[ $this->nonce ], basename( __FILE__ ) ) ) {
 			return $post_id;
+		}
 
 		// Verify if this is an auto save routine.
-		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 			return $post_id;
+		}
 
 		// Check permissions.
 		if ( $this->post_type == $_POST['post_type'] ) {
-			if ( ! current_user_can( 'edit_page', $post_id ) )
+			if ( ! current_user_can( 'edit_page', $post_id ) ) {
 				return $post_id;
-
+			}
 		} elseif ( ! current_user_can( 'edit_post', $post_id ) ) {
 			return $post_id;
 		}
@@ -452,10 +460,11 @@ class Odin_Metabox {
 
 			$new = apply_filters( 'odin_save_metabox_' . $this->id, $_POST[ $name ], $name );
 
-			if ( $new && $new != $old )
+			if ( $new && $new != $old ) {
 				update_post_meta( $post_id, $name, $new );
-			elseif ( '' == $new && $old )
+			} elseif ( '' == $new && $old ) {
 				delete_post_meta( $post_id, $name, $old );
+			}
 		}
 
 	}

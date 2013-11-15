@@ -7,7 +7,7 @@
  * @package  Odin
  * @category Front-end Form
  * @author   WPBrasil
- * @version  2.1.0
+ * @version  2.1.4
  */
 abstract class Odin_Front_End_Form {
 
@@ -120,8 +120,9 @@ abstract class Odin_Front_End_Form {
 		$attrs = '';
 
 		if ( ! empty( $attributes ) ) {
-			foreach ( $attributes as $key => $attribute )
+			foreach ( $attributes as $key => $attribute ) {
 				$attrs .= ' ' . $key . '="' . $attribute . '"';
+			}
 		}
 
 		return $attrs;
@@ -133,10 +134,11 @@ abstract class Odin_Front_End_Form {
 	 * @return string Default value.
 	 */
 	protected function default_field( $id, $default ) {
-		if ( 'get' == $this->method )
+		if ( 'get' == $this->method ) {
 			return isset( $_GET[ $id ] ) ? sanitize_text_field( $_GET[ $id ] ) : $default;
-		else
+		} else {
 			return isset( $_POST[ $id ] ) ? sanitize_text_field( $_POST[ $id ] ) : $default;
+		}
 	}
 
 	/**
@@ -165,8 +167,9 @@ abstract class Odin_Front_End_Form {
 					$default     = isset( $field['default'] ) ? $field['default'] : '';
 					$default     = $this->default_field( $id, $default );
 
-					if ( $required )
+					if ( $required ) {
 						$attributes = array_merge( array( 'required' => 'required' ), $attributes );
+					}
 
 					switch ( $type ) {
 						case 'text':
@@ -247,8 +250,9 @@ abstract class Odin_Front_End_Form {
 		if ( ! empty( $this->errors ) ) {
 			$html .= '<div class="alert alert-danger">';
 
-			foreach ( $this->errors as $error )
+			foreach ( $this->errors as $error ) {
 				$html .= '<p>' . $error . '</p>';
+			}
 
 			$html .= '</div>';
 		}
@@ -266,10 +270,11 @@ abstract class Odin_Front_End_Form {
 
 		if ( isset( $_GET['success'] ) && 1 == $_GET['success'] ) {
 			$html .= '<div class="alert alert-success">';
-			if ( ! empty( $this->success ) )
+			if ( ! empty( $this->success ) ) {
 				$html .= '<p>' . $this->success . '</p>';
-			else
+			} else {
 				$html .= '<p>' . __( 'Form submitted successfully!', 'odin' ) . '</p>';
+			}
 			$html .= '</div>';
 		}
 
@@ -277,8 +282,9 @@ abstract class Odin_Front_End_Form {
 	}
 
 	protected function required_field_alert( $attributes ) {
-		if ( isset( $attributes['required'] ) )
+		if ( isset( $attributes['required'] ) ) {
 			return ' <span class="text-danger">*</span>';
+		}
 	}
 
 	/**
@@ -294,12 +300,14 @@ abstract class Odin_Front_End_Form {
 	 */
 	protected function field_input( $id, $label, $default, $description, $attributes ) {
 		// Set the default type.
-		if ( ! isset( $attributes['type'] ) )
+		if ( ! isset( $attributes['type'] ) ) {
 			$attributes['type'] = 'text';
+		}
 
 		// Set the default class.
-		if ( ! isset( $attributes['class'] ) )
+		if ( ! isset( $attributes['class'] ) ) {
 			$attributes['class'] = 'form-control';
+		}
 
 		$html = '<div class="form-group">';
 		$html .= sprintf( '<label for="%s">%s%s</label>', $id, $label, $this->required_field_alert( $attributes ) );
@@ -323,14 +331,17 @@ abstract class Odin_Front_End_Form {
 	 */
 	protected function field_textarea( $id, $label, $default, $description, $attributes ) {
 		// Set the default class.
-		if ( ! isset( $attributes['class'] ) )
+		if ( ! isset( $attributes['class'] ) ) {
 			$attributes['class'] = 'form-control';
+		}
 
-		if ( ! isset( $attributes['cols'] ) )
+		if ( ! isset( $attributes['cols'] ) ) {
 			$attributes['cols'] = '60';
+		}
 
-		if ( ! isset( $attributes['rows'] ) )
+		if ( ! isset( $attributes['rows'] ) ) {
 			$attributes['rows'] = '4';
+		}
 
 		$html = '<div class="form-group">';
 		$html .= sprintf( '<label for="%s">%s%s</label>', $id, $label, $this->required_field_alert( $attributes ) );
@@ -354,8 +365,9 @@ abstract class Odin_Front_End_Form {
 	 */
 	protected function field_checkbox( $id, $label, $default, $description, $attributes ) {
 		// Set the checked attribute
-		if ( ! empty( $default ) )
+		if ( ! empty( $default ) ) {
 			$attributes['checked'] = 'checked';
+		}
 
 		$html = '<div class="checkbox">';
 		$html .= '<label>';
@@ -381,8 +393,9 @@ abstract class Odin_Front_End_Form {
 	 */
 	protected function field_select( $id, $label, $default, $description, $attributes, $options ) {
 		// Set the default class.
-		if ( ! isset( $attributes['class'] ) )
+		if ( ! isset( $attributes['class'] ) ) {
 			$attributes['class'] = 'form-control';
+		}
 
 		// If multiple add a array in the option.
 		$multiple = ( in_array( 'multiple', $attributes ) ) ? '[]' : '';
@@ -424,10 +437,11 @@ abstract class Odin_Front_End_Form {
 
 		foreach ( $options as $value => $label ) {
 			// Set the checked attribute.
-			if ( $value == $default )
+			if ( $value == $default ) {
 				$attributes['checked'] = 'checked';
-			else if ( isset( $attributes['checked'] ) )
+			} else if ( isset( $attributes['checked'] ) ) {
 				unset( $attributes['checked'] );
+			}
 
 			$html .= '<div class="radio">';
 			$html .= sprintf( '<label><input type="radio" id="%1$s-%2$s" name="%1$s" value="%2$s"%4$s /> %3$s</label>', $id, $value, $label, $this->process_attributes( $attributes ) );
@@ -460,10 +474,11 @@ abstract class Odin_Front_End_Form {
 	 */
 	protected function submitted_form_data() {
 		// Checks the form method.
-		if ( 'get' == $this->method )
+		if ( 'get' == $this->method ) {
 			$data = $_GET;
-		else
+		} else {
 			$data = $_POST;
+		}
 
 		return $data;
 	}
@@ -488,8 +503,9 @@ abstract class Odin_Front_End_Form {
 					$value    = ! empty( $data[ $id ] ) ? $data[ $id ] : '';
 					$required = isset( $field['required'] ) && $field['required'] ? true : false;
 
-					if ( $required && empty( $data[ $id ] ) )
+					if ( $required && empty( $data[ $id ] ) ) {
 						$errors[] = sprintf( __( '%s is required.', 'odin' ), '<strong>' . $label . '</strong>' );
+					}
 
 					switch ( $type ) {
 						case 'email':
@@ -512,8 +528,9 @@ abstract class Odin_Front_End_Form {
 			$this->set_errors( $errors );
 
 			// Remove valid param.
-			if ( isset( $_GET['success'] ) && 1 == $_GET['success'] )
+			if ( isset( $_GET['success'] ) && 1 == $_GET['success'] ) {
 				unset( $_GET['success'] );
+			}
 		}
 	}
 
@@ -524,15 +541,17 @@ abstract class Odin_Front_End_Form {
 	 */
 	protected function get_current_page() {
 		$url = 'http';
-		if ( isset( $_SERVER['HTTPS'] ) && 'on' == $_SERVER['HTTPS'] )
+		if ( isset( $_SERVER['HTTPS'] ) && 'on' == $_SERVER['HTTPS'] ) {
 			$url .= 's';
+		}
 
 		$url .= '://';
 
-		if ( '80' != $_SERVER['SERVER_PORT'] )
+		if ( '80' != $_SERVER['SERVER_PORT'] ) {
 			$url .= $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . $_SERVER['REQUEST_URI'];
-		else
+		} else {
 			$url .= $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+		}
 
 		return $url;
 	}

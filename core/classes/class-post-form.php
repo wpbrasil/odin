@@ -7,7 +7,7 @@
  * @package  Odin
  * @category Post Form
  * @author   WPBrasil
- * @version  2.1.0
+ * @version  2.1.4
  */
 class Odin_Post_Form extends Odin_Front_End_Form {
 

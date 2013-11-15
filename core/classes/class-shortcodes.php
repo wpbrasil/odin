@@ -7,7 +7,7 @@
  * @package  Odin
  * @category Shortcodes
  * @author   WPBrasil
- * @version  2.1.0
+ * @version  2.1.4
  */
 class Odin_Shortcodes {
 
@@ -208,8 +208,9 @@ class Odin_Shortcodes {
 		$html .= '<thead>' . PHP_EOL;
 		$html .= '<tr>' . PHP_EOL;
 
-		foreach ( explode( ',', $cols ) as $col )
+		foreach ( explode( ',', $cols ) as $col ) {
 			$html .= '<th>' . $col . '</th>' . PHP_EOL;
+		}
 
 		$html .= '</tr>' . PHP_EOL;
 		$html .= '</thead>' . PHP_EOL;
@@ -218,8 +219,9 @@ class Odin_Shortcodes {
 		foreach ( explode( '|', $rows ) as $row ) {
 			$html .= '<tr>' . PHP_EOL;
 
-			foreach ( explode( ',', $row ) as $item )
+			foreach ( explode( ',', $row ) as $item ) {
 				$html .= '<td>' . $item . '</td>' . PHP_EOL;
+			}
 
 			$html .= '</tr>' . PHP_EOL;
 		}
@@ -580,16 +582,19 @@ class Odin_Shortcodes {
 		}
 
 		// Traffic.
-		if ( $traffic )
+		if ( $traffic ) {
 			$html .= 'var trafficLayer = new google.maps.TrafficLayer();trafficLayer.setMap(' . $id . ');';
+		}
 
 		// Bike.
-		if ( $bike )
+		if ( $bike ) {
 			$html .= 'var bikeLayer = new google.maps.BicyclingLayer();bikeLayer.setMap(' . $id . ');';
+		}
 
 		// Fusion tables.
-		if ( $fusion )
+		if ( $fusion ) {
 			$html .= 'var fusionLayer = new google.maps.FusionTablesLayer(' . $fusion . ');fusionLayer.setMap(' . $id . ');';
+		}
 
 		// Address.
 		if ( $address ) {
@@ -597,12 +602,14 @@ class Odin_Shortcodes {
 
 			if ( $marker ) {
 				// Add custom image.
-				if ( $markerimage )
+				if ( $markerimage ) {
 					$html .= 'var image = "'. $markerimage .'";';
+				}
 
 				$html .= 'var marker = new google.maps.Marker({ map: ' . $id . ',';
-				if ( $markerimage )
+				if ( $markerimage ) {
 					$html .= 'icon: image,';
+				}
 
 				$html .= 'position: ' . $id . '.getCenter() });';
 
@@ -613,8 +620,9 @@ class Odin_Shortcodes {
 					$html .= 'var contentString = "' . $thiscontent . '";var infowindow = new google.maps.InfoWindow({content: contentString});google.maps.event.addListener(marker, \'click\', function() { infowindow.open(' . $id . ',marker);});';
 
 					// Infowindow default
-					if ( $infowindowdefault )
+					if ( $infowindowdefault ) {
 						$html .= 'infowindow.open(' . $id . ', marker);';
+					}
 				}
 			}
 
@@ -624,13 +632,15 @@ class Odin_Shortcodes {
 		// Marker: show if address is not specified.
 		if ( $marker && $address ) {
 			// Add custom image.
-			if ( $markerimage )
+			if ( $markerimage ) {
 				$html .= 'var image = "'. $markerimage .'";';
+			}
 
 			$html .= 'var marker = new google.maps.Marker({ map: ' . $id . ',';
 
-			if ( $markerimage )
+			if ( $markerimage ) {
 				$html .= 'icon: image,';
+			}
 
 			$html .= 'position: ' . $id . '.getCenter()});';
 
@@ -639,8 +649,9 @@ class Odin_Shortcodes {
 				$html .= 'var contentString = "' . $infowindow . '";var infowindow = new google.maps.InfoWindow({content: contentString});google.maps.event.addListener(marker, \'click\', function() {infowindow.open(' . $id . ',marker);});';
 
 				// Infowindow default
-				if ( $infowindowdefault )
+				if ( $infowindowdefault ) {
 					$html .= 'infowindow.open(' . $id . ',marker);';
+				}
 			}
 		}
 
