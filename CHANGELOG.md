@@ -2,9 +2,10 @@
 
 #### v2.2.0 - xx/xx/2013 ####
 
-#### v2.1.4 - 10/11/2013 ####
+#### v2.1.4 - 15/11/2013 ####
 
 * Fixed new PHP code standards.
+* Fixed new JavaScript code standards.
 * Added `Odin_Thumbnail_Resizer` class.
 * Removed old `thumbnail.php` file.
 * Created a new `odin_thumbnail()` function with `Odin_Thumbnail_Resizer` class.
