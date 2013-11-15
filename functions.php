@@ -25,6 +25,7 @@ if ( ! isset( $content_width ) ) {
  */
 require_once get_template_directory() . '/core/classes/class-bootstrap-nav.php';
 require_once get_template_directory() . '/core/classes/class-shortcodes.php';
+require_once get_template_directory() . '/core/classes/class-thumbnail-resizer.php';
 // require_once get_template_directory() . '/core/classes/class-theme-options.php';
 // require_once get_template_directory() . '/core/classes/class-options-helper.php';
 // require_once get_template_directory() . '/core/classes/class-post-type.php';
@@ -40,6 +41,11 @@ require_once get_template_directory() . '/core/classes/class-shortcodes.php';
 function odin_setup_features() {
 
 	/**
+	 * Add support for multiple languages.
+	 */
+	load_theme_textdomain( 'odin', get_template_directory() . '/languages' );
+
+	/**
 	 * Register nav menus.
 	 */
 	register_nav_menus(
@@ -47,6 +53,11 @@ function odin_setup_features() {
 			'main-menu' => __( 'Main Menu', 'odin' )
 		)
 	);
+
+	/*
+	 * Add post_thumbnails suport.
+	 */
+	add_theme_support( 'post-thumbnails' );
 
 	/**
 	 * Support Custom Header.
@@ -77,11 +88,6 @@ function odin_setup_features() {
 	 * Support Custom Editor Style.
 	 */
 	add_editor_style( 'assets/css/editor-style.css' );
-
-	/**
-	 * Add support for multiple languages.
-	 */
-	load_theme_textdomain( 'odin', get_template_directory() . '/languages' );
 
 	/**
 	 * Add support for infinite scroll.
@@ -155,11 +161,6 @@ require_once get_template_directory() . '/inc/comments-loop.php';
  * Theme tools
  */
 require_once get_template_directory() . '/core/tools.php';
-
-/**
- * Add Custom post_thumbnails tools.
- */
-require_once get_template_directory() . '/core/thumbnails.php';
 
 /**
  * Automatically sets the post thumbnail.
@@ -251,11 +252,6 @@ require_once get_template_directory() . '/inc/optimize.php';
  * WP Custom Admin.
  */
 require_once get_template_directory() . '/inc/admin.php';
-
-/**
- * Odin LazyLoad support.
- */
-// add_filter( 'odin_thumbnail_html', 'odin_lazyload_placeholder' );
 
 /**
  * Load site scripts.

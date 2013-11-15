@@ -2,6 +2,13 @@
 
 #### v2.2.0 - xx/xx/2013 ####
 
+#### v2.1.4 - 10/11/2013 ####
+
+* Fixed new PHP code standards.
+* Added `Odin_Thumbnail_Resizer` class.
+* Removed old `thumbnail.php` file.
+* Created a new `odin_thumbnail()` function with `Odin_Thumbnail_Resizer` class.
+
 #### v2.1.3 - 10/11/2013 ####
 
 * Updated the Boostrap to version 3.0.2.

@@ -377,6 +377,36 @@ function odin_breadcrumbs( $homepage = '' ) {
 }
 
 /**
+ * Custom post thumbnail.
+ *
+ * @param int     $width  Width of the image.
+ * @param int     $height Height of the image.
+ * @param string  $class  Class attribute of the image.
+ * @param string  $alt    Alt attribute of the image.
+ * @param bool    $crop   Image crop.
+ * @param string  $class  Custom HTML classes.
+ *
+ * @return string         Return the post thumbnail.
+ */
+function odin_thumbnail( $width, $height, $alt, $crop = true, $class = '' ) {
+	if ( ! class_exists( 'Odin_Thumbnail_Resizer' ) ) {
+		return;
+	}
+
+	$thumb = get_post_thumbnail_id();
+
+	if ( $thumb ) {
+		$resizer = Odin_Thumbnail_Resizer::get_instance();
+		$url = wp_get_attachment_url( get_post_thumbnail_id(), 'full' );
+		$image = $resizer->process( $url, $width, $height, $crop );
+
+		$html = '<img class="wp-image-thumb img-responsive ' . sanitize_html_class( $class ) . '" src="' . $image . '" width="' . esc_attr( $width ) . '" height="' . esc_attr( $height ) . '" alt="' . esc_attr( $alt ) . '" />';
+
+		return apply_filters( 'odin_thumbnail_html', $html );
+	}
+}
+
+/**
  * Debug variables.
  *
  * @param  mixed $variable Object or Array for debug.
