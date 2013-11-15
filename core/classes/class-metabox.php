@@ -73,13 +73,13 @@ class Odin_Metabox {
 			// Localize strings.
 			wp_localize_script(
 				'odin-admin',
-				'odin_admin_params',
+				'odinAdminParams',
 				array(
-					'gallery_title'  => __( 'Add images in gallery', 'odin' ),
-					'gallery_button' => __( 'Add in gallery', 'odin' ),
-					'gallery_remove' => __( 'Remove image', 'odin' ),
-					'upload_title'   => __( 'Choose a file', 'odin' ),
-					'upload_button'  => __( 'Add file', 'odin' ),
+					'galleryTitle'  => __( 'Add images in gallery', 'odin' ),
+					'galleryButton' => __( 'Add in gallery', 'odin' ),
+					'galleryRemove' => __( 'Remove image', 'odin' ),
+					'uploadTitle'   => __( 'Choose a file', 'odin' ),
+					'uploadButton'  => __( 'Add file', 'odin' ),
 				)
 			);
 		}
