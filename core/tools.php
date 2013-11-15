@@ -81,11 +81,12 @@ function odin_pagination( $mid = 2, $end = 1, $show = false ) {
  *
  * @return string              Related Posts.
  */
-function odin_related_posts( $display = 'category', $qty = 5, $title = 'Artigos Relacionados', $thumb = true ) {
+function odin_related_posts( $display = 'category', $qty = 5, $title = '', $thumb = true ) {
 	global $post;
 
 	$show = false;
 	$post_qty = (int) $qty;
+	! empty( $title ) || $title = __( 'Related Posts', 'odin' );
 
 	// Creates arguments for WP_Query.
 	switch ( $display ) {
@@ -207,7 +208,9 @@ function odin_excerpt( $type = 'excerpt', $limit = 40 ) {
  *
  * @return string            HTML of breadcrumbs.
  */
-function odin_breadcrumbs( $homepage = 'In&iacute;cio' ) {
+function odin_breadcrumbs( $homepage = '' ) {
+	! empty( $homepage ) || $homepage = __( 'Home', 'odin' );
+
 	// Default html.
 	$current_before = '<li itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb/">';
 	$current_after  = '</li>';
