@@ -158,9 +158,9 @@ add_action( 'after_switch_theme', 'odin_flush_rewrite' );
 require_once get_template_directory() . '/inc/comments-loop.php';
 
 /**
- * Theme tools
+ * Core Helpers.
  */
-require_once get_template_directory() . '/core/tools.php';
+require_once get_template_directory() . '/core/helpers.php';
 
 /**
  * Automatically sets the post thumbnail.

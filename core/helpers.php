@@ -1,6 +1,11 @@
 <?php
 /**
- * Odin tools.
+ * Odin Helpers.
+ *
+ * @package  Odin
+ * @category Odin/Helpers
+ * @author   WPBrasil
+ * @version  2.1.4
  */
 
 /**
