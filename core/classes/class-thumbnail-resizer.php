@@ -172,7 +172,7 @@ class Odin_Thumbnail_Resizer {
 	/**
 	 * Callback to overwrite WP computing of thumbnail measures
 	 */
-	function aq_upscale( $default, $original_width, $original_height, $new_width, $new_height, $crop ) {
+	public function aq_upscale( $default, $original_width, $original_height, $new_width, $new_height, $crop ) {
 		// Let the wordpress default function handle this.
 		if ( ! $crop ) {
 			return null;
