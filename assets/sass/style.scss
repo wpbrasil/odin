@@ -68,7 +68,7 @@ Description: Odin main stylesheet.
 /* =General
 -------------------------------------------------------------- */
 html {
-    overflow-y: scroll;
+	overflow-y: scroll;
 }
 
 /* =Header
@@ -80,17 +80,17 @@ html {
 
 .site-title,
 .site-description {
-    margin-top: $line-height-computed;
-    margin-bottom: ($line-height-computed / 2);
+	margin-top: $line-height-computed;
+	margin-bottom: ($line-height-computed / 2);
 }
 
 .site-title {
-    a {
+	a {
 
-        &:hover {
+		&:hover {
 
-        }
-    }
+		}
+	}
 }
 
 .site-description {
@@ -143,18 +143,18 @@ html {
 }
 
 .entry-title {
-    margin-bottom: 0.4em;
+	margin-bottom: 0.4em;
 
-    a {
+	a {
 
-        &:hover {
+		&:hover {
 
-        }
-    }
+		}
+	}
 }
 
 .page-header {
-    margin-bottom: 1em;
+	margin-bottom: 1em;
 }
 
 .page-title {
@@ -162,137 +162,137 @@ html {
 }
 
 .entry-meta {
-    margin-bottom: $text-margin-bottom;
+	margin-bottom: $text-margin-bottom;
 
-    a {
+	a {
 
-    }
+	}
 }
 
 .sticky {
-    font-size: 100%;
+	font-size: 100%;
 }
 
 /* =Pagination
 -------------------------------------------------------------- */
 
 .pagination-wrap {
-    text-align: center;
-    margin-top: 15px;
+	text-align: center;
+	margin-top: 15px;
 
-    .infinite-scroll & {
-        display: none;
-    }
+	.infinite-scroll & {
+		display: none;
+	}
 }
 
 /* =Comments
 -------------------------------------------------------------- */
 
 .commentlist {
-    margin: 0;
-    padding: 0;
-    font-size: 13px;
-    line-height: 22px;
+	margin: 0;
+	padding: 0;
+	font-size: 13px;
+	line-height: 22px;
 
-    li.comment, li.pingback {
-        @include clearfix();
-        list-style: none;
-        margin-bottom: 10px;
-    }
+	li.comment, li.pingback {
+		@include clearfix();
+		list-style: none;
+		margin-bottom: 10px;
+	}
 
-    .comment-meta {
-        color: #666;
-        font-size: 12px;
-        line-height: 15px;
+	.comment-meta {
+		color: #666;
+		font-size: 12px;
+		line-height: 15px;
 
-        .fn {
-            font-size: 13px;
-            font-weight: 600;
-        }
-        a, .fn {
-            color: #444;
+		.fn {
+			font-size: 13px;
+			font-weight: 600;
+		}
+		a, .fn {
+			color: #444;
 
-            &:hover {
-                color: $link-color;
-                text-decoration: none;
-            }
-        }
-    }
-    .comment-author {
-        img {
-            float: left;
-            display: block;
-            margin-right: 10px;
-        }
-    }
+			&:hover {
+				color: $link-color;
+				text-decoration: none;
+			}
+		}
+	}
+	.comment-author {
+		img {
+			float: left;
+			display: block;
+			margin-right: 10px;
+		}
+	}
 
-    .comment-awaiting-moderation {
-        margin-top: 5px;
-        font-weight: bold;
-        color: #333;
-    }
+	.comment-awaiting-moderation {
+		margin-top: 5px;
+		font-weight: bold;
+		color: #333;
+	}
 }
 
 .bypostauthor {
-    font-size: 100%;
+	font-size: 100%;
 }
 
 .required {
-    color: #c00;
+	color: #c00;
 }
 
 #commentform {
-    font-size: 13px;
-    line-height: 22px;
+	font-size: 13px;
+	line-height: 22px;
 
-    label {
-        display: block;
-    }
+	label {
+		display: block;
+	}
 
-    p {
-        margin-bottom: 10px;
-    }
+	p {
+		margin-bottom: 10px;
+	}
 }
 
 /* =Sidebar and Widgets
 -------------------------------------------------------------- */
 
 .widget {
-    margin-bottom: $text-margin-bottom;
+	margin-bottom: $text-margin-bottom;
 
-    a {
+	a {
 
-        &:hover {
+		&:hover {
 
-        }
-    }
+		}
+	}
 
-    ul {
+	ul {
 
-        ul {
+		ul {
 
-        }
+		}
 
-        li {
+		li {
 
-        }
-    }
+		}
+	}
 }
 
 /* .widgettitle is a WordPress default */
 .widgettitle,
 .widget-title {
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 
 /* =Footer
 -------------------------------------------------------------- */
 
 #footer {
-    border-top: 1px solid #ddd;
-    margin-top: 20px;
-    padding: 20px 0 20px;
-    text-align: center;
+	border-top: 1px solid #ddd;
+	margin-top: 20px;
+	padding: 20px 0 20px;
+	text-align: center;
 }
 
 /* =Error 404 page
@@ -300,9 +300,9 @@ html {
 
 .error404 {
 
-    #searchform {
-        margin-bottom: $text-margin-bottom;
-    }
+	#searchform {
+		margin-bottom: $text-margin-bottom;
+	}
 }
 
 /* =Responsive Styles

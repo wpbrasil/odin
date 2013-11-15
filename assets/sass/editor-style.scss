@@ -32,9 +32,9 @@ Description: Used to style the TinyMCE editor.
 -------------------------------------------------------------- */
 
 body {
-    padding: 10px;
+	padding: 10px;
 }
 
 table {
-    @extend .table;
+	@extend .table;
 }

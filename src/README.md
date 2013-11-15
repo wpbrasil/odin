@@ -12,17 +12,17 @@ Clique [aqui](https://github.com/joyent/node/wiki/Installing-Node.js-via-package
 Com o Node instalado na sua máquina, você precisa instalar o Grunt. Execute o comando abaixo, para iniciar a instalação do Grunt.
 
 	```bash
-    $ sudo npm install -g grunt-cli
-    ```
+	$ sudo npm install -g grunt-cli
+	```
 
 ## Instalação dos pacotes do Grunt no Odin ##
 
 Com o Grunt instalado, é hora de instalar as dependências responsáveis pela execução das tarefas do Grunt no seu projeto.
 
 	```bash
-    $ cd ROOT_PATH/wp-content/themes/odin/src/
-    $ sudo npm install
-    ```
+	$ cd ROOT_PATH/wp-content/themes/odin/src/
+	$ sudo npm install
+	```
 
 ## Configuração no functions.php ##
 
@@ -39,37 +39,37 @@ Para usar os arquivos de JavaScript minificados pelo *Grunt* você deve ativar e
 ### Compilar arquivos do Sass, minificar e validar scripts: ###
 
 	```bash
-    $ grunt
-    ```
+	$ grunt
+	```
 
 ### Observar as mudanças no seu projeto ###
 
 	```bash
-    $ grunt watch
-    ```
+	$ grunt watch
+	```
 
 ### Comprimir imagens na pasta `images/`: ###
 
 	```bash
-    $ grunt optimize
-    ```
+	$ grunt optimize
+	```
 
 ### Atualizar os arquivos do Twitter Bootstrap: ###
 
 	```bash
-    $ grunt bootstrap
-    ```
+	$ grunt bootstrap
+	```
 
 ### Fazer o deploy dos arquivos: ###
 
 #### 1. via FTP ####
 
 	```bash
-    $ grunt ftp
-    ```
+	$ grunt ftp
+	```
 
 #### 2. via rsync ####
 
 	```bash
-    $ grunt rsync
+	$ grunt rsync
 	```
