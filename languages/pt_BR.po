@@ -2,529 +2,517 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odin v1.5.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-07 18:43-0300\n"
-"PO-Revision-Date: 2013-06-23 01:18:22+0000\n"
+"POT-Creation-Date: 2013-11-15 16:54-0300\n"
+"PO-Revision-Date: 2013-11-15 16:54-0300\n"
 "Last-Translator: Rafael Funchal <rafaelfunchal@gmail.com>\n"
 "Language-Team: WordPress Brasil Group\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.5.4\n"
-"X-Poedit-Language: \n"
-"X-Poedit-Country: \n"
+"X-Generator: Poedit 1.5.5\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
 "X-Poedit-Basepath: .\n"
-"X-Poedit-Bookmarks: \n"
+"X-Textdomain-Support: yes\n"
 "X-Poedit-SearchPath-0: ..\n"
-"X-Textdomain-Support: yes"
 
-#: 404.php:5
-#@ odin
+# @ odin
+#: ../404.php:5
 msgid "This is embarrassing, no?"
 msgstr "Isso é embaraçoso, não?"
 
-#: 404.php:9
-#@ odin
-msgid "It seems we can not find what you were looking for. Maybe a search or the links below can help."
-msgstr "Parece que não conseguimos encontrar o que você estava procurando. Talvez, uma pesquisa ou os links abaixo possam ajudar."
+# @ odin
+#: ../404.php:9
+msgid ""
+"It seems we can not find what you were looking for. Maybe a search or the "
+"links below can help."
+msgstr ""
+"Parece que não conseguimos encontrar o que você estava procurando. Talvez, "
+"uma pesquisa ou os links abaixo possam ajudar."
 
-#: 404.php:15
-#@ odin
+# @ odin
+#: ../404.php:15
 msgid "Most Used Categories"
 msgstr "Categorias mais usadas"
 
-#: archive.php:15
-#@ odin
-msgid "Blog Archives"
-msgstr "Arquivos do Blog"
-
-#: attachment.php:12
-#, php-format
-#@ odin
-msgid "Image total size: %s pixels"
-msgstr "Tamanho total da imagem: %s pixels"
-
-#: attachment.php:12
-#@ odin
-msgid "Full image link"
-msgstr "Link da imagem completa"
-
-#: attachment.php:19
-#, php-format
-#@ odin
-msgid "Back to %s"
-msgstr "Voltar para %s"
-
-#: attachment.php:19
-#, php-format
-#@ odin
-msgid "<span class=\"meta-nav\">&larr;</span> %s"
-msgstr "<span class=\"meta-nav\">&larr;</span> %s"
-
-#: attachment.php:25
-#: content.php:17
-#@ odin
-msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
-msgstr "Continue lendo <span class=\"meta-nav\">&rarr;</span>"
-
-#: attachment.php:26
-#: content.php:18
-#: page-sidebar.php:16
-#: page.php:11
-#: single-custom_type.php:23
-#: single.php:19
-#@ odin
-msgid "Pages:"
-msgstr "Páginas:"
-
-#: attachment.php:28
-#@ odin
-msgid "Next image &rarr;"
-msgstr "Próxima imagem &rarr;"
-
-#: attachment.php:29
-#@ odin
-msgid "&larr; Previous image"
-msgstr "&larr; Imagem anterior"
-
-#: comments.php:3
-#@ odin
-msgid "This post is password protected. Enter the password to view all comments."
-msgstr "Esse post é protegido por senha. Informe a senha para ver todos os comentários."
-
-#: comments.php:12
-#@ odin
-msgid "0 Comments"
-msgstr "0 Comentários"
-
-#: comments.php:12
-#: content.php:25
-#@ odin
-msgid "1 Comment"
-msgstr "1 Comentário"
-
-#: comments.php:12
-#: content.php:25
-#@ odin
-msgid "% Comments"
-msgstr "% Comentários"
-
-#: comments.php:18
-#: comments.php:27
-#@ odin
-msgid "&larr; Old Comments"
-msgstr "&larr; Comentários Antigos"
-
-#: comments.php:19
-#: comments.php:28
-#@ odin
-msgid "New Comments &rarr;"
-msgstr "Novos Comentários &rarr;"
-
-#: comments.php:33
-#@ odin
-msgid "Comments closed."
-msgstr "Comentários não são permitidos."
-
-#. gettext fix: identical singular and plural forms found, that may be ambiguous! Please check the code!
-#: comments.php:44
-#: content.php:25
-#@ odin
-msgid "Comment"
-msgid_plural "odin"
-msgstr[0] "Comentário"
-msgstr[1] "odin"
-
-#: comments.php:46
-#@ odin
-msgid "Name"
-msgstr "Nome"
-
-#: comments.php:47
-#@ odin
-msgid "E-mail"
-msgstr "E-mail"
-
-#: comments.php:48
-#@ odin
-msgid "Website"
-msgstr "Website"
-
-#: footer.php:3
-#@ odin
-msgid "All rights reserved"
-msgstr "Todos os direitos reservados"
-
-#: footer.php:3
-#, php-format
-#@ odin
-msgid "Powered by the <a href=\"%s\" rel=\"nofollow\" target=\"_blank\" itemprop=\"copyrightHolder\">Odin</a> forces and <a href=\"%s\" rel=\"nofollow\" target=\"_blank\">WordPress</a>."
-msgstr "Produzido pelas forças de <a href=\"%s\" rel=\"nofollow\" target=\"_blank\" itemprop=\"copyrightHolder\">Odin</a> e <a href=\"%s\" rel=\"nofollow\" target=\"_blank\">WordPress</a>."
-
-#: functions.php:24
-#@ odin
-msgid "Main Menu"
-msgstr "Menu Principal"
-
-#: functions.php:104
-#@ odin
-msgid "Main Sidebar"
-msgstr "Sidebar Principal"
-
-#: functions.php:106
-#@ odin
-msgid "Site Main Sidebar"
-msgstr "Sidebar principal do site"
-
-#: header.php:38
-#@ odin
-msgid "Skip to content"
-msgstr "Pular para o conteúdo"
-
-#: header.php:53
-#: header.php:54
-#@ odin
-msgid "Search:"
-msgstr "Pesquisar:"
-
-#: no-results.php:3
-#@ odin
-msgid "Nothing Found"
-msgstr "Nada Encontrado"
-
-#: no-results.php:6
-#@ odin
-msgid "No results were found for the requested archive. Maybe a search can help you to find any related post."
-msgstr "Nada encontrado para o arquivo selecionado. Talvez uma pesquisa possa ajudá-lo a encontrar um post relacionado."
-
-#: searchform.php:2
-#: searchform.php:4
-#@ odin
-msgid "Search"
-msgstr "Pesquisa"
-
-#: single-custom_type.php:17
-#: single.php:13
-#@ odin
-msgid "| Posted in"
-msgstr "| Publicado em"
-
-#: core/tools.php:44
-#@ odin
-msgid "&laquo; Previous"
-msgstr "&laquo; Anterior"
-
-#: core/tools.php:45
-#@ odin
-msgid "Next &raquo;"
-msgstr "Próximo &raquo;"
-
-#: core/tools.php:294
-#, php-format
-#@ odin
-msgid "%sCategory: %s%s"
-msgstr "%sCategoria: %s%s"
-
-#: core/tools.php:298
-#, php-format
-#@ odin
-msgid "%sTag: %s%s"
-msgstr "%sTag: %s%s"
-
-#: core/tools.php:306
-#, php-format
-#@ odin
-msgid "%sSearch result for: &quot;%s&quot;%s"
-msgstr "%sResultado da busca para: &quot;%s&quot;%s"
-
-#: core/tools.php:313
-#@ odin
-msgid "Posted by"
-msgstr "Publicado por"
-
-#: core/tools.php:352
-#@ odin
-msgid "404 Error"
-msgstr "Erro 404"
-
-#: core/tools.php:359
-#: core/tools.php:361
-#: inc/optimize.php:23
-#, php-format
-#@ odin
-msgid "Page %s"
-msgstr "Página %s"
-
-#: core/classes/class-metabox.php:75
-#: core/classes/class-metabox.php:380
-#: core/classes/class-theme-options.php:97
-#: core/classes/class-theme-options.php:614
-#@ odin
-msgid "Add images in gallery"
-msgstr "Adicionar imagens na galeria"
-
-#: core/classes/class-metabox.php:76
-#: core/classes/class-theme-options.php:98
-#@ odin
-msgid "Add in gallery"
-msgstr "Adicionar na galeria"
-
-#: core/classes/class-metabox.php:77
-#: core/classes/class-metabox.php:344
-#: core/classes/class-metabox.php:369
-#: core/classes/class-theme-options.php:99
-#: core/classes/class-theme-options.php:569
-#: core/classes/class-theme-options.php:603
-#@ odin
-msgid "Remove image"
-msgstr "Remover imagem"
-
-#: core/classes/class-metabox.php:320
-#: core/classes/class-theme-options.php:537
-#@ odin
-msgid "Select file"
-msgstr "Selecionar arquivo"
-
-#: core/classes/class-metabox.php:344
-#: core/classes/class-theme-options.php:569
-#@ odin
-msgid "Select image"
-msgstr "Selecionar imagem"
-
-#: core/classes/class-post-type.php:73
-#: core/classes/class-post-type.php:80
-#: core/classes/class-taxonomy.php:75
-#: core/classes/class-taxonomy.php:84
-#, php-format
-#@ odin
-msgid "%ss"
-msgstr "%ss"
-
-#: core/classes/class-post-type.php:74
-#: core/classes/class-taxonomy.php:76
-#, php-format
-#@ odin
-msgid "%s"
-msgstr "%s"
-
-#: core/classes/class-post-type.php:75
-#: core/classes/class-taxonomy.php:78
-#, php-format
-#@ odin
-msgid "View %s"
-msgstr "Ver %s"
-
-#: core/classes/class-post-type.php:76
-#: core/classes/class-taxonomy.php:79
-#, php-format
-#@ odin
-msgid "Edit %s"
-msgstr "Editar %s"
-
-#: core/classes/class-post-type.php:77
-#: core/classes/class-taxonomy.php:80
-#, php-format
-#@ odin
-msgid "Search %s"
-msgstr "Pesquisar %s"
-
-#: core/classes/class-post-type.php:78
-#: core/classes/class-taxonomy.php:81
-#, php-format
-#@ odin
-msgid "Update %s"
-msgstr "Atualizar  %s"
-
-#: core/classes/class-post-type.php:79
-#: core/classes/class-taxonomy.php:82
-#: core/classes/class-taxonomy.php:83
-#, php-format
-#@ odin
-msgid "Parent %s:"
-msgstr "Parente %s"
-
-#: core/classes/class-post-type.php:81
-#@ odin
-msgid "Add New"
-msgstr "Adicionar Novo"
-
-#: core/classes/class-post-type.php:82
-#: core/classes/class-taxonomy.php:85
-#, php-format
-#@ odin
-msgid "Add New %s"
-msgstr "Adicionar Novo %s"
-
-#: core/classes/class-post-type.php:83
-#: core/classes/class-taxonomy.php:86
-#, php-format
-#@ odin
-msgid "New %s"
-msgstr "Novo %s"
-
-#: core/classes/class-post-type.php:84
-#: core/classes/class-taxonomy.php:87
-#, php-format
-#@ odin
-msgid "All %ss"
-msgstr "Todos os %ss"
-
-#: core/classes/class-post-type.php:85
-#, php-format
-#@ odin
-msgid "No %s found"
-msgstr "Nenhum %s encontrado"
-
-#: core/classes/class-post-type.php:86
-#, php-format
-#@ odin
-msgid "No %s found in Trash"
-msgstr "Nenhum %s encontrado na Lixeira"
-
-#: core/classes/class-taxonomy.php:77
-#, php-format
-#@ odin
-msgid "Add or Remove %ss"
-msgstr "Adicionar ou Remover %ss"
-
-#: core/classes/class-taxonomy.php:88
-#, php-format
-#@ odin
-msgid "Separate %ss with comma"
-msgstr "Separe %ss com vírgula"
-
-#: core/classes/class-taxonomy.php:89
-#, php-format
-#@ odin
-msgid "Choose from %ss most used"
-msgstr "Escolher entre os %ss mais usados"
-
-#: inc/comments-loop.php:12
-#: inc/comments-loop.php:22
-#@ odin
-msgid "Edit"
-msgstr "Editar"
-
-#: inc/comments-loop.php:21
-#@ odin
-msgid "in"
-msgstr "em"
-
-#: inc/comments-loop.php:21
-#@ odin
-msgid "at"
-msgstr "as"
-
-#: inc/comments-loop.php:21
-#@ odin
-msgid "said:"
-msgstr "disse:"
-
-#: inc/comments-loop.php:25
-#@ odin
-msgid "Your comment is awaiting moderation."
-msgstr "Seu comentário está aguardando moderação."
-
-#: inc/comments-loop.php:30
-#@ odin
-msgid "Respond"
-msgstr "Responder"
-
-#: archive.php:9
-#@ odin
+# @ odin
+#: ../archive.php:9
 msgid "Daily Archives:"
 msgstr "Arquivos Diários:"
 
-#: archive.php:11
-#@ odin
+# @ odin
+#: ../archive.php:11
 msgid "Monthly Archives:"
 msgstr "Arquivos Mensais:"
 
-#: archive.php:13
-#@ odin
+# @ odin
+#: ../archive.php:13
 msgid "Yearly Archives:"
 msgstr "Arquivos Anuais:"
 
-#: author.php:6
-#@ odin
+# @ odin
+#: ../archive.php:15
+msgid "Blog Archives"
+msgstr "Arquivos do Blog"
+
+# @ odin
+#: ../attachment.php:12
+#, php-format
+msgid "Image total size: %s pixels"
+msgstr "Tamanho total da imagem: %s pixels"
+
+# @ odin
+#: ../attachment.php:12
+msgid "Full image link"
+msgstr "Link da imagem completa"
+
+# @ odin
+#: ../attachment.php:19
+#, php-format
+msgid "Back to %s"
+msgstr "Voltar para %s"
+
+# @ odin
+#: ../attachment.php:19
+#, php-format
+msgid "<span class=\"meta-nav\">&larr;</span> %s"
+msgstr "<span class=\"meta-nav\">&larr;</span> %s"
+
+# @ odin
+#: ../attachment.php:25 ../content.php:17
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Continue lendo <span class=\"meta-nav\">&rarr;</span>"
+
+# @ odin
+#: ../attachment.php:26 ../content.php:18 ../page-sidebar.php:16
+#: ../page.php:11 ../single-custom_type.php:23 ../single.php:19
+msgid "Pages:"
+msgstr "Páginas:"
+
+# @ odin
+#: ../attachment.php:28
+msgid "Next image &rarr;"
+msgstr "Próxima imagem &rarr;"
+
+# @ odin
+#: ../attachment.php:29
+msgid "&larr; Previous image"
+msgstr "&larr; Imagem anterior"
+
+# @ odin
+#: ../author.php:6
 msgid "Author Archives:"
 msgstr "Arquivo do Autor:"
 
-#: category.php:6
-#@ odin
-msgid "Category Archives:"
-msgstr "Arquivo da Categoria:"
-
-#: core/classes/class-metabox.php:78
-#: core/classes/class-theme-options.php:100
-#@ odin
-msgid "Choose a file"
-msgstr "Selecione um arquivo"
-
-#: core/classes/class-metabox.php:79
-#: core/classes/class-theme-options.php:101
-#@ odin
-msgid "Add file"
-msgstr "Adicionar arquivo"
-
-#: search.php:6
-#@ odin
-msgid "Search results for:"
-msgstr "Resultados de busca por:"
-
-#: tag.php:6
-#@ odin
-msgid "Tag Archives:"
-msgstr "Arquivo da Tag:"
-
-#: comments.php:13
-#@ odin
-msgid "to"
-msgstr "para"
-
-#: content.php:4
-#@ odin
-msgid "Permalink to"
-msgstr "Link permanente para"
-
-#: content.php:7
-#: single-custom_type.php:13
-#: single.php:9
-#@ odin
-msgid "By"
-msgstr "Por"
-
-#: content.php:11
-#: content.php:21
-#: single-custom_type.php:26
-#: single.php:22
-#@ odin
-msgid "Posted in"
-msgstr "Publicado em"
-
-#: inc/comments-loop.php:12
-#@ odin
-msgid "Pingback:"
-msgstr "Pingback:"
-
-#: content.php:9
-#: single-custom_type.php:15
-#: single.php:11
-#@ odin
-msgid "All posts by"
-msgstr "Todos posts de"
-
-#: content.php:22
-#: single-custom_type.php:27
-#: single.php:23
-#@ odin
-msgid "and tagged as"
-msgstr "e marcado como"
-
-#: author.php:11
-#@ odin
+# @ odin
+#: ../author.php:11
 msgid "About"
 msgstr "Sobre"
 
+# @ odin
+#: ../category.php:6
+msgid "Category Archives:"
+msgstr "Arquivo da Categoria:"
+
+# @ odin
+#: ../comments.php:3
+msgid ""
+"This post is password protected. Enter the password to view all comments."
+msgstr ""
+"Esse post é protegido por senha. Informe a senha para ver todos os "
+"comentários."
+
+# @ odin
+#: ../comments.php:12
+msgid "0 Comments"
+msgstr "0 Comentários"
+
+# @ odin
+#: ../comments.php:12 ../content.php:25
+msgid "1 Comment"
+msgstr "1 Comentário"
+
+# @ odin
+#: ../comments.php:12 ../content.php:25
+msgid "% Comments"
+msgstr "% Comentários"
+
+# @ odin
+#: ../comments.php:13
+msgid "to"
+msgstr "para"
+
+# @ odin
+#: ../comments.php:18 ../comments.php:27
+msgid "&larr; Old Comments"
+msgstr "&larr; Comentários Antigos"
+
+# @ odin
+#: ../comments.php:19 ../comments.php:28
+msgid "New Comments &rarr;"
+msgstr "Novos Comentários &rarr;"
+
+# @ odin
+#: ../comments.php:33
+msgid "Comments closed."
+msgstr "Comentários não são permitidos."
+
+# @ odin
+#: ../comments.php:44 ../content.php:25
+#, fuzzy
+msgid "Comment"
+msgstr "Comentário"
+
+# @ odin
+#: ../comments.php:46
+msgid "Name"
+msgstr "Nome"
+
+# @ odin
+#: ../comments.php:47
+msgid "E-mail"
+msgstr "E-mail"
+
+# @ odin
+#: ../comments.php:48
+msgid "Website"
+msgstr "Website"
+
+# @ odin
+#: ../content.php:4
+msgid "Permalink to"
+msgstr "Link permanente para"
+
+# @ odin
+#: ../content.php:7 ../single-custom_type.php:13 ../single.php:9
+msgid "By"
+msgstr "Por"
+
+# @ odin
+#: ../content.php:9 ../single-custom_type.php:15 ../single.php:11
+msgid "All posts by"
+msgstr "Todos posts de"
+
+# @ odin
+#: ../content.php:11 ../content.php:21 ../single-custom_type.php:26
+#: ../single.php:22
+msgid "Posted in"
+msgstr "Publicado em"
+
+# @ odin
+#: ../content.php:22 ../single-custom_type.php:27 ../single.php:23
+msgid "and tagged as"
+msgstr "e marcado como"
+
+# @ odin
+#: ../footer.php:3
+msgid "All rights reserved"
+msgstr "Todos os direitos reservados"
+
+# @ odin
+#: ../footer.php:3
+#, php-format
+msgid ""
+"Powered by the <a href=\"%s\" rel=\"nofollow\" target=\"_blank\" itemprop="
+"\"copyrightHolder\">Odin</a> forces and <a href=\"%s\" rel=\"nofollow\" "
+"target=\"_blank\">WordPress</a>."
+msgstr ""
+"Produzido pelas forças de <a href=\"%s\" rel=\"nofollow\" target=\"_blank\" "
+"itemprop=\"copyrightHolder\">Odin</a> e <a href=\"%s\" rel=\"nofollow\" "
+"target=\"_blank\">WordPress</a>."
+
+# @ odin
+#: ../functions.php:24
+msgid "Main Menu"
+msgstr "Menu Principal"
+
+# @ odin
+#: ../functions.php:104
+msgid "Main Sidebar"
+msgstr "Sidebar Principal"
+
+# @ odin
+#: ../functions.php:106
+msgid "Site Main Sidebar"
+msgstr "Sidebar principal do site"
+
+# @ odin
+#: ../header.php:38
+msgid "Skip to content"
+msgstr "Pular para o conteúdo"
+
+# @ odin
+#: ../header.php:53 ../header.php:54
+msgid "Search:"
+msgstr "Pesquisar:"
+
+#: ../header.php:74
+msgid "Create a menu"
+msgstr "Criar um menu"
+
+# @ odin
+#: ../no-results.php:3
+msgid "Nothing Found"
+msgstr "Nada Encontrado"
+
+# @ odin
+#: ../no-results.php:6
+msgid ""
+"No results were found for the requested archive. Maybe a search can help you "
+"to find any related post."
+msgstr ""
+"Nada encontrado para o arquivo selecionado. Talvez uma pesquisa possa ajudá-"
+"lo a encontrar um post relacionado."
+
+# @ odin
+#: ../search.php:6
+msgid "Search results for:"
+msgstr "Resultados de busca por:"
+
+# @ odin
+#: ../searchform.php:2
+msgid "Search"
+msgstr "Pesquisa"
+
+# @ odin
+#: ../single-custom_type.php:17 ../single.php:13
+msgid "| Posted in"
+msgstr "| Publicado em"
+
+# @ odin
+#: ../tag.php:6
+msgid "Tag Archives:"
+msgstr "Arquivo da Tag:"
+
+# @ odin
+#: ../core/tools.php:44
+msgid "&laquo; Previous"
+msgstr "&laquo; Anterior"
+
+# @ odin
+#: ../core/tools.php:45
+msgid "Next &raquo;"
+msgstr "Próximo &raquo;"
+
+# @ odin
+#: ../core/tools.php:294
+#, php-format
+msgid "%sCategory: %s%s"
+msgstr "%sCategoria: %s%s"
+
+# @ odin
+#: ../core/tools.php:298
+#, php-format
+msgid "%sTag: %s%s"
+msgstr "%sTag: %s%s"
+
+# @ odin
+#: ../core/tools.php:306
+#, php-format
+msgid "%sSearch result for: &quot;%s&quot;%s"
+msgstr "%sResultado da busca para: &quot;%s&quot;%s"
+
+# @ odin
+#: ../core/tools.php:313
+msgid "Posted by"
+msgstr "Publicado por"
+
+# @ odin
+#: ../core/tools.php:352
+msgid "404 Error"
+msgstr "Erro 404"
+
+# @ odin
+#: ../core/tools.php:359 ../core/tools.php:361 ../inc/optimize.php:23
+#, php-format
+msgid "Page %s"
+msgstr "Página %s"
+
+# @ odin
+#: ../core/classes/class-metabox.php:75 ../core/classes/class-metabox.php:380
+#: ../core/classes/class-theme-options.php:97
+#: ../core/classes/class-theme-options.php:614
+msgid "Add images in gallery"
+msgstr "Adicionar imagens na galeria"
+
+# @ odin
+#: ../core/classes/class-metabox.php:76
+#: ../core/classes/class-theme-options.php:98
+msgid "Add in gallery"
+msgstr "Adicionar na galeria"
+
+# @ odin
+#: ../core/classes/class-metabox.php:77 ../core/classes/class-metabox.php:344
+#: ../core/classes/class-metabox.php:369
+#: ../core/classes/class-theme-options.php:99
+#: ../core/classes/class-theme-options.php:569
+#: ../core/classes/class-theme-options.php:603
+msgid "Remove image"
+msgstr "Remover imagem"
+
+# @ odin
+#: ../core/classes/class-metabox.php:78
+#: ../core/classes/class-theme-options.php:100
+msgid "Choose a file"
+msgstr "Selecione um arquivo"
+
+# @ odin
+#: ../core/classes/class-metabox.php:79
+#: ../core/classes/class-theme-options.php:101
+msgid "Add file"
+msgstr "Adicionar arquivo"
+
+# @ odin
+#: ../core/classes/class-metabox.php:320
+#: ../core/classes/class-theme-options.php:537
+msgid "Select file"
+msgstr "Selecionar arquivo"
+
+# @ odin
+#: ../core/classes/class-metabox.php:344
+#: ../core/classes/class-theme-options.php:569
+msgid "Select image"
+msgstr "Selecionar imagem"
+
+# @ odin
+#: ../core/classes/class-post-type.php:73
+#: ../core/classes/class-post-type.php:80
+#: ../core/classes/class-taxonomy.php:75 ../core/classes/class-taxonomy.php:84
+#, php-format
+msgid "%ss"
+msgstr "%ss"
+
+# @ odin
+#: ../core/classes/class-post-type.php:74
+#: ../core/classes/class-taxonomy.php:76
+#, php-format
+msgid "%s"
+msgstr "%s"
+
+# @ odin
+#: ../core/classes/class-post-type.php:75
+#: ../core/classes/class-taxonomy.php:78
+#, php-format
+msgid "View %s"
+msgstr "Ver %s"
+
+# @ odin
+#: ../core/classes/class-post-type.php:76
+#: ../core/classes/class-taxonomy.php:79
+#, php-format
+msgid "Edit %s"
+msgstr "Editar %s"
+
+# @ odin
+#: ../core/classes/class-post-type.php:77
+#: ../core/classes/class-taxonomy.php:80
+#, php-format
+msgid "Search %s"
+msgstr "Pesquisar %s"
+
+# @ odin
+#: ../core/classes/class-post-type.php:78
+#: ../core/classes/class-taxonomy.php:81
+#, php-format
+msgid "Update %s"
+msgstr "Atualizar  %s"
+
+# @ odin
+#: ../core/classes/class-post-type.php:79
+#: ../core/classes/class-taxonomy.php:82 ../core/classes/class-taxonomy.php:83
+#, php-format
+msgid "Parent %s:"
+msgstr "Parente %s"
+
+# @ odin
+#: ../core/classes/class-post-type.php:81
+msgid "Add New"
+msgstr "Adicionar Novo"
+
+# @ odin
+#: ../core/classes/class-post-type.php:82
+#: ../core/classes/class-taxonomy.php:85
+#, php-format
+msgid "Add New %s"
+msgstr "Adicionar Novo %s"
+
+# @ odin
+#: ../core/classes/class-post-type.php:83
+#: ../core/classes/class-taxonomy.php:86
+#, php-format
+msgid "New %s"
+msgstr "Novo %s"
+
+# @ odin
+#: ../core/classes/class-post-type.php:84
+#: ../core/classes/class-taxonomy.php:87
+#, php-format
+msgid "All %ss"
+msgstr "Todos os %ss"
+
+# @ odin
+#: ../core/classes/class-post-type.php:85
+#, php-format
+msgid "No %s found"
+msgstr "Nenhum %s encontrado"
+
+# @ odin
+#: ../core/classes/class-post-type.php:86
+#, php-format
+msgid "No %s found in Trash"
+msgstr "Nenhum %s encontrado na Lixeira"
+
+# @ odin
+#: ../core/classes/class-taxonomy.php:77
+#, php-format
+msgid "Add or Remove %ss"
+msgstr "Adicionar ou Remover %ss"
+
+# @ odin
+#: ../core/classes/class-taxonomy.php:88
+#, php-format
+msgid "Separate %ss with comma"
+msgstr "Separe %ss com vírgula"
+
+# @ odin
+#: ../core/classes/class-taxonomy.php:89
+#, php-format
+msgid "Choose from %ss most used"
+msgstr "Escolher entre os %ss mais usados"
+
+# @ odin
+#: ../inc/comments-loop.php:12
+msgid "Pingback:"
+msgstr "Pingback:"
+
+# @ odin
+#: ../inc/comments-loop.php:12 ../inc/comments-loop.php:22
+msgid "Edit"
+msgstr "Editar"
+
+# @ odin
+#: ../inc/comments-loop.php:21
+msgid "in"
+msgstr "em"
+
+# @ odin
+#: ../inc/comments-loop.php:21
+msgid "at"
+msgstr "as"
+
+# @ odin
+#: ../inc/comments-loop.php:21
+msgid "said:"
+msgstr "disse:"
+
+# @ odin
+#: ../inc/comments-loop.php:25
+msgid "Your comment is awaiting moderation."
+msgstr "Seu comentário está aguardando moderação."
+
+# @ odin
+#: ../inc/comments-loop.php:30
+msgid "Respond"
+msgstr "Responder"

@@ -54,6 +54,7 @@
                                 <input type="text" class="input-large search-query" name="s" id="navbar-search" placeholder="<?php _e( 'Search:', 'odin' ); ?>" />
                             </form>
                             <?php
+                            if ( has_nav_menu( 'main-menu' ) ) :
                                 wp_nav_menu(
                                     array(
                                         'theme_location' => 'main-menu',
@@ -63,7 +64,17 @@
                                         'walker'         => new Odin_Bootstrap_Nav_Walker()
                                     )
                                 );
+                            else :
                             ?>
+                            <ul class="nav navbar-nav">
+                                <li class="active">
+                                    <a href="<?php echo home_url(); ?>">Home</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo admin_url('nav-menus.php'); ?>"><?php _e('Create a menu', 'odin'); ?></a>
+                                </li>
+                            </ul>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
