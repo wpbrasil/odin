@@ -26,56 +26,56 @@
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?> itemscope="" itemtype="http://schema.org/WebPage">
-    <div class="container">
-        <header id="header" role="banner">
-            <?php if ( is_home() ) : ?>
-                <h1 class="site-title"><a href="<?php echo home_url(); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-                <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
-            <?php else: ?>
-                <div class="site-title h1"><a href="<?php echo home_url(); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></div>
-                <div class="site-description h2"><?php bloginfo( 'description' ); ?></div>
-            <?php endif ?>
+	<div class="container">
+		<header id="header" role="banner">
+			<?php if ( is_home() ) : ?>
+				<h1 class="site-title"><a href="<?php echo home_url(); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+				<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
+			<?php else: ?>
+				<div class="site-title h1"><a href="<?php echo home_url(); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></div>
+				<div class="site-description h2"><?php bloginfo( 'description' ); ?></div>
+			<?php endif ?>
 
-            <?php $header_image = get_header_image();
-            if ( ! empty( $header_image ) ) : ?>
-                <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( $header_image ); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="" /></a>
-            <?php endif; ?>
-            <nav id="main-navigation" class="navbar navbar-default" role="navigation">
-                <a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to content', 'odin' ); ?>"><?php _e( 'Skip to content', 'odin' ); ?></a>
-                    <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-navigation">
-                    <span class="sr-only"><?php _e( 'Toggle navigation', 'odin' ); ?></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <?php /*
+			<?php $header_image = get_header_image();
+			if ( ! empty( $header_image ) ) : ?>
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( $header_image ); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="" /></a>
+			<?php endif; ?>
+			<nav id="main-navigation" class="navbar navbar-default" role="navigation">
+				<a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to content', 'odin' ); ?>"><?php _e( 'Skip to content', 'odin' ); ?></a>
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-navigation">
+					<span class="sr-only"><?php _e( 'Toggle navigation', 'odin' ); ?></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<?php /*
 
-                    <a class="navbar-brand" href="<?php echo home_url(); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+					<a class="navbar-brand" href="<?php echo home_url(); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
 
-                    */ ?>
-                </div>
-                <div class="collapse navbar-collapse navbar-main-navigation">
-                    <?php
-                        wp_nav_menu(
-                            array(
-                                'theme_location' => 'main-menu',
-                                'depth'          => 2,
-                                'container'      => false,
-                                'menu_class'     => 'nav navbar-nav',
-                                'fallback_cb'    => 'Odin_Bootstrap_Nav_Walker::fallback',
-                                'walker'         => new Odin_Bootstrap_Nav_Walker()
-                            )
-                        );
-                    ?>
-                    <form method="get" class="navbar-form navbar-right" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
-                        <label for="navbar-search" class="sr-only"><?php _e( 'Search:', 'odin' ); ?></label>
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="s" id="navbar-search" />
-                        </div>
-                        <button type="submit" class="btn btn-default"><?php _e( 'Search', 'odin' ); ?></button>
-                    </form>
-                </div><!-- /.navbar-collapse -->
-            </nav><!-- #main-menu -->
-        </header><!-- #header -->
-        <div id="main" class="row">
+					*/ ?>
+				</div>
+				<div class="collapse navbar-collapse navbar-main-navigation">
+					<?php
+						wp_nav_menu(
+							array(
+								'theme_location' => 'main-menu',
+								'depth'          => 2,
+								'container'      => false,
+								'menu_class'     => 'nav navbar-nav',
+								'fallback_cb'    => 'Odin_Bootstrap_Nav_Walker::fallback',
+								'walker'         => new Odin_Bootstrap_Nav_Walker()
+							)
+						);
+					?>
+					<form method="get" class="navbar-form navbar-right" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
+						<label for="navbar-search" class="sr-only"><?php _e( 'Search:', 'odin' ); ?></label>
+						<div class="form-group">
+							<input type="text" class="form-control" name="s" id="navbar-search" />
+						</div>
+						<button type="submit" class="btn btn-default"><?php _e( 'Search', 'odin' ); ?></button>
+					</form>
+				</div><!-- /.navbar-collapse -->
+			</nav><!-- #main-menu -->
+		</header><!-- #header -->
+		<div id="main" class="row">

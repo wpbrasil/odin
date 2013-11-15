@@ -2,24 +2,24 @@
  * Custom login styles.
  */
 .login h1 a {
-    background: url('../images/logo-login.png') top center no-repeat !important;
-    height: 67px;
-    width: 325px !important;
+	background: url('../images/logo-login.png') top center no-repeat !important;
+	height: 67px;
+	width: 325px !important;
 }
 
 /**
  * Custom admin styles.
  */
 #footer-upgrade {
-    visibility: hidden !important;
+	visibility: hidden !important;
 }
 
 #footer-left {
-    float: right !important;
+	float: right !important;
 }
 
 #contextual-help-link-wrap,
 #wp-version-message,
 #normal-sortables #dashboard_right_now .inside .versions p {
-    display: none !important;
+	display: none !important;
 }

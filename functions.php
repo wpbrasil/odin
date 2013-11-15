@@ -22,7 +22,7 @@ define( 'ODIN_GRUNT_SUPPORT', false );
  * Sets content width.
  */
 if ( ! isset( $content_width ) )
-    $content_width = 600;
+	$content_width = 600;
 
 /**
  * Odin Classes.
@@ -43,81 +43,81 @@ require_once get_template_directory() . '/core/classes/class-shortcodes.php';
  */
 function odin_setup_features() {
 
-    /**
-     * Register nav menus.
-     */
-    register_nav_menus(
-        array(
-            'main-menu' => __( 'Main Menu', 'odin' )
-        )
-    );
+	/**
+	 * Register nav menus.
+	 */
+	register_nav_menus(
+		array(
+			'main-menu' => __( 'Main Menu', 'odin' )
+		)
+	);
 
-    /**
-     * Support Custom Header.
-     */
-    $default = array(
-        'width'         => 0,
-        'height'        => 0,
-        'flex-height'   => false,
-        'flex-width'    => false,
-        'header-text'   => false,
-        'default-image' => '',
-        'uploads'       => true,
-    );
+	/**
+	 * Support Custom Header.
+	 */
+	$default = array(
+		'width'         => 0,
+		'height'        => 0,
+		'flex-height'   => false,
+		'flex-width'    => false,
+		'header-text'   => false,
+		'default-image' => '',
+		'uploads'       => true,
+	);
 
-    add_theme_support( 'custom-header', $default );
+	add_theme_support( 'custom-header', $default );
 
-    /**
-     * Support Custom Background.
-     */
-    $defaults = array(
-        'default-color' => '',
-        'default-image' => '',
-    );
+	/**
+	 * Support Custom Background.
+	 */
+	$defaults = array(
+		'default-color' => '',
+		'default-image' => '',
+	);
 
-    add_theme_support( 'custom-background', $defaults );
+	add_theme_support( 'custom-background', $defaults );
 
-    /**
-     * Support Custom Editor Style.
-     */
-    add_editor_style( 'assets/css/editor-style.css' );
+	/**
+	 * Support Custom Editor Style.
+	 */
+	add_editor_style( 'assets/css/editor-style.css' );
 
-    /**
-     * Add support for multiple languages.
-     */
-    load_theme_textdomain( 'odin', get_template_directory() . '/languages' );
+	/**
+	 * Add support for multiple languages.
+	 */
+	load_theme_textdomain( 'odin', get_template_directory() . '/languages' );
 
-    /**
-     * Add support for infinite scroll.
-     */
-    add_theme_support( 'infinite-scroll', array(
-        'type'           => 'scroll',
-        'footer_widgets' => false,
-        'container'      => 'content',
-        'wrapper'        => false,
-        'render'         => false,
-        'posts_per_page' => get_option( 'posts_per_page' )
-    ) );
+	/**
+	 * Add support for infinite scroll.
+	 */
+	add_theme_support( 'infinite-scroll', array(
+		'type'           => 'scroll',
+		'footer_widgets' => false,
+		'container'      => 'content',
+		'wrapper'        => false,
+		'render'         => false,
+		'posts_per_page' => get_option( 'posts_per_page' )
+	) );
 
-    /**
-     * Add support for Post Formats.
-     */
-    // add_theme_support( 'post-formats', array(
-    //     'aside',
-    //     'gallery',
-    //     'link',
-    //     'image',
-    //     'quote',
-    //     'status',
-    //     'video',
-    //     'audio',
-    //     'chat'
-    // ) );
+	/**
+	 * Add support for Post Formats.
+	 */
+	// add_theme_support( 'post-formats', array(
+	//     'aside',
+	//     'gallery',
+	//     'link',
+	//     'image',
+	//     'quote',
+	//     'status',
+	//     'video',
+	//     'audio',
+	//     'chat'
+	// ) );
 
-    /**
-     * Support The Excerpt on pages.
-     */
-    // add_post_type_support( 'page', 'excerpt' );
+	/**
+	 * Support The Excerpt on pages.
+	 */
+	// add_post_type_support( 'page', 'excerpt' );
 }
 
 add_action( 'after_setup_theme', 'odin_setup_features' );
@@ -126,17 +126,17 @@ add_action( 'after_setup_theme', 'odin_setup_features' );
  * Register sidebars.
  */
 function odin_widgets_init() {
-    register_sidebar(
-        array(
-            'name' => __( 'Main Sidebar', 'odin' ),
-            'id' => 'main-sidebar',
-            'description' => __( 'Site Main Sidebar', 'odin' ),
-            'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-            'after_widget' => '</aside>',
-            'before_title' => '<h3 class="widgettitle widget-title">',
-            'after_title' => '</h3>',
-        )
-    );
+	register_sidebar(
+		array(
+			'name' => __( 'Main Sidebar', 'odin' ),
+			'id' => 'main-sidebar',
+			'description' => __( 'Site Main Sidebar', 'odin' ),
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget' => '</aside>',
+			'before_title' => '<h3 class="widgettitle widget-title">',
+			'after_title' => '</h3>',
+		)
+	);
 }
 
 add_action( 'widgets_init', 'odin_widgets_init' );
@@ -145,7 +145,7 @@ add_action( 'widgets_init', 'odin_widgets_init' );
  * Flush Rewrite Rules for new CPTs and Taxonomies.
  */
 function odin_flush_rewrite() {
-    flush_rewrite_rules();
+	flush_rewrite_rules();
 }
 
 add_action( 'after_switch_theme', 'odin_flush_rewrite' );
@@ -171,18 +171,18 @@ require_once get_template_directory() . '/core/thumbnails.php';
  * @global array $post WP post object.
  */
 function odin_autoset_featured() {
-    global $post;
-    if ( isset( $post->ID ) ) {
-        $already_has_thumb = has_post_thumbnail( $post->ID );
-        if ( ! $already_has_thumb ) {
-            $attached_image = get_children( 'post_parent=' . $post->ID . '&post_type=attachment&post_mime_type=image&numberposts=1' );
-            if ( $attached_image ) {
-                foreach ( $attached_image as $attachment_id => $attachment ) {
-                    set_post_thumbnail( $post->ID, $attachment_id );
-                }
-            }
-        }
-    }
+	global $post;
+	if ( isset( $post->ID ) ) {
+		$already_has_thumb = has_post_thumbnail( $post->ID );
+		if ( ! $already_has_thumb ) {
+			$attached_image = get_children( 'post_parent=' . $post->ID . '&post_type=attachment&post_mime_type=image&numberposts=1' );
+			if ( $attached_image ) {
+				foreach ( $attached_image as $attachment_id => $attachment ) {
+					set_post_thumbnail( $post->ID, $attachment_id );
+				}
+			}
+		}
+	}
 }
 
 // add_action( 'the_post', 'odin_autoset_featured' );
@@ -202,19 +202,19 @@ function odin_autoset_featured() {
  * @return string            Custom thumbnails.
  */
 function odin_related_posts_custom_thumbnails( $thumbnail ) {
-    // Edit these variables:
-    $width  = 100;
-    $height = 100;
-    $crop   = true;
+	// Edit these variables:
+	$width  = 100;
+	$height = 100;
+	$crop   = true;
 
-    if ( get_post_thumbnail_id() ) {
-        $url = wp_get_attachment_url( get_post_thumbnail_id(), 'full' );
-        $image = aq_resize( $url, $width, $height, $crop );
+	if ( get_post_thumbnail_id() ) {
+		$url = wp_get_attachment_url( get_post_thumbnail_id(), 'full' );
+		$image = aq_resize( $url, $width, $height, $crop );
 
-        $html = '<img class="wp-image-thumb" src="' . $image . '" width="' . $width . '" height="' . $height . '" alt="' . get_the_title() . '" />';
+		$html = '<img class="wp-image-thumb" src="' . $image . '" width="' . $width . '" height="' . $height . '" alt="' . get_the_title() . '" />';
 
-        return apply_filters( 'odin_thumbnail_html', $html );
-    }
+		return apply_filters( 'odin_thumbnail_html', $html );
+	}
 }
 
 // add_filter( 'odin_related_posts', 'odin_related_posts_custom_thumbnails' );
@@ -223,11 +223,11 @@ function odin_related_posts_custom_thumbnails( $thumbnail ) {
  * WooCommerce and Jigoshop theme support.
  */
 function odin_woocommerce_jigoshop_content_wrapper() {
-    echo '<div id="primary" class="col-md-8">';
+	echo '<div id="primary" class="col-md-8">';
 }
 
 function odin_woocommerce_jigoshop_content_wrapper_end() {
-    echo '</div>';
+	echo '</div>';
 }
 
 /**
@@ -262,38 +262,38 @@ require_once get_template_directory() . '/inc/admin.php';
  * Load site scripts.
  */
 function odin_enqueue_scripts() {
-    $template_url = get_template_directory_uri();
+	$template_url = get_template_directory_uri();
 
-    // Loads Odin main stylesheet.
-    wp_enqueue_style( 'odin-style', get_stylesheet_uri(), array(), null, 'all' );
+	// Loads Odin main stylesheet.
+	wp_enqueue_style( 'odin-style', get_stylesheet_uri(), array(), null, 'all' );
 
-    // jQuery.
-    wp_enqueue_script( 'jquery' );
+	// jQuery.
+	wp_enqueue_script( 'jquery' );
 
-    // bxSlider.
-    // wp_enqueue_script( 'bxslider', $template_url . '/assets/js/jquery.bxslider.min.js', array(), null, true );
+	// bxSlider.
+	// wp_enqueue_script( 'bxslider', $template_url . '/assets/js/jquery.bxslider.min.js', array(), null, true );
 
-    // Twitter Bootstrap.
-    wp_enqueue_script( 'bootstrap', $template_url . '/assets/js/bootstrap.min.js', array(), null, true );
+	// Twitter Bootstrap.
+	wp_enqueue_script( 'bootstrap', $template_url . '/assets/js/bootstrap.min.js', array(), null, true );
 
-    // General scripts.
-    if ( false == ODIN_GRUNT_SUPPORT ) {
+	// General scripts.
+	if ( false == ODIN_GRUNT_SUPPORT ) {
 
-        // FitVids.
-        wp_enqueue_script( 'fitvids', $template_url . '/assets/js/jquery.fitvids.min.js', array(), null, true );
+		// FitVids.
+		wp_enqueue_script( 'fitvids', $template_url . '/assets/js/jquery.fitvids.min.js', array(), null, true );
 
-        // Main jQuery.
-        wp_enqueue_script( 'odin-main', $template_url . '/assets/js/main.js', array(), null, true );
-    } else {
-        wp_enqueue_script( 'odin-main-min', $template_url . '/assets/js/main.min.js', array(), null, true );
-    }
+		// Main jQuery.
+		wp_enqueue_script( 'odin-main', $template_url . '/assets/js/main.js', array(), null, true );
+	} else {
+		wp_enqueue_script( 'odin-main-min', $template_url . '/assets/js/main.min.js', array(), null, true );
+	}
 
-    // Load Thread comments WordPress script.
-    if ( is_singular() && get_option( 'thread_comments' ) )
-        wp_enqueue_script( 'comment-reply' );
+	// Load Thread comments WordPress script.
+	if ( is_singular() && get_option( 'thread_comments' ) )
+		wp_enqueue_script( 'comment-reply' );
 
-    if ( is_single() )
-        wp_enqueue_script( 'validate', $template_url . '/assets/js/jquery.validate.min.js', array(), null, true );
+	if ( is_single() )
+		wp_enqueue_script( 'validate', $template_url . '/assets/js/jquery.validate.min.js', array(), null, true );
 }
 
 add_action( 'wp_enqueue_scripts', 'odin_enqueue_scripts', 1 );
@@ -307,7 +307,7 @@ add_action( 'wp_enqueue_scripts', 'odin_enqueue_scripts', 1 );
  * @return string      New URI.
  */
 function odin_stylesheet_uri( $uri, $dir ) {
-    return $dir . '/assets/css/style.css';
+	return $dir . '/assets/css/style.css';
 }
 
 add_filter( 'stylesheet_uri', 'odin_stylesheet_uri', 10, 2 );
