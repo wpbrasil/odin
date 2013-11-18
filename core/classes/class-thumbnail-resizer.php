@@ -9,7 +9,7 @@
  * @package  Odin
  * @category Thumbnail_Resizer
  * @author   WPBrasil
- * @version  2.1.4
+ * @version  2.1.5
  */
 class Odin_Thumbnail_Resizer {
 
@@ -85,7 +85,7 @@ class Odin_Thumbnail_Resizer {
 	 *
 	 * @return string           New thumbnail.
 	 */
-	public function process( $url, $width = null, $height = null, $crop = false, $single = true, $upscale = false ) {
+	public function process( $url, $width = null, $height = null, $crop = false, $upscale = false ) {
 		// Validate inputs.
 		if ( ! $url || ( ! $width && ! $height ) ) {
 			return false;
