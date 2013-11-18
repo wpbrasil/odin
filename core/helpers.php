@@ -86,7 +86,7 @@ function odin_pagination( $mid = 2, $end = 1, $show = false ) {
  *
  * @return string              Related Posts.
  */
-function odin_related_posts( $display = 'category', $qty = 5, $title = '', $thumb = true ) {
+function odin_related_posts( $display = 'category', $qty = 4, $title = '', $thumb = true ) {
 	global $post;
 
 	$show = false;
@@ -146,19 +146,19 @@ function odin_related_posts( $display = 'category', $qty = 5, $title = '', $thum
 
 			$layout = '<div id="related-post">';
 			$layout .= '<h3>' . esc_attr( $title ) . '</h3>';
-			$layout .= '<ul>';
+			$layout .= ( $thumb ) ? '<div class="row">' : '<ul>';
 
 			while ( $related->have_posts() ) {
 				$related->the_post();
 
-				$layout .= '<li>';
+				$layout .= ( $thumb ) ? '<div class="col-md-' . ceil( 12 / $qty ) . '">' : '<li>';
 
 				if ( $thumb ) {
-					// Filter for use the functions of thumbnails.php in place of the_post_thumbnails().
+					// Filter to replace the image.
 					$image = apply_filters( 'odin_related_posts', get_the_post_thumbnail( get_the_ID(), 'thumbnail' ) );
 
 					$layout .= '<span class="thumb">';
-					$layout .= sprintf( '<a href="%s" title="%s">%s</a>', get_permalink(), get_the_title(), $image );
+					$layout .= sprintf( '<a href="%s" title="%s" class="thumbnail">%s</a>', get_permalink(), get_the_title(), $image );
 					$layout .= '</span>';
 				}
 
@@ -166,10 +166,10 @@ function odin_related_posts( $display = 'category', $qty = 5, $title = '', $thum
 				$layout .= sprintf( '<a href="%1$s" title="%2$s">%2$s</a>', get_permalink(), get_the_title() );
 				$layout .= '</span>';
 
-				$layout .= '</li>';
+				$layout .= ( $thumb ) ? '</div>' : '</li>';
 			}
 
-			$layout .= '</ul>';
+			$layout .= ( $thumb ) ? '</div>' : '</ul>';
 			$layout .= '</div>';
 
 			echo $layout;
@@ -364,7 +364,7 @@ function odin_breadcrumbs( $homepage = '' ) {
 
 		// 404 page.
 		} elseif ( is_404() ) {
-			echo $current_before . __('404 Error', 'odin' ) . $current_after;
+			echo $current_before . __( '404 Error', 'odin' ) . $current_after;
 		}
 
 		// Gets pagination.
@@ -402,7 +402,7 @@ function odin_thumbnail( $width, $height, $alt, $crop = true, $class = '' ) {
 
 	if ( $thumb ) {
 		$resizer = Odin_Thumbnail_Resizer::get_instance();
-		$url = wp_get_attachment_url( get_post_thumbnail_id(), 'full' );
+		$url = wp_get_attachment_url( $thumb, 'full' );
 		$image = $resizer->process( $url, $width, $height, $crop );
 
 		$html = '<img class="wp-image-thumb img-responsive ' . sanitize_html_class( $class ) . '" src="' . $image . '" width="' . esc_attr( $width ) . '" height="' . esc_attr( $height ) . '" alt="' . esc_attr( $alt ) . '" />';

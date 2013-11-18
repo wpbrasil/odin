@@ -2,6 +2,12 @@
 
 #### v2.2.0 - xx/xx/2013 ####
 
+#### v2.1.5 - 17/11/2013 ####
+
+* Fixed the `process` method in `Odin_Thumbnail_Resizer`
+* Fixed the thumbnail creation in `odin_related_posts_custom_thumbnails()` function.
+* Improved the `odin_related_posts()` function.
+
 #### v2.1.4 - 15/11/2013 ####
 
 * Fixed new PHP code standards.
