@@ -202,14 +202,19 @@ function odin_autoset_featured() {
  * @return string            Custom thumbnails.
  */
 function odin_related_posts_custom_thumbnails( $thumbnail ) {
+	if ( ! class_exists( 'Odin_Thumbnail_Resizer' ) ) {
+		return;
+	}
+
 	// Edit these variables:
 	$width  = 100;
 	$height = 100;
 	$crop   = true;
 
 	if ( get_post_thumbnail_id() ) {
+		$resizer = Odin_Thumbnail_Resizer::get_instance();
 		$url = wp_get_attachment_url( get_post_thumbnail_id(), 'full' );
-		$image = aq_resize( $url, $width, $height, $crop );
+		$image = $resizer->process( $url, $width, $height, $crop );
 
 		$html = '<img class="wp-image-thumb" src="' . $image . '" width="' . $width . '" height="' . $height . '" alt="' . get_the_title() . '" />';
 
