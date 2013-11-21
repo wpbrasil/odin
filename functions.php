@@ -92,14 +92,17 @@ function odin_setup_features() {
 	/**
 	 * Add support for infinite scroll.
 	 */
-	add_theme_support( 'infinite-scroll', array(
-		'type'           => 'scroll',
-		'footer_widgets' => false,
-		'container'      => 'content',
-		'wrapper'        => false,
-		'render'         => false,
-		'posts_per_page' => get_option( 'posts_per_page' )
-	) );
+	add_theme_support(
+		'infinite-scroll',
+		array(
+			'type'           => 'scroll',
+			'footer_widgets' => false,
+			'container'      => 'content',
+			'wrapper'        => false,
+			'render'         => false,
+			'posts_per_page' => get_option( 'posts_per_page' )
+		)
+	);
 
 	/**
 	 * Add support for Post Formats.
@@ -213,10 +216,9 @@ function odin_related_posts_custom_thumbnails( $thumbnail ) {
 
 	if ( get_post_thumbnail_id() ) {
 		$resizer = Odin_Thumbnail_Resizer::get_instance();
-		$url = wp_get_attachment_url( get_post_thumbnail_id(), 'full' );
-		$image = $resizer->process( $url, $width, $height, $crop );
-
-		$html = '<img class="wp-image-thumb" src="' . $image . '" width="' . $width . '" height="' . $height . '" alt="' . get_the_title() . '" />';
+		$url     = wp_get_attachment_url( get_post_thumbnail_id(), 'full' );
+		$image   = $resizer->process( $url, $width, $height, $crop );
+		$html    = '<img class="wp-image-thumb" src="' . $image . '" width="' . $width . '" height="' . $height . '" alt="' . get_the_title() . '" />';
 
 		return apply_filters( 'odin_thumbnail_html', $html );
 	}

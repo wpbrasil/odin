@@ -16,15 +16,15 @@ get_header(); ?>
 				<header class="entry-header">
 					<h1 class="entry-title"><?php the_title(); ?></h1>
 						<div class="entry-meta entry-content">
-							<meta itemprop="encodingFormat" content="<?php echo $metadata['dataformat']; ?>" />
-							<meta itemprop="contentSize" content="<?php echo $metadata['filesize']; ?>" />
+							<meta itemprop="encodingFormat" content="<?php echo esc_attr( $metadata['dataformat'] ); ?>" />
+							<meta itemprop="contentSize" content="<?php echo esc_attr( $metadata['filesize'] ); ?>" />
 						</div><!-- .entry-meta -->
 				</header><!-- .entry-header -->
 				<div class="entry-content">
 					<div class="entry-attachment">
-						<?php echo wp_audio_shortcode( array( 'src' => wp_get_attachment_url() ) ); ?>
+						<?php echo esc_attr( wp_audio_shortcode( array( 'src' => wp_get_attachment_url() ) ) ); ?>
 
-						<p><strong><?php _e( 'URL:', 'odin' ); ?></strong> <a href="<?php echo wp_get_attachment_url(); ?>" title="<?php the_title_attribute(); ?>" rel="attachment" itemprop="contentURL"><span itemprop="name"><?php echo basename( wp_get_attachment_url() ); ?></span></a></p>
+						<p><strong><?php _e( 'URL:', 'odin' ); ?></strong> <a href="<?php echo esc_url( wp_get_attachment_url() ); ?>" title="<?php the_title_attribute(); ?>" rel="attachment" itemprop="contentURL"><span itemprop="name"><?php echo esc_attr( basename( wp_get_attachment_url() ) ); ?></span></a></p>
 
 						<div itemprop="description">
 							<?php the_content(); ?>
