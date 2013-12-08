@@ -25,7 +25,6 @@ get_header(); ?>
 				<div class="entry-content" itemprop="articleBody">
 					<?php the_content(); ?>
 					<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'odin' ) . '</span>', 'after' => '</div>' ) ); ?>
-					<?php echo odin_related_posts(); ?>
 				</div><!-- .entry-content -->
 				<footer class="entry-meta">
 					<span><?php _e( 'Posted in', 'odin' ); ?> <?php the_category( ', ' ); ?></span>
