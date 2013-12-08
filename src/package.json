@@ -12,7 +12,7 @@
     "grunt-contrib-compass": "~0.6.0",
     "grunt-contrib-jshint": "~0.6.4",
     "grunt-contrib-uglify": "~0.2.4",
-    "grunt-contrib-imagemin": "~0.3.0",
+    "grunt-contrib-imagemin": "~0.4.0",
     "grunt-rsync": "~0.2.1",
     "grunt-ftp-deploy": "~0.0.10",
     "grunt-curl": "~1.1.1",
