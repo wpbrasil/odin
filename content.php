@@ -1,37 +1,56 @@
 <?php
 /**
- * The default template for displaying content. Used for both single and index/archive/author/catagory/search/tag.
+ * The default template for displaying content.
+ *
+ * Used for both single and index/archive/author/catagory/search/tag.
  *
  * @package Odin
- * @since 1.9.0
+ * @since 2.2.0
  */
 ?>
-<article <?php post_class(); ?>>
+
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
-		<h2 class="entry-title">
-			<a href="<?php the_permalink(); ?>" title="<?php echo __( 'Permalink to', 'odin' ) . ' ' . get_the_title(); ?>" rel="bookmark"><?php the_title(); ?></a>
-		</h2>
-		<div class="entry-meta">
-			<span class="sep"><?php _e( 'By', 'odin' ); ?> </span>
-			<span class="author vcard">
-				<a class="url fn n" href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" title="<?php echo esc_attr( __( 'All posts by', 'odin' ) . ' ' . get_the_author() ); ?>" rel="author"><?php echo get_the_author(); ?></a>
-			</span>
-			<span class="sep"> | <?php _e( 'Posted in', 'odin' ); ?> </span>
-			<time class="entry-date" datetime="<?php echo get_the_date( 'c' ); ?>"><?php echo get_the_date(); ?></time>
-		</div><!-- .entry-meta -->
-	</header><!-- .entry-header -->
-	<div class="entry-content">
-		<?php // if ( has_post_thumbnail() ) the_post_thumbnail( 'thumbnail' ); ?>
-		<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'odin' ) ); ?>
-		<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'odin' ) . '</span>', 'after' => '</div>' ) ); ?>
-	</div><!-- .entry-content -->
-	<footer class="entry-meta">
-		<span><?php _e( 'Posted in', 'odin' ); ?>: <?php the_category(', '); ?></span>
-		<?php the_tags( '<span> ' . __( 'and tagged as', 'odin' ) . ' ', ', ', '</span>' ); ?>
-		<?php if ( comments_open() && ! post_password_required() ) : ?>
-			<span class="sep"> | </span>
-			<?php comments_popup_link( __( 'Comment', 'odin' ), __( '1 Comment', 'odin' ), __( '% Comments', 'odin' ) ); ?>
+		<?php
+			if ( is_single() ) :
+				the_title( '<h1 class="entry-title">', '</h1>' );
+			else :
+				the_title( '<h1 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h1>' );
+			endif;
+		?>
+
+		<?php if ( 'post' == get_post_type() ) : ?>
+			<div class="entry-meta">
+				<?php odin_posted_on(); ?>
+			</div><!-- .entry-meta -->
 		<?php endif; ?>
-		<?php get_template_part( 'share' ); ?>
-	</footer><!-- #entry-meta -->
-</article>
+	</header><!-- .entry-header -->
+
+	<?php if ( is_search() ) : ?>
+		<div class="entry-summary">
+			<?php the_excerpt(); ?>
+		</div><!-- .entry-summary -->
+	<?php else : ?>
+		<div class="entry-content">
+			<?php
+				the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'odin' ) );
+				wp_link_pages( array(
+					'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'odin' ) . '</span>',
+					'after'       => '</div>',
+					'link_before' => '<span>',
+					'link_after'  => '</span>',
+				) );
+			?>
+		</div><!-- .entry-content -->
+	<?php endif; ?>
+
+	<footer class="entry-meta">
+		<?php if ( in_array( 'category', get_object_taxonomies( get_post_type() ) ) ) : ?>
+			<span class="cat-links"><?php echo __( 'Posted in:' ) . ' ' . get_the_category_list( _x( ', ', 'Used between list items, there is a space after the comma.', 'odin' ) ); ?></span>
+		<?php endif; ?>
+		<?php the_tags( '<span class="tag-links">' . __( 'Tagged as:', 'odin' ) . ' ', ', ', '</span>' ); ?>
+		<?php if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) : ?>
+			<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'odin' ), __( '1 Comment', 'odin' ), __( '% Comments', 'odin' ) ); ?></span>
+		<?php endif; ?>
+	</footer>
+</article><!-- #post-## -->

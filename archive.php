@@ -10,39 +10,64 @@
  * already has tag.php for Tag archives, category.php for Category archives,
  * and author.php for Author archives.
  *
- * Learn more: http://codex.wordpress.org/Template_Hierarchy
+ * @link http://codex.wordpress.org/Template_Hierarchy
  *
  * @package Odin
- * @since 2.1.6
+ * @since 2.2.0
  */
 
 get_header(); ?>
-<div id="primary" class="<?php echo odin_page_sidebar_classes(); ?>">
-	<section id="content" role="main">
-		<?php if ( have_posts() ) : ?>
-			<header class="page-header">
-				<h1 class="page-title" itemprop="name headline">
-					<?php
-						if ( is_day() ) {
-							echo __( 'Daily Archives:', 'odin' ) . ' <span>' . get_the_date() . '</span>';
-						} elseif ( is_month() ) {
-							echo __( 'Monthly Archives:', 'odin' ) . ' <span>' . get_the_date( 'F Y' ) . '</span>';
-						} elseif ( is_year() ) {
-							echo __( 'Yearly Archives:', 'odin' ) . ' <span>' . get_the_date( 'Y' ) . '</span>';
-						} else {
-							_e( 'Blog Archives', 'odin' );
-						}
-					?>
-				</h1>
-			</header>
-			<?php while ( have_posts() ) : the_post(); ?>
-				<?php get_template_part( 'content', get_post_format() ); ?>
-			<?php endwhile; ?>
-			<?php echo odin_pagination(); ?>
-		<?php else : ?>
-			<?php get_template_part( 'no-results' ); ?>
-		<?php endif; ?>
-	</section><!-- #content -->
-</div><!-- #primary -->
-<?php get_sidebar(); ?>
-<?php get_footer(); ?>
+
+	<section id="primary" class="<?php echo odin_page_sidebar_classes(); ?>">
+		<div id="content" class="site-content" role="main">
+
+			<?php if ( have_posts() ) : ?>
+
+				<header class="page-header">
+					<h1 class="page-title">
+						<?php
+							if ( is_day() ) :
+								printf( __( 'Daily Archives: %s', 'odin' ), get_the_date() );
+
+							elseif ( is_month() ) :
+								printf( __( 'Monthly Archives: %s', 'odin' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'odin' ) ) );
+
+							elseif ( is_year() ) :
+								printf( __( 'Yearly Archives: %s', 'odin' ), get_the_date( _x( 'Y', 'yearly archives date format', 'odin' ) ) );
+
+							else :
+								_e( 'Archives', 'odin' );
+
+							endif;
+						?>
+					</h1>
+				</header><!-- .page-header -->
+
+				<?php
+					// Start the Loop.
+					while ( have_posts() ) : the_post();
+
+						/*
+						 * Include the post format-specific template for the content. If you want to
+						 * use this in a child theme, then include a file called called content-___.php
+						 * (where ___ is the post format) and that will be used instead.
+						 */
+						get_template_part( 'content', get_post_format() );
+
+					endwhile;
+
+					// Page navigation.
+					echo odin_pagination();
+
+				else :
+					// If no content, include the "No posts found" template.
+					get_template_part( 'content', 'none' );
+
+				endif;
+			?>
+		</div><!-- #content -->
+	</section><!-- #primary -->
+
+<?php
+get_sidebar();
+get_footer();
