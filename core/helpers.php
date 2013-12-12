@@ -5,11 +5,13 @@
  * @package  Odin
  * @category Odin/Helpers
  * @author   WPBrasil
- * @version  2.1.4
+ * @since    2.2.0
  */
 
 /**
  * Pagination.
+ *
+ * @since 2.2.0
  *
  * @global array $wp_query   Current WP Query.
  * @global array $wp_rewrite URL rewrite rules.
@@ -76,6 +78,8 @@ function odin_pagination( $mid = 2, $end = 1, $show = false ) {
  * Add in single.php <?php odin_related_posts(); ?>
  * To show related by tags:
  * Add in single.php <?php odin_related_posts( 'tag' ); ?>
+ *
+ * @since 2.2.0
  *
  * @global array $post         WP global post.
  *
@@ -184,6 +188,8 @@ function odin_related_posts( $display = 'category', $qty = 4, $title = '', $thum
  * Usage:
  * Place: <?php echo odin_excerpt( 'excerpt', value ); ?>
  *
+ * @since 2.2.0
+ *
  * @param string $type  Sets excerpt or title.
  * @param int    $limit Sets the length of excerpt.
  *
@@ -208,6 +214,8 @@ function odin_excerpt( $type = 'excerpt', $limit = 40 ) {
 
 /**
  * Breadcrumbs.
+ *
+ * @since 2.2.0
  *
  * @param  string $homepage  Homepage name.
  *
@@ -384,6 +392,8 @@ function odin_breadcrumbs( $homepage = '' ) {
 /**
  * Custom post thumbnail.
  *
+ * @since 2.2.0
+ *
  * @param int     $width  Width of the image.
  * @param int     $height Height of the image.
  * @param string  $class  Class attribute of the image.
@@ -413,6 +423,8 @@ function odin_thumbnail( $width, $height, $alt, $crop = true, $class = '' ) {
 
 /**
  * Debug variables.
+ *
+ * @since 2.2.0
  *
  * @param  mixed $variable Object or Array for debug.
  *

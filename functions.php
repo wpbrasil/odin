@@ -36,7 +36,11 @@ require_once get_template_directory() . '/core/classes/class-thumbnail-resizer.p
 // require_once get_template_directory() . '/core/classes/class-post-form.php';
 
 /**
- * Setup theme features
+ * Setup theme features.
+ *
+ * @since  2.2.0
+ *
+ * @return void
  */
 function odin_setup_features() {
 
@@ -132,6 +136,10 @@ require_once get_template_directory() . '/inc/template-tags.php';
 
 /**
  * Register sidebars.
+ *
+ * @since  2.2.0
+ *
+ * @return void
  */
 function odin_widgets_init() {
 	register_sidebar(
@@ -151,6 +159,10 @@ add_action( 'widgets_init', 'odin_widgets_init' );
 
 /**
  * Flush Rewrite Rules for new CPTs and Taxonomies.
+ *
+ * @since  2.2.0
+ *
+ * @return void
  */
 function odin_flush_rewrite() {
 	flush_rewrite_rules();
@@ -171,7 +183,11 @@ require_once get_template_directory() . '/core/helpers.php';
 /**
  * Automatically sets the post thumbnail.
  *
+ * @since  2.2.0
+ *
  * @global array $post WP post object.
+ *
+ * @return void
  */
 function odin_autoset_featured() {
 	global $post;
@@ -202,6 +218,8 @@ function odin_autoset_featured() {
  * Custom Related Posts Image.
  *
  * Use this filter for use aq_resize() in place of the_post_thumbnails().
+ *
+ * @since  2.2.0
  *
  * @param  string $thumbnail the_post_thumbnail().
  *
@@ -265,6 +283,10 @@ require_once get_template_directory() . '/inc/admin.php';
 
 /**
  * Load site scripts.
+ *
+ * @since  2.2.0
+ *
+ * @return void
  */
 function odin_enqueue_scripts() {
 	$template_url = get_template_directory_uri();
@@ -305,6 +327,8 @@ add_action( 'wp_enqueue_scripts', 'odin_enqueue_scripts', 1 );
 
 /**
  * Odin custom stylesheet URI.
+ *
+ * @since  2.2.0
  *
  * @param  string $uri Default URI.
  * @param  string $dir Stylesheet directory URI.
