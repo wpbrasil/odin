@@ -186,9 +186,6 @@ class Odin_Theme_Options {
 		// Opens the wrap.
 		echo '<div class="wrap">';
 
-			// Display themes screen icon.
-			screen_icon( 'themes' );
-
 			// Display the navigation menu.
 			$this->get_navigation( $current_tab );
 
