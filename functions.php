@@ -297,9 +297,6 @@ function odin_enqueue_scripts() {
 	// jQuery.
 	wp_enqueue_script( 'jquery' );
 
-	// bxSlider.
-	// wp_enqueue_script( 'bxslider', $template_url . '/assets/js/jquery.bxslider.min.js', array(), null, true );
-
 	// Twitter Bootstrap.
 	wp_enqueue_script( 'bootstrap', $template_url . '/assets/js/bootstrap.min.js', array(), null, true );
 
