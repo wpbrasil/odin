@@ -46,7 +46,7 @@
 
 	<footer class="entry-meta">
 		<?php if ( in_array( 'category', get_object_taxonomies( get_post_type() ) ) ) : ?>
-			<span class="cat-links"><?php echo __( 'Posted in:' ) . ' ' . get_the_category_list( _x( ', ', 'Used between list items, there is a space after the comma.', 'odin' ) ); ?></span>
+			<span class="cat-links"><?php echo __( 'Posted in:', 'odin' ) . ' ' . get_the_category_list( _x( ', ', 'Used between list items, there is a space after the comma.', 'odin' ) ); ?></span>
 		<?php endif; ?>
 		<?php the_tags( '<span class="tag-links">' . __( 'Tagged as:', 'odin' ) . ' ', ', ', '</span>' ); ?>
 		<?php if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) : ?>
