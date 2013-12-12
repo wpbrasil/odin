@@ -2,6 +2,10 @@
 
 #### v2.2.0 - xx/xx/2013 ####
 
+#### v2.1.6 - 11/12/2013 ####
+
+* Updated the FitVidsJS.
+
 #### v2.1.5 - 17/11/2013 ####
 
 * Fixed the `process` method in `Odin_Thumbnail_Resizer`

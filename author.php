@@ -9,7 +9,7 @@
  */
 
 get_header(); ?>
-<div id="primary" class="col-md-8">
+<div id="primary" class="<?php echo odin_page_sidebar_classes(); ?>">
 	<section id="content" role="main" itemscope="" itemtype="http://schema.org/Person">
 		<?php if ( have_posts() ) : the_post(); ?>
 			<header class="page-header">

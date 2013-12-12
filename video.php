@@ -9,7 +9,7 @@
  */
 
 get_header(); ?>
-<div id="primary" class="col-md-12">
+<div id="primary" class="<?php echo odin_sidebar_classes(); ?>">
 	<div id="content" role="main" itemscope itemtype="http://schema.org/VideoObject">
 		<?php while ( have_posts() ) : the_post(); ?>
 			<article <?php post_class(); ?> itemscope itemtype="http://schema.org/AudioObject">

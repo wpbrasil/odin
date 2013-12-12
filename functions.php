@@ -10,7 +10,7 @@
  * see http://codex.wordpress.org/Plugin_API
  *
  * @package Odin
- * @since 2.1.0
+ * @since 2.1.6
  */
 
 /**
@@ -34,6 +34,48 @@ require_once get_template_directory() . '/core/classes/class-thumbnail-resizer.p
 // require_once get_template_directory() . '/core/classes/abstracts/abstract-front-end-form.php';
 // require_once get_template_directory() . '/core/classes/class-contact-form.php';
 // require_once get_template_directory() . '/core/classes/class-post-form.php';
+
+if ( ! function_exists( 'odin_full_page_classes' ) ) {
+
+	/**
+	 * Full page classes.
+	 *
+	 * @since 2.1.6
+	 *
+	 * @return string Classes name.
+	 */
+	function odin_full_page_classes() {
+		return 'col-md-12';
+	}
+}
+
+if ( ! function_exists( 'odin_full_page_classes' ) ) {
+
+	/**
+	 * Page with sidebar classes.
+	 *
+	 * @since 2.1.6
+	 *
+	 * @return string Classes name.
+	 */
+	function odin_page_sidebar_classes() {
+		return 'col-md-8';
+	}
+}
+
+if ( ! function_exists( 'odin_full_page_classes' ) ) {
+
+	/**
+	 * Sidebar classes.
+	 *
+	 * @since 2.1.6
+	 *
+	 * @return string Classes name.
+	 */
+	function odin_sidebar_classes() {
+		return 'widget-area col-md-4 hidden-xs';
+	}
+}
 
 /**
  * Setup theme features

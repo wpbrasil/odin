@@ -7,7 +7,7 @@
  */
 
 get_header(); ?>
-<div id="primary" class="col-md-12">
+<div id="primary" class="<?php echo odin_sidebar_classes(); ?>">
 	<div id="content" role="main">
 		<article class="post error404 not-found">
 			<header class="entry-header">
