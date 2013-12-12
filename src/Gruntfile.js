@@ -35,7 +35,7 @@ module.exports = function( grunt ) {
 			dist: {
 				files: {
 					'<%= dirs.js %>/main.min.js': [
-						'<%= dirs.js %>/jquery.fitvids.min.js', // FitVids
+						'<%= dirs.js %>/jquery.fitvids.js', // FitVids
 						'<%= dirs.js %>/libs/*.js',             // External libs/pugins
 						'<%= dirs.js %>/main.js'                // Custom JavaScript
 					]

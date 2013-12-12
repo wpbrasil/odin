@@ -280,7 +280,7 @@ function odin_enqueue_scripts() {
 
 	// General scripts.
 	// FitVids.
-	wp_enqueue_script( 'fitvids', $template_url . '/assets/js/jquery.fitvids.min.js', array(), null, true );
+	wp_enqueue_script( 'fitvids', $template_url . '/assets/js/jquery.fitvids.js', array(), null, true );
 
 	// Main jQuery.
 	wp_enqueue_script( 'odin-main', $template_url . '/assets/js/main.js', array(), null, true );
