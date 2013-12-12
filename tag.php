@@ -43,7 +43,7 @@ get_header(); ?>
 						endwhile;
 
 						// Page navigation.
-						twentyfourteen_paging_nav();
+						odin_paging_nav();
 
 					else :
 						// If no content, include the "No posts found" template.

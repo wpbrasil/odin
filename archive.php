@@ -57,7 +57,7 @@ get_header(); ?>
 					endwhile;
 
 					// Page navigation.
-					echo odin_pagination();
+					odin_paging_nav();
 
 				else :
 					// If no content, include the "No posts found" template.
