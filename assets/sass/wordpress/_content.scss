@@ -6,6 +6,7 @@
 	word-wrap: break-word;
 }
 
+.page-content,
 .entry-content {
 	@include clearfix();
 
