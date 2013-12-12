@@ -5,7 +5,7 @@
  * If no active widgets in this sidebar, it will shows Recent Posts, Archives and Tag Cloud widgets.
  *
  * @package Odin
- * @since 1.9.0
+ * @since 2.1.6
  */
 ?>
 <div id="secondary" class="<?php echo odin_sidebar_classes(); ?>" role="complementary" itemscope="" itemtype="http://schema.org/WPSideBar">

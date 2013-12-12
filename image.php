@@ -5,7 +5,7 @@
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
  * @package Odin
- * @since 1.9.0
+ * @since 2.1.6
  */
 
 get_header(); ?>

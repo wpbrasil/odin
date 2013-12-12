@@ -5,7 +5,7 @@
  * The template for displaying pages with sidebar.
  *
  * @package Odin
- * @since 1.9.0
+ * @since 2.1.6
  */
 
 get_header();

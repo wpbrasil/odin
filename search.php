@@ -3,7 +3,7 @@
  * The template for displaying Search Results pages.
  *
  * @package Odin
- * @since 1.9.0
+ * @since 2.1.6
  */
 
 get_header(); ?>
