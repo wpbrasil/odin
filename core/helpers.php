@@ -5,20 +5,20 @@
  * @package  Odin
  * @category Odin/Helpers
  * @author   WPBrasil
- * @since    2.2.0
+ * @version  2.2.0
  */
 
 /**
  * Pagination.
  *
- * @since 2.2.0
+ * @since  2.2.0
  *
  * @global array $wp_query   Current WP Query.
  * @global array $wp_rewrite URL rewrite rules.
  *
- * @param int $mid           Total of items that will show along with the current page.
- * @param int $end           Total of items displayed for the last few pages.
- * @param bool $show         Show all items.
+ * @param  int $mid           Total of items that will show along with the current page.
+ * @param  int $end           Total of items displayed for the last few pages.
+ * @param  bool $show         Show all items.
  *
  * @return string            Return the pagination.
  */
@@ -79,14 +79,14 @@ function odin_pagination( $mid = 2, $end = 1, $show = false ) {
  * To show related by tags:
  * Add in single.php <?php odin_related_posts( 'tag' ); ?>
  *
- * @since 2.2.0
+ * @since  2.2.0
  *
  * @global array $post         WP global post.
  *
- * @param string $display      Set category or tag.
- * @param int    $qty          Number of posts to be displayed (default 5).
- * @param string $title        Set the widget title.
- * @param bool   $thumb        Enable or disable displaying images.
+ * @param  string $display      Set category or tag.
+ * @param  int    $qty          Number of posts to be displayed (default 5).
+ * @param  string $title        Set the widget title.
+ * @param  bool   $thumb        Enable or disable displaying images.
  *
  * @return string              Related Posts.
  */
@@ -159,7 +159,7 @@ function odin_related_posts( $display = 'category', $qty = 4, $title = '', $thum
 
 				if ( $thumb ) {
 					// Filter to replace the image.
-					$image = apply_filters( 'odin_related_posts', get_the_post_thumbnail( get_the_ID(), 'thumbnail' ) );
+					$image = apply_filters( 'odin_related_posts_thumbnail', get_the_post_thumbnail( get_the_ID(), 'thumbnail' ) );
 
 					$layout .= '<span class="thumb">';
 					$layout .= sprintf( '<a href="%s" title="%s" class="thumbnail">%s</a>', get_permalink(), get_the_title(), $image );
@@ -188,10 +188,10 @@ function odin_related_posts( $display = 'category', $qty = 4, $title = '', $thum
  * Usage:
  * Place: <?php echo odin_excerpt( 'excerpt', value ); ?>
  *
- * @since 2.2.0
+ * @since  2.2.0
  *
- * @param string $type  Sets excerpt or title.
- * @param int    $limit Sets the length of excerpt.
+ * @param  string $type  Sets excerpt or title.
+ * @param  int    $limit Sets the length of excerpt.
  *
  * @return string       Return the excerpt.
  */
@@ -215,7 +215,7 @@ function odin_excerpt( $type = 'excerpt', $limit = 40 ) {
 /**
  * Breadcrumbs.
  *
- * @since 2.2.0
+ * @since  2.2.0
  *
  * @param  string $homepage  Homepage name.
  *
@@ -392,14 +392,14 @@ function odin_breadcrumbs( $homepage = '' ) {
 /**
  * Custom post thumbnail.
  *
- * @since 2.2.0
+ * @since  2.2.0
  *
- * @param int     $width  Width of the image.
- * @param int     $height Height of the image.
- * @param string  $class  Class attribute of the image.
- * @param string  $alt    Alt attribute of the image.
- * @param bool    $crop   Image crop.
- * @param string  $class  Custom HTML classes.
+ * @param  int     $width  Width of the image.
+ * @param  int     $height Height of the image.
+ * @param  string  $class  Class attribute of the image.
+ * @param  string  $alt    Alt attribute of the image.
+ * @param  bool    $crop   Image crop.
+ * @param  string  $class  Custom HTML classes.
  *
  * @return string         Return the post thumbnail.
  */
@@ -422,9 +422,44 @@ function odin_thumbnail( $width, $height, $alt, $crop = true, $class = '' ) {
 }
 
 /**
+ * Automatically sets the post thumbnail.
+ *
+ * Use:
+ * add_action( 'the_post', 'odin_autoset_featured' );
+ * add_action( 'save_post', 'odin_autoset_featured' );
+ * add_action( 'draft_to_publish', 'odin_autoset_featured' );
+ * add_action( 'new_to_publish', 'odin_autoset_featured' );
+ * add_action( 'pending_to_publish', 'odin_autoset_featured' );
+ * add_action( 'future_to_publish', 'odin_autoset_featured' );
+ *
+ * @since  2.2.0
+ *
+ * @global array $post WP post object.
+ *
+ * @return void
+ */
+function odin_autoset_featured() {
+	global $post;
+
+	if ( isset( $post->ID ) ) {
+		$already_has_thumb = has_post_thumbnail( $post->ID );
+
+		if ( ! $already_has_thumb ) {
+			$attached_image = get_children( 'post_parent=' . $post->ID . '&post_type=attachment&post_mime_type=image&numberposts=1' );
+
+			if ( $attached_image ) {
+				foreach ( $attached_image as $attachment_id => $attachment ) {
+					set_post_thumbnail( $post->ID, $attachment_id );
+				}
+			}
+		}
+	}
+}
+
+/**
  * Debug variables.
  *
- * @since 2.2.0
+ * @since  2.2.0
  *
  * @param  mixed $variable Object or Array for debug.
  *

@@ -122,8 +122,3 @@ function odin_modify_tag_rel( $taglink ) {
 
 add_filter( 'wp_tag_cloud', 'odin_modify_tag_rel' );
 add_filter( 'the_tags', 'odin_modify_tag_rel' );
-
-/**
- * Add feed link.
- */
-add_theme_support( 'automatic-feed-links' );

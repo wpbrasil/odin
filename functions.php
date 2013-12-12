@@ -35,107 +35,113 @@ require_once get_template_directory() . '/core/classes/class-thumbnail-resizer.p
 // require_once get_template_directory() . '/core/classes/class-contact-form.php';
 // require_once get_template_directory() . '/core/classes/class-post-form.php';
 
-/**
- * Setup theme features.
- *
- * @since  2.2.0
- *
- * @return void
- */
-function odin_setup_features() {
+
+if ( ! function_exists( 'odin_setup_features' ) ) {
 
 	/**
-	 * Add support for multiple languages.
+	 * Setup theme features.
+	 *
+	 * @since  2.2.0
+	 *
+	 * @return void
 	 */
-	load_theme_textdomain( 'odin', get_template_directory() . '/languages' );
+	function odin_setup_features() {
 
-	/**
-	 * Register nav menus.
-	 */
-	register_nav_menus(
-		array(
-			'main-menu' => __( 'Main Menu', 'odin' )
-		)
-	);
+		/**
+		 * Add support for multiple languages.
+		 */
+		load_theme_textdomain( 'odin', get_template_directory() . '/languages' );
 
-	/*
-	 * Add post_thumbnails suport.
-	 */
-	add_theme_support( 'post-thumbnails' );
+		/**
+		 * Register nav menus.
+		 */
+		register_nav_menus(
+			array(
+				'main-menu' => __( 'Main Menu', 'odin' )
+			)
+		);
 
-	/**
-	 * Support Custom Header.
-	 */
-	$default = array(
-		'width'         => 0,
-		'height'        => 0,
-		'flex-height'   => false,
-		'flex-width'    => false,
-		'header-text'   => false,
-		'default-image' => '',
-		'uploads'       => true,
-	);
+		/*
+		 * Add post_thumbnails suport.
+		 */
+		add_theme_support( 'post-thumbnails' );
 
-	add_theme_support( 'custom-header', $default );
+		/**
+		 * Add feed link.
+		 */
+		add_theme_support( 'automatic-feed-links' );
 
-	/**
-	 * Support Custom Background.
-	 */
-	$defaults = array(
-		'default-color' => '',
-		'default-image' => '',
-	);
+		/**
+		 * Support Custom Header.
+		 */
+		$default = array(
+			'width'         => 0,
+			'height'        => 0,
+			'flex-height'   => false,
+			'flex-width'    => false,
+			'header-text'   => false,
+			'default-image' => '',
+			'uploads'       => true,
+		);
 
-	add_theme_support( 'custom-background', $defaults );
+		add_theme_support( 'custom-header', $default );
 
-	/**
-	 * Support Custom Editor Style.
-	 */
-	add_editor_style( 'assets/css/editor-style.css' );
+		/**
+		 * Support Custom Background.
+		 */
+		$defaults = array(
+			'default-color' => '',
+			'default-image' => '',
+		);
 
-	/**
-	 * Add support for infinite scroll.
-	 */
-	add_theme_support(
-		'infinite-scroll',
-		array(
-			'type'           => 'scroll',
-			'footer_widgets' => false,
-			'container'      => 'content',
-			'wrapper'        => false,
-			'render'         => false,
-			'posts_per_page' => get_option( 'posts_per_page' )
-		)
-	);
+		add_theme_support( 'custom-background', $defaults );
 
-	/**
-	 * Add support for Post Formats.
-	 */
-	// add_theme_support( 'post-formats', array(
-	//     'aside',
-	//     'gallery',
-	//     'link',
-	//     'image',
-	//     'quote',
-	//     'status',
-	//     'video',
-	//     'audio',
-	//     'chat'
-	// ) );
+		/**
+		 * Support Custom Editor Style.
+		 */
+		add_editor_style( 'assets/css/editor-style.css' );
 
-	/**
-	 * Support The Excerpt on pages.
-	 */
-	// add_post_type_support( 'page', 'excerpt' );
+		/**
+		 * Add support for infinite scroll.
+		 */
+		add_theme_support(
+			'infinite-scroll',
+			array(
+				'type'           => 'scroll',
+				'footer_widgets' => false,
+				'container'      => 'content',
+				'wrapper'        => false,
+				'render'         => false,
+				'posts_per_page' => get_option( 'posts_per_page' )
+			)
+		);
+
+		/**
+		 * Add support for Post Formats.
+		 */
+		// add_theme_support( 'post-formats', array(
+		//     'aside',
+		//     'gallery',
+		//     'link',
+		//     'image',
+		//     'quote',
+		//     'status',
+		//     'video',
+		//     'audio',
+		//     'chat'
+		// ) );
+
+		/**
+		 * Support The Excerpt on pages.
+		 */
+		// add_post_type_support( 'page', 'excerpt' );
+	}
 }
 
 add_action( 'after_setup_theme', 'odin_setup_features' );
 
-// Custom template tags.
-require_once get_template_directory() . '/inc/template-tags.php';
-
 /**
- * Register sidebars.
+ * Register widget areas.
  *
  * @since  2.2.0
  *
@@ -169,117 +175,6 @@ function odin_flush_rewrite() {
 }
 
 add_action( 'after_switch_theme', 'odin_flush_rewrite' );
-
-/**
- * Comments loop.
- */
-require_once get_template_directory() . '/inc/comments-loop.php';
-
-/**
- * Core Helpers.
- */
-require_once get_template_directory() . '/core/helpers.php';
-
-/**
- * Automatically sets the post thumbnail.
- *
- * @since  2.2.0
- *
- * @global array $post WP post object.
- *
- * @return void
- */
-function odin_autoset_featured() {
-	global $post;
-
-	if ( isset( $post->ID ) ) {
-		$already_has_thumb = has_post_thumbnail( $post->ID );
-
-		if ( ! $already_has_thumb ) {
-			$attached_image = get_children( 'post_parent=' . $post->ID . '&post_type=attachment&post_mime_type=image&numberposts=1' );
-
-			if ( $attached_image ) {
-				foreach ( $attached_image as $attachment_id => $attachment ) {
-					set_post_thumbnail( $post->ID, $attachment_id );
-				}
-			}
-		}
-	}
-}
-
-// add_action( 'the_post', 'odin_autoset_featured' );
-// add_action( 'save_post', 'odin_autoset_featured' );
-// add_action( 'draft_to_publish', 'odin_autoset_featured' );
-// add_action( 'new_to_publish', 'odin_autoset_featured' );
-// add_action( 'pending_to_publish', 'odin_autoset_featured' );
-// add_action( 'future_to_publish', 'odin_autoset_featured' );
-
-/**
- * Custom Related Posts Image.
- *
- * Use this filter for use aq_resize() in place of the_post_thumbnails().
- *
- * @since  2.2.0
- *
- * @param  string $thumbnail the_post_thumbnail().
- *
- * @return string            Custom thumbnails.
- */
-function odin_related_posts_custom_thumbnails( $thumbnail ) {
-	if ( ! class_exists( 'Odin_Thumbnail_Resizer' ) ) {
-		return;
-	}
-
-	// Edit these variables:
-	$width  = 100;
-	$height = 100;
-	$crop   = true;
-
-	if ( get_post_thumbnail_id() ) {
-		$resizer = Odin_Thumbnail_Resizer::get_instance();
-		$url     = wp_get_attachment_url( get_post_thumbnail_id(), 'full' );
-		$image   = $resizer->process( $url, $width, $height, $crop );
-		$html    = '<img class="wp-image-thumb" src="' . $image . '" width="' . $width . '" height="' . $height . '" alt="' . get_the_title() . '" />';
-
-		return apply_filters( 'odin_thumbnail_html', $html );
-	}
-}
-
-// add_filter( 'odin_related_posts', 'odin_related_posts_custom_thumbnails' );
-
-/**
- * WooCommerce and Jigoshop theme support.
- */
-function odin_woocommerce_jigoshop_content_wrapper() {
-	echo '<div id="primary" class="col-md-8">';
-}
-
-function odin_woocommerce_jigoshop_content_wrapper_end() {
-	echo '</div>';
-}
-
-/**
- * WooCommerce.
- */
-// add_theme_support( 'woocommerce' );
-// add_action( 'woocommerce_before_main_content', 'odin_woocommerce_jigoshop_content_wrapper', 10 );
-// add_action( 'woocommerce_after_main_content', 'odin_woocommerce_jigoshop_content_wrapper_end', 10 );
-
-/**
- * Jigoshop.
- */
-// add_action( 'jigoshop_before_main_content', 'odin_jigoshop_output_content_wrapper', 10 );
-// add_action( 'jigoshop_after_main_content', 'odin_jigoshop_output_content_wrapper_end', 10 );
-
-/**
- * WP optimize functions.
- */
-require_once get_template_directory() . '/inc/optimize.php';
-
-/**
- * WP Custom Admin.
- */
-require_once get_template_directory() . '/inc/admin.php';
 
 /**
  * Load site scripts.
@@ -333,3 +228,33 @@ function odin_stylesheet_uri( $uri, $dir ) {
 }
 
 add_filter( 'stylesheet_uri', 'odin_stylesheet_uri', 10, 2 );
+
+/**
+ * Core Helpers.
+ */
+require_once get_template_directory() . '/core/helpers.php';
+
+/**
+ * WP Custom Admin.
+ */
+require_once get_template_directory() . '/inc/admin.php';
+
+/**
+ * Comments loop.
+ */
+require_once get_template_directory() . '/inc/comments-loop.php';
+
+/**
+ * WP optimize functions.
+ */
+require_once get_template_directory() . '/inc/optimize.php';
+
+/**
+ * WP Custom Admin.
+ */
+require_once get_template_directory() . '/inc/plugins-support.php';
+
+/**
+ * Custom template tags.
+ */
+require_once get_template_directory() . '/inc/template-tags.php';
