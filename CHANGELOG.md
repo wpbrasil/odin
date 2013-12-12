@@ -1,10 +1,13 @@
 ## Changelog ##
 
-#### v2.2.0 - xx/xx/2013 ####
+#### v2.2.0 - 12/12/2013 ####
 
-#### v2.1.6 - 11/12/2013 ####
-
+* Improved the templates in favor the Twenty Fourteen standards.
+* Tested with WordPress 3.8.
+* Improved the functions to be able to be a parent theme.
 * Updated the FitVidsJS.
+* Removed bxSlider lib.
+* Remove jQuery Validation in favor to [PowerComment plugin](http://wordpress.org/plugins/powercomment/).
 
 #### v2.1.5 - 17/11/2013 ####
 

@@ -43,8 +43,6 @@ Odin suporta nativamente os plugins:
 * [Compass](http://compass-style.org/)
 * [Grunt.js](http://gruntjs.com/)
 * [aq_resize](https://github.com/sy4mil/Aqua-Resizer)
-* [bxSlider](http://bxslider.com/)
-* [jQuery Validation](https://github.com/jzaefferer/jquery-validation)
 * [FitVids](https://github.com/davatron5000/FitVids.js)
 * [EditorConfig](http://editorconfig.org/)
 * [goqr.me](http://goqr.me/)
