@@ -307,7 +307,7 @@ function odin_enqueue_scripts() {
 	// Main jQuery.
 	wp_enqueue_script( 'odin-main', $template_url . '/assets/js/main.js', array(), null, true );
 
-	// Grunt main file with FitVids.
+	// Grunt main file with Bootstrap, FitVids and others libs.
 	// wp_enqueue_script( 'odin-main-min', $template_url . '/assets/js/main.min.js', array(), null, true );
 
 	// Load Thread comments WordPress script.
