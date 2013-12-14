@@ -287,7 +287,7 @@ class Odin_Metabox {
 	 * @return string          HTML of the field.
 	 */
 	protected function field_checkbox( $id, $current, $attrs ) {
-		echo sprintf( '<input type="checkbox" id="%1$s" name="%1$s" value="1"%2$s%3$s />', $id, checked( 1, $current, false ), $this->build_field_attributes( $attrs ) );
+		echo sprintf( '<input type="checkbox" id="%1$s" name="%1$s" value="1"%2$s%3$s />', $id, checked( $current, 1, false ), $this->build_field_attributes( $attrs ) );
 	}
 
 	/**
