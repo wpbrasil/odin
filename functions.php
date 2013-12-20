@@ -21,19 +21,31 @@ if ( ! isset( $content_width ) ) {
 }
 
 /**
+ * Define DIRECTORY_SEPARATOR
+ *
+ */
+if( !define('DS') )
+	define('DS', DIRECTORY_SEPARATOR);
+
+/**
+ * Odin Theme Config
+ */
+include_once 'inc' . DS . 'theme-config.php';
+
+/**
  * Odin Classes.
  */
-require_once get_template_directory() . '/core/classes/class-bootstrap-nav.php';
-require_once get_template_directory() . '/core/classes/class-shortcodes.php';
-require_once get_template_directory() . '/core/classes/class-thumbnail-resizer.php';
-// require_once get_template_directory() . '/core/classes/class-theme-options.php';
-// require_once get_template_directory() . '/core/classes/class-options-helper.php';
-// require_once get_template_directory() . '/core/classes/class-post-type.php';
-// require_once get_template_directory() . '/core/classes/class-taxonomy.php';
-// require_once get_template_directory() . '/core/classes/class-metabox.php';
-// require_once get_template_directory() . '/core/classes/abstracts/abstract-front-end-form.php';
-// require_once get_template_directory() . '/core/classes/class-contact-form.php';
-// require_once get_template_directory() . '/core/classes/class-post-form.php';
+require_once get_template_directory() . DS . 'core' . DS . 'classes' . DS . 'class-bootstrap-nav.php';
+require_once get_template_directory() . DS . 'core' . DS . 'classes' . DS . 'class-shortcodes.php';
+require_once get_template_directory() . DS . 'core' . DS . 'classes' . DS . 'class-thumbnail-resizer.php';
+// require_once get_template_directory() . DS . 'core' . DS . 'classes' . DS . 'class-theme-options.php';
+// require_once get_template_directory() . DS . 'core' . DS . 'classes' . DS . 'class-options-helper.php';
+// require_once get_template_directory() . DS . 'core' . DS . 'classes' . DS . 'class-post-type.php';
+// require_once get_template_directory() . DS . 'core' . DS . 'classes' . DS . 'class-taxonomy.php';
+// require_once get_template_directory() . DS . 'core' . DS . 'classes' . DS . 'class-metabox.php';
+// require_once get_template_directory() . DS . 'core' . DS . 'classes' . DS . 'abstracts/abstract-front-end-form.php';
+// require_once get_template_directory() . DS . 'core' . DS . 'classes' . DS . 'class-contact-form.php';
+// require_once get_template_directory() . DS . 'core' . DS . 'classes' . DS . 'class-post-form.php';
 
 
 if ( ! function_exists( 'odin_setup_features' ) ) {
@@ -50,7 +62,7 @@ if ( ! function_exists( 'odin_setup_features' ) ) {
 		/**
 		 * Add support for multiple languages.
 		 */
-		load_theme_textdomain( 'odin', get_template_directory() . '/languages' );
+		load_theme_textdomain( 'odin', get_template_directory() . DS . 'languages' );
 
 		/**
 		 * Register nav menus.
