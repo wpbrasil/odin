@@ -2,9 +2,11 @@
  * Custom login styles.
  */
 .login h1 a {
-	background: url('../images/logo-login.png') top center no-repeat !important;
-	height: 67px;
-	width: 325px !important;
+	background: url('../images/logo-login.png') center top no-repeat !important;
+	background: url('../images/logo-login.svg') center top no-repeat !important;
+	background-size: 80px 80px !important;
+	height: 80px !important;
+	width: 80px !important;
 }
 
 /**
