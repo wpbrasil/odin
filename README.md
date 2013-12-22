@@ -1,4 +1,6 @@
-# Odin Framework # [![Build Status](https://travis-ci.org/wpbrasil/generator-odin.png?branch=master)](https://travis-ci.org/wpbrasil/generator-odin)
+# Odin Framework #
+
+![Odin Framework](http://wpod.in/wp-content/uploads/2013/12/odin-logo.png)
 
 * [Website](http://wpod.in/)
 * [GitHub](https://github.com/wpbrasil/odin)
