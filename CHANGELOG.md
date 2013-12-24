@@ -1,5 +1,11 @@
 ## Changelog ##
 
+#### v2.2.1 - 12/12/2013 ####
+
+* Updated the Bootstrap to version 3.0.3.
+* Fixed WordPress logo to version 3.8.
+* Added new Odin logo.
+
 #### v2.2.0 - 12/12/2013 ####
 
 * Improved the templates in favor the Twenty Fourteen standards.
