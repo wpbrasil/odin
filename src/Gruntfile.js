@@ -187,7 +187,7 @@ module.exports = function( grunt ) {
 		// downloads dependencies
 		curl: {
 			bootstrap_sass: {
-				src: 'https://github.com/jlong/sass-bootstrap/archive/master.zip',
+				src: 'https://github.com/twbs/bootstrap-sass/archive/master.zip',
 				dest: '<%= dirs.tmp %>/bootstrap-sass.zip'
 			}
 		},
@@ -203,15 +203,15 @@ module.exports = function( grunt ) {
 		// renames and moves directories and files
 		rename: {
 			bootstrap_scss: {
-				src: '<%= dirs.tmp %>/sass-bootstrap-master/lib',
+				src: '<%= dirs.tmp %>/bootstrap-sass-master/vendor/assets/stylesheets/bootstrap',
 				dest: '<%= dirs.sass %>/bootstrap'
 			},
 			bootstrap_js: {
-				src: '<%= dirs.tmp %>/sass-bootstrap-master/js',
+				src: '<%= dirs.tmp %>/bootstrap-sass-master/vendor/assets/javascripts/bootstrap',
 				dest: '<%= dirs.js %>/bootstrap'
 			},
 			bootstrap_fonts: {
-				src: '<%= dirs.tmp %>/sass-bootstrap-master/fonts',
+				src: '<%= dirs.tmp %>/bootstrap-sass-master/vendor/assets/fonts/bootstrap',
 				dest: '<%= dirs.fonts %>/bootstrap'
 			}
 		},
@@ -222,13 +222,11 @@ module.exports = function( grunt ) {
 				'<%= dirs.tmp %>',
 				'<%= dirs.sass %>/bootstrap/',
 				'<%= dirs.js %>/bootstrap/',
+				'<%= dirs.js %>/libs/bootstrap.min.js',
 				'<%= dirs.fonts %>/bootstrap/'
 			],
 			bootstrap: [
-				'<%= dirs.js %>/bootstrap/tests/',
-				'<%= dirs.js %>/bootstrap/.jshintrc',
 				'<%= dirs.sass %>/bootstrap/bootstrap.scss',
-				'<%= dirs.sass %>/bootstrap/responsive.scss',
 				'<%= dirs.tmp %>'
 			]
 		}
