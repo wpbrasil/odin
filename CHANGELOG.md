@@ -1,5 +1,10 @@
 ## Changelog ##
 
+#### v2.2.2 - 28/12/2013 ####
+
+* Modified the bootstrap sass mirror to the official version.
+* Updated the Grunt dependencies.
+
 #### v2.2.1 - 12/12/2013 ####
 
 * Updated the Bootstrap to version 3.0.3.
