@@ -243,7 +243,7 @@ function odin_breadcrumbs( $homepage = '' ) {
 			if ( 'post' != $post->post_type ) {
 				$post_type = get_post_type_object($post->post_type);
 
-				echo '<span><a href="' . get_post_type_archive_link($post_type->name) . '"><span>' . $post_type->label . '</span></a></span> ';
+				echo '<li><a href="' . get_post_type_archive_link($post_type->name) . '"><span>' . $post_type->label . '</span></a></li> ';
 
 				// Gets post type taxonomies.
 				$taxonomy = get_object_taxonomies( $post_type->name );
@@ -252,7 +252,7 @@ function odin_breadcrumbs( $homepage = '' ) {
 					$term = get_the_terms( $post->ID, $taxonomy[0] ) ? array_shift( get_the_terms( $post->ID, $taxonomy[0] ) ) : '';
 
 					if ( $term ) {
-						echo '<span><a href="' . get_term_link( $term ) . '"><span>' . $term->name . '</span></a></span> ';
+						echo '<li><a href="' . get_term_link( $term ) . '"><span>' . $term->name . '</span></a></li> ';
 					}
 				}
 			} else {
