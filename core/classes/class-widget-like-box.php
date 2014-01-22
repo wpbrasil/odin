@@ -33,7 +33,7 @@ class Odin_Widget_Like_Box extends WP_Widget {
 		$title         = isset( $instance['title'] ) ? $instance['title'] : '';
 		$url           = isset( $instance['url'] ) ? $instance['url'] : '';
 		$width         = isset( $instance['width'] ) ? $instance['width'] : 300;
-		$height        = isset( $instance['height'] ) ? $instance['height'] : 600;
+		$height        = isset( $instance['height'] ) ? $instance['height'] : 500;
 		$color_scheme  = isset( $instance['color_scheme'] ) ? $instance['color_scheme'] : 'light';
 		$friends_faces = isset( $instance['friends_faces'] ) ? $instance['friends_faces'] : 1;
 		$show_posts    = isset( $instance['show_posts'] ) ? $instance['show_posts'] : 0;
@@ -90,7 +90,7 @@ class Odin_Widget_Like_Box extends WP_Widget {
 			</label>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'show_header' ); ?>">
+			<label for="<?php echo $this->get_field_id( 'show_border' ); ?>">
 				<input id="<?php echo $this->get_field_id( 'show_border' ); ?>" name="<?php echo $this->get_field_name( 'show_border' ); ?>" type="checkbox" value="1" <?php checked( 1, $show_border, true ); ?> /> <?php _e( 'Show Border', 'odin' ); ?>
 			</label>
 		</p>
@@ -102,14 +102,22 @@ class Odin_Widget_Like_Box extends WP_Widget {
 	 *
 	 * @see WP_Widget::update()
 	 *
-	 * @param array $new_instance Values just sent to be saved.
-	 * @param array $old_instance Previously saved values from database.
+	 * @param  array $new_instance Values just sent to be saved.
+	 * @param  array $old_instance Previously saved values from database.
 	 *
-	 * @return array Updated safe values to be saved.
+	 * @return array               Updated safe values to be saved.
 	 */
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
-		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+		$instance['title']         = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( $new_instance['title'] ) : '';
+		$instance['url']           = ( ! empty( $new_instance['url'] ) ) ? esc_url( $new_instance['url'] ) : '';
+		$instance['width']         = ( ! empty( $new_instance['width'] ) ) ? intval( $new_instance['width'] ) : 300;
+		$instance['height']        = ( ! empty( $new_instance['height'] ) ) ? intval( $new_instance['height'] ) : 500;
+		$instance['color_scheme']  = ( ! empty( $new_instance['color_scheme'] ) ) ? sanitize_text_field( $new_instance['color_scheme'] ) : 'light';
+		$instance['friends_faces'] = ( ! empty( $new_instance['friends_faces'] ) ) ? intval( $new_instance['friends_faces'] ) : 0;
+		$instance['show_posts']    = ( ! empty( $new_instance['show_posts'] ) ) ? intval( $new_instance['show_posts'] ) : 0;
+		$instance['show_header']   = ( ! empty( $new_instance['show_header'] ) ) ? intval( $new_instance['show_header'] ) : 0;
+		$instance['show_border']   = ( ! empty( $new_instance['show_border'] ) ) ? intval( $new_instance['show_border'] ) : 0;
 
 		return $instance;
 	}
