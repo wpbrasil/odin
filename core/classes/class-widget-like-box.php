@@ -12,7 +12,7 @@
 class Odin_Widget_Like_Box extends WP_Widget {
 
 	/**
-	 * Sets up the widgets name etc.
+	 * Register widget with WordPress.
 	 */
 	public function __construct() {
 		parent::__construct(
@@ -30,6 +30,7 @@ class Odin_Widget_Like_Box extends WP_Widget {
 	 * @param array $instance Previously saved values from database.
 	 */
 	public function form( $instance ) {
+		$title         = isset( $instance['title'] ) ? $instance['title'] : '';
 		$url           = isset( $instance['url'] ) ? $instance['url'] : '';
 		$width         = isset( $instance['width'] ) ? $instance['width'] : 300;
 		$height        = isset( $instance['height'] ) ? $instance['height'] : 600;
@@ -40,6 +41,12 @@ class Odin_Widget_Like_Box extends WP_Widget {
 		$show_border   = isset( $instance['show_border'] ) ? $instance['show_border'] : 0;
 
 		?>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>">
+				<?php _e( 'Title', 'odin' ); ?>
+				<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+			</label>
+		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'url' ); ?>">
 				<?php _e( 'Facebook Page URL', 'odin' ); ?>
