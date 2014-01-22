@@ -27,7 +27,9 @@ class Odin_Widget_Like_Box extends WP_Widget {
 	 *
 	 * @see WP_Widget::form()
 	 *
-	 * @param array $instance Previously saved values from database.
+	 * @param  array $instance Previously saved values from database.
+	 *
+	 * @return string          Widget options form.
 	 */
 	public function form( $instance ) {
 		$title         = isset( $instance['title'] ) ? $instance['title'] : '';
@@ -125,52 +127,32 @@ class Odin_Widget_Like_Box extends WP_Widget {
 	/**
 	 * Outputs the content of the widget.
 	 *
-	 * @param array $args
-	 * @param array $instance
+	 * @param  array  $args      Widget arguments.
+	 * @param  array  $instance  Widget options.
+	 *
+	 * @return string            Facebook like box.
 	 */
 	public function widget( $args, $instance ) {
-		if( !empty( $instance['url'] ) )
-			$url = $instance['url'];
-		else
-			$url = '';
+		$title = apply_filters( 'widget_title', $instance['title'] );
 
-		if( !empty( $instance['width'] ) )
-			$width = $instance['width'];
-		else
-			$width = 300;
+		echo $args['before_widget'];
+		if ( ! empty( $title ) ) {
+			echo $args['before_title'] . $title . $args['after_title'];
+		}
 
-		if( !empty( $instance['height'] ) )
-			$height = $instance['height'];
-		else
-			$height = 600;
+		echo sprintf(
+			'<iframe src="//www.facebook.com/plugins/likebox.php?href=%1$s&amp;width=%2$d&amp;height=%3$d&amp;colorscheme=%4$s&amp;show_faces=%5$d&amp;header=%6$d&amp;stream=%7$d&amp;show_border=%8$d" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width: %2$dpx; height: %3$dpx;" allowTransparency="true"></iframe>',
+			$instance['url'],
+			$instance['width'],
+			$instance['height'],
+			$instance['color_scheme'],
+			$instance['friends_faces'],
+			$instance['show_posts'],
+			$instance['show_header'],
+			$instance['show_border']
+		);
 
-		if( !empty( $instance['color_scheme'] ) )
-			$color_scheme = $instance['color_scheme'];
-		else
-			$color_scheme = 'light';
-
-		if( !empty( $instance['friends_faces'] ) )
-			$friends_faces = $instance['friends_faces'];
-		else
-			$friends_faces = 0;
-
-		if( !empty( $instance['show_posts'] ) )
-			$show_posts = $instance['show_posts'];
-		else
-			$show_posts = 0;
-
-		if( !empty( $instance['show_header'] ) )
-			$show_header = $instance['show_header'];
-		else
-			$show_header = 0;
-
-		if( !empty( $instance['show_border'] ) )
-			$show_border = $instance['show_border'];
-		else
-			$show_border = 0;
-?>
-		<iframe src="//www.facebook.com/plugins/likebox.php?href=<?php echo $url; ?>&amp;width=<?php echo $width; ?>&amp;height=<?php echo $height; ?>&amp;colorscheme=<?php echo $color_scheme; ?>&amp;show_faces=<?php echo $friends_faces; ?>&amp;header=<?php echo $show_header; ?>&amp;stream=<?php echo $show_posts; ?>&amp;show_border=<?php echo $show_border; ?>" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width: <?php echo $width; ?>px; height:<?php echo $height; ?>px;" allowTransparency="true"></iframe>
-<?php
+		echo $args['after_widget'];
 	}
 }
 
