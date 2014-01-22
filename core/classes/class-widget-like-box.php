@@ -1,28 +1,29 @@
 <?php
 /**
- * Odin_Widgets class.
+ * Odin_Widget_Like_Box class.
  *
- * Widgets.
+ * Facebook like widget.
  *
  * @package  Odin
- * @category Metabox
+ * @category Widget
  * @author   WPBrasil
- * @version  2.1.4
+ * @version  2.2.0
  */
 class Odin_Widget_Like_Box extends WP_Widget {
+
 	/**
-	 * Sets up the widgets name etc
+	 * Sets up the widgets name etc.
 	 */
 	public function __construct() {
 		parent::__construct(
 			'odin_facebook_like_box',
-			__('Odin Facebook Like Box', 'odin'),
+			__( 'Facebook Like Box', 'odin' ),
 			array( 'description' => __( 'This widget includes a facebook like box on your blog', 'odin' ), )
 		);
 	}
 
 	/**
-	 * Outputs the content of the widget
+	 * Outputs the content of the widget.
 	 *
 	 * @param array $args
 	 * @param array $instance
@@ -73,7 +74,7 @@ class Odin_Widget_Like_Box extends WP_Widget {
 	}
 
 	/**
-	 * Ouputs the options form on admin
+	 * Ouputs the options form on admin.
 	 *
 	 * @param array $instance The widget options
 	 */
@@ -159,15 +160,25 @@ class Odin_Widget_Like_Box extends WP_Widget {
 	}
 
 	/**
-	 * Processing widget options on save
+	 * Processing widget options on save.
 	 *
-	 * @param array $new_instance The new options
-	 * @param array $old_instance The previous options
+	 * @param array $new_instance The new options.
+	 * @param array $old_instance The previous options.
 	 */
 	public function update( $new_instance, $old_instance ) {
-		$instance = array_merge($old_instance, $new_instance);
+		$instance = array_merge( $old_instance, $new_instance );
 
 		return $instance;
 	}
 }
-add_action('widgets_init', create_function('', 'return register_widget("Odin_Widget_Like_Box");'));
+
+/**
+ * Register the Like Box Widget.
+ *
+ * @return void
+ */
+function odin_like_box_widget() {
+	register_widget( 'Odin_Widget_Like_Box' );
+}
+
+add_action( 'widgets_init', 'odin_like_box_widget' );
