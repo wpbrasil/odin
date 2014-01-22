@@ -43,32 +43,32 @@ class Odin_Widget_Like_Box extends WP_Widget {
 		?>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>">
-				<?php _e( 'Title', 'odin' ); ?>
-				<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+				<?php _e( 'Title:', 'odin' ); ?>
+				<input id="<?php echo $this->get_field_id( 'title' ); ?>" class="widefat" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 			</label>
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'url' ); ?>">
-				<?php _e( 'Facebook Page URL', 'odin' ); ?>
-				<input id="<?php echo $this->get_field_id( 'url' ); ?>" name="<?php echo $this->get_field_name( 'url' ); ?>" type="text" value="<?php echo esc_attr( $url ); ?>" />
+				<?php _e( 'Facebook Page URL:', 'odin' ); ?>
+				<input id="<?php echo $this->get_field_id( 'url' ); ?>" class="widefat" name="<?php echo $this->get_field_name( 'url' ); ?>" type="text" value="<?php echo esc_attr( $url ); ?>" />
 			</label>
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'width' ); ?>">
-				<?php _e( 'Width', 'odin' ); ?>
-				<input id="<?php echo $this->get_field_id( 'width' ); ?>" name="<?php echo $this->get_field_name( 'width' ); ?>" type="text" value="<?php echo intval( $width ); ?>" />
+				<?php _e( 'Width:', 'odin' ); ?>
+				<input id="<?php echo $this->get_field_id( 'width' ); ?>" size="5" name="<?php echo $this->get_field_name( 'width' ); ?>" type="text" value="<?php echo intval( $width ); ?>" />
 			</label>
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'height' ); ?>">
-				<?php _e( 'Height', 'odin' ); ?>
-				<input id="<?php echo $this->get_field_id( 'height' ); ?>" name="<?php echo $this->get_field_name( 'height' ); ?>" type="text" value="<?php echo intval( $height ); ?>" />
+				<?php _e( 'Height:', 'odin' ); ?>
+				<input id="<?php echo $this->get_field_id( 'height' ); ?>" size="5" name="<?php echo $this->get_field_name( 'height' ); ?>" type="text" value="<?php echo intval( $height ); ?>" />
 			</label>
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'color_scheme' ); ?>">
-				<?php _e( 'Color Scheme', 'odin' ); ?>
-				<select id="<?php echo $this->get_field_id( 'color_scheme' ); ?>" name="<?php echo $this->get_field_name( 'color_scheme' ); ?>">
+				<?php _e( 'Color Scheme:', 'odin' ); ?>
+				<select id="<?php echo $this->get_field_id( 'color_scheme' ); ?>" class="widefat" name="<?php echo $this->get_field_name( 'color_scheme' ); ?>">
 					<option value="dark" <?php selected( 'dark', $color_scheme, true ); ?>><?php _e( 'Dark','odin' ); ?></option>
 					<option value="light" <?php selected( 'light', $color_scheme, true ); ?>><?php _e( 'Light','odin' ); ?></option>
 				</select>
