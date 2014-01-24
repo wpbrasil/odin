@@ -516,14 +516,16 @@ abstract class Odin_Front_End_Form {
 
 					switch ( $type ) {
 						case 'email':
-							if ( ! is_email( $value ) )
+							if ( ! is_email( $value ) ) {
 								$errors[] = sprintf( __( '%s must be an email address valid.', 'odin' ), '<strong>' . $label . '</strong>' );
+							}
 							break;
 
 						default:
 							$custom_message = do_action( 'odin_front_end_form_valid_' . $this->id . '_' . $id, $label, $value );
-							if ( $custom_message )
+							if ( $custom_message ) {
 								$errors[] = $custom_message;
+							}
 							break;
 					}
 				}
