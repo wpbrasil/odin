@@ -281,6 +281,13 @@ abstract class Odin_Front_End_Form {
 		return $html;
 	}
 
+	/**
+	 * Required field HTML.
+	 *
+	 * @param  array  $attributes Array with field attributes.
+	 *
+	 * @return string             Alert for required field.
+	 */
 	protected function required_field_alert( $attributes ) {
 		if ( isset( $attributes['required'] ) ) {
 			return ' <span class="text-danger">*</span>';
@@ -309,7 +316,7 @@ abstract class Odin_Front_End_Form {
 			$attributes['class'] = 'form-control';
 		}
 
-		$html = '<div class="form-group">';
+		$html = sprintf( '<div class="form-group odin-form-group-%s">', $id );
 		$html .= sprintf( '<label for="%s">%s%s</label>', $id, $label, $this->required_field_alert( $attributes ) );
 		$html .= sprintf( '<input id="%1$s" name="%1$s" value="%2$s"%3$s />', $id, $default, $this->process_attributes( $attributes ) );
 		$html .= ! empty( $description ) ? '<span class="help-block">' . $description . '</span>' : '';
@@ -343,7 +350,7 @@ abstract class Odin_Front_End_Form {
 			$attributes['rows'] = '4';
 		}
 
-		$html = '<div class="form-group">';
+		$html = sprintf( '<div class="form-group odin-form-group-%s">', $id );
 		$html .= sprintf( '<label for="%s">%s%s</label>', $id, $label, $this->required_field_alert( $attributes ) );
 		$html .= sprintf( '<textarea id="%1$s" name="%1$s"%2$s>%3$s</textarea>', $id, $this->process_attributes( $attributes ), $default );
 		$html .= ! empty( $description ) ? '<span class="help-block">' . $description . '</span>' : '';
@@ -369,7 +376,7 @@ abstract class Odin_Front_End_Form {
 			$attributes['checked'] = 'checked';
 		}
 
-		$html = '<div class="checkbox">';
+		$html = sprintf( '<div class="checkbox" odin-form-group-%s">', $id );
 		$html .= '<label>';
 		$html .= sprintf( '<input type="checkbox" id="%1$s" name="%1$s" value="1"%2$s />', $id, $this->process_attributes( $attributes ) );
 		$html .= ' ' . $label . $this->required_field_alert( $attributes ) . '</label>';
@@ -400,7 +407,7 @@ abstract class Odin_Front_End_Form {
 		// If multiple add a array in the option.
 		$multiple = ( in_array( 'multiple', $attributes ) ) ? '[]' : '';
 
-		$html = '<div class="form-group">';
+		$html = sprintf( '<div class="form-group" odin-form-group-%s">', $id );
 		$html .= sprintf( '<label for="%s">%s%s</label>', $id, $label, $this->required_field_alert( $attributes ) );
 		$html .= sprintf( '<select id="%1$s" name="%1$s%2$s"%3$s>', $id, $multiple, $this->process_attributes( $attributes ) );
 
@@ -431,7 +438,7 @@ abstract class Odin_Front_End_Form {
 	 * @return string              HTML of the field.
 	 */
 	protected function field_radio( $id, $label, $default, $description, $attributes, $options ) {
-		$html = '<div class="form-group">';
+		$html = sprintf( '<div class="form-group odin-form-group-%s">', $id );
 		$html .= '<label>' . $label . $this->required_field_alert( $attributes ) . '</label>';
 		$html .= '<div class="form-radio-group">';
 
