@@ -90,7 +90,7 @@ function odin_pagination( $mid = 2, $end = 1, $show = false ) {
  *
  * @return string              Related Posts.
  */
-function odin_related_posts( $display = 'category', $qty = 4, $title = '', $thumb = true ) {
+function odin_related_posts( $display = 'category', $qty = 4, $title = '', $thumb = true, $post_type = 'post' ) {
 	global $post;
 
 	$show = false;
@@ -115,6 +115,7 @@ function odin_related_posts( $display = 'category', $qty = 4, $title = '', $thum
 					'tag__in' => $tag_ids,
 					'post__not_in' => array( $post->ID ),
 					'posts_per_page' => $post_qty,
+                    'post_type' => $post_type,
 					'ignore_sticky_posts' => 1
 				);
 			}
@@ -137,6 +138,7 @@ function odin_related_posts( $display = 'category', $qty = 4, $title = '', $thum
 					'category__in' => $category_ids,
 					'post__not_in' => array( $post->ID ),
 					'showposts' => $post_qty,
+                    'post_type' => $post_type,
 					'ignore_sticky_posts' => 1,
 				);
 			}
