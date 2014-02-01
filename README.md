@@ -1,5 +1,7 @@
 # Odin Framework #
 
+[Ver essa documentação em Português do Brasil](https://github.com/wpbrasil/odin/blob/master/README-pt_BR.md)
+
 ![Odin Framework](http://wpod.in/wp-content/uploads/2013/12/odin-logo.png)
 
 * [Website](http://wpod.in/)
