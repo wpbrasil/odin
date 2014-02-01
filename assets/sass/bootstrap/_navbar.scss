@@ -48,7 +48,7 @@
 // content for the user's viewport.
 
 .navbar-collapse {
-  max-height: 340px;
+  max-height: $navbar-collapse-max-height;
   overflow-x: visible;
   padding-right: $navbar-padding-horizontal;
   padding-left:  $navbar-padding-horizontal;
@@ -155,17 +155,11 @@
   padding: $navbar-padding-vertical $navbar-padding-horizontal;
   font-size: $font-size-large;
   line-height: $line-height-computed;
+  height: $line-height-computed;
 
   &:hover,
   &:focus {
     text-decoration: none;
-  }
-
-  // Prevent Glyphicons from increasing height of navbar
-  > .glyphicon {
-    float: left;
-    margin-top: -2px;
-    margin-right: 5px;
   }
 
   @media (min-width: $grid-float-breakpoint) {
@@ -192,6 +186,12 @@
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid transparent;
   border-radius: $border-radius-base;
+
+  // We remove the `outline` here, but later compensate by attaching `:hover`
+  // styles to `:focus`.
+  &:focus {
+    outline: none;
+  }
 
   // Bars
   .icon-bar {

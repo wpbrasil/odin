@@ -1,14 +1,15 @@
 /* ========================================================================
- * Bootstrap: tooltip.js v3.0.3
+ * Bootstrap: tooltip.js v3.1.0
  * http://getbootstrap.com/javascript/#tooltip
  * Inspired by the original jQuery.tipsy by Jason Frame
  * ========================================================================
- * Copyright 2013 Twitter, Inc.
+ * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
 
-+function ($) { 'use strict';
++function ($) {
+  'use strict';
 
   // TOOLTIP PUBLIC CLASS DEFINITION
   // ===============================
@@ -128,6 +129,7 @@
       this.$element.trigger(e)
 
       if (e.isDefaultPrevented()) return
+      var that = this;
 
       var $tip = this.tip()
 
@@ -178,7 +180,16 @@
 
       this.applyPlacement(calculatedOffset, placement)
       this.hoverState = null
-      this.$element.trigger('shown.bs.' + this.type)
+
+      var complete = function() {
+        that.$element.trigger('shown.bs.' + that.type)
+      }
+
+      $.support.transition && this.$tip.hasClass('fade') ?
+        $tip
+          .one($.support.transition.end, complete)
+          .emulateTransitionEnd(150) :
+        complete()
     }
   }
 
@@ -201,7 +212,7 @@
 
     // $.fn.offset doesn't round pixel values
     // so we use setOffset directly with our own function B-0
-    jQuery.offset.setOffset($tip[0], $.extend({
+    $.offset.setOffset($tip[0], $.extend({
       using: function (props) {
         $tip.css({
           top: Math.round(props.top),
@@ -261,6 +272,7 @@
 
     function complete() {
       if (that.hoverState != 'in') $tip.detach()
+      that.$element.trigger('hidden.bs.' + that.type)
     }
 
     this.$element.trigger(e)
@@ -276,7 +288,6 @@
       complete()
 
     this.hoverState = null
-    this.$element.trigger('hidden.bs.' + this.type)
 
     return this
   }
@@ -352,6 +363,7 @@
   }
 
   Tooltip.prototype.destroy = function () {
+    clearTimeout(this.timeout)
     this.hide().$element.off('.' + this.type).removeData('bs.' + this.type)
   }
 
@@ -367,6 +379,7 @@
       var data    = $this.data('bs.tooltip')
       var options = typeof option == 'object' && option
 
+      if (!data && option == 'destroy') return
       if (!data) $this.data('bs.tooltip', (data = new Tooltip(this, options)))
       if (typeof option == 'string') data[option]()
     })
