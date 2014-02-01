@@ -1,5 +1,9 @@
 ## Changelog ##
 
+#### v2.2.3 - 31/01/2014 ####
+
+* Updated the Bootstrap to version 3.1.0.
+
 #### v2.2.2 - 28/12/2013 ####
 
 * Modified the bootstrap sass mirror to the official version.
