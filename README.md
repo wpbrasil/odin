@@ -1,40 +1,34 @@
 # Odin Framework #
 
+[Ver essa documentação em Português do Brasil](https://github.com/wpbrasil/odin/blob/master/README-pt_BR.md)
+
 ![Odin Framework](http://wpod.in/wp-content/uploads/2013/12/odin-logo.png)
 
 * [Website](http://wpod.in/)
 * [GitHub](https://github.com/wpbrasil/odin)
 * [WordPress Brasil Group on Facebook](https://www.facebook.com/groups/wordpress.brasil)
 
-## Project Description - Descrição do Projeto ##
+## Project Description ##
 
 Welcome to Odin, a base-theme developed by [WordPress Brasil Group](https://www.facebook.com/groups/wordpress.brasil), to help on agile development of themes for WordPress.
 
-Bem vindos ao Odin, um tema base desenvolvido pelo [Grupo WordPress Brasil](https://www.facebook.com/groups/wordpress.brasil), para auxiliar no desenvolvimento ágil de temas para WordPress.
-
-## Installation - Instalação ##
+## Installation ##
 
 Send the folder "odin" to the default themes folder from WordPress `wp-content/themes` or send the zipball using the WordPress Theme Installer.
 
-Envie a pasta "odin" para a pasta de temas padrão do WordPress `wp-content/themes` ou simplesmente envie o arquivo zipado utilizando o instalador de temas do WordPress.
-
-## Documentation - Documentação ##
+## Documentation ##
 
 Informations about how-to use the classes and functions from Odin is on the [Official Wiki](https://github.com/wpbrasil/odin/wiki/_pages)
 
-Informações de como usar as classes e funções do Odin na [Wiki Oficial](https://github.com/wpbrasil/odin/wiki/_pages)
-
-## Plugins Support - Suporte a plugins ##
+## Plugins Support ##
 
 Odin supports natively these plugins:
-
-Odin suporta nativamente os plugins:
 
 * [WooCommerce](http://wordpress.org/extend/plugins/woocommerce/)
 * [Jigoshop](http://wordpress.org/extend/plugins/jigoshop/)
 * [JetPack](http://wordpress.org/extend/plugins/jetpack/) Infinite Scroll
 
-## References - Referências ##
+## References ##
 
 * [Bootstrap](http://getbootstrap.com/)
 * [Bootstrap Sass](https://github.com/twbs/bootstrap-sass)
@@ -50,39 +44,27 @@ Odin suporta nativamente os plugins:
 * [goqr.me](http://goqr.me/)
 * [Google Maps](https://developers.google.com/maps/)
 
-## Bugs and Sugestions - Bugs e Sugestões ##
+## Bugs and Sugestions ##
 
 The Odin Framework is an **Open Source** project. Anyone can (and should) help us to improve it.
 
 Report bugs or do suggestions using the [Issues/Project Forum](https://github.com/wpbrasil/odin/issues)
 
-O Odin é um projeto **Open Source**. Qualquer um pode (e deveria) ajudar a melhorá-lo.
-
-Reporte bugs ou faça sugestões utilizando o [Issues/Fórum do Projeto](https://github.com/wpbrasil/odin/issues)
-
-## Contribute to the Project - Contribua com o Projeto ##
+## Contribute to the Project ##
 
 To contribute, just click on the **Fork** button, create a *Branch*, improve the code and send it with a **Pull Request**.
 
 More details about how to contribute and send Pull Requests in [GitHub Collaborating](https://help.github.com/categories/63/articles).
 
-Para contribuir basta clicar no botão **Fork**, criar um *Branch*, arrumar o código e enviá-lo com um **Pull Request**.
-
-Mais detalhes de como contribuir e enviar Pull Requests em [GitHub Collaborating](https://help.github.com/categories/63/articles).
-
-[Como colaborar com projetos opensource com GitHub](http://www.youtube.com/watch?v=H3olaBo83As)
+[How to colaborate to opensource projects on GitHub](http://www.youtube.com/watch?v=H3olaBo83As)
 
 ## Changelog ##
 
 [Changelog here!](https://github.com/wpbrasil/odin/blob/master/CHANGELOG.md)
 
-## Copyright and License - Copyright e Licença ##
+## Copyright and License ##
 
-Copyright 2013 - WordPress Brasil Group.
+Copyright 2013 - 2014 - WordPress Brasil Group.
 
 The PHP code is licensed with [GPLv2](http://www.gnu.org/licenses/gpl-2.0.txt).
 All the CSS, SCSS, JS, images files and others, not including the PHP files is licensed with [MIT](http://opensource.org/licenses/MIT) or by the license specified inside the file.
-
-Copyright 2013 - Grupo WordPress Brasil.
-
-O código PHP esta licenciado sob a Licença [GPLv2](http://www.gnu.org/licenses/gpl-2.0.txt). Todos os arquivos CSS, SCSS, JS, imagens e outros não incluindo arquivos PHP estão licenciados como [MIT](http://opensource.org/licenses/MIT) ou pela licença especificada dentro de seus arquivos.
