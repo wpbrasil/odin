@@ -228,7 +228,7 @@ function odin_breadcrumbs( $homepage = '' ) {
 	! empty( $homepage ) || $homepage = __( 'Home', 'odin' );
 
 	// Default html.
-	$current_before = '<li>';
+	$current_before = '<li class="active">';
 	$current_after  = '</li>';
 
 	if ( ! is_home() && ! is_front_page() || is_paged() ) {
@@ -236,7 +236,7 @@ function odin_breadcrumbs( $homepage = '' ) {
 
 		// First level.
 		echo '<ol id="breadcrumbs" class="breadcrumb">';
-		echo '<li><a href="' . home_url() . '" rel="nofollow"><span>' . $homepage . '</span></a></li>';
+		echo '<li><a href="' . home_url() . '" rel="nofollow">' . $homepage . '</a></li>';
 
 		// Single post.
 		if ( is_single() && ! is_attachment() ) {
@@ -244,9 +244,9 @@ function odin_breadcrumbs( $homepage = '' ) {
 
 			// Checks if is a custom post type.
 			if ( 'post' != $post->post_type ) {
-				$post_type = get_post_type_object($post->post_type);
+				$post_type = get_post_type_object( $post->post_type );
 
-				echo '<li><a href="' . get_post_type_archive_link($post_type->name) . '"><span>' . $post_type->label . '</span></a></li> ';
+				echo '<li><a href="' . get_post_type_archive_link( $post_type->name ) . '">' . $post_type->label . '</a></li> ';
 
 				// Gets post type taxonomies.
 				$taxonomy = get_object_taxonomies( $post_type->name );
@@ -255,17 +255,17 @@ function odin_breadcrumbs( $homepage = '' ) {
 					$term = get_the_terms( $post->ID, $taxonomy[0] ) ? array_shift( get_the_terms( $post->ID, $taxonomy[0] ) ) : '';
 
 					if ( $term ) {
-						echo '<li><a href="' . get_term_link( $term ) . '"><span>' . $term->name . '</span></a></li> ';
+						echo '<li><a href="' . get_term_link( $term ) . '">' . $term->name . '</a></li> ';
 					}
 				}
 			} else {
 				$category = get_the_category();
 				$category = $category[0];
 
-				echo '<li><a href="' . get_category_link( $category->term_id ) . '"><span>' . $category->name . '</span></a></li>';
+				echo '<li><a href="' . get_category_link( $category->term_id ) . '">' . $category->name . '</a></li>';
 			}
 
-			echo $current_before . '<span class="active">' . get_the_title() . '</span>' . $current_after;
+			echo $current_before . get_the_title() . $current_after;
 
 		// Single attachment.
 		} elseif ( is_attachment() ) {
@@ -273,9 +273,9 @@ function odin_breadcrumbs( $homepage = '' ) {
 			$category = get_the_category( $parent->ID );
 			$category = $category[0];
 
-			echo '<li><a href="' . get_category_link( $category->term_id ) . '"><span>' . $category->name . '</span></a></li>';
+			echo '<li><a href="' . get_category_link( $category->term_id ) . '">' . $category->name . '</a></li>';
 
-			echo '<span><a href="' . get_permalink( $parent ) . '"><span>' . $parent->post_title . '</span></a></span> ';
+			echo '<li><a href="' . get_permalink( $parent ) . '">' . $parent->post_title . '</a></li>';
 
 			echo $current_before . get_the_title() . $current_after;
 
@@ -291,7 +291,7 @@ function odin_breadcrumbs( $homepage = '' ) {
 			while ( $parent_id ) {
 				$page = get_page( $parent_id );
 
-				$breadcrumbs[] = '<span><a href="' . get_permalink( $page->ID ) . '"><span>' . get_the_title( $page->ID ) . '</span></a></span>';
+				$breadcrumbs[] = '<li><a href="' . get_permalink( $page->ID ) . '">' . get_the_title( $page->ID ) . '</a></li>';
 				$parent_id  = $page->post_parent;
 			}
 
@@ -340,21 +340,21 @@ function odin_breadcrumbs( $homepage = '' ) {
 
 		// Archives per days.
 		} elseif ( is_day() ) {
-			echo '<li><a href="' . get_year_link( get_the_time( 'Y' ) ) . '"><span>' . get_the_time( 'Y' ) . '</span></a></li>';
+			echo '<li><a href="' . get_year_link( get_the_time( 'Y' ) ) . '">' . get_the_time( 'Y' ) . '</a></li>';
 
-			echo '<li><a href="' . get_month_link( get_the_time( 'Y' ),get_the_time( 'm' ) ) . '"><span>' . get_the_time( 'F' ) . '</span></a></li>';
+			echo '<li><a href="' . get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ) . '">' . get_the_time( 'F' ) . '</a></li>';
 
-			echo $current_before . '<span class="active">' . get_the_time( 'd' ) . $current_after . '</span>';
+			echo $current_before . get_the_time( 'd' ) . $current_after;
 
 		// Archives per month.
 		} elseif ( is_month() ) {
-			echo '<li><a href="' . get_year_link( get_the_time( 'Y' ) ) . '"><span>' . get_the_time( 'Y' ) . '</span></a></li>';
+			echo '<li><a href="' . get_year_link( get_the_time( 'Y' ) ) . '">' . get_the_time( 'Y' ) . '</a></li>';
 
-			echo $current_before . '<span class="active">' . get_the_time( 'F' ) . $current_after . '</span>';
+			echo $current_before . get_the_time( 'F' ) . $current_after;
 
 		// Archives per year.
 		} elseif ( is_year() ) {
-			echo $current_before . '<span class="active">' . get_the_time( 'Y' ) . $current_after . '</span>';
+			echo $current_before . get_the_time( 'Y' ) . $current_after;
 
 		// Archive fallback for custom taxonomies.
 		} elseif ( is_archive() ) {
@@ -368,7 +368,7 @@ function odin_breadcrumbs( $homepage = '' ) {
 			if ( 0 != $current_object->parent ) {
 				$parent_term = get_term( $current_object->parent, $current_object->taxonomy );
 
-				echo '<li><a href="' . get_term_link( $parent_term ) . '"><span>' . $parent_term->name . '</span></a></li>';
+				echo '<li><a href="' . get_term_link( $parent_term ) . '">' . $parent_term->name . '</a></li>';
 			}
 
 			echo $current_before . $taxonomy->label . ': ' . $term_name . $current_after;
@@ -382,9 +382,9 @@ function odin_breadcrumbs( $homepage = '' ) {
 		if ( get_query_var( 'paged' ) ) {
 
 			if ( is_archive() ) {
-				echo ' (' . sprintf( __( 'Page %s', 'odin' ), get_query_var('paged') ) . ')';
+				echo ' (' . sprintf( __( 'Page %s', 'odin' ), get_query_var( 'paged' ) ) . ')';
 			} else {
-				printf( __( 'Page %s', 'odin' ), get_query_var('paged') );
+				printf( __( 'Page %s', 'odin' ), get_query_var( 'paged' ) );
 			}
 		}
 
