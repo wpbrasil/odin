@@ -34,6 +34,7 @@ require_once get_template_directory() . '/core/classes/class-thumbnail-resizer.p
 // require_once get_template_directory() . '/core/classes/abstracts/abstract-front-end-form.php';
 // require_once get_template_directory() . '/core/classes/class-contact-form.php';
 // require_once get_template_directory() . '/core/classes/class-post-form.php';
+// require_once get_template_directory() . '/core/classes/class-user-meta.php';
 
 /**
  * Odin Widgets.
