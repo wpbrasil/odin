@@ -381,7 +381,8 @@ class Odin_User_Meta {
 	/**
 	 * Save user_meta data.
 	 *
-	 * @param  int $user_id Current post type ID.
+	 * @param  string $id      Field id.
+	 * @param  string $current Field current value.
 	 *
 	 * @return void
 	 */
@@ -393,8 +394,13 @@ class Odin_User_Meta {
 
 		foreach ( $this->fields as $field ) {
 			$name = $field['id'];
+			$current = $field['current'];
 
-			update_usermeta( $user_id, $name, $_POST[$name] );
+			if( $_POST[$name] != $current ){
+
+				update_user_meta( $user_id, $name, $_POST[$name] );
+
+			}
 		}
 
 	}
