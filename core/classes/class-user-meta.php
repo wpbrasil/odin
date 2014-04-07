@@ -124,8 +124,16 @@ class Odin_User_Meta {
 		$attrs   = isset( $args['attributes'] ) ? $args['attributes'] : array();
 
 		// Gets current value or default.
-		$user_ID = get_current_user_id();
-		$current = get_user_meta( $user_ID, $id, true );
+		if ( defined( 'IS_PROFILE_PAGE' ) && IS_PROFILE_PAGE ) {
+			$current_user = wp_get_current_user();
+			$user_id = $current_user->ID;
+		// If is another user's profile page
+		} elseif ( ! empty( $_GET['user_id'] ) && is_numeric( $_GET['user_id'] ) ) {
+			$user_id = $_GET['user_id'];
+		}
+		
+		$current = get_user_meta( $user_id, $id, true );
+		
 		if ( ! $current ) {
 			$current = isset( $args['default'] ) ? $args['default'] : '';
 		}
