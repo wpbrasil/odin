@@ -166,7 +166,7 @@ class Odin_Theme_Options {
 
 			$current = ( $current_tab == $tab['id'] ) ? ' nav-tab-active' : '';
 
-			$html .= sprintf( '<a href="%s?page=%s&amp;tab=%s" class="nav-tab%s">%s</a>', $this->get_current_url(), $this->id, $tab['id'], $current, $tab['title'] );
+			$html .= sprintf( '<a href="?page=%s&amp;tab=%s" class="nav-tab%s">%s</a>', $this->id, $tab['id'], $current, $tab['title'] );
 		}
 
 		$html .= '</h2>';
