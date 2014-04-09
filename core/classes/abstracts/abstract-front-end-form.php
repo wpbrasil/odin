@@ -40,6 +40,13 @@ abstract class Odin_Front_End_Form {
 	protected $success = '';
 
 	/**
+	 * Attachments
+	 *
+	 * @var string
+	 */
+	protected $attachments = array();
+
+	/**
 	 * Form construct.
 	 *
 	 * @param string $id         Form id.
@@ -491,6 +498,23 @@ abstract class Odin_Front_End_Form {
 	}
 
 	/**
+	 * Gests the form submitted files.
+	 *
+	 * @return array Form submitted files.
+	 */
+	protected function submitted_form_files() {
+		// Checks the form method.
+		if(count($_FILES) > 0) {
+			$files = $_FILES;
+		}
+		else {
+			$files = null;
+		}
+
+		return $files;
+	}
+
+	/**
 	 * Validates the form data.
 	 *
 	 * @return void
@@ -499,7 +523,8 @@ abstract class Odin_Front_End_Form {
 		$errors = array();
 
 		// Sets the data.
-		$data = $this->submitted_form_data();
+		$data  = $this->submitted_form_data();
+		$files = $this->submitted_form_files();
 
 		if ( ! empty( $this->fields ) && ! empty( $data ) ) {
 			foreach ( $this->fields as $fieldset ) {
@@ -510,7 +535,7 @@ abstract class Odin_Front_End_Form {
 					$value    = ! empty( $data[ $id ] ) ? $data[ $id ] : '';
 					$required = isset( $field['required'] ) && $field['required'] ? true : false;
 
-					if ( $required && empty( $data[ $id ] ) ) {
+					if ( $type != 'file' && $required && empty( $data[ $id ] ) ) {
 						$errors[] = sprintf( __( '%s is required.', 'odin' ), '<strong>' . $label . '</strong>' );
 					}
 
@@ -518,6 +543,14 @@ abstract class Odin_Front_End_Form {
 						case 'email':
 							if ( ! is_email( $value ) ) {
 								$errors[] = sprintf( __( '%s must be an email address valid.', 'odin' ), '<strong>' . $label . '</strong>' );
+							}
+							break;
+
+						case 'file':
+							if($files) {
+								if($required && empty($files[$id]['name'])) {
+									$errors[] = sprintf( __( '%s is required.', 'odin' ), '<strong>' . $label . '</strong>' );
+								}
 							}
 							break;
 
