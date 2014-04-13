@@ -4,6 +4,7 @@
 
 * Tested with WordPress 3.9.
 * Added Odin_User_Meta class.
+* Added ability to attach files using Odin_Contact_Form.
 * Improved the image upload field.
 * Improved the image plupload field.
 * Improved the breadcrumbs.
