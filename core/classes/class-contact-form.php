@@ -77,7 +77,7 @@ class Odin_Contact_Form extends Odin_Front_End_Form {
 	/**
 	 * Mail Reply-To.
 	 *
-	 * @var string
+	 * @param string
 	 */
 	public function set_reply_to( $reply_to ) {
 		$this->reply_to = $reply_to;
@@ -116,23 +116,24 @@ class Odin_Contact_Form extends Odin_Front_End_Form {
 	 * @return array
 	 */
 	protected function process_send_form_files($files) {
-		if($files) {
+		if ( $files ) {
 			$wp_upload_dir  = wp_upload_dir();
 			$wp_upload_path = $wp_upload_dir['path'];
 
-			foreach ($files as $file) {
+			foreach ( $files as $file ) {
 				$tmp_name = $file['tmp_name'];
-				if(!empty($tmp_name)) {
+				if ( ! empty( $tmp_name ) ) {
 					$pathinfo   = pathinfo($file['name']);
 					$extension  = $pathinfo['extension'];
-					$filename   =  $pathinfo['filename'];
-					$attachment = $wp_upload_path . '/' . sanitize_title($filename) .'-' . microtime(true).'.'.$extension;
+					$filename   = $pathinfo['filename'];
+					$attachment = $wp_upload_path . '/' . sanitize_title( $filename ) . '-' . microtime( true ) . '.' . $extension;
 					@move_uploaded_file( $tmp_name, $attachment );
 					$this->attachments[] = $attachment;
 				}
 
 			}
 		}
+
 		return $this->attachments;
 	}
 
@@ -262,11 +263,10 @@ class Odin_Contact_Form extends Odin_Front_End_Form {
 			$attachments = $this->submitted_form_files();
 
 			// Send mail.
-			if( count($attachments) > 0 ) {
-				$this->process_send_form_files($attachments);
+			if ( count( $attachments ) > 0 ) {
+				$this->process_send_form_files( $attachments );
 				wp_mail( $this->to, $subject, $message, $headers, $this->attachments );
-			}
-			else {
+			} else {
 				wp_mail( $this->to, $subject, $message, $headers );
 			}
 		}

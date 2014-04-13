@@ -40,7 +40,7 @@ abstract class Odin_Front_End_Form {
 	protected $success = '';
 
 	/**
-	 * Attachments
+	 * Attachments.
 	 *
 	 * @var string
 	 */
@@ -186,7 +186,7 @@ abstract class Odin_Front_End_Form {
 							$html .= $this->field_input( $id, $label, $default, $description, array_merge( array( 'type' => 'email' ), $attributes ) );
 							break;
 						case 'file':
-							$html .= $this->field_input( $id, $label, $default, $description, array_merge( array( 'type' => 'file', 'class' => '' ), $attributes ) );
+							$html .= $this->field_input( $id, $label, $default, $description, array_merge( array( 'type' => 'file', 'class' => 'form-file' ), $attributes ) );
 							break;
 						case 'input':
 							$html .= $this->field_input( $id, $label, $default, $description, $attributes );
@@ -503,12 +503,11 @@ abstract class Odin_Front_End_Form {
 	 * @return array Form submitted files.
 	 */
 	protected function submitted_form_files() {
+		$files = null;
+
 		// Checks the form method.
-		if(count($_FILES) > 0) {
+		if ( 0 < count( $_FILES ) ) {
 			$files = $_FILES;
-		}
-		else {
-			$files = null;
 		}
 
 		return $files;
@@ -547,8 +546,8 @@ abstract class Odin_Front_End_Form {
 							break;
 
 						case 'file':
-							if($files) {
-								if($required && empty($files[$id]['name'])) {
+							if ( $files ) {
+								if ( $required && empty( $files[ $id ]['name'] ) ) {
 									$errors[] = sprintf( __( '%s is required.', 'odin' ), '<strong>' . $label . '</strong>' );
 								}
 							}
