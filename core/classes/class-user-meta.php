@@ -425,7 +425,9 @@ class Odin_User_Meta {
 			$current = $field['current'];
 
 			if ( $_POST[ $name ] != $current ) {
-				update_user_meta( $user_id, $name, $_POST[ $name ] );
+				$value = apply_filters( 'odin_save_user_meta_' . $this->id, $_POST[ $name ], $name );
+
+				update_user_meta( $user_id, $name, $value );
 			}
 		}
 	}
