@@ -27,6 +27,7 @@ class Odin_User_Meta {
 	public function __construct( $id, $title ) {
 		$this->id    = $id;
 		$this->title = $title;
+		$this->nonce = $this->id . '_nonce';
 
 		// View Additional User Fields.
 		add_action( 'show_user_profile', array( $this, 'view' ) );
@@ -414,10 +415,14 @@ class Odin_User_Meta {
 	 * @return void
 	 */
 	public function save( $user_id ) {
+		// Verify nonce.
+		if ( ! isset( $_POST[ $this->nonce ] ) || ! wp_verify_nonce( $_POST[ $this->nonce ], basename( __FILE__ ) ) ) {
+			return '';
+		}
 
 		// Only saves if the current user can edit user profiles.
 		if ( ! current_user_can( 'edit_user', $user_id ) ) {
-			return false;
+			return '';
 		}
 
 		foreach ( $this->fields as $field ) {
