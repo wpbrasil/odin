@@ -1,5 +1,13 @@
 ## Changelog ##
 
+#### v2.2.5 - 13/05/2014 ####
+
+* Added Odin_User_Meta class.
+* Improved the image upload field.
+* Improved the image plupload field.
+* Improved the breadcrumbs.
+* Tested with WordPress 3.9.
+
 #### v2.2.3 - 31/01/2014 ####
 
 * Updated the Bootstrap to version 3.1.0.
