@@ -2,33 +2,49 @@
 /**
  * Odin_User_Meta class.
  *
- * Built user_metas.
+ * Built user meta fields.
  *
  * @package  Odin
  * @category User Meta
  * @author   WPBrasil
- * @version  2.1.4
+ * @version  2.2.5
  */
 class Odin_User_Meta {
 
+	/**
+	 * User meta fields.
+	 *
+	 * @var array
+	 */
 	protected $fields = array();
 
+	/**
+	 * User meta construct.
+	 *
+	 * @param string $id    Options ID.
+	 * @param string $title Options title.
+	 */
 	public function __construct( $id, $title ) {
-		$this->id        	= $id;
-		$this->title     	= $title;
+		$this->id    = $id;
+		$this->title = $title;
 
 		// View Additional User Fields.
-		add_action( 'show_user_profile', array( &$this, 'view' ) );
-		add_action( 'edit_user_profile', array( &$this, 'view' ) );
+		add_action( 'show_user_profile', array( $this, 'view' ) );
+		add_action( 'edit_user_profile', array( $this, 'view' ) );
 
 		// Update Additional User Fields.
-		add_action( 'personal_options_update', array( &$this, 'save' ) );
-		add_action( 'edit_user_profile_update', array( &$this, 'save' ) );
+		add_action( 'personal_options_update', array( $this, 'save' ) );
+		add_action( 'edit_user_profile_update', array( $this, 'save' ) );
 
 		// Load scripts.
-		add_action( 'admin_enqueue_scripts', array( &$this, 'scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'scripts' ) );
 	}
 
+	/**
+	 * Load user meta scripts.
+	 *
+	 * @return void
+	 */
 	public function scripts() {
 
 		// Color Picker.
@@ -60,9 +76,9 @@ class Odin_User_Meta {
 	}
 
 	/**
-	 * Set user_meta fields.
+	 * Set user meta fields.
 	 *
-	 * @param array $fields user_meta fields.
+	 * @param array $fields User meta fields.
 	 *
 	 * @return void
 	 */
@@ -71,11 +87,11 @@ class Odin_User_Meta {
 	}
 
 	/**
-	 * user_meta view.
+	 * User meta view.
 	 *
 	 * @param  object $post Post object.
 	 *
-	 * @return string       user_meta HTML fields.
+	 * @return string       User meta HTML fields.
 	 */
 	public function view() {
 		// Use nonce for verification.
@@ -96,8 +112,9 @@ class Odin_User_Meta {
 			echo apply_filters( 'odin_user_meta_field_before_' . $this->id, '<td>', $field );
 			$this->process_fields( $field );
 
-			if ( isset( $field['description'] ) )
+			if ( isset( $field['description'] ) ) {
 				echo sprintf( '<span class="description">%s</span>', $field['description'] );
+			}
 
 			echo apply_filters( 'odin_user_meta_field_after_' . $this->id, '</td>', $field );
 
@@ -110,7 +127,7 @@ class Odin_User_Meta {
 	}
 
 	/**
-	 * Process the user_meta fields.
+	 * Process the user meta fields.
 	 *
 	 * @param  array $args    Field arguments
 	 * @param  int   $user_id ID of the current post type.
@@ -131,9 +148,9 @@ class Odin_User_Meta {
 		} elseif ( ! empty( $_GET['user_id'] ) && is_numeric( $_GET['user_id'] ) ) {
 			$user_id = $_GET['user_id'];
 		}
-		
+
 		$current = get_user_meta( $user_id, $id, true );
-		
+
 		if ( ! $current ) {
 			$current = isset( $args['default'] ) ? $args['default'] : '';
 		}
@@ -265,8 +282,9 @@ class Odin_User_Meta {
 
 		$html = sprintf( '<select id="%1$s" name="%1$s%2$s"%3$s>', $id, $multiple, $this->build_field_attributes( $attrs ) );
 
-		foreach ( $options as $key => $label )
+		foreach ( $options as $key => $label ) {
 			$html .= sprintf( '<option value="%s"%s>%s</option>', $key, selected( $current, $key, false ), $label );
+		}
 
 		$html .= '</select>';
 
@@ -286,8 +304,9 @@ class Odin_User_Meta {
 	protected function field_radio( $id, $current, $options, $attrs ) {
 		$html = '';
 
-		foreach ( $options as $key => $label )
+		foreach ( $options as $key => $label ) {
 			$html .= sprintf( '<input type="radio" id="%1$s_%2$s" name="%1$s" value="%2$s"%3$s%5$s /><label for="%1$s_%2$s"> %4$s</label><br />', $id, $key, checked( $current, $key, false ), $label, $this->build_field_attributes( $attrs ) );
+		}
 
 		echo $html;
 	}
@@ -387,7 +406,7 @@ class Odin_User_Meta {
 	}
 
 	/**
-	 * Save user_meta data.
+	 * Save user meta data.
 	 *
 	 * @param  string $id      Field id.
 	 * @param  string $current Field current value.
@@ -396,21 +415,18 @@ class Odin_User_Meta {
 	 */
 	public function save( $user_id ) {
 
-		// only saves if the current user can edit user profiles
-	    if ( !current_user_can( 'edit_user', $user_id ) )
-	        return false;
-
-		foreach ( $this->fields as $field ) {
-			$name = $field['id'];
-			$current = $field['current'];
-
-			if( $_POST[$name] != $current ){
-
-				update_user_meta( $user_id, $name, $_POST[$name] );
-
-			}
+		// Only saves if the current user can edit user profiles.
+		if ( ! current_user_can( 'edit_user', $user_id ) ) {
+			return false;
 		}
 
-	}
+		foreach ( $this->fields as $field ) {
+			$name    = $field['id'];
+			$current = $field['current'];
 
+			if ( $_POST[ $name ] != $current ) {
+				update_user_meta( $user_id, $name, $_POST[ $name ] );
+			}
+		}
+	}
 }
