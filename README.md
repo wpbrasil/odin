@@ -18,7 +18,7 @@ Send the folder "odin" to the default themes folder from WordPress `wp-content/t
 
 ## Documentation ##
 
-Informations about how-to use the classes and functions from Odin is on the [Official Wiki](https://github.com/wpbrasil/odin/wiki/_pages)
+Informations about how-to use the classes and functions from Odin is on the [Official Wiki](https://github.com/wpbrasil/odin/wiki/)
 
 ## Plugins Support ##
 

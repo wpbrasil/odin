@@ -18,7 +18,7 @@ Envie a pasta "odin" para a pasta de temas padrão do WordPress `wp-content/them
 
 ## Documentação ##
 
-Informações de como usar as classes e funções do Odin na [Wiki Oficial](https://github.com/wpbrasil/odin/wiki/_pages)
+Informações de como usar as classes e funções do Odin na [Wiki Oficial](https://github.com/wpbrasil/odin/wiki/)
 
 ## Suporte a plugins ##
 
