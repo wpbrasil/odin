@@ -2,11 +2,12 @@
 
 #### v2.2.5 - 13/05/2014 ####
 
+* Tested with WordPress 3.9.
 * Added Odin_User_Meta class.
 * Improved the image upload field.
 * Improved the image plupload field.
 * Improved the breadcrumbs.
-* Tested with WordPress 3.9.
+* Improved the odin_pagination().
 
 #### v2.2.3 - 31/01/2014 ####
 
