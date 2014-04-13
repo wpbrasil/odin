@@ -251,7 +251,7 @@ class Odin_User_Meta {
 			$attrs['rows'] = '5';
 		}
 
-		echo sprintf( '<textarea id="%1$s" name="%1$s"%3$s>%2$s</textarea>', $id, esc_attr( $current ), $this->build_field_attributes( $attrs ) );
+		echo sprintf( '<textarea id="%1$s" name="%1$s"%3$s>%2$s</textarea><br />', $id, esc_attr( $current ), $this->build_field_attributes( $attrs ) );
 	}
 
 	/**
@@ -342,7 +342,7 @@ class Odin_User_Meta {
 	 * @return string          HTML of the field.
 	 */
 	protected function field_upload( $id, $current, $attrs ) {
-		echo sprintf( '<input type="text" id="%1$s" name="%1$s" value="%2$s" class="regular-text"%4$s /> <input class="button odin-upload-button" type="button" value="%3$s" />', $id, esc_url( $current ), __( 'Select file', 'odin' ), $this->build_field_attributes( $attrs ) );
+		echo sprintf( '<input type="text" id="%1$s" name="%1$s" value="%2$s" class="regular-text"%4$s /> <input class="button odin-upload-button" type="button" value="%3$s" /><br />', $id, esc_url( $current ), __( 'Select file', 'odin' ), $this->build_field_attributes( $attrs ) );
 	}
 
 	/**
@@ -364,7 +364,7 @@ class Odin_User_Meta {
 			$image = $image[0];
 		}
 
-		$html .= sprintf( '<input id="%1$s" name="%1$s" type="hidden" class="odin-upload-image" value="%2$s" /><img src="%3$s" class="odin-preview-image" style="height: 150px; width: 150px;" alt="" /><br /><input id="%1$s-button" class="odin-upload-image-button button" type="button" value="%4$s" /><small> <a href="#" class="odin-clear-image-button">%5$s</a></small>', $id, $current, $image, __( 'Select image', 'odin' ), __( 'Remove image', 'odin' ) );
+		$html .= sprintf( '<input id="%1$s" name="%1$s" type="hidden" class="odin-upload-image" value="%2$s" /><img src="%3$s" class="odin-preview-image" style="height: 150px; width: 150px;" alt="" /><br /><input id="%1$s-button" class="odin-upload-image-button button" type="button" value="%4$s" /><small> <a href="#" class="odin-clear-image-button">%5$s</a></small><br />', $id, $current, $image, __( 'Select image', 'odin' ), __( 'Remove image', 'odin' ) );
 
 		echo $html;
 	}
@@ -426,13 +426,14 @@ class Odin_User_Meta {
 		}
 
 		foreach ( $this->fields as $field ) {
-			$name    = $field['id'];
-			$current = $field['current'];
+			$name = $field['id'];
+			$old  = get_user_meta( $user_id, $name, true );
+			$new  = apply_filters( 'odin_save_user_meta_' . $this->id, $_POST[ $name ], $name );
 
-			if ( $_POST[ $name ] != $current ) {
-				$value = apply_filters( 'odin_save_user_meta_' . $this->id, $_POST[ $name ], $name );
-
-				update_user_meta( $user_id, $name, $value );
+			if ( $new && $new != $old ) {
+				update_user_meta( $user_id, $name, $new );
+			} elseif ( '' == $new && $old ) {
+				delete_user_meta( $user_id, $name, $old );
 			}
 		}
 	}
