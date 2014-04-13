@@ -7,7 +7,7 @@
  * @package  Odin
  * @category Contact Form
  * @author   WPBrasil
- * @version  2.1.4
+ * @version  2.3.0
  */
 class Odin_Contact_Form extends Odin_Front_End_Form {
 
@@ -35,23 +35,25 @@ class Odin_Contact_Form extends Odin_Front_End_Form {
 	/**
 	 * Contact Form construct.
 	 *
-	 * @param string $id         Form id.
-	 * @param mixed  $to         String with recipient or array with recipients.
-	 * @param array  $cc         Array with CC recipients.
-	 * @param array  $bcc        Array with BCC recipients.
-	 * @param array  $attributes Form attributes.
+	 * @param string $id              Form id.
+	 * @param mixed  $to              String with recipient or array with recipients.
+	 * @param array  $cc              Array with CC recipients.
+	 * @param array  $bcc             Array with BCC recipients.
+	 * @param array  $attributes      Form attributes.
+	 * @param array  $attachment_type file or url in email body.
 	 */
-	public function __construct( $id, $to, $cc = array(), $bcc = array(), $attributes = array() ) {
-		$this->id         = $id;
-		$this->to         = $to;
-		$this->cc         = $cc;
-		$this->bcc        = $bcc;
-		$this->attributes = $attributes;
+	public function __construct( $id, $to, $cc = array(), $bcc = array(), $attributes = array(), $attachment_type = 'file' ) {
+		$this->id              = $id;
+		$this->to              = $to;
+		$this->cc              = $cc;
+		$this->bcc             = $bcc;
+		$this->attributes      = $attributes;
+		$this->attachment_type = $attachment_type;
 
 		parent::__construct( $this->id, '', 'post', $this->attributes );
 
 		// Hooks send_mail.
-		add_action( 'odin_front_end_form_submitted_data_' . $this->id, array( $this, 'send_mail' ) );
+		add_action( 'odin_front_end_form_submitted_data_' . $this->id, array( $this, 'send_mail' ), 1, 2 );
 	}
 
 	/**
@@ -87,21 +89,28 @@ class Odin_Contact_Form extends Odin_Front_End_Form {
 	 * Process the sent form data.
 	 *
 	 * @param  array $submitted_data Submitted data.
+	 * @param  array $$attachments   Submitted attachments.
 	 *
 	 * @return array                 Processed sent data.
 	 */
-	protected function process_submitted_form_data( $submitted_data ) {
+	protected function process_submitted_form_data( $submitted_data, $attachments ) {
 		$data = array();
 
 		// Process the fields.
 		if ( ! empty( $this->fields ) && ! empty( $submitted_data ) ) {
 			foreach ( $this->fields as $fieldset ) {
 				foreach ( $fieldset['fields'] as $field ) {
-					if($field['type'] != 'file') {
+					if ( 'file' != $field['type'] ) {
 						$id    = $field['id'];
 						$label = isset( $field['label'] ) ? $field['label'] : $id;
 
 						$data[ $label ] = $submitted_data[ $id ];
+					} elseif ( 'file' == $field['type'] && 'url' == $this->attachment_type ) {
+						$id    = $field['id'];
+						$label = isset( $field['label'] ) ? $field['label'] : $id;
+						$url   = $attachments[ $id ]['url'];
+
+						$data[ $label ] = '<a href="' . $url . '" target="_blank">' . $url . '</a>';
 					}
 				}
 			}
@@ -111,45 +120,19 @@ class Odin_Contact_Form extends Odin_Front_End_Form {
 	}
 
 	/**
-	 * Process the send form files
-	 *
-	 * @return array
-	 */
-	protected function process_send_form_files($files) {
-		if ( $files ) {
-			$wp_upload_dir  = wp_upload_dir();
-			$wp_upload_path = $wp_upload_dir['path'];
-
-			foreach ( $files as $file ) {
-				$tmp_name = $file['tmp_name'];
-				if ( ! empty( $tmp_name ) ) {
-					$pathinfo   = pathinfo($file['name']);
-					$extension  = $pathinfo['extension'];
-					$filename   = $pathinfo['filename'];
-					$attachment = $wp_upload_path . '/' . sanitize_title( $filename ) . '-' . microtime( true ) . '.' . $extension;
-					@move_uploaded_file( $tmp_name, $attachment );
-					$this->attachments[] = $attachment;
-				}
-
-			}
-		}
-
-		return $this->attachments;
-	}
-
-	/**
 	 * Build the mail message.
 	 *
 	 * @param  array  $submitted_data Form submitted data.
+	 * @param  array  $$attachments   Form submitted attachments.
 	 *
 	 * @return string                 Mail HTML message.
 	 */
-	protected function build_mail_message( $submitted_data ) {
+	protected function build_mail_message( $submitted_data, $attachments ) {
 		// Sets the message header.
 		$message = apply_filters( 'odin_contact_form_message_header_' . $this->id, '' );
 
 		// Gets the submitted data.
-		$data = $this->process_submitted_form_data( $submitted_data );
+		$data = $this->process_submitted_form_data( $submitted_data, $attachments );
 
 		// Sets the message content.
 		foreach ( $data as $label => $value ) {
@@ -205,11 +188,28 @@ class Odin_Contact_Form extends Odin_Front_End_Form {
 	}
 
 	/**
+	 * Get attachments paths.
+	 *
+	 * @param  array $attachments Submitted attachments.
+	 *
+	 * @return array              Paths.
+	 */
+	protected function get_attachments_paths( $attachments ) {
+		$paths = array();
+
+		foreach ( $attachments as $attachment ) {
+			$paths[] = $attachment['file'];
+		}
+
+		return $paths;
+	}
+
+	/**
 	 * Format the mail headers.
 	 *
 	 * @param  array  $submitted_data Form submitted data.
 	 *
-	 * @return array Mail headers.
+	 * @return array                  Mail headers.
 	 */
 	protected function format_mail_headers( $submitted_data ) {
 		$headers = array();
@@ -248,27 +248,25 @@ class Odin_Contact_Form extends Odin_Front_End_Form {
 	 *
 	 * @return void
 	 */
-	public function send_mail( $submitted_data ) {
+	public function send_mail( $submitted_data, $attachments ) {
 		if ( ! empty( $submitted_data ) ) {
 			// Mail subject.
 			$subject = $this->build_mail_subject( $submitted_data );
 
 			// Mail message.
-			$message = $this->build_mail_message( $submitted_data );
+			$message = $this->build_mail_message( $submitted_data, $attachments );
 
 			// Mail headers.
 			$headers = $this->format_mail_headers( $submitted_data );
 
-			// Mail attachments.
-			$attachments = $this->submitted_form_files();
-
 			// Send mail.
-			if ( count( $attachments ) > 0 ) {
-				$this->process_send_form_files( $attachments );
-				wp_mail( $this->to, $subject, $message, $headers, $this->attachments );
+			if ( 0 < count( $attachments ) && 'file' == $this->attachment_type ) {
+				$files = $this->get_attachments_paths( $attachments );
 			} else {
-				wp_mail( $this->to, $subject, $message, $headers );
+				$files = '';
 			}
+
+			wp_mail( $this->to, $subject, $message, $headers, $files );
 		}
 	}
 
