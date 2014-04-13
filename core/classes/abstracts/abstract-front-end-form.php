@@ -7,7 +7,7 @@
  * @package  Odin
  * @category Front-end Form
  * @author   WPBrasil
- * @version  2.1.4
+ * @version  2.3.0
  */
 abstract class Odin_Front_End_Form {
 
@@ -38,13 +38,6 @@ abstract class Odin_Front_End_Form {
 	 * @var string
 	 */
 	protected $success = '';
-
-	/**
-	 * Attachments.
-	 *
-	 * @var string
-	 */
-	protected $attachments = array();
 
 	/**
 	 * Form construct.
@@ -91,7 +84,7 @@ abstract class Odin_Front_End_Form {
 	 * @return void
 	 */
 	protected function set_errors( $errors = array() ) {
-		$this->errors = $errors;
+		$this->errors[] = $errors;
 	}
 
 	/**
@@ -114,6 +107,58 @@ abstract class Odin_Front_End_Form {
 		$data = $this->submitted_form_data();
 
 		return $data;
+	}
+
+	/**
+	 * Get submitted attachments.
+	 *
+	 * @return array Submitted attachments.
+	 */
+	public function get_attachments() {
+		$attachments = $this->uploaded_files();
+
+		return $attachments;
+	}
+
+	/**
+	 * Get current page.
+	 *
+	 * @return string Currente Page URL.
+	 */
+	protected function get_current_page() {
+		$url = 'http';
+		if ( isset( $_SERVER['HTTPS'] ) && 'on' == $_SERVER['HTTPS'] ) {
+			$url .= 's';
+		}
+
+		$url .= '://';
+
+		if ( '80' != $_SERVER['SERVER_PORT'] ) {
+			$url .= $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . $_SERVER['REQUEST_URI'];
+		} else {
+			$url .= $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+		}
+
+		return $url;
+	}
+
+	/**
+	 * Get field label via ID.
+	 *
+	 * @param  string $id Field ID.
+	 *
+	 * @return string     Field label.
+	 */
+	protected function get_field_label( $id ) {
+		foreach ( $this->fields as $fieldset ) {
+			foreach ( $fieldset['fields'] as $field ) {
+				if ( $field['id'] == $id ) {
+					return $field['label'];
+				}
+			}
+		}
+
+		return '';
 	}
 
 	/**
@@ -187,6 +232,7 @@ abstract class Odin_Front_End_Form {
 							break;
 						case 'file':
 							$html .= $this->field_input( $id, $label, $default, $description, array_merge( array( 'type' => 'file', 'class' => 'form-file' ), $attributes ) );
+							$this->attributes = array_merge( array( 'enctype' => 'multipart/form-data' ), $this->attributes );
 							break;
 						case 'input':
 							$html .= $this->field_input( $id, $label, $default, $description, $attributes );
@@ -255,6 +301,7 @@ abstract class Odin_Front_End_Form {
 	 */
 	public function display_error_messages( $html ) {
 		if ( ! empty( $this->errors ) ) {
+
 			$html .= '<div class="alert alert-danger">';
 
 			foreach ( $this->errors as $error ) {
@@ -503,7 +550,7 @@ abstract class Odin_Front_End_Form {
 	 * @return array Form submitted files.
 	 */
 	protected function submitted_form_files() {
-		$files = null;
+		$files = array();
 
 		// Checks the form method.
 		if ( 0 < count( $_FILES ) ) {
@@ -535,28 +582,27 @@ abstract class Odin_Front_End_Form {
 					$required = isset( $field['required'] ) && $field['required'] ? true : false;
 
 					if ( $type != 'file' && $required && empty( $data[ $id ] ) ) {
-						$errors[] = sprintf( __( '%s is required.', 'odin' ), '<strong>' . $label . '</strong>' );
+						$this->set_errors( sprintf( __( '%s is required.', 'odin' ), '<strong>' . $label . '</strong>' ) );
 					}
 
 					switch ( $type ) {
 						case 'email':
 							if ( ! is_email( $value ) ) {
-								$errors[] = sprintf( __( '%s must be an email address valid.', 'odin' ), '<strong>' . $label . '</strong>' );
+								$this->set_errors( sprintf( __( '%s must be an email address valid.', 'odin' ), '<strong>' . $label . '</strong>' ) );
 							}
 							break;
-
 						case 'file':
 							if ( $files ) {
 								if ( $required && empty( $files[ $id ]['name'] ) ) {
-									$errors[] = sprintf( __( '%s is required.', 'odin' ), '<strong>' . $label . '</strong>' );
+									$this->set_errors( sprintf( __( '%s is required.', 'odin' ), '<strong>' . $label . '</strong>' ) );
 								}
 							}
 							break;
 
 						default:
-							$custom_message = do_action( 'odin_front_end_form_valid_' . $this->id . '_' . $id, $label, $value );
+							$custom_message = apply_filters( 'odin_front_end_form_valid_' . $this->id . '_' . $id, '', $label, $value );
 							if ( $custom_message ) {
-								$errors[] = $custom_message;
+								$this->set_errors( $custom_message );
 							}
 							break;
 					}
@@ -565,36 +611,13 @@ abstract class Odin_Front_End_Form {
 		}
 
 		// Sets the errors.
-		if ( ! empty( $errors ) ) {
-			$this->set_errors( $errors );
+		if ( ! empty( $this->errors ) ) {
 
 			// Remove valid param.
 			if ( isset( $_GET['success'] ) && 1 == $_GET['success'] ) {
 				unset( $_GET['success'] );
 			}
 		}
-	}
-
-	/**
-	 * Current page.
-	 *
-	 * @return string Currente Page URL.
-	 */
-	protected function get_current_page() {
-		$url = 'http';
-		if ( isset( $_SERVER['HTTPS'] ) && 'on' == $_SERVER['HTTPS'] ) {
-			$url .= 's';
-		}
-
-		$url .= '://';
-
-		if ( '80' != $_SERVER['SERVER_PORT'] ) {
-			$url .= $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . $_SERVER['REQUEST_URI'];
-		} else {
-			$url .= $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
-		}
-
-		return $url;
 	}
 
 	/**
@@ -614,6 +637,40 @@ abstract class Odin_Front_End_Form {
 	}
 
 	/**
+	 * Process the send form files.
+	 *
+	 * @return array
+	 */
+	protected function uploaded_files() {
+		require_once ABSPATH . 'wp-admin/includes/image.php';
+		require_once ABSPATH . 'wp-admin/includes/file.php';
+		require_once ABSPATH . 'wp-admin/includes/media.php';
+
+		$attachments = array();
+
+		foreach ( $this->fields as $fieldset ) {
+			foreach ( $fieldset['fields'] as $field ) {
+				$id = $field['id'];
+				if ( 'file' == $field['type'] && isset( $_FILES[ $id ] ) ) {
+					$attachment_id = media_handle_upload( $id, 0 );
+
+					if ( is_wp_error( $attachment_id ) ) {
+						$error = apply_filters( 'odin_front_end_form_upload_error_' . $this->id, sprintf( '%s %s.', '<strong>' . $this->get_field_label( $id ) . '</strong>', $attachment_id->get_error_message() ) );
+						$this->set_errors( $error );
+					} else {
+						$attachments[ $id ] = array(
+							'file' => get_attached_file( $attachment_id ),
+							'url'  => wp_get_attachment_url( $attachment_id )
+						);
+					}
+				}
+			}
+		}
+
+		return $attachments;
+	}
+
+	/**
 	 * Form init.
 	 * Hook this in the WordPress init action.
 	 *
@@ -621,6 +678,7 @@ abstract class Odin_Front_End_Form {
 	 */
 	public function init() {
 		$submitted_data = $this->submitted_form_data();
+		$uploaded_files = $this->get_attachments();
 
 		if ( ! empty( $submitted_data ) && isset( $submitted_data['odin_form_action'] ) && $this->id == $submitted_data['odin_form_action'] ) {
 			// Validates the form data.
@@ -628,7 +686,7 @@ abstract class Odin_Front_End_Form {
 
 			if ( $this->is_valid() ) {
 				// Hook to process submitted form data.
-				do_action( 'odin_front_end_form_submitted_data_' . $this->id, $this->get_submitted_data() );
+				do_action( 'odin_front_end_form_submitted_data_' . $this->id, $submitted_data, $uploaded_files );
 
 				// Redirect after submit.
 				$this->redirect();
@@ -644,6 +702,7 @@ abstract class Odin_Front_End_Form {
 	 * @return string Form HTML.
 	 */
 	public function render() {
+
 		$html = '';
 
 		// Display error messages.
@@ -651,6 +710,9 @@ abstract class Odin_Front_End_Form {
 
 		// Display success message.
 		$html .= $this->display_success_message();
+
+		// Process the fields.
+		$fields = $this->process_fields();
 
 		// Generate the form.
 		$html .= sprintf(
@@ -662,7 +724,7 @@ abstract class Odin_Front_End_Form {
 		);
 
 			$html .= do_action( 'odin_front_end_form_before_fields_' . $this->id );
-			$html .= $this->process_fields();
+			$html .= $fields;
 			$html .= do_action( 'odin_front_end_form_after_fields_' . $this->id );
 			$html .= $this->process_buttons();
 			$html .= sprintf( '<input type="hidden" name="odin_form_action" value="%s" />', $this->id );
