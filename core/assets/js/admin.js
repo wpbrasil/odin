@@ -1,21 +1,21 @@
 /* global odinAdminParams */
-(function( $ ) {
-    'use strict';
+(function ( $ ) {
+	'use strict';
 
 	/**
 	 * Theme Options and Metaboxes.
 	 */
-    $(function() {
+	$( function () {
 
 		/**
 		 * Image field.
 		 */
-		$( '.odin-upload-image-button' ).on( 'click', function( e ) {
+		$( '.odin-upload-image .button' ).on( 'click', function ( e ) {
 			e.preventDefault();
 
 			var uploadFrame,
-				uploadInput = $(this).siblings( '.odin-upload-image' ),
-				uploadPreview = $(this).siblings( '.odin-preview-image' );
+				uploadInput = $(this).siblings( '.image' ),
+				uploadPreview = $(this).siblings( '.preview' );
 
 			// If the media frame already exists, reopen it.
 			if ( uploadFrame ) {
@@ -36,7 +36,7 @@
 				}
 			});
 
-			uploadFrame.on( 'select', function() {
+			uploadFrame.on( 'select', function () {
 				var attachment = uploadFrame.state().get( 'selection' ).first().toJSON();
 				uploadPreview.attr( 'src', attachment.url );
 				uploadInput.val( attachment.id );
@@ -46,23 +46,24 @@
 			uploadFrame.open();
 		});
 
-		$( '.odin-clear-image-button' ).click(function() {
-			var defaultImage = $( this ).parent().siblings( '.odin-default-image' ).text();
+		$( '.odin-upload-image .delete' ).click( function ( e ) {
+			e.preventDefault();
 
-			$( this ).parent().siblings( '.odin-upload-image' ).val( '' );
-			$( this ).parent().siblings( '.odin-preview-image' ).attr( 'src', defaultImage );
+			var wrapper      = $( this ).parents( '.odin-upload-image' ),
+				defaultImage = $( '.default-image', wrapper ).text();
 
-			return false;
+			$( '.image', wrapper ).val( '' );
+			$( '.preview', wrapper ).attr( 'src', defaultImage );
 		});
 
 		/**
 		 * Upload.
 		 */
-		$( '.odin-upload-button' ).on( 'click', function( e ) {
+		$( '.odin-upload-button' ).on( 'click', function ( e ) {
 			e.preventDefault();
 
 			var uploadFrame,
-				uploadInput = $(this).prev( 'input' );
+				uploadInput = $( this ).prev( 'input' );
 
 			// If the media frame already exists, reopen it.
 			if ( uploadFrame ) {
@@ -80,7 +81,7 @@
 				multiple: false
 			});
 
-			uploadFrame.on( 'select', function() {
+			uploadFrame.on( 'select', function () {
 				var attachment = uploadFrame.state().get( 'selection').first().toJSON();
 				uploadInput.val( attachment.url );
 			});
@@ -97,7 +98,7 @@
 		/**
 		 * Image plupload adds.
 		 */
-		$( '.odin-gallery-container' ).on( 'click', '.odin-gallery-add', function( e ) {
+		$( '.odin-gallery-container' ).on( 'click', '.odin-gallery-add', function ( e ) {
 			e.preventDefault();
 
 			var galleryFrame,
@@ -126,11 +127,11 @@
 			});
 
 			// When an image is selected, run a callback.
-			galleryFrame.on( 'select', function() {
+			galleryFrame.on( 'select', function () {
 
 				var selection = galleryFrame.state().get( 'selection' );
 
-				selection.map( function( attachment ) {
+				selection.map( function ( attachment ) {
 
 					attachment = attachment.toJSON();
 
@@ -142,7 +143,7 @@
 
 				});
 
-				imageGalleryIds.val(attachmentIds);
+				imageGalleryIds.val( attachmentIds );
 			});
 
 			// Finally, open the modal.
@@ -152,7 +153,7 @@
 		/**
 		 * Image plupload ordering.
 		 */
-		$( '.odin-gallery-container' ).on( 'mouseover', 'ul.odin-gallery-images', function() {
+		$( '.odin-gallery-container' ).on( 'mouseover', 'ul.odin-gallery-images', function () {
 			var galleryWrap = $( this ).parent( '.odin-gallery-container' ),
 				imageGalleryIds = $( '.odin-gallery-field', galleryWrap );
 
@@ -166,15 +167,15 @@
 				helper: 'clone',
 				opacity: 0.65,
 				placeholder: 'wc-metabox-sortable-placeholder',
-				start: function( event, ui ) {
+				start: function ( event, ui ) {
 					ui.item.css('background-color', '#f6f6f6');
-				}, stop: function( event, ui ) {
+				}, stop: function ( event, ui ) {
 					ui.item.removeAttr( 'style' );
-				}, update: function() {
+				}, update: function () {
 					var attachmentIds = '';
 
 					// Gets the current ids.
-					$( 'li.image', $( this ) ).css( 'cursor', 'default' ).each( function() {
+					$( 'li.image', $( this ) ).css( 'cursor', 'default' ).each( function () {
 						var attachmentId = $( this ).attr( 'data-attachment_id' );
 						attachmentIds = attachmentIds + attachmentId + ',';
 					});
@@ -188,7 +189,7 @@
 		/**
 		 * Image plupload remove link.
 		 */
-		$( '.odin-gallery-container' ).on( 'click', 'a.delete', function( e ) {
+		$( '.odin-gallery-container' ).on( 'click', 'a.delete', function ( e ) {
 			e.preventDefault();
 
 			var galleryWrap = $( this ).parents( '.odin-gallery-container' ),
@@ -199,13 +200,13 @@
 			$( this ).closest( 'li.image' ).remove();
 
 			// Gets the current ids.
-			$( 'ul li.image', galleryWrap ).css( 'cursor', 'default' ).each( function() {
+			$( 'ul li.image', galleryWrap ).css( 'cursor', 'default' ).each( function () {
 				var attachmentId = $( this ).attr( 'data-attachment_id' );
 				attachmentIds = attachmentIds + attachmentId + ',';
 			});
 
 			// Return the new value.
-			imageGalleryIds.val(attachmentIds);
+			imageGalleryIds.val( attachmentIds );
 		});
-    });
+	});
 }( jQuery ));

@@ -30,19 +30,49 @@
 	border: 4px dashed #ddd;
 }
 
-.odin-gallery-images .image .actions {
+.odin-form-table .description {
+	display: block;
+}
+
+
+/* =Image upload
+-------------------------------------------------------------- */
+
+.odin-upload-image {
+	position: relative;
+	width: 150px;
+}
+
+.odin-upload-image .preview {
+	display: block;
+	float: none;
+	margin-bottom: 5px;
+}
+
+.odin-upload-image .default-image {
+	display: none;
+}
+
+/* =Image and Plupload common
+-------------------------------------------------------------- */
+
+.odin-gallery-images .image .actions,
+.odin-upload-image .actions {
 	display: none;
 	padding: 2px;
 	position: absolute;
+	margin: 0;
 	right: 0;
 	top: 0;
 }
 
-.odin-gallery-images .image:hover > .actions {
+.odin-gallery-images .image:hover > .actions,
+.odin-upload-image:hover > .actions {
 	display: block;
 }
 
-.odin-gallery-images .image .actions li {
+.odin-gallery-images .image .actions li,
+.odin-upload-image .actions li {
 	background: #eee;
 	border: 1px solid #ddd;
 	-webkit-border-radius: 2px;
@@ -54,21 +84,24 @@
 	text-align: center;
 }
 
-.odin-gallery-images .image .actions li a {
-	font: 12px/16px Arial, Verdana, sans-serif;
-	color: #d00;
-	display: block;
-	width: 16px;
-	height: 15px;
-	text-decoration: none;
-}
-
-.odin-gallery-images .image .actions li a:hover {
+.odin-gallery-images .image .actions li:hover,
+.odin-upload-image .actions li:hover {
 	background: #ddd;
 }
 
-.odin-form-table .description {
-	display: block;
+.odin-gallery-images .image .actions li a,
+.odin-upload-image .actions li a {
+	text-decoration: none;
+}
+
+.odin-gallery-images .image .actions li a:hover,
+.odin-upload-image .actions li a:hover {
+	text-decoration: none;
+}
+
+.odin-gallery-images .image .actions .delete,
+.odin-upload-image .actions .delete {
+	color: #d00;
 }
 
 /* =Separator
