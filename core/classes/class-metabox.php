@@ -348,7 +348,7 @@ class Odin_Metabox {
 			$options = array( 'textarea_rows' => 10 );
 		}
 
-		echo '<div style="max-width: 600px;">';
+		echo '<div>';
 			wp_editor( wpautop( $current ), $id, $options );
 		echo '</div>';
 	}
