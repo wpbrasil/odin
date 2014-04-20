@@ -177,8 +177,10 @@ module.exports = function( grunt ) {
 					'!<%= dirs.sass %>/**',
 					'!<%= dirs.js %>/bootstrap/**',
 					'!<%= dirs.js %>/libs/**',
-					'!<%= dirs.js %>/main.js',
-					'!../**.zip'
+					'!../**.zip',
+					'<%= dirs.js %>/libs/bootstrap.min.js',
+					'<%= dirs.js %>/libs/jquery.fitvids.js',
+					'<%= dirs.js %>/main.js'
 				],
 				dest: '../<%= pkg.name %>.zip'
 			}
