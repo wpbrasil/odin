@@ -208,5 +208,29 @@
 			// Return the new value.
 			imageGalleryIds.val( attachmentIds );
 		});
+        /**
+         * Metabox working only in specifies category
+         */
+        var Odin_checkTheCategory = function(){
+            $('.odin-form-table').each(function(){
+                var catId = $(this).attr('data-odin-metabox-cat');
+                var metaboxId = $(this).attr('data-odin-metabox-id');
+                if(catId && metaboxId){
+                    if( $('#in-category-'+catId).is(':checked') ){
+                        $('#'+metaboxId).css('display','block');
+                    }
+                    else{
+                        $('#'+metaboxId).css('display','none');
+                    }
+                }
+            });
+        }
+        $(document).ready(function(e){
+           Odin_checkTheCategory();
+        });
+        $('#categorychecklist').on('change', function(e){
+           Odin_checkTheCategory();
+        });
+
 	});
 }( jQuery ));
