@@ -138,17 +138,18 @@ class Odin_Metabox {
 				$title = sprintf( '<td colspan="2"><span id="odin-metabox-separator-%s" class="odin-metabox-separator"></span></td>', $field['id'] );
 			} else {
 				$title = sprintf( '<th><label for="%s">%s</label></th>', $field['id'], $field['label'] );
-
-				echo apply_filters( 'odin_metabox_field_title_' . $this->id, $title, $field );
-
-				echo apply_filters( 'odin_metabox_field_before_' . $this->id, '<td>', $field );
-				$this->process_fields( $field, $post_id );
-
-				if ( isset( $field['description'] ) )
-					echo sprintf( '<span class="description">%s</span>', $field['description'] );
-
-				echo apply_filters( 'odin_metabox_field_after_' . $this->id, '</td>', $field );
 			}
+
+			echo apply_filters( 'odin_metabox_field_title_' . $this->id, $title, $field );
+
+			echo apply_filters( 'odin_metabox_field_before_' . $this->id, '<td>', $field );
+			$this->process_fields( $field, $post_id );
+
+			if ( isset( $field['description'] ) ) {
+				echo sprintf( '<span class="description">%s</span>', $field['description'] );
+			}
+
+			echo apply_filters( 'odin_metabox_field_after_' . $this->id, '</td>', $field );
 
 			echo apply_filters( 'odin_metabox_wrap_after_' . $this->id, '</tr>', $field );
 		}
