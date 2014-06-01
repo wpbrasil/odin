@@ -149,6 +149,7 @@ class Odin_Metabox {
 				echo sprintf( '<span class="description">%s</span>', $field['description'] );
 			}
 
+
 			echo apply_filters( 'odin_metabox_field_after_' . $this->id, '</td>', $field );
 
 			echo apply_filters( 'odin_metabox_wrap_after_' . $this->id, '</tr>', $field );
