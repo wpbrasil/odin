@@ -21,11 +21,11 @@ class Odin_Metabox {
 	/**
 	 * Metaboxs construct.
 	 *
-	 * @param string $id        HTML 'id' attribute of the edit screen section.
-	 * @param string $title     Title of the edit screen section, visible to user.
-	 * @param string $post_type The type of Write screen on which to show the edit screen section.
-	 * @param string $context   The part of the page where the edit screen section should be shown ('normal', 'advanced', or 'side').
-	 * @param string $priority  The priority within the context where the boxes should show ('high', 'core', 'default' or 'low').
+	 * @param string       $id        HTML 'id' attribute of the edit screen section.
+	 * @param string       $title     Title of the edit screen section, visible to user.
+	 * @param string|array $post_type The type of Write screen on which to show the edit screen section.
+	 * @param string       $context   The part of the page where the edit screen section should be shown ('normal', 'advanced', or 'side').
+	 * @param string       $priority  The priority within the context where the boxes should show ('high', 'core', 'default' or 'low').
 	 *
 	 * @return void
 	 */
@@ -38,13 +38,22 @@ class Odin_Metabox {
 		$this->nonce     = $id . '_nonce';
 
 		// Add Metabox.
-		add_action( 'add_meta_boxes', array( &$this, 'add' ) );
+		add_action( 'add_meta_boxes', array( $this, 'add' ) );
 
 		// Save Metaboxs.
-		add_action( 'save_post', array( &$this, 'save' ) );
+		add_action( 'save_post', array( $this, 'save' ) );
 
 		// Load scripts.
-		add_action( 'admin_enqueue_scripts', array( &$this, 'scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'scripts' ) );
+	}
+
+	/**
+	 * Get the post typea.
+	 *
+	 * @return array
+	 */
+	protected function get_post_type() {
+		return is_array( $this->post_type ) ? $this->post_type : array( $this->post_type );
 	}
 
 	/**
@@ -55,7 +64,7 @@ class Odin_Metabox {
 	public function scripts() {
 		$screen = get_current_screen();
 
-		if ( $this->post_type === $screen->id ) {
+		if ( in_array( $screen->id, $this->get_post_type() ) ) {
 			// Color Picker.
 			wp_enqueue_style( 'wp-color-picker' );
 			wp_enqueue_script( 'wp-color-picker' );
@@ -91,14 +100,16 @@ class Odin_Metabox {
 	 * @return void
 	 */
 	public function add() {
-		add_meta_box(
-			$this->id,
-			$this->title,
-			array( &$this, 'metabox' ),
-			$this->post_type,
-			$this->context,
-			$this->priority
-		);
+		foreach ( $this->get_post_type() as $post_type ) {
+			add_meta_box(
+				$this->id,
+				$this->title,
+				array( $this, 'metabox' ),
+				$post_type,
+				$this->context,
+				$this->priority
+			);
+		}
 	}
 
 	/**
@@ -452,7 +463,7 @@ class Odin_Metabox {
 		}
 
 		// Check permissions.
-		if ( $this->post_type == $_POST['post_type'] ) {
+		if ( isset( $_POST['post_type'] ) && in_array( $_POST['post_type'], $this->get_post_type() ) ) {
 			if ( ! current_user_can( 'edit_page', $post_id ) ) {
 				return $post_id;
 			}
