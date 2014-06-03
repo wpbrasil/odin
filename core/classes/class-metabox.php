@@ -472,15 +472,19 @@ class Odin_Metabox {
 		}
 
 		foreach ( $this->fields as $field ) {
-			$name = $field['id'];
-			$old = get_post_meta( $post_id, $name, true );
+			$name  = $field['id'];
+			$value = isset( $_POST[ $name ] ) ? $_POST[ $name ] : null;
 
-			$new = apply_filters( 'odin_save_metabox_' . $this->id, $_POST[ $name ], $name );
+			if ( ! in_array( $field['type'], array( 'separator', 'title' ) ) ) {
+				$old = get_post_meta( $post_id, $name, true );
 
-			if ( $new && $new != $old ) {
-				update_post_meta( $post_id, $name, $new );
-			} elseif ( '' == $new && $old ) {
-				delete_post_meta( $post_id, $name, $old );
+				$new = apply_filters( 'odin_save_metabox_' . $this->id, $value, $name );
+
+				if ( $new && $new != $old ) {
+					update_post_meta( $post_id, $name, $new );
+				} elseif ( '' == $new && $old ) {
+					delete_post_meta( $post_id, $name, $old );
+				}
 			}
 		}
 
