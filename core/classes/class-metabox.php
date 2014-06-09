@@ -319,12 +319,39 @@ class Odin_Metabox {
 
 		$html = sprintf( '<select id="%1$s" name="%1$s%2$s"%3$s>', $id, $multiple, $this->build_field_attributes( $attrs ) );
 
-		foreach ( $options as $key => $label )
-			$html .= sprintf( '<option value="%s"%s>%s</option>', $key, selected( $current, $key, false ), $label );
+		foreach ( $options as $key => $label ) {
+			$selected = $this->is_selected( $current, $key );
+			$html .= sprintf( '<option value="%s"%s>%s</option>', $key, $selected, $label );
+		}
 
 		$html .= '</select>';
 
 		echo $html;
+	}
+
+	/**
+	 * Current value is selected.
+	 *
+	 * @param  array/string $current Field current value.
+	 * @param  string       $key     Actual option value.
+	 *
+	 * @return boolean               $current is selected or not.
+	 */
+	protected function is_selected( $current, $key ) {
+		$selected = false;
+		if( is_array( $current ) ) {
+			for( $i = 0; $i < count( $current ); $i++ ) {
+				if( selected( $current[ $i ], $key, false ) ) {
+					$selected = selected( $current[ $i ], $key, false );
+					break 1;
+				}
+			}
+		}
+		else {
+			$selected = selected( $current, $key, false );
+		}
+
+		return $selected;
 	}
 
 	/**
