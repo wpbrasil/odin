@@ -21,11 +21,11 @@ class Odin_Metabox {
 	/**
 	 * Metaboxs construct.
 	 *
-	 * @param string $id        HTML 'id' attribute of the edit screen section.
-	 * @param string $title     Title of the edit screen section, visible to user.
-	 * @param string $post_type The type of Write screen on which to show the edit screen section.
-	 * @param string $context   The part of the page where the edit screen section should be shown ('normal', 'advanced', or 'side').
-	 * @param string $priority  The priority within the context where the boxes should show ('high', 'core', 'default' or 'low').
+	 * @param string       $id        HTML 'id' attribute of the edit screen section.
+	 * @param string       $title     Title of the edit screen section, visible to user.
+	 * @param string|array $post_type The type of Write screen on which to show the edit screen section.
+	 * @param string       $context   The part of the page where the edit screen section should be shown ('normal', 'advanced', or 'side').
+	 * @param string       $priority  The priority within the context where the boxes should show ('high', 'core', 'default' or 'low').
 	 *
 	 * @return void
 	 */
@@ -38,13 +38,22 @@ class Odin_Metabox {
 		$this->nonce     = $id . '_nonce';
 
 		// Add Metabox.
-		add_action( 'add_meta_boxes', array( &$this, 'add' ) );
+		add_action( 'add_meta_boxes', array( $this, 'add' ) );
 
 		// Save Metaboxs.
-		add_action( 'save_post', array( &$this, 'save' ) );
+		add_action( 'save_post', array( $this, 'save' ) );
 
 		// Load scripts.
-		add_action( 'admin_enqueue_scripts', array( &$this, 'scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'scripts' ) );
+	}
+
+	/**
+	 * Get the post typea.
+	 *
+	 * @return array
+	 */
+	protected function get_post_type() {
+		return is_array( $this->post_type ) ? $this->post_type : array( $this->post_type );
 	}
 
 	/**
@@ -55,7 +64,7 @@ class Odin_Metabox {
 	public function scripts() {
 		$screen = get_current_screen();
 
-		if ( $this->post_type === $screen->id ) {
+		if ( in_array( $screen->id, $this->get_post_type() ) ) {
 			// Color Picker.
 			wp_enqueue_style( 'wp-color-picker' );
 			wp_enqueue_script( 'wp-color-picker' );
@@ -91,14 +100,16 @@ class Odin_Metabox {
 	 * @return void
 	 */
 	public function add() {
-		add_meta_box(
-			$this->id,
-			$this->title,
-			array( &$this, 'metabox' ),
-			$this->post_type,
-			$this->context,
-			$this->priority
-		);
+		foreach ( $this->get_post_type() as $post_type ) {
+			add_meta_box(
+				$this->id,
+				$this->title,
+				array( $this, 'metabox' ),
+				$post_type,
+				$this->context,
+				$this->priority
+			);
+		}
 	}
 
 	/**
@@ -138,17 +149,19 @@ class Odin_Metabox {
 				$title = sprintf( '<td colspan="2"><span id="odin-metabox-separator-%s" class="odin-metabox-separator"></span></td>', $field['id'] );
 			} else {
 				$title = sprintf( '<th><label for="%s">%s</label></th>', $field['id'], $field['label'] );
-
-				echo apply_filters( 'odin_metabox_field_title_' . $this->id, $title, $field );
-
-				echo apply_filters( 'odin_metabox_field_before_' . $this->id, '<td>', $field );
-				$this->process_fields( $field, $post_id );
-
-				if ( isset( $field['description'] ) )
-					echo sprintf( '<span class="description">%s</span>', $field['description'] );
-
-				echo apply_filters( 'odin_metabox_field_after_' . $this->id, '</td>', $field );
 			}
+
+			echo apply_filters( 'odin_metabox_field_title_' . $this->id, $title, $field );
+
+			echo apply_filters( 'odin_metabox_field_before_' . $this->id, '<td>', $field );
+			$this->process_fields( $field, $post_id );
+
+			if ( isset( $field['description'] ) ) {
+				echo sprintf( '<span class="description">%s</span>', $field['description'] );
+			}
+
+
+			echo apply_filters( 'odin_metabox_field_after_' . $this->id, '</td>', $field );
 
 			echo apply_filters( 'odin_metabox_wrap_after_' . $this->id, '</tr>', $field );
 		}
@@ -306,12 +319,39 @@ class Odin_Metabox {
 
 		$html = sprintf( '<select id="%1$s" name="%1$s%2$s"%3$s>', $id, $multiple, $this->build_field_attributes( $attrs ) );
 
-		foreach ( $options as $key => $label )
-			$html .= sprintf( '<option value="%s"%s>%s</option>', $key, selected( $current, $key, false ), $label );
+		foreach ( $options as $key => $label ) {
+			$selected = $this->is_selected( $current, $key );
+			$html .= sprintf( '<option value="%s"%s>%s</option>', $key, $selected, $label );
+		}
 
 		$html .= '</select>';
 
 		echo $html;
+	}
+
+	/**
+	 * Current value is selected.
+	 *
+	 * @param  array/string $current Field current value.
+	 * @param  string       $key     Actual option value.
+	 *
+	 * @return boolean               $current is selected or not.
+	 */
+	protected function is_selected( $current, $key ) {
+		$selected = false;
+		if( is_array( $current ) ) {
+			for( $i = 0; $i < count( $current ); $i++ ) {
+				if( selected( $current[ $i ], $key, false ) ) {
+					$selected = selected( $current[ $i ], $key, false );
+					break 1;
+				}
+			}
+		}
+		else {
+			$selected = selected( $current, $key, false );
+		}
+
+		return $selected;
 	}
 
 	/**
@@ -450,7 +490,7 @@ class Odin_Metabox {
 		}
 
 		// Check permissions.
-		if ( $this->post_type == $_POST['post_type'] ) {
+		if ( isset( $_POST['post_type'] ) && in_array( $_POST['post_type'], $this->get_post_type() ) ) {
 			if ( ! current_user_can( 'edit_page', $post_id ) ) {
 				return $post_id;
 			}
@@ -459,15 +499,19 @@ class Odin_Metabox {
 		}
 
 		foreach ( $this->fields as $field ) {
-			$name = $field['id'];
-			$old = get_post_meta( $post_id, $name, true );
+			$name  = $field['id'];
+			$value = isset( $_POST[ $name ] ) ? $_POST[ $name ] : null;
 
-			$new = apply_filters( 'odin_save_metabox_' . $this->id, $_POST[ $name ], $name );
+			if ( ! in_array( $field['type'], array( 'separator', 'title' ) ) ) {
+				$old = get_post_meta( $post_id, $name, true );
 
-			if ( $new && $new != $old ) {
-				update_post_meta( $post_id, $name, $new );
-			} elseif ( '' == $new && $old ) {
-				delete_post_meta( $post_id, $name, $old );
+				$new = apply_filters( 'odin_save_metabox_' . $this->id, $value, $name );
+
+				if ( $new && $new != $old ) {
+					update_post_meta( $post_id, $name, $new );
+				} elseif ( '' == $new && $old ) {
+					delete_post_meta( $post_id, $name, $old );
+				}
 			}
 		}
 
