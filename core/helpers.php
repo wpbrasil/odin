@@ -369,7 +369,7 @@ function odin_breadcrumbs( $homepage = '' ) {
 			if ( ! empty( $taxonomy->object_type ) ) {
 				$_post_type = array_shift( $taxonomy->object_type );
 				$post_type = get_post_type_object( $_post_type );
-            	echo '<li><a href="' . get_post_type_archive_link( $post_type->name ) . '">' . $post_type->label . '</a></li> ';
+				echo '<li><a href="' . get_post_type_archive_link( $post_type->name ) . '">' . $post_type->label . '</a></li> ';
 			}
 
 			// Displays parent term.
