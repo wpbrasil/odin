@@ -12,6 +12,9 @@ Description: Odin main stylesheet.
 // Reset
 @import "bootstrap/normalize";
 
+// Dependencies
+@import "bootstrap/glyphicons";
+
 // Core CSS
 @import "bootstrap/scaffolding";
 @import "bootstrap/type";
@@ -23,7 +26,6 @@ Description: Odin main stylesheet.
 
 // Components
 @import "bootstrap/component-animations";
-@import "bootstrap/glyphicons";
 @import "bootstrap/dropdowns";
 @import "bootstrap/button-groups";
 @import "bootstrap/input-groups";
@@ -41,6 +43,7 @@ Description: Odin main stylesheet.
 @import "bootstrap/media";
 @import "bootstrap/list-group";
 @import "bootstrap/panels";
+@import "bootstrap/responsive-embed";
 @import "bootstrap/wells";
 @import "bootstrap/close";
 
