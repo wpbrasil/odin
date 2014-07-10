@@ -558,18 +558,17 @@ class Odin_Theme_Options {
 		// Sets current option.
 		$current = $this->get_option( $tab, $id, $args['default'] );
 
-
 		// Gets placeholder image.
 		$image = get_template_directory_uri() . '/core/assets/images/placeholder.png';
 		$html  = '<div class="odin-upload-image">';
 		$html  .= '<span class="default-image">' . $image . '</span>';
 
-		if ( $current ) {
+		if ( ! empty( $current ) ) {
 			$image = wp_get_attachment_image_src( $current, 'thumbnail' );
 			$image = $image[0];
 		}
 
-		$html .= sprintf( '<input id="%1$s" name="%1$s" type="hidden" class="image" value="%2$s" /><img src="%3$s" class="preview" style="height: 150px; width: 150px;" alt="" /><input id="%1$s-button" class="button" type="button" value="%4$s" /><ul class="actions"><li><a href="#" class="delete" title="%5$s"><span class="dashicons dashicons-no"></span></a></li></ul>', $id, $current, $image, __( 'Select image', 'odin' ), __( 'Remove image', 'odin' ) );
+		$html .= sprintf( '<input id="%1$s" name="%2$s[%1$s]" type="hidden" class="image" value="%3$s" /><img src="%4$s" class="preview" style="height: 150px; width: 150px;" alt="" /><input id="%1$s-button" class="button" type="button" value="%5$s" /><ul class="actions"><li><a href="#" class="delete" title="%6$s"><span class="dashicons dashicons-no"></span></a></li></ul>', $id, $tab, $current, $image, __( 'Select image', 'odin' ), __( 'Remove image', 'odin' ) );
 
 		$html .= '<br class="clear" />';
 		$html .= '</div>';
