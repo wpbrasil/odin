@@ -230,6 +230,8 @@ function odin_excerpt( $type = 'excerpt', $limit = 40 ) {
  * @return string            HTML of breadcrumbs.
  */
 function odin_breadcrumbs( $homepage = '' ) {
+	global $wp_query, $post, $author;
+
 	! empty( $homepage ) || $homepage = __( 'Home', 'odin' );
 
 	// Default html.
@@ -237,7 +239,6 @@ function odin_breadcrumbs( $homepage = '' ) {
 	$current_after  = '</li>';
 
 	if ( ! is_home() && ! is_front_page() || is_paged() ) {
-		global $post;
 
 		// First level.
 		echo '<ol id="breadcrumbs" class="breadcrumb">';
@@ -245,7 +246,6 @@ function odin_breadcrumbs( $homepage = '' ) {
 
 		// Single post.
 		if ( is_single() && ! is_attachment() ) {
-			global $post;
 
 			// Checks if is a custom post type.
 			if ( 'post' != $post->post_type ) {
@@ -258,7 +258,7 @@ function odin_breadcrumbs( $homepage = '' ) {
 				if ( $taxonomy ) {
 					// Gets post terms.
 					$terms = get_the_terms( $post->ID, $taxonomy[0] );
-					$term = $terms ? array_shift( $terms ) : '';
+					$term  = $terms ? array_shift( $terms ) : '';
 
 					if ( $term ) {
 						echo '<li><a href="' . get_term_link( $term ) . '">' . $term->name . '</a></li> ';
@@ -311,8 +311,6 @@ function odin_breadcrumbs( $homepage = '' ) {
 
 		// Category archive.
 		} elseif ( is_category() ) {
-			global $wp_query;
-
 			$category_object  = $wp_query->get_queried_object();
 			$category_id      = $category_object->term_id;
 			$current_category = get_category( $category_id );
@@ -339,7 +337,6 @@ function odin_breadcrumbs( $homepage = '' ) {
 
 		// Author archive.
 		} elseif ( is_author() ) {
-			global $author;
 			$userdata = get_userdata( $author );
 
 			echo $current_before . __( 'Posted by', 'odin' ) . ' ' . $userdata->display_name . $current_after;
@@ -364,11 +361,16 @@ function odin_breadcrumbs( $homepage = '' ) {
 
 		// Archive fallback for custom taxonomies.
 		} elseif ( is_archive() ) {
-			global $wp_query;
-
 			$current_object = $wp_query->get_queried_object();
-			$taxonomy        = get_taxonomy( $current_object->taxonomy );
-			$term_name       = $current_object->name;
+			$taxonomy       = get_taxonomy( $current_object->taxonomy );
+			$term_name      = $current_object->name;
+
+			// Displays the post type that the taxonomy belongs.
+			if ( ! empty( $taxonomy->object_type ) ) {
+				$_post_type = array_shift( $taxonomy->object_type );
+				$post_type = get_post_type_object( $_post_type );
+				echo '<li><a href="' . get_post_type_archive_link( $post_type->name ) . '">' . $post_type->label . '</a></li> ';
+			}
 
 			// Displays parent term.
 			if ( 0 != $current_object->parent ) {

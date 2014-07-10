@@ -205,15 +205,15 @@ module.exports = function( grunt ) {
 		// renames and moves directories and files
 		rename: {
 			bootstrap_scss: {
-				src: '<%= dirs.tmp %>/bootstrap-sass-master/vendor/assets/stylesheets/bootstrap',
+				src: '<%= dirs.tmp %>/bootstrap-sass-master/assets/stylesheets/bootstrap',
 				dest: '<%= dirs.sass %>/bootstrap'
 			},
 			bootstrap_js: {
-				src: '<%= dirs.tmp %>/bootstrap-sass-master/vendor/assets/javascripts/bootstrap',
+				src: '<%= dirs.tmp %>/bootstrap-sass-master/assets/javascripts/bootstrap',
 				dest: '<%= dirs.js %>/bootstrap'
 			},
 			bootstrap_fonts: {
-				src: '<%= dirs.tmp %>/bootstrap-sass-master/vendor/assets/fonts/bootstrap',
+				src: '<%= dirs.tmp %>/bootstrap-sass-master/assets/fonts/bootstrap',
 				dest: '<%= dirs.fonts %>/bootstrap'
 			}
 		},

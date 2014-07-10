@@ -1,5 +1,13 @@
 ## Changelog ##
 
+#### v2.2.6 - 26/06/2014 ####
+
+* Improved the odin_breadcrumbs() to works better with custom post type and taxonomies.
+* Added support to "multiple" attribute in select in all core classes.
+* Improved the Odin_Metabox to work with one or more post types.
+* Fixed the `title` and `separator` elements in core classes.
+* Updated the Bootstrap to 2.2
+
 #### v2.2.5 - 13/05/2014 ####
 
 * Tested with WordPress 3.9.
