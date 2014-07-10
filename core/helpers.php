@@ -257,7 +257,8 @@ function odin_breadcrumbs( $homepage = '' ) {
 				$taxonomy = get_object_taxonomies( $post_type->name );
 				if ( $taxonomy ) {
 					// Gets post terms.
-					$term = get_the_terms( $post->ID, $taxonomy[0] ) ? array_shift( get_the_terms( $post->ID, $taxonomy[0] ) ) : '';
+					$terms = get_the_terms( $post->ID, $taxonomy[0] );
+					$term = $terms ? array_shift( $terms ) : '';
 
 					if ( $term ) {
 						echo '<li><a href="' . get_term_link( $term ) . '">' . $term->name . '</a></li> ';
