@@ -327,6 +327,8 @@ class Odin_User_Meta {
 			$options = array( 'textarea_rows' => 10 );
 		}
 
+		$options[ 'textarea_name' ] = $id;
+
 		echo '<div style="max-width: 600px;">';
 			wp_editor( wpautop( $current ), $id, $options );
 		echo '</div>';

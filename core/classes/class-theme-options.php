@@ -402,6 +402,8 @@ class Odin_Theme_Options {
 			$options = array( 'textarea_rows' => 10 );
 		}
 
+		$options[ 'textarea_name' ] = $tab . '[' . $id . ']';
+
 		echo '<div style="width: 600px;">';
 
 			wp_editor( $current, $tab . '[' . $id . ']', $options );
