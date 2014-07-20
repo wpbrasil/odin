@@ -132,15 +132,15 @@ class Odin_Thumbnail_Resizer {
 			// Use this to check if cropped image already exists, so we can return that instead.
 			$suffix = $original_width . 'x' . $original_height;
 			$original_rel_path = str_replace( '.' . $ext, '', $rel_path );
-			$destfilename = $upload_dir . $original_rel_path . '-' . $ext;
+			$destfilename = $upload_dir . $original_rel_path . '-' . $suffix . '.' . $ext;
 
 			// Can't resize, so return false saying that the action to do could not be processed as planned.
 			if ( ! $dimensions || ( true == $crop && false == $upscale && ( $original_width < $width || $original_height < $height ) ) ) {
 				return false;
 
 			// Else check if cache exists.
-			} elseif ( file_exists( $destfilename ) && getimagesize( $destfilename ) ) {
-				$image_url = $upload_url . $original_rel_path . '-' . $suffix . $ext;
+			} elseif ( file_exists( $destfilename ) && @getimagesize( $destfilename ) ) {
+				$image_url = $upload_url . $original_rel_path . '-' . $suffix . '.' . $ext;
 
 			// Else, we resize the image and return the new resized image url.
 			} else {
