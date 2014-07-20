@@ -406,7 +406,7 @@ class Odin_Theme_Options {
 
 		echo '<div style="width: 600px;">';
 
-			wp_editor( $current, $tab . '[' . $id . ']', $options );
+			wp_editor( $current, $id, $options );
 
 		echo '</div>';
 
