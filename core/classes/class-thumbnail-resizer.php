@@ -21,6 +21,13 @@ class Odin_Thumbnail_Resizer {
 	protected static $instance = null;
 
 	/**
+	 * Image properties
+	 */
+	protected static $image_url = null;
+	protected static $width = null;
+	protected static $height = null;
+
+	/**
 	 * No initialization allowed.
 	 */
 	private function __construct() {}
@@ -161,6 +168,10 @@ class Odin_Thumbnail_Resizer {
 			}
 		}
 
+		self::$image_url = $image_url;
+		self::$width = $original_width;
+		self::$height = $original_height;
+
 		// Okay, leave the ship.
 		if ( true === $upscale ) {
 			remove_filter( 'image_resize_dimensions', array( $this, 'aq_upscale' ) );
@@ -199,4 +210,11 @@ class Odin_Thumbnail_Resizer {
 
 		return array( 0, 0, (int) $s_x, (int) $s_y, (int) $new_width, (int) $new_height, (int) $crop_width, (int) $crop_height );
 	}
+
+	/**
+	 * Return array with image url, width and height
+	 */
+    public function get_image_url_with_dimensions() {
+        return array( self::$image_url, self::$width, self::$height );
+    }
 }
