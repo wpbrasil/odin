@@ -2,7 +2,7 @@
 
 [Ver essa documentação em Português do Brasil](https://github.com/wpbrasil/odin/blob/master/README-pt_BR.md)
 
-![Odin Framework](http://wpod.in/wp-content/uploads/2013/12/odin-logo.png)
+![Odin Framework](https://camo.githubusercontent.com/66198b6b011d840b080a26bea8030aa4e5264846/687474703a2f2f77706f642e696e2f77702d636f6e74656e742f75706c6f6164732f323031332f31322f6f64696e2d6c6f676f2e706e67)
 
 * [Website](http://wpod.in/)
 * [Demo](http://demo.wpod.in/)
