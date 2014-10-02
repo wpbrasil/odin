@@ -369,6 +369,11 @@ abstract class Odin_Front_End_Form {
 		if ( ! isset( $attributes['class'] ) ) {
 			$attributes['class'] = 'form-control';
 		}
+		
+		// Hide label tag for hidden input type
+		if( $attributes['type'] != 'hidden' ) {
+			$html .= sprintf( '<label for="%s">%s%s</label>', $id, $label, $this->required_field_alert( $attributes ) );
+		}
 
 		$html = sprintf( '<div class="form-group odin-form-group-%s">', $id );
 		$html .= sprintf( '<label for="%s">%s%s</label>', $id, $label, $this->required_field_alert( $attributes ) );
