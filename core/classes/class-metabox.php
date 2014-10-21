@@ -45,6 +45,10 @@ class Odin_Metabox {
 
         // Load scripts.
         add_action( 'admin_enqueue_scripts', array( &$this, 'scripts' ) );
+
+        // Add post type columns
+        add_filter( 'manage_edit-' . $post_type . '_columns', array($this, 'add_custom_columns_admin_post_list' ));
+        add_action( 'manage_' . $post_type . '_posts_custom_column', array($this, 'set_values_custom_columns_admin_post_list'), 10,2);
     }
 
     /**
@@ -444,7 +448,54 @@ class Odin_Metabox {
             elseif ( '' == $new && $old )
                 delete_post_meta( $post_id, $name, $old );
         }
-
     }
 
+    public function add_custom_columns_admin_post_list( $columns ){
+        $new_columns = array();
+        foreach( $this->fields as $key => $field ){
+            if( isset( $field[ 'is_column' ] ) && $field[ 'is_column' ] == true ){
+                $new_columns[ $field[ 'id' ] ] = $field[ 'label' ];
+            }
+        }
+
+        return array_merge( $columns, $new_columns );
+    }
+
+    public function set_values_custom_columns_admin_post_list( $column , $post_id ){
+        $type = $this->get_field_type_by_id( $column );
+        $is_column = $this->check_field_is_column_by_id( $column );
+
+        if( !$is_column ){
+            return;
+        }
+
+        switch ( $type ) {
+            case 'image':
+            case 'image_plupload':
+                $value = wp_get_attachment_image( get_post_meta( $post_id, $column, true ) , array( 50 , 50) );
+                break;
+            default:
+                $value = apply_filters( 'admin_post_column_value_' . $this->post_type . '_' . $column , get_post_meta( $post_id, $column , true ) );
+                break;
+        }
+        echo $value;
+    }
+
+    public function get_field_type_by_id( $field_id ){
+        foreach( $this->fields as $field ){
+            if( $field[ 'id' ] == $field_id ){
+                return $field[ 'type' ];
+            }
+        }
+        return '';
+    }
+
+    public function check_field_is_column_by_id( $field_id ){
+        foreach( $this->fields as $field ){
+            if( @$field[ 'is_column' ] == true ){
+                return true;
+            }
+        }
+        return false;
+    }
 }
