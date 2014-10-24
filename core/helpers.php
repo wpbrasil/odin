@@ -401,6 +401,23 @@ function odin_breadcrumbs( $homepage = '' ) {
 }
 
 /**
+ * Get a image URL.
+ *
+ * @param  int $id     Image ID.
+ * @param  int $width  Image width.
+ * @param  int $height Image height.
+ *
+ * @return string
+ */
+function odin_get_image_url( $id, $width, $height, $crop = true ) {
+	$resizer    = Odin_Thumbnail_Resizer::get_instance();
+	$origin_url = wp_get_attachment_url( $id );
+	$url        = $resizer->process( $origin_url, $width, $height, $crop );
+
+	return $url;
+}
+
+/**
  * Custom post thumbnail.
  *
  * @since  2.2.0
@@ -422,11 +439,8 @@ function odin_thumbnail( $width, $height, $alt, $crop = true, $class = '' ) {
 	$thumb = get_post_thumbnail_id();
 
 	if ( $thumb ) {
-		$resizer = Odin_Thumbnail_Resizer::get_instance();
-		$url = wp_get_attachment_url( $thumb, 'full' );
-		$image = $resizer->process( $url, $width, $height, $crop );
-
-		$html = '<img class="wp-image-thumb img-responsive ' . sanitize_html_class( $class ) . '" src="' . $image . '" width="' . esc_attr( $width ) . '" height="' . esc_attr( $height ) . '" alt="' . esc_attr( $alt ) . '" />';
+		$image = odin_get_image_url( $thumb, $width, $height, $crop );
+		$html  = '<img class="wp-image-thumb img-responsive ' . sanitize_html_class( $class ) . '" src="' . $image . '" width="' . esc_attr( $width ) . '" height="' . esc_attr( $height ) . '" alt="' . esc_attr( $alt ) . '" />';
 
 		return apply_filters( 'odin_thumbnail_html', $html );
 	}
