@@ -152,7 +152,7 @@
 
 * Fixed the main navigation.
 * Updated the `Odin_Bootstrap_Nav_Walker` class.
-* Updated the Twitter Bootstrap files.
+* Updated the Bootstrap files.
 * Fixed the Gruntfile.js.
 * Improved the code.
 
@@ -185,9 +185,9 @@
 
 #### v1.3.0 - 17/05/2013 ####
 
-* Added Twitter Bootstrap.
+* Added Bootstrap.
 * Removed old SASS files.
-* Added Grunt task to updated and install the Twitter Bootstrap.
+* Added Grunt task to updated and install the Bootstrap.
 * Refixed the Photoswipe.
 
 #### v1.2.6 - 17/05/2013 ####
