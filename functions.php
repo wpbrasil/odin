@@ -197,7 +197,7 @@ function odin_enqueue_scripts() {
 	// jQuery.
 	wp_enqueue_script( 'jquery' );
 
-	// Twitter Bootstrap.
+	// Bootstrap.
 	wp_enqueue_script( 'bootstrap', $template_url . '/assets/js/libs/bootstrap.min.js', array(), null, true );
 
 	// General scripts.

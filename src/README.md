@@ -54,7 +54,7 @@ $ grunt watch
 $ grunt optimize
 ```
 
-### Atualizar os arquivos do Twitter Bootstrap: ###
+### Atualizar os arquivos do Bootstrap: ###
 
 ```bash
 $ grunt bootstrap
