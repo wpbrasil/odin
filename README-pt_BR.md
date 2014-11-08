@@ -2,7 +2,7 @@
 
 [View this documentation in English](https://github.com/wpbrasil/odin/blob/master/README.md)
 
-![Odin Framework](https://camo.githubusercontent.com/66198b6b011d840b080a26bea8030aa4e5264846/687474703a2f2f77706f642e696e2f77702d636f6e74656e742f75706c6f6164732f323031332f31322f6f64696e2d6c6f676f2e706e67)
+![Odin Framework](https://camo.githubusercontent.com/f51173b8da26083e2cfdc893ef532a8bc2457bcb/68747470733a2f2f692e696d6775722e636f6d2f4464654d6755782e706e67)
 
 * [Website](http://wpod.in/)
 * [Demo](http://demo.wpod.in/)
