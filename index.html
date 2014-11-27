@@ -1,111 +1,131 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
     <title>Odin by wpbrasil</title>
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/odin-bootstrap.min.css" rel="stylesheet">
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style type="text/css">
+    .navbar {border-radius: 0;}
+    .navbar .navbar-brand img {margin-top: -3px;}
+    .navbar-inverse .navbar-nav>li>a, .navbar-inverse .navbar-text {color: #FEDDC7}
+    @media screen and (min-width:768px){
+    .navbar-brand-centered {
+    position: absolute;
+    left: 50%;
+    display: block;
+    width: 160px;
+    text-align: center;
+    }
+    .navbar>.container .navbar-brand-centered,
+    .navbar>.container-fluid .navbar-brand-centered {
+    margin-left: -80px;
+    }
+    }
+    #header {padding: 30px 0 60px}
+    #banner.jumbotron {padding: 20px 0 15px}
+    #banner.jumbotron a {color: #fff;}
+    #banner.jumbotron h1 {font-size: 34px}
+    #banner.jumbotron p {font-size: 24px; color: #6B6866; padding: 20px 0 0}
+    #banner.jumbotron a.link-github {font-size: 12px; color: #6B6866;}
+    #features {padding: 40px 0 60px}
+    #features p img {margin-bottom: 20px; height: 140px}
+    #footer {padding: 40px 0 30px; border-top: 1px solid #231f20;}
+    #footer .nav-pills {margin: 0 auto;  max-width: 480px;}
+    </style>
   </head>
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Odin</h1>
-        <p>WordPress theme framework</p>
-
-        <p class="view"><a href="https://github.com/wpbrasil/odin">View the Project on GitHub <small>wpbrasil/odin</small></a></p>
-
-
-        <ul>
-          <li><a href="https://github.com/wpbrasil/odin/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/wpbrasil/odin/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/wpbrasil/odin">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-
-<p>Welcome to Odin, a base-theme developed by <a href="https://www.facebook.com/groups/wordpress.brasil/">WordPress Brasil Group</a>, to help on agile development of themes for <a href="http://wordpress.org/">WordPress</a>.</p>
-
-<div id="github-buttons" style="text-align: center;">
-    <iframe src="http://ghbtns.com/github-btn.html?user=wpbrasil&amp;repo=odin&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="90" height="20"></iframe>
-    <iframe src="http://ghbtns.com/github-btn.html?user=wpbrasil&amp;repo=odin&amp;type=fork&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="90" height="20"></iframe>
-</div>
-
-<h2>
-<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
-
-<p>Send the folder "odin" to the default themes folder from WordPress <code>wp-content/themes</code> or send the zipball using the WordPress Theme Installer.</p>
-
-<h2>
-<a name="documentation" class="anchor" href="#documentation"><span class="octicon octicon-link"></span></a>Documentation</h2>
-
-<p>Informations about how-to use the classes and functions from Odin is on the <a href="https://github.com/wpbrasil/odin/wiki">Official Documentation</a>.</p>
-
-<h2>
-<a name="plugins-support" class="anchor" href="#plugins-support"><span class="octicon octicon-link"></span></a>Plugins Support</h2>
-
-<p>Odin supports natively these plugins:</p>
-
-<ul>
-<li><a href="http://wordpress.org/extend/plugins/woocommerce/">WooCommerce</a></li>
-<li><a href="http://wordpress.org/extend/plugins/jigoshop/">Jigoshop</a></li>
-<li>
-<a href="http://wordpress.org/extend/plugins/jetpack/">JetPack</a> Infinite Scroll</li>
-</ul><h2>
-<a name="references" class="anchor" href="#references"><span class="octicon octicon-link"></span></a>References</h2>
-
-<ul>
-<li><a href="https://github.com/twitter/bootstrap">Twitter Bootstrap</a></li>
-<li><a href="https://github.com/aFarkas/html5shiv">HTML5shiv</a></li>
-<li><a href="https://github.com/paulirish/matchMedia.js/">matchMedia() polyfill</a></li>
-<li><a href="https://github.com/scottjehl/Respond">Respond.js</a></li>
-<li><a href="http://sass-lang.com/">Sass</a></li>
-<li><a href="http://compass-style.org/">Compass</a></li>
-<li><a href="http://gruntjs.com/">Grunt.js</a></li>
-<li><a href="https://github.com/sy4mil/Aqua-Resizer">aq_resize</a></li>
-<li><a href="https://github.com/davatron5000/FitVids.js">FitVids</a></li>
-</ul><h2>
-<a name="supportbugssugestions" class="anchor" href="#supportbugssugestions"><span class="octicon octicon-link"></span></a>Support/Bugs/Sugestions</h2>
-
-<p>The Odin Framework is an Open Source project. Anyone can (and should) help us to improve it. Report bugs or do suggestions using the <a href="https://github.com/wpbrasil/odin/issues">Issues/Project Forum</a>.</p>
-
-<h2>
-<a name="contribute-to-the-project" class="anchor" href="#contribute-to-the-project"><span class="octicon octicon-link"></span></a>Contribute to the Project</h2>
-
-<p>To contribute, just click on the Fork button, create a Branch, improve the code and send it with a Pull Request. More details about how to contribute and send Pull Requests in <a href="https://help.github.com/categories/63/articles">GitHub Collaborating</a>.</p>
-
-<h2>
-<a name="changelog" class="anchor" href="#changelog"><span class="octicon octicon-link"></span></a>Changelog</h2>
-
-<p><a href="https://github.com/wpbrasil/odin/blob/master/CHANGELOG.md">Changelog here!</a></p>
-
-<h2>
-<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
-
-<p>© Copyright 2013 - Grupo WordPress Brasil | Odin Framework Theme<br>
-The PHP code is licensed with GPLv2. All the CSS, SCSS, JS, images files and others, not including the PHP files is licensed with MIT or by the license specified inside the file.</p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/wpbrasil">wpbrasil</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-              <script type="text/javascript">
-            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-          </script>
-          <script type="text/javascript">
-            try {
-              var pageTracker = _gat._getTracker("UA-41938168-1");
-            pageTracker._trackPageview();
-            } catch(err) {}
-          </script>
-
-  </body>
-</html>
+    <nav class="navbar navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-brand-centered">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+          <div class="navbar-brand navbar-brand-centered"><img src="assets/img/odin-logo-textonly.png" alt="Logo Odin Framework" height="30px"></div>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-brand-centered">
+          <ul class="nav navbar-nav">
+            <!--<li><a href="https://github.com/wpbrasil/odin/blob/master/README-pt_BR.md" title="Como começar" target="_blank">Como começar</a></li>-->
+            <li><a href="https://github.com/wpbrasil/odin/wiki" title="Documentação Odin" target="_blank">Docs</a></li>
+            <li><a href="https://github.com/wpbrasil/odin/zipball/master" title="Baixar Odin formato .zip" target="_blank">Download</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <!--<li><a href="#">Cases</a></li>-->
+            <li><a href="https://github.com/wpbrasil/odin/issues" title="Suporte Odin" target="_blank">Suporte</a></li>
+            <li><a href="https://github.com/wpbrasil/odin" title="Odin no GitHub" target="_blank">GitHub</a></li>
+          </ul>
+          </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
+        <header id="header">
+          <div class="containter text-center">
+            <img src="assets/img/odin-logo-stacked.png" alt="Logo Odin Framework" width="350px;">
+          </div>
+        </header>
+        <section id="banner" class="jumbotron">
+          <div class="container text-center">
+            <h1>Um framework que chuta bundas!</h1>
+            <p>Criado pelo <a href="https://www.facebook.com/groups/wordpress.brasil/" title="Grupo WordPress Brasil no Facebook" target="_blank">Grupo WordPress Brasil</a>, Odin é um framework com objetivo de turbinar e agilizar o desenvolvimento de temas para WordPress</p>
+            <p><a href="https://github.com/wpbrasil/odin/zipball/master" title="Baixar Odin formato .zip" target="_blank" class="btn btn-primary btn-lg" role="button">Download Odin</a><br><a href="https://github.com/wpbrasil/odin" title="Odin no GitHub" target="_blank" class="link-github">ver no GitHub</a></p>
+          </div>
+        </section>
+        <section id="features">
+          <div class="container text-center">
+            <div class="col-md-4">
+              <p><img src="assets/img/feature-wp.png" alt="Logo WordPress"  height="140px"></p>
+              <p>“Custom Type Post”, “Taxonomias
+              Personalizadas”, “Metaboxes”...Conheça suas funções e vire um ninja na arte milenar de chutar bundas</p>
+            </div>
+            <div class="col-md-4">
+              <p><img src="assets/img/feature-html.png" alt="Logo WordPress"  height="140px"></p>
+              <p>Front-end totalmente semântico e
+              resposivo, o Odin inclui recursos
+              poderosos, como: Bootstrap e SASS.</p>
+            </div>
+            <div class="col-md-4">
+              <p><img src="assets/img/feature-comunidade.png" alt="Logo WordPress"  height="140px"></p>
+              <p>Criado com muito carinho pela
+              comunidade WordPress Brasil, faça parte disso você tambem.</p>
+            </div>
+            
+          </div>
+        </section>
+        <footer id="footer">
+          <div class="container text-center">
+            <p>Criado com ♥ pelo <a href="https://www.facebook.com/groups/wordpress.brasil/" title="Grupo WordPress Brasil no Facebook" target="_blank">Grupo WordPress Brasil</a><br>
+            Faça parte da equipe de <a href="https://github.com/wpbrasil/odin/graphs/contributors" title="Colaboradores Odin" target="_blank">colaboradores</a></p>
+            <p>
+            <p>
+              <ul class="nav nav-pills">
+                <!--<li><a href="https://github.com/wpbrasil/odin/blob/master/README-pt_BR.md" title="Como começar" target="_blank">Como começar</a></li>-->
+                <li><a href="https://github.com/wpbrasil/odin/wiki" title="Documentação Odin" target="_blank">Docs</a></li>
+                <li><a href="https://github.com/wpbrasil/odin/zipball/master" title="Baixar Odin formato .zip" target="_blank">Download</a></li>
+                <!--<li><a href="#">Cases</a></li>-->
+                <li><a href="https://github.com/wpbrasil/odin/issues" title="Suporte Odin" target="_blank">Suporte</a></li>
+                <li><a href="https://github.com/wpbrasil/odin#contribute-to-the-project" title="Contribua com o Odin" target="_blank">Contribua</a></li>
+                <li><a href="https://github.com/wpbrasil/odin" title="Odin no GitHub" target="_blank">GitHub</a></li>
+              </ul>
+            </p>
+            </div>
+          </footer>
+          
+          <!-- Odin Bootstrap core JavaScript
+          ================================================== -->
+          <!-- Placed at the end of the document so the pages load faster -->
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+          <script src="assets/js/bootstrap.min.js"></script>
+        </body>
+      </html>
