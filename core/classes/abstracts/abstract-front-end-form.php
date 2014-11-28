@@ -227,6 +227,9 @@ abstract class Odin_Front_End_Form {
 						case 'text':
 							$html .= $this->field_input( $id, $label, $default, $description, $attributes );
 							break;
+						case 'hidden':
+							$html .= $this->field_hidden( $id, $default, $attributes );
+							break;
 						case 'email':
 							$html .= $this->field_input( $id, $label, $default, $description, array_merge( array( 'type' => 'email' ), $attributes ) );
 							break;
@@ -370,16 +373,31 @@ abstract class Odin_Front_End_Form {
 			$attributes['class'] = 'form-control';
 		}
 		
-		// Hide label tag for hidden input type
-		if( $attributes['type'] != 'hidden' ) {
-			$html .= sprintf( '<label for="%s">%s%s</label>', $id, $label, $this->required_field_alert( $attributes ) );
-		}
-
 		$html = sprintf( '<div class="form-group odin-form-group-%s">', $id );
 		$html .= sprintf( '<label for="%s">%s%s</label>', $id, $label, $this->required_field_alert( $attributes ) );
 		$html .= sprintf( '<input id="%1$s" name="%1$s" value="%2$s"%3$s />', $id, $default, $this->process_attributes( $attributes ) );
 		$html .= ! empty( $description ) ? '<span class="help-block">' . $description . '</span>' : '';
 		$html .= '</div>';
+
+		return $html;
+	}
+
+	/**
+	 * Hidden field.
+	 *
+	 * @param  string $id          Field id.
+	 * @param  string $default     Default value.
+	 * @param  array  $attributes  Array with field attributes.
+	 *
+	 * @return string              HTML of the field.
+	 */
+	protected function field_hidden( $id, $default, $attributes ) {
+		// Set the default type.
+		if ( ! isset( $attributes['type'] ) ) {
+			$attributes['type'] = 'hidden';
+		}
+
+		$html = sprintf( '<input id="%1$s" name="%1$s" value="%2$s"%3$s />', $id, $default, $this->process_attributes( $attributes ) );
 
 		return $html;
 	}
