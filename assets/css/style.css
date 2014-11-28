@@ -1,0 +1,42 @@
+.navbar {border-radius: 0;}
+.navbar .navbar-brand img {margin-top: -3px;}
+.navbar-inverse .navbar-nav>li>a, .navbar-inverse .navbar-text {color: #FEDDC7}
+
+@media screen and (min-width:768px) {
+    .navbar-brand-centered {
+        position: absolute;
+        left: 50%;
+        display: block;
+        width: 160px;
+        text-align: center;
+    }
+
+    .navbar > .container .navbar-brand-centered,
+    .navbar > .container-fluid .navbar-brand-centered {
+        margin-left: -80px;
+    }
+}
+
+#header {padding: 30px 0 60px}
+#banner.jumbotron {padding: 20px 0 15px}
+#banner.jumbotron a {color: #fff;}
+#banner.jumbotron h1 {font-size: 34px}
+#banner.jumbotron p {font-size: 24px; color: #6B6866; padding: 20px 0 0}
+#banner.jumbotron a.link-github {font-size: 12px; color: #6B6866;}
+#features {padding: 40px 0 60px}
+#features p img {margin-bottom: 20px; height: 140px}
+#footer {padding: 40px 0 30px; border-top: 1px solid #231f20;}
+#footer .nav-pills {margin: 0 auto;  max-width: 480px;}
+
+.contributors {
+    margin: 10px auto;
+    width: 75%;
+}
+
+.contributors__people {
+    background: #fff;
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 1px;
+    margin: 0 3px 5px;
+}
