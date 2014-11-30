@@ -1,13 +1,24 @@
-.navbar {border-radius: 0;}
-.navbar .navbar-brand img {margin-top: -3px;}
-.navbar-inverse .navbar-nav>li>a, .navbar-inverse .navbar-text {color: #FEDDC7}
+/* NAVBAR */
+.navbar {
+    border-radius: 0;
+}
+.navbar .navbar-brand img {
+    margin-top: -3px;
+}
+.navbar-inverse .navbar-nav > li > a,
+.navbar-inverse .navbar-text {
+    color: #feddc7;
+}
 
 @media screen and (min-width:768px) {
     .navbar-brand-centered {
         position: absolute;
         left: 50%;
+
         display: block;
+
         width: 160px;
+
         text-align: center;
     }
 
@@ -17,26 +28,69 @@
     }
 }
 
-#header {padding: 30px 0 60px}
-#banner.jumbotron {padding: 20px 0 15px}
-#banner.jumbotron a {color: #fff;}
-#banner.jumbotron h1 {font-size: 34px}
-#banner.jumbotron p {font-size: 24px; color: #6B6866; padding: 20px 0 0}
-#banner.jumbotron a.link-github {font-size: 12px; color: #6B6866;}
-#features {padding: 40px 0 60px}
-#features p img {margin-bottom: 20px; height: 140px}
-#footer {padding: 40px 0 30px; border-top: 1px solid #231f20;}
-#footer .nav-pills {margin: 0 auto;  max-width: 480px;}
-
-.contributors {
-    margin: 10px auto;
-    width: 75%;
+/* HEADER */
+#header {
+    padding: 30px 0 60px;
 }
 
-.contributors__people {
-    background: #fff;
-    border: 1px solid #ccc;
+/* BANNER */
+#banner.jumbotron {
+    padding: 20px 0 15px;
+}
+#banner.jumbotron a {
+    color: #fff;
+}
+#banner.jumbotron h1 {
+    font-size: 34px;
+}
+#banner.jumbotron p {
+    font-size: 24px;
+
+    padding: 20px 0 0;
+
+    color: #6b6866;
+}
+#banner.jumbotron a.link-github {
+    font-size: 12px;
+
+    color: #6b6866;
+}
+
+/* FEATURES */
+#features {
+    padding: 40px 0 60px;
+}
+#features p img {
+    height: 140px;
+    margin-bottom: 20px;
+}
+
+/* FOOTER */
+#footer {
+    padding: 40px 0 30px;
+
+    border-top: 1px solid #231f20;
+}
+#footer ul.nav-pills {
     display: inline-block;
-    padding: 1px;
-    margin: 0 3px 5px;
+}
+#footer ul.nav-pills li {
+    display: inline;
+}
+#footer ul.nav-pills li a {
+    float: left;
+}
+
+/* EQUIPE */
+#colaboradores {
+    margin: 0 auto 60px;
+}
+#colaboradores .member .thumbnail,
+#colaboradores .member .thumbnail img {
+    border-radius: 100%;
+}
+#colaboradores .member {
+    display: inline-block;
+
+    margin: 0 15px;
 }
