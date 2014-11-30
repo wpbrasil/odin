@@ -490,6 +490,17 @@ function odin_autoset_featured() {
  *
  * @return string          Human-readable information.
  */
-function odin_debug( $variable ) {
-	echo '<pre>' . print_r( $variable, true ) . '</pre>';
+function odin_debug() {
+	if( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+		$arguments = func_get_args();
+		if( func_num_args() ) {
+			$backtrace = current( debug_backtrace() );
+			echo '<fieldset>';
+			echo '<legend>' . $backtrace['file'] . ':' . $backtrace['line'] . '</legend>';
+			foreach( $arguments as $arg ) {
+				echo '<pre>' . print_r( $arg, true ) . '</pre>';
+			}
+			echo '</fieldset>';
+		}
+	}
 }
