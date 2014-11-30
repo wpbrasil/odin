@@ -28,7 +28,7 @@
         };
 
         $private.getColaboratorTemplate = function getColaboratorTemplate( data ) {
-            var url = data.url.split( 'api.' ).join( '' );
+            var url = data.url.split( 'api.' ).join( '' ).split( '/users' ).join( '' );
 
             return $private.colaboratorTemplate()
                 .split( '#{{url}}' ).join( url )
