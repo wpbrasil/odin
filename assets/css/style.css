@@ -1,4 +1,4 @@
-/* NAVBAR */ 
+/* NAVBAR */
 .navbar {
     border-radius: 0;
 }
@@ -28,12 +28,12 @@
     }
 }
 
-/* HEADER */ 
+/* HEADER */
 #header {
     padding: 30px 0 60px;
 }
 
-/* BANNER */ 
+/* BANNER */
 #banner.jumbotron {
     padding: 20px 0 15px;
 }
@@ -56,7 +56,7 @@
     color: #6b6866;
 }
 
-/* FEATURES */ 
+/* FEATURES */
 #features {
     padding: 40px 0 60px;
 }
@@ -65,7 +65,7 @@
     margin-bottom: 20px;
 }
 
-/* FOOTER */ 
+/* FOOTER */
 #footer {
     padding: 40px 0 30px;
 
@@ -81,17 +81,16 @@
     float: left;
 }
 
-/* CONTRIBUTORS */ 
-.contributors {
-    width: 75%;
-    margin: 10px auto;
+/* EQUIPE */
+#colaboradores {
+    margin: 0 auto 60px;
 }
-.contributors__people {
+#colaboradores .member .thumbnail,
+#colaboradores .member .thumbnail img {
+    border-radius: 100%;
+}
+#colaboradores .member {
     display: inline-block;
 
-    margin: 0 3px 5px;
-    padding: 1px;
-
-    border: 1px solid #ccc;
-    background: #fff;
+    margin: 0 15px;
 }
