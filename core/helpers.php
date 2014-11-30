@@ -200,10 +200,11 @@ function odin_related_posts( $display = 'category', $qty = 4, $title = '', $thum
  *
  * @param  string $type  Sets excerpt or title.
  * @param  int    $limit Sets the length of excerpt.
+ * @param  string $more  What to append if content needs to be trimmed
  *
  * @return string       Return the excerpt.
  */
-function odin_excerpt( $type = 'excerpt', $limit = 40 ) {
+function odin_excerpt( $type = 'excerpt', $limit = 40, $more = '&hellip;' ) {
 	$limit = (int) $limit;
 
 	// Set excerpt type.
@@ -217,7 +218,7 @@ function odin_excerpt( $type = 'excerpt', $limit = 40 ) {
 			break;
 	}
 
-	return wp_trim_words( $excerpt, $limit );
+	return wp_trim_words( $excerpt, $limit, $more );
 }
 
 /**
