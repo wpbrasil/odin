@@ -20,9 +20,11 @@
 
         $private.colaboratorTemplate = function colaboratorTemplate() {
             return '' +
-            '<a href="#{{url}}" title="@#{{login}}" target="_blank" class="contributors__people">' +
-                '<img src="#{{avatar}}" alt="@#{{login}}" width="60" height="60" />' +
-            '</a>';
+            '<div class="member">' +
+                '<a href="#{{url}}" title="@#{{login}}" target="_blank" class="thumbnail">' +
+                '<img src="#{{avatar}}" alt="@#{{login}}" width="75" height="75" />' +
+                '</a>' +
+            '</div>';
         };
 
         $private.getColaboratorTemplate = function getColaboratorTemplate( data ) {
