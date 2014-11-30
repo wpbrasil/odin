@@ -22,7 +22,7 @@
             return '' +
             '<div class="member">' +
                 '<a href="#{{url}}" title="@#{{login}}" target="_blank" class="thumbnail">' +
-                '<img src="#{{avatar}}" alt="@#{{login}}" width="75" height="75" />' +
+                    '<img src="#{{avatar}}" alt="@#{{login}}" width="75" height="75" />' +
                 '</a>' +
             '</div>';
         };

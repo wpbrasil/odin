@@ -82,14 +82,14 @@
 }
 
 /* EQUIPE */
-#equipe {
+#colaboradores {
     margin: 0 auto 60px;
 }
-#equipe .member .thumbnail,
-#equipe .member .thumbnail img {
+#colaboradores .member .thumbnail,
+#colaboradores .member .thumbnail img {
     border-radius: 100%;
 }
-#equipe .member {
+#colaboradores .member {
     display: inline-block;
 
     margin: 0 15px;
