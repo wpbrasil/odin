@@ -28,8 +28,10 @@
         };
 
         $private.getColaboratorTemplate = function getColaboratorTemplate( data ) {
+            var url = data.url.split( 'api.' ).join( '' );
+
             return $private.colaboratorTemplate()
-                .split( '#{{url}}' ).join( data.url )
+                .split( '#{{url}}' ).join( url )
                 .split( '#{{login}}' ).join( data.login )
                 .split( '#{{avatar}}' ).join( data.avatar_url );
         };
