@@ -10,7 +10,7 @@
 
 get_header(); ?>
 
-	<div id="primary" class="<?php echo odin_page_sidebar_classes(); ?>">
+	<div id="primary" class="<?php echo odin_classes_page_sidebar(); ?>">
 		<div id="content" role="main">
 
 			<?php while ( have_posts() ) : the_post(); ?>

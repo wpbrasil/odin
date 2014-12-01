@@ -11,7 +11,7 @@
  * @return void
  */
 function odin_woocommerce_jigoshop_content_wrapper() {
-	echo '<div id="primary" class="' . odin_page_sidebar_classes() . '">';
+	echo '<div id="primary" class="' . odin_classes_page_sidebar() . '">';
 }
 
 /**

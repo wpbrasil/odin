@@ -20,7 +20,7 @@ if ( ! function_exists( 'odin_classes_page_full' ) ) {
 	}
 }
 
-if ( ! function_exists( 'odin_page_sidebar_classes' ) ) {
+if ( ! function_exists( 'odin_classes_page_sidebar' ) ) {
 
 	/**
 	 * Page with sidebar classes.
@@ -29,7 +29,7 @@ if ( ! function_exists( 'odin_page_sidebar_classes' ) ) {
 	 *
 	 * @return string Classes name.
 	 */
-	function odin_page_sidebar_classes() {
+	function odin_classes_page_sidebar() {
 		return 'col-md-8';
 	}
 }
