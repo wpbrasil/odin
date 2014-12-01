@@ -6,7 +6,7 @@
  * @since 2.2.0
  */
 
-if ( ! function_exists( 'odin_full_page_classes' ) ) {
+if ( ! function_exists( 'odin_classes_page_full' ) ) {
 
 	/**
 	 * Full page classes.
@@ -15,7 +15,7 @@ if ( ! function_exists( 'odin_full_page_classes' ) ) {
 	 *
 	 * @return string Classes name.
 	 */
-	function odin_full_page_classes() {
+	function odin_classes_page_full() {
 		return 'col-md-12';
 	}
 }
