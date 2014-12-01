@@ -200,10 +200,11 @@ function odin_related_posts( $display = 'category', $qty = 4, $title = '', $thum
  *
  * @param  string $type  Sets excerpt or title.
  * @param  int    $limit Sets the length of excerpt.
+ * @param  string $more  What to append if content needs to be trimmed
  *
  * @return string       Return the excerpt.
  */
-function odin_excerpt( $type = 'excerpt', $limit = 40 ) {
+function odin_excerpt( $type = 'excerpt', $limit = 40, $more = '&hellip;' ) {
 	$limit = (int) $limit;
 
 	// Set excerpt type.
@@ -217,7 +218,7 @@ function odin_excerpt( $type = 'excerpt', $limit = 40 ) {
 			break;
 	}
 
-	return wp_trim_words( $excerpt, $limit );
+	return wp_trim_words( $excerpt, $limit, $more );
 }
 
 /**
@@ -490,6 +491,17 @@ function odin_autoset_featured() {
  *
  * @return string          Human-readable information.
  */
-function odin_debug( $variable ) {
-	echo '<pre>' . print_r( $variable, true ) . '</pre>';
+function odin_debug() {
+	if( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+		$arguments = func_get_args();
+		if( func_num_args() ) {
+			$backtrace = current( debug_backtrace() );
+			echo '<fieldset>';
+			echo '<legend>' . $backtrace['file'] . ':' . $backtrace['line'] . '</legend>';
+			foreach( $arguments as $arg ) {
+				echo '<pre>' . print_r( $arg, true ) . '</pre>';
+			}
+			echo '</fieldset>';
+		}
+	}
 }

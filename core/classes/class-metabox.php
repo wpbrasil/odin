@@ -299,8 +299,8 @@ class Odin_Metabox {
 	 *
 	 * @return string          HTML of the field.
 	 */
-	protected function field_checkbox( $id, $current, $attrs ) {
-		echo sprintf( '<input type="checkbox" id="%1$s" name="%1$s" value="1"%2$s%3$s />', $id, checked( 1, $current, false ), $this->build_field_attributes( $attrs ) );
+	protected function field_checkbox( $id, $current, $attrs ) {		
+		echo sprintf( '<input type="checkbox" id="%1$s" name="%1$s" value="1"%2$s%3$s />', $id, checked( 'yes', $current, false ), $this->build_field_attributes( $attrs ) );
 	}
 
 	/**
@@ -502,10 +502,15 @@ class Odin_Metabox {
 
 		foreach ( $this->fields as $field ) {
 			$name  = $field['id'];
+			$type  = $field['type'];
 			$value = isset( $_POST[ $name ] ) ? $_POST[ $name ] : null;
 
-			if ( ! in_array( $field['type'], array( 'separator', 'title' ) ) ) {
+			if ( ! in_array( $type, array( 'separator', 'title' ) ) ) {
 				$old = get_post_meta( $post_id, $name, true );
+
+				if( 'checkbox' == $type ) {
+					$value = $value ? 'yes' : 'no';
+				}
 
 				$new = apply_filters( 'odin_save_metabox_' . $this->id, $value, $name );
 
@@ -516,7 +521,6 @@ class Odin_Metabox {
 				}
 			}
 		}
-
 	}
 
 }
