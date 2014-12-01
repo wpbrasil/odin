@@ -8,7 +8,7 @@
 
 get_header(); ?>
 
-	<div id="primary" class="<?php echo odin_page_sidebar_classes(); ?>">
+	<div id="primary" class="<?php echo odin_classes_page_sidebar(); ?>">
 		<div id="content" class="site-content" role="main">
 			<?php
 				// Start the Loop.

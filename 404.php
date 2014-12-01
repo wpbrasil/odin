@@ -8,7 +8,7 @@
 
 get_header(); ?>
 
-	<div id="primary" class="<?php echo odin_full_page_classes(); ?>">
+	<div id="primary" class="<?php echo odin_classes_page_full(); ?>">
 		<div id="content" class="site-content" role="main">
 
 			<header class="page-header">

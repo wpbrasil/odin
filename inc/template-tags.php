@@ -6,44 +6,44 @@
  * @since 2.2.0
  */
 
-if ( ! function_exists( 'odin_full_page_classes' ) ) {
+if ( ! function_exists( 'odin_classes_page_full' ) ) {
 
 	/**
-	 * Full page classes.
+	 * Classes page full.
 	 *
 	 * @since 2.2.0
 	 *
 	 * @return string Classes name.
 	 */
-	function odin_full_page_classes() {
+	function odin_classes_page_full() {
 		return 'col-md-12';
 	}
 }
 
-if ( ! function_exists( 'odin_page_sidebar_classes' ) ) {
+if ( ! function_exists( 'odin_classes_page_sidebar' ) ) {
 
 	/**
-	 * Page with sidebar classes.
+	 * Classes page with sidebar.
 	 *
 	 * @since 2.2.0
 	 *
 	 * @return string Classes name.
 	 */
-	function odin_page_sidebar_classes() {
+	function odin_classes_page_sidebar() {
 		return 'col-md-8';
 	}
 }
 
-if ( ! function_exists( 'odin_sidebar_classes' ) ) {
+if ( ! function_exists( 'odin_classes_page_sidebar_aside' ) ) {
 
 	/**
-	 * Sidebar classes.
+	 * Classes aside of page with sidebar.
 	 *
 	 * @since 2.2.0
 	 *
 	 * @return string Classes name.
 	 */
-	function odin_sidebar_classes() {
+	function odin_classes_page_sidebar_aside() {
 		return 'widget-area col-md-4 hidden-xs';
 	}
 }
