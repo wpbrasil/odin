@@ -116,6 +116,15 @@ class Odin_Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 			}
 
 			$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
+
+			/*
+			 * Menu desciption
+			 * ===============
+			 */
+			if ( ! empty( $item->description ) ) {
+				$item_output .= '<span class="menu-description">' . $item->description . '</span>';
+			}
+
 			$item_output .= ( $args->has_children && 0 === $depth ) ? ' <span class="caret"></span></a>' : '</a>';
 			$item_output .= $args->after;
 
