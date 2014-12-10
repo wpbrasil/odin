@@ -92,8 +92,7 @@ module.exports = function( grunt ) {
 				files: [
 					'<%= dirs.css %>/*.css',
 					'<%= dirs.js %>/*.js',
-					'../**/*.php',
-					'../*.php'
+					'../**/*.php'
 				]
 			}
 		},
