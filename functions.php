@@ -210,6 +210,9 @@ function odin_enqueue_scripts() {
 	// Grunt main file with Bootstrap, FitVids and others libs.
 	// wp_enqueue_script( 'odin-main-min', $template_url . '/assets/js/main.min.js', array(), null, true );
 
+	// Grunt watch livereload in the browser.
+	// wp_enqueue_script( 'odin-livereload', 'http://localhost:35729/livereload.js?snipver=1', array(), null, true );
+
 	// Load Thread comments WordPress script.
 	if ( is_singular() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

@@ -11,6 +11,7 @@ module.exports = function( grunt ) {
 
 		// setting folder templates
 		dirs: {
+			css: '../assets/css',
 			js: '../assets/js',
 			sass: '../assets/sass',
 			images: '../assets/images',
@@ -70,7 +71,7 @@ module.exports = function( grunt ) {
 			}
 		},
 
-		// watch for changes and trigger compass, jshint and uglify
+		// watch for changes and trigger compass, jshint, uglify and livereload browser
 		watch: {
 			compass: {
 				files: [
@@ -83,6 +84,16 @@ module.exports = function( grunt ) {
 					'<%= jshint.all %>'
 				],
 				tasks: ['jshint', 'uglify']
+			},
+			livereload: {
+				options: {
+					livereload: true
+				},
+				files: [
+					'<%= dirs.css %>/*.css',
+					'<%= dirs.js %>/*.js',
+					'../**/*.php'
+				]
 			}
 		},
 
