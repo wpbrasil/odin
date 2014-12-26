@@ -79,12 +79,12 @@
 						);
 					?>
 
-					<form method="get" class="navbar-form navbar-right" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
-						<label for="navbar-search" class="sr-only"><?php _e( 'Search:', 'odin' ); ?></label>
+					<form id="searchform" method="get" class="navbar-form navbar-right" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
+						<label for="s" class="sr-only"><?php _e( 'Search:', 'odin' ); ?></label>
 						<div class="form-group">
-							<input type="text" class="form-control" name="s" id="navbar-search" />
+							<input id="s" type="text" class="form-control" name="s" />
 						</div>
-						<button type="submit" class="btn btn-default"><?php _e( 'Search', 'odin' ); ?></button>
+						<button id="searchsubmit" type="submit" class="btn btn-default"><?php _e( 'Search', 'odin' ); ?></button>
 					</form>
 				</div><!-- .navbar-collapse -->
 			</nav><!-- #main-menu -->
