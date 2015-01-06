@@ -9,7 +9,7 @@
 get_header(); ?>
 
 	<div id="primary" class="<?php echo odin_classes_page_sidebar(); ?>">
-		<div id="content" class="site-content" role="main">
+		<main id="main" class="site-main" role="main">
 			<?php
 				// Start the Loop.
 				while ( have_posts() ) : the_post();
@@ -27,7 +27,7 @@ get_header(); ?>
 					endif;
 				endwhile;
 			?>
-		</div><!-- #content -->
+		</main><!-- #main -->
 	</div><!-- #primary -->
 
 <?php
