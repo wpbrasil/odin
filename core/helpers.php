@@ -38,10 +38,11 @@ function odin_pagination( $mid = 2, $end = 1, $show = false, $query = null ) {
 
 		if ( $total_pages > 1 ) {
 			$url_base = $wp_rewrite->pagination_base;
+			$big = 999999999;
 
 			// Sets the paginate_links arguments.
 			$arguments = apply_filters( 'odin_pagination_args', array(
-					'base'      => esc_url_raw( str_replace( $big, '%#%', get_pagenum_link( 999999999, false ) ) ),
+					'base'      => esc_url_raw( str_replace( $big, '%#%', get_pagenum_link( $big, false ) ) ),
 					'format'    => '',
 					'current'   => max( 1, get_query_var( 'paged' ) ),
 					'total'     => $total_pages,
