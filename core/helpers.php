@@ -41,17 +41,17 @@ function odin_pagination( $mid = 2, $end = 1, $show = false, $query = null ) {
 			$url_base = $wp_rewrite->pagination_base;
 			$big = 999999999; // Need an unlikely integer.
 
-			// Sets the URL format.
+			// Sets the URL base.
 			if ( $wp_rewrite->permalink_structure ) {
-				$format = '?paged=%#%';
+				$base = str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) );
 			} else {
-				$format = '/' . $url_base . '/%#%';
+				$base = '%_%';
 			}
 
 			// Sets the paginate_links arguments.
 			$arguments = apply_filters( 'odin_pagination_args', array(
-					'base'      => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-					'format'    => $format,
+					'base'      => $base,
+					'format'    => '?paged=%#%',
 					'current'   => $current_page,
 					'total'     => $total_pages,
 					'show_all'  => $show,

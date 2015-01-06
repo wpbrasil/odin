@@ -19,7 +19,7 @@ get_header(); ?>
 						<h1 class="entry-title"><?php the_title(); ?></h1>
 					</header><!-- .entry-header -->
 					<div class="entry-content entry-attachment">
-						<?php echo esc_attr( wp_audio_shortcode( array( 'src' => wp_get_attachment_url() ) ) ); ?>
+						<?php echo wp_audio_shortcode( array( 'src' => wp_get_attachment_url() ) ); ?>
 
 						<p><strong><?php _e( 'URL:', 'odin' ); ?></strong> <a href="<?php echo esc_url( wp_get_attachment_url() ); ?>" title="<?php the_title_attribute(); ?>" rel="attachment"><span><?php echo esc_attr( basename( wp_get_attachment_url() ) ); ?></span></a></p>
 

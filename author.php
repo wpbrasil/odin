@@ -14,22 +14,20 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 
 			<?php if ( have_posts() ) : ?>
+				<header class="page-header">
+					<?php
+						the_archive_title( '<h1 class="page-title">', '</h1>' );
+						the_archive_description( '<div class="taxonomy-description">', '</div>' );
 
-				<header class="archive-header">
-					<h1 class="archive-title">
-						<?php
-							/*
-							 * Queue the first post, that way we know what author
-							 * we're dealing with (if that is the case).
-							 *
-							 * We reset this later so we can run the loop properly
-							 * with a call to rewind_posts().
-							 */
-							the_post();
-
-							printf( __( 'All posts by %s', 'odin' ), get_the_author() );
-						?>
-					</h1>
+						/*
+						 * Queue the first post, that way we know what author
+						 * we're dealing with (if that is the case).
+						 *
+						 * We reset this later so we can run the loop properly
+						 * with a call to rewind_posts().
+						 */
+						the_post();
+					?>
 					<?php if ( get_the_author_meta( 'description' ) ) : ?>
 						<div class="author-biography">
 							<span class="author-avatar"><?php echo get_avatar( get_the_author_meta( 'ID' ), 60 ); ?></span>

@@ -15,17 +15,12 @@ get_header(); ?>
 
 			<?php if ( have_posts() ) : ?>
 
-				<header class="archive-header">
-					<h1 class="archive-title"><?php printf( __( 'Category Archives: %s', 'odin' ), single_cat_title( '', false ) ); ?></h1>
-
-					<?php
-						// Show an optional term description.
-						$term_description = term_description();
-						if ( ! empty( $term_description ) ) :
-							printf( '<div class="taxonomy-description">%s</div>', $term_description );
-						endif;
-					?>
-				</header><!-- .archive-header -->
+				<header class="page-header">
+				<?php
+					the_archive_title( '<h1 class="page-title">', '</h1>' );
+					the_archive_description( '<div class="taxonomy-description">', '</div>' );
+				?>
+				</header><!-- .page-header -->
 
 				<?php
 						// Start the Loop.
