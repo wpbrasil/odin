@@ -421,12 +421,12 @@ function odin_get_image_url( $id, $width, $height, $crop = true, $upscale = fals
  * @param  string  $class   Class attribute of the image.
  * @param  string  $alt     Alt attribute of the image.
  * @param  boolean $crop    Image crop.
- * @param  boolean $upscale Force the resize.
  * @param  string  $class   Custom HTML classes.
+ * @param  boolean $upscale Force the resize.
  *
  * @return string         Return the post thumbnail.
  */
-function odin_thumbnail( $width, $height, $alt, $crop = true, $upscale = false, $class = '' ) {
+function odin_thumbnail( $width, $height, $alt, $crop = true, $class = '', $upscale = false ) {
 	if ( ! class_exists( 'Odin_Thumbnail_Resizer' ) ) {
 		return;
 	}
