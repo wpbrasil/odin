@@ -395,11 +395,11 @@ function odin_breadcrumbs( $homepage = '' ) {
 /**
  * Get a image URL.
  *
- * @param  int 		$id   		Image ID.
- * @param  int 		$width   	Image width.
- * @param  int 		$height  	Image height.
- * @param  boolean 	$crop 	 	Image crop.
- * @param  boolean 	$upscale 	Force the resize.
+ * @param  int     $id      Image ID.
+ * @param  int     $width   Image width.
+ * @param  int     $height  Image height.
+ * @param  boolean $crop    Image crop.
+ * @param  boolean $upscale Force the resize.
  *
  * @return string
  */
@@ -416,13 +416,13 @@ function odin_get_image_url( $id, $width, $height, $crop = true, $upscale = fals
  *
  * @since  2.2.0
  *
- * @param  int     $width  	Width of the image.
- * @param  int     $height 	Height of the image.
- * @param  string  $class  	Class attribute of the image.
- * @param  string  $alt    	Alt attribute of the image.
- * @param  boolean $crop   	Image crop.
- * @param  boolean $upscale	Force the resize.
- * @param  string  $class  	Custom HTML classes.
+ * @param  int     $width   Width of the image.
+ * @param  int     $height  Height of the image.
+ * @param  string  $class   Class attribute of the image.
+ * @param  string  $alt     Alt attribute of the image.
+ * @param  boolean $crop    Image crop.
+ * @param  boolean $upscale Force the resize.
+ * @param  string  $class   Custom HTML classes.
  *
  * @return string         Return the post thumbnail.
  */
