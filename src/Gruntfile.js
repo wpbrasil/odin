@@ -106,6 +106,7 @@ module.exports = function( grunt ) {
 				},
 				files: [{
 					expand: true,
+					filter: 'isFile',
 					cwd: '<%= dirs.images %>/',
 					src: '**/*.{png,jpg,gif}',
 					dest: '<%= dirs.images %>/'
