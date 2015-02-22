@@ -216,6 +216,10 @@ function odin_enqueue_scripts() {
 	// Loads Odin main stylesheet.
 	wp_enqueue_style( 'odin-style', get_stylesheet_uri(), array(), null, 'all' );
 
+	// Woocommerce stylesheet.
+	add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
+	wp_enqueue_style( 'woocommerce-style', $template_url . '/assets/css/woocommerce/woocommerce.css', array(), null, 'all' );	
+
 	// jQuery.
 	wp_enqueue_script( 'jquery' );
 

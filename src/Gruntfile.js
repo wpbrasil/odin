@@ -203,6 +203,10 @@ module.exports = function( grunt ) {
 			bootstrap_sass: {
 				src: 'https://github.com/twbs/bootstrap-sass/archive/master.zip',
 				dest: '<%= dirs.tmp %>/bootstrap-sass.zip'
+			},
+			woocommerce_sass: {
+				src: 'https://github.com/claudiosmweb/woocommerce-sass/archive/master.zip',
+				dest: '<%= dirs.tmp %>/woocommerce-sass.zip'
 			}
 		},
 
@@ -210,6 +214,10 @@ module.exports = function( grunt ) {
 		unzip: {
 			bootstrap_scss: {
 				src: '<%= dirs.tmp %>/bootstrap-sass.zip',
+				dest: '<%= dirs.tmp %>/'
+			},
+			woocommerce_scss: {
+				src: '<%= dirs.tmp %>/woocommerce-sass.zip',
 				dest: '<%= dirs.tmp %>/'
 			}
 		},
@@ -227,12 +235,16 @@ module.exports = function( grunt ) {
 			bootstrap_fonts: {
 				src: '<%= dirs.tmp %>/bootstrap-sass-master/assets/fonts/bootstrap',
 				dest: '<%= dirs.fonts %>/bootstrap'
+			},
+			woocommerce_scss: {
+				src: '<%= dirs.tmp %>/woocommerce-sass-master/sass',
+				dest: '<%= dirs.sass %>/woocommerce'
 			}
 		},
 
 		// clean directories and files
 		clean: {
-			prepare: [
+			bootstrap_prepare: [
 				'<%= dirs.tmp %>',
 				'<%= dirs.sass %>/bootstrap/',
 				'<%= dirs.js %>/bootstrap/',
@@ -242,6 +254,13 @@ module.exports = function( grunt ) {
 			bootstrap: [
 				'<%= dirs.sass %>/bootstrap/bootstrap.scss',
 				'<%= dirs.tmp %>'
+			],
+			woocommerce_prepare: [
+				'<%= dirs.tmp %>',
+				'<%= dirs.sass %>/woocommerce/'
+			],
+			woocommerce: [
+				'<%= dirs.tmp %>'				
 			]
 		}
 	};
@@ -274,7 +293,7 @@ module.exports = function( grunt ) {
 
 	// Bootstrap Task
 	grunt.registerTask( 'bootstrap', [
-		'clean:prepare',
+		'clean:bootstrap_prepare',
 		'curl:bootstrap_sass',
 		'unzip:bootstrap_scss',
 		'rename:bootstrap_scss',
@@ -282,6 +301,16 @@ module.exports = function( grunt ) {
 		'rename:bootstrap_fonts',
 		'clean:bootstrap',
 		'uglify:bootstrap',
+		'compass'
+	] );
+
+	// Woocommerce Task
+	grunt.registerTask( 'woo', [
+		'clean:woocommerce_prepare',
+		'curl:woocommerce_sass',
+		'unzip:woocommerce_scss',
+		'rename:woocommerce_scss',
+		'clean:woocommerce',
 		'compass'
 	] );
 
