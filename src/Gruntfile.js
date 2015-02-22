@@ -34,6 +34,10 @@ module.exports = function( grunt ) {
 		// uglify to concat and minify
 		uglify: {
 			dist: {
+				options: {
+					sourceMap: true,
+					sourceMapName: '<%= dirs.js %>/main.min.map'
+				},
 				files: {
 					'<%= dirs.js %>/main.min.js': [
 						'<%= dirs.js %>/libs/*.js', // External libs/plugins
@@ -42,6 +46,10 @@ module.exports = function( grunt ) {
 				}
 			},
 			bootstrap: {
+				options: {
+					sourceMap: true,
+					sourceMapName: '<%= dirs.js %>/bootstrap.min.map'
+				},
 				files: {
 					'<%= dirs.js %>/libs/bootstrap.min.js': [
 						'<%= dirs.js %>/bootstrap/transition.js',
