@@ -9,7 +9,7 @@
  * Remove native styles 
  *
  */
-add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
+// add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
 
 /**
  * Content wrapper before and after
