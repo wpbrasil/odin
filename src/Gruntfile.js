@@ -205,7 +205,7 @@ module.exports = function( grunt ) {
 				dest: '<%= dirs.tmp %>/bootstrap-sass.zip'
 			},
 			woocommerce_sass: {
-				src: 'https://github.com/claudiosmweb/woocommerce-sass/archive/master.zip',
+				src: 'https://github.com/woothemes/woocommerce/archive/master.zip',
 				dest: '<%= dirs.tmp %>/woocommerce-sass.zip'
 			}
 		},
@@ -237,13 +237,33 @@ module.exports = function( grunt ) {
 				dest: '<%= dirs.fonts %>/bootstrap'
 			},
 			woocommerce_scss: {
-				src: '<%= dirs.tmp %>/woocommerce-sass-master/sass',
+				src: '<%= dirs.tmp %>/woocommerce-master/assets/css',
 				dest: '<%= dirs.sass %>/woocommerce'
+			},
+			woocommerce_scss_woocommerce: {
+				src: '<%= dirs.sass %>/woocommerce/woocommerce.scss',
+				dest: '<%= dirs.sass %>/woocommerce/_woocommerce.scss'
+			},
+			woocommerce_scss_woocommerce_layout: {
+				src: '<%= dirs.sass %>/woocommerce/woocommerce-layout.scss',
+				dest: '<%= dirs.sass %>/woocommerce/_woocommerce-layout.scss'
+			},
+			woocommerce_scss_woocommerce_smallscreen: {
+				src: '<%= dirs.sass %>/woocommerce/woocommerce-smallscreen.scss',
+				dest: '<%= dirs.sass %>/woocommerce/_woocommerce-smallscreen.scss'
+			},
+			woocommerce_fonts: {
+				src: '<%= dirs.tmp %>/woocommerce-master/assets/fonts',
+				dest: '<%= dirs.fonts %>/woocommerce'
 			}
+			
 		},
 
 		// clean directories and files
 		clean: {
+			options: {
+				force: true
+			},			
 			bootstrap_prepare: [
 				'<%= dirs.tmp %>',
 				'<%= dirs.sass %>/bootstrap/',
@@ -257,12 +277,41 @@ module.exports = function( grunt ) {
 			],
 			woocommerce_prepare: [
 				'<%= dirs.tmp %>',
-				'<%= dirs.sass %>/woocommerce/'
+				'<%= dirs.sass %>/woocommerce/',
+				'<%= dirs.fonts %>/woocommerce/'
 			],
-			woocommerce: [
-				'<%= dirs.tmp %>'				
+			woocommerce: [				
+				'<%= dirs.sass %>/woocommerce/{activation,admin,chosen,dashboard,menu,prettyPhoto,reports-print,select2}**',
+				'<%= dirs.sass %>/woocommerce/*.css',
+				'<%= dirs.tmp %>'
 			]
+		},
+
+		replace: {
+			woocommerce: {
+				src: ['<%= dirs.sass %>/woocommerce/*.scss'],
+		 		overwrite: true,
+				replacements: [{
+					from: /@import ".+";\n/g, //from: /@import ".+";/g,
+					to: ''
+				},{
+					from: '../fonts/',
+					to: '../../assets/fonts/woocommerce/'
+				}]
+			},
+			woocommercex: {
+				src: ['<%= dirs.sass %>/woocommerce/*.scss'],
+		 		overwrite: true,
+				replacements: [{
+					from: /Theme Name: .+/g,
+					to: 'Theme Name: OI'
+				},{
+					from: '../fonts/',
+					to: '../../fonts/woocommerce/'
+				}]
+			}
 		}
+
 	};
 
 	// Initialize Grunt Config
@@ -310,7 +359,12 @@ module.exports = function( grunt ) {
 		'curl:woocommerce_sass',
 		'unzip:woocommerce_scss',
 		'rename:woocommerce_scss',
+		'rename:woocommerce_scss_woocommerce',
+		'rename:woocommerce_scss_woocommerce_layout',
+		'rename:woocommerce_scss_woocommerce_smallscreen',
+		'rename:woocommerce_fonts',
 		'clean:woocommerce',
+		'replace:woocommerce',
 		'compass'
 	] );
 
