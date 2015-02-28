@@ -57,6 +57,7 @@ Description: Odin main stylesheet.
 @import "bootstrap/utilities";
 
 /* =WooCommerce styles
+ * @use 'grunt woo' for get the files SASS
  * @see How remove style native WooCommerce in 'inc/woocommerce/hooks.php'.
 -------------------------------------------------------------- */
 // @import "woocommerce/mixins";
