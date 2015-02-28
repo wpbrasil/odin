@@ -292,22 +292,11 @@ module.exports = function( grunt ) {
 				src: ['<%= dirs.sass %>/woocommerce/*.scss'],
 		 		overwrite: true,
 				replacements: [{
-					from: /@import ".+";\n/g, //from: /@import ".+";/g,
+					from: /@import ".+";\n/g,
 					to: ''
 				},{
 					from: '../fonts/',
 					to: '../../assets/fonts/woocommerce/'
-				}]
-			},
-			woocommercex: {
-				src: ['<%= dirs.sass %>/woocommerce/*.scss'],
-		 		overwrite: true,
-				replacements: [{
-					from: /Theme Name: .+/g,
-					to: 'Theme Name: OI'
-				},{
-					from: '../fonts/',
-					to: '../../fonts/woocommerce/'
 				}]
 			}
 		}
