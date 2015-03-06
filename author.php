@@ -11,7 +11,7 @@
 get_header(); ?>
 
 	<section id="primary" class="<?php echo odin_classes_page_sidebar(); ?>">
-		<main id="main" class="site-main" role="main">
+		<main id="main-content" class="site-main" role="main">
 
 			<?php if ( have_posts() ) : ?>
 				<header class="page-header">
