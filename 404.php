@@ -9,7 +9,7 @@
 get_header(); ?>
 
 	<div id="primary" class="<?php echo odin_classes_page_full(); ?>">
-		<main id="main" class="site-main" role="main">
+		<main id="main-content" class="site-main" role="main">
 
 			<header class="page-header">
 				<h1 class="page-title"><?php _e( 'Not Found', 'odin' ); ?></h1>
