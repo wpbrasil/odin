@@ -21,7 +21,7 @@ class Odin_Post_Status
     /**
      * Array of Post Types will applied to.
      *
-     * @var array
+     * @var arrays
      **/
     protected $post_types = array();
 
@@ -72,7 +72,7 @@ class Odin_Post_Status
             $this->args['label_count'] = _n_noop("{$this->applied_label} <span class=\"count\">(%s)</span>", "{$this->applied_label} <span class=\"count\">(%s)</span>");
 
         add_action('init', array($this, 'register_post_status'));
-        add_action('admin_footer-post.php', array($this, 'posts_status_dropdown'));
+        add_action('admin_footer-post.php', array($this, 'post_status_dropdown'));
         add_action('admin_footer-edit.php', array($this, 'inline_status_dropdown'));
         add_filter('display_post_states', array($this, 'update_post_status'));
     }
@@ -95,7 +95,7 @@ class Odin_Post_Status
      *
      * @return void
      **/
-    public function posts_status_dropdown()
+    public function post_status_dropdown()
     {
         // do something
     }
