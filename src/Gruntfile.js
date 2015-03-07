@@ -255,8 +255,11 @@ module.exports = function( grunt ) {
 			woocommerce_fonts: {
 				src: '<%= dirs.tmp %>/woocommerce-master/assets/fonts',
 				dest: '<%= dirs.fonts %>/woocommerce'
-			}
-			
+			},
+			woocommerce_images: {
+				src: '<%= dirs.tmp %>/woocommerce-master/assets/images',
+				dest: '<%= dirs.images %>/woocommerce'
+			}			
 		},
 
 		// clean directories and files
@@ -278,7 +281,8 @@ module.exports = function( grunt ) {
 			woocommerce_prepare: [
 				'<%= dirs.tmp %>',
 				'<%= dirs.sass %>/woocommerce/',
-				'<%= dirs.fonts %>/woocommerce/'
+				'<%= dirs.fonts %>/woocommerce/',
+				'<%= dirs.images %>/woocommerce/'
 			],
 			woocommerce: [				
 				'<%= dirs.sass %>/woocommerce/{activation,admin,chosen,dashboard,menu,prettyPhoto,reports-print,select2}**',
@@ -296,7 +300,10 @@ module.exports = function( grunt ) {
 					to: ''
 				},{
 					from: '../fonts/',
-					to: '../../assets/fonts/woocommerce/'
+					to: '../fonts/woocommerce/'
+				},{
+					from: '../images/',
+					to: '../images/woocommerce/'
 				}]
 			}
 		}
@@ -352,6 +359,7 @@ module.exports = function( grunt ) {
 		'rename:woocommerce_scss_woocommerce_layout',
 		'rename:woocommerce_scss_woocommerce_smallscreen',
 		'rename:woocommerce_fonts',
+		'rename:woocommerce_images',
 		'clean:woocommerce',
 		'replace:woocommerce',
 		'compass'
