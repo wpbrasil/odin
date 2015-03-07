@@ -110,7 +110,7 @@ class Odin_Post_Status
 
 			$script = <<<SCRIPT
 				<script type="text/javascript">
-				jQuery(document).ready(function ($){
+				jQuery(document).ready(function($) {
 					$('select#post_status').append('<option value=\"{$this->post_status}\"{$selected}>{$this->action_label}</option>');
 					$('.misc-pub-section label').append('{$label}');
 				});
@@ -121,13 +121,29 @@ SCRIPT;
 	}
 
 	/**
-	 * undocumented function
+	 * Append Custom Post Status to dropdown on
+	 * the quick edit area of post listing pages.
 	 *
 	 * @return void
 	 **/
 	public function inline_status_dropdown()
 	{
-		// do something
+		global $post;
+
+		if(!$post)
+			return;
+
+		if(in_array($post->post_type, $this->post_types)) {
+			$script = <<<SCRIPT
+				<script type="text/javascript">
+	            jQuery(document).ready(function($) {
+	                $('.inline-edit-status select').append('<option value=\"{$this->post_status}\">{$this->action_label}</option>');
+	            });
+	            </script>
+SCRIPT;
+
+			echo $script;
+		}
 	}
 
 	/**
