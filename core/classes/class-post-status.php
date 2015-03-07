@@ -62,7 +62,7 @@ class Odin_Post_Status
 		$this->post_status   = $post_status;
 		$this->post_types    = $post_types;
 		$this->action_label  = isset($args["label"]) ? $args["label"] : $post_status;
-        $this->applied_label = isset($args["applied_label"]) ? $args["applied_label"] : $this->action_label;
+		$this->applied_label = isset($args["applied_label"]) ? $args["applied_label"] : $this->action_label;
 		$this->args          = $args;
 
 		// removes the arguments that do not belong to register_post_type
