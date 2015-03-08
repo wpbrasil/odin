@@ -57,19 +57,19 @@ class Odin_Post_Status
 	 *
 	 * @return void
 	 **/
-	public function __construct($post_status, $post_types, $args)
+	public function __construct( $post_status, $post_types, $args )
 	{
 		$this->post_status   = $post_status;
 		$this->post_types    = $post_types;
-		$this->action_label  = isset($args["label"]) ? $args["label"] : $post_status;
-		$this->applied_label = isset($args["applied_label"]) ? $args["applied_label"] : $this->action_label;
+		$this->action_label  = isset( $args['label'] ) ? $args['label'] : $post_status;
+		$this->applied_label = isset( $args['applied_label'] ) ? $args['applied_label'] : $this->action_label;
 		$this->args          = $args;
 
 		// removes the arguments that do not belong to register_post_type
 		unset($this->args['applied_label']);
 
-		if(! isset($this->args['label_count']))
-			$this->args['label_count'] = _n_noop("{$this->applied_label} <span class=\"count\">(%s)</span>", "{$this->applied_label} <span class=\"count\">(%s)</span>");
+		if ( ! isset($this->args['label_count']) )
+			$this->args['label_count'] = _n_noop( "$this->applied_label <span class='count'>(%s)</span>", "$this->applied_label <span class='count'>(%s)</span>" );
 
 		add_action('init', array($this, 'register_post_status'));
 		add_action('admin_footer-post.php', array($this, 'post_status_dropdown'));
@@ -101,18 +101,18 @@ class Odin_Post_Status
 		$selected = "";
 		$label    = "";
 
-		if(in_array($post->post_type, $this->post_types)) {
+		if( in_array($post->post_type, $this->post_types) ) {
 
-			if($post->post_status === $this->post_status) {
-				$selected = " selected=\"selected\"";
-				$label = "<span id=\"post-status-display\"> {$this->applied_label}</span>";
+			if( $post->post_status === $this->post_status ) {
+				$selected = " selected='selected'";
+				$label    = "<span id='post-status-display'>$this->applied_label</span>";
 			}
 
 			$script = <<<SCRIPT
 				<script type="text/javascript">
 				jQuery(document).ready(function($) {
-					$('select#post_status').append('<option value=\"{$this->post_status}\"{$selected}>{$this->action_label}</option>');
-					$('.misc-pub-section label').append('{$label}');
+					$('select#post_status').append('<option value='$this->post_status' $selected>$this->action_label</option>');
+					$('.misc-pub-section label').append('$label');
 				});
 				</script>";
 SCRIPT;
@@ -130,10 +130,10 @@ SCRIPT;
 	{
 		global $post;
 
-		if(!$post)
+		if( ! $post )
 			return;
 
-		if(in_array($post->post_type, $this->post_types)) {
+		if( in_array( $post->post_type, $this->post_types ) ) {
 			$script = <<<SCRIPT
 				<script type="text/javascript">
 	            jQuery(document).ready(function($) {
