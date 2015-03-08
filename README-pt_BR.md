@@ -26,7 +26,6 @@ Informações de como usar as classes e funções do Odin na [Wiki Oficial](http
 Odin suporta nativamente os plugins:
 
 * [WooCommerce](http://wordpress.org/extend/plugins/woocommerce/)
-* [Jigoshop](http://wordpress.org/extend/plugins/jigoshop/)
 * [JetPack](http://wordpress.org/extend/plugins/jetpack/) Infinite Scroll
 
 ## Referências ##
