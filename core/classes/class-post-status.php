@@ -9,8 +9,7 @@
  * @author   WPBrasil
  * @version  2.1.4
  **/
-class Odin_Post_Status
-{
+class Odin_Post_Status {
 	 /**
 	 * The name of Custom Post Status.
 	 *
@@ -57,8 +56,7 @@ class Odin_Post_Status
 	 *
 	 * @return void
 	 **/
-	public function __construct( $post_status, $post_types, $args )
-	{
+	public function __construct( $post_status, $post_types, $args ) {
 		$this->post_status   = $post_status;
 		$this->post_types    = $post_types;
 		$this->action_label  = isset( $args['label'] ) ? $args['label'] : $post_status;
@@ -85,8 +83,7 @@ class Odin_Post_Status
 	 *
 	 * @return void
 	 **/
-	public function register_post_status()
-	{
+	public function register_post_status() {
 		register_post_status($this->post_status, $this->args);
 	}
 
@@ -95,8 +92,7 @@ class Odin_Post_Status
 	 *
 	 * @return void
 	 **/
-	public function post_status_dropdown()
-	{
+	public function post_status_dropdown() {
 		global $post;
 		$selected = "";
 		$label    = "";
@@ -108,15 +104,13 @@ class Odin_Post_Status
 				$label    = "<span id='post-status-display'>$this->applied_label</span>";
 			}
 
-			$script = <<<SCRIPT
-				<script type="text/javascript">
-				jQuery(document).ready(function($) {
-					$('select#post_status').append('<option value='$this->post_status' $selected>$this->action_label</option>');
-					$('.misc-pub-section label').append('$label');
-				});
+			echo "
+				<script type='text/javascript'>
+					jQuery(document).ready(function($) {
+						$('select#post_status').append('<option value='$this->post_status' $selected>$this->action_label</option>');
+						$('.misc-pub-section label').append('$label');
+					});
 				</script>";
-SCRIPT;
-			echo $script;
 		}
 	}
 
@@ -126,23 +120,19 @@ SCRIPT;
 	 *
 	 * @return void
 	 **/
-	public function inline_status_dropdown()
-	{
+	public function inline_status_dropdown() {
 		global $post;
 
 		if( ! $post )
 			return;
 
 		if( in_array( $post->post_type, $this->post_types ) ) {
-			$script = <<<SCRIPT
-				<script type="text/javascript">
-	            jQuery(document).ready(function($) {
-	                $('.inline-edit-status select').append('<option value=\"{$this->post_status}\">{$this->action_label}</option>');
-	            });
-	            </script>
-SCRIPT;
-
-			echo $script;
+			echo "
+				<script type='text/javascript'>
+					jQuery(document).ready(function($) {
+						$('.inline-edit-status select').append('<option value='$this->post_status'>$this->action_label</option>');
+					});
+				</script>";
 		}
 	}
 
@@ -153,8 +143,7 @@ SCRIPT;
 	 * @param array $states An array of post display states.
 	 * @return void
 	 **/
-	public function update_post_status( $states )
-	{
+	public function update_post_status( $states ) {
 		global $post;
 
 		$status = get_query_var('post_status');
