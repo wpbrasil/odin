@@ -148,7 +148,7 @@ class Odin_Post_Status {
 
 		$status = get_query_var('post_status');
 
-		if($status !== $this->post_status && $post->post_status === $this->post_status)
+		if( $status !== $this->post_status && $post->post_status === $this->post_status )
 			return array($this->applied_label);
 
 		return $states;
