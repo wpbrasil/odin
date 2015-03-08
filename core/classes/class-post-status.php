@@ -69,10 +69,10 @@ class Odin_Post_Status {
 		if ( ! isset($this->args['label_count']) )
 			$this->args['label_count'] = _n_noop( "$this->applied_label <span class='count'>(%s)</span>", "$this->applied_label <span class='count'>(%s)</span>" );
 
-		add_action('init', array($this, 'register_post_status'));
-		add_action('admin_footer-post.php', array($this, 'post_status_dropdown'));
-		add_action('admin_footer-edit.php', array($this, 'inline_status_dropdown'));
-		add_filter('display_post_states', array($this, 'update_post_status'));
+		add_action( 'init', array($this, 'register_post_status' ) );
+		add_action( 'admin_footer-post.php', array($this, 'post_status_dropdown' ) );
+		add_action( 'admin_footer-edit.php', array($this, 'inline_status_dropdown' ) );
+		add_filter( 'display_post_states', array($this, 'update_post_status' ) );
 	}
 
 	/**
@@ -84,7 +84,7 @@ class Odin_Post_Status {
 	 * @return void
 	 **/
 	public function register_post_status() {
-		register_post_status($this->post_status, $this->args);
+		register_post_status( $this->post_status, $this->args );
 	}
 
 	/**
@@ -149,7 +149,7 @@ class Odin_Post_Status {
 		$status = get_query_var('post_status');
 
 		if( $status !== $this->post_status && $post->post_status === $this->post_status )
-			return array($this->applied_label);
+			return array( $this->applied_label );
 
 		return $states;
 	}
