@@ -262,6 +262,19 @@ function odin_stylesheet_uri( $uri, $dir ) {
 add_filter( 'stylesheet_uri', 'odin_stylesheet_uri', 10, 2 );
 
 /**
+ * Query WooCommerce activation
+ *
+ * @since  2.2.6
+ *
+ * @return boolean
+ */
+if ( ! function_exists( 'is_woocommerce_activated' ) ) {
+	function is_woocommerce_activated() {
+		return class_exists( 'woocommerce' ) ? true : false;
+	}
+}
+
+/**
  * Core Helpers.
  */
 require_once get_template_directory() . '/core/helpers.php';
@@ -282,11 +295,16 @@ require_once get_template_directory() . '/inc/comments-loop.php';
 require_once get_template_directory() . '/inc/optimize.php';
 
 /**
- * WP Custom Admin.
- */
-require_once get_template_directory() . '/inc/plugins-support.php';
-
-/**
  * Custom template tags.
  */
 require_once get_template_directory() . '/inc/template-tags.php';
+
+/**
+ * WooCommerce compatibility files.
+ */
+if ( is_woocommerce_activated() ) {
+	add_theme_support( 'woocommerce' );
+	require get_template_directory() . '/inc/woocommerce/hooks.php';
+	require get_template_directory() . '/inc/woocommerce/functions.php';
+	require get_template_directory() . '/inc/woocommerce/template-tags.php'; 
+}
