@@ -62,22 +62,28 @@ module.exports = function( grunt ) {
 		},
 
 		// compile scss/sass files to CSS
-		compass: {
+		sass: {
 			dist: {
 				options: {
-					config: 'config.rb',
 					outputStyle: 'compressed'
-				}
+				},
+				files: [{
+					expand: true,
+					cwd: '<%= dirs.sass %>',
+					src: ['*.scss'],
+					dest: '<%= dirs.css %>',
+					ext: '.css'
+				}]
 			}
 		},
 
-		// watch for changes and trigger compass, jshint, uglify and livereload browser
+		// watch for changes and trigger sass, jshint, uglify and livereload browser
 		watch: {
-			compass: {
+			sass: {
 				files: [
 					'<%= dirs.sass %>/**'
 				],
-				tasks: ['compass']
+				tasks: ['sass']
 			},
 			js: {
 				files: [
@@ -170,7 +176,6 @@ module.exports = function( grunt ) {
 					'../src/node_modules/*',
 					'../src/.ftppass',
 					'../src/Gruntfile.js',
-					'../src/config.rb',
 					'../src/package.json',
 					'../README.md',
 					'../**/README.md'
@@ -259,14 +264,14 @@ module.exports = function( grunt ) {
 			woocommerce_images: {
 				src: '<%= dirs.tmp %>/woocommerce-master/assets/images',
 				dest: '<%= dirs.images %>/woocommerce'
-			}			
+			}
 		},
 
 		// clean directories and files
 		clean: {
 			options: {
 				force: true
-			},			
+			},
 			bootstrap_prepare: [
 				'<%= dirs.tmp %>',
 				'<%= dirs.sass %>/bootstrap/',
@@ -284,7 +289,7 @@ module.exports = function( grunt ) {
 				'<%= dirs.fonts %>/woocommerce/',
 				'<%= dirs.images %>/woocommerce/'
 			],
-			woocommerce: [				
+			woocommerce: [
 				'<%= dirs.sass %>/woocommerce/{activation,admin,chosen,dashboard,menu,prettyPhoto,reports-print,select2}**',
 				'<%= dirs.sass %>/woocommerce/*.css',
 				'<%= dirs.tmp %>'
@@ -320,7 +325,7 @@ module.exports = function( grunt ) {
 	// Default Task
 	grunt.registerTask( 'default', [
 		'jshint',
-		'compass',
+		'sass',
 		'uglify'
 	] );
 
@@ -346,7 +351,7 @@ module.exports = function( grunt ) {
 		'rename:bootstrap_fonts',
 		'clean:bootstrap',
 		'uglify:bootstrap',
-		'compass'
+		'sass'
 	] );
 
 	// Woocommerce Task
@@ -362,7 +367,7 @@ module.exports = function( grunt ) {
 		'rename:woocommerce_images',
 		'clean:woocommerce',
 		'replace:woocommerce',
-		'compass'
+		'sass'
 	] );
 
 	// Short aliases
