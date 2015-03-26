@@ -65,7 +65,8 @@ module.exports = function( grunt ) {
 		sass: {
 			dist: {
 				options: {
-					outputStyle: 'compressed'
+					outputStyle: 'compressed',
+					sourceMap: true
 				},
 				files: [{
 					expand: true,
@@ -100,6 +101,9 @@ module.exports = function( grunt ) {
 					'<%= dirs.js %>/*.js',
 					'../**/*.php'
 				]
+			},
+			options: {
+				spawn: false
 			}
 		},
 
@@ -161,6 +165,7 @@ module.exports = function( grunt ) {
 				auth: {
 					host: 'ftp.SEU-SITE.com',
 					port: 21,
+					authPath: '../.ftppass',
 					authKey: 'key_for_deploy'
 				},
 				src: '../',
@@ -169,16 +174,17 @@ module.exports = function( grunt ) {
 					'../**.DS_Store',
 					'../**Thumbs.db',
 					'../.git/*',
+					'../*.md',
 					'../.gitignore',
-					'../assets/sass/*',
-					'../src/*',
-					'../src/.sass-cache/*',
-					'../src/node_modules/*',
-					'../src/.ftppass',
-					'../src/Gruntfile.js',
-					'../src/package.json',
-					'../README.md',
-					'../**/README.md'
+					'../functions.php',
+					'../assets/js/**bootstrap',
+					'../assets/js/**libs',
+					'../assets/js/plugins.js',
+					'../assets/js/main.js',
+					'../*.zip',
+					'../*.sublime-project',
+					'../*.sublime-workspace',
+					'../src/**'
 				]
 			}
 		},
@@ -195,9 +201,7 @@ module.exports = function( grunt ) {
 					'!<%= dirs.js %>/bootstrap/**',
 					'!<%= dirs.js %>/libs/**',
 					'!../**.zip',
-					'<%= dirs.js %>/libs/bootstrap.min.js',
-					'<%= dirs.js %>/libs/jquery.fitvids.js',
-					'<%= dirs.js %>/main.js'
+					'<%= dirs.js %>/main.min.js'
 				],
 				dest: '../<%= pkg.name %>.zip'
 			}
