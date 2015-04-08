@@ -2,6 +2,9 @@
  * Variables configuration.
  */
 
+// Compass plugins
+@import "compass/css3";
+
 // Custom Boostrap variables.
 $icon-font-path: '../fonts/bootstrap/';
 $bootstrap-sass-asset-helper: false;

@@ -1,7 +1,7 @@
 /* jshint node:true */
 module.exports = function( grunt ) {
 	'use strict';
-
+	
 	require( 'load-grunt-tasks' )( grunt );
 
 	var odinConfig = {
@@ -65,8 +65,8 @@ module.exports = function( grunt ) {
 		sass: {
 			dist: {
 				options: {
-					outputStyle: 'compressed',
-					sourceMap: true
+					style: 'compressed'
+					compass: true
 				},
 				files: [{
 					expand: true,
@@ -268,14 +268,14 @@ module.exports = function( grunt ) {
 			woocommerce_images: {
 				src: '<%= dirs.tmp %>/woocommerce-master/assets/images',
 				dest: '<%= dirs.images %>/woocommerce'
-			}
+			}			
 		},
 
 		// clean directories and files
 		clean: {
 			options: {
 				force: true
-			},
+			},			
 			bootstrap_prepare: [
 				'<%= dirs.tmp %>',
 				'<%= dirs.sass %>/bootstrap/',
@@ -293,7 +293,7 @@ module.exports = function( grunt ) {
 				'<%= dirs.fonts %>/woocommerce/',
 				'<%= dirs.images %>/woocommerce/'
 			],
-			woocommerce: [
+			woocommerce: [				
 				'<%= dirs.sass %>/woocommerce/{activation,admin,chosen,dashboard,menu,prettyPhoto,reports-print,select2}**',
 				'<%= dirs.sass %>/woocommerce/*.css',
 				'<%= dirs.tmp %>'
