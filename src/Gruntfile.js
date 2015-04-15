@@ -1,7 +1,7 @@
 /* jshint node:true */
 module.exports = function( grunt ) {
 	'use strict';
-	
+
 	require( 'load-grunt-tasks' )( grunt );
 
 	var odinConfig = {
@@ -66,7 +66,6 @@ module.exports = function( grunt ) {
 			dist: {
 				options: {
 					style: 'compressed'
-					compass: true
 				},
 				files: [{
 					expand: true,
