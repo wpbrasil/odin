@@ -267,14 +267,14 @@ module.exports = function( grunt ) {
 			woocommerce_images: {
 				src: '<%= dirs.tmp %>/woocommerce-master/assets/images',
 				dest: '<%= dirs.images %>/woocommerce'
-			}			
+			}
 		},
 
 		// clean directories and files
 		clean: {
 			options: {
 				force: true
-			},			
+			},
 			bootstrap_prepare: [
 				'<%= dirs.tmp %>',
 				'<%= dirs.sass %>/bootstrap/',
@@ -292,7 +292,7 @@ module.exports = function( grunt ) {
 				'<%= dirs.fonts %>/woocommerce/',
 				'<%= dirs.images %>/woocommerce/'
 			],
-			woocommerce: [				
+			woocommerce: [
 				'<%= dirs.sass %>/woocommerce/{activation,admin,chosen,dashboard,menu,prettyPhoto,reports-print,select2}**',
 				'<%= dirs.sass %>/woocommerce/*.css',
 				'<%= dirs.tmp %>'
