@@ -65,8 +65,7 @@ module.exports = function( grunt ) {
 		sass: {
 			dist: {
 				options: {
-					outputStyle: 'compressed',
-					sourceMap: true
+					style: 'compressed'
 				},
 				files: [{
 					expand: true,
