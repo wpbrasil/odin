@@ -175,7 +175,6 @@ module.exports = function( grunt ) {
 					'../.git/*',
 					'../*.md',
 					'../.gitignore',
-					'../functions.php',
 					'../assets/js/**bootstrap',
 					'../assets/js/**libs',
 					'../assets/js/plugins.js',
