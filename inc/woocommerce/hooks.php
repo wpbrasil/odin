@@ -6,7 +6,7 @@
  */
 
 /**
- * Remove native styles 
+ * Remove native styles
  *
  */
 // add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
@@ -23,11 +23,15 @@ add_action( 'woocommerce_before_main_content', 'odin_before_content', 10 );
 add_action( 'woocommerce_after_main_content', 'odin_after_content', 10 );
 
 /**
- * Sidebar
+ * Remove sidebar
+ *
+ * Tip:
+ * Case you use this action, change template page for full-width style in inc/woocommerce/template-tags.php
+ *
  * @see woocommerce_sidebars
  * @since  2.2.6
  */
-remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
+// remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
 
 /**
  * Breadcrumb
@@ -42,12 +46,12 @@ remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 
 add_action( 'odin_content_top', 'woocommerce_breadcrumb', 10 );
 
 /**
- * Filters 
+ * Filters
  * @see  odin_thumbnail_columns()
  * @see  odin_products_per_page()
  * @see  odin_loop_columns()
  * @since  2.2.6
- */ 
+ */
 add_filter( 'woocommerce_product_thumbnails_columns', 	'odin_thumbnail_columns' );;
 add_filter( 'loop_shop_per_page', 						'odin_products_per_page' );
 add_filter( 'loop_shop_columns', 						'odin_loop_columns' );

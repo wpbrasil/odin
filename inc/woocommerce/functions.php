@@ -14,9 +14,9 @@ if ( ! function_exists( 'odin_before_content' ) ) {
 	 */
 	function odin_before_content() {
 		?>
-		<div id="primary" class="<?php echo odin_classes_page_full(); ?>">
-			<main id="main" class="site-main" role="main">
-	    	<?php
+		<div id="primary" class="<?php echo odin_classes_page_sidebar(); ?>">
+			<main id="main-content" class="site-main" role="main">
+		<?php
 	}
 }
 
@@ -29,10 +29,9 @@ if ( ! function_exists( 'odin_after_content' ) ) {
 	 */
 	function odin_after_content() {
 		?>
-			</main><!-- #main -->
+			</main><!-- #main-content -->
 		</div><!-- #primary -->
-
-		<?php # get_sidebar();
+		<?php
 	}
 }
 
