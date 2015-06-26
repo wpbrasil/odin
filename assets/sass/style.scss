@@ -77,247 +77,177 @@ Description: Odin main stylesheet.
 // Odin Core Styles
 @import "odin/core";
 
-// Odin CSS Helpers
-@import "utilities/helpers";
-
 /* =General
 -------------------------------------------------------------- */
-html {
-	overflow-y: scroll;
+
+/*
+ * Fancy skip link
+ *
+ * Make it look a bit less "bare bones"
+ * Also includes focus suppression for the Chrome tabindex="-1" workaround
+ */
+
+#skippy {
+    display: block;
+    padding: 1em;
+    background-color: #f5f5f5;
+    outline: 0;
+}
+
+#skippy .skiplink-text {
+    padding: .5em;
+    outline: 1px dotted;
+}
+
+#content:focus {
+    outline: none;
 }
 
 /* =Header
 -------------------------------------------------------------- */
 
 #header {
+    /*
+     * Navbar
+     */
+    #main-navigation {
+        margin: 20px 0;
+    }
+    /*
+	 * Title, description and image
+	 */
+    .page-header {
+        margin: 20px 0 20px;
 
+        .site-title {}
+        .site-description {
+            font-size: 16px;
+            font-style: italic;
+        }
+    }
 }
 
-.site-title,
-.site-description {
-	margin-top: $line-height-computed;
-	margin-bottom: ($line-height-computed / 2);
-}
+/* =Wrapper
+-------------------------------------------------------------- */
 
-.site-title {
-	a {
+#wrapper {
+    /*
+	 * Content
+	 */
+    #content {
+        // Home
+		.post {
+			margin-bottom: 40px;
 
-		&:hover {
-
+			&.sticky {
+				padding: 0 20px 20px;
+				border: 1px dashed $brand-info;
+			}
 		}
-	}
-}
-
-.site-description {
-
-}
-
-/* =Navigation
--------------------------------------------------------------- */
-
-#main-navigation {
-
-}
-
-/* =Search Form
--------------------------------------------------------------- */
-
-#searchform {
-
-}
-
-#s {
-
-}
-
-#searchsubmit {
-
-}
-
-/* =Content
--------------------------------------------------------------- */
-
-.wrapper {
-
-}
-
-#main {
-
-}
-
-#primary {
-
-}
-
-#content {
-
-}
-
-#secondary {
-
-}
-
-.entry-title {
-	margin-bottom: 0.4em;
-
-	a {
-
-		&:hover {
-
-		}
-	}
-}
-
-.page-header {
-	margin-bottom: 1em;
-}
-
-.page-title {
-
-}
-
-.entry-meta {
-	margin-bottom: $text-margin-bottom;
-
-	a {
-
-	}
-}
-
-.sticky {
-	font-size: 100%;
+    }
+    /*
+	 * Sidebar and Widgets
+	 */
+    #sidebar {}
 }
 
 /* =Pagination
 -------------------------------------------------------------- */
 
 .pagination-wrap {
-	text-align: center;
-	margin-top: 15px;
-
-	.infinite-scroll & {
-		display: none;
-	}
+    text-align: center;
+    margin-top: 15px;
+    .infinite-scroll & {
+        display: none;
+    }
 }
 
 /* =Comments
 -------------------------------------------------------------- */
 
 .commentlist {
-	margin: 0;
-	padding: 0;
-	font-size: 13px;
-	line-height: 22px;
-
-	li.comment, li.pingback {
-		@include clearfix();
-		list-style: none;
-		margin-bottom: 10px;
-	}
-
-	.comment-meta {
-		color: #666;
-		font-size: 12px;
-		line-height: 15px;
-
-		.fn {
-			font-size: 13px;
-			font-weight: 600;
-		}
-		a, .fn {
-			color: #444;
-
-			&:hover {
-				color: $link-color;
-				text-decoration: none;
-			}
-		}
-	}
-	.comment-author {
-		img {
-			float: left;
-			display: block;
-			margin-right: 10px;
-		}
-	}
-
-	.comment-awaiting-moderation {
-		margin-top: 5px;
-		font-weight: bold;
-		color: #333;
-	}
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    line-height: 22px;
+    li.comment, li.pingback {
+        @include clearfix;
+        list-style: none;
+        margin-bottom: 10px;
+    }
+    .comment-meta {
+        color: #666;
+        font-size: 12px;
+        line-height: 15px;
+        .fn {
+            font-size: 13px;
+            font-weight: 600;
+        }
+        a, .fn {
+            color: #444;
+            &:hover {
+                color: $link-color;
+                text-decoration: none;
+            }
+        }
+    }
+    .comment-author {
+        img {
+            float: left;
+            display: block;
+            margin-right: 10px;
+        }
+    }
+    .comment-awaiting-moderation {
+        margin-top: 5px;
+        font-weight: bold;
+        color: #333;
+    }
 }
 
 .bypostauthor {
-	font-size: 100%;
+    font-size: 100%;
 }
 
 .required {
-	color: #c00;
+    color: #c00;
 }
 
 #commentform {
-	font-size: 13px;
-	line-height: 22px;
-
-	label {
-		display: block;
-	}
-
-	p {
-		margin-bottom: 10px;
-	}
-}
-
-/* =Sidebar and Widgets
--------------------------------------------------------------- */
-
-.widget {
-	margin-bottom: $text-margin-bottom;
-
-	a {
-
-		&:hover {
-
-		}
-	}
-
-	ul {
-
-		ul {
-
-		}
-
-		li {
-
-		}
-	}
-}
-
-/* .widgettitle is a WordPress default */
-.widgettitle,
-.widget-title {
-	margin-bottom: 10px;
+    font-size: 13px;
+    line-height: 22px;
+    label {
+        display: block;
+    }
+    p {
+        margin-bottom: 10px;
+    }
 }
 
 /* =Footer
 -------------------------------------------------------------- */
 
+/*
+ * Sticky footer styles
+ */
 #footer {
-	border-top: 1px solid #ddd;
-	margin-top: 20px;
-	padding: 20px 0 20px;
-	text-align: center;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #f5f5f5;
+    padding-top: 15px;
 }
 
-/* =Error 404 page
--------------------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+    overflow-y: scroll;
+}
 
-.error404 {
-
-	#searchform {
-		margin-bottom: $text-margin-bottom;
-	}
+body {
+    margin-bottom: 70px;
 }
 
 /* =Responsive Styles
