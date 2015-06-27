@@ -1,5 +1,18 @@
 ## Changelog ##
 
+#### v2.2.7 - 26/06/2015 ####
+* Updated dependencies package.json.
+* Added option disable emoji's since version 4.2.2 WordPress.
+* Updated Boostrap to version 3.3.5.
+* Added sidebar() in image.php.
+* Attached a footer to the bottom of the viewport when the content is shorter than it.
+* Improved semantic theme.
+* Added skip navigation for better accessibility.
+* Improved SASS and fixed style WordPress.
+* Moved files markdown to diretory docs/
+* Moved file .jshintrc to diretory assets/js/
+* Tested with WordPress 4.4.2.
+
 #### v2.2.6 - 26/06/2014 ####
 
 * Improved the odin_breadcrumbs() to works better with custom post type and taxonomies.
