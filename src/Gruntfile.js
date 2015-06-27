@@ -23,7 +23,7 @@ module.exports = function( grunt ) {
 		// javascript linting with jshint
 		jshint: {
 			options: {
-				jshintrc: '../.jshintrc'
+				jshintrc: '<%= dirs.js %>/.jshintrc'
 			},
 			all: [
 				'Gruntfile.js',
