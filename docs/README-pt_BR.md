@@ -60,7 +60,7 @@ Mais detalhes de como contribuir e enviar Pull Requests em [GitHub Collaborating
 
 ## Changelog ##
 
-[Changelog aqui!](https://github.com/wpbrasil/odin/blob/master/CHANGELOG.md)
+[Changelog aqui!](https://github.com/wpbrasil/odin/blob/master/docs/CHANGELOG.md)
 
 ## Copyright e Licença ##
 

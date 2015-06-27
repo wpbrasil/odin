@@ -1,6 +1,6 @@
 # Odin Framework #
 
-[Ver essa documentação em Português do Brasil](https://github.com/wpbrasil/odin/blob/master/README-pt_BR.md)
+[Ver essa documentação em Português do Brasil](https://github.com/wpbrasil/odin/blob/master/docs/README-pt_BR.md)
 
 ![Odin Framework](https://i.imgur.com/DdeMgUx.png)
 
@@ -60,7 +60,7 @@ More details about how to contribute and send Pull Requests in [GitHub Collabora
 
 ## Changelog ##
 
-[Changelog here!](https://github.com/wpbrasil/odin/blob/master/CHANGELOG.md)
+[Changelog here!](https://github.com/wpbrasil/odin/blob/master/docs/CHANGELOG.md)
 
 ## Copyright and License ##
 
