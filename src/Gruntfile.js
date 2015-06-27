@@ -232,7 +232,7 @@ module.exports = function( grunt ) {
 		// renames and moves directories and files
 		rename: {
 			bootstrap_scss: {
-				src: '<%= dirs.tmp %>/bootstrap-sass-master/assets/stylesheets/bootstrap',
+				src: '<%= dirs.tmp %>/bootstrap-sass-master/assets/stylesheets',
 				dest: '<%= dirs.sass %>/bootstrap'
 			},
 			bootstrap_js: {
@@ -282,7 +282,6 @@ module.exports = function( grunt ) {
 				'<%= dirs.fonts %>/bootstrap/'
 			],
 			bootstrap: [
-				'<%= dirs.sass %>/bootstrap/bootstrap.scss',
 				'<%= dirs.tmp %>'
 			],
 			woocommerce_prepare: [
