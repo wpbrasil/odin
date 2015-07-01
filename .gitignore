@@ -26,6 +26,7 @@ tmtags
 nbproject/*
 .ftppass
 .sftp-config.json
+sftp-config.json
 
 # Project
 src/.sass-cache/*
