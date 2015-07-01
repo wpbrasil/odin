@@ -1,3 +1,4 @@
+
 <?php
 /**
  * Odin_Metabox class.
@@ -127,6 +128,7 @@ class Odin_Metabox {
 	public function set_fields( $fields = array() ) {
 		$this->fields = $fields;
 	}
+
     /**
 	 * Get field type by field ID
 	 *
@@ -134,12 +136,13 @@ class Odin_Metabox {
 	 *
 	 * @return string            Field type
 	 */
-    protected function get_field_type_by_id( $field_id ){
-        foreach( $this->fields as $field ){
-            if( $field[ 'id' ] == $field_id ){
-                return $field[ 'type' ];
+    protected function get_field_type_by_id( $field_id ) {
+        foreach ( $this->fields as $field ) {
+            if ( $field['id'] == $field_id ) {
+                return $field['type'];
             }
         }
+
         return '';
     }
 
@@ -147,16 +150,18 @@ class Odin_Metabox {
 	 * Check if index add_column is true
 	 *
 	 *
-	 * @return boolean           Field type
+	 * @return bool Field type
 	 */
-    protected function check_field_is_column(){
-        foreach( $this->fields as $field ){
-            if( $field[ 'add_column' ] == true ){
+    protected function check_field_is_column() {
+        foreach ( $this->fields as $field ) {
+            if ( isset( $field['add_column'] ) && $field['add_column'] ) {
                 return true;
             }
         }
+
         return false;
     }
+
 	/**
 	 * Metabox view.
 	 *
@@ -293,12 +298,13 @@ class Odin_Metabox {
 	 *
 	 * @return array             Columns
 	 */
-	public function add_columns( $columns ){
-        foreach( $this->fields as $key => $field ){
-            if( isset( $field[ 'add_column' ] ) && $field[ 'add_column' ] == true ){
-                $columns[ $field[ 'id' ] ] = $field[ 'label' ];
+	public function add_columns( $columns ) {
+        foreach ( $this->fields as $key => $field ) {
+            if ( isset( $field['add_column'] ) && $field['add_column'] ) {
+                $columns[ $field['id'] ] = $field['label'];
             }
         }
+
         return $columns;
     }
 
@@ -310,23 +316,26 @@ class Odin_Metabox {
 	 *
 	 * @return string            Value
 	 */
-    public function set_columns_value( $column , $post_id ){
-    	$type = $this->get_field_type_by_id( $column );
+    public function set_columns_value( $column , $post_id ) {
+    	$type      = $this->get_field_type_by_id( $column );
     	$is_column = $this->check_field_is_column();
-    	if( !$is_column )
+    	if ( ! $is_column ) {
             return;
+    	}
 
         switch ( $type ) {
-            case 'image':
-            case 'image_plupload':
-                $value = wp_get_attachment_image( get_post_meta( $post_id, $column, true ) , array( 50 , 50) );
+            case 'image' :
+            case 'image_plupload' :
+                $value = wp_get_attachment_image( get_post_meta( $post_id, $column, true ) , array( 50, 50 ) );
                 break;
-            default:
-                $value = apply_filters( 'admin_post_column_value_' . $this->post_type . '_' . $column , get_post_meta( $post_id, $column , true ) );
+            default :
+                $value = apply_filters( 'admin_post_column_value_' . $this->post_type . '_' . $column, get_post_meta( $post_id, $column, true ) );
                 break;
         }
+
         echo $value;
     }
+
 	/**
 	 * Input field.
 	 *
@@ -414,15 +423,14 @@ class Odin_Metabox {
 	 */
 	protected function is_selected( $current, $key ) {
 		$selected = false;
-		if( is_array( $current ) ) {
-			for( $i = 0; $i < count( $current ); $i++ ) {
-				if( selected( $current[ $i ], $key, false ) ) {
+		if ( is_array( $current ) ) {
+			for ( $i = 0; $i < count( $current ); $i++ ) {
+				if ( selected( $current[ $i ], $key, false ) ) {
 					$selected = selected( $current[ $i ], $key, false );
 					break 1;
 				}
 			}
-		}
-		else {
+		} else {
 			$selected = selected( $current, $key, false );
 		}
 
@@ -442,8 +450,9 @@ class Odin_Metabox {
 	protected function field_radio( $id, $current, $options, $attrs ) {
 		$html = '';
 
-		foreach ( $options as $key => $label )
+		foreach ( $options as $key => $label ) {
 			$html .= sprintf( '<input type="radio" id="%1$s_%2$s" name="%1$s" value="%2$s"%3$s%5$s /><label for="%1$s_%2$s"> %4$s</label><br />', $id, $key, checked( $current, $key, false ), $label, $this->build_field_attributes( $attrs ) );
+		}
 
 		echo $html;
 	}
