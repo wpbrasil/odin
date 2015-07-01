@@ -45,6 +45,11 @@ class Odin_Metabox {
 
 		// Load scripts.
 		add_action( 'admin_enqueue_scripts', array( $this, 'scripts' ) );
+
+		// Add post type columns
+        add_filter( 'manage_edit-' . $post_type . '_columns', array($this, 'add_columns' ));
+        // Set post type columns value
+        add_action( 'manage_' . $post_type . '_posts_custom_column', array($this, 'set_columns_value'), 10,2);
 	}
 
 	/**
@@ -122,7 +127,36 @@ class Odin_Metabox {
 	public function set_fields( $fields = array() ) {
 		$this->fields = $fields;
 	}
+    /**
+	 * Get field type by field ID
+	 *
+	 * @param  string $field_id  Field ID
+	 *
+	 * @return string            Field type
+	 */
+    protected function get_field_type_by_id( $field_id ){
+        foreach( $this->fields as $field ){
+            if( $field[ 'id' ] == $field_id ){
+                return $field[ 'type' ];
+            }
+        }
+        return '';
+    }
 
+    /**
+	 * Check if index add_column is true
+	 *
+	 *
+	 * @return boolean           Field type
+	 */
+    protected function check_field_is_column(){
+        foreach( $this->fields as $field ){
+            if( $field[ 'add_column' ] == true ){
+                return true;
+            }
+        }
+        return false;
+    }
 	/**
 	 * Metabox view.
 	 *
@@ -252,6 +286,47 @@ class Odin_Metabox {
 		return $attributes;
 	}
 
+	/**
+	 * Add post columns
+	 *
+	 * @param  array $columns    Default WordPress Columns
+	 *
+	 * @return array             Columns
+	 */
+	public function add_columns( $columns ){
+        foreach( $this->fields as $key => $field ){
+            if( isset( $field[ 'add_column' ] ) && $field[ 'add_column' ] == true ){
+                $columns[ $field[ 'id' ] ] = $field[ 'label' ];
+            }
+        }
+        return $columns;
+    }
+
+    /**
+	 * Set value for each column
+	 *
+	 * @param  string $column    $column
+	 * @param  int $column       $post_id
+	 *
+	 * @return string            Value
+	 */
+    public function set_columns_value( $column , $post_id ){
+    	$type = $this->get_field_type_by_id( $column );
+    	$is_column = $this->check_field_is_column();
+    	if( !$is_column )
+            return;
+
+        switch ( $type ) {
+            case 'image':
+            case 'image_plupload':
+                $value = wp_get_attachment_image( get_post_meta( $post_id, $column, true ) , array( 50 , 50) );
+                break;
+            default:
+                $value = apply_filters( 'admin_post_column_value_' . $this->post_type . '_' . $column , get_post_meta( $post_id, $column , true ) );
+                break;
+        }
+        echo $value;
+    }
 	/**
 	 * Input field.
 	 *

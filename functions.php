@@ -28,9 +28,9 @@ require_once get_template_directory() . '/core/classes/class-shortcodes.php';
 require_once get_template_directory() . '/core/classes/class-thumbnail-resizer.php';
 // require_once get_template_directory() . '/core/classes/class-theme-options.php';
 // require_once get_template_directory() . '/core/classes/class-options-helper.php';
-// require_once get_template_directory() . '/core/classes/class-post-type.php';
+require_once get_template_directory() . '/core/classes/class-post-type.php';
 // require_once get_template_directory() . '/core/classes/class-taxonomy.php';
-// require_once get_template_directory() . '/core/classes/class-metabox.php';
+require_once get_template_directory() . '/core/classes/class-metabox.php';
 // require_once get_template_directory() . '/core/classes/abstracts/abstract-front-end-form.php';
 // require_once get_template_directory() . '/core/classes/class-contact-form.php';
 // require_once get_template_directory() . '/core/classes/class-post-form.php';
@@ -223,7 +223,7 @@ function odin_enqueue_scripts() {
 	if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
 		// Bootstrap.
 		wp_enqueue_script( 'bootstrap', $template_url . '/assets/js/libs/bootstrap.min.js', array(), null, true );
-		
+
 		// FitVids.
 		wp_enqueue_script( 'fitvids', $template_url . '/assets/js/libs/jquery.fitvids.js', array(), null, true );
 
@@ -232,7 +232,7 @@ function odin_enqueue_scripts() {
 	} else {
 		// Grunt main file with Bootstrap, FitVids and others libs.
 		wp_enqueue_script( 'odin-main-min', $template_url . '/assets/js/main.min.js', array(), null, true );
-	}	
+	}
 
 	// Grunt watch livereload in the browser.
 	// wp_enqueue_script( 'odin-livereload', 'http://localhost:35729/livereload.js?snipver=1', array(), null, true );
@@ -306,5 +306,5 @@ if ( is_woocommerce_activated() ) {
 	add_theme_support( 'woocommerce' );
 	require get_template_directory() . '/inc/woocommerce/hooks.php';
 	require get_template_directory() . '/inc/woocommerce/functions.php';
-	require get_template_directory() . '/inc/woocommerce/template-tags.php'; 
+	require get_template_directory() . '/inc/woocommerce/template-tags.php';
 }
