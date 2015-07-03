@@ -8,9 +8,7 @@
 
 get_header(); ?>
 
-	<div id="primary" class="<?php echo odin_classes_page_sidebar(); ?>">
-		<main id="main-content" class="site-main" role="main">
-
+	<main id="content" class="<?php echo odin_classes_page_sidebar(); ?>" tabindex="-1" role="main">
 			<?php if ( have_posts() ) : ?>
 
 				<header class="page-header">
@@ -40,8 +38,8 @@ get_header(); ?>
 				endif;
 			?>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+	</main><!-- #main -->
+
 <?php
 get_sidebar();
 get_footer();

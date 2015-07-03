@@ -1,0 +1,17 @@
+// ==========================================================================
+// WooCommerce Styles Core
+// ==========================================================================
+//
+// Important
+//
+// @use 'grunt woo' for get the files SASS
+// @see How remove style native WooCommerce in 'inc/woocommerce/hooks.php'.
+//
+
+@import "woocommerce/mixins";
+@import "woocommerce/variables";
+@import "woocommerce/animation";
+@import "woocommerce/fonts";
+@import "woocommerce/woocommerce-layout";
+@media screen and (max-width: 768px) { @import "woocommerce/woocommerce-smallscreen"; }
+@import "woocommerce/woocommerce";

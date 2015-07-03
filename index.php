@@ -15,8 +15,7 @@
 
 get_header(); ?>
 
-	<div id="primary" class="<?php echo odin_classes_page_sidebar(); ?>">
-		<main id="main-content" class="site-main" role="main">
+	<main id="content" class="<?php echo odin_classes_page_sidebar(); ?>" tabindex="-1" role="main">
 
 			<?php
 				if ( have_posts() ) :
@@ -42,8 +41,7 @@ get_header(); ?>
 				endif;
 			?>
 
-		</main><!-- #content -->
-	</div><!-- #primary -->
+	</main><!-- #content -->
 
 <?php
 get_sidebar();
