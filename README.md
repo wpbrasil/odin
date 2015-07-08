@@ -5,7 +5,7 @@
 ![Odin Framework](https://i.imgur.com/DdeMgUx.png)
 
 * [Website](http://wpod.in/)
-* [Demo](http://demo.wpod.in/)
+* [Odin Expo](http://expo.wpod.in/)
 * [GitHub](https://github.com/wpbrasil/odin)
 * [WordPress Brasil Group on Facebook](https://www.facebook.com/groups/wordpress.brasil)
 
