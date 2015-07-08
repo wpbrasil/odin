@@ -5,7 +5,7 @@
 ![Odin Framework](https://camo.githubusercontent.com/f51173b8da26083e2cfdc893ef532a8bc2457bcb/68747470733a2f2f692e696d6775722e636f6d2f4464654d6755782e706e67)
 
 * [Website](http://wpod.in/)
-* [Demo](http://demo.wpod.in/)
+* [Odin Expo](http://expo.wpod.in/)
 * [GitHub](https://github.com/wpbrasil/odin)
 * [Grupo WordPress Brasil no Facebook](https://www.facebook.com/groups/wordpress.brasil)
 
