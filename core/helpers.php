@@ -262,7 +262,7 @@ function odin_breadcrumbs( $homepage = '' ) {
 
 				if ( $taxonomy ) {
 					// Gets post terms.
-					$terms = get_the_terms( $post->ID, $taxonomy[0] );
+					$terms = get_the_terms( $post->ID, $taxy );
 					$term  = $terms ? array_shift( $terms ) : '';
 					// Gets parent post terms.
 					$parent_term = get_term( $term->parent, $taxy );
