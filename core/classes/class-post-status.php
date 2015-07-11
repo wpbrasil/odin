@@ -116,7 +116,7 @@ class Odin_Post_Status {
 				$args['select'] = true;
 			}
 		}
-		printf( '<meta class="odin-custom-status-meta" value="%s" />', esc_attr( json_encode($args) ) );
+		printf( '<meta class="odin-custom-status-meta" value="%s" />', esc_attr( json_encode( $args ) ) );
 	}
 
 	/**
