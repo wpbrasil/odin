@@ -101,8 +101,9 @@ class Odin_Post_Status {
 	 */
 	public function meta_tags() {
 		$screen = get_current_screen();
-		if( ! in_array( $screen->post_type, $this->post_types ) )
+		if( ! in_array( $screen->post_type, $this->post_types ) ) {
 			return;
+		}
 
 		$args = array(
 			'postTypes'     => $this->post_types,
