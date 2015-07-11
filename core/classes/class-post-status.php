@@ -58,11 +58,11 @@ class Odin_Post_Status {
 	 * @return void
 	 **/
 	public function __construct( $post_status, $post_types, $args ) {
-		$this->post_status   = $post_status;
-		$this->post_types    = $post_types;
-		$this->action_label  = isset( $args['label'] ) ? $args['label'] : $post_status;
-		$this->applied_label = isset( $args['applied_label'] ) ? $args['applied_label'] : $this->action_label;
-		$this->args          = $args;
+		$this->post_status		= $post_status;
+		$this->post_types		= $post_types;
+		$this->action_label		= isset( $args['label'] ) ? $args['label'] : $post_status;
+		$this->applied_label	= isset( $args['applied_label'] ) ? $args['applied_label'] : $this->action_label;
+		$this->args				= $args;
 
 		// Removes the arguments that do not belong to register_post_type
 		unset( $this->args['applied_label'] );
