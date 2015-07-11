@@ -20,7 +20,7 @@
 			if( $( document.body ).hasClass( 'edit-php' ) ) {
 				var html = '<option value="' + $.trim( args.slug ) + '">' + $.trim( args.appliedLabel ) + '</option>';
 				$( '.inline-edit-status select' ).each(function(){
-					meta.append( html );
+					$( this ).append( html );
 				});
 			}
 		});
