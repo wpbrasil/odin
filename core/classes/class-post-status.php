@@ -80,11 +80,6 @@ class Odin_Post_Status {
 		// Load scripts
 		add_action( 'admin_enqueue_scripts', array( $this, 'scripts' ) );
 
-		//add_action( 'admin_footer-post.php', array( $this, 'post_status_dropdown' ) );
-		//add_action( 'admin_footer-edit.php', array( $this, 'inline_status_dropdown' ) );
-
-		// Display Post Status Text
-		//add_filter( 'display_post_states', array( $this, 'display_post_status_text' ) );
 	}
 
 	/**
