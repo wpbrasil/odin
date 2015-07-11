@@ -5,12 +5,15 @@
 	 * Custom post status
 	 */
 	$( window ).load( function() {
-		$( 'meta.odin-custom-status-meta' ).each( function() {
-			var meta = $( this );
+		var $odinMeta = document.querySelectorAll( 'meta.odin-custom-status-meta' );
+		Array.prototype.forEach.call( $odinMeta, function( item ) {
+			var $meta = $( item );
+			var args = $.parseJSON( $meta.attr( 'value' ) );
+
 			if( $( document.body ).hasClass( 'post-php' ) || $( document.body ).hasClass( 'post-new-php' ) ) {
-				var args = $.parseJSON( meta.attr( 'value' ) );
 				var select = '';
-				if( ! args.select ) {
+				if( args.select ) {
+					console.log('ahoy!');
 					select = 'selected="selected"';
 					$( 'label[for="post_status"]' ).append( '<span id="post-status-display">&nbsp;' + $.trim( args.appliedLabel ) + '</span>' );
 				}
@@ -19,8 +22,9 @@
 			}
 			if( $( document.body ).hasClass( 'edit-php' ) ) {
 				var html = '<option value="' + $.trim( args.slug ) + '">' + $.trim( args.appliedLabel ) + '</option>';
-				$( '.inline-edit-status select' ).each(function(){
-					$( this ).append( html );
+				var $inlineStatus = document.querySelectorAll( '.inline-edit-status select' );
+				Array.prototype.forEach.call( $inlineStatus, function( item ) {
+					$( item ).append( html );
 				});
 			}
 		});
