@@ -61,7 +61,7 @@ class Odin_Post_Status {
 		$this->post_status   = $post_status;
 		$this->post_types    = $post_types;
 		$this->action_label  = isset( $args['label'] ) ? $args['label'] : $post_status;
-        $this->applied_label = isset( $args['applied_label'] ) ? $args['applied_label'] : $this->action_label;
+		$this->applied_label = isset( $args['applied_label'] ) ? $args['applied_label'] : $this->action_label;
 		$this->args          = $args;
 
 		// Removes the arguments that do not belong to register_post_type
@@ -127,23 +127,5 @@ class Odin_Post_Status {
 		// Load admin JS
 		wp_enqueue_script( 'odin-custom-status', get_template_directory_uri() . '/core/assets/js/admin-custom-status.js', array( 'jquery' ), null, true );
 
-	}
-
-	/**
-	 * Update the text on edit.php to be more
-	 * descriptive of the type of post
-	 *
-	 * @param array $states An array of post display states.
-	 * @return void
-	 **/
-	public function display_post_status_text( $states ) {
-		global $post;
-
-		$status = get_query_var('post_status');
-
-		if( $status !== $this->post_status && $post->post_status === $this->post_status )
-			return array( $this->applied_label );
-
-		return $states;
 	}
 }
