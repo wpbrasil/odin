@@ -5,10 +5,10 @@
  * Build Custom Post Status
  *
  * @package  Odin
- * @category Post Status
+ * @category Metabox
  * @author   WPBrasil
  * @version  2.1.4
- **/
+ */
 class Odin_Post_Status {
 
 	 /**

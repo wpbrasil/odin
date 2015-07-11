@@ -6,21 +6,21 @@
 	 */
 	$( window ).load( function() {
 		$( 'meta.odin-custom-status-meta' ).each( function() {
+			var meta = $( this );
 			if( $( document.body ).hasClass( 'post-php' ) || $( document.body ).hasClass( 'post-new-php' ) ) {
-				console.log('ahoy');
+				var args = $.parseJSON( meta.attr( 'value' ) );
 				var select = '';
-				if( typeof args.select !== 'undefined' ) {
+				if( ! args.select ) {
 					select = 'selected="selected"';
-					$( 'label[for="post_status"]').append( '<span id="post-status-display">&nbsp;' + $.trim( args.appliedLabel ) + '</span>' );
+					$( 'label[for="post_status"]' ).append( '<span id="post-status-display">&nbsp;' + $.trim( args.appliedLabel ) + '</span>' );
 				}
 				var html = '<option value="' + $.trim( args.slug ) + '" ' + $.trim( select ) + '>' + $.trim( args.appliedLabel ) + '</option>';
 				$( '#post_status' ).append( html );
 			}
 			if( $( document.body ).hasClass( 'edit-php' ) ) {
-				var args = $.parseJSON( $(this).attr('value') );
 				var html = '<option value="' + $.trim( args.slug ) + '">' + $.trim( args.appliedLabel ) + '</option>';
 				$( '.inline-edit-status select' ).each(function(){
-					$(this).append( html );
+					meta.append( html );
 				});
 			}
 		});
