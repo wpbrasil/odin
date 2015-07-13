@@ -158,8 +158,13 @@ function odin_related_posts( $display = 'category', $qty = 4, $title = '', $thum
 				$layout .= ( $thumb ) ? '<div class="col-md-' . ceil( 12 / $qty ) . '">' : '<li>';
 
 				if ( $thumb ) {
+					if ( has_post_thumbnail() ) {
+						$img = get_the_post_thumbnail( get_the_ID(), 'thumbnail' )
+					} else {
+						$img = '<img src="' . get_template_directory_uri() . '/core/assets/images/odin-thumb-placeholder.jpg" alt="' . get_the_title() . '">';
+					}
 					// Filter to replace the image.
-					$image = apply_filters( 'odin_related_posts_thumbnail', get_the_post_thumbnail( get_the_ID(), 'thumbnail' ) );
+					$image = apply_filters( 'odin_related_posts_thumbnail', $img );
 
 					$layout .= '<span class="thumb">';
 					$layout .= sprintf( '<a href="%s" title="%s" class="thumbnail">%s</a>', get_permalink(), get_the_title(), $image );
