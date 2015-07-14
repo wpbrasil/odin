@@ -205,6 +205,14 @@ function odin_flush_rewrite() {
 add_action( 'after_switch_theme', 'odin_flush_rewrite' );
 
 /**
+ * Add Favicon.
+ */
+function odin_favicon() {
+echo '<link rel="Shortcut Icon" type="image/x-icon" href="'.get_stylesheet_directory_uri().'/assets/images/favicon.ico" />';
+}
+add_action('wp_head', 'odin_favicon');
+
+/**
  * Load site scripts.
  *
  * @since  2.2.0
