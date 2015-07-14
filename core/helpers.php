@@ -159,7 +159,7 @@ function odin_related_posts( $display = 'category', $qty = 4, $title = '', $thum
 
 				if ( $thumb ) {
 					if ( has_post_thumbnail() ) {
-						$img = get_the_post_thumbnail( get_the_ID(), 'thumbnail' )
+						$img = get_the_post_thumbnail( get_the_ID(), 'thumbnail' );
 					} else {
 						$img = '<img src="' . get_template_directory_uri() . '/core/assets/images/odin-thumb-placeholder.jpg" alt="' . get_the_title() . '">';
 					}
