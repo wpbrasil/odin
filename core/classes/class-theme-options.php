@@ -184,7 +184,7 @@ class Odin_Theme_Options {
 		$current_tab = $this->get_current_tab();
 
 		// Opens the wrap.
-		echo '<div class="wrap">';
+		echo '<div class="wrap theme-options">';
 
 			// Display the navigation menu.
 			$this->get_navigation( $current_tab );
