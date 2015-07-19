@@ -12,14 +12,14 @@
 class Odin_Term_Meta {
 
 	/**
-	 * User meta fields.
+	 * Term meta fields.
 	 *
 	 * @var array
 	 */
 	protected $fields = array();
 
 	/**
-	 * User meta construct.
+	 * Term meta construct.
 	 *
 	 * @param string $id    Options ID.
 	 * @param string $title Options title.
@@ -462,7 +462,7 @@ class Odin_Term_Meta {
 					if ( $attachments ) {
 						foreach ( $attachments as $attachment_id ) {
 							$html .= sprintf( '<li class="image" data-attachment_id="%1$s">%2$s<ul class="actions"><li><a href="#" class="delete" title="%3$s"><span class="dashicons dashicons-no"></span></a></li></ul></li>',
-								$attachment_id,
+								$attachment_id,https://bay181.mail.live.com/?fid=flinbox
 								wp_get_attachment_image( $attachment_id, 'thumbnail' ),
 								__( 'Remove image', 'odin' )
 							);
@@ -482,7 +482,7 @@ class Odin_Term_Meta {
 	}
 
 	/**
-	 * Save user meta data.
+	 * Save term meta data.
 	 *
 	 * @param  int    $term_id       Field id.
 	 * @param  int    $tt_id         Term taxonomy ID.
