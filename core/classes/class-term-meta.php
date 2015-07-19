@@ -7,7 +7,7 @@
  * @package  Odin
  * @category Term Meta
  * @author   WPBrasil
- * @version  2.2.5
+ * @version  2.2.7
  */
 class Odin_Term_Meta {
 
@@ -21,8 +21,8 @@ class Odin_Term_Meta {
 	/**
 	 * Term meta construct.
 	 *
-	 * @param string $id    Options ID.
-	 * @param string $title Options title.
+	 * @param string $id       Options ID.
+	 * @param mixed  $taxonomy Taxonomy slug
 	 */
 	public function __construct( $id, $taxonomy ) {
 		$this->id    	= $id;
