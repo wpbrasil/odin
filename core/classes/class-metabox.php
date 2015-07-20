@@ -26,8 +26,6 @@ class Odin_Metabox {
 	 * @param string|array $post_type The type of Write screen on which to show the edit screen section.
 	 * @param string       $context   The part of the page where the edit screen section should be shown ('normal', 'advanced', or 'side').
 	 * @param string       $priority  The priority within the context where the boxes should show ('high', 'core', 'default' or 'low').
-	 *
-	 * @return void
 	 */
 	public function __construct( $id, $title, $post_type = 'post', $context = 'normal', $priority = 'high' ) {
 		$this->id        = $id;
@@ -63,8 +61,6 @@ class Odin_Metabox {
 
 	/**
 	 * Load metabox scripts.
-	 *
-	 * @return void
 	 */
 	public function scripts() {
 		$screen = get_current_screen();
@@ -101,8 +97,6 @@ class Odin_Metabox {
 
 	/**
 	 * Add the metabox in edit screens.
-	 *
-	 * @return void
 	 */
 	public function add() {
 		foreach ( $this->get_post_type() as $post_type ) {
@@ -121,8 +115,6 @@ class Odin_Metabox {
 	 * Set metabox fields.
 	 *
 	 * @param array $fields Metabox fields.
-	 *
-	 * @return void
 	 */
 	public function set_fields( $fields = array() ) {
 		$this->fields = $fields;
@@ -560,8 +552,6 @@ class Odin_Metabox {
 	 * Save metabox data.
 	 *
 	 * @param  int $post_id Current post type ID.
-	 *
-	 * @return void
 	 */
 	public function save( $post_id ) {
 		// Verify nonce.

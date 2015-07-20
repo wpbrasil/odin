@@ -45,8 +45,6 @@ class Odin_Theme_Options {
 
 	/**
 	 * Add Settings Theme page.
-	 *
-	 * @return void
 	 */
 	public function add_page() {
 		add_theme_page(
@@ -60,8 +58,6 @@ class Odin_Theme_Options {
 
 	/**
 	 * Load options scripts.
-	 *
-	 * @return void
 	 */
 	function scripts() {
 		// Checks if is the settings page.
@@ -176,8 +172,6 @@ class Odin_Theme_Options {
 
 	/**
 	 * Built settings page.
-	 *
-	 * @return void
 	 */
 	public function settings_page() {
 		// Get current tag.
@@ -219,8 +213,6 @@ class Odin_Theme_Options {
 
 	/**
 	 * Create settings.
-	 *
-	 * @return void
 	 */
 	public function create_settings() {
 

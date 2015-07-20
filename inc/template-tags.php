@@ -54,8 +54,6 @@ if ( ! function_exists( 'odin_posted_on' ) ) {
 	 * Print HTML with meta information for the current post-date/time and author.
 	 *
 	 * @since 2.2.0
-	 *
-	 * @return void
 	 */
 	function odin_posted_on() {
 		if ( is_sticky() && is_home() && ! is_paged() ) {
@@ -80,8 +78,6 @@ if ( ! function_exists( 'odin_paging_nav' ) ) {
 	 * Print HTML with meta information for the current post-date/time and author.
 	 *
 	 * @since 2.2.0
-	 *
-	 * @return void
 	 */
 	function odin_paging_nav() {
 		$mid  = 2;     // Total of items that will show along with the current page.

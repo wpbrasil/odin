@@ -158,8 +158,6 @@ class Odin_Widget_Like_Box extends WP_Widget {
 
 /**
  * Register the Like Box Widget.
- *
- * @return void
  */
 function odin_like_box_widget() {
 	register_widget( 'Odin_Widget_Like_Box' );

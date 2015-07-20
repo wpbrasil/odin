@@ -58,8 +58,6 @@ abstract class Odin_Front_End_Form {
 	 * Set form fields.
 	 *
 	 * @param array $fields Form fields.
-	 *
-	 * @return void
 	 */
 	public function set_fields( $fields = array() ) {
 		$this->fields = $fields;
@@ -69,8 +67,6 @@ abstract class Odin_Front_End_Form {
 	 * Set form buttons.
 	 *
 	 * @param array $buttons Form buttons.
-	 *
-	 * @return void
 	 */
 	public function set_buttons( $buttons = array() ) {
 		$this->buttons = $buttons;
@@ -80,8 +76,6 @@ abstract class Odin_Front_End_Form {
 	 * Set errors.
 	 *
 	 * @param array $errors Form errors.
-	 *
-	 * @return void
 	 */
 	protected function set_errors( $errors = array() ) {
 		$this->errors[] = $errors;
@@ -91,8 +85,6 @@ abstract class Odin_Front_End_Form {
 	 * Set success message.
 	 *
 	 * @param string $success Form success message.
-	 *
-	 * @return void
 	 */
 	public function set_success_message( $success = '' ) {
 		$this->success = $success;
@@ -372,7 +364,7 @@ abstract class Odin_Front_End_Form {
 		if ( ! isset( $attributes['class'] ) ) {
 			$attributes['class'] = 'form-control';
 		}
-		
+
 		$html = sprintf( '<div class="form-group odin-form-group-%s">', $id );
 		$html .= sprintf( '<label for="%s">%s%s</label>', $id, $label, $this->required_field_alert( $attributes ) );
 		$html .= sprintf( '<input id="%1$s" name="%1$s" value="%2$s"%3$s />', $id, $default, $this->process_attributes( $attributes ) );
@@ -585,8 +577,6 @@ abstract class Odin_Front_End_Form {
 
 	/**
 	 * Validates the form data.
-	 *
-	 * @return void
 	 */
 	protected function validate_form_data() {
 		$errors = array();
@@ -645,8 +635,6 @@ abstract class Odin_Front_End_Form {
 
 	/**
 	 * Redirect to current page.
-	 *
-	 * @return void
 	 */
 	protected function redirect() {
 		@ob_clean();
@@ -696,8 +684,6 @@ abstract class Odin_Front_End_Form {
 	/**
 	 * Form init.
 	 * Hook this in the WordPress init action.
-	 *
-	 * @return void.
 	 */
 	public function init() {
 		$submitted_data = $this->submitted_form_data();

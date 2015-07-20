@@ -100,8 +100,6 @@ class Odin_Post_Form extends Odin_Front_End_Form {
 	 *
 	 * @param  int    $post_id        Post ID.
 	 * @param  array  $submitted_data Submitted form data.
-	 *
-	 * @return void
 	 */
 	protected function save_custom_fields( $post_id, $submitted_data ) {
 		if ( ! empty( $this->custom_fields ) ) {
@@ -120,8 +118,6 @@ class Odin_Post_Form extends Odin_Front_End_Form {
 	 *
 	 * @param  int    $post_id        Post ID.
 	 * @param  array  $submitted_data Submitted form data.
-	 *
-	 * @return void
 	 */
 	protected function save_terms( $post_id, $submitted_data ) {
 		if ( ! empty( $this->terms ) ) {
@@ -139,8 +135,6 @@ class Odin_Post_Form extends Odin_Front_End_Form {
 	 * Save post.
 	 *
 	 * @param  array $submitted_data Submitted form data.
-	 *
-	 * @return void
 	 */
 	public function save_post( $submitted_data ) {
 		if ( ! empty( $submitted_data ) ) {

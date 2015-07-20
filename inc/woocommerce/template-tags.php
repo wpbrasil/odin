@@ -6,12 +6,16 @@
  */
 
 if ( ! function_exists( 'odin_cart_link' ) ) {
+
 	/**
 	 * Cart Link
 	 * Displayed a link to the cart including the number of items present and the cart total
-	 * @param  array $settings Settings
-	 * @return array           Settings
+	 *
 	 * @since  2.2.6
+	 *
+	 * @param  array $settings Settings
+	 *
+	 * @return array           Settings
 	 */
 	function odin_cart_link() {
 		if ( is_cart() ) {
@@ -30,11 +34,13 @@ if ( ! function_exists( 'odin_cart_link' ) ) {
 }
 
 if ( ! function_exists( 'odin_product_search' ) ) {
+
 	/**
 	 * Display Product Search
-	 * @since  2.2.6
+	 *
+	 * @since 2.2.6
+	 *
 	 * @uses  is_woocommerce_activated() check if WooCommerce is activated
-	 * @return void
 	 */
 	function odin_product_search() {
 		if ( is_woocommerce_activated() ) { ?>
@@ -47,11 +53,13 @@ if ( ! function_exists( 'odin_product_search' ) ) {
 }
 
 if ( ! function_exists( 'odin_header_cart' ) ) {
+
 	/**
 	 * Display Header Cart
-	 * @since  2.2.6
+	 *
+	 * @since 2.2.6
+	 *
 	 * @uses  is_woocommerce_activated() check if WooCommerce is activated
-	 * @return void
 	 */
 	function odin_header_cart() {
 		if ( is_woocommerce_activated() ) { ?>

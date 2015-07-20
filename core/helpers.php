@@ -497,8 +497,6 @@ function odin_thumbnail( $width, $height, $alt, $crop = true, $class = '', $upsc
  * @since  2.2.0
  *
  * @global array $post WP post object.
- *
- * @return void
  */
 function odin_autoset_featured() {
 	global $post;

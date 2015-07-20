@@ -43,8 +43,6 @@ class Odin_User_Meta {
 
 	/**
 	 * Load user meta scripts.
-	 *
-	 * @return void
 	 */
 	public function scripts() {
 
@@ -80,8 +78,6 @@ class Odin_User_Meta {
 	 * Set user meta fields.
 	 *
 	 * @param array $fields User meta fields.
-	 *
-	 * @return void
 	 */
 	public function set_fields( $fields = array() ) {
 		$this->fields = $fields;
@@ -417,8 +413,6 @@ class Odin_User_Meta {
 	 *
 	 * @param  string $id      Field id.
 	 * @param  string $current Field current value.
-	 *
-	 * @return void
 	 */
 	public function save( $user_id ) {
 		// Verify nonce.

@@ -54,8 +54,6 @@ class Odin_Post_Status {
 	 * @param string $post_status Name of the Custom Post Status
 	 * @param array $post_types Array of Posts Types to apply the Custom Post Status
 	 * @param array $args Array of arguments to pass register_post_status() function
-	 *
-	 * @return void
 	 **/
 	public function __construct( $post_status, $post_types, $args ) {
 		$this->post_status		= $post_status;
@@ -87,8 +85,6 @@ class Odin_Post_Status {
 	 *
 	 * @param string $post_status The name of Custom Post Status.
 	 * @param array $args Array of arguments to pass register_post_status()
-	 *
-	 * @return void
 	 **/
 	public function register_post_status() {
 		register_post_status( $this->post_status, $this->args );
@@ -96,8 +92,6 @@ class Odin_Post_Status {
 
 	/**
 	 * Add meta tags to JS
-	 *
-	 * @return void
 	 */
 	public function meta_tags() {
 		$screen = get_current_screen();
@@ -121,8 +115,6 @@ class Odin_Post_Status {
 
 	/**
 	 * Load post status scripts and inject JS vars
-	 *
-	 * @return void
 	 */
 	public function scripts() {
 		// Load admin JS

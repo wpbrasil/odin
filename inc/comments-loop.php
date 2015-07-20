@@ -9,8 +9,6 @@ if ( ! function_exists( 'odin_comment_loop' ) ) {
 	 * @param  object $comment Comment object.
 	 * @param  array  $args    Comment arguments.
 	 * @param  int    $depth   Comment depth.
-	 *
-	 * @return void
 	 */
 	function odin_comments_loop( $comment, $args, $depth ) {
 		$GLOBALS['comment'] = $comment;

@@ -244,9 +244,7 @@ class Odin_Contact_Form extends Odin_Front_End_Form {
 	/**
 	 * Send the mail.
 	 *
-	 * @param  array $submitted_data Submitted form data.
-	 *
-	 * @return void
+	 * @param array $submitted_data Submitted form data.
 	 */
 	public function send_mail( $submitted_data, $attachments ) {
 		if ( ! empty( $submitted_data ) ) {

@@ -47,9 +47,7 @@ if ( ! function_exists( 'odin_setup_features' ) ) {
 	/**
 	 * Setup theme features.
 	 *
-	 * @since  2.2.0
-	 *
-	 * @return void
+	 * @since 2.2.0
 	 */
 	function odin_setup_features() {
 
@@ -171,9 +169,7 @@ add_action( 'after_setup_theme', 'odin_setup_features' );
 /**
  * Register widget areas.
  *
- * @since  2.2.0
- *
- * @return void
+ * @since 2.2.0
  */
 function odin_widgets_init() {
 	register_sidebar(
@@ -194,9 +190,7 @@ add_action( 'widgets_init', 'odin_widgets_init' );
 /**
  * Flush Rewrite Rules for new CPTs and Taxonomies.
  *
- * @since  2.2.0
- *
- * @return void
+ * @since 2.2.0
  */
 function odin_flush_rewrite() {
 	flush_rewrite_rules();
@@ -207,9 +201,7 @@ add_action( 'after_switch_theme', 'odin_flush_rewrite' );
 /**
  * Load site scripts.
  *
- * @since  2.2.0
- *
- * @return void
+ * @since 2.2.0
  */
 function odin_enqueue_scripts() {
 	$template_url = get_template_directory_uri();
