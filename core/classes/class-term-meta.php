@@ -172,6 +172,7 @@ class Odin_Term_Meta {
 	public function delete_fields( $term, $tt_id = null, $deleted_term = null ) {
 		global $wpdb;
 		$option = sprintf( 'odin_term_meta_%s', $term );
+		$option = '%' . $wpdb->esc_like( $option ) . '%';
 
 		$wpdb->get_results(
 			$wpdb->prepare(
@@ -179,9 +180,9 @@ class Odin_Term_Meta {
 				DELETE
 				FROM $wpdb->options
 				WHERE option_name
-				LIKE '%s'
+				LIKE %s
 				",
-				'%' . $option . '%'
+				$option
 			)
 		);
 	}
