@@ -29,7 +29,7 @@ class Odin_Term_Meta {
 		$this->taxonomy	= $taxonomy;
 		$this->nonce 	= $this->id . '_nonce';
 
-		if( is_array( $this->$taxonomy ) ) {
+		if ( is_array( $this->taxonomy ) ) {
 			foreach ( $this->taxonomy as $tax_slug ) {
 			    // Print Taxonomy fields
 				add_action( $tax_slug . '_add_form_fields', array( $this, 'add_view' ) );
@@ -40,8 +40,7 @@ class Odin_Term_Meta {
 				add_action( 'create_' . $tax_slug, array( $this, 'save' ) );
 				add_action( 'edit_' . $tax_slug, array( $this, 'save' ) );
 			}
-		}
-		else {
+		} else {
 			// Print Taxonomy fields
 			add_action( $this->taxonomy . '_add_form_fields', array( $this, 'add_view' ) );
 			add_action( $this->taxonomy . '_edit_form_fields', array( $this, 'edit_view' ) );
@@ -51,7 +50,6 @@ class Odin_Term_Meta {
 			add_action( 'create_' . $this->taxonomy, array( $this, 'save' ) );
 			add_action( 'edit_' . $this->taxonomy, array( $this, 'save' ) );
 		}
-
 		// Load scripts.
 		add_action( 'admin_enqueue_scripts', array( $this, 'scripts' ) );
 	}
@@ -117,9 +115,7 @@ class Odin_Term_Meta {
 
 			echo '<div class="form_field">';
 
-			$title = sprintf( '<th><label for="%s">%s</label></th>', $field['id'], $field['label'] );
-
-			echo $title;
+			echo sprintf( '<th><label for="%s">%s</label></th>', $field['id'], $field['label'] );
 
 			$this->process_fields( $field );
 
@@ -146,9 +142,7 @@ class Odin_Term_Meta {
 
 			echo '<tr>';
 
-			$title = sprintf( '<th><label for="%s">%s</label></th>', $field['id'], $field['label'] );
-
-			echo $title;
+			echo sprintf( '<th><label for="%s">%s</label></th>', $field['id'], $field['label'] );
 
 			echo apply_filters( 'odin_term_meta_field_edit_screen_before_' . $this->id, '<td>', $field );
 			$this->process_fields( $field );
@@ -180,12 +174,15 @@ class Odin_Term_Meta {
 		$option = sprintf( 'odin_term_meta_%s', $term );
 
 		$wpdb->get_results(
-			"
-			DELETE
-			FROM $wpdb->options
-			WHERE option_name
-			LIKE '%$option%'
-			"
+			$wpdb->prepare(
+				"
+				DELETE
+				FROM $wpdb->options
+				WHERE option_name
+				LIKE '%s'
+				",
+				'%' . $option . '%'
+			)
 		);
 	}
     /**
@@ -462,7 +459,7 @@ class Odin_Term_Meta {
 					if ( $attachments ) {
 						foreach ( $attachments as $attachment_id ) {
 							$html .= sprintf( '<li class="image" data-attachment_id="%1$s">%2$s<ul class="actions"><li><a href="#" class="delete" title="%3$s"><span class="dashicons dashicons-no"></span></a></li></ul></li>',
-								$attachment_id,https://bay181.mail.live.com/?fid=flinbox
+								$attachment_id,
 								wp_get_attachment_image( $attachment_id, 'thumbnail' ),
 								__( 'Remove image', 'odin' )
 							);

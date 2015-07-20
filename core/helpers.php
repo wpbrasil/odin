@@ -547,4 +547,3 @@ function odin_get_term_meta( $term_id, $field ) {
 	$option = sprintf( 'odin_term_meta_%s_%s', $id, $field );
 	return get_option( $option );
 }
-
