@@ -310,8 +310,3 @@ if ( is_woocommerce_activated() ) {
 	require get_template_directory() . '/inc/woocommerce/functions.php';
 	require get_template_directory() . '/inc/woocommerce/template-tags.php';
 }
-$term_fields = new Odin_Term_Meta(
-	'slug_legal',
-	'Nome legal',
-	'category'
-);
