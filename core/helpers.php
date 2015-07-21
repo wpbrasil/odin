@@ -528,3 +528,20 @@ function odin_autoset_featured() {
 function odin_debug( $variable ) {
 	echo '<pre>' . print_r( $variable, true ) . '</pre>';
 }
+/**
+ * Get term meta fields
+ *
+ * Usage:
+ * <?php echo odin_get_term_meta( $term_id, $field );?>
+ *
+ * @since  2.2.7
+ *
+ * @param  int    $term_id      Term ID
+ * @param  string $field        Field slug
+ *
+ * @return string               Field value
+ */
+function odin_get_term_meta( $term_id, $field ) {
+	$option = sprintf( 'odin_term_meta_%s_%s', $id, $field );
+	return get_option( $option );
+}
