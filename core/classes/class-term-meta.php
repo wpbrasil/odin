@@ -492,8 +492,7 @@ class Odin_Term_Meta {
 		if ( ! isset( $_POST[ $this->nonce ] ) || ! wp_verify_nonce( $_POST[ $this->nonce ], basename( __FILE__ ) ) ) {
 			return '';
 		}
-		var_dump($_POST);
-		die();
+
 		foreach ( $this->fields as $field ) {
 			$name = $field['id'];
 			$old  = $this->get_value( $term_id, $name );
