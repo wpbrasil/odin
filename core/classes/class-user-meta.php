@@ -430,8 +430,7 @@ class Odin_User_Meta {
 		if ( ! current_user_can( 'edit_user', $user_id ) ) {
 			return '';
 		}
-		var_dump($this->fields);
-		die();
+
 		foreach ( $this->fields as $field ) {
 			$name = $field['id'];
 			$old  = get_user_meta( $user_id, $name, true );
