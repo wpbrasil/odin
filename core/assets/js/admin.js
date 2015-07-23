@@ -208,5 +208,12 @@
 			// Return the new value.
 			imageGalleryIds.val( attachmentIds );
 		});
+		/**
+		 * Save editor field in add term screen
+		 */
+		$( 'body.edit-tags-php .wp-editor-wrap' ).on( 'mouseover mouseout', function( e ) {
+			tinyMCE.triggerSave();
+		});
+
 	});
 }( jQuery ));
