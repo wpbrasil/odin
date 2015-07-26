@@ -605,7 +605,7 @@ abstract class Odin_Front_End_Form {
 							}
 							break;
 						case 'file':
-							if ( $files ) {
+							if ( count($files) >= 1 ) {
 								if ( $required && empty( $files[ $id ]['name'] ) ) {
 									$this->set_errors( sprintf( __( '%s is required.', 'odin' ), '<strong>' . $label . '</strong>' ) );
 								}
