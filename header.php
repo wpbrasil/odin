@@ -22,18 +22,31 @@
 </head>
 
 <body <?php body_class(); ?>>
-	<a id="skippy" class="sr-only sr-only-focusable" href="#content"><div class="container"><span class="skiplink-text"><?php _e( 'Skip to content', 'odin' ); ?></span></div></a>
+	<a id="skippy" class="sr-only sr-only-focusable" href="#content">
+		<div class="container">
+			<span class="skiplink-text"><?php _e( 'Skip to content', 'odin' ); ?></span>
+		</div>
+	</a>
 
 	<header id="header" role="banner">
 		<div class="container">
-
 			<div class="page-header hidden-xs">
 				<?php if ( is_home() ) : ?>
-					<h1 class="site-title"><a href="<?php echo home_url(); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+					<h1 class="site-title">
+						<a href="<?php echo home_url(); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+							<?php bloginfo( 'name' ); ?>
+						</a>
+					</h1>
 					<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
 				<?php else : ?>
-					<div class="site-title h1"><a href="<?php echo home_url(); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></div>
-					<div class="site-description h2"><?php bloginfo( 'description' ); ?></div>
+					<div class="site-title h1">
+						<a href="<?php echo home_url(); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+							<?php bloginfo( 'name' ); ?>
+						</a>
+					</div>
+					<div class="site-description h2">
+						<?php bloginfo( 'description' ); ?>
+					</div>
 				<?php endif ?>
 
 				<?php
@@ -54,7 +67,9 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand visible-xs-block" href="<?php echo home_url(); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+					<a class="navbar-brand visible-xs-block" href="<?php echo home_url(); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+						<?php bloginfo( 'name' ); ?>
+					</a>
 				</div>
 				<nav class="collapse navbar-collapse navbar-main-navigation" role="navigation">
 					<?php
@@ -70,7 +85,9 @@
 						);
 					?>
 					<form method="get" class="navbar-form navbar-right" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
-						<label for="navbar-search" class="sr-only"><?php _e( 'Search:', 'odin' ); ?></label>
+						<label for="navbar-search" class="sr-only">
+							<?php _e( 'Search:', 'odin' ); ?>
+						</label>
 						<div class="form-group">
 							<input type="search" class="form-control" name="s" id="navbar-search" />
 						</div>
