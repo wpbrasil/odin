@@ -542,6 +542,6 @@ function odin_debug( $variable ) {
  * @return string               Field value
  */
 function odin_get_term_meta( $term_id, $field ) {
-	$option = sprintf( 'odin_term_meta_%s_%s', $id, $field );
+	$option = sprintf( 'odin_term_meta_%s_%s', $term_id, $field );
 	return get_option( $option );
 }
