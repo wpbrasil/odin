@@ -44,22 +44,25 @@
 	<?php endif; ?>
 
 	<?php
-		$args = wp_parse_args( $args );
-		if ( ! isset( $args['format'] ) )
-		$args['format'] = current_theme_supports( 'html5', 'comment-form' ) ? 'html5' : 'xhtml';
-		$commenter = wp_get_current_commenter();
-		$req = get_option( 'require_name_email' );
-		$aria_req = ( $req ? " aria-required='true'" : '' );
-		$html5    = 'html5' === $args['format'];
-
-		comment_form(
-		array(
-			'comment_notes_after' => '',
-			'comment_field' => '<div class="comment-form-comment form-group"><label class="control-label" for="comment">' . __( 'Comment', 'odin' ) . '</label><div class="controls"><textarea id="comment" name="comment" cols="45" rows="8" class="form-control" aria-required="true"></textarea></div></div>',
-			'fields' => apply_filters( 'comment_form_default_fields', array(
-				'author' => '<div class="comment-form-author form-group">' . '<label class="control-label" for="author">' . __( 'Name', 'odin' ) . ( $req ? '<span class="required"> *</span>' : '' ) . '</label><input class="form-control" id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' /></div>',
-				'email' => '<div class="comment-form-email form-group"><label class="control-label" for="email">' . __( 'E-mail', 'odin' ) . ( $req ? '<span class="required"> *</span>' : '' ) . '</label><input class="form-control" id="email" name="email" ' . ( $html5 ? 'type="email"' : 'type="text"' ) . ' value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' /></div>',
-				'url' => '<div class="comment-form-url form-group"><label class="control-label" for="url">' . __( 'Website', 'odin' ) . '</label>' . '<input class="form-control" id="url" name="url" ' . ( $html5 ? 'type="url"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" /></div>' ) )
-		)
-	); ?>
+		$commenter 		= wp_get_current_commenter();
+		$req 			= get_option( 'require_name_email' );
+		$aria_req 		= ( $req ? " aria-required='true'" : '' );
+		$html_req 		= ( $req ? " required='required'" : '' );
+		$html5 			= current_theme_supports( 'html5', 'comment-form' ) ? 'html5' : null;
+		$comment_field 	= '<div class="comment-form-comment form-group"><label class="control-label" for="comment">' . __( 'Comment', 'odin' ) . ' <span class="required text-danger">*</span></label> ' .
+						 '<textarea id="comment" name="comment" class="form-control" cols="45" rows="8" aria-describedby="form-allowed-tags" aria-required="true" required="required"></textarea></div>';
+		$fields 		=  array(
+			'author' => '<div class="comment-form-author form-group">' . '<label for="author">' . __( 'Name', 'odin' ) . ( $req ? ' <span class="required text-danger">*</span>' : '' ) . '</label> ' .
+			            '<input id="author" name="author" class="form-control" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . $html_req . ' /></div>',
+			'email'  => '<div class="comment-form-email form-group"><label for="email">' . __( 'E-mail', 'odin' ) . ( $req ? ' <span class="required text-danger">*</span>' : '' ) . '</label> ' .
+			            '<input id="email" name="email" class="form-control" ' . ( $html5 ? 'type="email"' : 'type="text"' ) . ' value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30" aria-describedby="email-notes"' . $aria_req . $html_req  . ' /></div>',
+			'url'    => '<div class="comment-form-url form-group"><label for="url">' . __( 'Website', 'odin' ) . '</label> ' .
+			            '<input id="url" name="url" class="form-control" ' . ( $html5 ? 'type="url"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" /></div>'
+		);
+		comment_form( array(
+			'comment_notes_after' 	=> '',
+			'comment_field' 		=> $comment_field,
+			'fields' 				=> apply_filters( 'comment_form_default_fields', $fields )
+		));
+	?>
 </div><!-- #comments -->
