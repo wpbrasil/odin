@@ -25,8 +25,10 @@
 		</h2>
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
 			<nav id="comment-nav-above">
-				<div class="nav-previous"><?php previous_comments_link( __( '&larr; Old Comments', 'odin' ) ); ?></div>
-				<div class="nav-next"><?php next_comments_link( __( 'New Comments &rarr;', 'odin' ) ); ?></div>
+				<ul class="pager">
+					<li class="previous"><?php previous_comments_link( __( '&larr; Old Comments', 'odin' ) ); ?></li>
+					<li class="next"><?php next_comments_link( __( 'New Comments &rarr;', 'odin' ) ); ?></li>
+				</ul>
 			</nav>
 		<?php endif; ?>
 		<ol class="commentlist">
@@ -34,8 +36,10 @@
 		</ol>
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
 			<nav id="comment-nav-above">
-				<div class="nav-previous"><?php previous_comments_link( __( '&larr; Old Comments', 'odin' ) ); ?></div>
-				<div class="nav-next"><?php next_comments_link( __( 'New Comments &rarr;', 'odin' ) ); ?></div>
+				<ul class="pager">
+					<li class="previous"><?php previous_comments_link( __( '&larr; Old Comments', 'odin' ) ); ?></li>
+					<li class="next"><?php next_comments_link( __( 'New Comments &rarr;', 'odin' ) ); ?></li>
+				</ul>
 			</nav>
 		<?php endif; ?>
 	<?php endif; ?>
