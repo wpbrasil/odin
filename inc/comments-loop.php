@@ -16,32 +16,49 @@ if ( ! function_exists( 'odin_comment_loop' ) ) {
 		switch ( $comment->comment_type ) {
 			case 'pingback' :
 			case 'trackback' :
-				?>
-				<li class="post pingback">
-					<p><?php _e( 'Pingback:', 'odin' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __( 'Edit', 'odin' ), '<span class="edit-link">', '</span>' ); ?></p>
-					<?php
-					break;
-				default :
-					?>
-				<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
-					<article id="comment-<?php comment_ID(); ?>" class="comment">
-						<footer class="comment-meta">
-							<div class="comment-author vcard">
-								<?php echo sprintf( '%1$s<span class="fn">%2$s</span> %3$s <a href="%4$s"><time datetime="%5$s">%6$s %7$s </time></a> <span class="says"> %8$s</span>', get_avatar( $comment, 40 ), get_comment_author_link(), __( 'in', 'odin' ), esc_url( get_comment_link( $comment->comment_ID ) ), get_comment_time( 'c' ), get_comment_date(), __( 'at', 'odin' ), get_comment_time(), __( 'said:', 'odin' ) ); ?>
-								<?php edit_comment_link( __( 'Edit', 'odin' ), '<span class="edit-link"> | ', '</span>' ); ?>
-							</div><!-- .comment-author .vcard -->
-							<?php if ( $comment->comment_approved == '0' ) : ?>
-								<div class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'odin' ); ?></div>
-							<?php endif; ?>
-						</footer>
-						<div class="comment-content"><?php comment_text(); ?></div>
-						<div class="reply">
-							<?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Respond', 'odin' ), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
-						</div><!-- .reply -->
-					</article><!-- #comment-## -->
+?>
+				<li class="media post pingback">
+					<p><?php _e( 'Pingback:', 'odin' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( 'Edit', 'odin' ), '<span class="edit-link">', '</span>' ); ?></p>
+<?php
+			break;
+			default :
+?>
+				<li <?php comment_class( 'media' ); ?> id="li-comment-<?php comment_ID(); ?>">
+					<article id="div-comment-<?php comment_ID(); ?>" class="comment-body comment-author vcard">
+						<div class="media-left">
+							<?php echo str_replace( "class='avatar", "class='media-object avatar", get_avatar( $comment, 64 ) ); ?>
+						</div>
+						<div class="media-body">
+							<footer class="comment-meta">
+								<h5 class="media-heading">
+									<?php echo sprintf( '<strong><span class="fn">%1$s</span></strong>
+														 %2$s <a href="%3$s"><time datetime="%4$s">%5$s %6$s </time></a>
+														 <span class="says"> %7$s</span>',
+														 get_comment_author_link(), __( 'in', 'odin' ),
+														 esc_url( get_comment_link( $comment->comment_ID ) ),
+														 get_comment_time( 'c' ),
+														 get_comment_date(), __( 'at', 'odin' ),
+														 get_comment_time(), __( 'said:', 'odin' ) ); ?>
+								</h5>
 
-				<?php break;
+								<?php edit_comment_link( __( 'Edit', 'odin' ), '<span class="edit-link">', ' </span>' ); ?>
+
+								<?php if ( $comment->comment_approved == '0' ) : ?>
+								<p class="comment-awaiting-moderation alert alert-info"><?php _e( 'Your comment is awaiting moderation.', 'odin' ); ?></p>
+								<?php endif; ?>
+							</footer><!-- .comment-meta -->
+
+							<div class="comment-content">
+								<?php comment_text(); ?>
+							</div><!-- .comment-content -->
+
+							<div class="comment-metadata">
+								<span class="reply-link"><?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Respond', 'odin' ), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?></span>
+							</div><!-- .comment-metadata -->
+						</div>
+					</article><!-- .comment-body -->
+<?php
+			break;
 		}
 	}
-
 }

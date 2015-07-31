@@ -8,16 +8,16 @@
  * @since 1.9.0
  */
 ?>
-<div id="comments" class="content-wrap" itemscope itemtype="http://schema.org/Comment">
+<section id="comments" class="content-wrap" itemscope itemtype="http://schema.org/Comment">
 	<?php if ( post_password_required() ) : ?>
-		<span class="nopassword"><?php _e( 'This post is password protected. Enter the password to view all comments.', 'odin' ); ?></span>
-</div><!-- #comments -->
+		<p class="nopassword"><?php _e( 'This post is password protected. Enter the password to view all comments.', 'odin' ); ?></p>
+</section><!-- #comments -->
 		<?php
 		return;
 	endif;
 
 	if ( have_comments() ) : ?>
-		<h2 id="comments-title">
+		<h2 id="comments-title" class="page-header">
 			<?php
 			comments_number( __( '0 Comments', 'odin' ), __( '1 Comment', 'odin' ), __( '% Comments', 'odin' ) );
 			echo ' ' . __( 'to', 'odin' ) . ' <span>&quot;' . get_the_title() . '&quot;</span>';
@@ -31,9 +31,9 @@
 				</ul>
 			</nav>
 		<?php endif; ?>
-		<ol class="commentlist">
+		<ul class="media-list">
 			<?php wp_list_comments( array( 'callback' => 'odin_comments_loop' ) ); ?>
-		</ol>
+		</ul>
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
 			<nav id="comment-nav-above">
 				<ul class="pager">
@@ -44,7 +44,7 @@
 		<?php endif; ?>
 	<?php endif; ?>
 	<?php if ( ! comments_open() && post_type_supports( get_post_type(), 'comments' ) ) : ?>
-		<span class="nocomments"><?php _e( 'Comments closed.', 'odin' ); ?></span>
+		<p class="nocomments"><?php _e( 'Comments closed.', 'odin' ); ?></p>
 	<?php endif; ?>
 
 	<?php
@@ -54,7 +54,7 @@
 		$html_req 		= ( $req ? " required='required'" : '' );
 		$html5 			= current_theme_supports( 'html5', 'comment-form' ) ? 'html5' : null;
 		$comment_field 	= '<div class="comment-form-comment form-group"><label class="control-label" for="comment">' . __( 'Comment', 'odin' ) . ' <span class="required text-danger">*</span></label> ' .
-						 '<textarea id="comment" name="comment" class="form-control" cols="45" rows="8" aria-describedby="form-allowed-tags" aria-required="true" required="required"></textarea></div>';
+						 '<textarea id="comment" name="comment" class="form-control" cols="45" rows="8" aria-required="true" required="required"></textarea></div>';
 		$fields 		=  array(
 			'author' => '<div class="comment-form-author form-group">' . '<label for="author">' . __( 'Name', 'odin' ) . ( $req ? ' <span class="required text-danger">*</span>' : '' ) . '</label> ' .
 			            '<input id="author" name="author" class="form-control" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . $html_req . ' /></div>',
@@ -66,7 +66,8 @@
 		comment_form( array(
 			'comment_notes_after' 	=> '',
 			'comment_field' 		=> $comment_field,
-			'fields' 				=> apply_filters( 'comment_form_default_fields', $fields )
+			'fields' 				=> apply_filters( 'comment_form_default_fields', $fields ),
+			'class_submit' 			=> 'submit btn btn-default'
 		));
 	?>
-</div><!-- #comments -->
+</section><!-- #comments -->
