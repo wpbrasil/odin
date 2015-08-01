@@ -105,68 +105,6 @@
     }
 }
 
-//
-// Comments
-//
-.commentlist {
-    margin: 0;
-    padding: 0;
-    font-size: 13px;
-    line-height: 22px;
-    li.comment, li.pingback {
-        @include clearfix;
-        list-style: none;
-        margin-bottom: 10px;
-    }
-    .comment-meta {
-        color: #666;
-        font-size: 12px;
-        line-height: 15px;
-        .fn {
-            font-size: 13px;
-            font-weight: 600;
-        }
-        a, .fn {
-            color: #444;
-            &:hover {
-                color: $link-color;
-                text-decoration: none;
-            }
-        }
-    }
-    .comment-author {
-        img {
-            float: left;
-            display: block;
-            margin-right: 10px;
-        }
-    }
-    .comment-awaiting-moderation {
-        margin-top: 5px;
-        font-weight: bold;
-        color: #333;
-    }
-}
-
-.bypostauthor {
-    font-size: 100%;
-}
-
-.required {
-    color: #c00;
-}
-
-#commentform {
-    font-size: 13px;
-    line-height: 22px;
-    label {
-        display: block;
-    }
-    p {
-        margin-bottom: 10px;
-    }
-}
-
 // ==========================================================================
 // Footer
 // ==========================================================================
