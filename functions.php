@@ -39,6 +39,11 @@ require_once get_template_directory() . '/core/classes/class-thumbnail-resizer.p
 // require_once get_template_directory() . '/core/classes/class-term-meta.php';
 
 /**
+ * Add support for multiple languages.
+ */
+load_theme_textdomain( 'odin', get_template_directory() . '/languages' );
+
+/**
  * Odin Widgets.
  */
 require_once get_template_directory() . '/core/classes/widgets/class-widget-like-box.php';
@@ -51,11 +56,6 @@ if ( ! function_exists( 'odin_setup_features' ) ) {
 	 * @since 2.2.0
 	 */
 	function odin_setup_features() {
-
-		/**
-		 * Add support for multiple languages.
-		 */
-		load_theme_textdomain( 'odin', get_template_directory() . '/languages' );
 
 		/**
 		 * Register nav menus.
