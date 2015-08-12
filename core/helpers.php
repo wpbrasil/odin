@@ -450,10 +450,11 @@ function odin_get_image_url( $id, $width, $height, $crop = true, $upscale = fals
 	$origin_url = wp_get_attachment_url( $id );
 	$url        = $resizer->process( $origin_url, $width, $height, $crop, $upscale );
 
-	if ( $url )
+	if ( $url ) {
 		return $url;
-	else
+	} else {
 		return $origin_url;
+	}
 }
 
 /**
