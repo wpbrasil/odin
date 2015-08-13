@@ -202,7 +202,7 @@
 			// Gets the current ids.
 			$( 'ul li.image', galleryWrap ).css( 'cursor', 'default' ).each( function () {
 				var attachmentId = $( this ).attr( 'data-attachment_id' );
-				attachmentIds = attachmentIds ? attachmentIds + ',' + attachment.id : attachment.id;
+				attachmentIds = attachmentIds ? attachmentIds + ',' + attachmentId : attachmentId;
 			});
 
 			// Return the new value.
