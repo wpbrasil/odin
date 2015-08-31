@@ -71,8 +71,8 @@ class Odin_Widget_Like_Box extends WP_Widget {
 			<label for="<?php echo $this->get_field_id( 'color_scheme' ); ?>">
 				<?php _e( 'Color Scheme:', 'odin' ); ?>
 				<select id="<?php echo $this->get_field_id( 'color_scheme' ); ?>" class="widefat" name="<?php echo $this->get_field_name( 'color_scheme' ); ?>">
-					<option value="dark" <?php selected( 'dark', $color_scheme, true ); ?>><?php _e( 'Dark','odin' ); ?></option>
-					<option value="light" <?php selected( 'light', $color_scheme, true ); ?>><?php _e( 'Light','odin' ); ?></option>
+					<option value="dark" <?php selected( 'dark', $color_scheme, true ); ?>><?php _e( 'Dark', 'odin' ); ?></option>
+					<option value="light" <?php selected( 'light', $color_scheme, true ); ?>><?php _e( 'Light', 'odin' ); ?></option>
 				</select>
 			</label>
 		</p>
