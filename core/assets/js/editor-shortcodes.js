@@ -8,21 +8,100 @@
         var ed = tinymce.activeEditor;
         var odin_ui = new Odin_Shortcode_UI(editor, ed);
 
+
         editor.addButton('odin_shortcodes', {
             text: ed.getLang('odin_shortcodes.shortcode_title'),
             icon: 'odin-shortcodes',
             type: 'menubutton',
-            menu: [{
-                text: ed.getLang('odin.buttons'),
-                menu: [{
-                    text: ed.getLang('odin.button'),
-                    onclick: function () { odin_ui.button() }
-                }, {
-                    text: ed.getLang('odin.button_group'),
-                    onclick: function () { group_button() }
-                }]
-            }]
+            menu: [
+                {
+                    text: ed.getLang('odin.buttons'),
+                    menu: [
+                        {
+                            text: ed.getLang('odin.button'),
+                            onclick: function () {
+                                odin_ui.button();
+                            }
+                        },
+                        {
+                            text: ed.getLang('odin.group_button'),
+                            onclick: function () {
+                                odin_ui.group_button();
+                            }
+                        },
+                        {
+                            text: ed.getLang('odin.product_by_sku'),
+                            onclick: function () {
+                            }
+                        }
+                    ]
+                },
+                {
+                    text: ed.getLang('odin.list'),
+                    menu: [
+                        {
+                            text: ed.getLang('odin.products_by_sku'),
+                            onclick: function () {
+                            }
+                        },
+                        {
+                            text: ed.getLang('odin.product_categories'),
+                            onclick: function () {
+                            }
+                        },
+                        {
+                            text: ed.getLang('odin.products_by_cat_slug'),
+                            onclick: function () {
+                            }
+                        },
+                        {
+                            text: ed.getLang('odin.products_by_attribute'),
+                            onclick: function () {
+                            }
+                        },
+                        {
+                            text: ed.getLang('odin.recent_products'),
+                            onclick: function () {
+                            }
+                        },
+                        {
+                            text: ed.getLang('odin.featured_products'),
+                            onclick: function () {
+                            }
+                        },
+                        {
+                            text: ed.getLang('odin.sale_products'),
+                            onclick: function () {
+                            }
+                        },
+                        {
+                            text: ed.getLang('odin.best_selling_products'),
+                            onclick: function () {
+                            }
+                        },
+                        {
+                            text: ed.getLang('odin.top_rated_products'),
+                            onclick: function () {
+                            }
+                        }
+                    ]
+                },
+                {
+                    text: ed.getLang('odin.shop_messages'),
+                    onclick: function () {
+                        editor.insertContent('[' + ed.getLang('odin.shop_messages_shortcode') + ']');
+                    }
+                },
+                {
+                    text: ed.getLang('odin.order_tracking'),
+                    onclick: function () {
+                        editor.insertContent('[' + ed.getLang('odin.order_tracking_shortcode') + ']');
+                    }
+                }
+            ]
         });
+
+
     });
 
 })();
@@ -31,7 +110,7 @@ function Odin_Shortcode_UI(_editor, _ed) {
     var editor = _editor;
     var ed = _ed;
 
-    this.button = function() {
+    this.button = function () {
         editor.windowManager.open({
             title: ed.getLang('odin.button'),
             body: [{
@@ -125,7 +204,7 @@ function Odin_Shortcode_UI(_editor, _ed) {
         });
     }
 
-    function group_button() {
+    this.group_button = function() {
         editor.windowManager.open({
             title: ed.getLang('odin.group_button'),
             body: [{
@@ -177,7 +256,7 @@ function Odin_Shortcode_UI(_editor, _ed) {
  * @param  {string} value
  * @return {bool}
  */
-this.isEmpty = function(value) {
+this.isEmpty = function (value) {
     value = value.toString();
 
     if (0 !== value.length) {
