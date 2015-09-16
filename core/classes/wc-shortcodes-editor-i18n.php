@@ -1,109 +1,16 @@
 <?php
-
-/**
- * Odin_Shortcodes class.
- *
- * Built Shortcodes Menu on editor text.
- *
- * @package  Odin
- * @category Shortcodes
- * @author   WPBrasil
- * @version  2.1.4
- */
-class Odin_Shortcodes_Menu
-{
-    public function __construct()
-    {
-
-        add_action('admin_head', array($this, 'add_shortcode_button'));
-		add_filter( 'mce_external_languages', array( $this, 'add_tinymce_locales' ), 20, 1 );
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
-    }
-
-    /**
-     * Add a button for shortcodes to the WP editor.
-     */
-    public function add_shortcode_button()
-    {
-        if (!current_user_can('edit_posts') && !current_user_can('edit_pages')) {
-            return;
-        }
-
-        if (get_user_option('rich_editing') == 'true') {
-            add_filter('mce_external_plugins', array($this, 'add_shortcode_tinymce_plugin'));
-            add_filter('mce_buttons', array($this, 'register_shortcode_button'));
-        }
-    }
-
-    /**
-     * Add the shortcode button to TinyMCE.
-     *
-     * @param  array $plugins TinyMCE plugins.
-     *
-     * @return array          Odin TinyMCE plugin.
-     */
-    public function add_shortcode_tinymce_plugin($plugins)
-    {
-        //$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
-
-        $plugins['odin_shortcodes'] = get_template_directory_uri() . "/core/assets/js/editor-shortcodes.js";
-
-        return $plugins;
-
-    }
-
-    /**
-     * Register the shortcode button.
-     *
-     * @param array $buttons
-     * @return array
-     */
-    public function register_shortcode_button($buttons)
-    {
-        array_push($buttons, '|', 'odin_shortcodes');
-
-        return $buttons;
-    }
-
-    /**
-     * TinyMCE locales function.
-     *
-     * @param  array $locales TinyMCE locales.
-     *
-     * @return array
-     */
-    public function add_tinymce_locales($locales)
-    {
-        $locales['odin_shortcodes'] = plugin_dir_path( __FILE__ ) . 'wc-shortcodes-editor-i18n.php';
-
-        return $locales;
-    }
-
-    /**
-     * Admin scripts.
-     *
-     * @param  string $hook Page slug.
-     *
-     * @return void
-     */
-    public function admin_scripts($hook)
-    {
-        wp_enqueue_style('odin-shortcodes', get_template_directory('assets/css/editor.css', get_template_directory()), array('odin_admin_menu_styles'), false, 'all');
-    }
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
 }
 
-new Odin_Shortcodes_Menu;
-
-class Odin_Shortcodes_Menu_Lang
-{
-
-    function __construct()
-    {
-        $strings = 'tinyMCE.addI18n({' . _WP_Editors::$mce_locale . ': {
+$strings = 'tinyMCE.addI18n({' . _WP_Editors::$mce_locale . ': {
 	odin_shortcodes: {
 		shortcode_title: "' . esc_js(__('Odin', 'odin_shortcodes')) . '",
-		product: "' . esc_js(__('Product', 'odin_shortcodes')) . '",
+		buttons: "' . esc_js(__('Buttons', 'odin_shortcodes')) . '",
+		button: "' . esc_js(__('Button', 'odin_shortcodes')) . '",
+		group_button: "' . esc_js(__('Group button', 'odin_shortcodes')) . '",
 		list: "' . esc_js(__('List', 'odin_shortcodes')) . '",
+		alert: "' . esc_js(__('Alert', 'odin_shortcodes')) . '",
 		add_to_cart: "' . esc_js(__('Price/cart button', 'odin_shortcodes')) . '",
 		add_to_cart_url: "' . esc_js(__('Add to cart URL', 'odin_shortcodes')) . '",
 		product_by_sku: "' . esc_js(__('By SKU/ID', 'odin_shortcodes')) . '",
@@ -159,5 +66,3 @@ class Odin_Shortcodes_Menu_Lang
 		need_attribute_and_terms_slugs: "' . esc_js(__('You need enter with an attribute and terms slugs!', 'odin_shortcodes')) . '"
 	}
 }});';
-    }
-}
