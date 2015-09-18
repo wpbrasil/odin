@@ -1,11 +1,11 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly
 }
 
 $strings = 'tinyMCE.addI18n({' . _WP_Editors::$mce_locale . ': {
 	odin_shortcodes: {
-		shortcode_title: "' . esc_js(__('Odin', 'odin_shortcodes')) . '",
+		shortcode_title: "' . esc_js(__('Odin shortcodes', 'odin_shortcodes')) . '",
 		id: "' . esc_js(__('Id', 'odin_shortcodes')) . '",
 		default: "' . esc_js(__('default', 'odin_shortcodes')) . '",
 		buttons: "' . esc_js(__('Buttons', 'odin_shortcodes')) . '",
@@ -85,6 +85,12 @@ $strings = 'tinyMCE.addI18n({' . _WP_Editors::$mce_locale . ': {
 		scale: "' . esc_js(__('Scale', 'odin_shortcodes')) . '",
 		scrollwheel: "' . esc_js(__('Scrollwheel', 'odin_shortcodes')) . '",
 		map: "' . esc_js(__('Map', 'odin_shortcodes')) . '",
-
+		accordion: "' . esc_js(__('Accordion', 'odin_shortcodes')) . '",
+		accordions_id: "' . esc_js(__('Accordion id', 'odin_shortcodes')) . '",
+		childs: "' . esc_js(__('Childs', 'odin_shortcodes')) . '",
+		grid: "' . esc_js(__('Grid', 'odin_shortcodes')) . '",
+		columns: "' . esc_js(__('Columns', 'odin_shortcodes')) . '",
+		tabs: "' . esc_js(__('Tabs', 'odin_shortcodes')) . '",
+		icon: "' . esc_js(__('Icon', 'odin_shortcodes')) . '",
 	}
 }});';

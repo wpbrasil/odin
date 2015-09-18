@@ -11,7 +11,6 @@
 
         editor.addButton('odin_shortcodes', {
             text: ed.getLang('odin_shortcodes.shortcode_title'),
-            icon: 'odin-shortcodes',
             type: 'menubutton',
             menu: [
                 {
@@ -65,7 +64,7 @@
                 {
                     text: ed.getLang('odin_shortcodes.grid'),
                     onclick: function () {
-                        odin_ui.grid();
+                        odin_ui.grids();
                     }
                 },
                 {
@@ -87,9 +86,9 @@
                     }
                 },
                 {
-                    text: ed.getLang('odin_shortcodes.accordions'),
+                    text: ed.getLang('odin_shortcodes.accordion'),
                     onclick: function () {
-                        odin_ui.accordions();
+                        odin_ui.accordion();
                     }
                 },
                 {
@@ -363,17 +362,54 @@ function Odin_Shortcode_UI(_editor, _ed) {
         });
     }
 
-    this.icons = function () {
-        var x = '<span class="glyphicon glyphicon-adjust"></span>';
-        return x;
+    this.grids = function () {
+        editor.windowManager.open({
+            title: ed.getLang('odin_shortcodes.grid'),
+            body: [{
+                type: 'textbox',
+                name: 'columns',
+                label: ed.getLang('odin_shortcodes.columns')
+            }, {
+                type: 'textbox',
+                name: 'rows',
+                label: ed.getLang('odin_shortcodes.rows')
+            }],
+            onsubmit: function (e) {
+                var rows = e.data.columns,
+                    columns = e.data.columns > 12 ? 12 : e.data.columns,
+                    final_content = '';
+
+                for (var r = 0; r < rows; r++) {
+                    final_content += '[row] \n';
+                    for (var c = 0; c < columns; c++) {
+                        final_content += '[col class="col-md-' + 12 / columns + '"] Column# ' + c + ' Row# ' + r + ' [/col]\n';
+                    }
+                    final_content += '[/row] \n';
+                }
+
+                final_content = final_content.replace(/\n/ig, "<br>");
+
+                editor.insertContent(final_content);
+            }
+        });
     }
+
+
+
     this.icon = function () {
         editor.windowManager.open({
             title: ed.getLang('odin_shortcodes.icon'),
-            html: this.icons(),
-            minHeight: 300,
-            onsubmit: function (e) {
+            minWidth: 200,
+            body: [{
+                type: 'textbox',
+                name: 'icon',
+                label: ed.getLang('odin_shortcodes.icon'),
+            }],
 
+            onsubmit: function (e) {
+                var icon = 'type="' + e.data.icon + '" ';
+
+                editor.insertContent('[icon ' + icon + ']');
             }
         });
     }
@@ -546,13 +582,43 @@ function Odin_Shortcode_UI(_editor, _ed) {
             }
         });
     }
-//TODO rever esse shortcode (DEVE SER DINAMICO)
+
     this.tabs = function () {
+        editor.windowManager.open({
+            title: ed.getLang('odin_shortcodes.tabs'),
+            body: [{
+                type: 'textbox',
+                name: 'tabs',
+                id: 'childs_tabs_input',
+                label: ed.getLang('odin_shortcodes.childs'),
+            }],
+            onsubmit: function (e) {
+                var tabs = e.data.tabs,
+                    tabs_title = '',
+                    tabs_content = '',
+                    final_content = '';
+
+                for (var i = 0; i < tabs; i++) {
+                    tabs_title += ' [tab id="tab_id_' + i + '" ' + (i == 0 ? 'active = "true"' : "") + ' ]Title #' + i + ' [/tab] \n ';
+
+                    tabs_content += ' [tab_content id="tab_id_' + i + '" ' + (i == 0 ? 'active = "true"' : "") + ' ]' + 'content #' + i + '[/tab_content] \n';
+                }
+
+                //formating the output to break line
+                final_content += '[tabs]\n' + tabs_title + '[/tabs]\n';
+                final_content += '[tab_contents]\n' + tabs_content + '[/tab_contents]\n';
+                final_content = final_content.replace(/\n/ig, "<br>");
+
+                editor.insertContent(final_content);
+
+            }
+        });
+        jQuery('#childs_tabs_input').attr('placeholder', '3');
     }
-//TODO rever esse shortcode (DEVE SER DINAMICO)
+
     this.accordion = function () {
         editor.windowManager.open({
-            title: ed.getLang('odin_shortcodes.panel'),
+            title: ed.getLang('odin_shortcodes.accordion'),
             body: [{
                 type: 'textbox',
                 name: 'accordions_id',
@@ -560,13 +626,9 @@ function Odin_Shortcode_UI(_editor, _ed) {
                 value: 'odin-accordion'
             }, {
                 type: 'textbox',
-                name: 'accordion_id',
-                label: ed.getLang('odin_shortcodes.accordion_id'),
-                value: 'odin-accordion'
-            }, {
-                type: 'textbox',
-                name: 'title',
-                label: ed.getLang('odin_shortcodes.title'),
+                name: 'childs',
+                id: 'childs_accordion_input',
+                label: ed.getLang('odin_shortcodes.childs'),
             }, {
                 type: 'listbox',
                 name: 'type',
@@ -578,25 +640,38 @@ function Odin_Shortcode_UI(_editor, _ed) {
                     text: ed.getLang('odin_shortcodes.info'),
                     value: 'info'
                 }, {
-                    text: ed.getLang('odin_shortcodes.primary '),
+                    text: ed.getLang('odin_shortcodes.primary'),
                     value: 'primary'
                 }, {
                     text: ed.getLang('odin_shortcodes.success'),
                     value: 'success'
                 }, {
-                    text: ed.getLang('odin_shortcodes.warning '),
+                    text: ed.getLang('odin_shortcodes.warning'),
                     value: 'warning '
                 }, {
-                    text: ed.getLang('odin_shortcodes.danger '),
+                    text: ed.getLang('odin_shortcodes.danger'),
                     value: 'danger '
                 }]
             }],
             onsubmit: function (e) {
-                var type = 'type="' + e.data.type + '" ';
+                var type = ' type="' + e.data.type + '" ',
+                    accordions_id = ' id="' + e.data.accordions_id + '" ',
+                    childs = e.data.childs <= 0 ? 1 : e.data.childs,
+                    accordions = '',
+                    final_content = '';
 
-                editor.insertContent('[panel][panel_body]' + e.data.content + '[/panel_body][/panel]');
+                for (var i = 0; i < childs; i++) {
+                    accordions += '[accordion id=accordion#' + i + ' title="title#' + i + '" ' + (i == 0 ? " active='true' " : " ") + ' ]' + 'content #' + i + ' [/accordion] \n';
+                }
+
+                final_content += ' [accordions' + accordions_id + ' ] \n';
+                final_content += accordions;
+                final_content += '[/accordions] \n';
+                final_content = final_content.replace(/\n/ig, "<br>");
+                editor.insertContent(final_content);
             }
         });
+        jQuery('#childs_accordion_input').attr('placeholder', '3');
     }
 
     this.tooltip = function () {
