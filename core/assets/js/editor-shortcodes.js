@@ -15,175 +15,108 @@
             type: 'menubutton',
             menu: [
                 {
-                    text: ed.getLang('odin_shortcodes.buttons'),
-                    menu: [
-                        {
-                            text: ed.getLang('odin_shortcodes.button'),
-                            onclick: function () {
-                                odin_ui.button();
-                            }
-                        },
-                        {
-                            text: ed.getLang('odin_shortcodes.group_button'),
-                            onclick: function () {
-                                odin_ui.group_button();
-                            }
-                        },
-                        {
-                            text: ed.getLang('odin_shortcodes.alert'),
-                            onclick: function () {
-                                odin_ui.alert();
-                            }
-                        },
-                        {
-                            text: ed.getLang('odin_shortcodes.label'),
-                            onclick: function () {
-                                odin_ui.label();
-                            }
-                        },
-                        {
-                            text: ed.getLang('odin_shortcodes.badge'),
-                            onclick: function () {
-                                odin_ui.badge();
-                            }
-                        },
-                        {
-                            text: ed.getLang('odin_shortcodes.icon'),
-                            onclick: function () {
-                                odin_ui.icon();
-                            }
-                        },
-                        {
-                            text: ed.getLang('odin_shortcodes.well'),
-                            onclick: function () {
-                                odin_ui.well();
-                            }
-                        },
-                        {
-                            text: ed.getLang('odin_shortcodes.table'),
-                            onclick: function () {
-                                odin_ui.table();
-                            }
-                        },
-                        {
-                            text: ed.getLang('odin_shortcodes.grid'),
-                            onclick: function () {
-                                odin_ui.grid();
-                            }
-                        },
-                        {
-                            text: ed.getLang('odin_shortcodes.progress_bar'),
-                            onclick: function () {
-                                odin_ui.progress();
-                            }
-                        },
-                        {
-                            text: ed.getLang('odin_shortcodes.panel'),
-                            onclick: function () {
-                                odin_ui.panel();
-                            }
-                        },
-                        {
-                            text: ed.getLang('odin_shortcodes.tabs'),
-                            onclick: function () {
-                                odin_ui.tabs();
-                            }
-                        },
-                        {
-                            text: ed.getLang('odin_shortcodes.accordions'),
-                            onclick: function () {
-                                odin_ui.accordions();
-                            }
-                        },
-                        {
-                            text: ed.getLang('odin_shortcodes.tooltip'),
-                            onclick: function () {
-                                odin_ui.tooltip();
-                            }
-                        },
-                        {
-                            text: ed.getLang('odin_shortcodes.map'),
-                            onclick: function () {
-                                odin_ui.map();
-                            }
-                        },
-                        {
-                            text: ed.getLang('odin_shortcodes.clear'),
-                            onclick: function () {
-                                odin_ui.clear();
-                            }
-                        },
-                        {
-                            text: ed.getLang('odin_shortcodes.qrcode'),
-                            onclick: function () {
-                                odin_ui.qrcode();
-                            }
-                        }
-
-                    ]
+                    text: ed.getLang('odin_shortcodes.button'),
+                    onclick: function () {
+                        odin_ui.button();
+                    }
+                },
+                {
+                    text: ed.getLang('odin_shortcodes.group_button'),
+                    onclick: function () {
+                        odin_ui.group_button();
+                    }
+                },
+                {
+                    text: ed.getLang('odin_shortcodes.alert'),
+                    onclick: function () {
+                        odin_ui.alert();
+                    }
                 },
                 {
                     text: ed.getLang('odin_shortcodes.label'),
-                    menu: [
-                        {
-                            text: ed.getLang('odin_shortcodes.products_by_sku'),
-                            onclick: function () {
-                            }
-                        },
-                        {
-                            text: ed.getLang('odin_shortcodes.product_categories'),
-                            onclick: function () {
-                            }
-                        },
-                        {
-                            text: ed.getLang('odin_shortcodes.products_by_cat_slug'),
-                            onclick: function () {
-                            }
-                        },
-                        {
-                            text: ed.getLang('odin_shortcodes.products_by_attribute'),
-                            onclick: function () {
-                            }
-                        },
-                        {
-                            text: ed.getLang('odin_shortcodes.recent_products'),
-                            onclick: function () {
-                            }
-                        },
-                        {
-                            text: ed.getLang('odin_shortcodes.featured_products'),
-                            onclick: function () {
-                            }
-                        },
-                        {
-                            text: ed.getLang('odin_shortcodes.sale_products'),
-                            onclick: function () {
-                            }
-                        },
-                        {
-                            text: ed.getLang('odin_shortcodes.best_selling_products'),
-                            onclick: function () {
-                            }
-                        },
-                        {
-                            text: ed.getLang('odin_shortcodes.top_rated_products'),
-                            onclick: function () {
-                            }
-                        }
-                    ]
-                },
-                {
-                    text: ed.getLang('odin_shortcodes.shop_messages'),
                     onclick: function () {
-                        editor.insertContent('[' + ed.getLang('odin_shortcodes.shop_messages_shortcode') + ']');
+                        odin_ui.label();
                     }
                 },
                 {
-                    text: ed.getLang('odin_shortcodes.order_tracking'),
+                    text: ed.getLang('odin_shortcodes.badge'),
                     onclick: function () {
-                        editor.insertContent('[' + ed.getLang('odin_shortcodes.order_tracking_shortcode') + ']');
+                        odin_ui.badge();
+                    }
+                },
+                {
+                    text: ed.getLang('odin_shortcodes.icon'),
+                    onclick: function () {
+                        odin_ui.icon();
+                    }
+                },
+                {
+                    text: ed.getLang('odin_shortcodes.well'),
+                    onclick: function () {
+                        odin_ui.well();
+                    }
+                },
+                {
+                    text: ed.getLang('odin_shortcodes.table'),
+                    onclick: function () {
+                        odin_ui.table();
+                    }
+                },
+                {
+                    text: ed.getLang('odin_shortcodes.grid'),
+                    onclick: function () {
+                        odin_ui.grid();
+                    }
+                },
+                {
+                    text: ed.getLang('odin_shortcodes.progress_bar'),
+                    onclick: function () {
+                        odin_ui.progress();
+                    }
+                },
+                {
+                    text: ed.getLang('odin_shortcodes.panel'),
+                    onclick: function () {
+                        odin_ui.panel();
+                    }
+                },
+                {
+                    text: ed.getLang('odin_shortcodes.tabs'),
+                    onclick: function () {
+                        odin_ui.tabs();
+                    }
+                },
+                {
+                    text: ed.getLang('odin_shortcodes.accordions'),
+                    onclick: function () {
+                        odin_ui.accordions();
+                    }
+                },
+                {
+                    text: ed.getLang('odin_shortcodes.tooltip'),
+                    onclick: function () {
+                        odin_ui.tooltip();
+                    }
+                },
+                {
+                    text: ed.getLang('odin_shortcodes.map'),
+                    onclick: function () {
+                        odin_ui.map();
+                    }
+                },
+                {
+                    text: ed.getLang('odin_shortcodes.clear'),
+                    onclick: function () {
+                        odin_ui.clear();
+                    }
+                },
+                {
+                    text: ed.getLang('odin_shortcodes.qrcode'),
+                    onclick: function () {
+                        odin_ui.qrcode();
                     }
                 }
+
             ]
         });
 
@@ -240,10 +173,12 @@ function Odin_Shortcode_UI(_editor, _ed) {
             }, {
                 type: 'textbox',
                 name: 'link',
+                id: 'link_button_input',
                 label: ed.getLang('odin_shortcodes.link')
             }, {
                 type: 'textbox',
                 name: 'class_css',
+                id: 'class_button_input',
                 label: ed.getLang('odin_shortcodes.class')
             }, {
                 type: 'textbox',
@@ -281,18 +216,19 @@ function Odin_Shortcode_UI(_editor, _ed) {
                     size = 'size="' + e.data.size + '" ',
                     direction = e.data.direction == 'default' ? '' : 'direction="' + e.data.direction + '" ';
 
-                if (!isEmpty(e.data.text)) {
-                    editor.insertContent('[button ' + type + size + link + class_css + tooltip + direction + ']' + text + '[/button]');
-                } else {
-                    editor.windowManager.alert(ed.getLang('odin_shortcodes.need_text'));
-                }
+                editor.insertContent('[button ' + type + size + link + class_css + tooltip + direction + ']' + text + '[/button]');
             }
         });
+
+        jQuery("#class_button_input").attr("placeholder", "hover");
+        jQuery("#link_button_input").attr("placeholder", "http://www.site.com");
+
     }
 
     this.group_button = function () {
         editor.windowManager.open({
             title: ed.getLang('odin_shortcodes.group_button'),
+            minWidth: 300,
             body: [{
                 type: 'listbox',
                 name: 'type',
@@ -330,7 +266,7 @@ function Odin_Shortcode_UI(_editor, _ed) {
                     size = 'size="' + e.data.size + '" ',
                     justified = 'justified="' + e.data.justified + '" ';
 
-                editor.insertContent('[button_group ' + type + size + justified + '] #content [/button_group]');
+                editor.insertContent('[button_group ' + type + size + justified + ']  #content  [/button_group]');
             }
         });
     }
@@ -427,10 +363,18 @@ function Odin_Shortcode_UI(_editor, _ed) {
         });
     }
 
+    this.icons = function () {
+        var x = '<span class="glyphicon glyphicon-adjust"></span>';
+        return x;
+    }
     this.icon = function () {
         editor.windowManager.open({
             title: ed.getLang('odin_shortcodes.icon'),
-            //O que fazer???
+            html: this.icons(),
+            minHeight: 300,
+            onsubmit: function (e) {
+
+            }
         });
     }
 
@@ -452,7 +396,8 @@ function Odin_Shortcode_UI(_editor, _ed) {
 
     this.table = function () {
         editor.windowManager.open({
-            title: ed.getLang('odin_shortcodes.well'),
+            title: ed.getLang('odin_shortcodes.table'),
+            minWidth: 500,
             body: [{
                 type: 'listbox',
                 name: 'type',
@@ -464,8 +409,8 @@ function Odin_Shortcode_UI(_editor, _ed) {
                     text: ed.getLang('odin_shortcodes.hover'),
                     value: 'hover'
                 }, {
-                    text: ed.getLang('odin_shortcodes.condensed '),
-                    value: 'condensed '
+                    text: ed.getLang('odin_shortcodes.condensed'),
+                    value: 'condensed'
                 }, {
                     text: ed.getLang('odin_shortcodes.responsive'),
                     value: 'responsive'
@@ -479,11 +424,13 @@ function Odin_Shortcode_UI(_editor, _ed) {
                 {
                     type: 'textbox',
                     name: 'cols',
+                    id: 'cols_table_input',
                     label: ed.getLang('odin_shortcodes.cols'),
                 },
                 {
                     type: 'textbox',
                     name: 'rows',
+                    id: 'rows_table_input',
                     label: ed.getLang('odin_shortcodes.rows'),
                 }],
             onsubmit: function (e) {
@@ -495,11 +442,14 @@ function Odin_Shortcode_UI(_editor, _ed) {
                 editor.insertContent('[table ' + type + border + cols + rows + ' ] ');
             }
         });
+
+        jQuery("#cols_table_input").attr("placeholder", "Column 1, Column 2, ...");
+        jQuery("#rows_table_input").attr("placeholder", "Column 1 row 1, Column 2 row1 | Column 1 row 2");
     }
 
     this.progress = function () {
         editor.windowManager.open({
-            title: ed.getLang('odin_shortcodes.well'),
+            title: ed.getLang('odin_shortcodes.progress'),
             body: [{
                 type: 'listbox',
                 name: 'type',
@@ -511,7 +461,7 @@ function Odin_Shortcode_UI(_editor, _ed) {
                     text: ed.getLang('odin_shortcodes.info'),
                     value: 'info'
                 }, {
-                    text: ed.getLang('odin_shortcodes.warning '),
+                    text: ed.getLang('odin_shortcodes.warning'),
                     value: 'warning '
                 }, {
                     text: ed.getLang('odin_shortcodes.danger'),
@@ -522,7 +472,7 @@ function Odin_Shortcode_UI(_editor, _ed) {
                 name: 'class_css',
                 label: ed.getLang('odin_shortcodes.class'),
                 values: [{
-                    text: ed.getLang('odin_shortcodes.progress-striped'),
+                    text: ed.getLang('odin_shortcodes.progress_striped'),
                     value: 'progress-striped'
                 }, {
                     text: ed.getLang('odin_shortcodes.active'),
@@ -532,7 +482,7 @@ function Odin_Shortcode_UI(_editor, _ed) {
                 {
                     type: 'slider',
                     name: 'value',
-                    label: ed.getLang('odin_shortcodes.value'),
+                    label: ed.getLang('odin_shortcodes.value_progress'),
                 },
                 {
                     type: 'textbox',
@@ -576,16 +526,16 @@ function Odin_Shortcode_UI(_editor, _ed) {
                     text: ed.getLang('odin_shortcodes.info'),
                     value: 'info'
                 }, {
-                    text: ed.getLang('odin_shortcodes.primary '),
+                    text: ed.getLang('odin_shortcodes.primary'),
                     value: 'primary'
                 }, {
                     text: ed.getLang('odin_shortcodes.success'),
                     value: 'success'
                 }, {
-                    text: ed.getLang('odin_shortcodes.warning '),
+                    text: ed.getLang('odin_shortcodes.warning'),
                     value: 'warning '
                 }, {
-                    text: ed.getLang('odin_shortcodes.danger '),
+                    text: ed.getLang('odin_shortcodes.danger'),
                     value: 'danger '
                 }]
             }],
@@ -596,10 +546,10 @@ function Odin_Shortcode_UI(_editor, _ed) {
             }
         });
     }
-    //TODO rever esse shortcode (DEVE SER DINAMICO)
+//TODO rever esse shortcode (DEVE SER DINAMICO)
     this.tabs = function () {
     }
-    //TODO rever esse shortcode (DEVE SER DINAMICO)
+//TODO rever esse shortcode (DEVE SER DINAMICO)
     this.accordion = function () {
         editor.windowManager.open({
             title: ed.getLang('odin_shortcodes.panel'),
@@ -656,13 +606,14 @@ function Odin_Shortcode_UI(_editor, _ed) {
                 type: 'textbox',
                 name: 'title',
                 label: ed.getLang('odin_shortcodes.title')
-            },{
+            }, {
                 type: 'textbox',
                 name: 'content',
                 label: ed.getLang('odin_shortcodes.content')
-            },{
+            }, {
                 type: 'textbox',
                 name: 'link',
+                id: 'link_tooltip_input',
                 label: ed.getLang('odin_shortcodes.link')
             }, {
                 type: 'listbox',
@@ -687,10 +638,12 @@ function Odin_Shortcode_UI(_editor, _ed) {
                     title = 'title="' + e.data.title + '" ',
                     link = 'link="' + e.data.link + '" ';
 
-                editor.insertContent(' [tooltip '+ title + direction + link + ']'+ e.data.content +'[/tooltip]');
+                editor.insertContent(' [tooltip ' + title + direction + link + ']' + e.data.content + '[/tooltip]');
 
             }
         });
+        jQuery("#link_tooltip_input").attr("placeholder", "http://www.site.com");
+
     }
 
     this.clear = function () {
@@ -703,13 +656,14 @@ function Odin_Shortcode_UI(_editor, _ed) {
             body: [{
                 type: 'textbox',
                 name: 'data',
+                id: 'data_qr_input',
                 label: ed.getLang('odin_shortcodes.data')
-            },{
+            }, {
                 type: 'textbox',
                 name: 'size',
                 label: ed.getLang('odin_shortcodes.size'),
                 value: '150x150'
-            },{
+            }, {
                 type: 'textbox',
                 name: 'title',
                 label: ed.getLang('odin_shortcodes.title')
@@ -720,50 +674,60 @@ function Odin_Shortcode_UI(_editor, _ed) {
                     size = 'size="' + e.data.size + '" ',
                     title = 'title="' + e.data.title + '" ';
 
-                editor.insertContent(' [qrcode '+ data + size + title + ']');
+                editor.insertContent(' [qrcode ' + data + size + title + ']');
 
             }
         });
+
+        jQuery('#data_qr_input').attr("placeholder", "http://www.site.com");
     }
 
     this.map = function () {
         editor.windowManager.open({
+            maxHeight: 500,
+            minHeight: 300,
+            maxWidth: 700,
+            minWidth: 450,
             title: ed.getLang('odin_shortcodes.map'),
+            id: 'map-shortcode-panel',
             body: [{
+
                 type: 'textbox',
                 name: 'id',
                 value: 'odin_gmap',
                 label: ed.getLang('odin_shortcodes.id')
-            },{
+            }, {
                 type: 'textbox',
                 name: 'latitude',
+                id: 'lat_map_input',
                 label: ed.getLang('odin_shortcodes.latitude')
-            },{
+            }, {
                 type: 'textbox',
                 name: 'longitude',
+                id: 'long_map_input',
                 label: ed.getLang('odin_shortcodes.longitude')
-            },{
+            }, {
                 type: 'textbox',
                 name: 'zoom',
                 value: '10',
                 label: ed.getLang('odin_shortcodes.zoom')
-            },{
+            }, {
                 type: 'textbox',
                 name: 'width',
                 value: '600',
                 label: ed.getLang('odin_shortcodes.width')
-            },{
+            }, {
                 type: 'textbox',
                 name: 'height',
                 value: '400',
                 label: ed.getLang('odin_shortcodes.height')
-            },{
+            }, {
                 type: 'listbox',
                 name: 'maptype',
                 label: ed.getLang('odin_shortcodes.maptype'),
                 values: [{
-                text: ed.getLang('odin_shortcodes.ROADMAP'),
-                value: 'ROADMAP'
+                    text: ed.getLang('odin_shortcodes.ROADMAP'),
+                    value: 'ROADMAP'
                 }, {
                     text: ed.getLang('odin_shortcodes.SATELLITE'),
                     value: 'SATELLITE'
@@ -773,94 +737,118 @@ function Odin_Shortcode_UI(_editor, _ed) {
                 }, {
                     text: ed.getLang('odin_shortcodes.TERRAIN'),
                     value: 'TERRAIN'
-                }, {
-                    text: ed.getLang('odin_shortcodes.TERRAIN'),
-                    value: 'TERRAIN'
-                }]},
-            {
-                type: 'textbox',
-                name: 'adress',
-                label: ed.getLang('odin_shortcodes.adress')
+                }]
             },
-            {
-                type: 'textbox',
-                name: 'kml',
-                label: ed.getLang('odin_shortcodes.kml')
-            },
-            {
-                type: 'checkbox',
-                name: 'kmlautofit',
-                label: ed.getLang('odin_shortcodes.kmlautofit'),
-                checked: false
-            },
-            {
-                type: 'checkbox',
-                name: 'marker',
-                label: ed.getLang('odin_shortcodes.marker'),
-                checked: false
-            },
-            {
-                type: 'textbox',
-                name: 'markerimage',
-                label: ed.getLang('odin_shortcodes.markerimage')
-            },
-            {
-                type: 'checkbox',
-                name: 'traffic',
-                label: ed.getLang('odin_shortcodes.traffic'),
-                checked: false
-            },
-            {
-                type: 'checkbox',
-                name: 'bike',
-                label: ed.getLang('odin_shortcodes.bike'),
-                checked: false
-            },
-            {
-                type: 'textbox',
-                name: 'fusion',
-                label: ed.getLang('odin_shortcodes.fusion'),
+                {
+                    type: 'textbox',
+                    name: 'address',
+                    label: ed.getLang('odin_shortcodes.address')
+                },
+                {
+                    type: 'textbox',
+                    name: 'kml',
+                    id: 'kml_map_input',
+                    label: ed.getLang('odin_shortcodes.kml')
+                },
+                {
+                    type: 'checkbox',
+                    name: 'kmlautofit',
+                    label: ed.getLang('odin_shortcodes.kmlautofit'),
+                    checked: false
+                },
+                {
+                    type: 'checkbox',
+                    name: 'marker',
+                    label: ed.getLang('odin_shortcodes.marker'),
+                    checked: false
+                },
+                {
+                    type: 'textbox',
+                    name: 'markerimage',
+                    id: 'markerimg_map_input',
+                    label: ed.getLang('odin_shortcodes.markerimage')
+                },
+                {
+                    type: 'checkbox',
+                    name: 'traffic',
+                    label: ed.getLang('odin_shortcodes.traffic'),
+                    checked: false
+                },
+                {
+                    type: 'checkbox',
+                    name: 'bike',
+                    label: ed.getLang('odin_shortcodes.bike'),
+                    checked: false
+                },
+                {
+                    type: 'textbox',
+                    name: 'fusion',
+                    label: ed.getLang('odin_shortcodes.fusion'),
 
-            },
-            {
-                type: 'textbox',
-                name: 'infowindow',
-                label: ed.getLang('odin_shortcodes.infowindow'),
+                },
+                {
+                    type: 'textbox',
+                    name: 'infowindow',
+                    label: ed.getLang('odin_shortcodes.infowindow'),
 
-            },
-            {
-                type: 'checkbox',
-                name: 'infowindowdefault',
-                label: ed.getLang('odin_shortcodes.infowindowdefault'),
-                checked: false
-            },
-            {
-                type: 'checkbox',
-                name: 'hidecontrols',
-                label: ed.getLang('odin_shortcodes.hidecontrols'),
-                checked: false
-            },
-            {
-                type: 'checkbox',
-                name: 'scale',
-                label: ed.getLang('odin_shortcodes.scale'),
-                checked: false
-            },
-            {
-                type: 'checkbox',
-                name: 'scrollwheel',
-                label: ed.getLang('odin_shortcodes.scrollwheel'),
-                checked: true
-            }],
+                },
+                {
+                    type: 'checkbox',
+                    name: 'infowindowdefault',
+                    label: ed.getLang('odin_shortcodes.infowindowdefault'),
+                    checked: false
+                },
+                {
+                    type: 'checkbox',
+                    name: 'hidecontrols',
+                    label: ed.getLang('odin_shortcodes.hidecontrols'),
+                    checked: false
+                },
+                {
+                    type: 'checkbox',
+                    name: 'scale',
+                    label: ed.getLang('odin_shortcodes.scale'),
+                    checked: false
+                },
+                {
+                    type: 'checkbox',
+                    name: 'scrollwheel',
+                    label: ed.getLang('odin_shortcodes.scrollwheel'),
+                    checked: true
+                }],
             onsubmit: function (e) {
-                var data = 'data="' + e.data.data + '" ',
-                    size = 'size="' + e.data.size + '" ',
-                    title = 'title="' + e.data.title + '" ';
+                var id = ' id="' + e.data.id + '" ',
+                    latitude = e.data.latitude == '' ? '' : ' latitude="' + e.data.latitude + '" ',
+                    longitude = e.data.longitude == '' ? '' : ' longitude="' + e.data.longitude + '" ',
+                    zoom = ' zoom="' + e.data.zoom + '" ',
+                    width = ' width="' + e.data.width + '" ',
+                    height = ' height="' + e.data.height + '" ',
+                    maptype = ' maptype="' + e.data.maptype + '" ',
+                    address = ' address="' + e.data.address + '" ',
+                    kml = ' kml="' + e.data.kml + '" ',
+                    kmlautofit = ' kmlautofit="' + e.data.kmlautofit + '" ',
+                    marker = ' marker="' + e.data.marker + '" ',
+                    markerimage = ' markerimage="' + e.data.markerimage + '" ',
+                    traffic = ' traffic="' + e.data.traffic + '" ',
+                    fusion = ' fusion="' + e.data.fusion + '" ',
+                    bike = ' bike="' + e.data.bike + '" ',
+                    infowindow = ' infowindow="' + e.data.infowindow + '" ',
+                    infowindowdefault = ' infowindowdefault="' + e.data.infowindowdefault + '" ',
+                    hidecontrols = ' hidecontrols="' + e.data.hidecontrols + '" ',
+                    scale = ' scale="' + e.data.scale + '" ',
+                    scrollwheel = ' scrollwheel="' + e.data.scrollwheel + '" ';
 
-                editor.insertContent(' [map ]');
+                editor.insertContent(' [map' + id + latitude + longitude + zoom + width + height + maptype + address +
+                    kml + kmlautofit + marker + markerimage + traffic + fusion + bike + infowindow + infowindowdefault + scale + scrollwheel + ']');
 
             }
         });
+        jQuery('#lat_map_input').attr('placeholder', '-25.363882');
+        jQuery('#long_map_input').attr('placeholder', '131.044922');
+        jQuery('#markerimg_map_input').attr('placeholder', 'http://.../beachflag.png');
+        jQuery('#kml_map_input').attr('placeholder', 'http://.../ggeoxml/cta.kml');
+
+
     }
 
 
