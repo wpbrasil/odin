@@ -70,7 +70,7 @@ class Odin_Shortcodes_Menu
      */
     public function add_tinymce_locales($locales)
     {
-        $locales['odin_shortcodes'] = plugin_dir_path( __FILE__ ) . 'wc-shortcodes-editor-i18n.php';
+        $locales['odin_shortcodes'] = plugin_dir_path( __FILE__ ) . '/../../inc/odin-shortcodes-editor-i18n.php';
 
         return $locales;
     }
