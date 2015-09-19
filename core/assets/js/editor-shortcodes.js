@@ -366,7 +366,7 @@ function Odin_Shortcode_UI(_editor, _ed) {
                 label: ed.getLang('odin_shortcodes.rows')
             }],
             onsubmit: function (e) {
-                var rows = e.data.columns,
+                var rows = e.data.rows,
                     columns = e.data.columns > 12 ? 12 : e.data.columns,
                     final_content = '';
 
