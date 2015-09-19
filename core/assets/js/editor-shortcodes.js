@@ -8,7 +8,6 @@
         var ed = tinymce.activeEditor;
         var odin_ui = new Odin_Shortcode_UI(editor, ed);
 
-
         editor.addButton('odin_shortcodes', {
             text: ed.getLang('odin_shortcodes.shortcode_title'),
             type: 'menubutton',
@@ -115,13 +114,9 @@
                         odin_ui.qrcode();
                     }
                 }
-
             ]
         });
-
-
     });
-
 })();
 
 function Odin_Shortcode_UI(_editor, _ed) {
@@ -253,13 +248,12 @@ function Odin_Shortcode_UI(_editor, _ed) {
                     text: ed.getLang('odin_shortcodes.xs'),
                     value: 'xs'
                 }]
-            },
-                {
-                    type: 'checkbox',
-                    name: 'justified',
-                    label: ed.getLang('odin_shortcodes.justified'),
-                    checked: false
-                }],
+            }, {
+                type: 'checkbox',
+                name: 'justified',
+                label: ed.getLang('odin_shortcodes.justified'),
+                checked: false
+            }],
             onsubmit: function (e) {
                 var type = 'type="' + e.data.type + '" ',
                     size = 'size="' + e.data.size + '" ',
@@ -294,13 +288,12 @@ function Odin_Shortcode_UI(_editor, _ed) {
                     text: ed.getLang('odin_shortcodes.danger'),
                     value: 'danger'
                 }]
-            },
-                {
-                    type: 'checkbox',
-                    name: 'close',
-                    label: ed.getLang('odin_shortcodes.close'),
-                    checked: false
-                }],
+            }, {
+                type: 'checkbox',
+                name: 'close',
+                label: ed.getLang('odin_shortcodes.close'),
+                checked: false
+            }],
             onsubmit: function (e) {
                 var type = 'type="' + e.data.type + '" ',
                     close = e.data.close == true ? 'close="' + e.data.close + '" ' : '';
@@ -340,7 +333,6 @@ function Odin_Shortcode_UI(_editor, _ed) {
             }],
             onsubmit: function (e) {
                 var type = 'type="' + e.data.type + '" ';
-
                 editor.insertContent('[label ' + type + ']' + e.data.content + '[/label]');
             }
         });
@@ -356,7 +348,6 @@ function Odin_Shortcode_UI(_editor, _ed) {
             }],
             onsubmit: function (e) {
                 var type = 'type="' + e.data.type + '" ';
-
                 editor.insertContent('[badge ]' + e.data.content + '[/badge]');
             }
         });
@@ -388,12 +379,10 @@ function Odin_Shortcode_UI(_editor, _ed) {
                 }
 
                 final_content = final_content.replace(/\n/ig, "<br>");
-
                 editor.insertContent(final_content);
             }
         });
     }
-
 
 
     this.icon = function () {
@@ -408,7 +397,6 @@ function Odin_Shortcode_UI(_editor, _ed) {
 
             onsubmit: function (e) {
                 var icon = 'type="' + e.data.icon + '" ';
-
                 editor.insertContent('[icon ' + icon + ']');
             }
         });
@@ -424,7 +412,6 @@ function Odin_Shortcode_UI(_editor, _ed) {
             }],
             onsubmit: function (e) {
                 var type = 'type="' + e.data.type + '" ';
-
                 editor.insertContent('[well]' + e.data.content + '[/well]');
             }
         });
@@ -456,19 +443,17 @@ function Odin_Shortcode_UI(_editor, _ed) {
                 name: 'border',
                 label: ed.getLang('odin_shortcodes.border'),
                 checked: false
-            },
-                {
-                    type: 'textbox',
-                    name: 'cols',
-                    id: 'cols_table_input',
-                    label: ed.getLang('odin_shortcodes.cols'),
-                },
-                {
-                    type: 'textbox',
-                    name: 'rows',
-                    id: 'rows_table_input',
-                    label: ed.getLang('odin_shortcodes.rows'),
-                }],
+            }, {
+                type: 'textbox',
+                name: 'cols',
+                id: 'cols_table_input',
+                label: ed.getLang('odin_shortcodes.cols'),
+            }, {
+                type: 'textbox',
+                name: 'rows',
+                id: 'rows_table_input',
+                label: ed.getLang('odin_shortcodes.rows'),
+            }],
             onsubmit: function (e) {
                 var type = 'type="' + e.data.type + '" ',
                     border = e.data.border == true ? 'border=true" ' : '',
@@ -514,24 +499,21 @@ function Odin_Shortcode_UI(_editor, _ed) {
                     text: ed.getLang('odin_shortcodes.active'),
                     value: 'active'
                 }]
-            },
-                {
-                    type: 'slider',
-                    name: 'value',
-                    label: ed.getLang('odin_shortcodes.value_progress'),
-                },
-                {
-                    type: 'textbox',
-                    name: 'max',
-                    label: ed.getLang('odin_shortcodes.max'),
-                    value: '100'
-                },
-                {
-                    type: 'textbox',
-                    name: 'min',
-                    label: ed.getLang('odin_shortcodes.min'),
-                    value: '0'
-                }],
+            }, {
+                type: 'slider',
+                name: 'value',
+                label: ed.getLang('odin_shortcodes.value_progress'),
+            }, {
+                type: 'textbox',
+                name: 'max',
+                label: ed.getLang('odin_shortcodes.max'),
+                value: '100'
+            }, {
+                type: 'textbox',
+                name: 'min',
+                label: ed.getLang('odin_shortcodes.min'),
+                value: '0'
+            }],
             onsubmit: function (e) {
                 var type = 'type="' + e.data.type + '" ',
                     class_css = 'class="' + e.data.class + '" ',
@@ -600,7 +582,6 @@ function Odin_Shortcode_UI(_editor, _ed) {
 
                 for (var i = 0; i < tabs; i++) {
                     tabs_title += ' [tab id="tab_id_' + i + '" ' + (i == 0 ? 'active = "true"' : "") + ' ]Title #' + i + ' [/tab] \n ';
-
                     tabs_content += ' [tab_content id="tab_id_' + i + '" ' + (i == 0 ? 'active = "true"' : "") + ' ]' + 'content #' + i + '[/tab_content] \n';
                 }
 
@@ -742,15 +723,13 @@ function Odin_Shortcode_UI(_editor, _ed) {
                 type: 'textbox',
                 name: 'title',
                 label: ed.getLang('odin_shortcodes.title')
-            }
-            ],
+            }],
             onsubmit: function (e) {
                 var data = 'data="' + e.data.data + '" ',
                     size = 'size="' + e.data.size + '" ',
                     title = 'title="' + e.data.title + '" ';
 
                 editor.insertContent(' [qrcode ' + data + size + title + ']');
-
             }
         });
 
@@ -813,84 +792,71 @@ function Odin_Shortcode_UI(_editor, _ed) {
                     text: ed.getLang('odin_shortcodes.TERRAIN'),
                     value: 'TERRAIN'
                 }]
-            },
-                {
-                    type: 'textbox',
-                    name: 'address',
-                    label: ed.getLang('odin_shortcodes.address')
-                },
-                {
-                    type: 'textbox',
-                    name: 'kml',
-                    id: 'kml_map_input',
-                    label: ed.getLang('odin_shortcodes.kml')
-                },
-                {
-                    type: 'checkbox',
-                    name: 'kmlautofit',
-                    label: ed.getLang('odin_shortcodes.kmlautofit'),
-                    checked: false
-                },
-                {
-                    type: 'checkbox',
-                    name: 'marker',
-                    label: ed.getLang('odin_shortcodes.marker'),
-                    checked: false
-                },
-                {
-                    type: 'textbox',
-                    name: 'markerimage',
-                    id: 'markerimg_map_input',
-                    label: ed.getLang('odin_shortcodes.markerimage')
-                },
-                {
-                    type: 'checkbox',
-                    name: 'traffic',
-                    label: ed.getLang('odin_shortcodes.traffic'),
-                    checked: false
-                },
-                {
-                    type: 'checkbox',
-                    name: 'bike',
-                    label: ed.getLang('odin_shortcodes.bike'),
-                    checked: false
-                },
-                {
-                    type: 'textbox',
-                    name: 'fusion',
-                    label: ed.getLang('odin_shortcodes.fusion'),
+            }, {
+                type: 'textbox',
+                name: 'address',
+                label: ed.getLang('odin_shortcodes.address')
+            }, {
+                type: 'textbox',
+                name: 'kml',
+                id: 'kml_map_input',
+                label: ed.getLang('odin_shortcodes.kml')
+            }, {
+                type: 'checkbox',
+                name: 'kmlautofit',
+                label: ed.getLang('odin_shortcodes.kmlautofit'),
+                checked: false
+            }, {
+                type: 'checkbox',
+                name: 'marker',
+                label: ed.getLang('odin_shortcodes.marker'),
+                checked: false
+            }, {
+                type: 'textbox',
+                name: 'markerimage',
+                id: 'markerimg_map_input',
+                label: ed.getLang('odin_shortcodes.markerimage')
+            }, {
+                type: 'checkbox',
+                name: 'traffic',
+                label: ed.getLang('odin_shortcodes.traffic'),
+                checked: false
+            }, {
+                type: 'checkbox',
+                name: 'bike',
+                label: ed.getLang('odin_shortcodes.bike'),
+                checked: false
+            }, {
+                type: 'textbox',
+                name: 'fusion',
+                label: ed.getLang('odin_shortcodes.fusion'),
 
-                },
-                {
-                    type: 'textbox',
-                    name: 'infowindow',
-                    label: ed.getLang('odin_shortcodes.infowindow'),
+            }, {
+                type: 'textbox',
+                name: 'infowindow',
+                label: ed.getLang('odin_shortcodes.infowindow'),
 
-                },
-                {
-                    type: 'checkbox',
-                    name: 'infowindowdefault',
-                    label: ed.getLang('odin_shortcodes.infowindowdefault'),
-                    checked: false
-                },
-                {
-                    type: 'checkbox',
-                    name: 'hidecontrols',
-                    label: ed.getLang('odin_shortcodes.hidecontrols'),
-                    checked: false
-                },
-                {
-                    type: 'checkbox',
-                    name: 'scale',
-                    label: ed.getLang('odin_shortcodes.scale'),
-                    checked: false
-                },
-                {
-                    type: 'checkbox',
-                    name: 'scrollwheel',
-                    label: ed.getLang('odin_shortcodes.scrollwheel'),
-                    checked: true
-                }],
+            }, {
+                type: 'checkbox',
+                name: 'infowindowdefault',
+                label: ed.getLang('odin_shortcodes.infowindowdefault'),
+                checked: false
+            }, {
+                type: 'checkbox',
+                name: 'hidecontrols',
+                label: ed.getLang('odin_shortcodes.hidecontrols'),
+                checked: false
+            }, {
+                type: 'checkbox',
+                name: 'scale',
+                label: ed.getLang('odin_shortcodes.scale'),
+                checked: false
+            }, {
+                type: 'checkbox',
+                name: 'scrollwheel',
+                label: ed.getLang('odin_shortcodes.scrollwheel'),
+                checked: true
+            }],
             onsubmit: function (e) {
                 var id = ' id="' + e.data.id + '" ',
                     latitude = e.data.latitude == '' ? '' : ' latitude="' + e.data.latitude + '" ',
@@ -915,18 +881,13 @@ function Odin_Shortcode_UI(_editor, _ed) {
 
                 editor.insertContent(' [map' + id + latitude + longitude + zoom + width + height + maptype + address +
                     kml + kmlautofit + marker + markerimage + traffic + fusion + bike + infowindow + infowindowdefault + scale + scrollwheel + ']');
-
             }
         });
         jQuery('#lat_map_input').attr('placeholder', '-25.363882');
         jQuery('#long_map_input').attr('placeholder', '131.044922');
         jQuery('#markerimg_map_input').attr('placeholder', 'http://.../beachflag.png');
         jQuery('#kml_map_input').attr('placeholder', 'http://.../ggeoxml/cta.kml');
-
-
     }
-
-
 }
 
 /**
