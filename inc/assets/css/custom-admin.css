@@ -25,3 +25,8 @@
 #normal-sortables #dashboard_right_now .inside .versions p {
 	display: none !important;
 }
+
+.mce-window .mce-container-body.mce-abs-layout {
+	overflow: hidden !important;
+	overflow-y: auto !important;
+}
