@@ -136,7 +136,8 @@ module.exports = function( grunt ) {
 					'.jshintrc',
 					'sass/',
 					'src/',
-					'README.md'
+					'README.md',
+					'.ftppass'
 				],
 				recursive: true,
 				syncDest: true
@@ -182,7 +183,8 @@ module.exports = function( grunt ) {
 					'../*.zip',
 					'../*.sublime-project',
 					'../*.sublime-workspace',
-					'../src/**'
+					'../src/**',
+					'../.ftppass'
 				]
 			}
 		},

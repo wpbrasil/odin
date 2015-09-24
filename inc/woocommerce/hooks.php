@@ -26,7 +26,7 @@ add_action( 'woocommerce_after_main_content', 'odin_after_content', 10 );
  * Remove sidebar
  *
  * Tip:
- * Case you use this action, change template page for full-width style in inc/woocommerce/template-tags.php
+ * Case you use this action, change template page for full-width style in inc/woocommerce/functions.php
  *
  * @see woocommerce_sidebars
  * @since  2.2.6

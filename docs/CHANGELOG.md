@@ -1,5 +1,26 @@
 ## Changelog ##
 
+#### v2.2.8 - 01/09/2015 ####
+- Added metabox in terms page #318 #319 
+- Added Post Status class #310 
+- Improved indentation text-domain #343 
+- Added file .ftppass in FTP-deploy and rsync #339
+- Removed default favicon if has custom #338
+- Fixed variable name #338 
+- Fixed images list when deleted plupload gallery #334 
+- Improved `odin_get_url` return #332 
+- Added WC condition #331 
+- Added Bootstrap styled in comments form #327
+- Improved comments form #324 
+- Fixed parameter name in `odin_get_term_meta` #323 
+- Fixed indentation in `header.php` #322
+- Fixed bug file upload #321 
+- Fixed .gitignore #315
+- Added placeholder post without thumb #313 
+- Fixed tags WC #309 
+- Fixed indentation in `class-metabox.php` #308 
+- Improved function `odin_breadcrumbs()` #307
+
 #### v2.2.7 - 26/06/2015 ####
 * Updated dependencies package.json.
 * Added option disable emoji's since version 4.2.2 WordPress.
