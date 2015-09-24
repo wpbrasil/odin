@@ -532,16 +532,16 @@ function Odin_Shortcode_UI( _editor, _ed ) {
 					value: 'success'
 				}, {
 					text : ed.getLang( 'odin.warning' ),
-					value: 'warning '
+					value: 'warning'
 				}, {
 					text : ed.getLang( 'odin.danger' ),
-					value: 'danger '
+					value: 'danger'
 				} ]
 			} ],
 			onsubmit: function( e ) {
 				var type = 'type="' + e.data.type + '" ';
 
-				editor.insertContent( '[panel][panel_body]' + e.data.content + '[/panel_body][/panel]' );
+				editor.insertContent( '[panel '+ type +'][panel_body]' + e.data.content + '[/panel_body][/panel]' );
 			}
 		} );
 	};
