@@ -252,7 +252,7 @@ function odin_breadcrumbs( $homepage = '' ) {
 						$shop_page    = get_post( wc_get_page_id( 'shop' ) );
 						echo '<li><a href="' . get_permalink( $shop_page ) . '">' . get_the_title( $shop_page ) . '</a></li>';
 					}
-					
+
 					// Gets post type taxonomies.
 					$taxonomy = get_object_taxonomies( 'product' );
 					$taxy = 'product_cat';
@@ -264,10 +264,11 @@ function odin_breadcrumbs( $homepage = '' ) {
 
 					// Gets post type taxonomies.
 					$taxonomy = get_object_taxonomies( $post_type->name );
-					$taxy = $taxonomy[0];
 				}
 
 				if ( $taxonomy ) {
+					// Hold post type taxonomies
+					$taxy = $taxonomy[0];
 					// Gets post terms.
 					$terms = get_the_terms( $post->ID, $taxy );
 					$term  = $terms ? array_shift( $terms ) : '';
