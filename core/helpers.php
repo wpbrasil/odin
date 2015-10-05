@@ -267,7 +267,6 @@ function odin_breadcrumbs( $homepage = '' ) {
 				}
 
 				if ( $taxonomy ) {
-					// Hold post type taxonomies
 					$taxy = $taxonomy[0];
 					// Gets post terms.
 					$terms = get_the_terms( $post->ID, $taxy );
