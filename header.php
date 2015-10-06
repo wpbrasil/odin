@@ -91,7 +91,7 @@
 							<?php _e( 'Search:', 'odin' ); ?>
 						</label>
 						<div class="form-group">
-							<input type="search" class="form-control" name="s" id="navbar-search" />
+							<input type="search" value="<?php echo get_search_query(); ?>" class="form-control" name="s" id="navbar-search" />
 						</div>
 						<button type="submit" class="btn btn-default"><?php _e( 'Search', 'odin' ); ?></button>
 					</form>
