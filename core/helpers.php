@@ -424,12 +424,7 @@ function odin_breadcrumbs( $homepage = '' ) {
 
 		// Gets pagination.
 		if ( get_query_var( 'paged' ) ) {
-
-			if ( is_archive() ) {
-				echo ' (' . sprintf( __( 'Page %s', 'odin' ), get_query_var( 'paged' ) ) . ')';
-			} else {
-				printf( __( 'Page %s', 'odin' ), get_query_var( 'paged' ) );
-			}
+			echo ' (' . sprintf( __( 'Page %s', 'abelman' ), get_query_var( 'paged' ) ) . ')';
 		}
 
 		echo '</ol>';
