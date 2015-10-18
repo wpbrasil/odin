@@ -348,7 +348,10 @@ function odin_breadcrumbs( $homepage = '' ) {
 
 			// Displays parent category.
 			if ( 0 != $current_category->parent ) {
-				echo '<li>' . get_category_parents( $parent_category, TRUE, ' ' ) . '</li>';
+				$parents = get_category_parents( $parent_category, TRUE, false );
+				$parents = str_replace( '<a', '<li><a', $parents );
+				$parents = str_replace( '</a>', '</a></li>', $parents );
+				echo $parents;
 			}
 
 			printf( __( '%sCategory: %s%s', 'odin' ), $current_before, single_cat_title( '', false ), $current_after );
