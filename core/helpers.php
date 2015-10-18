@@ -286,8 +286,15 @@ function odin_breadcrumbs( $homepage = '' ) {
 				$category = $category[0];
 				// Gets parent post terms.
 				$parent_cat = get_term( $category->parent, 'category' );
+				// Gets top term
+				$cat_tree = get_category_parents($category, FALSE, ':');
+				$top_cat = explode(':', $cat_tree);
+				$top_cat = $top_cat[0];
 
 				if ( $category->parent ) {
+					if ( $parent_cat->parent ) {
+						echo '<li><a href="' . get_term_link( $top_cat, 'category' ) . '">' . $top_cat . '</a></li>';
+					}
 					echo '<li><a href="' . get_term_link( $parent_cat ) . '">' . $parent_cat->name. '</a></li>';
 				}
 
