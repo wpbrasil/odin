@@ -183,7 +183,7 @@ class Odin_Metabox {
 
 			echo apply_filters( 'odin_metabox_field_title_' . $this->id, $title, $field );
 
-			echo apply_filters( 'odin_metabox_field_before_' . $this->id, '<td>', $field );
+			echo apply_filters( 'odin_metabox_field_before_' . $field['id'], '<td>', $field );
 			$this->process_fields( $field, $post_id );
 
 			if ( isset( $field['description'] ) ) {
@@ -191,7 +191,7 @@ class Odin_Metabox {
 			}
 
 
-			echo apply_filters( 'odin_metabox_field_after_' . $this->id, '</td>', $field );
+			echo apply_filters( 'odin_metabox_field_after_' . $field['id'], '</td>', $field );
 
 			echo apply_filters( 'odin_metabox_wrap_after_' . $this->id, '</tr>', $field );
 		}
