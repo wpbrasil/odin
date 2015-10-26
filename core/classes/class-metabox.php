@@ -46,9 +46,7 @@ class Odin_Metabox {
 
 		//Check if $post_type is an array. If not, makes it one.
 		if( !is_array($post_type) ){
-			$post_type = array(
-				"0" => $post_type
-			);
+			$post_type = array( $post_type );
 		}
 		
 		//Run trough the array, setting up nedded things
