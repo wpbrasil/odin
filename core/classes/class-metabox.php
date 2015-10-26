@@ -223,7 +223,7 @@ class Odin_Metabox {
 	 * @return string          HTML of the field.
 	 */
 	protected function process_fields( $args, $post_id ) {
-		$id      = $args['id'];p
+		$id      = $args['id'];
 		$type    = $args['type'];
 		$options = isset( $args['options'] ) ? $args['options'] : '';
 		$attrs   = isset( $args['attributes'] ) ? $args['attributes'] : array();
