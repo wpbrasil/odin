@@ -46,7 +46,7 @@ class Odin_Metabox {
 
 		//check if $post_type is an Array
 		if(is_array($post_type)){
-			forEach($post_type as $p) {
+			forEach($post_type as $p_type) {
 				// For each post type, add post type columns
 		        add_filter( 'manage_edit-' . $p_type . '_columns', array($this, 'add_columns' ));
         		// Set post type columns value
