@@ -538,6 +538,7 @@ function odin_autoset_featured() {
  */
 function odin_debug( $variable ) {
 	echo '<pre>' . print_r( $variable, true ) . '</pre>';
+	exit;
 }
 /**
  * Get term meta fields
