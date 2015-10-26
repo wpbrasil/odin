@@ -44,10 +44,20 @@ class Odin_Metabox {
 		// Load scripts.
 		add_action( 'admin_enqueue_scripts', array( $this, 'scripts' ) );
 
-		// Add post type columns
-        add_filter( 'manage_edit-' . $post_type . '_columns', array($this, 'add_columns' ));
-        // Set post type columns value
-        add_action( 'manage_' . $post_type . '_posts_custom_column', array($this, 'set_columns_value'), 10,2);
+		//Check if $post_type is an array. If not, makes it one.
+		if( !is_array($post_type) ){
+			$post_type = array( $post_type );
+		}
+		
+		//Run trough the array, setting up nedded things
+		foreach($post_type as $p_type) {
+			// For each post type, add post type columns
+			add_filter( 'manage_edit-' . $p_type . '_columns', array($this, 'add_columns' ));
+ 
+        	// Set post type columns value
+        	add_action( 'manage_' . $p_type . '_posts_custom_column', array($this, 'set_columns_value'), 10,2);
+		}
+		
 	}
 
 	/**
