@@ -61,7 +61,7 @@ class Odin_Shortcodes {
 			'direction' => 'top'
 		), $atts ) );
 
-		$html = '<a href="' . esc_attr( esc_url( $link ) ) . '" class="btn';
+		$html = '<a href="' . esc_url( $link ) . '" class="btn';
 		$html .= ( $type ) ? ' btn-' . esc_attr( $type ) : '';
 		$html .= ( $size ) ? ' btn-' . esc_attr( $size ) : '';
 		$html .= ( $class ) ? ' ' . esc_attr( $class ) : '';
@@ -521,7 +521,7 @@ class Odin_Shortcodes {
 			'direction' => 'top'
 		), $atts ) );
 
-		$html = '<a class="odin-tooltip" data-original-title="' . esc_attr( $title ) . '" href="' . esc_attr( esc_url( $link ) ) .'" data-placement="' . esc_attr( $direction ) . '" data-toggle="tooltip">';
+		$html = '<a class="odin-tooltip" data-original-title="' . esc_attr( $title ) . '" href="' . esc_url( $link ) .'" data-placement="' . esc_attr( $direction ) . '" data-toggle="tooltip">';
 		$html .= do_shortcode( $content );
 		$html .= '</a>';
 
@@ -677,7 +677,7 @@ class Odin_Shortcodes {
 
 		$url = 'http://api.qrserver.com/v1/create-qr-code/?data=' . rawurlencode( $data ) . '&size=' . $size;
 
-		return '<img src="' . esc_attr( esc_url( $url ) ) . '" title="' . esc_attr( $title ) . '" alt="' . esc_attr( $alt ) . '" />';
+		return '<img src="' . esc_url( $url ) . '" title="' . esc_attr( $title ) . '" alt="' . esc_attr( $alt ) . '" />';
 	}
 
 	/**
