@@ -61,13 +61,13 @@ class Odin_Shortcodes {
 			'direction' => 'top'
 		), $atts ) );
 
-		$html = '<a href="' . $link . '" class="btn';
-		$html .= ( $type ) ? ' btn-' . $type : '';
-		$html .= ( $size ) ? ' btn-' . $size : '';
-		$html .= ( $class ) ? ' ' . $class : '';
+		$html = '<a href="' . esc_attr( esc_url( $link ) ) . '" class="btn';
+		$html .= ( $type ) ? ' btn-' . esc_attr( $type ) : '';
+		$html .= ( $size ) ? ' btn-' . esc_attr( $size ) : '';
+		$html .= ( $class ) ? ' ' . esc_attr( $class ) : '';
 		$html .= ( $tooltip ) ? ' odin-tooltip' : '';
 		$html .= '"';
-		$html .= ( $tooltip ) ? ' data-placement="' . $direction . '" data-toggle="tooltip" data-original-title="' . $tooltip . '"' : '';
+		$html .= ( $tooltip ) ? ' data-placement="' . esc_attr( $direction ) . '" data-toggle="tooltip" data-original-title="' . esc_attr( $tooltip ) . '"' : '';
 		$html .= '>';
 		$html .= do_shortcode( $content );
 		$html .= '</a>';
@@ -90,8 +90,8 @@ class Odin_Shortcodes {
 			'justified' => false
 		), $atts ) );
 
-		$html = '<div class="btn-' . $type . '';
-		$html .= ( $size ) ? ' btn-group-' . $size : '';
+		$html = '<div class="btn-' . esc_attr( $type ) . '';
+		$html .= ( $size ) ? ' btn-group-' . esc_attr( $size ) : '';
 		$html .= ( $justified ) ? ' btn-group-justified' : '';
 		$html .= '">';
 		$html .= str_replace( '<br />', '', do_shortcode( $content ) );
@@ -114,7 +114,7 @@ class Odin_Shortcodes {
 			'close' => false
 		), $atts ) );
 
-		$html = '<div class="alert alert-' . $type;
+		$html = '<div class="alert alert-' . esc_attr( $type );
 		$html .= ( $close ) ? ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' : '">';
 		$html .= do_shortcode( $content );
 		$html .= '</div>';
@@ -135,7 +135,7 @@ class Odin_Shortcodes {
 			'type' => 'default'
 		), $atts ) );
 
-		return '<span class="label label-' . $type . '">' . do_shortcode( $content ) . '</span>';
+		return '<span class="label label-' . esc_attr( $type ) . '">' . do_shortcode( $content ) . '</span>';
 	}
 
 	/**
@@ -162,7 +162,7 @@ class Odin_Shortcodes {
 			'type' => 'thumbs-up'
 		), $atts ) );
 
-		return '<span class="glyphicon glyphicon-' . $type . '"></span>';
+		return '<span class="glyphicon glyphicon-' . esc_attr( $type ) . '"></span>';
 	}
 
 	/**
@@ -179,7 +179,7 @@ class Odin_Shortcodes {
 		), $atts ) );
 
 		$html = '<div class="well';
-		$html .= ( $size ) ? ' well-' . $size . '">' : '">';
+		$html .= ( $size ) ? ' well-' . esc_attr( $size ) . '">' : '">';
 		$html .= do_shortcode( $content );
 		$html .= '</div>';
 
@@ -203,7 +203,7 @@ class Odin_Shortcodes {
 		), $atts ) );
 
 		$html = '<table class="table';
-		$html .= ( $type ) ? ' table-' . $type : '';
+		$html .= ( $type ) ? ' table-' . esc_attr( $type ) : '';
 		$html .= ( $border ) ? ' table-bordered">' . PHP_EOL : '">' . PHP_EOL;
 		$html .= '<thead>' . PHP_EOL;
 		$html .= '<tr>' . PHP_EOL;
@@ -258,7 +258,7 @@ class Odin_Shortcodes {
 		), $atts ) );
 
 		$html = '<div';
-		$html .= ( $class ) ? ' class="' . $class . '"' : '';
+		$html .= ( $class ) ? ' class="' . esc_attr( $class ) . '"' : '';
 		$html .= '>';
 		$html .= do_shortcode( $content );
 		$html .= '</div>';
@@ -284,14 +284,14 @@ class Odin_Shortcodes {
 		), $atts ) );
 
 		$html = '<div class="progress';
-		$html .= ( $class ) ? ' ' . $class . '">' : '">';
+		$html .= ( $class ) ? ' ' . esc_attr( $class ) . '">' : '">';
 		$html .= '<div class="progress-bar';
-		$html .= ( $type ) ? ' progress-bar-' . $type . '" ' : '" ';
+		$html .= ( $type ) ? ' progress-bar-' . esc_attr( $type ) . '" ' : '" ';
 		$html .= 'role="progressbar" ';
-		$html .= 'aria-valuenow="' . $value . '" ';
-		$html .= 'aria-valuemin="' . $min . '" ';
-		$html .= 'aria-valuemax="' . $max . '" ';
-		$html .= 'style="width: ' . $value . '%">';
+		$html .= 'aria-valuenow="' . esc_attr( $value ) . '" ';
+		$html .= 'aria-valuemin="' . esc_attr( $min ) . '" ';
+		$html .= 'aria-valuemax="' . esc_attr( $max ) . '" ';
+		$html .= 'style="width: ' . esc_attr( $value ) . '%">';
 		$html .= ( $content ) ? '<span class="sr-only">' . $content . '</span>' : '';
 		$html .= '</div>';
 		$html .= '</div>';
@@ -312,7 +312,7 @@ class Odin_Shortcodes {
 			'type'  => 'default'
 		), $atts ) );
 
-		return '<div class="panel panel-' . $type . '">' . str_replace( '<br />', '', do_shortcode( $content ) ) . '</div>';
+		return '<div class="panel panel-' . esc_attr( $type ) . '">' . str_replace( '<br />', '', do_shortcode( $content ) ) . '</div>';
 	}
 
 	/**
@@ -380,7 +380,7 @@ class Odin_Shortcodes {
 		$html = '<li';
 		$html .= ( $active ) ? ' class="active"' : '';
 		$html .= '>';
-		$html .= '<a href="#' . $id . '">';
+		$html .= '<a href="#' . esc_attr( $id ) . '">';
 		$html .= do_shortcode( $content );
 		$html .= '</a>';
 		$html .= '</li>';
@@ -404,11 +404,11 @@ class Odin_Shortcodes {
 		$id = sanitize_title( $title );
 
 		$html = '<li class="dropdown">';
-		$html .= '<a href="#" id="' . $id . '" class="dropdown-toggle" data-toggle="dropdown">';
+		$html .= '<a href="#" id="' . esc_attr( $id ) . '" class="dropdown-toggle" data-toggle="dropdown">';
 		$html .= $title;
 		$html .= ' <b class="caret"></b>';
 		$html .= '</a>';
-		$html .= '<ul class="dropdown-menu" role="menu" aria-labelledby="' . $id . '">';
+		$html .= '<ul class="dropdown-menu" role="menu" aria-labelledby="' . esc_attr( $id ) . '">';
 		$html .= do_shortcode( $content );
 		$html .= '</ul>';
 		$html .= '</li>';
@@ -444,7 +444,7 @@ class Odin_Shortcodes {
 
 		$html = '<div class="tab-pane';
 		$html .= ( $active ) ? ' active"' : '"';
-		$html .= ' id="' . $id . '">';
+		$html .= ' id="' . esc_attr( $id ) . '">';
 		$html .= do_shortcode( $content );
 		$html .= '</div>';
 
@@ -464,7 +464,7 @@ class Odin_Shortcodes {
 			'id' => 'odin-accordion',
 		), $atts ) );
 
-		$html = '<div class="panel-group odin-accordion" id="' . $id . '">';
+		$html = '<div class="panel-group odin-accordion" id="' . esc_attr( $id ) . '">';
 		$html .= str_replace( '<br />', '', do_shortcode( $content ) );
 		$html .= '</div>';
 
@@ -489,13 +489,13 @@ class Odin_Shortcodes {
 
 		$accordion = sanitize_title( $title );
 
-		$html = '<div class="panel panel-' . $type . '">';
+		$html = '<div class="panel panel-' . esc_attr( $type ) . '">';
 		$html .= '<div class="panel-heading"><h4 class="panel-title">';
-		$html .= '<a class="accordion-toggle" data-toggle="collapse" data-parent="#' . $id . '" href="#' . $accordion . '">';
+		$html .= '<a class="accordion-toggle" data-toggle="collapse" data-parent="#' . esc_attr( $id ) . '" href="#' . esc_attr( $accordion ) . '">';
 		$html .= $title;
 		$html .= '</a>';
 		$html .= '</h4></div>';
-		$html .= '<div id="' . $accordion . '" class="panel-collapse collapse';
+		$html .= '<div id="' . esc_attr( $accordion ) . '" class="panel-collapse collapse';
 		$html .= ( $active ) ? ' in">' : '">';
 		$html .= '<div class="panel-body">';
 		$html .= do_shortcode( $content );
@@ -521,7 +521,7 @@ class Odin_Shortcodes {
 			'direction' => 'top'
 		), $atts ) );
 
-		$html = '<a class="odin-tooltip" data-original-title="' . $title . '" href="' . $link .'" data-placement="' . $direction . '" data-toggle="tooltip">';
+		$html = '<a class="odin-tooltip" data-original-title="' . esc_attr( $title ) . '" href="' . esc_attr( esc_url( $link ) ) .'" data-placement="' . esc_attr( $direction ) . '" data-toggle="tooltip">';
 		$html .= do_shortcode( $content );
 		$html .= '</a>';
 
@@ -563,11 +563,11 @@ class Odin_Shortcodes {
 		// JS var.
 		$id = str_replace( '-', '_', $id );
 
-		$html = '<div class="odin-map" id="' . $id . '" style="width: ' . $width . 'px; height: ' . $height . 'px;"></div>';
+		$html = '<div class="odin-map" id="' . esc_attr( $id ) . '" style="width: ' . esc_attr( $width ) . 'px; height: ' . esc_attr( $height ) . 'px;"></div>';
 
 		$js = '<script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=false"></script>';
 		$html .= apply_filters( 'odin_map_shortcode_js_' . $id, $js );
-		$html .= '<script type="text/javascript">var latlng = new google.maps.LatLng(' . $latitude . ', ' . $longitude . ');var myOptions = {zoom: ' . $zoom . ',center: latlng,scrollwheel: ' . $scrollwheel .',scaleControl: ' . $scale .',disableDefaultUI: ' . $hidecontrols .',mapTypeId: google.maps.MapTypeId.' . $maptype . '};var ' . $id . ' = new google.maps.Map(document.getElementById("' . $id . '"), myOptions);';
+		$html .= '<script type="text/javascript">var latlng = new google.maps.LatLng(' . esc_js( $latitude ) . ', ' . esc_js($longitude ) . ');var myOptions = {zoom: ' . esc_js( $zoom ) . ',center: latlng,scrollwheel: ' . esc_js( $scrollwheel ) .',scaleControl: ' . esc_js( $scale ) .',disableDefaultUI: ' . esc_js( $hidecontrols ) .',mapTypeId: google.maps.MapTypeId.' . esc_js( $maptype ) . '};var ' .esc_js(  $id ) . ' = new google.maps.Map(document.getElementById("' . esc_js( $id ) . '"), myOptions);';
 
 		// Kml.
 		if ( $kml ) {
@@ -577,80 +577,80 @@ class Odin_Shortcodes {
 				$html .= 'var kmlLayerOptions = {preserveViewport:false};';
 			}
 
-			$html .= 'var kmllayer = new google.maps.KmlLayer("' . html_entity_decode( $kml ) . '", kmlLayerOptions);
-				kmllayer.setMap(' . $id . ');';
+			$html .= 'var kmllayer = new google.maps.KmlLayer("' . esc_js( html_entity_decode( $kml ) ) . '", kmlLayerOptions);
+				kmllayer.setMap(' . esc_js( $id ) . ');';
 		}
 
 		// Traffic.
 		if ( $traffic ) {
-			$html .= 'var trafficLayer = new google.maps.TrafficLayer();trafficLayer.setMap(' . $id . ');';
+			$html .= 'var trafficLayer = new google.maps.TrafficLayer();trafficLayer.setMap(' . esc_js( $id ) . ');';
 		}
 
 		// Bike.
 		if ( $bike ) {
-			$html .= 'var bikeLayer = new google.maps.BicyclingLayer();bikeLayer.setMap(' . $id . ');';
+			$html .= 'var bikeLayer = new google.maps.BicyclingLayer();bikeLayer.setMap(' . esc_js( $id ) . ');';
 		}
 
 		// Fusion tables.
 		if ( $fusion ) {
-			$html .= 'var fusionLayer = new google.maps.FusionTablesLayer(' . $fusion . ');fusionLayer.setMap(' . $id . ');';
+			$html .= 'var fusionLayer = new google.maps.FusionTablesLayer(' . esc_js( $fusion ) . ');fusionLayer.setMap(' . esc_js( $id ) . ');';
 		}
 
 		// Address.
 		if ( $address ) {
-			$html .= 'var geocoder_' . $id . ' = new google.maps.Geocoder();var address = \'' . $address . '\';geocoder_' . $id . '.geocode( { \'address\': address}, function(results, status) { if (status == google.maps.GeocoderStatus.OK) {' . $id . '.setCenter(results[0].geometry.location);';
+			$html .= 'var geocoder_' . esc_js( $id ) . ' = new google.maps.Geocoder();var address = \'' . esc_js( $address ) . '\';geocoder_' . $id . '.geocode( { \'address\': address}, function(results, status) { if (status == google.maps.GeocoderStatus.OK) {' . esc_js( $id ) . '.setCenter(results[0].geometry.location);';
 
 			if ( $marker ) {
 				// Add custom image.
 				if ( $markerimage ) {
-					$html .= 'var image = "'. $markerimage .'";';
+					$html .= 'var image = "'. esc_js( $markerimage ) .'";';
 				}
 
-				$html .= 'var marker = new google.maps.Marker({ map: ' . $id . ',';
+				$html .= 'var marker = new google.maps.Marker({ map: ' . esc_js( $id ) . ',';
 				if ( $markerimage ) {
 					$html .= 'icon: image,';
 				}
 
-				$html .= 'position: ' . $id . '.getCenter() });';
+				$html .= 'position: ' . esc_js( $id ) . '.getCenter() });';
 
 				// Infowindow
 				if ( $infowindow ) {
 					// First convert and decode html chars.
 					$thiscontent = htmlspecialchars_decode( $infowindow );
-					$html .= 'var contentString = "' . $thiscontent . '";var infowindow = new google.maps.InfoWindow({content: contentString});google.maps.event.addListener(marker, \'click\', function() { infowindow.open(' . $id . ',marker);});';
+					$html .= 'var contentString = "' . esc_js( $thiscontent ) . '";var infowindow = new google.maps.InfoWindow({content: contentString});google.maps.event.addListener(marker, \'click\', function() { infowindow.open(' . esc_js( $id ) . ',marker);});';
 
 					// Infowindow default
 					if ( $infowindowdefault ) {
-						$html .= 'infowindow.open(' . $id . ', marker);';
+						$html .= 'infowindow.open(' . esc_js( $id ) . ', marker);';
 					}
 				}
 			}
 
-			$html .= '} else { document.getElementById(' . $id . ').style.display = "block"; }});';
+			$html .= '} else { document.getElementById(' . esc_js( $id ) . ').style.display = "block"; }});';
 		}
 
 		// Marker: show if address is not specified.
 		if ( $marker && $address ) {
 			// Add custom image.
 			if ( $markerimage ) {
-				$html .= 'var image = "'. $markerimage .'";';
+				$html .= 'var image = "'. esc_js( $markerimage ) .'";';
 			}
 
-			$html .= 'var marker = new google.maps.Marker({ map: ' . $id . ',';
+			$html .= 'var marker = new google.maps.Marker({ map: ' . esc_js( $id ) . ',';
 
 			if ( $markerimage ) {
 				$html .= 'icon: image,';
 			}
 
-			$html .= 'position: ' . $id . '.getCenter()});';
+			$html .= 'position: ' . esc_js( $id ) . '.getCenter()});';
 
 			// Infowindow.
 			if ( $infowindow ) {
-				$html .= 'var contentString = "' . $infowindow . '";var infowindow = new google.maps.InfoWindow({content: contentString});google.maps.event.addListener(marker, \'click\', function() {infowindow.open(' . $id . ',marker);});';
+				$html .= 'var contentString = "' . esc_js( $infowindow ) . '";var infowindow = new google.maps.InfoWindow({content: contentString});google.maps.event.addListener(marker, \'click\', function() {infowindow.open(' . $id . ',marker);});';
 
 				// Infowindow default
 				if ( $infowindowdefault ) {
-					$html .= 'infowindow.open(' . $id . ',marker);';
+					$html .= 'infowindow.open(' . esc_js( $id ) . ',marker);';
 				}
 			}
 		}
@@ -671,12 +671,13 @@ class Odin_Shortcodes {
 		extract( shortcode_atts( array(
 			'data'  => '',
 			'size'  => '150x150',
-			'title' => ''
+			'title' => '',
+			'alt'   => '',
 		), $atts ) );
 
 		$url = 'http://api.qrserver.com/v1/create-qr-code/?data=' . rawurlencode( $data ) . '&size=' . $size;
 
-		return '<img src="' . $url . '" title="' . $title . '" title="' . $title . '" />';
+		return '<img src="' . esc_attr( esc_url( $url ) ) . '" title="' . esc_attr( $title ) . '" alt="' . esc_attr( $alt ) . '" />';
 	}
 
 	/**
