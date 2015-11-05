@@ -81,10 +81,10 @@ function odin_pagination( $mid = 2, $end = 1, $show = false, $query = null ) {
  * @global array $post         WP global post.
  *
  * @param  string $display      Set category or tag.
- * @param  int    $qty          Number of posts to be displayed (default 5).
+ * @param  int    $qty          Number of posts to be displayed (default 4).
  * @param  string $title        Set the widget title.
- * @param  bool   $thumb        Enable or disable displaying images.
- * @param  string $post_type    Post type.
+ * @param  bool   $thumb        Enable or disable displaying images (default true).
+ * @param  string $post_type    Post type (default post).
  *
  * @return string              Related Posts.
  */
@@ -105,8 +105,8 @@ function odin_related_posts( $display = 'category', $qty = 4, $title = '', $thum
 				$show = true;
 
 				$tag_ids = array();
-				foreach ( $tags as $individual_tag ) {
-					$tag_ids[] = $individual_tag->term_id;
+				foreach ( $tags as $tag ) {
+					$tag_ids[] = $tag->term_id;
 				}
 
 				$args = array(
@@ -128,14 +128,14 @@ function odin_related_posts( $display = 'category', $qty = 4, $title = '', $thum
 				$show = true;
 
 				$category_ids = array();
-				foreach ( $categories as $individual_category ) {
-					$category_ids[] = $individual_category->term_id;
+				foreach ( $categories as $category ) {
+					$category_ids[] = $category->term_id;
 				}
 
 				$args = array(
 					'category__in' => $category_ids,
 					'post__not_in' => array( $post->ID ),
-					'showposts' => $post_qty,
+					'posts_per_page' => $post_qty,
 					'post_type' => $post_type,
 					'ignore_sticky_posts' => 1,
 				);
