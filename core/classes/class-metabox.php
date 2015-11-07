@@ -504,7 +504,7 @@ class Odin_Metabox {
 	protected function field_image( $id, $current ) {
 
 		// Gets placeholder image.
-		$image = apply_filters('odin_placeholder_path', get_template_directory_uri() . '/core/assets/images/placeholder.png');
+		$image = apply_filters( 'odin_placeholder_path', get_template_directory_uri() . '/core/assets/images/placeholder.png' );
 		$html  = '<div class="odin-upload-image">';
 		$html  .= '<span class="default-image">' . $image . '</span>';
 
