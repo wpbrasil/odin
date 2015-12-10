@@ -194,9 +194,37 @@ class Odin_Term_Meta {
 	 * @return string           Field value
 	 */
 	protected function get_value( $id, $field ) {
+		// First try to get value in the new Term Meta WP API
+		$option = get_term_meta( $id, $field, true );
+		if ( $option ) {
+			return $option;
+		}
+		// After, try to get in the old way (option API)
 		$option = sprintf( 'odin_term_meta_%s_%s', $id, $field );
 		return get_option( $option );
 	}
+
+    /**
+	 * Delete field meta
+	 *
+	 * @param  string $field    Field name
+	 *
+	 * @return string           Field value
+	 */
+	protected function delete_term_meta( $id, $field ) {
+		// First delete value from the Term Meta API (WP 4.4)
+		$option = get_term_meta( $id, $field );
+		if ( $option ) {
+			delete_term_meta( $id, $field );
+		}
+		// After, delete from the options API (old way)
+		$option_name = sprintf( 'odin_term_meta_%s_%s', $id, $field );
+		$option = get_option( $option_name );
+		if ( $option ) {
+			delete_option( $option_name );
+		}
+	}
+
 
 	/**
 	 * Process the user meta fields.
@@ -498,11 +526,10 @@ class Odin_Term_Meta {
 			$old  = $this->get_value( $term_id, $name );
 			$new  = apply_filters( 'odin_save_term_meta_' . $this->id, $_POST[ $name ], $name );
 
-			$option = sprintf( 'odin_term_meta_%s_%s', $term_id, $name );
 			if ( $new && $new != $old ) {
-				update_option( $option, $new );
+				update_term_meta( $term_id, $name, $new );
 			} elseif ( '' == $new && $old ) {
-				delete_option( $option );
+				$this->delete_term_meta( $term_id, $name );
 			}
 		}
 	}
