@@ -22,7 +22,7 @@ class Odin_Term_Meta {
 	 * Term meta construct.
 	 *
 	 * @param string $id       Options ID.
-	 * @param mixed  $taxonomy Taxonomy slug
+	 * @param mixed  $taxonomy Taxonomy slug.
 	 */
 	public function __construct( $id, $taxonomy ) {
 		$this->id    	= $id;
@@ -31,22 +31,22 @@ class Odin_Term_Meta {
 
 		if ( is_array( $this->taxonomy ) ) {
 			foreach ( $this->taxonomy as $tax_slug ) {
-			    // Print Taxonomy fields
+			    // Print Taxonomy fields.
 				add_action( $tax_slug . '_add_form_fields', array( $this, 'add_view' ) );
 				add_action( $tax_slug . '_edit_form_fields', array( $this, 'edit_view' ) );
-				// Delete term fields
+				// Delete term fields.
 				add_action( 'delete_' . $tax_slug, array( $this, 'delete_fields' ) );
-				// Save term fields
+				// Save term fields.
 				add_action( 'create_' . $tax_slug, array( $this, 'save' ) );
 				add_action( 'edit_' . $tax_slug, array( $this, 'save' ) );
 			}
 		} else {
-			// Print Taxonomy fields
+			// Print Taxonomy fields.
 			add_action( $this->taxonomy . '_add_form_fields', array( $this, 'add_view' ) );
 			add_action( $this->taxonomy . '_edit_form_fields', array( $this, 'edit_view' ) );
-			// Delete term fields
+			// Delete term fields.
 			add_action( 'delete_' . $this->taxonomy, array( $this, 'delete_fields' ) );
-			// Save term fields
+			// Save term fields.
 			add_action( 'create_' . $this->taxonomy, array( $this, 'save' ) );
 			add_action( 'edit_' . $this->taxonomy, array( $this, 'save' ) );
 		}
@@ -56,11 +56,9 @@ class Odin_Term_Meta {
 
 	/**
 	 * Load user meta scripts.
-	 *
-	 * @return void
 	 */
 	public function scripts() {
-		// jQuery
+		// jQuery.
 		wp_enqueue_script( 'jquery' );
 
 		// Color Picker.
@@ -103,7 +101,7 @@ class Odin_Term_Meta {
 	}
 
 	/**
-	 * User meta view for add term page (without a table)
+	 * User meta view for add term page (without a table).
 	 *
 	 * @return string       User meta HTML fields.
 	 */
@@ -124,9 +122,7 @@ class Odin_Term_Meta {
 			}
 
 			echo '</div>';
-
 		}
-
 	}
 
 	/**
@@ -154,82 +150,73 @@ class Odin_Term_Meta {
 			echo apply_filters( 'odin_term_meta_field_edit_screen__after_' . $this->id, '</td>', $field );
 
 			echo '</tr>';
-
 		}
 
 		echo '</table>';
-
 	}
+
     /**
 	 * Delete fields
 	 *
-	 * @param  int $term            Term id
-	 * @param  int $tt_id           Taxonomy term id
-	 * @param  mixed $deleted_term  $deleted_term Copy of the already-deleted term, in the form specified
-	 *                              by the parent function. WP_Error otherwise.
-	 * @return void
+	 * @param int $term Term id.
 	 */
-	public function delete_fields( $term, $tt_id = null, $deleted_term = null ) {
+	public function delete_fields( $term ) {
 		global $wpdb;
+
 		$option = sprintf( 'odin_term_meta_%s', $term );
 		$option = '%' . $wpdb->esc_like( $option ) . '%';
 
-		$wpdb->get_results(
-			$wpdb->prepare(
-				"
-				DELETE
-				FROM $wpdb->options
-				WHERE option_name
-				LIKE %s
-				",
-				$option
-			)
-		);
+		$wpdb->query( $wpdb->prepare( "DELETE FROM $wpdb->options WHERE option_name LIKE %s", $option ) );
 	}
+
     /**
 	 * Get field value
 	 *
-	 * @param  string $field    Field name
+	 * @param  string $field Field name.
 	 *
-	 * @return string           Field value
+	 * @return string        Field value.
 	 */
 	protected function get_value( $id, $field ) {
-		// First try to get value in the new Term Meta WP API
-		$option = get_term_meta( $id, $field, true );
-		if ( $option ) {
-			return $option;
+		// First try to get value in the new Term Meta WP API.
+		if ( $value = get_term_meta( $id, $field, true ) ) {
+			return $value;
 		}
-		// After, try to get in the old way (option API)
-		$option = sprintf( 'odin_term_meta_%s_%s', $id, $field );
-		return get_option( $option );
+
+		// After, try to get in the old way (option API).
+		$option_name = sprintf( 'odin_term_meta_%s_%s', $id, $field );
+		$value = get_option( $option_name );
+
+		// Upgrade to new update_term_meta().
+		if ( false !== $value ) {
+			update_term_meta( $id, $field, $value );
+			delete_option( $option_name );
+		}
+
+		return $value;
 	}
 
     /**
-	 * Delete field meta
+	 * Delete field meta.
 	 *
-	 * @param  string $field    Field name
+	 * @param  string $field Field name.
 	 *
-	 * @return string           Field value
+	 * @return string        Field value.
 	 */
 	protected function delete_term_meta( $id, $field ) {
-		// First delete value from the Term Meta API (WP 4.4)
-		$option = get_term_meta( $id, $field );
-		if ( $option ) {
+		// First delete value from the Term Meta API (WP 4.4).
+		if ( $option = get_term_meta( $id, $field ) ) {
 			delete_term_meta( $id, $field );
 		}
+
 		// After, delete from the options API (old way)
 		$option_name = sprintf( 'odin_term_meta_%s_%s', $id, $field );
-		$option = get_option( $option_name );
-		if ( $option ) {
-			delete_option( $option_name );
-		}
+		delete_option( $option_name );
 	}
-
 
 	/**
 	 * Process the user meta fields.
 	 *
-	 * @param  array $args    Field arguments
+	 * @param  array $args    Field arguments.
 	 * @param  int   $user_id ID of the current post type.
 	 *
 	 * @return string          HTML of the field.
@@ -239,54 +226,53 @@ class Odin_Term_Meta {
 		$type    = $args['type'];
 		$options = isset( $args['options'] ) ? $args['options'] : '';
 		$attrs   = isset( $args['attributes'] ) ? $args['attributes'] : array();
+		$current = '';
 
 		// Gets current value or default.
-		if( isset( $_GET['tag_ID'] ) ) {
+		if ( isset( $_GET['tag_ID'] ) ) {
 			$current = $this->get_value( $_GET['tag_ID'], $id );
-			if ( ! $current ) {
-				$current = isset( $args['default'] ) ? $args['default'] : '';
-			}
 		}
-		else {
+
+		if ( ! $current ) {
 			$current = isset( $args['default'] ) ? $args['default'] : '';
 		}
 
 		switch ( $type ) {
-			case 'text':
+			case 'text' :
 				$this->field_input( $id, $current, array_merge( array( 'class' => 'regular-text' ), $attrs ) );
 				break;
-			case 'input':
+			case 'input' :
 				$this->field_input( $id, $current, $attrs );
 				break;
-			case 'textarea':
+			case 'textarea' :
 				$this->field_textarea( $id, $current, $attrs );
 				break;
-			case 'checkbox':
+			case 'checkbox' :
 				$this->field_checkbox( $id, $current, $attrs );
 				break;
-			case 'select':
+			case 'select' :
 				$this->field_select( $id, $current, $options, $attrs );
 				break;
-			case 'radio':
+			case 'radio' :
 				$this->field_radio( $id, $current, $options, $attrs );
 				break;
-			case 'editor':
+			case 'editor' :
 				$this->field_editor( $id, $current, $options );
 				break;
-			case 'color':
+			case 'color' :
 				$this->field_input( $id, $current, array_merge( array( 'class' => 'odin-color-field' ), $attrs ) );
 				break;
-			case 'upload':
+			case 'upload' :
 				$this->field_upload( $id, $current, $attrs );
 				break;
-			case 'image':
+			case 'image' :
 				$this->field_image( $id, $current );
 				break;
-			case 'image_plupload':
+			case 'image_plupload' :
 				$this->field_image_plupload( $id, $current );
 				break;
 
-			default:
+			default :
 				do_action( 'odin_user_meta_field_' . $this->id, $type, $id, $current, $options, $attrs );
 				break;
 		}
@@ -510,10 +496,8 @@ class Odin_Term_Meta {
 	/**
 	 * Save term meta data.
 	 *
-	 * @param  int    $term_id       Field id.
-	 * @param  int    $tt_id         Term taxonomy ID.
-	 *
-	 * @return void
+	 * @param int $term_id Field id.
+	 * @param int $tt_id   Term taxonomy ID.
 	 */
 	public function save( $term_id, $tt_id = null ) {
 		// Verify nonce.
@@ -528,7 +512,7 @@ class Odin_Term_Meta {
 
 			if ( $new && $new != $old ) {
 				update_term_meta( $term_id, $name, $new );
-			} elseif ( '' == $new && $old ) {
+			} else if ( '' == $new && $old ) {
 				$this->delete_term_meta( $term_id, $name );
 			}
 		}
