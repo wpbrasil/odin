@@ -476,19 +476,24 @@ function odin_get_image_url( $id, $width, $height, $crop = true, $upscale = fals
  * @param  boolean $crop    Image crop.
  * @param  string  $class   Custom HTML classes.
  * @param  boolean $upscale Force the resize.
+ * @param  boolean $sanitize_classes Sanitize classes.
  *
  * @return string         Return the post thumbnail.
  */
-function odin_thumbnail( $width, $height, $alt, $crop = true, $class = '', $upscale = false ) {
+function odin_thumbnail( $width, $height, $alt, $crop = true, $class = '', $upscale = false, $sanitize_classes = false ) {
 	if ( ! class_exists( 'Odin_Thumbnail_Resizer' ) ) {
 		return;
+	}
+
+	if ( $sanitize_classes ) {
+		$class = sanitize_html_class( $class );
 	}
 
 	$thumb = get_post_thumbnail_id();
 
 	if ( $thumb ) {
 		$image = odin_get_image_url( $thumb, $width, $height, $crop, $upscale );
-		$html  = '<img class="wp-image-thumb img-responsive ' . sanitize_html_class( $class ) . '" src="' . $image . '" width="' . esc_attr( $width ) . '" height="' . esc_attr( $height ) . '" alt="' . esc_attr( $alt ) . '" />';
+		$html  = '<img class="wp-image-thumb img-responsive ' . $class . '" src="' . $image . '" width="' . esc_attr( $width ) . '" height="' . esc_attr( $height ) . '" alt="' . esc_attr( $alt ) . '" />';
 
 		return apply_filters( 'odin_thumbnail_html', $html );
 	}
