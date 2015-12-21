@@ -476,7 +476,7 @@ function odin_get_image_url( $id, $width, $height, $crop = true, $upscale = fals
  * @param  boolean $crop    Image crop.
  * @param  string  $class   Custom HTML classes.
  * @param  boolean $upscale Force the resize.
- * @param  boolean $sanitize_class Sanitize classes.
+ * @param  boolean $sanitize_classes Sanitize classes.
  *
  * @return string         Return the post thumbnail.
  */
