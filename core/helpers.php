@@ -488,7 +488,7 @@ function odin_thumbnail( $width, $height, $alt, $crop = true, $class = '', $upsc
 
 	if ( $thumb ) {
 		$image = odin_get_image_url( $thumb, $width, $height, $crop, $upscale );
-		$html  = '<img class="wp-image-thumb img-responsive ' . sanitize_html_class( $class ) . '" src="' . $image . '" width="' . esc_attr( $width ) . '" height="' . esc_attr( $height ) . '" alt="' . esc_attr( $alt ) . '" />';
+		$html  = '<img class="wp-image-thumb img-responsive ' . esc_attr( $class ) . '" src="' . esc_url( $image ) . '" width="' . esc_attr( $width ) . '" height="' . esc_attr( $height ) . '" alt="' . esc_attr( $alt ) . '" />';
 
 		return apply_filters( 'odin_thumbnail_html', $html );
 	}
