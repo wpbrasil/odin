@@ -554,6 +554,12 @@ function odin_debug( $variable ) {
  * @return string               Field value
  */
 function odin_get_term_meta( $term_id, $field ) {
-	$option = sprintf( 'odin_term_meta_%s_%s', $term_id, $field );
+	// First try to get value in the new Term Meta WP API
+	$option = get_term_meta( $id, $field, true );
+	if ( $option ) {
+		return $option;
+	}
+	// After, try to get in the old way (option API)
+	$option = sprintf( 'odin_term_meta_%s_%s', $id, $field );
 	return get_option( $option );
 }
