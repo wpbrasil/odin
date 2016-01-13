@@ -7,7 +7,7 @@
  * @package  Odin
  * @category Front-end Form
  * @author   WPBrasil
- * @version  2.3.0
+ * @version  2.3.1
  */
 abstract class Odin_Front_End_Form {
 
@@ -173,6 +173,23 @@ abstract class Odin_Front_End_Form {
 	}
 
 	/**
+	 * Process class for label tag.
+	 *
+	 * @param  string  $class Class as string, separated by blankspace.
+	 *
+	 * @return string             Class as string.
+	 */
+	protected function process_label_class( $class ) {
+		$label_class = '';
+
+		if( ! empty( $class ) ) {
+			$label_class = ' class="' . $class . '"';
+		}
+
+		return $label_class;
+	}
+
+	/**
 	 * Sets the field default value.
 	 *
 	 * @return string Default value.
@@ -203,7 +220,7 @@ abstract class Odin_Front_End_Form {
 				foreach ( $fieldset['fields'] as $field ) {
 					$id          = $field['id'];
 					$type        = $field['type'];
-					$label       = isset( $field['label'] ) ? $field['label'] : '';
+					$label       = isset( $field['label'] ) ? $field['label'] : array();
 					$description = isset( $field['description'] ) ? $field['description'] : '';
 					$attributes  = isset( $field['attributes'] ) ? $field['attributes'] : array();
 					$options     = isset( $field['options'] ) ? $field['options'] : '';
@@ -347,7 +364,7 @@ abstract class Odin_Front_End_Form {
 	 * Input field.
 	 *
 	 * @param  string $id          Field id.
-	 * @param  string $label       Field label.
+	 * @param  array  $label       Array with label attributes.
 	 * @param  string $default     Default value.
 	 * @param  string $description Field description.
 	 * @param  array  $attributes  Array with field attributes.
@@ -366,7 +383,7 @@ abstract class Odin_Front_End_Form {
 		}
 
 		$html = sprintf( '<div class="form-group odin-form-group-%s">', $id );
-		$html .= sprintf( '<label for="%s">%s%s</label>', $id, $label, $this->required_field_alert( $attributes ) );
+		$html .= sprintf( '<label for="%s"%s>%s%s</label>', $id, $this->process_label_class( $label['class'] ), $label['text'], $this->required_field_alert( $attributes ) );
 		$html .= sprintf( '<input id="%1$s" name="%1$s" value="%2$s"%3$s />', $id, $default, $this->process_attributes( $attributes ) );
 		$html .= ! empty( $description ) ? '<span class="help-block">' . $description . '</span>' : '';
 		$html .= '</div>';
@@ -398,7 +415,7 @@ abstract class Odin_Front_End_Form {
 	 * Textarea field.
 	 *
 	 * @param  string $id          Field id.
-	 * @param  string $label       Field label.
+	 * @param  array  $label       Array with label attributes.
 	 * @param  string $default     Default value.
 	 * @param  string $description Field description.
 	 * @param  array  $attributes  Array with field attributes.
@@ -420,7 +437,7 @@ abstract class Odin_Front_End_Form {
 		}
 
 		$html = sprintf( '<div class="form-group odin-form-group-%s">', $id );
-		$html .= sprintf( '<label for="%s">%s%s</label>', $id, $label, $this->required_field_alert( $attributes ) );
+		$html .= sprintf( '<label for="%s"%s>%s%s</label>', $id, $this->process_label_class( $label['class'] ), $label['text'], $this->required_field_alert( $attributes ) );
 		$html .= sprintf( '<textarea id="%1$s" name="%1$s"%2$s>%3$s</textarea>', $id, $this->process_attributes( $attributes ), $default );
 		$html .= ! empty( $description ) ? '<span class="help-block">' . $description . '</span>' : '';
 		$html .= '</div>';
@@ -432,7 +449,7 @@ abstract class Odin_Front_End_Form {
 	 * Checkbox field.
 	 *
 	 * @param  string $id          Field id.
-	 * @param  string $label       Field label.
+	 * @param  array  $label       Array with label attributes.
 	 * @param  string $default     Default value.
 	 * @param  string $description Field description.
 	 * @param  array  $attributes  Array with field attributes.
@@ -446,9 +463,9 @@ abstract class Odin_Front_End_Form {
 		}
 
 		$html = sprintf( '<div class="checkbox odin-form-group-%s">', $id );
-		$html .= '<label>';
+		$html .= sprintf( '<label for="%s"%s>', $id, $this->process_label_class( $label['class'] ) );
 		$html .= sprintf( '<input type="checkbox" id="%1$s" name="%1$s" value="1"%2$s />', $id, $this->process_attributes( $attributes ) );
-		$html .= ' ' . $label . $this->required_field_alert( $attributes ) . '</label>';
+		$html .= ' ' . $label['text'] . $this->required_field_alert( $attributes ) . '</label>';
 		$html .= ! empty( $description ) ? '<span class="help-block">' . $description . '</span>' : '';
 		$html .= '</div>';
 
@@ -459,7 +476,7 @@ abstract class Odin_Front_End_Form {
 	 * Select field.
 	 *
 	 * @param  string $id          Field id.
-	 * @param  string $label       Field label.
+	 * @param  array  $label       Array with label attributes.
 	 * @param  string $default     Default value.
 	 * @param  string $description Field description.
 	 * @param  array  $attributes  Array with field attributes.
@@ -477,7 +494,7 @@ abstract class Odin_Front_End_Form {
 		$multiple = ( in_array( 'multiple', $attributes ) ) ? '[]' : '';
 
 		$html = sprintf( '<div class="form-group odin-form-group-%s">', $id );
-		$html .= sprintf( '<label for="%s">%s%s</label>', $id, $label, $this->required_field_alert( $attributes ) );
+		$html .= sprintf( '<label for="%s"%s>%s%s</label>', $id, $this->process_label_class( $label['class'] ), $label['text'], $this->required_field_alert( $attributes ) );
 		$html .= sprintf( '<select id="%1$s" name="%1$s%2$s"%3$s>', $id, $multiple, $this->process_attributes( $attributes ) );
 
 		foreach ( $options as $value => $name ) {
@@ -498,7 +515,7 @@ abstract class Odin_Front_End_Form {
 	 * Radio field.
 	 *
 	 * @param  string $id          Field id.
-	 * @param  string $label       Field label.
+	 * @param  array  $label       Array with label attributes.
 	 * @param  string $default     Default value.
 	 * @param  string $description Field description.
 	 * @param  array  $attributes  Array with field attributes.
@@ -508,7 +525,7 @@ abstract class Odin_Front_End_Form {
 	 */
 	protected function field_radio( $id, $label, $default, $description, $attributes, $options ) {
 		$html = sprintf( '<div class="form-group odin-form-group-%s">', $id );
-		$html .= '<label>' . $label . $this->required_field_alert( $attributes ) . '</label>';
+		$html .= sprintf( '<label for="%s"%s>%s%s</label>', $id, $this->process_label_class( $label['class'] ), $label['text'], $this->required_field_alert( $attributes ) );
 		$html .= '<div class="form-radio-group">';
 
 		foreach ( $options as $value => $label ) {
