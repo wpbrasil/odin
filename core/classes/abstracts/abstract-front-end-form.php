@@ -180,13 +180,7 @@ abstract class Odin_Front_End_Form {
 	 * @return string             Class as string.
 	 */
 	protected function process_label_class( $class ) {
-		$label_class = '';
-
-		if( ! empty( $class ) ) {
-			$label_class = ' class="' . $class . '"';
-		}
-
-		return $label_class;
+		return ! empty( $class ) ? ' class="' . esc_attr( $class ) . '"' : '';
 	}
 
 	/**
