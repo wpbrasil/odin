@@ -7,7 +7,7 @@
  * @package  Odin
  * @category Metabox
  * @author   WPBrasil
- * @version  2.1.4
+ * @version  2.1.5
  */
 class Odin_Metabox {
 
@@ -48,16 +48,16 @@ class Odin_Metabox {
 		if( !is_array($post_type) ){
 			$post_type = array( $post_type );
 		}
-		
+
 		//Run trough the array, setting up nedded things
 		foreach($post_type as $p_type) {
 			// For each post type, add post type columns
 			add_filter( 'manage_edit-' . $p_type . '_columns', array($this, 'add_columns' ));
- 
+
         	// Set post type columns value
         	add_action( 'manage_' . $p_type . '_posts_custom_column', array($this, 'set_columns_value'), 10,2);
 		}
-		
+
 	}
 
 	/**
@@ -227,9 +227,11 @@ class Odin_Metabox {
 		$attrs   = isset( $args['attributes'] ) ? $args['attributes'] : array();
 
 		// Gets current value or default.
-		$current = get_post_meta( $post_id, $id, true );
-		if ( ! $current ) {
+		$current = get_post_meta( $post_id, $id, false );
+		if ( empty( $current ) ) {
 			$current = isset( $args['default'] ) ? $args['default'] : '';
+		} else {
+			$current = $current[0];
 		}
 
 		switch ( $type ) {
@@ -385,7 +387,7 @@ class Odin_Metabox {
 	 * @return string          HTML of the field.
 	 */
 	protected function field_checkbox( $id, $current, $attrs ) {
-		echo sprintf( '<input type="checkbox" id="%1$s" name="%1$s" value="1"%2$s%3$s />', $id, checked( 1, $current, false ), $this->build_field_attributes( $attrs ) );
+		echo sprintf( '<input type="checkbox" id="%1$s" name="%1$s" %2$s%3$s />', $id, checked( '1', $current, false ), $this->build_field_attributes( $attrs ) );
 	}
 
 	/**
@@ -585,14 +587,18 @@ class Odin_Metabox {
 
 		foreach ( $this->fields as $field ) {
 			$name  = $field['id'];
-			$value = isset( $_POST[ $name ] ) ? $_POST[ $name ] : null;
+			if($field['type'] === 'checkbox') {
+				$value = isset( $_POST[ $name ] ) ? '1' : '0';
+			} else {
+				$value = isset( $_POST[ $name ] ) ? $_POST[ $name ] : null;
+			}
 
 			if ( ! in_array( $field['type'], array( 'separator', 'title' ) ) ) {
 				$old = get_post_meta( $post_id, $name, true );
 
 				$new = apply_filters( 'odin_save_metabox_' . $this->id, $value, $name );
 
-				if ( $new && $new != $old ) {
+				if ( isset( $new ) && $new != $old ) {
 					update_post_meta( $post_id, $name, $new );
 				} elseif ( '' == $new && $old ) {
 					delete_post_meta( $post_id, $name, $old );
