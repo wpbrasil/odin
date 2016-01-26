@@ -597,7 +597,7 @@ class Odin_Metabox {
 
 				$new = apply_filters( 'odin_save_metabox_' . $this->id, $value, $name );
 
-				if ( $new != $old ) {
+				if ( $new && $new != $old ) {
 					update_post_meta( $post_id, $name, $new );
 				} elseif ( '' == $new && $old ) {
 					delete_post_meta( $post_id, $name, $old );
