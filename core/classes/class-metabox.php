@@ -7,7 +7,7 @@
  * @package  Odin
  * @category Metabox
  * @author   WPBrasil
- * @version  2.1.4
+ * @version  2.1.5
  */
 class Odin_Metabox {
 
@@ -48,16 +48,16 @@ class Odin_Metabox {
 		if( !is_array($post_type) ){
 			$post_type = array( $post_type );
 		}
-		
+
 		//Run trough the array, setting up nedded things
 		foreach($post_type as $p_type) {
 			// For each post type, add post type columns
 			add_filter( 'manage_edit-' . $p_type . '_columns', array($this, 'add_columns' ));
- 
+
         	// Set post type columns value
         	add_action( 'manage_' . $p_type . '_posts_custom_column', array($this, 'set_columns_value'), 10,2);
 		}
-		
+
 	}
 
 	/**
@@ -228,7 +228,7 @@ class Odin_Metabox {
 
 		// Gets current value or default.
 		$current = get_post_meta( $post_id, $id, true );
-		if ( ! $current ) {
+		if ( empty( $current ) ) {
 			$current = isset( $args['default'] ) ? $args['default'] : '';
 		}
 
@@ -385,7 +385,7 @@ class Odin_Metabox {
 	 * @return string          HTML of the field.
 	 */
 	protected function field_checkbox( $id, $current, $attrs ) {
-		echo sprintf( '<input type="checkbox" id="%1$s" name="%1$s" value="1"%2$s%3$s />', $id, checked( 1, $current, false ), $this->build_field_attributes( $attrs ) );
+		echo sprintf( '<input type="checkbox" id="%1$s" name="%1$s" %2$s%3$s />', $id, checked( 'yes', $current, false ), $this->build_field_attributes( $attrs ) );
 	}
 
 	/**
@@ -585,7 +585,12 @@ class Odin_Metabox {
 
 		foreach ( $this->fields as $field ) {
 			$name  = $field['id'];
-			$value = isset( $_POST[ $name ] ) ? $_POST[ $name ] : null;
+
+			if( 'checkbox' === $field['type'] ) {
+				$value = isset( $_POST[ $name ] ) ? 'yes' : 'no';
+			} else {
+				$value = isset( $_POST[ $name ] ) ? $_POST[ $name ] : null;
+			}
 
 			if ( ! in_array( $field['type'], array( 'separator', 'title' ) ) ) {
 				$old = get_post_meta( $post_id, $name, true );
