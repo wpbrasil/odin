@@ -228,7 +228,7 @@ class Odin_Metabox {
 
 		// Gets current value or default.
 		$current = get_post_meta( $post_id, $id, true );
-		if ( ! $current && $current !== '0' ) {
+		if ( empty( $current ) ) {
 			$current = isset( $args['default'] ) ? $args['default'] : '';
 		}
 
@@ -385,7 +385,7 @@ class Odin_Metabox {
 	 * @return string          HTML of the field.
 	 */
 	protected function field_checkbox( $id, $current, $attrs ) {
-		echo sprintf( '<input type="checkbox" id="%1$s" name="%1$s" %2$s%3$s />', $id, checked( '1', $current, false ), $this->build_field_attributes( $attrs ) );
+		echo sprintf( '<input type="checkbox" id="%1$s" name="%1$s" %2$s%3$s />', $id, checked( 'yes', $current, false ), $this->build_field_attributes( $attrs ) );
 	}
 
 	/**
@@ -585,8 +585,9 @@ class Odin_Metabox {
 
 		foreach ( $this->fields as $field ) {
 			$name  = $field['id'];
+
 			if($field['type'] === 'checkbox') {
-				$value = isset( $_POST[ $name ] ) ? '1' : '0';
+				$value = isset( $_POST[ $name ] ) ? 'yes' : 'no';
 			} else {
 				$value = isset( $_POST[ $name ] ) ? $_POST[ $name ] : null;
 			}
