@@ -586,7 +586,7 @@ class Odin_Metabox {
 		foreach ( $this->fields as $field ) {
 			$name  = $field['id'];
 
-			if($field['type'] === 'checkbox') {
+			if( 'checkbox' === $field['type'] ) {
 				$value = isset( $_POST[ $name ] ) ? 'yes' : 'no';
 			} else {
 				$value = isset( $_POST[ $name ] ) ? $_POST[ $name ] : null;
@@ -597,7 +597,7 @@ class Odin_Metabox {
 
 				$new = apply_filters( 'odin_save_metabox_' . $this->id, $value, $name );
 
-				if ( isset( $new ) && $new != $old ) {
+				if ( $new != $old ) {
 					update_post_meta( $post_id, $name, $new );
 				} elseif ( '' == $new && $old ) {
 					delete_post_meta( $post_id, $name, $old );
