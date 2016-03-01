@@ -116,7 +116,7 @@ class Odin_Post_Type {
 		register_post_type( $this->slug, $this->arguments() );
 
 		//Aciona recarrega a regra de reescrita quando o thema é modificado
-		add_action('switch_theme', array($this, 'mytheme_setup_options'));
+		add_action('switch_theme', array($this, 'flush_rewrite_rules'));
 	}
 
 	private function flush_rewrite_rules() {
