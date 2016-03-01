@@ -114,5 +114,6 @@ class Odin_Post_Type {
 	 */
 	public function register_post_type() {
 		register_post_type( $this->slug, $this->arguments() );
+		flush_rewrite_rules();
 	}
 }
