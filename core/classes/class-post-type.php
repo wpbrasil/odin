@@ -114,6 +114,12 @@ class Odin_Post_Type {
 	 */
 	public function register_post_type() {
 		register_post_type( $this->slug, $this->arguments() );
+
+		//Aciona recarrega a regra de reescrita quando o thema é modificado
+		add_action('switch_theme', array($this, 'mytheme_setup_options'));
+	}
+
+	private function flush_rewrite_rules() {
 		flush_rewrite_rules();
 	}
 }
