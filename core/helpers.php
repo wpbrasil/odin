@@ -254,25 +254,27 @@ function odin_breadcrumbs( $homepage = '' ) {
 					}
 
 					// Gets post type taxonomies.
-					$taxonomy = get_object_taxonomies( 'product' );
-					$taxy = 'product_cat';
-
+					$taxonomies = get_object_taxonomies( 'product' );
+					$taxonomy = 'product_cat';
 				} else {
 					$post_type = get_post_type_object( $post->post_type );
 
 					echo '<li><a href="' . get_post_type_archive_link( $post_type->name ) . '">' . $post_type->label . '</a></li> ';
 
 					// Gets post type taxonomies.
-					$taxonomy = get_object_taxonomies( $post_type->name );
+					$taxonomies = get_object_taxonomies( $post_type->name );
 				}
 
-				if ( $taxonomy ) {
-					$taxy = $taxonomy[0];
+				if ( $taxonomies ) {
+					// If is woocommerce product post type, $taxonomy already defined
+					if ( 'product' !== $post->post_type ) {
+						$taxonomy = $taxonomies[0];
+					}
 					// Gets post terms.
-					$terms = get_the_terms( $post->ID, $taxy );
+					$terms = get_the_terms( $post->ID, $taxonomy );
 					$term  = $terms ? array_shift( $terms ) : '';
 					// Gets parent post terms.
-					$parent_term = get_term( $term->parent, $taxy );
+					$parent_term = get_term( $term->parent, $taxonomy );
 
 					if ( $term ) {
 						if ( $term->parent ) {
