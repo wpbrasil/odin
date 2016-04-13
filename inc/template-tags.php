@@ -95,7 +95,7 @@ if ( ! function_exists( 'odin_the_custom_logo' ) ) {
 	 *
 	 * Does nothing if the custom logo is not available.
 	 *
-	 * @since Odin 2.2.9
+	 * @since Odin 2.2.10
 	 */
 	function odin_the_custom_logo() {
 		if ( function_exists( 'the_custom_logo' ) ) {
