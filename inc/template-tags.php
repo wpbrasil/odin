@@ -87,3 +87,19 @@ if ( ! function_exists( 'odin_paging_nav' ) ) {
 		echo odin_pagination( $mid, $end, false );
 	}
 }
+
+if ( ! function_exists( 'odin_the_custom_logo' ) ) {
+
+	/**
+	 * Displays the optional custom logo.
+	 *
+	 * Does nothing if the custom logo is not available.
+	 *
+	 * @since Odin 2.2.9
+	 */
+	function odin_the_custom_logo() {
+		if ( function_exists( 'the_custom_logo' ) ) {
+			the_custom_logo();
+		}
+	}
+}

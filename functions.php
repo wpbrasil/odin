@@ -163,6 +163,17 @@ if ( ! function_exists( 'odin_setup_features' ) ) {
 		 * provide it for us.
 		 */
 		add_theme_support( 'title-tag' );
+
+		/*
+		 * Enable support for custom logo.
+		 *
+		 *  @since Odin 2.2.9
+		 */
+		add_theme_support( 'custom-logo', array(
+			'height'      => 240,
+			'width'       => 240,
+			'flex-height' => true,
+		) );
 	}
 }
 
