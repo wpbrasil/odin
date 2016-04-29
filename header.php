@@ -33,6 +33,9 @@
 	<header id="header" role="banner">
 		<div class="container">
 			<div class="page-header hidden-xs">
+
+				<?php odin_the_custom_logo(); ?>
+
 				<?php if ( is_home() ) : ?>
 					<h1 class="site-title">
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
