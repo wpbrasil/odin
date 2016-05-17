@@ -51,7 +51,7 @@ get_header(); ?>
 							 * use this in a child theme, then include a file called called content-___.php
 							 * (where ___ is the post format) and that will be used instead.
 							 */
-							get_template_part( 'content', get_post_format() );
+							get_template_part( 'templates-parts/content', get_post_format() );
 
 						endwhile;
 
@@ -60,7 +60,7 @@ get_header(); ?>
 
 					else :
 						// If no content, include the "No posts found" template.
-						get_template_part( 'content', 'none' );
+						get_template_part( 'templates-parts/content', 'none' );
 
 				endif;
 			?>
