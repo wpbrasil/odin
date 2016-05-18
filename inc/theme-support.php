@@ -13,15 +13,6 @@ if ( ! function_exists( 'odin_setup_features' ) ) {
 		 */
 		load_theme_textdomain( 'odin', get_template_directory() . '/inc/languages' );
 
-		/**
-		 * Register nav menus.
-		 */
-		register_nav_menus(
-			array(
-				'main-menu' => __( 'Main Menu', 'odin' )
-			)
-		);
-
 		/*
 		 * Add post_thumbnails suport.
 		 */
