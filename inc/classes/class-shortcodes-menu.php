@@ -42,7 +42,7 @@ class Odin_Shortcodes_Menu {
 	 * @return array          Odin TinyMCE plugin.
 	 */
 	public function add_shortcode_tinymce_plugin( $plugins ) {
-		$plugins[ 'odin_shortcodes' ] = get_template_directory_uri() . "/core/assets/js/editor-shortcodes.js";
+		$plugins[ 'odin_shortcodes' ] = get_template_directory_uri() . "/inc/assets/js/editor-shortcodes.js";
 
 		return $plugins;
 
@@ -68,7 +68,7 @@ class Odin_Shortcodes_Menu {
 	 * @return array
 	 */
 	public function add_tinymce_locales( $locales ) {
-		$locales[ 'odin_shortcodes' ] = plugin_dir_path( __FILE__ ) . '/../../inc/odin-shortcodes-editor-i18n.php';
+		$locales[ 'odin_shortcodes' ] = plugin_dir_path( __FILE__ ) . '/../../inc/shortcodes/odin-shortcodes-editor-i18n.php';
 
 		return $locales;
 	}
