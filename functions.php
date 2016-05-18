@@ -14,13 +14,6 @@
  */
 
 /**
- * Sets content width.
- */
-if ( ! isset( $content_width ) ) {
-	$content_width = 600;
-}
-
-/**
  * Odin Classes.
  */
 require_once get_template_directory() . '/core/classes/class-bootstrap-nav.php';
