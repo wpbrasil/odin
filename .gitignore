@@ -29,9 +29,10 @@ nbproject/*
 sftp-config.json
 
 # Project
-src/.sass-cache/*
-src/node_modules/*
-src/.ftppass
-src/tmp/*
+.sass-cache/*
+node_modules/*
+bower_components/*
+.ftppass
+tmp/*
 odin.zip
 
