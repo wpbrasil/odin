@@ -16,6 +16,11 @@ jQuery(document).ready(function($) {
 	});
 
 	// Tooltip.
-	$( '.odin-tooltip' ).tooltip();
+	//$( '.odin-tooltip' ).tooltip();
+
+	// Moment
+	$( '.entry-date' ).each(function() {
+  		$(this).text( 'há ' + moment( $(this).data('datetime') ).startOf('hour').fromNow() );
+	});
 
 });

@@ -1,0 +1,29 @@
+@include selection() {
+	color: white;
+	background: black;
+}
+
+html {
+	box-sizing: border-box;
+
+}
+
+*,
+*:before,
+*:after { /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+	box-sizing: inherit;
+}
+
+body {
+	overflow-x: hidden;
+}
+
+img {
+	height: auto; /* Make sure images are scaled correctly. */
+	max-width: 100%; /* Adhere to container width. */
+}
+
+// Headings 1–6
+h1, h2, h3, h4, h5, h6 {
+	// Something
+}

@@ -1,0 +1,11 @@
+.home {
+    #content {
+        .post {
+            margin-bottom: 40px;
+            &.sticky {
+                padding: 0 20px 20px;
+                border: 1px dashed $brand-info;
+            }
+        }
+    }
+}

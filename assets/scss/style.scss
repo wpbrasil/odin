@@ -1,0 +1,49 @@
+/*!
+Theme Name: Odin
+Theme URI: http://wpod.in/
+Author: Team Odin
+Author URI: http://wpod.in/#colaboradores
+Description: Odin Framework Made in WordPress Brasil
+*/
+
+/*--------------------------------------------------------------
+# Tools, Variables and Mixins
+--------------------------------------------------------------*/
+@import "bourbon";
+@import "settings/variables";
+@import "settings/mixins";
+
+/*--------------------------------------------------------------
+# Reset and Dependencies
+--------------------------------------------------------------*/
+@import "vendor/bootstrap/bootstrap";
+@import "vendor/wordpress/wordpress";
+@import "vendor/animate.css/animate";
+
+/*--------------------------------------------------------------
+# CSS and Components
+--------------------------------------------------------------*/
+@import "shared/base";
+@import "shared/forms";
+@import "shared/pagination";
+@import "shared/shortcodes";
+@import "shared/skiplink";
+
+//https://github.com/thoughtbot/bitters/blob/master/core/_typography.scss
+//@import "buttons";
+//@import "forms";
+//@import "lists";
+//@import "tables";
+//@import "typography";
+
+/*--------------------------------------------------------------
+# Layout
+--------------------------------------------------------------*/
+@import "layout/structure";
+@import "layout/home";
+
+/*--------------------------------------------------------------
+# Helpers
+--------------------------------------------------------------*/
+@import "shared/queries";
+@import "shared/helpers";
