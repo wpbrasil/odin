@@ -164,7 +164,7 @@ module.exports = function( grunt ) {
 		rsync: {
 			options: {
 				args: ['--verbose'],
-				exclude: '<%= pkg.exclusions %>',
+				exclude: '<%= pkg.ignoreDeploy %>',
 				recursive: true,
 				syncDest: true
 			},
@@ -196,16 +196,15 @@ module.exports = function( grunt ) {
 				},
 				src: '../',
 				dest: '/PATH/wp-content/themes/odin',
-				exclusions: '<%= pkg.exclusions %>'
+				exclusions: '<%= pkg.ignoreDeploy %>'
 			}
 		},
 
 		// zip the theme
 		zip: {
 			dist: {
-				cwd: '../',
-				src: '<%= pkg.files %>',
-				dest: '../<%= pkg.name %>.zip'
+				src: '<%= pkg.zip %>',
+				dest: '<%= pkg.name %>.zip'
 			}
 		},
 
@@ -255,7 +254,7 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'npm-update', ['exec:npmUpdate'] );
 
 	// Compress
-	grunt.registerTask( 'compress', [
+	grunt.registerTask( 'zip-theme', [
 		'default',
 		'zip'
 	] );
@@ -265,5 +264,5 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'o', ['optimize'] );
 	grunt.registerTask( 'f', ['ftp'] );
 	grunt.registerTask( 'r', ['rsync'] );
-	grunt.registerTask( 'c', ['compress'] );
+	grunt.registerTask( 'z', ['zip'] );
 };

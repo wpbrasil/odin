@@ -30,6 +30,7 @@
   },
   "dirs": {
     "bower": "bower_components",
+    "node": "node_modules",
     "css": "assets/css",
     "fonts": "assets/fonts",
     "images": "assets/images",
@@ -37,33 +38,40 @@
     "sass": "assets/scss",
     "tmp": "tmp"
   },
-  "files" : [
-    "../**",
-    "!src/**",
-    "!**.md",
+  "zip" : [
+    "**",
+    "!<%= pkg.dirs.node %>/**",
+    "!<%= pkg.dirs.bower %>/**",
     "!<%= pkg.dirs.sass %>/**",
-    "!<%= pkg.dirs.js %>/bootstrap/**",
-    "!<%= pkg.dirs.js %>/libs/**",
+    "!.editorconfig",
+    "!.gitignore",
+    "!bower.json",
+    "!Gruntfile.js",
+    "!package.json",
+    "!.git/*",
+    "!**.md",
     "!**.zip",
-    "<%= pkg.dirs.js %>/main.min.j"
+    "!**.DS_Store",
+    "!**Thumbs.db",
+    "!**.sublime-project",
+    "!**.sublime-workspace"
   ],
-  "exclusions" : [
+  "ignoreDeploy" : [
+    "<%= pkg.dirs.node %>/**",
+    "<%= pkg.dirs.bower %>/**",
+    "<%= pkg.dirs.sass %>/**",
+    ".editorconfig",
+    ".gitignore",
+    "bower.json",
+    "Gruntfile.js",
+    "package.json",
+    ".git/*",
+    "**.md",
+    "**.zip",
     "**.DS_Store",
     "**Thumbs.db",
-    ".editorconfig",
-    "assets/js/.jshintrc",
-    "README.md",
-    ".git/*",
-    "*.md",
-    ".gitignore",
-    "assets/js/**bootstrap",
-    "assets/js/**libs",
-    "assets/js/plugins.js",
-    "assets/js/main.js",
-    "*.zip",
-    "*.sublime-project",
-    "*.sublime-workspace",
-    "src/**"
+    "**.sublime-project",
+    "**.sublime-workspace"
   ]
 }
 
