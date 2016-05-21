@@ -1,12 +1,14 @@
 <?php
 /**
- * The Header for our theme.
+ * The header for our theme.
  *
- * Displays all of the <head> section and everything up till #main div
+ * This is the template that displays all of the <head> section and everything up until <div id="wrapper" class="container"><div class="row">
  *
- * @package Odin
- * @since 2.2.0
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package odin
  */
+
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>

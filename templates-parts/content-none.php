@@ -1,10 +1,12 @@
 <?php
 /**
- * The template for displaying a "No posts found" message.
+ * Template part for displaying a message that posts cannot be found.
  *
- * @package Odin
- * @since 2.2.0
+ * @link https://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package odin
  */
+
 ?>
 
 <header class="page-header">

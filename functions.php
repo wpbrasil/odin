@@ -1,20 +1,23 @@
 <?php
 /**
- * Odin functions and definitions.
+ * Functions and definitions.
  *
  * Sets up the theme and provides some helper functions, which are used in the
  * theme as custom template tags. Others are attached to action and filter
  * hooks in WordPress to change core functionality.
  *
- * For more information on hooks, actions, and filters,
- * see http://codex.wordpress.org/Plugin_API
+ * For documentation Odin Framework
+ * @link https://github.com/wpbrasil/odin
  *
- * @package Odin
- * @since 2.2.0
+ * For more information on hooks, actions, and filters,
+ * @link https://codex.wordpress.org/Plugin_API
+ *
+ * @package odin
+ *
  */
 
 /**
- * Odin Classes.
+ * Classes.
  */
 
 require_once get_template_directory() . '/inc/classes/abstracts/abstract-front-end-form.php';
@@ -34,14 +37,14 @@ require_once get_template_directory() . '/inc/classes/class-post-status.php';
 require_once get_template_directory() . '/inc/classes/class-term-meta.php';
 
 /**
- * Odin Widgets.
+ * Widgets.
  */
 
 // Facebook like widget.
 require_once get_template_directory() . '/inc/widgets/like-box.php';
 
 /**
- * Odin Functions.
+ * Functions.
  */
 
 // Theme support options.

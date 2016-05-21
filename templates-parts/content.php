@@ -1,35 +1,33 @@
 <?php
 /**
- * The default template for displaying content.
+ * Template part for displaying posts.
  *
- * Used for both single and index/archive/author/catagory/search/tag.
+ * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package Odin
- * @since 2.2.0
+ * @package odin
  */
+
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
-		<?php
-			if ( is_single() ) :
-				the_title( '<h1 class="entry-title">', '</h1>' );
-			else :
-				the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-			endif;
-		?>
+		<?php if ( is_single() ) :
+			the_title( '<h1 class="entry-title">', '</h1>' );
+		else :
+			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+		endif; ?>
 
 		<?php if ( 'post' == get_post_type() ) : ?>
 			<div class="entry-meta">
 				<?php odin_posted_on(); ?>
-			</div><!-- .entry-meta -->
+			</div>
 		<?php endif; ?>
-	</header><!-- .entry-header -->
+	</header>
 
 	<?php if ( is_search() ) : ?>
 		<div class="entry-summary">
 			<?php the_excerpt(); ?>
-		</div><!-- .entry-summary -->
+		</div>
 	<?php else : ?>
 		<div class="entry-content">
 			<?php
@@ -41,16 +39,22 @@
 					'link_after'  => '</span>',
 				) );
 			?>
-		</div><!-- .entry-content -->
+		</div>
 	<?php endif; ?>
 
-	<footer class="entry-meta">
+	<footer class="entry-footer">
 		<?php if ( in_array( 'category', get_object_taxonomies( get_post_type() ) ) ) : ?>
-			<span class="cat-links"><?php echo __( 'Posted in:', 'odin' ) . ' ' . get_the_category_list( _x( ', ', 'Used between list items, there is a space after the comma.', 'odin' ) ); ?></span>
+			<span class="cat-links">
+				<?php echo __( 'Posted in:', 'odin' ) . ' ' . get_the_category_list( _x( ', ', 'Used between list items, there is a space after the comma.', 'odin' ) ); ?>
+			</span>
 		<?php endif; ?>
+
 		<?php the_tags( '<span class="tag-links">' . __( 'Tagged as:', 'odin' ) . ' ', ', ', '</span>' ); ?>
+
 		<?php if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) : ?>
-			<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'odin' ), __( '1 Comment', 'odin' ), __( '% Comments', 'odin' ) ); ?></span>
+			<span class="comments-link">
+				<?php comments_popup_link( __( 'Leave a comment', 'odin' ), __( '1 Comment', 'odin' ), __( '% Comments', 'odin' ) ); ?>
+			</span>
 		<?php endif; ?>
 	</footer>
 </article><!-- #post-## -->

@@ -1,53 +1,49 @@
 <?php
 /**
- * The template for displaying Tag pages.
+ * The template for displaying tag pages.
  *
- * Used to display archive-type pages for posts in a tag.
+ * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @link http://codex.wordpress.org/Template_Hierarchy
+ * @package odin
  *
- * @package Odin
- * @since 2.2.0
  */
 
 get_header(); ?>
 
-	<section id="primary" class="<?php echo odin_classes_page_sidebar(); ?>">
-		<div id="content" class="site-content" role="main">
+	<main id="content" class="<?php echo odin_classes_page_sidebar(); ?>" tabindex="-1" role="main">
 
-			<?php if ( have_posts() ) : ?>
+		<?php
+		if ( have_posts() ) : ?>
 
-				<header class="page-header">
+			<header class="page-header">
 				<?php
 					the_archive_title( '<h1 class="page-title">', '</h1>' );
 					the_archive_description( '<div class="taxonomy-description">', '</div>' );
 				?>
-				</header><!-- .page-header -->
+			</header>
 
-				<?php
-						// Start the Loop.
-						while ( have_posts() ) : the_post();
+			<?php
+			/* Start the Loop */
+			while ( have_posts() ) : the_post();
 
-							/*
-							 * Include the post format-specific template for the content. If you want to
-							 * use this in a child theme, then include a file called called content-___.php
-							 * (where ___ is the post format) and that will be used instead.
-							 */
-							get_template_part( 'templates-parts/content', get_post_format() );
+				/*
+		 		 * Include the Post-Format-specific template for the content.
+		 		 * If you want to override this in a child theme, then include a file
+				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+				 */
+				get_template_part( 'templates-parts/content', get_post_format() );
 
-						endwhile;
+			endwhile;
 
-						// Page navigation.
-						odin_paging_nav();
+			odin_paging_nav();
 
-					else :
-						// If no content, include the "No posts found" template.
-						get_template_part( 'templates-parts/content', 'none' );
+		else :
 
-				endif;
-			?>
-		</div><!-- #content -->
-	</section><!-- #primary -->
+			get_template_part( 'templates-parts/content', 'none' );
+
+		endif; ?>
+
+	</main>
 
 <?php
 get_sidebar();
