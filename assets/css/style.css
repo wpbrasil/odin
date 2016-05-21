@@ -8590,40 +8590,40 @@ img#wpstats {
 }
 
 .widget_tag_cloud a:nth-child(1) {
-  font-size: 18px!important;
+  font-size: 32px!important;
 }
 .widget_tag_cloud a:nth-child(2) {
-  font-size: 23px!important;
+  font-size: 32px!important;
 }
 .widget_tag_cloud a:nth-child(3) {
-  font-size: 17px!important;
+  font-size: 22px!important;
 }
 .widget_tag_cloud a:nth-child(4) {
-  font-size: 31px!important;
+  font-size: 23px!important;
 }
 .widget_tag_cloud a:nth-child(5) {
-  font-size: 15px!important;
+  font-size: 19px!important;
 }
 .widget_tag_cloud a:nth-child(6) {
-  font-size: 31px!important;
+  font-size: 23px!important;
 }
 .widget_tag_cloud a:nth-child(7) {
-  font-size: 30px!important;
+  font-size: 14px!important;
 }
 .widget_tag_cloud a:nth-child(8) {
-  font-size: 18px!important;
+  font-size: 19px!important;
 }
 .widget_tag_cloud a:nth-child(9) {
-  font-size: 17px!important;
-}
-.widget_tag_cloud a:nth-child(10) {
   font-size: 21px!important;
 }
+.widget_tag_cloud a:nth-child(10) {
+  font-size: 17px!important;
+}
 .widget_tag_cloud a:nth-child(11) {
-  font-size: 26px!important;
+  font-size: 27px!important;
 }
 .widget_tag_cloud a:nth-child(12) {
-  font-size: 19px!important;
+  font-size: 32px!important;
 }
 
 .wp-video-shortcode {
