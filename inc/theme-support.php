@@ -119,6 +119,8 @@ if ( ! function_exists( 'odin_setup_features' ) ) {
 			'height'      => 240,
 			'width'       => 240,
 			'flex-height' => true,
+			'flex-width' => true,
+			'header-text' => array( 'site-title', 'site-description' )
 		) );
 	}
 }
