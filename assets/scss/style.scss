@@ -27,14 +27,7 @@ Description: Odin Framework Made in WordPress Brasil
 @import "shared/forms";
 @import "shared/pagination";
 @import "shared/shortcodes";
-@import "shared/skiplink";
-
-//https://github.com/thoughtbot/bitters/blob/master/core/_typography.scss
-//@import "buttons";
-//@import "forms";
-//@import "lists";
-//@import "tables";
-//@import "typography";
+@import "shared/navigation-skiplink.scss";
 
 /*--------------------------------------------------------------
 # Layout

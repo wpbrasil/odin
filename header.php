@@ -20,11 +20,9 @@
 </head>
 
 <body <?php body_class(); ?>>
-	<a id="skippy" class="sr-only sr-only-focusable" href="#content">
-		<div class="container">
-			<span class="skiplink-text"><?php _e( 'Skip to content', 'odin' ); ?></span>
-		</div>
-	</a>
+	<nav class="navigation-skiplink" role="navigation">
+		<a class="navigation-skiplink-link" href="#content"><?php _e( 'Skip to content', 'odin' ); ?></a>
+	</nav>
 
 	<header id="header" role="banner">
 		<div class="container">
