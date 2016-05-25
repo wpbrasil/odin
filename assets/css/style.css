@@ -1,18 +1,5 @@
 @charset "UTF-8";
 /*!
-Theme Name: Odin
-Theme URI: http://wpod.in/
-Author: Team Odin
-Author URI: http://wpod.in/#colaboradores
-Description: Odin Framework Made in WordPress Brasil
-*/
-/*--------------------------------------------------------------
-# Tools, Variables and Mixins
---------------------------------------------------------------*/
-/*--------------------------------------------------------------
-# Reset and Dependencies
---------------------------------------------------------------*/
-/*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
@@ -1456,7 +1443,7 @@ img {
 }
 
 .img-responsive, .comment-content img, .widget img, .entry-content p img,
-.wp-caption {
+.wp-caption, #header-image img {
   display: block;
   max-width: 100%;
   height: auto;
@@ -1491,7 +1478,7 @@ hr {
   border-top: 1px solid #eeeeee;
 }
 
-.sr-only {
+.sr-only, .navigation-skiplink-link {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1502,7 +1489,7 @@ hr {
   border: 0;
 }
 
-.sr-only-focusable:active, .sr-only-focusable:focus {
+.sr-only-focusable:active, .navigation-skiplink-link:active, .sr-only-focusable:focus, .navigation-skiplink-link:focus {
   position: static;
   width: auto;
   height: auto;
@@ -1516,7 +1503,8 @@ hr {
 }
 
 h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
+.h1,
+#header-branding .site-title, .h2, .h3, .h4, .h5, #header-branding .site-description, .h6 {
   font-family: inherit;
   font-weight: 500;
   line-height: 1.1;
@@ -1530,26 +1518,30 @@ h4 .small, h5 small,
 h5 .small, h6 small,
 h6 .small,
 .h1 small,
-.h1 .small, .h2 small,
+#header-branding .site-title small,
+.h1 .small,
+#header-branding .site-title .small, .h2 small,
 .h2 .small, .h3 small,
 .h3 .small, .h4 small,
-.h4 .small, .h5 small,
-.h5 .small, .h6 small,
+.h4 .small, .h5 small, #header-branding .site-description small,
+.h5 .small,
+#header-branding .site-description .small, .h6 small,
 .h6 .small {
   font-weight: normal;
   line-height: 1;
   color: #777777;
 }
 
-h1, .h1,
+h1, .h1, #header-branding .site-title,
 h2, .h2,
 h3, .h3 {
   margin-top: 20px;
   margin-bottom: 10px;
 }
 h1 small,
-h1 .small, .h1 small,
+h1 .small, .h1 small, #header-branding .site-title small,
 .h1 .small,
+#header-branding .site-title .small,
 h2 small,
 h2 .small, .h2 small,
 .h2 .small,
@@ -1560,7 +1552,7 @@ h3 .small, .h3 small,
 }
 
 h4, .h4,
-h5, .h5,
+h5, .h5, #header-branding .site-description,
 h6, .h6 {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -1569,15 +1561,16 @@ h4 small,
 h4 .small, .h4 small,
 .h4 .small,
 h5 small,
-h5 .small, .h5 small,
+h5 .small, .h5 small, #header-branding .site-description small,
 .h5 .small,
+#header-branding .site-description .small,
 h6 small,
 h6 .small, .h6 small,
 .h6 .small {
   font-size: 75%;
 }
 
-h1, .h1 {
+h1, .h1, #header-branding .site-title {
   font-size: 36px;
 }
 
@@ -1593,7 +1586,7 @@ h4, .h4 {
   font-size: 18px;
 }
 
-h5, .h5 {
+h5, .h5, #header-branding .site-description {
   font-size: 14px;
 }
 
@@ -3932,7 +3925,7 @@ select[multiple].input-lg,
 .has-feedback label ~ .form-control-feedback {
   top: 25px;
 }
-.has-feedback label.sr-only ~ .form-control-feedback {
+.has-feedback label.sr-only ~ .form-control-feedback, .has-feedback label.navigation-skiplink-link ~ .form-control-feedback {
   top: 0;
 }
 
@@ -6149,7 +6142,9 @@ a.badge:hover, a.badge:focus {
   background-color: #eeeeee;
 }
 .jumbotron h1,
-.jumbotron .h1 {
+.jumbotron .h1,
+.jumbotron #header-branding .site-title,
+#header-branding .jumbotron .site-title {
   color: inherit;
 }
 .jumbotron p {
@@ -6178,7 +6173,9 @@ a.badge:hover, a.badge:focus {
     padding-right: 60px;
   }
   .jumbotron h1,
-  .jumbotron .h1 {
+  .jumbotron .h1,
+  .jumbotron #header-branding .site-title,
+  #header-branding .jumbotron .site-title {
     font-size: 63px;
   }
 }
@@ -8425,211 +8422,6 @@ button.close {
     display: none !important;
   }
 }
-.alignnone {
-  margin: 0.5em 0;
-}
-
-.alignright {
-  margin: 0.5em 0 1em 1em;
-}
-
-.alignleft {
-  margin: 0.5em 1em 1em 0;
-}
-
-.aligncenter {
-  margin: 0.5em auto;
-}
-
-.hentry,
-.widget {
-  -ms-word-wrap: break-word;
-  word-wrap: break-word;
-}
-
-.page-content:before, .page-content:after,
-.entry-content:before,
-.entry-content:after {
-  content: " ";
-  display: table;
-}
-.page-content:after,
-.entry-content:after {
-  clear: both;
-}
-
-.entry-attachment .attachment {
-  margin-bottom: 1em;
-}
-
-.entry-caption {
-  color: #666;
-}
-
-.twitter-tweet-rendered {
-  max-width: 100% !important;
-}
-
-.gallery {
-  margin: 0 auto 1em;
-}
-.gallery:before, .gallery:after {
-  content: " ";
-  display: table;
-}
-.gallery:after {
-  clear: both;
-}
-.gallery.gallery-columns-1 .gallery-item {
-  float: none;
-  margin: 2em 2%;
-  width: 96%;
-}
-.gallery.gallery-columns-2 .gallery-item {
-  margin: 2em 2%;
-  width: 46%;
-}
-.gallery.gallery-columns-3 .gallery-item {
-  margin: 2em 2%;
-  width: 29.33333%;
-}
-.gallery.gallery-columns-4 .gallery-item {
-  margin: 2em 2%;
-  width: 21%;
-}
-.gallery.gallery-columns-5 .gallery-item {
-  margin: 2em 2%;
-  width: 16%;
-}
-.gallery.gallery-columns-6 .gallery-item {
-  margin: 2em 1%;
-  width: 14.66667%;
-}
-.gallery.gallery-columns-7 .gallery-item {
-  margin: 2em 1%;
-  width: 12.28571%;
-}
-.gallery.gallery-columns-8 .gallery-item {
-  margin: 2em 1%;
-  width: 10.5%;
-}
-.gallery.gallery-columns-9 .gallery-item {
-  margin: 2em 1%;
-  width: 9.11111%;
-}
-.gallery .gallery-caption {
-  color: #333333;
-  margin-left: 0;
-}
-.gallery dl {
-  margin: 0;
-}
-.gallery br + br {
-  display: none;
-}
-
-.hentry img,
-.widget img {
-  height: auto;
-  max-width: 100%;
-  width: auto;
-}
-
-img.header-image, img.wp-post-image {
-  max-width: 100%;
-  height: auto;
-}
-img.wp-smiley, .rsswidget img {
-  border: none;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  margin-bottom: 0;
-  margin-top: 0;
-  padding: 0;
-}
-img#wpstats {
-  display: none;
-}
-
-.entry-content p img.alignleft, .entry-content p img.alignright, .entry-content p img.aligncenter, .entry-content p img.aligncenter, .entry-content p img.alignnone,
-.wp-caption.alignleft,
-.wp-caption.alignright,
-.wp-caption.aligncenter,
-.wp-caption.aligncenter,
-.wp-caption.alignnone {
-  margin-top: 1em;
-  margin-bottom: 2em;
-}
-
-.wp-caption.aligncenter, .wp-caption.alignnone {
-  clear: both !important;
-}
-.wp-caption .wp-caption-text {
-  display: inline-block;
-  padding: 9px;
-  color: #333333;
-}
-.wp-caption .wp-caption-text:before {
-  color: #666;
-  content: '\2014';
-  font-size: 12px;
-  font-style: normal;
-  font-weight: bold;
-  margin-right: 5px;
-}
-
-.widget_calendar #wp-calendar #prev {
-  border-right: 0;
-}
-.widget_calendar #wp-calendar #next {
-  border-left: 0;
-}
-
-.widget_tag_cloud a:nth-child(1) {
-  font-size: 32px!important;
-}
-.widget_tag_cloud a:nth-child(2) {
-  font-size: 32px!important;
-}
-.widget_tag_cloud a:nth-child(3) {
-  font-size: 22px!important;
-}
-.widget_tag_cloud a:nth-child(4) {
-  font-size: 23px!important;
-}
-.widget_tag_cloud a:nth-child(5) {
-  font-size: 19px!important;
-}
-.widget_tag_cloud a:nth-child(6) {
-  font-size: 23px!important;
-}
-.widget_tag_cloud a:nth-child(7) {
-  font-size: 14px!important;
-}
-.widget_tag_cloud a:nth-child(8) {
-  font-size: 19px!important;
-}
-.widget_tag_cloud a:nth-child(9) {
-  font-size: 21px!important;
-}
-.widget_tag_cloud a:nth-child(10) {
-  font-size: 17px!important;
-}
-.widget_tag_cloud a:nth-child(11) {
-  font-size: 27px!important;
-}
-.widget_tag_cloud a:nth-child(12) {
-  font-size: 32px!important;
-}
-
-.wp-video-shortcode {
-  max-width: 100%;
-}
-
 /*!
  * animate.css -http://daneden.me/animate
  * Version - 3.5.0
@@ -11520,9 +11312,20 @@ img#wpstats {
   animation-name: slideOutUp;
 }
 
-/*--------------------------------------------------------------
-# CSS and Components
---------------------------------------------------------------*/
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+}
+
 ::-moz-selection {
   color: white;
   background: black;
@@ -11533,26 +11336,214 @@ img#wpstats {
   background: black;
 }
 
-html {
-  box-sizing: border-box;
-}
-
-*,
-*:before,
-*:after {
-  /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
-  box-sizing: inherit;
-}
-
-body {
-  overflow-x: hidden;
-}
-
 img {
   height: auto;
-  /* Make sure images are scaled correctly. */
   max-width: 100%;
-  /* Adhere to container width. */
+}
+
+.alignnone {
+  margin: 0.5em 0;
+}
+
+.alignright {
+  margin: 0.5em 0 1em 1em;
+}
+
+.alignleft {
+  margin: 0.5em 1em 1em 0;
+}
+
+.aligncenter {
+  margin: 0.5em auto;
+}
+
+.hentry,
+.widget {
+  -ms-word-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.page-content:before, .page-content:after,
+.entry-content:before,
+.entry-content:after {
+  content: " ";
+  display: table;
+}
+.page-content:after,
+.entry-content:after {
+  clear: both;
+}
+
+.entry-attachment .attachment {
+  margin-bottom: 1em;
+}
+
+.entry-caption {
+  color: #666;
+}
+
+.twitter-tweet-rendered {
+  max-width: 100% !important;
+}
+
+.gallery {
+  margin: 0 auto 1em;
+}
+.gallery:before, .gallery:after {
+  content: " ";
+  display: table;
+}
+.gallery:after {
+  clear: both;
+}
+.gallery.gallery-columns-1 .gallery-item {
+  float: none;
+  margin: 2em 2%;
+  width: 96%;
+}
+.gallery.gallery-columns-2 .gallery-item {
+  margin: 2em 2%;
+  width: 46%;
+}
+.gallery.gallery-columns-3 .gallery-item {
+  margin: 2em 2%;
+  width: 29.33333%;
+}
+.gallery.gallery-columns-4 .gallery-item {
+  margin: 2em 2%;
+  width: 21%;
+}
+.gallery.gallery-columns-5 .gallery-item {
+  margin: 2em 2%;
+  width: 16%;
+}
+.gallery.gallery-columns-6 .gallery-item {
+  margin: 2em 1%;
+  width: 14.66667%;
+}
+.gallery.gallery-columns-7 .gallery-item {
+  margin: 2em 1%;
+  width: 12.28571%;
+}
+.gallery.gallery-columns-8 .gallery-item {
+  margin: 2em 1%;
+  width: 10.5%;
+}
+.gallery.gallery-columns-9 .gallery-item {
+  margin: 2em 1%;
+  width: 9.11111%;
+}
+.gallery .gallery-caption {
+  color: #333333;
+  margin-left: 0;
+}
+.gallery dl {
+  margin: 0;
+}
+.gallery br + br {
+  display: none;
+}
+
+.hentry img,
+.widget img {
+  height: auto;
+  max-width: 100%;
+  width: auto;
+}
+
+img.header-image, img.wp-post-image {
+  max-width: 100%;
+  height: auto;
+}
+img.wp-smiley, .rsswidget img {
+  border: none;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: 0;
+}
+img#wpstats {
+  display: none;
+}
+
+.entry-content p img.alignleft, .entry-content p img.alignright, .entry-content p img.aligncenter, .entry-content p img.aligncenter, .entry-content p img.alignnone,
+.wp-caption.alignleft,
+.wp-caption.alignright,
+.wp-caption.aligncenter,
+.wp-caption.aligncenter,
+.wp-caption.alignnone {
+  margin-top: 1em;
+  margin-bottom: 2em;
+}
+
+.wp-caption.aligncenter, .wp-caption.alignnone {
+  clear: both !important;
+}
+.wp-caption .wp-caption-text {
+  display: inline-block;
+  padding: 9px;
+  color: #333333;
+}
+.wp-caption .wp-caption-text:before {
+  color: #666;
+  content: '\2014';
+  font-size: 12px;
+  font-style: normal;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.widget_calendar #wp-calendar #prev {
+  border-right: 0;
+}
+.widget_calendar #wp-calendar #next {
+  border-left: 0;
+}
+
+.widget_tag_cloud a:nth-child(1) {
+  font-size: 17px!important;
+}
+.widget_tag_cloud a:nth-child(2) {
+  font-size: 32px!important;
+}
+.widget_tag_cloud a:nth-child(3) {
+  font-size: 24px!important;
+}
+.widget_tag_cloud a:nth-child(4) {
+  font-size: 20px!important;
+}
+.widget_tag_cloud a:nth-child(5) {
+  font-size: 14px!important;
+}
+.widget_tag_cloud a:nth-child(6) {
+  font-size: 18px!important;
+}
+.widget_tag_cloud a:nth-child(7) {
+  font-size: 18px!important;
+}
+.widget_tag_cloud a:nth-child(8) {
+  font-size: 30px!important;
+}
+.widget_tag_cloud a:nth-child(9) {
+  font-size: 32px!important;
+}
+.widget_tag_cloud a:nth-child(10) {
+  font-size: 18px!important;
+}
+.widget_tag_cloud a:nth-child(11) {
+  font-size: 15px!important;
+}
+.widget_tag_cloud a:nth-child(12) {
+  font-size: 26px!important;
+}
+
+.wp-video-shortcode {
+  max-width: 100%;
 }
 
 .form-radio-group .radio:first-child {
@@ -11582,15 +11573,11 @@ ul.page-numbers > li > span.current, ul.page-numbers > li > span.current:hover, 
   max-width: none !important;
 }
 
-#skippy {
+.navigation-skiplink-link {
   display: block;
   padding: 1em;
   background-color: #f5f5f5;
   outline: 0;
-}
-
-#skippy .skiplink-text {
-  padding: .5em;
   outline: 1px dotted;
 }
 
@@ -11598,18 +11585,34 @@ ul.page-numbers > li > span.current, ul.page-numbers > li > span.current:hover, 
   outline: none;
 }
 
-/*--------------------------------------------------------------
-# Layout
---------------------------------------------------------------*/
-#header #main-navigation {
-  margin: 20px 0;
+#header-branding {
+  background: none;
+  padding: 1.5em 0;
 }
-#header .page-header {
-  margin: 20px 0 20px;
+#header-branding .custom-logo-link img {
+  margin-right: 1.5em;
+  margin-bottom: 1.5em;
+  max-height: 240px;
+  max-width: auto;
 }
-#header .page-header .site-description {
-  font-size: 16px;
-  font-style: italic;
+#header-branding .site-title {
+  margin: 0;
+}
+#header-branding .site-description {
+  margin: 0.5em 0 0;
+}
+
+#header-image {
+  margin-top: 1.5em;
+}
+
+#navigation-top {
+  border-radius: 0;
+  margin: 0;
+}
+
+#content .post.sticky .entry-title::after {
+  content: " \2014\2014\2014 ";
 }
 
 #footer {
@@ -11632,26 +11635,6 @@ body {
   margin-bottom: 70px;
 }
 
-.home #content .post {
-  margin-bottom: 40px;
-}
-.home #content .post.sticky {
-  padding: 0 20px 20px;
-  border: 1px dashed #5bc0de;
-}
-
-/*--------------------------------------------------------------
-# Helpers
---------------------------------------------------------------*/
-/* Define mobile styles */
-/* max-width 640px, mobile-only styles, use when QAing mobile issues */
-/* min-width 641px, medium screens */
-/* min-width 641px and max-width 1024px, use when QAing tablet-only issues */
-/* min-width 1025px, large screens */
-/* min-width 1025px and max-width 1440px, use when QAing large screen-only issues */
-/* min-width 1441px, xlarge screens */
-/* min-width 1441px and max-width 1920px, use when QAing xlarge screen-only issues */
-/* min-width 1921px, xxlarge screens */
 .alignleft {
   display: inline;
   float: left;
