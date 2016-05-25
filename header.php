@@ -29,14 +29,7 @@
 
 		<?php get_template_part( 'templates-parts/navigation', 'top' ); ?>
 
-		<?php
-			$header_image = get_header_image();
-			if ( ! empty( $header_image ) ) :
-		?>
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
-				<img src="<?php echo esc_url( $header_image ); ?>" height="<?php esc_attr_e( $header_image->height ); ?>" width="<?php esc_attr_e( $header_image->width ); ?>" alt="" />
-			</a>
-		<?php endif; ?>
+		<?php get_template_part( 'templates-parts/header', 'image' ); ?>
 	</header><!-- #header -->
 
 	<div id="wrapper" class="container">
