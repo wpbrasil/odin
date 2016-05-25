@@ -1,45 +1,45 @@
-/*!
-Theme Name: Odin
-Theme URI: http://wpod.in/
-Author: Team Odin
-Author URI: http://wpod.in/#colaboradores
-Description: Odin Framework Made in WordPress Brasil
-*/
+//
+// Theme Style
+//
 
-/*--------------------------------------------------------------
-# Tools, Variables and Mixins
---------------------------------------------------------------*/
+// --------------------------------------------------------------
+// Tools, Variables and Mixins
+// --------------------------------------------------------------
 @import "bourbon";
 @import "settings/variables";
 @import "settings/mixins";
 
-/*--------------------------------------------------------------
-# Reset and Dependencies
---------------------------------------------------------------*/
+// --------------------------------------------------------------
+// Reset and Dependencies
+// --------------------------------------------------------------
 @import "vendor/bootstrap/bootstrap";
-@import "vendor/wordpress/wordpress";
 @import "vendor/animate.css/animate";
 
-/*--------------------------------------------------------------
-# CSS and Components
---------------------------------------------------------------*/
+// --------------------------------------------------------------
+// CSS and Components
+// --------------------------------------------------------------
 @import "shared/base";
+@import "shared/wordpress";
 @import "shared/forms";
 @import "shared/pagination";
 @import "shared/shortcodes";
-@import "shared/navigation-skiplink.scss";
 
-/*--------------------------------------------------------------
-# Layout
---------------------------------------------------------------*/
+// --------------------------------------------------------------
+// Layout
+// --------------------------------------------------------------
+@import "shared/navigation-skiplink";
 @import "shared/header-branding";
-@import "shared/header-image.scss";
-@import "shared/navigation-top.scss";
-@import "layout/structure";
-@import "layout/home";
+@import "shared/header-image";
+@import "shared/navigation-top";
+@import "shared/wrapper";
+@import "shared/content";
+@import "shared/sidebar";
+@import "shared/footer";
+@import "shared/animation";
 
-/*--------------------------------------------------------------
-# Helpers
---------------------------------------------------------------*/
+// --------------------------------------------------------------
+// Helpers
+// --------------------------------------------------------------
 @import "shared/queries";
 @import "shared/helpers";
+

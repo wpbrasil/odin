@@ -1,0 +1,27 @@
+//
+// Animation
+//
+
+//
+// Example Using Bourbon (bourbon.io/docs/#animation)
+//
+// @include keyframes(fadeIn) {
+// 	from { opacity: 0; }
+// 	to { opacity: 1; }
+// }
+// body {
+// 	opacity: 0;
+// 	@include animation(fadeIn 0.3s ease-in-out);
+//   	@include animation-iteration-count(1);
+//   	@include animation-fill-mode(forwards); // Make sure the element maintains it's final visual state (i.e. 100% opacity)
+//   	@include animation-delay(1s);
+// }
+
+//
+// Example Using Animate.css (github.com/daneden/animate.css)
+//
+// body {
+// 	@extend .animated;
+// 	@extend .fadeIn;
+// }
+

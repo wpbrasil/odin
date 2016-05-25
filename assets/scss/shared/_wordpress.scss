@@ -1,6 +1,9 @@
-// ==========================================================================
-// WordPress Core Styles (Table of contents)
-// ==========================================================================
+//
+// WordPress Core Styles
+//
+// Note: Some classes works with Bootstraps-SASS only.
+//
+// (Table of contents)
 //
 // # Alignment
 // # Content
@@ -15,8 +18,9 @@
 // # Forms
 //
 
+//
 // Alignment
-// ==========================================================================
+//
 .alignnone {
     margin: 0.5em 0;
 }
@@ -36,8 +40,9 @@
     margin: 0.5em auto;
 }
 
+//
 // Content
-// ==========================================================================
+//
 .hentry,
 .widget {
     -ms-word-wrap: break-word;
@@ -79,8 +84,9 @@
     max-width: 100% !important;
 }
 
+//
 // Galleries
-// ==========================================================================
+//
 .gallery {
     @include clearfix;
     margin: 0 auto 1em;
@@ -118,8 +124,9 @@
     }
 }
 
+//
 // Images
-// ==========================================================================
+//
 .hentry,
 .widget {
     img {
@@ -191,12 +198,11 @@ img {
     }
 }
 
+//
 // Widgets
-// ==========================================================================
+//
 
-//
 // Calendar
-//
 .widget_calendar #wp-calendar {
     @extend .table;
     @extend .table-bordered;
@@ -217,9 +223,7 @@ img {
     }
 }
 
-//
 // Search
-//
 .widget_search form {}
 
 .widget_search #s {}
@@ -228,9 +232,7 @@ img {
 
 .widget_search #searchsubmit:active {}
 
-//
 // TagCloud
-//
 .widget_tag_cloud {
     @for $i from 1 through 12 {
         $random: 12 + random(20) + px;
@@ -240,18 +242,18 @@ img {
     }
 }
 
+//
 // Shortcodes
-// ==========================================================================
+//
 
-//
 // Video
-//
 .wp-video-shortcode {
     max-width: 100%;
 }
 
+//
 // Forms
-// ==========================================================================
+//
 input[name="post_password"] {
     @extend .form-control;
 }

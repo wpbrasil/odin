@@ -1,15 +1,41 @@
-// ==========================================================================
-// Style used to style the TinyMCE editor
-// ==========================================================================
+//
+// TinyMCE editor Style
+//
 
-//@import
-        //"variables",           // Theme       Custom Variables
-        //"bootstrap/bootstrap", // Bootstrap   Styles Core
-        //"wordpress/wordpress"  // WordPress   Styles Core
-//;
+// --------------------------------------------------------------
+// Tools, Variables and Mixins
+// --------------------------------------------------------------
+@import "bourbon";
+@import "settings/variables";
+@import "settings/mixins";
 
-// Custom Editor Styles
-// ==========================================================================
-body {
-	padding: 10px;
+// --------------------------------------------------------------
+// Reset and Dependencies
+// --------------------------------------------------------------
+@import "vendor/bootstrap/bootstrap";
+@import "vendor/animate.css/animate";
+
+// --------------------------------------------------------------
+// CSS and Components
+// --------------------------------------------------------------
+@import "shared/base";
+@import "shared/wordpress";
+@import "shared/forms";
+@import "shared/pagination";
+@import "shared/shortcodes";
+
+// --------------------------------------------------------------
+// Helpers
+// --------------------------------------------------------------
+@import "shared/queries";
+@import "shared/helpers";
+
+// --------------------------------------------------------------
+// Extra
+// --------------------------------------------------------------
+html {
+	max-width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 30px;
 }

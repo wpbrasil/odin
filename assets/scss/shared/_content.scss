@@ -1,0 +1,14 @@
+//
+// Content
+//
+
+#content {
+	.post {
+		// Sticky post
+		&.sticky{
+			.entry-title {
+				&::after { content: " \2014\2014\2014 "; } // 3x long dash (brajeshwar.github.io/entities)
+			}
+		}
+	}
+}
