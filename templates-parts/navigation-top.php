@@ -13,16 +13,14 @@
 		</header>
 		<div class="collapse navbar-collapse">
 			<?php
-				wp_nav_menu(
-					array(
+				wp_nav_menu( array(
 						'theme_location' => 'main-menu',
 						'depth'          => 2,
 						'container'      => false,
 						'menu_class'     => 'nav navbar-nav',
 						'fallback_cb'    => 'Odin_Bootstrap_Nav_Walker::fallback',
-						'walker'         => new Odin_Bootstrap_Nav_Walker()
-					)
-				);
+						'walker'         => new Odin_Bootstrap_Nav_Walker(),
+				) );
 			?>
 			<form method="get" class="navbar-form navbar-right" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
 				<label for="navbar-search" class="sr-only">
@@ -36,9 +34,3 @@
 		</div><!-- .navbar-collapse -->
 	</div><!-- .container -->
 </nav>
-
-<!--
-<nav id="site-navigation" class="main-navigation" role="navigation">
-	<button class="menu-toggle" aria-controls="top-menu" aria-expanded="false"><?php esc_html_e( 'Top Menu', 'odin-base' ); ?></button>
-	<?php wp_nav_menu( array( 'theme_location' => 'top', 'menu_id' => 'top-menu' ) ); ?>
-</nav> #site-navigation -->
