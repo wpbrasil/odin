@@ -22,20 +22,6 @@ module.exports = function( grunt ) {
 
 		// uglify to concat and minify
 		uglify: {
-			dist: {
-				files: {
-					'<%= pkg.dirs.js %>/main.min.js': [
-						'<%= pkg.dirs.js %>/bower.js', // external vendor/plugins
-						'<%= pkg.dirs.js %>/main.js' // custom javaScript
-					]
-				},
-				options: {
-					banner: '/*!\n' +
-				            ' * <%= pkg.title %> v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
-				            ' * Updated <%= grunt.template.today("yyyy-mm-dd") %> <%= pkg.author %>\n' +
-				            ' */\n'
-			    }
-			},
 			bower: {
 				files: {
 					'<%= pkg.dirs.js %>/bower.js': [
@@ -64,35 +50,20 @@ module.exports = function( grunt ) {
 				options: {
         			beautify: true
       			}
-			}
-		},
-
-		// clean directories and files
-		clean: {
-			options: {
-				force: true
 			},
-			bower: [
-				// bower
-				'<%= pkg.dirs.bower %>/**',
-				// bootstrap
-				'<%= pkg.dirs.sass %>/vendor/bootstrap/',
-				'<%= pkg.dirs.fonts %>/bootstrap/',
-				// animate.css
-				'<%= pkg.dirs.sass %>/vendor/animate.css/'
-			]
-		},
-
-		// copy css, scss, fonts or others files of dependencies bower for assets
-		copy: {
-			bower: {
-				files: [
-					// bootstrap
-					{ expand: true, cwd: '<%= pkg.dirs.bower %>/bootstrap-sass/assets/stylesheets/', src: '**', dest: '<%= pkg.dirs.sass %>/vendor/bootstrap/' },
-					{ expand: true, cwd: '<%= pkg.dirs.bower %>/bootstrap-sass/assets/fonts/bootstrap/', src: '**', dest: '<%= pkg.dirs.fonts %>/bootstrap/' },
-					// animate.css
-					{ expand: true, cwd: '<%= pkg.dirs.bower %>/animate.css/', src: 'animate.css', dest: '<%= pkg.dirs.sass %>/vendor/animate.css/', rename: function(path){ return path + 'animate.scss'; } }
-				]
+			dist: {
+				files: {
+					'<%= pkg.dirs.js %>/main.min.js': [
+						'<%= pkg.dirs.js %>/bower.js', 	// external vendor/plugins
+						'<%= pkg.dirs.js %>/main.js' 	// custom javaScript
+					]
+				},
+				options: {
+					banner: '/*!\n' +
+				            ' * <%= pkg.title %> v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
+				            ' * Updated <%= grunt.template.today("yyyy-mm-dd") %> <%= pkg.author %>\n' +
+				            ' */\n'
+			    }
 			}
 		},
 
@@ -115,6 +86,7 @@ module.exports = function( grunt ) {
 		},
 
 		// watch for changes and trigger sass, jshint, uglify and livereload browser
+		// required enable livereload.js script in inc/enqueue-scripts.php
 		watch: {
 			sass: {
 				files: [
@@ -170,14 +142,14 @@ module.exports = function( grunt ) {
 			},
 			staging: {
 				options: {
-					src: '../',
+					src: '/',
 					dest: '~/PATH/wp-content/themes/odin',
 					host: 'user@host.com'
 				}
 			},
 			production: {
 				options: {
-					src: '../',
+					src: '/',
 					dest: '~/PATH/wp-content/themes/odin',
 					host: 'user@host.com'
 				}
@@ -191,10 +163,10 @@ module.exports = function( grunt ) {
 				auth: {
 					host: 'ftp.SEU-SITE.com',
 					port: 21,
-					authPath: '../.ftppass',
+					authPath: '.ftppass',
 					authKey: 'key_for_deploy'
 				},
-				src: '../',
+				src: '/',
 				dest: '/PATH/wp-content/themes/odin',
 				exclusions: '<%= pkg.ignoreDeploy %>'
 			}
@@ -210,11 +182,11 @@ module.exports = function( grunt ) {
 
 		// update packages npm
 		exec: {
-	      bowerInstall: {
-	        command: 'bower install'
+	      'bower-install': {
+	        command: 'rm -rf <%= pkg.dirs.bower %>/** && bower install'
 	      },
-	      npmUpdate: {
-	        command: 'ncu -u' // install global ncu https://www.npmjs.com/package/npm-check-updates
+	      'npm-update': {
+	        command: 'ncu -u' // required: install global ncu https://www.npmjs.com/package/npm-check-updates
 	      }
 	    }
 
@@ -229,40 +201,34 @@ module.exports = function( grunt ) {
 	// --------------------------
 
 	// Default Task
-	grunt.registerTask( 'default', [
-		'jshint',
-		'sass',
-		'uglify'
-	] );
+	grunt.registerTask( 'default', [ 'jshint', 'sass', 'uglify'	] );
 
-	// Bower Update Task
-	grunt.registerTask( 'bower', [
-		'clean:bower',
-		'exec:bowerInstall',
-		'copy:bower',
-		'sass',
-		'uglify'
-	] );
+	// Assets css/js/images Tasks
+	grunt.registerTask( 'css', [ 'sass' ] );
+	grunt.registerTask( 'js', [ 'jshint', 'uglify' ] );
+	grunt.registerTask( 'img', ['optimize'] );
 
-	// Optimize Images Task
-	grunt.registerTask( 'optimize', ['imagemin'] );
+	// Bower Update Tasks
+	grunt.registerTask( 'bower', [ 'exec:bower-install', 'default' ] );
+	grunt.registerTask( 'b', [ 'bower' ] );
 
-	// Deploy Tasks
+	// Compress Theme Tasks
+	grunt.registerTask( 'zip-theme', [ 'default', 'zip' ] );
+	grunt.registerTask( 'z', [ 'zip-theme' ] );
+
+	// Deploy FTP Tasks
 	grunt.registerTask( 'ftp', ['ftp-deploy'] );
-
-	// Npm Update
-	grunt.registerTask( 'npm-update', ['exec:npmUpdate'] );
-
-	// Compress
-	grunt.registerTask( 'zip-theme', [
-		'default',
-		'zip'
-	] );
-
-	// Short aliases
-	grunt.registerTask( 'w', ['watch'] );
-	grunt.registerTask( 'o', ['optimize'] );
 	grunt.registerTask( 'f', ['ftp'] );
-	grunt.registerTask( 'r', ['rsync'] );
-	grunt.registerTask( 'z', ['zip'] );
+
+	// Deploy rsync Tasks
+	grunt.registerTask( 'ftp-rsync', ['rsync'] );
+	grunt.registerTask( 'fr', ['ftp-rsync'] );
+
+	// Watch Task
+	grunt.registerTask( 'watch', ['watch'] );
+	grunt.registerTask( 'watch', ['w'] );
+
+	// Npm Update Task
+	grunt.registerTask( 'npm-update', ['exec:npm-update'] );
+	grunt.registerTask( 'ncu', ['npm-update'] );
 };
