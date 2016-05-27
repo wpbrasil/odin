@@ -186,7 +186,7 @@ module.exports = function( grunt ) {
 	        command: 'rm -rf <%= pkg.dirs.bower %>/** && bower install'
 	      },
 	      'npm-update': {
-	        command: 'ncu -u' // required: install global ncu https://www.npmjs.com/package/npm-check-updates
+	        command: 'ncu -u'
 	      }
 	    }
 
@@ -208,7 +208,8 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'js', [ 'jshint', 'uglify' ] );
 	grunt.registerTask( 'img', ['optimize'] );
 
-	// Bower Update Tasks
+	// Bower Update Tasks ( required `npm install -g bower` before )
+	// ref: https://www.npmjs.com/package/bower
 	grunt.registerTask( 'bower', [ 'exec:bower-install', 'default' ] );
 	grunt.registerTask( 'b', [ 'bower' ] );
 
@@ -228,7 +229,8 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'watch', ['watch'] );
 	grunt.registerTask( 'watch', ['w'] );
 
-	// Npm Update Task
+	// Npm Update Task ( required `npm install -g ncu` before )
+	// ref: https://www.npmjs.com/package/npm-check-updates
 	grunt.registerTask( 'npm-update', ['exec:npm-update'] );
 	grunt.registerTask( 'ncu', ['npm-update'] );
 };
