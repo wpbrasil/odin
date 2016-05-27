@@ -3,32 +3,9 @@
 //
 
 // --------------------------------------------------------------
-// Tools, Variables and Mixins
+// Import Theme Style
 // --------------------------------------------------------------
-@import "bourbon";
-@import "settings/variables";
-@import "settings/mixins";
-
-// --------------------------------------------------------------
-// Reset and Dependencies
-// --------------------------------------------------------------
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
-@import "../../bower_components/animate.css/animate.min.css";
-
-// --------------------------------------------------------------
-// CSS and Components
-// --------------------------------------------------------------
-@import "shared/base";
-@import "shared/wordpress";
-@import "shared/forms";
-@import "shared/pagination";
-@import "shared/shortcodes";
-
-// --------------------------------------------------------------
-// Helpers
-// --------------------------------------------------------------
-@import "shared/queries";
-@import "shared/helpers";
+@import "../css/style.css";
 
 // --------------------------------------------------------------
 // Extra
