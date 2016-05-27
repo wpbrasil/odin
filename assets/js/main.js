@@ -13,8 +13,8 @@ jQuery(document).ready(function($) {
 	/**
 	 * Relative time to date posts. (http://momentjs.com)
 	 */
-	$( 'span.entry-date' ).each(function() {
-  		$(this).text( moment( $(this).children('time.entry-date').attr('datetime'), moment.ISO_8601, $('html').attr('lang') ).startOf('hour').fromNow() );
+	$( '.entry-date' ).each(function() {
+  		$(this).text( moment( $(this).children('time').attr('datetime'), moment.ISO_8601, $('html').attr('lang') ).startOf('hour').fromNow() );
 	});
 
 	/**
