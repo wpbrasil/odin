@@ -1,26 +1,33 @@
 jQuery(document).ready(function($) {
-	// fitVids.
-	$( '.entry-content' ).fitVids();
 
-	// Responsive wp_video_shortcode().
+	/**
+	 * Responsive wp_video_shortcode().
+	 */
 	$( '.wp-video-shortcode' ).parent( 'div' ).css( 'width', 'auto' );
 
 	/**
-	 * Odin Core shortcodes
+	 * Fluid width video embeds. (http://fitvidsjs.com)
+	 */
+	$( '.entry-content' ).fitVids();
+
+	/**
+	 * Relative time to date posts. (http://momentjs.com)
+	 */
+	$( 'span.entry-date' ).each(function() {
+  		$(this).text( moment( $(this).children('time.entry-date').attr('datetime'), moment.ISO_8601, $('html').attr('lang') ).startOf('hour').fromNow() );
+	});
+
+	/**
+	 * Odin Core shortcodes.
 	 */
 
 	// Tabs.
-	$( '.odin-tabs a' ).click(function(e) {
-		e.preventDefault();
-		$(this).tab( 'show' );
-	});
+	//$( '.odin-tabs a' ).click(function(e) {
+	//	e.preventDefault();
+	//	$(this).tab( 'show' );
+	//});
 
 	// Tooltip.
 	//$( '.odin-tooltip' ).tooltip();
-
-	// Moment
-	$( '.entry-date' ).each(function() {
-  		$(this).text( 'há ' + moment( $(this).data('datetime') ).startOf('hour').fromNow() );
-	});
 
 });
