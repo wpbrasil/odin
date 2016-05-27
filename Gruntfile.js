@@ -107,7 +107,7 @@ module.exports = function( grunt ) {
 				files: [
 					'<%= pkg.dirs.css %>/*.css',
 					'<%= pkg.dirs.js %>/*.js',
-					'../**/*.php'
+					'**/*.php'
 				]
 			},
 			options: {
@@ -227,7 +227,7 @@ module.exports = function( grunt ) {
 
 	// Watch Task
 	grunt.registerTask( 'watch', ['watch'] );
-	grunt.registerTask( 'watch', ['w'] );
+	grunt.registerTask( 'w', ['watch'] );
 
 	// Npm Update Task ( required `npm install -g ncu` before )
 	// ref: https://www.npmjs.com/package/npm-check-updates
