@@ -41,7 +41,7 @@ require_once get_template_directory() . '/inc/classes/class-term-meta.php';
  */
 
 // Facebook like widget.
-require_once get_template_directory() . '/inc/widgets/like-box.php';
+require_once get_template_directory() . '/inc/widgets/class-odin-widget-like-box.php';
 
 /**
  * Functions.
