@@ -25,11 +25,11 @@
 	</nav>
 
 	<header id="header" role="banner">
-		<?php get_template_part( 'templates-parts/header', 'branding' ); ?>
+		<?php get_template_part( 'template-parts/header', 'branding' ); ?>
 
-		<?php get_template_part( 'templates-parts/navigation', 'top' ); ?>
+		<?php get_template_part( 'template-parts/navigation', 'top' ); ?>
 
-		<?php get_template_part( 'templates-parts/header', 'image' ); ?>
+		<?php get_template_part( 'template-parts/header', 'image' ); ?>
 	</header><!-- #header -->
 
 	<div id="wrapper" class="container">
