@@ -9,7 +9,7 @@ if ( ! function_exists( 'odin_theme_support' ) ) :
 	function odin_theme_support() {
 
 		// Add multiple languages support.
-		load_theme_textdomain( 'odin', get_template_directory() . '/inc/languages' );
+		load_theme_textdomain( 'odin', get_template_directory() . '/languages' );
 
 		// Add post_thumbnails suport.
 		add_theme_support( 'post-thumbnails' );
