@@ -20,19 +20,19 @@
  * Helpers.
  */
 
-require_once get_template_directory() . '/inc/classes/abstracts/abstract-front-end-form.php';
-require_once get_template_directory() . '/inc/classes/class-bootstrap-nav.php';
-require_once get_template_directory() . '/inc/classes/class-thumbnail-resizer.php';
-require_once get_template_directory() . '/inc/classes/class-theme-options.php';
-require_once get_template_directory() . '/inc/classes/class-options-helper.php';
-require_once get_template_directory() . '/inc/classes/class-post-type.php';
-require_once get_template_directory() . '/inc/classes/class-taxonomy.php';
-require_once get_template_directory() . '/inc/classes/class-metabox.php';
-require_once get_template_directory() . '/inc/classes/class-contact-form.php';
-require_once get_template_directory() . '/inc/classes/class-post-form.php';
-require_once get_template_directory() . '/inc/classes/class-user-meta.php';
-require_once get_template_directory() . '/inc/classes/class-post-status.php';
-require_once get_template_directory() . '/inc/classes/class-term-meta.php';
+require_once get_template_directory() . '/inc/helpers/abstracts/abstract-front-end-form.php';
+require_once get_template_directory() . '/inc/helpers/class-bootstrap-nav.php';
+require_once get_template_directory() . '/inc/helpers/class-thumbnail-resizer.php';
+require_once get_template_directory() . '/inc/helpers/class-theme-options.php';
+require_once get_template_directory() . '/inc/helpers/class-options-helper.php';
+require_once get_template_directory() . '/inc/helpers/class-post-type.php';
+require_once get_template_directory() . '/inc/helpers/class-taxonomy.php';
+require_once get_template_directory() . '/inc/helpers/class-metabox.php';
+require_once get_template_directory() . '/inc/helpers/class-contact-form.php';
+require_once get_template_directory() . '/inc/helpers/class-post-form.php';
+require_once get_template_directory() . '/inc/helpers/class-user-meta.php';
+require_once get_template_directory() . '/inc/helpers/class-post-status.php';
+require_once get_template_directory() . '/inc/helpers/class-term-meta.php';
 
 /**
  * Shortcodes.
