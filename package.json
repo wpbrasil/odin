@@ -39,38 +39,44 @@
   },
   "zip" : [
     "**",
-    "!<%= pkg.dirs.node %>/**",
-    "!<%= pkg.dirs.bower %>/**",
-    "!<%= pkg.dirs.sass %>/**",
+    "!<%= pkg.dirs.node %>",
+    "!<%= pkg.dirs.bower %>",
+    "!<%= pkg.dirs.sass %>",
     "!.editorconfig",
     "!.gitignore",
     "!bower.json",
     "!Gruntfile.js",
     "!package.json",
-    "!.git/*",
+    "!.git",
     "!**.md",
     "!**.zip",
     "!**.DS_Store",
     "!**Thumbs.db",
     "!**.sublime-project",
-    "!**.sublime-workspace"
+    "!**.sublime-workspace",
+    "!.sass-cache",
+    "!sftp-config.json",
+    "!.ftppass"
   ],
   "ignoreDeploy" : [
-    "<%= pkg.dirs.node %>/**",
-    "<%= pkg.dirs.bower %>/**",
-    "<%= pkg.dirs.sass %>/**",
+    "<%= pkg.dirs.node %>",
+    "<%= pkg.dirs.bower %>",
+    "<%= pkg.dirs.sass %>",
     ".editorconfig",
     ".gitignore",
     "bower.json",
     "Gruntfile.js",
     "package.json",
-    ".git/*",
+    ".git",
     "**.md",
     "**.zip",
     "**.DS_Store",
     "**Thumbs.db",
     "**.sublime-project",
     "**.sublime-workspace"
+    ".sass-cache",
+    "sftp-config.json",
+    ".ftppass"
   ]
 }
 
