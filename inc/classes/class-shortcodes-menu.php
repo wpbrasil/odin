@@ -42,7 +42,7 @@ class Odin_Shortcodes_Menu {
 	 * @return array          Odin TinyMCE plugin.
 	 */
 	public function add_shortcode_tinymce_plugin( $plugins ) {
-		$plugins[ 'odin_shortcodes' ] = get_template_directory_uri() . "/inc/assets/js/editor-shortcodes.js";
+		$plugins[ 'odin_shortcodes' ] = get_template_directory_uri() . "/inc/admin/js/editor-shortcodes.js";
 
 		return $plugins;
 
