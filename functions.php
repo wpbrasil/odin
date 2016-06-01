@@ -17,13 +17,11 @@
  */
 
 /**
- * Classes.
+ * Helpers.
  */
 
 require_once get_template_directory() . '/inc/classes/abstracts/abstract-front-end-form.php';
 require_once get_template_directory() . '/inc/classes/class-bootstrap-nav.php';
-require_once get_template_directory() . '/inc/classes/class-shortcodes.php';
-require_once get_template_directory() . '/inc/classes/class-shortcodes-menu.php';
 require_once get_template_directory() . '/inc/classes/class-thumbnail-resizer.php';
 require_once get_template_directory() . '/inc/classes/class-theme-options.php';
 require_once get_template_directory() . '/inc/classes/class-options-helper.php';
@@ -35,6 +33,14 @@ require_once get_template_directory() . '/inc/classes/class-post-form.php';
 require_once get_template_directory() . '/inc/classes/class-user-meta.php';
 require_once get_template_directory() . '/inc/classes/class-post-status.php';
 require_once get_template_directory() . '/inc/classes/class-term-meta.php';
+
+/**
+ * Shortcodes.
+ */
+
+// Odin shortcodes.
+require_once get_template_directory() . '/inc/shortcodes/class-odin-shortcodes.php';
+require_once get_template_directory() . '/inc/shortcodes/class-odin-shortcodes-menu.php';
 
 /**
  * Widgets.
