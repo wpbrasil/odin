@@ -1,21 +1,22 @@
 <?php
 /**
- * The template for displaying Comments.
+ * The template for displaying comments.
  *
- * The area of the page that contains comments and the comment form.
+ * This is the template that displays the area of the page that contains both the current comments
+ * and the comment form.
  *
- * @package Odin
- * @since 1.9.0
+ * @link https://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package odin
  */
+
 ?>
 <section id="comments" class="content-wrap" itemscope itemtype="http://schema.org/Comment">
 	<?php if ( post_password_required() ) : ?>
 		<p class="nopassword"><?php _e( 'This post is password protected. Enter the password to view all comments.', 'odin' ); ?></p>
 </section><!-- #comments -->
-		<?php
-		return;
+		<?php return;
 	endif;
-
 	if ( have_comments() ) : ?>
 		<h2 id="comments-title" class="page-header">
 			<?php
@@ -46,7 +47,6 @@
 	<?php if ( ! comments_open() && post_type_supports( get_post_type(), 'comments' ) ) : ?>
 		<p class="nocomments"><?php _e( 'Comments closed.', 'odin' ); ?></p>
 	<?php endif; ?>
-
 	<?php
 		$commenter 		= wp_get_current_commenter();
 		$req 			= get_option( 'require_name_email' );

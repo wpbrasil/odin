@@ -1,9 +1,10 @@
 <?php
 /**
- * The template for displaying 404 pages (Not Found).
+ * The template for displaying 404 pages (not found).
  *
- * @package Odin
- * @since 2.2.0
+ * @link https://codex.wordpress.org/Creating_an_Error_404_Page
+ *
+ * @package odin
  */
 
 get_header(); ?>
@@ -18,9 +19,9 @@ get_header(); ?>
 				<p><?php _e( 'It looks like nothing was found at this location. Maybe try a search?', 'odin' ); ?></p>
 
 				<?php get_search_form(); ?>
-			</div><!-- .page-content -->
+			</div>
 
-	</main><!-- #main -->
+	</main>
 
 <?php
 get_footer();

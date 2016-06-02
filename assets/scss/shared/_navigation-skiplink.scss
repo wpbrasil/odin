@@ -1,0 +1,22 @@
+//
+// Fancy skip link
+//
+// Make it look a bit less "bare bones"
+// Also includes focus suppression for the Chrome tabindex="-1" workaround
+//
+
+.navigation-skiplink {
+ 	&-link {
+		@extend .sr-only;
+		@extend .sr-only-focusable;
+		display: block;
+		padding: 1em;
+		background-color: #f5f5f5;
+		outline: 0;
+		outline: 1px dotted;
+	}
+}
+
+#content:focus {
+	outline: none;
+}

@@ -7,7 +7,7 @@
  * Custom admin scripts.
  */
 function odin_admin_scripts() {
-	wp_enqueue_style( 'odin-inc-admin', get_template_directory_uri() . '/inc/assets/css/custom-admin.css' );
+	wp_enqueue_style( 'odin-inc-admin', get_template_directory_uri() . '/assets/css/admin-style.css' );
 }
 
 add_action( 'admin_enqueue_scripts', 'odin_admin_scripts' );

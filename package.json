@@ -1,0 +1,82 @@
+{
+  "name": "odin",
+  "description": "Framework and base theme for development with WordPress.",
+  "version": "3.0.0",
+  "title": "Odin Framework",
+  "homepage": "http://wpod.in",
+  "main": "Gruntfile.js",
+  "devDependencies": {
+    "grunt": "~1.0.1",
+    "grunt-contrib-watch": "~1.0.0",
+    "grunt-contrib-clean": "~1.0.0",
+    "grunt-contrib-copy": "~1.0.0",
+    "grunt-contrib-sass": "~1.0.0",
+    "grunt-contrib-jshint": "~1.0.0",
+    "grunt-contrib-uglify": "~1.0.1",
+    "grunt-contrib-imagemin": "~1.0.0",
+    "grunt-rsync": "~1.0.1",
+    "grunt-ftp-deploy": "~0.1.10",
+    "grunt-zip": "~0.17.1",
+    "load-grunt-tasks": "~3.5.0",
+    "glob-watcher": "~3.0.0",
+    "node-bourbon": "~4.2.3",
+    "grunt-exec": "~0.4.6",
+    "time-grunt": "^1.2.1"
+  },
+  "engines": {
+    "node": ">=0.10.1",
+    "npm": ">=1.1.0"
+  },
+  "dirs": {
+    "bower": "bower_components",
+    "node": "node_modules",
+    "css": "assets/css",
+    "fonts": "assets/fonts",
+    "images": "assets/images",
+    "js": "assets/js",
+    "sass": "assets/scss",
+    "tmp": "tmp"
+  },
+  "zip" : [
+    "**",
+    "!<%= pkg.dirs.node %>",
+    "!<%= pkg.dirs.bower %>",
+    "!<%= pkg.dirs.sass %>",
+    "!.editorconfig",
+    "!.gitignore",
+    "!bower.json",
+    "!Gruntfile.js",
+    "!package.json",
+    "!.git",
+    "!**.md",
+    "!**.zip",
+    "!**.DS_Store",
+    "!**Thumbs.db",
+    "!**.sublime-project",
+    "!**.sublime-workspace",
+    "!.sass-cache",
+    "!sftp-config.json",
+    "!.ftppass"
+  ],
+  "ignoreDeploy" : [
+    "<%= pkg.dirs.node %>",
+    "<%= pkg.dirs.bower %>",
+    "<%= pkg.dirs.sass %>",
+    ".editorconfig",
+    ".gitignore",
+    "bower.json",
+    "Gruntfile.js",
+    "package.json",
+    ".git",
+    "**.md",
+    "**.zip",
+    "**.DS_Store",
+    "**Thumbs.db",
+    "**.sublime-project",
+    "**.sublime-workspace"
+    ".sass-cache",
+    "sftp-config.json",
+    ".ftppass"
+  ]
+}
+

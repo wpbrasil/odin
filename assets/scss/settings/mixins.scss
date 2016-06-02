@@ -1,0 +1,26 @@
+//
+// Theme mixins
+//
+
+//
+// Selection (ref: http://bourbon.io/docs/#selection)
+//
+@mixin selection($current-selector: false) {
+  @if $current-selector {
+    &::-moz-selection {
+      @content;
+    }
+
+    &::selection {
+      @content;
+    }
+  } @else {
+    ::-moz-selection {
+      @content;
+    }
+
+    ::selection {
+      @content;
+    }
+  }
+}

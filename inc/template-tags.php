@@ -61,7 +61,7 @@ if ( ! function_exists( 'odin_posted_on' ) ) {
 		}
 
 		// Set up and print post meta information.
-		printf( '<span class="entry-date">%s <time class="entry-date" datetime="%s">%s</time></span> <span class="byline">%s <span class="author vcard"><a class="url fn n" href="%s" rel="author">%s</a></span>.</span>',
+		printf( '<span class="entry-date">%s <time datetime="%s">%s</time></span> <span class="entry-byline byline">%s <span class="entry-author author vcard"><a class="url fn n" href="%s" rel="author">%s</a></span>.</span>',
 			__( 'Posted in', 'odin' ),
 			esc_attr( get_the_date( 'c' ) ),
 			esc_html( get_the_date() ),

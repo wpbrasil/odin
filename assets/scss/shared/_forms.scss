@@ -1,0 +1,20 @@
+//
+// Forms
+//
+
+input[type="submit"],
+input[type="reset"],
+button {
+	@extend .btn;
+	@extend .btn-default;
+}
+
+.form-radio-group .radio {
+	&:first-child {
+		margin-top: 0;
+	}
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}

@@ -1,12 +1,12 @@
 <?php
 /**
- * The sidebar containing the secondary widget area, displays on homepage, archives and posts.
+ * The sidebar containing the main widget area.
  *
- * If no active widgets in this sidebar, it will shows Recent Posts, Archives and Tag Cloud widgets.
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package Odin
- * @since 2.2.0
+ * @package odin
  */
+
 ?>
 
 <aside id="sidebar" class="<?php echo odin_classes_page_sidebar_aside(); ?>" role="complementary">
