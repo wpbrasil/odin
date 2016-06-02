@@ -17,22 +17,22 @@
  */
 
 /**
- * Helpers.
+ * Libraries.
  */
 
-require_once get_template_directory() . '/inc/helpers/abstracts/abstract-front-end-form.php';
-require_once get_template_directory() . '/inc/helpers/class-bootstrap-nav.php';
-require_once get_template_directory() . '/inc/helpers/class-thumbnail-resizer.php';
-require_once get_template_directory() . '/inc/helpers/class-theme-options.php';
-require_once get_template_directory() . '/inc/helpers/class-options-helper.php';
-require_once get_template_directory() . '/inc/helpers/class-post-type.php';
-require_once get_template_directory() . '/inc/helpers/class-taxonomy.php';
-require_once get_template_directory() . '/inc/helpers/class-metabox.php';
-require_once get_template_directory() . '/inc/helpers/class-contact-form.php';
-require_once get_template_directory() . '/inc/helpers/class-post-form.php';
-require_once get_template_directory() . '/inc/helpers/class-user-meta.php';
-require_once get_template_directory() . '/inc/helpers/class-post-status.php';
-require_once get_template_directory() . '/inc/helpers/class-term-meta.php';
+require_once get_template_directory() . '/inc/libraries/abstracts/abstract-front-end-form.php';
+require_once get_template_directory() . '/inc/libraries/class-bootstrap-nav.php';
+require_once get_template_directory() . '/inc/libraries/class-thumbnail-resizer.php';
+require_once get_template_directory() . '/inc/libraries/class-theme-options.php';
+require_once get_template_directory() . '/inc/libraries/class-options-helper.php';
+require_once get_template_directory() . '/inc/libraries/class-post-type.php';
+require_once get_template_directory() . '/inc/libraries/class-taxonomy.php';
+require_once get_template_directory() . '/inc/libraries/class-metabox.php';
+require_once get_template_directory() . '/inc/libraries/class-contact-form.php';
+require_once get_template_directory() . '/inc/libraries/class-post-form.php';
+require_once get_template_directory() . '/inc/libraries/class-user-meta.php';
+require_once get_template_directory() . '/inc/libraries/class-post-status.php';
+require_once get_template_directory() . '/inc/libraries/class-term-meta.php';
 
 /**
  * Shortcodes.
@@ -50,7 +50,7 @@ require_once get_template_directory() . '/inc/shortcodes/class-odin-shortcodes-m
 require_once get_template_directory() . '/inc/widgets/class-odin-widget-like-box.php';
 
 /**
- * Functions.
+ * Hooks.
  */
 
 // Theme support options.
@@ -68,38 +68,31 @@ require_once get_template_directory() . '/inc/menu.php';
 // Register sidebars/widget areas.
 require_once get_template_directory() . '/inc/sidebar.php';
 
-// Custom comments loop.
-require_once get_template_directory() . '/inc/comments-loop.php';
-
-// Custom templates tags.
-require_once get_template_directory() . '/inc/template-tags.php';
-
-// WooCommerce compatibility files.
-require_once get_template_directory() . '/inc/template-tags.php';
-
-// Replace 'older/newer' post links with numbered navigation.
-require_once get_template_directory() . '/inc/pagination.php';
-
-// Related post function - no need to rely on plugins.
-require_once get_template_directory() . '/inc/related-posts.php';
-
-// Breadcrumbs function - no need to rely on plugins.
-require_once get_template_directory() . '/inc/breadcrumbs.php';
-
 // Customize the WordPress admin and login menu.
 require_once get_template_directory() . '/inc/admin.php';
-
-// Custom limit excerpt for content or title.
-require_once get_template_directory() . '/inc/excerpt.php';
 
 // Automatically sets the post thumbnail.
 require_once get_template_directory() . '/inc/autoset-featured.php';
 
-// Get a image URL.
-require_once get_template_directory() . '/inc/get-image-url.php';
+/**
+ * Helpers.
+ */
 
-// Get term meta fields.
-require_once get_template_directory() . '/inc/get_term_meta.php';
+// Custom templates tags.
+require_once get_template_directory() . '/inc/template-tags.php';
 
-// Custom post thumbnail.
-require_once get_template_directory() . '/inc/thumbnail.php';
+// Custom comments loop.
+require_once get_template_directory() . '/inc/comments-loop.php';
+
+// Replace 'older/newer' post links with numbered navigation.
+require_once get_template_directory() . '/inc/pagination.php';
+
+// WooCommerce compatibility files.
+require_once get_template_directory() . '/inc/woocommerce.php';
+
+// Post functions.
+require_once get_template_directory() . '/inc/post.php';
+
+// Breadcrumbs function - no need to rely on plugins.
+require_once get_template_directory() . '/inc/breadcrumbs.php';
+
