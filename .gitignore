@@ -34,4 +34,5 @@ sftp-config.json
 .ftppass
 *.zip
 src
-
+!src/Gruntfile.js
+!src/package.json

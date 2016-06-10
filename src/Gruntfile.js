@@ -78,13 +78,25 @@ module.exports = function( grunt ) {
 			}
 		},
 
+		// run autoprefixer
+		postcss: {
+			options: {
+				processors: [
+			      require('autoprefixer')({browsers: ['last 2 versions']})
+			    ]
+			},
+			dist: {
+				src: '<%= dirs.css %>/*.css'
+			}
+		},
+
 		// watch for changes and trigger sass, jshint, uglify and livereload browser
 		watch: {
 			sass: {
 				files: [
 					'<%= dirs.sass %>/**'
 				],
-				tasks: ['sass']
+				tasks: ['sass', 'postcss']
 			},
 			js: {
 				files: [
@@ -330,6 +342,7 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'default', [
 		'jshint',
 		'sass',
+		'postcss'
 		'uglify'
 	] );
 
