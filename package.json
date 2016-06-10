@@ -73,7 +73,7 @@
     "**.DS_Store",
     "**Thumbs.db",
     "**.sublime-project",
-    "**.sublime-workspace"
+    "**.sublime-workspace",
     ".sass-cache",
     "sftp-config.json",
     ".ftppass"
