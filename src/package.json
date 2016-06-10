@@ -22,7 +22,9 @@
     "grunt-text-replace": "~0.4.0",
     "glob-watcher": "~2.0.0",
     "minimist": "~1.2.0",
-    "readable-stream": "~2.0.5"
+    "readable-stream": "~2.0.5",
+	"grunt-postcss": "^0.8.0",
+	"autoprefixer": "^6.3.6"
   },
   "engines": {
     "node": ">=0.10.1",
