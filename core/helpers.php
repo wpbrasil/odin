@@ -167,12 +167,12 @@ function odin_related_posts( $display = 'category', $qty = 4, $title = '', $thum
 					$image = apply_filters( 'odin_related_posts_thumbnail', $img );
 
 					$layout .= '<span class="thumb">';
-					$layout .= sprintf( '<a href="%s" title="%s" class="thumbnail">%s</a>', get_permalink(), get_the_title(), $image );
+					$layout .= sprintf( '<a href="%s" title="%s" class="thumbnail">%s</a>', esc_url( get_permalink() ), get_the_title(), $image );
 					$layout .= '</span>';
 				}
 
 				$layout .= '<span class="text">';
-				$layout .= sprintf( '<a href="%1$s" title="%2$s">%2$s</a>', get_permalink(), get_the_title() );
+				$layout .= sprintf( '<a href="%1$s" title="%2$s">%2$s</a>', esc_url( get_permalink() ), get_the_title() );
 				$layout .= '</span>';
 
 				$layout .= ( $thumb ) ? '</div>' : '</li>';
@@ -250,7 +250,7 @@ function odin_breadcrumbs( $homepage = '' ) {
 				if ( 'product' === $post->post_type ) {
 					if ( is_woocommerce_activated() ) {
 						$shop_page    = get_post( wc_get_page_id( 'shop' ) );
-						echo '<li><a href="' . get_permalink( $shop_page ) . '">' . get_the_title( $shop_page ) . '</a></li>';
+						echo '<li><a href="' . esc_url( get_permalink( $shop_page ) ) . '">' . get_the_title( $shop_page ) . '</a></li>';
 					}
 
 					// Gets post type taxonomies.
@@ -313,7 +313,7 @@ function odin_breadcrumbs( $homepage = '' ) {
 
 			echo '<li><a href="' . get_category_link( $category->term_id ) . '">' . $category->name . '</a></li>';
 
-			echo '<li><a href="' . get_permalink( $parent ) . '">' . $parent->post_title . '</a></li>';
+			echo '<li><a href="' . esc_url( get_permalink( $parent ) ) . '">' . $parent->post_title . '</a></li>';
 
 			echo $current_before . get_the_title() . $current_after;
 
@@ -329,7 +329,7 @@ function odin_breadcrumbs( $homepage = '' ) {
 			while ( $parent_id ) {
 				$page = get_page( $parent_id );
 
-				$breadcrumbs[] = '<li><a href="' . get_permalink( $page->ID ) . '">' . get_the_title( $page->ID ) . '</a></li>';
+				$breadcrumbs[] = '<li><a href="' . esc_url( get_permalink( $page->ID ) ) . '">' . get_the_title( $page->ID ) . '</a></li>';
 				$parent_id  = $page->post_parent;
 			}
 
@@ -412,7 +412,7 @@ function odin_breadcrumbs( $homepage = '' ) {
 				// Get correct Woocommerce Post Type crumb
 				if ( is_woocommerce() ) {
 					$shop_page    = get_post( wc_get_page_id( 'shop' ) );
-					echo '<li><a href="' . get_permalink( $shop_page ) . '">' . get_the_title( $shop_page ) . '</a></li>';
+					echo '<li><a href="' . esc_url( get_permalink( $shop_page ) ) . '">' . get_the_title( $shop_page ) . '</a></li>';
 				} else {
 					$_post_type = array_shift( $taxonomy->object_type );
 					$post_type = get_post_type_object( $_post_type );
