@@ -225,6 +225,10 @@ function odin_enqueue_scripts() {
 	// jQuery.
 	wp_enqueue_script( 'jquery' );
 
+	// Html5Shiv
+	wp_enqueue_script( 'html5shiv', $template_url . '/assets/js/html5.js' );
+	wp_script_add_data( 'html5shiv', 'conditional', 'lt IE 9' );
+
 	// General scripts.
 	if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
 		// Bootstrap.

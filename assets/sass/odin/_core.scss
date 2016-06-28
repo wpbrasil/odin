@@ -27,6 +27,10 @@ button {
 	@extend .btn-default;
 }
 
+select {
+	max-width: 100%;
+}
+
 .form-radio-group .radio {
 	&:first-child {
 		margin-top: 0;
