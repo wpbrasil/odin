@@ -7,15 +7,22 @@
 function odin_enqueue_scripts() {
 	$template_url = get_template_directory_uri();
 
-	// Loads Odin main stylesheet.
+	// Odin main stylesheet.
 	wp_enqueue_style( 'odin-style', get_stylesheet_uri(), array(), null, 'all' );
 
-	// jQuery.
+	// jQuery script.
 	wp_enqueue_script( 'jquery' );
+
+	// IE-specific scripts with conditional comments.
+	wp_enqueue_script( 'respondjs', 'https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js' );
+	wp_script_add_data( 'respondjs', 'conditional', 'lt IE 9' );
+
+	wp_enqueue_script( 'html5shiv', 'https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js');
+	wp_script_add_data( 'html5shiv', 'conditional', 'lt IE 9' );
 
 	// General scripts.
 	if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
-		// Bower with vendores (Bootstrap, FitVids and etc).
+		// Bower with vendors (Bootstrap, FitVids and etc).
 		wp_enqueue_script( 'bootstrap', $template_url . '/assets/js/bower.js', array(), null, true );
 
 		// Main jQuery.

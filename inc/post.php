@@ -215,12 +215,12 @@ function odin_related_posts( $display = 'category', $qty = 4, $title = '', $thum
 					$image = apply_filters( 'odin_related_posts_thumbnail', $img );
 
 					$layout .= '<span class="thumb">';
-					$layout .= sprintf( '<a href="%s" title="%s" class="thumbnail">%s</a>', get_permalink(), get_the_title(), $image );
+					$layout .= sprintf( '<a href="%s" title="%s" class="thumbnail">%s</a>', esc_url( get_permalink() ), get_the_title(), $image );
 					$layout .= '</span>';
 				}
 
 				$layout .= '<span class="text">';
-				$layout .= sprintf( '<a href="%1$s" title="%2$s">%2$s</a>', get_permalink(), get_the_title() );
+				$layout .= sprintf( '<a href="%1$s" title="%2$s">%2$s</a>', esc_url( get_permalink() ), get_the_title() );
 				$layout .= '</span>';
 
 				$layout .= ( $thumb ) ? '</div>' : '</li>';
