@@ -42,13 +42,12 @@ get_header(); ?>
 						<ul class="pager">
 							<li class="previous"><?php previous_image_link( false, __( '&larr; Previous image', 'odin' ) ); ?></li>
 							<li class="next"><?php next_image_link( false, __( 'Next image &rarr;', 'odin' ) ); ?></li>
-<<<<<<< HEAD
 						</ul>
 					</nav>
 
 					<?php if ( ! empty( $post->post_parent ) ) : ?>
 					<nav>
-						<a href="<?php echo esc_url( get_permalink( $post->post_parent ) ); ?>" title="<?php echo esc_attr( sprintf( __( 'Back to %s', 'odin' ), strip_tags( get_the_title( $post->post_parent ) ) ) ); ?>" class="link-post-parent" rel="gallery">
+						<a href="<?php echo get_permalink( $post->post_parent ); ?>" title="<?php echo esc_attr( sprintf( __( 'Back to %s', 'odin' ), strip_tags( get_the_title( $post->post_parent ) ) ) ); ?>" class="link-post-parent" rel="gallery">
 							<?php printf( __( '<span class="meta-nav">&larr;</span> %s', 'odin' ), get_the_title( $post->post_parent ) ); ?>
 						</a>
 					</nav>
@@ -58,20 +57,6 @@ get_header(); ?>
 		<?php endwhile; ?>
 
 	</main>
-=======
-						</ul><!-- .pager -->
-
-						<?php if ( ! empty( $post->post_parent ) ) : ?>
-							<ul class="pager page-title">
-								<li class="previous"><a href="<?php echo esc_url( get_permalink( $post->post_parent ) ); ?>" title="<?php echo esc_attr( sprintf( __( 'Back to %s', 'odin' ), strip_tags( get_the_title( $post->post_parent ) ) ) ); ?>" rel="gallery"><?php printf( __( '<span class="meta-nav">&larr;</span> %s', 'odin' ), get_the_title( $post->post_parent ) ); ?></a></li>
-							</ul><!-- .pager -->
-						<?php endif; ?>
-					</div><!-- .entry-content -->
-				</article>
-			<?php endwhile; ?>
-
-	</main><!-- #main -->
->>>>>>> odin/master
 
 <?php
 get_sidebar();
