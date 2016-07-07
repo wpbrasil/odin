@@ -93,3 +93,18 @@ if ( ! function_exists( 'odin_theme_support' ) ) :
 endif;
 
 add_action( 'after_setup_theme', 'odin_theme_support' );
+
+if ( ! function_exists( 'odin_content_width' ) ) :
+	/**
+	 * Sets the content width in pixels, based on the theme's design and stylesheet.
+	 *
+	 * Priority 0 to make it available to lower priority callbacks.
+	 *
+	 * @global int $content_width
+	 */
+	function odin_content_width() {
+		$GLOBALS['content_width'] = apply_filters( 'odin_content_width', 860 );
+	}
+endif;
+
+add_action( 'after_setup_theme', 'odin_content_width', 0 );
