@@ -18,7 +18,7 @@
 [odin-expo]: http://expo.wpod.in
 [odin-miv]: https://github.com/wpbrasil/odin-miv
 [odin-docs]: https://github.com/wpbrasil/odin/wiki
-[odin-docs-prereq]: https://github.com/adammacias/odin/tree/v3-gh-pages/v3-prereq
+[odin-docs-prereq]: https://github.com/wpbrasil/odin/tree/v3-gh-pages/v3-prereq
 [odin-issues]: https://github.com/wpbrasil/odin/issues
 [odin-contributors]: https://github.com/wpbrasil/odin/graphs/contributors
 [odin-zip-master]: https://github.com/wpbrasil/odin/archive/master.zip

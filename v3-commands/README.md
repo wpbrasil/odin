@@ -14,4 +14,4 @@ O Odin utiliza o [Gulp][gulp] para automatizar suas tarefas. Tenha certeza de te
 | `$ gulp watch`   | Assiste alterações em arquivos.                                                                                     |
 
 [gulp]: http://gulpjs.com
-[odin-docs-prereq]: https://github.com/adammacias/odin/tree/v3-gh-pages/v3-prereq
+[odin-docs-prereq]: https://github.com/wpbrasil/odin/tree/v3-gh-pages/v3-prereq
