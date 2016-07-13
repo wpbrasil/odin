@@ -12,3 +12,20 @@
 * Item 1.
 * Item 2.
 * Item 3...
+
+[odin-repository]: https://github.com/wpbrasil/odin
+[odin-website]: http://wpod.in
+[odin-expo]: http://expo.wpod.in
+[odin-miv]: https://github.com/wpbrasil/odin-miv
+[odin-docs]: https://github.com/wpbrasil/odin/wiki
+[odin-docs-prereq]: https://github.com/adammacias/odin/tree/v3-gh-pages/v3-prereq
+[odin-issues]: https://github.com/wpbrasil/odin/issues
+[odin-contributors]: https://github.com/wpbrasil/odin/graphs/contributors
+[odin-zip-master]: https://github.com/wpbrasil/odin/archive/master.zip
+
+[wpbrasil]: https://github.com/wpbrasil
+[bootstrap]: http://getbootstrap.com
+[browsersync]: https://www.browsersync.io
+[bower]: https://bower.io
+[gulp]: http://gulpjs.com
+[nodejs]: https://nodejs.org/en
