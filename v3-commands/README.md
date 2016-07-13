@@ -1,6 +1,6 @@
 ## Comandos
 
-O Odin utiliza o [Gulp][gulp] para automatizar suas tarefas. Tenha certeza de ter os [requisitos][odin-prereq] instalados antes de usa-lo.
+O Odin utiliza o [Gulp][gulp] para automatizar suas tarefas. Tenha certeza de ter os [requisitos][odin-docs-prereq] instalados antes de usa-lo.
 
 | Comando          | Descrição                                                                                                           |
 | ---              | ---                                                                                                                 |
