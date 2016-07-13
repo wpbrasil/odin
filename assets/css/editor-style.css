@@ -1,4 +1,4 @@
-@import url(../css/style.css);
+@import url(style.min.css);
 html {
   max-width: 1200px;
   margin-left: auto;

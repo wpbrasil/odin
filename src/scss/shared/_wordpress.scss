@@ -79,7 +79,9 @@
     color: #666;
 }
 
-.bypostauthor {}
+.bypostauthor {
+	color: inherit;
+}
 
 // Override the Twitter embed fixed width
 .twitter-tweet-rendered {
