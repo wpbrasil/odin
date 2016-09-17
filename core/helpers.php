@@ -563,7 +563,7 @@ function odin_get_term_meta( $term_id, $field ) {
 
 	// After, try to get in the old way (option API).
 	$option_name = sprintf( 'odin_term_meta_%s_%s', $term_id, $field );
-	$value       = get_option( $name );
+	$value       = get_option( $option_name );
 
 	// Upgrade to new update_term_meta().
 	if ( false !== $value ) {
