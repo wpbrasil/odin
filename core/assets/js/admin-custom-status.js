@@ -7,7 +7,7 @@
 	$(function() {
 		var html = '';
 		var label = false;
-		var $body = $( 'body' );
+		var $body = $( document.body );
 		var $odinMeta = document.querySelectorAll( 'meta.odin-custom-status-meta' );
 
 		Array.prototype.forEach.call( $odinMeta, function( item ) {
