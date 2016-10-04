@@ -4,7 +4,7 @@
 	/**
 	 * Custom post status
 	 */
-	$( window ).load( function() {
+	$(function() {
 		var html = '';
 		var label = false;
 		var $odinMeta = document.querySelectorAll( 'meta.odin-custom-status-meta' );
