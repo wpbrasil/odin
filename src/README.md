@@ -24,12 +24,18 @@ $ cd ROOT_PATH/wp-content/themes/odin/src/
 $ sudo npm install
 ```
 
-## Configuração no functions.php ##
+## Configurações no functions.php ##
 
 Para usar os arquivos de JavaScript minificados pelo *Grunt* você deve ativar esse suporte no arquivo `functions.php` do **Odin** da seguinte forma:
 
 ```php
 define( 'ODIN_GRUNT_SUPPORT', true );
+```
+
+Para usar a tarefa de LiveReload, pesquise no arquivo `functions.php` por: *watch livereload*, e logo abaixo descomente o seguinte código:
+
+```php
+wp_enqueue_script( 'odin-livereload', 'http://localhost:35729/livereload.js?snipver=1', array(), null, true );
 ```
 
 ## Tarefas Disponíveis ##
