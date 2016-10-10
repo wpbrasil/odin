@@ -19,7 +19,7 @@
 /**
  * TGM.
  */
- require_once get_template_directory() . '/inc/tgm/odin-required-plugins.php';
+ //require_once get_template_directory() . '/inc/tgm/odin-required-plugins.php';
 
 /**
  * Classes.
@@ -89,3 +89,12 @@ require_once get_template_directory() . '/inc/post.php';
 
 // Breadcrumbs function - no need to rely on plugins.
 require_once get_template_directory() . '/inc/breadcrumbs.php';
+
+function odin_custom_post_types() {
+	$video = new Odin_Post_Type(
+	    'Video', // Nome (Singular) do Post Type.
+	    'video' // Slug do Post Type.
+	);
+}
+
+add_action( 'init', 'odin_custom_post_types', 1 );
