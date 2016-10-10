@@ -17,28 +17,27 @@
  */
 
 /**
- * Libraries.
+ * Classes.
  */
 
-require_once get_template_directory() . '/inc/libraries/abstracts/abstract-front-end-form.php';
-require_once get_template_directory() . '/inc/libraries/class-bootstrap-nav.php';
-require_once get_template_directory() . '/inc/libraries/class-thumbnail-resizer.php';
-require_once get_template_directory() . '/inc/libraries/class-theme-options.php';
-require_once get_template_directory() . '/inc/libraries/class-options-helper.php';
-require_once get_template_directory() . '/inc/libraries/class-post-type.php';
-require_once get_template_directory() . '/inc/libraries/class-taxonomy.php';
-require_once get_template_directory() . '/inc/libraries/class-metabox.php';
-require_once get_template_directory() . '/inc/libraries/class-contact-form.php';
-require_once get_template_directory() . '/inc/libraries/class-post-form.php';
-require_once get_template_directory() . '/inc/libraries/class-user-meta.php';
-require_once get_template_directory() . '/inc/libraries/class-post-status.php';
-require_once get_template_directory() . '/inc/libraries/class-term-meta.php';
+require_once get_template_directory() . '/inc/classes/abstracts/abstract-front-end-form.php';
+require_once get_template_directory() . '/inc/classes/class-bootstrap-nav.php';
+require_once get_template_directory() . '/inc/classes/class-thumbnail-resizer.php';
+require_once get_template_directory() . '/inc/classes/class-theme-options.php';
+require_once get_template_directory() . '/inc/classes/class-options-helper.php';
+require_once get_template_directory() . '/inc/classes/class-post-type.php';
+require_once get_template_directory() . '/inc/classes/class-taxonomy.php';
+require_once get_template_directory() . '/inc/classes/class-metabox.php';
+require_once get_template_directory() . '/inc/classes/class-contact-form.php';
+require_once get_template_directory() . '/inc/classes/class-post-form.php';
+require_once get_template_directory() . '/inc/classes/class-user-meta.php';
+require_once get_template_directory() . '/inc/classes/class-post-status.php';
+require_once get_template_directory() . '/inc/classes/class-term-meta.php';
 
 /**
  * Shortcodes.
  */
 
-// Odin shortcodes.
 require_once get_template_directory() . '/inc/shortcodes/class-odin-shortcodes.php';
 require_once get_template_directory() . '/inc/shortcodes/class-odin-shortcodes-menu.php';
 
@@ -46,7 +45,7 @@ require_once get_template_directory() . '/inc/shortcodes/class-odin-shortcodes-m
  * Widgets.
  */
 
-// Facebook like widget.
+// Facebook like box widget.
 require_once get_template_directory() . '/inc/widgets/class-odin-widget-like-box.php';
 
 /**
@@ -95,4 +94,3 @@ require_once get_template_directory() . '/inc/post.php';
 
 // Breadcrumbs function - no need to rely on plugins.
 require_once get_template_directory() . '/inc/breadcrumbs.php';
-
