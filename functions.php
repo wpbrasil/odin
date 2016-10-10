@@ -17,6 +17,11 @@
  */
 
 /**
+ * TGM.
+ */
+ require_once get_template_directory() . '/inc/tgm/odin-required-plugins.php';
+
+/**
  * Classes.
  */
 
