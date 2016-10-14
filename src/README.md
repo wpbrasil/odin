@@ -24,13 +24,11 @@ $ cd ROOT_PATH/wp-content/themes/odin/src/
 $ sudo npm install
 ```
 
-## Configurações no functions.php ##
+## Configuração no wp-config.php ##
 
-Para usar os arquivos de JavaScript minificados pelo *Grunt* você deve ativar esse suporte no arquivo `functions.php` do **Odin** da seguinte forma:
+Para usar os arquivos de JavaScript minificados pelo *Grunt* você deve declarar a constante [SCRIPT_DEBUG](https://codex.wordpress.org/Debugging_in_WordPress#SCRIPT_DEBUG).
 
-```php
-define( 'ODIN_GRUNT_SUPPORT', true );
-```
+## Configuração no functions.php ##
 
 Para usar a tarefa de LiveReload, pesquise no arquivo `functions.php` por: *watch livereload*, e logo abaixo descomente o seguinte código:
 
