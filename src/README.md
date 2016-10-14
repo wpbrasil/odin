@@ -26,7 +26,7 @@ $ sudo npm install
 
 ## Configuração no wp-config.php ##
 
-Para usar os arquivos de JavaScript minificados pelo *Grunt* você deve declarar a constante [SCRIPT_DEBUG](https://codex.wordpress.org/Debugging_in_WordPress#SCRIPT_DEBUG).
+Para usar os arquivos de JavaScript **não minificados** pelo *Grunt* você deve declarar a constante [SCRIPT_DEBUG](https://codex.wordpress.org/Debugging_in_WordPress#SCRIPT_DEBUG), em seu arquivo `wp-config.php`.
 
 ## Configuração no functions.php ##
 
