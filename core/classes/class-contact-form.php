@@ -104,13 +104,13 @@ class Odin_Contact_Form extends Odin_Front_End_Form {
 						$id    = $field['id'];
 						$label = isset( $field['label'] ) ? $field['label'] : $id;
 
-						$data[ $label ] = $submitted_data[ $id ];
+						$data[ $label['text'] ] = $submitted_data[ $id ];
 					} elseif ( 'file' == $field['type'] && 'url' == $this->attachment_type ) {
 						$id    = $field['id'];
 						$label = isset( $field['label'] ) ? $field['label'] : $id;
 						$url   = $attachments[ $id ]['url'];
 
-						$data[ $label ] = '<a href="' . $url . '" target="_blank">' . $url . '</a>';
+						$data[ $label['text'] ] = '<a href="' . $url . '" target="_blank">' . $url . '</a>';
 					}
 				}
 			}
