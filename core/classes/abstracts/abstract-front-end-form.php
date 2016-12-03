@@ -145,7 +145,7 @@ abstract class Odin_Front_End_Form {
 		foreach ( $this->fields as $fieldset ) {
 			foreach ( $fieldset['fields'] as $field ) {
 				if ( $field['id'] == $id ) {
-					return $field['label'];
+					return $field['label']['text'];
 				}
 			}
 		}
@@ -676,7 +676,7 @@ abstract class Odin_Front_End_Form {
 				if ( 'file' == $field['type'] && isset( $_FILES[ $id ] ) ) {
 					$attachment_id = media_handle_upload( $id, 0 );
 
-					if ( is_wp_error( $attachment_id ) ) {
+					if ( is_wp_error( $attachment_id ) && $_FILES[ $id ]['size'] > 0 ) {
 						$error = apply_filters( 'odin_front_end_form_upload_error_' . $this->id, sprintf( '%s %s.', '<strong>' . $this->get_field_label( $id ) . '</strong>', $attachment_id->get_error_message() ) );
 						$this->set_errors( $error );
 					} else {
