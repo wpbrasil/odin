@@ -15,6 +15,7 @@ const header      = require('gulp-header');
 const footer      = require('gulp-footer');
 const fileinclude = require('gulp-file-include');
 const ignore      = require('gulp-ignore');
+const zip         = require('gulp-zip');
 const browser     = require('browser-sync').create();
 const package     = require('./package.json');
 
@@ -67,7 +68,7 @@ const paths = {
     },
     dist: {
 		input:'**',
-		ignore: ['dist', '*.zip', 'node_modules/**', 'node_modules', 'bower_components/**', 'bower_components', 'src/**', 'src', 'bower.json' , 'gulpfile.js', 'package.json', 'README.md'],
+		ignore: ['dist/**', 'dist', '*.zip', '*.sublime-project', '*.sublime-workspace', 'node_modules/**', 'node_modules', 'bower_components/**', 'bower_components', 'src/**', 'src', 'bower.json' , 'gulpfile.js', 'package.json', 'README.md', 'yarn.lock'],
 		output: 'dist/'
 	}
 };
@@ -198,24 +199,12 @@ gulp.task('clean:fonts', function () {
     return del.sync(paths.fonts.output);
 });
 
-// Remove dist folder.
-gulp.task('clean:dist', function () {
-    return del.sync(paths.dist.output);
-});
-
-// Generate dist files.
-gulp.task('copy:dist', function() {
+// Generate zip dist.
+gulp.task('build:dist', function() {
     return gulp.src(paths.dist.input)
         .pipe(ignore.exclude(paths.dist.ignore))
         .pipe(plumber())
-        .pipe(gulp.dest(paths.dist.output));
-});
-
-// Zip dist folder.
-gulp.task('copy:dist', function() {
-    return gulp.src(paths.dist.input)
-        .pipe(ignore.exclude(paths.dist.ignore))
-        .pipe(plumber())
+        .pipe(zip(package.name + '-v' + package.version + '.zip'))
         .pipe(gulp.dest(paths.dist.output));
 });
 
@@ -253,8 +242,7 @@ gulp.task('start', [
 
 // Generate dist.
 gulp.task('dist', [
-	'clean:dist',
-	'copy:dist'
+	'build:dist'
 ]);
 
 // Deploy.

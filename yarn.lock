@@ -1936,6 +1936,16 @@ gulp-util@*, gulp-util@^3, gulp-util@^3.0, gulp-util@^3.0.0, gulp-util@^3.0.1, g
     through2 "^2.0.0"
     vinyl "^0.5.0"
 
+gulp-zip:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/gulp-zip/-/gulp-zip-3.2.0.tgz#ebd198dae6dc2d5f44d814569c8ec42118a93ef9"
+  dependencies:
+    chalk "^1.0.0"
+    concat-stream "^1.4.7"
+    gulp-util "^3.0.0"
+    through2 "^2.0.1"
+    yazl "^2.1.0"
+
 gulp@^3.9.1:
   version "3.9.1"
   resolved "https://registry.yarnpkg.com/gulp/-/gulp-3.9.1.tgz#571ce45928dd40af6514fc4011866016c13845b4"
@@ -4876,6 +4886,12 @@ yauzl@2.4.1:
   resolved "https://registry.yarnpkg.com/yauzl/-/yauzl-2.4.1.tgz#9528f442dab1b2284e58b4379bb194e22e0c4005"
   dependencies:
     fd-slicer "~1.0.1"
+
+yazl@^2.1.0:
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/yazl/-/yazl-2.4.2.tgz#14cb19083e1e25a70092c1588aabe0f4e4dd4d88"
+  dependencies:
+    buffer-crc32 "~0.2.3"
 
 yeast@0.1.2:
   version "0.1.2"
