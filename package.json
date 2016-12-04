@@ -15,7 +15,8 @@
     "url": "http://github.com/wpbrasil/odin"
   },
   "scripts": {
-    "build": "gulp"
+    "build": "gulp",
+    "dev": "gulp dev"
   },
   "devDependencies": {
     "browser-sync": "^2.13.0",
