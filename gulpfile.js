@@ -245,11 +245,6 @@ gulp.task('dist', [
 	'build:dist'
 ]);
 
-// Deploy.
-gulp.task('deploy', [
-	// Coming soon...
-]);
-
 // Compile scripts files.
 gulp.task('scripts', [
 	'clean:scripts',
