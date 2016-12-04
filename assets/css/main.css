@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1413,7 +1413,6 @@ a:hover, a:focus {
 }
 
 a:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3170,7 +3169,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3864,7 +3862,6 @@ input.active[type="reset"]:focus,
 button.active:focus, .btn.active.focus, input.active.focus[type="submit"],
 input.active.focus[type="reset"],
 button.active.focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -9021,51 +9018,51 @@ img#wpstats {
 }
 
 .widget_tag_cloud a:nth-child(1) {
-  font-size: 29px !important;
+  font-size: 23px !important;
 }
 
 .widget_tag_cloud a:nth-child(2) {
-  font-size: 32px !important;
+  font-size: 14px !important;
 }
 
 .widget_tag_cloud a:nth-child(3) {
-  font-size: 18px !important;
+  font-size: 24px !important;
 }
 
 .widget_tag_cloud a:nth-child(4) {
-  font-size: 27px !important;
+  font-size: 21px !important;
 }
 
 .widget_tag_cloud a:nth-child(5) {
-  font-size: 32px !important;
+  font-size: 29px !important;
 }
 
 .widget_tag_cloud a:nth-child(6) {
-  font-size: 23px !important;
+  font-size: 26px !important;
 }
 
 .widget_tag_cloud a:nth-child(7) {
-  font-size: 13px !important;
+  font-size: 16px !important;
 }
 
 .widget_tag_cloud a:nth-child(8) {
-  font-size: 13px !important;
+  font-size: 14px !important;
 }
 
 .widget_tag_cloud a:nth-child(9) {
-  font-size: 23px !important;
+  font-size: 21px !important;
 }
 
 .widget_tag_cloud a:nth-child(10) {
-  font-size: 32px !important;
+  font-size: 19px !important;
 }
 
 .widget_tag_cloud a:nth-child(11) {
-  font-size: 18px !important;
+  font-size: 25px !important;
 }
 
 .widget_tag_cloud a:nth-child(12) {
-  font-size: 31px !important;
+  font-size: 17px !important;
 }
 
 .wp-video-shortcode {
