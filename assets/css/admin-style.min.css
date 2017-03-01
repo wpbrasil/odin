@@ -1,0 +1,8 @@
+/*!
+ * odin v3.0.0 <http://wpod.in>
+ * Odin Framework : Framework and base theme for development with WordPress.
+ * (c) 2016 WordPress Brasil <https://github.com/wpbrasil>
+ * MIT License
+ * http://github.com/wpbrasil/odin
+ */
+.login h1 a{background:url(../img/logo-login.png) top no-repeat!important;background:url(../img/logo-login.svg) top no-repeat!important;background-size:80px 80px!important;height:80px!important;width:80px!important}#footer-upgrade{visibility:hidden!important}#footer-left{float:right!important}#contextual-help-link-wrap,#normal-sortables #dashboard_right_now .inside .versions p,#wp-version-message{display:none!important}.mce-window .mce-container-body.mce-abs-layout{overflow:hidden!important;overflow-y:auto!important}

@@ -1,0 +1,28 @@
+//
+// Pagination
+//
+
+ul.page-numbers {
+	@extend .pagination;
+
+	> li > span.current {
+
+		&,
+		&:hover,
+		&:focus {
+			z-index: 2;
+			color: $pagination-active-color;
+			background-color: $pagination-active-bg;
+			border-color: $pagination-active-bg;
+			cursor: default;
+		}
+	}
+}
+
+.pagination-wrap {
+    text-align: center;
+    margin-top: 15px;
+    .infinite-scroll & {
+        display: none;
+    }
+}

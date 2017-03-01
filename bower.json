@@ -1,0 +1,16 @@
+{
+  "name": "odin",
+  "homepage": "https://github.com/wpbrasil/odin",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "animate.css": "daneden/animate.css#^3.5.1",
+    "bootstrap-sass": "^3.3.6",
+    "jquery": "^3.1.0",
+    "jquery.fitvids": "davatron5000/FitVids.js#^1.1.0",
+    "moment": "^2.11.2"
+  }
+}

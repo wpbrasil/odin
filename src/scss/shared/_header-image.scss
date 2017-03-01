@@ -1,0 +1,10 @@
+//
+// Image header
+//
+
+#header-image {
+	margin-top: 1.5em;
+	img {
+		@extend .img-responsive;
+	}
+}

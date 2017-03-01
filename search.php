@@ -1,44 +1,45 @@
 <?php
 /**
- * The template for displaying Search Results pages.
+ * The template for displaying search results pages.
  *
- * @package Odin
- * @since 2.2.0
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
+ *
+ * @package odin
  */
 
 get_header(); ?>
 
 	<main id="content" class="<?php echo odin_classes_page_sidebar(); ?>" tabindex="-1" role="main">
-			<?php if ( have_posts() ) : ?>
 
-				<header class="page-header">
-					<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'odin' ), get_search_query() ); ?></h1>
-				</header><!-- .page-header -->
+		<?php
+		if ( have_posts() ) : ?>
 
-					<?php
-						// Start the Loop.
-						while ( have_posts() ) : the_post();
+			<header class="page-header">
+				<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'odin' ), get_search_query() ); ?></h1>
+			</header>
 
-							/*
-							 * Include the post format-specific template for the content. If you want to
-							 * use this in a child theme, then include a file called called content-___.php
-							 * (where ___ is the post format) and that will be used instead.
-							 */
-							get_template_part( 'content', get_post_format() );
+			<?php
+			/* Start the Loop */
+			while ( have_posts() ) : the_post();
 
-						endwhile;
+				/*
+		 		 * Include the Post-Format-specific template for the content.
+		 		 * If you want to override this in a child theme, then include a file
+				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+				 */
+				get_template_part( 'template-parts/content', get_post_format() );
 
-						// Post navigation.
-						odin_paging_nav();
+			endwhile;
 
-					else :
-						// If no content, include the "No posts found" template.
-						get_template_part( 'content', 'none' );
+			odin_paging_nav();
 
-				endif;
-			?>
+		else :
 
-	</main><!-- #main -->
+			get_template_part( 'template-parts/content', 'none' );
+
+		endif; ?>
+
+	</main>
 
 <?php
 get_sidebar();

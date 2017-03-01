@@ -1,0 +1,48 @@
+{
+  "name": "odin",
+  "version": "3.0.0",
+  "description": "Framework and base theme for development with WordPress.",
+  "title": "Odin Framework",
+  "homepage": "http://wpod.in",
+  "author": {
+    "name": "WordPress Brasil",
+    "url": "https://github.com/wpbrasil"
+  },
+  "license": "MIT",
+  "main": "gulfile.js",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/wpbrasil/odin"
+  },
+  "scripts": {
+    "build": "gulp",
+    "dev": "gulp dev"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.2",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-file-include": "^1.0.0",
+    "gulp-flatten": "^0.3.1",
+    "gulp-footer": "^1.0.5",
+    "gulp-header": "1.8.8",
+    "gulp-ignore": "^2.0.2",
+    "gulp-imagemin": "^3.1.1",
+    "gulp-jshint": "^2.0.4",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.2",
+    "gulp-tap": "^0.1.3",
+    "gulp-uglify": "^2.0.0",
+    "gulp-zip": "^3.2.0",
+    "jshint": "^2.9.4",
+    "jshint-stylish": "^2.2.1",
+    "lazypipe": "^1.0.1",
+    "node-bourbon": "^4.2.8",
+    "node-fs": "^0.1.7",
+    "phantomjs": "^2.1.7"
+  }
+}

@@ -1,0 +1,34 @@
+//
+// Base
+//
+
+//
+// Global
+//
+*,
+*:before,
+*:after { // Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+	box-sizing: inherit;
+}
+
+html {
+	box-sizing: border-box;
+}
+
+body {
+	overflow-x: hidden;
+}
+
+// Required import "settings/mixins.scss"
+@include selection() {
+	color: white;
+	background: black;
+}
+
+//
+// Image
+//
+img {
+	height: auto; // Make sure images are scaled correctly.
+	max-width: 100%; // Adhere to container width.
+}

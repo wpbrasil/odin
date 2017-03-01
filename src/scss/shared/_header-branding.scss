@@ -1,0 +1,27 @@
+//
+// Header branding
+//
+// Logo, title and description
+//
+
+#header-branding {
+	background: none;
+	padding: 1.5em 0;
+	.custom-logo-link {
+		img {
+			margin-right: 1.5em;
+			margin-bottom: 1.5em;
+			// Change the height/width in inc/theme-support.php
+			max-height: 240px;
+			max-width: auto;
+		}
+	}
+	.site-title {
+		@extend .h1;
+		margin: 0;
+	}
+	.site-description {
+		@extend .h5;
+		margin: 0.5em 0 0;
+	}
+}

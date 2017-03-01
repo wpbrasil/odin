@@ -1,10 +1,11 @@
 <?php
 /**
- * The template for displaying Search Form.
+ * The template for displaying search form.
  *
- * @package Odin
- * @since 2.2.0
+ * @package odin
+ *
  */
+
 ?>
 
 <form method="get" id="searchform" class="form-inline" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
@@ -14,6 +15,6 @@
 			<button type="submit" class="btn btn-default" value="<?php esc_attr_e( 'Search', 'odin' ); ?>">
 				<i class="glyphicon glyphicon-search"></i>
 			</button>
-		</span><!-- /input-group-btn -->
-    </div><!-- /input-group -->
-</form><!-- /searchform -->
+		</span>
+	</div>
+</form>
