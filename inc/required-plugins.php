@@ -65,7 +65,7 @@ function odin_register_required_plugins() {
 		array(
 			'name'      => 'Odin Toolkit',
 			'slug'      => 'odin-toolkit',
-			'source'    => 'https://github.com/HasteDesign/odin-toolkit/archive/master.zip',
+			'source'    => 'https://github.com/wpbrasil/odin-toolkit/archive/master.zip',
 		),
 	);
 
@@ -90,47 +90,46 @@ function odin_register_required_plugins() {
 		'is_automatic' => false,                   // Automatically activate plugins after installation or not.
 		'message'      => '',                      // Message to output right before the plugins table.
 
-		/*
 		'strings'      => array(
 			'page_title'                      => __( 'Install Required Plugins', 'odin' ),
 			'menu_title'                      => __( 'Install Plugins', 'odin' ),
-			/* translators: %s: plugin name. * /
+			/* translators: %s: plugin name. */
 			'installing'                      => __( 'Installing Plugin: %s', 'odin' ),
-			/* translators: %s: plugin name. * /
+			/* translators: %s: plugin name. */
 			'updating'                        => __( 'Updating Plugin: %s', 'odin' ),
 			'oops'                            => __( 'Something went wrong with the plugin API.', 'odin' ),
 			'notice_can_install_required'     => _n_noop(
-				/* translators: 1: plugin name(s). * /
+				/* translators: 1: plugin name(s). */
 				'This theme requires the following plugin: %1$s.',
 				'This theme requires the following plugins: %1$s.',
 				'odin'
 			),
 			'notice_can_install_recommended'  => _n_noop(
-				/* translators: 1: plugin name(s). * /
+				/* translators: 1: plugin name(s). */
 				'This theme recommends the following plugin: %1$s.',
 				'This theme recommends the following plugins: %1$s.',
 				'odin'
 			),
 			'notice_ask_to_update'            => _n_noop(
-				/* translators: 1: plugin name(s). * /
+				/* translators: 1: plugin name(s). */
 				'The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s.',
 				'The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s.',
 				'odin'
 			),
 			'notice_ask_to_update_maybe'      => _n_noop(
-				/* translators: 1: plugin name(s). * /
+				/* translators: 1: plugin name(s). */
 				'There is an update available for: %1$s.',
 				'There are updates available for the following plugins: %1$s.',
 				'odin'
 			),
 			'notice_can_activate_required'    => _n_noop(
-				/* translators: 1: plugin name(s). * /
+				/* translators: 1: plugin name(s). */
 				'The following required plugin is currently inactive: %1$s.',
 				'The following required plugins are currently inactive: %1$s.',
 				'odin'
 			),
 			'notice_can_activate_recommended' => _n_noop(
-				/* translators: 1: plugin name(s). * /
+				/* translators: 1: plugin name(s). */
 				'The following recommended plugin is currently inactive: %1$s.',
 				'The following recommended plugins are currently inactive: %1$s.',
 				'odin'
@@ -153,16 +152,15 @@ function odin_register_required_plugins() {
 			'return'                          => __( 'Return to Required Plugins Installer', 'odin' ),
 			'plugin_activated'                => __( 'Plugin activated successfully.', 'odin' ),
 			'activated_successfully'          => __( 'The following plugin was activated successfully:', 'odin' ),
-			/* translators: 1: plugin name. * /
+			/* translators: 1: plugin name. */
 			'plugin_already_active'           => __( 'No action taken. Plugin %1$s was already active.', 'odin' ),
-			/* translators: 1: plugin name. * /
+			/* translators: 1: plugin name. */
 			'plugin_needs_higher_version'     => __( 'Plugin not activated. A higher version of %s is needed for this theme. Please update the plugin.', 'odin' ),
-			/* translators: 1: dashboard link. * /
+			/* translators: 1: dashboard link. */
 			'complete'                        => __( 'All plugins installed and activated successfully. %1$s', 'odin' ),
 			'dismiss'                         => __( 'Dismiss this notice', 'odin' ),
 			'notice_cannot_install_activate'  => __( 'There are one or more required or recommended plugins to install, update or activate.', 'odin' ),
 			'contact_admin'                   => __( 'Please contact the administrator of this site for help.', 'odin' ),
-
 			'nag_type'                        => '', // Determines admin notice type - can only be one of the typical WP notice classes, such as 'updated', 'update-nag', 'notice-warning', 'notice-info' or 'error'. Some of which may not work as expected in older WP versions.
 		),
 		*/

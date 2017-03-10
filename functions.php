@@ -19,7 +19,8 @@
 /**
  * TGM.
  */
- //require_once get_template_directory() . '/inc/tgm/odin-required-plugins.php';
+
+ //require_once get_template_directory() . '/inc/required-plugins.php';
 
 /**
  * Classes.
