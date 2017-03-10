@@ -163,7 +163,6 @@ function odin_register_required_plugins() {
 			'contact_admin'                   => __( 'Please contact the administrator of this site for help.', 'odin' ),
 			'nag_type'                        => '', // Determines admin notice type - can only be one of the typical WP notice classes, such as 'updated', 'update-nag', 'notice-warning', 'notice-info' or 'error'. Some of which may not work as expected in older WP versions.
 		),
-		*/
 	);
 
 	tgmpa( $plugins, $config );
