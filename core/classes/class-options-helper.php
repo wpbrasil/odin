@@ -123,4 +123,15 @@ class Odin_Options_Helper {
 	public function __toString() {
 		return $this->option_child_value;
 	}
+    
+    /**
+	 * Discover if the option child value is setted.
+	 *
+	 * @return boolean.
+	 */
+	public function is_setted() {
+        $option_value = $this->option_child_value;
+        
+		return !empty( $option_value );
+	}
 }
