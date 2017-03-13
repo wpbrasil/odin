@@ -28,6 +28,7 @@ Thumbs.db
 bower_components
 node_modules
 .sass-cache
+vendor
 
 # Ignore project files
 sftp-config.json

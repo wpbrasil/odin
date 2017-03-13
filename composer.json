@@ -1,0 +1,5 @@
+{
+    "require": {
+        "tgmpa/tgm-plugin-activation": "^2.6.1"
+    }
+}
