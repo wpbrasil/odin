@@ -71,6 +71,9 @@ require_once get_template_directory() . '/inc/autoset-featured.php';
  * Helpers.
  */
 
+// Allows you to easily require or recommend plugins with TGM Plugin Activation.
+require_once get_template_directory() . '/inc/required-plugins.php';
+
 // Custom templates tags.
 require_once get_template_directory() . '/inc/template-tags.php';
 
