@@ -6,14 +6,11 @@
  * theme as custom template tags. Others are attached to action and filter
  * hooks in WordPress to change core functionality.
  *
- * For documentation Odin Framework
- * @link https://github.com/wpbrasil/odin
+ * @see https://codex.wordpress.org/Plugin_API for more information on hooks, actions, and filters.
+ * @see https://github.com/wpbrasil/odin for documentation Odin Theme.
  *
- * For more information on hooks, actions, and filters,
- * @link https://codex.wordpress.org/Plugin_API
- *
- * @package odin
- *
+ * @package WordPress
+ * @subpackage Odin
  */
 
 /**
