@@ -14,10 +14,11 @@
  */
 
 /**
- * TGM.
+ * Vendors.
  */
-
- require_once get_template_directory() . '/inc/required-plugins.php';
+if ( file_exists( get_template_directory() . '/vendor/autoload.php' ) ) {
+	require_once get_template_directory() . '/vendor/autoload.php';
+}
 
 /**
  * Classes.
