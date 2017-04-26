@@ -36,8 +36,9 @@ module.exports = function( grunt ) {
 			dist: {
 				files: {
 					'<%= dirs.js %>/main.min.js': [
-						'<%= dirs.js %>/libs/*.js', // External libs/plugins
-						'<%= dirs.js %>/main.js'    // Custom JavaScript
+						'<%= dirs.js %>/libs/*.js',         // External libs/plugins
+						'<%= dirs.js %>/main.js',           // Custom JavaScript
+						'!<%= dirs.js %>/libs/modernizr.js' // Modernizr Lasted (2.8.3)
 					]
 				}
 			},
@@ -56,6 +57,13 @@ module.exports = function( grunt ) {
 						'<%= dirs.js %>/bootstrap/scrollspy.js',
 						'<%= dirs.js %>/bootstrap/tab.js',
 						'<%= dirs.js %>/bootstrap/affix.js'
+					]
+				}
+			},
+			modernizr: {
+				files: {
+					'<%= dirs.js %>/libs/modernizr.min.js': [
+						'<%= dirs.js %>/libs/modernizr.js'
 					]
 				}
 			}
