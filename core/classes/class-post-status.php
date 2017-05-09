@@ -66,7 +66,7 @@ class Odin_Post_Status {
 		unset( $this->args['applied_label'] );
 
 		if( ! isset( $this->args['label_count'] ) ) {
-			$this->args['label_count'] = _n_noop( $this->applied_label . '&nbsp;<span class="count">(%s)</span>', $this->applied_label . '&nbsp;<span class="count">(%s)</span>' );
+			$this->args['label_count'] = _n_noop( $this->applied_label . '&nbsp;<span class="count">(%s)</span>', $this->applied_label . '&nbsp;<span class="count">(%s)</span>', 'odin' );
 		}
 
 		// Register post status
