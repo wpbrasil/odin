@@ -486,7 +486,19 @@ class Odin_Theme_Options {
 		$html = sprintf( '<select id="%1$s" name="%2$s[%1$s]%3$s"%4$s>', $id, $tab, $multiple, $this->build_field_attributes( $attrs ) );
 		foreach( $args['options'] as $key => $label ) {
 			$key = sanitize_title( $key );
-
+			
+			/**
+			 * Select option if "$current" is an array.
+			 */
+			$selected = '';
+			if( is_array( $current ) && in_array( $key, $current ) ) {
+				$value_key = array_search( $key, $current );
+				$selected =	selected( $current[ $value_key ], $key, false );
+			}
+			elseif( ! is_array( $current ) ) {
+				$selected = selected( $current, $key, false );
+			}
+			
 			$html .= sprintf( '<option value="%s"%s>%s</option>', $key, selected( $current, $key, false ), $label );
 		}
 		$html .= '</select>';
