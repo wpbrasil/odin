@@ -20,7 +20,7 @@ get_header(); ?>
 					<div class="entry-content entry-attachment">
 						<?php echo wp_audio_shortcode( array( 'src' => wp_get_attachment_url() ) ); ?>
 
-						<p><strong><?php _e( 'URL:', 'odin' ); ?></strong> <a href="<?php echo esc_url( wp_get_attachment_url() ); ?>" title="<?php the_title_attribute(); ?>" rel="attachment"><span><?php echo esc_attr( basename( wp_get_attachment_url() ) ); ?></span></a></p>
+						<p><strong><?php _e( 'URL:', 'odin' ); ?></strong> <a href="<?php echo esc_url( wp_get_attachment_url() ); ?>" title="<?php the_title_attribute(); ?>" rel="attachment"><span><?php echo esc_html( basename( wp_get_attachment_url() ) ); ?></span></a></p>
 
 						<?php the_content(); ?>
 

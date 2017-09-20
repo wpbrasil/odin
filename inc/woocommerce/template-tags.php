@@ -25,7 +25,7 @@ if ( ! function_exists( 'odin_cart_link' ) ) {
 		}
 		?>
 		<li class="<?php echo esc_attr( $class ); ?>">
-			<a class="cart-contents" href="<?php echo esc_url( WC()->cart->get_cart_url() ); ?>" title="<?php _e( 'View your shopping cart', 'odin' ); ?>">
+			<a class="cart-contents" href="<?php echo esc_url( WC()->cart->get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'odin' ); ?>">
 				<?php echo wp_kses_data( WC()->cart->get_cart_total() ); ?> <span class="count"><?php echo wp_kses_data( sprintf( _n( '%d item', '%d items', WC()->cart->get_cart_contents_count(), 'odin' ), WC()->cart->get_cart_contents_count() ) );?></span>
 			</a>
 		</li>
