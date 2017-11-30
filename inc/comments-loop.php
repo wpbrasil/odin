@@ -1,5 +1,5 @@
 <?php
-if ( ! function_exists( 'odin_comment_loop' ) ) {
+if ( ! function_exists( 'odin_comments_loop' ) ) {
 
 	/**
 	 * Custom comments loop.
