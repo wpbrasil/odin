@@ -236,6 +236,9 @@ abstract class Odin_Front_End_Form {
 						case 'email':
 							$html .= $this->field_input( $id, $label, $default, $description, array_merge( array( 'type' => 'email' ), $attributes ) );
 							break;
+						case 'tel':
+							$html .= $this->field_input( $id, $label, $default, $description, array_merge( array( 'type' => 'tel' ), $attributes ) );
+							break;
 						case 'file':
 							$html .= $this->field_input( $id, $label, $default, $description, array_merge( array( 'type' => 'file', 'class' => 'form-file' ), $attributes ) );
 							$this->attributes = array_merge( array( 'enctype' => 'multipart/form-data' ), $this->attributes );
