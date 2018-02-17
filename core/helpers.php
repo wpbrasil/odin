@@ -149,7 +149,7 @@ function odin_related_posts( $display = 'category', $qty = 4, $title = '', $thum
 		if ( $related->have_posts() ) {
 
 			$layout = '<div id="related-post">';
-			$layout .= '<h3>' . esc_attr( $title ) . '</h3>';
+			$layout .= '<h3>' . esc_html( $title ) . '</h3>';
 			$layout .= ( $thumb ) ? '<div class="row">' : '<ul>';
 
 			while ( $related->have_posts() ) {
