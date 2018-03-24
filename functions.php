@@ -237,7 +237,7 @@ function odin_enqueue_scripts() {
 	wp_enqueue_style( 'odin-main-style', get_stylesheet_uri() );
 
 	// Loads main script file compressed.
-	wp_enqueue_script( 'odin-main-script', $template_url . '/assets/js/app' . $suffix . '.js', array( 'jquery' ), null, true );
+	wp_enqueue_script( 'odin-main-script', $template_url . '/dist/js/theme-script' . $suffix . '.js', array( 'jquery' ), null, true );
 
 	// Load Thread comments WordPress script.
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -258,7 +258,7 @@ function odin_stylesheet_uri( $stylesheet, $stylesheet_dir ) {
 	// Use minified libraries if SCRIPT_DEBUG is turned off.
 	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
-	$stylesheet = $stylesheet_dir . '/assets/css/theme-style' . $suffix . '.css';
+	$stylesheet = $stylesheet_dir . '/dist/css/theme-style' . $suffix . '.css';
 	return $stylesheet;
 }
 
