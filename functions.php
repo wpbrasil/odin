@@ -250,15 +250,16 @@ add_action( 'wp_enqueue_scripts', 'odin_enqueue_scripts', 1 );
 /**
  * Odin custom stylesheet URI.
  *
- * @since  2.2.0
- *
- * @param  string $uri Default URI.
- * @param  string $dir Stylesheet directory URI.
- *
- * @return string      New URI.
+ * @param string $stylesheet Default URI.
+ * @param string $stylesheet_dir Stylesheet directory URI.
+ * @return string New URI.
  */
-function odin_stylesheet_uri( $uri, $dir ) {
-	return $dir . '/assets/css/style.css';
+function odin_stylesheet_uri( $stylesheet, $stylesheet_dir ) {
+	// Use minified libraries if SCRIPT_DEBUG is turned off.
+	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+
+	$stylesheet = $stylesheet_dir . '/assets/css/theme-style' . $suffix . '.css';
+	return $stylesheet;
 }
 
 add_filter( 'stylesheet_uri', 'odin_stylesheet_uri', 10, 2 );
