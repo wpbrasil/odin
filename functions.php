@@ -216,23 +216,31 @@ add_action( 'after_switch_theme', 'odin_flush_rewrite' );
  *
  * @since 2.2.0
  */
+/**
+ * Load scripts and styles.
+ */
 function odin_enqueue_scripts() {
 	$template_url = get_template_directory_uri();
 
-	// Loads Odin main stylesheet.
-	wp_enqueue_style( 'odin-style', get_stylesheet_uri(), array(), null, 'all' );
+	// Use minified libraries if SCRIPT_DEBUG is turned off.
+	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
-	// General scripts.
-	if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
-		// Main.
-		wp_enqueue_script( 'odin-main', $template_url . '/assets/js/main.js', array( 'jquery' ), null, true );
-	} else {
-		// Grunt main file with Bootstrap, FitVids and others libs.
-		wp_enqueue_script( 'odin-main-min', $template_url . '/assets/js/main.min.js', array( 'jquery' ), null, true );
-	}
+	// // Deregister core jQuery and register jQuery 3.x.
+	// wp_deregister_script( 'jquery' );
+	// wp_enqueue_script( 'jquery', '//code.jquery.com/jquery-3.2.1' . $suffix . '.js', array(), '3.2.1' );
+
+	// // Deregister core jQuery migrate and register jQuery migrate 3.x.
+	// wp_deregister_script( 'jquery-migrate' );
+	// wp_enqueue_script( 'jquery-migrate', '//code.jquery.com/jquery-migrate-3.0.0' . $suffix . '.js', array( 'jquery' ), '3.0.0' );
+
+	// Loads main stylesheet file compressed.
+	wp_enqueue_style( 'odin-main-style', get_stylesheet_uri() );
+
+	// Loads main script file compressed.
+	wp_enqueue_script( 'odin-main-script', $template_url . '/assets/js/app' . $suffix . '.js', array( 'jquery' ), null, true );
 
 	// Load Thread comments WordPress script.
-	if ( is_singular() && get_option( 'thread_comments' ) ) {
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
