@@ -21,19 +21,22 @@ class Odin_Metabox {
 	/**
 	 * Metaboxs construct.
 	 *
-	 * @param string       $id        HTML 'id' attribute of the edit screen section.
-	 * @param string       $title     Title of the edit screen section, visible to user.
-	 * @param string|array $post_type The type of Write screen on which to show the edit screen section.
-	 * @param string       $context   The part of the page where the edit screen section should be shown ('normal', 'advanced', or 'side').
-	 * @param string       $priority  The priority within the context where the boxes should show ('high', 'core', 'default' or 'low').
+	 * @param string       $id            HTML 'id' attribute of the edit screen section.
+	 * @param string       $title         Title of the edit screen section, visible to user.
+	 * @param string|array $post_type     The type of Write screen on which to show the edit screen section.
+	 * @param string       $context       The part of the page where the edit screen section should be shown ('normal', 'advanced', or 'side').
+	 * @param string       $priority      The priority within the context where the boxes should show ('high', 'core', 'default' or 'low').
+	 * @param string/array $page_template The page template on which to show the edit screen section ('').
 	 */
-	public function __construct( $id, $title, $post_type = 'post', $context = 'normal', $priority = 'high' ) {
+	public function __construct( $id, $title, $post_type = 'post', $context = 'normal', $priority = 'high', $page_template = '' ) {
 		$this->id        = $id;
 		$this->title     = $title;
 		$this->post_type = $post_type;
 		$this->context   = $context;
 		$this->priority  = $priority;
+		$this->page_template = $page_template;
 		$this->nonce     = $id . '_nonce';
+		
 
 		// Add Metabox.
 		add_action( 'add_meta_boxes', array( $this, 'add' ) );
@@ -49,6 +52,11 @@ class Odin_Metabox {
 			$post_type = array( $post_type );
 		}
 
+		//Check if $page_template is set and if is an array. If not, makes it one.
+		if(isset($page_template) && !is_array($page_template)) {
+			$page_template = array($page_template);
+		}
+
 		//Run trough the array, setting up nedded things
 		foreach($post_type as $p_type) {
 			// For each post type, add post type columns
@@ -61,12 +69,21 @@ class Odin_Metabox {
 	}
 
 	/**
-	 * Get the post typea.
+	 * Get the post types.
 	 *
 	 * @return array
 	 */
 	protected function get_post_type() {
 		return is_array( $this->post_type ) ? $this->post_type : array( $this->post_type );
+	}
+
+	/**
+	 * Get the page templates.
+	 *
+	 * @return array
+	 */
+	protected function get_page_template() {
+		return is_array( $this->page_template ) ? $this->page_template : array( $this->page_template );
 	}
 
 	/**
@@ -109,15 +126,35 @@ class Odin_Metabox {
 	 * Add the metabox in edit screens.
 	 */
 	public function add() {
-		foreach ( $this->get_post_type() as $post_type ) {
-			add_meta_box(
-				$this->id,
-				$this->title,
-				array( $this, 'metabox' ),
-				$post_type,
-				$this->context,
-				$this->priority
-			);
+		global $post;
+		$post_page_template = get_post_meta( $post->ID, '_wp_page_template', true );
+		if (isset($this->page_template)) {
+			foreach ($this->get_page_template() as $page_template) {
+				foreach ( $this->get_post_type() as $post_type ) {
+					if($page_template == $post_page_template) {
+						add_meta_box(
+							$this->id,
+							$this->title,
+							array( $this, 'metabox' ),
+							$post_type,
+							$this->context,
+							$this->priority
+						);
+					}
+				}
+			}
+		} else {
+			foreach ( $this->get_post_type() as $post_type ) {
+				add_meta_box(
+					$this->id,
+					$this->title,
+					array( $this, 'metabox' ),
+					$post_type,
+					$this->context,
+					$this->priority
+				);
+			}
+
 		}
 	}
 
