@@ -2,23 +2,29 @@
 /**
  * The template for displaying the footer.
  *
- * Contains footer content and the closing of the
- * #main div element.
+ * Contains the closing of the all elements after.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
  * @package Odin
- * @since 2.2.0
+ * @subpackage Custom_Theme
  */
+
 ?>
 
-		</div><!-- .row -->
-	</div><!-- #wrapper -->
+				</div><!-- .odin-main__wrapper -->
 
-	<footer id="footer" role="contentinfo">
-		<div class="container">
-			<p>&copy; <?php echo date( 'Y' ); ?> <a href="<?php echo esc_url( home_url() ); ?>"><?php bloginfo( 'name' ); ?></a> - <?php _e( 'All rights reserved', 'odin' ); ?> | <?php echo sprintf( __( 'Powered by the <a href="%s" rel="nofollow" target="_blank">Odin</a> forces and <a href="%s" rel="nofollow" target="_blank">WordPress</a>.', 'odin' ), 'http://wpod.in/', 'http://wordpress.org/' ); ?></p>
-		</div><!-- .container -->
-	</footer><!-- #footer -->
+			</main><!-- .odin-main -->
+
+			<?php get_template_part( 'components/footer/footer' ); ?>
+
+		</div><!-- .odin-site__wrapper -->
+
+	</div><!-- .odin-site -->
 
 	<?php wp_footer(); ?>
+
+	<!-- Deliciously powered by the Odin (http://wpod.in) forces and WordPress (https://wordpress.org). -->
+
 </body>
 </html>

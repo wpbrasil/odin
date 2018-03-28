@@ -1,0 +1,22 @@
+/*!
+ * Footer Component
+ */
+.odin-footer {
+	// Footer wrapper
+	&-wrapper {
+		@extend .py-4;
+		@extend .text-center;
+	}
+
+	// Sticky footer styled
+	// @link https://css-tricks.com/couple-takes-sticky-footer
+	@at-root .odin-site-wrapper {
+	  display: flex;
+	  min-height: 100vh;
+	  flex-direction: column;
+	}
+
+	@at-root .odin-main {
+  	flex: 1;
+	}
+}
