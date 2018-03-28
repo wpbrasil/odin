@@ -1,0 +1,13 @@
+/*!
+ * Brand Logo Component
+ */
+
+// Inside header component
+.header .odin-brand-logo {
+	& > a {
+		& > img {
+			// Change the height/width in inc/theme-support.php
+			@extend .m-5;
+		}
+	}
+}
