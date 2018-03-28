@@ -1,0 +1,23 @@
+/*!
+ * Post Component
+ */
+
+.odin-post-page {
+	@extend .mb-5;
+
+	&-title {
+		@extend .h3;
+	}
+
+	&-excerpt {
+		@extend .mt-3;
+	}
+
+	&-content {
+		@extend .mt-3;
+	}
+
+	&-meta {
+		@extend .small;
+	}
+}
