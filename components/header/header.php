@@ -16,7 +16,7 @@ if ( is_front_page() && is_home() || is_home() ) {
 } elseif ( is_singular( array( 'post', 'page' ) ) ) {
 	// Singular (post|page).
 	$header_title = get_the_title();
-	$header_description = the_excerpt();
+	$header_description = apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', $post->ID ) ); // https://core.trac.wordpress.org/ticket/42814
 } elseif ( is_archive() ) {
 	// Archive.
 	$header_title = get_the_archive_title();
