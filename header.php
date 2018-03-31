@@ -28,8 +28,6 @@
 
 		<div class="odin-site-wrapper">
 
-			<?php get_template_part( 'components/navigation/navigation', 'main' ); ?>
-
 			<?php get_template_part( 'components/header/header' ); ?>
 
 			<main class="odin-main" id="content" tabindex="-1" role="main">
