@@ -4,8 +4,13 @@
 .odin-navMain {
 	@extend .navbar;
 	@extend .navbar-expand-md;
-	@extend .navbar-dark;
-	@extend .bg-dark;
+	@extend .py-2;
+	background: $odin-navigation-main-bg;
+	color: $odin-navigation-main-color;
+
+	&-wrapper {
+		@extend .container;
+	}
 
 	/*
 	 * Toggler button
@@ -36,6 +41,7 @@
 
 			> a {
 				@extend .nav-link;
+				color: $odin-navigation-main-link-color;
 			}
 
 			&.current-menu-item {
