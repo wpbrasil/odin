@@ -278,6 +278,11 @@ if ( ! function_exists( 'is_woocommerce_activated' ) ) {
 }
 
 /**
+ * Media.
+ */
+require_once get_template_directory() . '/inc/media.php';
+
+/**
  * Core Helpers.
  */
 require_once get_template_directory() . '/core/helpers.php';
