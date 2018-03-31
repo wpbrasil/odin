@@ -1,0 +1,139 @@
+/*!
+ * Banner Component
+ */
+.odin-banner {
+	@extend .container-fluid;
+	@extend .clearfix;
+	position: relative;
+	min-height: $odin-banner-height;
+
+	// Background image with ::after
+	&::after {
+		background: $odin-banner-bg;
+		min-height: $odin-banner-height;
+		content: "";
+		opacity: 1;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		position: absolute;
+		z-index: -1;
+	}
+
+	&-wrapper {
+		@extend .px-5;
+		@extend .d-flex;
+		@extend .flex-column;
+		@extend .flex-md-row;
+		@extend .justify-content-center;
+		@extend .align-items-center;
+		min-height: $odin-banner-height;
+	}
+
+	// Content
+	&-content {
+		@extend .px-5;
+		@extend .text-center;
+		word-break: break-all;
+
+		// Header title
+		.odin-page-title {
+			@extend .display-3;
+			@extend .mb-3;
+			color: $odin-banner-color;
+		}
+
+		// Header description
+		.odin-page-description {
+			@extend .h3;
+			@extend .px-1;
+			color: darken($odin-banner-color,25%);
+		}
+	}
+
+	// Scroll link to #content.
+	// See more effects in http://codepen.io/adammacias/pen/oZVoeQ
+	&-scrollLink > a {
+		padding-top: 80px;
+
+	 	& > span {
+			position: absolute;
+			bottom: 82px;
+			left: 50%;
+			width: 24px;
+			height: 24px;
+			margin-left: -12px;
+			border-left: 1px solid $odin-banner-color;
+			border-bottom: 1px solid $odin-banner-color;
+			-webkit-transform: rotate(-45deg);
+			transform: rotate(-45deg);
+			-webkit-animation: sdb07 2s infinite;
+			animation: sdb07 2s infinite;
+			opacity: 0;
+			box-sizing: border-box;
+
+			&:nth-of-type(1) {
+				-webkit-animation-delay: 0s;
+				animation-delay: 0s;
+			}
+			&:nth-of-type(2) {
+				bottom: 66px;
+				-webkit-animation-delay: .15s;
+				animation-delay: .15s;
+			}
+			&:nth-of-type(3) {
+				bottom: 50px;
+				-webkit-animation-delay: .3s;
+				animation-delay: .3s;
+			}
+		}
+	}
+
+	@-webkit-keyframes sdb07 {
+		0% {
+			opacity: 0;
+		}
+		50% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+
+	@keyframes sdb07 {
+		0% {
+			opacity: 0;
+		}
+		50% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+
+	// Banner styled in phones and tables
+	@include media-breakpoint-down(md) {
+		&,
+		&::after,
+		&-wrapper {
+			min-height: 150px !important;
+		}
+
+		&-content {
+			word-break: normal;
+
+			.odin-page-title {
+				font-size: 1.5rem;
+				font-weight: bold;
+			}
+
+			.odin-page-description {
+				font-size: 1rem;
+				font-weight: bold;
+			}
+		}
+	}
+}
