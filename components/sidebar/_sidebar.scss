@@ -1,0 +1,71 @@
+/*!
+ * Sidebar Component
+ */
+.odin-sidebar {
+	@extend .col-lg-4;
+	@extend .d-print-none;
+	@extend .d-md-none;
+	@extend .d-lg-block;
+	background: $odin-sidebar-bg;
+	color: $odin-sidebar-color;
+
+	&-wrapper{
+		@extend .p-5;
+	}
+
+	//
+	// Widgets general
+	//
+	.widget {
+		@extend .mb-3;
+
+		ul {
+			li {
+				word-wrap: break-word;
+			}
+		}
+
+		&-title,
+		.widgettitle {
+			@extend .h2;
+			@extend .mt-0;
+			@extend .mb-3;
+		}
+	}
+
+	//
+	// Tag cloud widget
+	//
+	.widget_tag_cloud {
+		@each $child, $random in (1: 30, 2: 23, 3: 29, 4: 23, 5: 23, 6: 23, 7: 21, 8: 16, 9: 14, 10: 25, 11: 26, 12: 32) {
+		  a:nth-child(#{$child}) {
+		    font-size: #{$random}px !important;
+		  }
+		}
+	}
+
+	//
+	// Calendar widget
+	//
+	.widget_calendar {
+		.calendar_wrap > table {
+			@extend .table;
+			@extend .table-bordered;
+			@extend .table-sm;
+
+			> caption {
+				text-align: center;
+			}
+
+			> tfoot {
+				#prev {
+					@extend .text-sm-left;
+				}
+
+				#next {
+					@extend .text-sm-right;
+				}
+			}
+		}
+	}
+}
