@@ -4,20 +4,24 @@
 
 .odin-post {
 	@extend .mb-5;
+	overflow-wrap: break-word;
 
-	&-title {
-		@extend .h3;
+	&-header {
+		&__title {
+			@extend .h2;
+
+		}
 	}
 
-	&-excerpt {
+	&-body {
 		@extend .mt-3;
+
+		img {
+			@extend .img-fluid;
+		}
 	}
 
-	&-content {
-		@extend .mt-3;
-	}
-
-	&-meta {
-		@extend .small;
+	&-footer {
+		@extend .clearfix;
 	}
 }
