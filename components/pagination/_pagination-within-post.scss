@@ -1,0 +1,15 @@
+/*!
+ * Pagination within a post Component
+ */
+.odin-pagination-with-post {
+	@extend .pagination;
+	@extend .justify-content-between;
+
+	&__item {
+		@extend .page-item;
+	}
+
+	&__link {
+		@extend .page-link;
+	}
+}
