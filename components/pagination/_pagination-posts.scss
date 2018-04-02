@@ -1,0 +1,21 @@
+/*!
+ * Pagination Posts Component
+ */
+.odin-pagination-posts {
+	@extend .d-flex;
+	@extend .justify-content-center;
+
+	.nav-links {
+		@extend .pagination;
+
+
+		& > .page-numbers {
+			@extend .page-item;
+			@extend .page-link;
+		}
+	}
+
+	.screen-reader-text {
+		@extend .sr-only;
+	}
+}
