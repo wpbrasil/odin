@@ -24,12 +24,12 @@
 
 	<?php get_template_part( 'components/navigation/navigation', 'skiplink' ); ?>
 
-	<div class="odin-site">
+	<div class="odin-app">
 
-		<div class="odin-site-wrapper">
+		<div class="odin-app-wrapper">
 
 			<?php get_template_part( 'components/header/header' ); ?>
 
-			<main class="odin-main" id="content" tabindex="-1" role="main">
+			<div class="odin-app-body">
 
-				<div class="odin-main-wrapper">
+				<div class="odin-app-body-wrapper">
