@@ -10,13 +10,13 @@
 
 	// Sticky footer styled
 	// @link https://css-tricks.com/couple-takes-sticky-footer
-	@at-root .odin-site-wrapper {
+	@at-root .odin-app-wrapper {
 	  display: flex;
 	  min-height: 100vh;
 	  flex-direction: column;
 	}
 
-	@at-root .odin-main {
+	@at-root .odin-app-body {
   	flex: 1;
 	}
 }
