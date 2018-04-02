@@ -1,0 +1,24 @@
+/*!
+ * Form Search Component
+ */
+.odin-formSearch {
+	@extend .form-inline;
+
+	&__group {
+		@extend .form-group;
+	}
+
+	&__label {
+		@extend .sr-only;
+	}
+
+	&__control {
+		@extend .form-control;
+	}
+
+	&__btn {
+		@extend .btn;
+		@extend .btn-primary;
+		@extend .mx-2;
+	}
+}
