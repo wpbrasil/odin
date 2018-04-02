@@ -38,17 +38,17 @@
 		word-break: break-all;
 
 		// Header title
-		.odin-page-title {
-			@extend .display-3;
+		&__title {
+			@extend .display-4;
 			@extend .mb-3;
 			color: $odin-banner-color;
 		}
 
 		// Header description
-		.odin-page-description {
-			@extend .h3;
+		&__description {
+			@extend .h5;
 			@extend .px-1;
-			color: darken($odin-banner-color,25%);
+			color: $odin-banner-color;
 		}
 	}
 
@@ -125,12 +125,12 @@
 		&-content {
 			word-break: normal;
 
-			.odin-page-title {
+			&__title {
 				font-size: 1.5rem;
 				font-weight: bold;
 			}
 
-			.odin-page-description {
+			&__description {
 				font-size: 1rem;
 				font-weight: bold;
 			}

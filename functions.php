@@ -39,6 +39,11 @@ require_once get_template_directory() . '/core/classes/class-thumbnail-resizer.p
 //require_once get_template_directory() . '/core/classes/class-term-meta.php';
 
 /**
+ * Odin Components.
+ */
+require_once get_template_directory() . '/components/shared/banner.scripts.php';
+
+/**
  * Odin Widgets.
  */
 require_once get_template_directory() . '/core/classes/widgets/class-widget-like-box.php';

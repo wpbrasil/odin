@@ -6,18 +6,8 @@
  * @subpackage Custom_Theme
  */
 
-/**
- * Get image to apply background header.
- */
-if ( get_header_image() && is_home() ) {
-	// Header Image (support custom header support) only if is home.
-	$banner['image'] = get_header_image();
-} elseif ( has_post_thumbnail() ) {
-	// Thumbnail Post (get original size if not exists the correct).
-	$banner['image'] = odin_get_attachment_image_src( get_post_thumbnail_id(), 1400, 600 );
-	$banner['image'] = ( ! isset( $banner['image'] ) ) ?: wp_get_attachment_url( get_post_thumbnail_id() );
-} else {
-	$banner['image'] = '';
+if ( ! odin_get_banner_title() ) {
+	return;
 } ?>
 
 <div class="odin-banner">
@@ -26,17 +16,11 @@ if ( get_header_image() && is_home() ) {
 
 		<div class="odin-banner-content">
 
-			<?php
-			/**
-			* Page Title Component.
-			*/
-			get_template_part( 'components/shared/page', 'title' ); ?>
+			<h1 class="odin-banner-content__title"><?php echo wp_strip_all_tags( odin_get_banner_title() ); ?></h1>
 
-			<?php
-			/**
-			* Page Description Component.
-			*/
-			get_template_part( 'components/shared/page', 'description' ); ?>
+			<?php if ( odin_get_banner_description() ) : ?>
+				<p class="odin-banner-content__description"><?php echo wp_strip_all_tags( odin_get_banner_description() ); ?></p>
+			<?php endif; ?>
 
 		</div>
 
@@ -53,13 +37,13 @@ if ( get_header_image() && is_home() ) {
 
 </div>
 
-<?php if ( $banner['image'] ) : ?>
-<style>
-.odin-banner::after {
-	background: linear-gradient(to bottom left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)),
-				url(<?php echo esc_url_raw( $banner['image'] ); ?>)
-				no-repeat center center fixed;
-	background-size: cover;
-}
-</style>
+<?php if ( odin_get_banner_image() ) : ?>
+	<style>
+	.odin-banner::after {
+		background: linear-gradient(to bottom left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)),
+					url(<?php echo esc_url_raw( odin_get_banner_image() ); ?>)
+					no-repeat center center fixed;
+		background-size: cover;
+	}
+	</style>
 <?php endif; ?>
