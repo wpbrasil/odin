@@ -16,7 +16,7 @@ get_header();
 /**
  * Content Component.
  */
-get_template_part( 'components/content/content', '404' );
+get_template_part( 'components/main/main', '404' );
 
 /**
  * Footer Component.
