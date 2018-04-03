@@ -12,15 +12,15 @@
 
 ?>
 
-				</div><!-- .odin-main__wrapper -->
+				</div><!-- .odin-app__body-wrapper -->
 
-			</main><!-- .odin-main -->
+			</div><!-- .odin-app__body -->
 
 			<?php get_template_part( 'components/footer/footer' ); ?>
 
-		</div><!-- .odin-site__wrapper -->
+		</div><!-- .odin-app__wrapper -->
 
-	</div><!-- .odin-site -->
+	</div><!-- .odin-app -->
 
 	<?php wp_footer(); ?>
 
