@@ -1,6 +1,6 @@
-/**
- * Theme Style Main
- */
+//
+// Theme Style Main
+//
 
 // Variables, tools and mixins
 @import 'theme/abstracts';
@@ -8,10 +8,6 @@
 // Dependencies and vendors
 @import	'vendors/bootstrap';
 @import	'vendors/font-awesome';
-
-// Reset and core CSS
-//@import 'base/base';
-//@import 'base/wordpress';
 
 // Components
 @import "../../components/**/*";

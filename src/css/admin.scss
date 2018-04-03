@@ -1,0 +1,26 @@
+/*!
+ * WordPress Admin Style
+ */
+
+// Variables, tools and mixins
+@import 'theme/abstracts';
+
+/**
+ * Custom login styles.
+ *
+ * @link https://codex.wordpress.org/Customizing_the_Login_Form
+ * @link https://premium.wpmudev.org/blog/customize-login-page
+ */
+
+// Add a Custom Background
+body.login {
+	backgroudn: $wp-login-bg;
+}
+
+// Replace the WordPress Logo With a Custom Logo
+body.login h1 a {
+	background: url($wp-login-logo) center top no-repeat !important;
+	background-size: $wp-login-logo-width $wp-login-logo-height !important;
+	width: $wp-login-logo-width !important;
+	height: $wp-login-logo-height !important;
+}

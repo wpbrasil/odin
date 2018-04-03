@@ -108,8 +108,10 @@ if ( ! function_exists( 'odin_setup_features' ) ) {
 
 		/**
 		 * Support Custom Editor Style.
+		 *
+		 * @link https://developer.wordpress.org/reference/functions/add_editor_style/
 		 */
-		add_editor_style( 'assets/css/editor-style.css' );
+		add_editor_style( 'dist/css/editor.css' );
 
 		/**
 		 * Add support for infinite scroll.
@@ -230,18 +232,18 @@ function odin_enqueue_scripts() {
 	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
 	// // Deregister core jQuery and register jQuery 3.x.
-	// wp_deregister_script( 'jquery' );
-	// wp_enqueue_script( 'jquery', '//code.jquery.com/jquery-3.2.1' . $suffix . '.js', array(), '3.2.1' );
+	wp_deregister_script( 'jquery' );
+	wp_enqueue_script( 'jquery', '//code.jquery.com/jquery-3.2.1' . $suffix . '.js', array(), '3.2.1' );
 
 	// // Deregister core jQuery migrate and register jQuery migrate 3.x.
-	// wp_deregister_script( 'jquery-migrate' );
-	// wp_enqueue_script( 'jquery-migrate', '//code.jquery.com/jquery-migrate-3.0.0' . $suffix . '.js', array( 'jquery' ), '3.0.0' );
+	wp_deregister_script( 'jquery-migrate' );
+	wp_enqueue_script( 'jquery-migrate', '//code.jquery.com/jquery-migrate-3.0.0' . $suffix . '.js', array( 'jquery' ), '3.0.0' );
 
-	// Loads main stylesheet file compressed.
-	wp_enqueue_style( 'odin-main-style', get_stylesheet_uri() );
+	// Loads main stylesheet file.
+	wp_enqueue_style( 'odin-theme-style', get_stylesheet_uri() );
 
-	// Loads main script file compressed.
-	wp_enqueue_script( 'odin-main-script', $template_url . '/dist/js/theme-script' . $suffix . '.js', array( 'jquery' ), null, true );
+	// Loads main script file.
+	wp_enqueue_script( 'odin-theme-script', $template_url . '/dist/js/theme' . $suffix . '.js', array( 'jquery' ), null, true );
 
 	// Load Thread comments WordPress script.
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -262,7 +264,7 @@ function odin_stylesheet_uri( $stylesheet, $stylesheet_dir ) {
 	// Use minified libraries if SCRIPT_DEBUG is turned off.
 	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
-	$stylesheet = $stylesheet_dir . '/dist/css/theme-style' . $suffix . '.css';
+	$stylesheet = $stylesheet_dir . '/dist/css/theme' . $suffix . '.css';
 	return $stylesheet;
 }
 

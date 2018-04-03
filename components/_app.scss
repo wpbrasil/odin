@@ -4,7 +4,7 @@
 
 .odin-app {
 	&-body {
-		@extend .container-fluid;
+		@extend .container;
 
 		// Wrapper
 		&-wrapper{
