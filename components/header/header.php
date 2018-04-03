@@ -20,9 +20,9 @@
 
 		<?php
 		/**
-		* Banner Image Component.
+		* Banner Component.
 		*/
-		get_template_part( 'components/shared/banner', 'image' ); ?>
+		get_template_part( 'components/banner/banner' ); ?>
 
 		<?php
 		/**

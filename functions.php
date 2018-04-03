@@ -41,7 +41,7 @@ require_once get_template_directory() . '/core/classes/class-thumbnail-resizer.p
 /**
  * Odin Components.
  */
-require_once get_template_directory() . '/components/shared/banner.scripts.php';
+require_once get_template_directory() . '/components/banner/banner.scripts.php';
 
 /**
  * Odin Widgets.

@@ -24,14 +24,11 @@ if ( ! odin_get_banner_title() ) {
 
 		</div>
 
-		<!-- Scroll link to #content -->
-		<div class="odin-banner-scrollLink">
-			<a href="#content" aria-label="<?php esc_html_e( 'Skip to content', 'odin' ); ?>">
-				<span></span>
-				<span></span>
-				<span></span>
-			</a>
-		</div>
+		<?php
+		/**
+		 * Scroll Link Banner Component.
+		 */
+		get_template_part( 'components/banner/parts/scroll-link-banner' ); ?>
 
 	</div>
 
