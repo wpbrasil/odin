@@ -1,0 +1,57 @@
+/*!
+ * Nagivation Topbar Component
+ */
+.odin-navigation-topbar {
+	@extend .py-1;
+	background: $odin-navigation-topbar-bg;
+	color: $odin-navigation-topbar-color;
+
+	&-wrapper {
+		@extend .container;
+	}
+
+	&-container {
+		@extend .d-flex;
+		@extend .flex-column;
+		@extend .flex-md-row;
+		@extend .justify-content-between;
+		@extend .align-items-center;
+	}
+
+	a {
+		color: $odin-navigation-topbar-link-color;
+	}
+
+	.odin-brand-logo {
+		a {
+			@extend .navbar-brand;
+			height: $odin-navigation-topbar-brand-logo-height;
+		}
+		img {
+			width: auto;
+			height: 100%;
+		}
+	}
+
+
+	.odin-formSearch {
+		&__control {
+			background: $odin-navigation-topbar-formSearch-bg;
+			color: $odin-navigation-topbar-formSearch-color;
+			border-color: $odin-navigation-topbar-formSearch-border-color;
+
+			&:focus {
+				border-color: $odin-navigation-topbar-formSearch-color;
+  				box-shadow: 0 0 0 0.2rem $odin-navigation-topbar-formSearch-placeholder-color;
+			}
+			&::placeholder {
+			    color: $odin-navigation-topbar-formSearch-placeholder-color;
+			}
+		}
+
+		&__btn {
+			@extend .btn-outline-light;
+			@extend .mx-2;
+		}
+	}
+}
