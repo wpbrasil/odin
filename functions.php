@@ -45,6 +45,7 @@ require_once get_template_directory() . '/inc/enqueue-scripts.php';
  * Odin Components.
  */
 require_once get_template_directory() . '/components/banner/banner.functions.php';
+require_once get_template_directory() . '/components/comments/comments.functions.php';
 require_once get_template_directory() . '/components/footer/footer.functions.php';
 require_once get_template_directory() . '/components/post/post.functions.php';
 require_once get_template_directory() . '/components/sidebar/sidebar.functions.php';
@@ -230,10 +231,6 @@ require_once get_template_directory() . '/core/helpers.php';
  */
 require_once get_template_directory() . '/inc/admin.php';
 
-/**
- * Comments loop.
- */
-require_once get_template_directory() . '/inc/comments-loop.php';
 
 /**
  * WP optimize functions.
