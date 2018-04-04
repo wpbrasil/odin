@@ -45,6 +45,7 @@ require_once get_template_directory() . '/inc/enqueue-scripts.php';
  * Odin Components.
  */
 require_once get_template_directory() . '/components/banner/banner.functions.php';
+require_once get_template_directory() . '/components/footer/footer.functions.php';
 require_once get_template_directory() . '/components/post/post.functions.php';
 require_once get_template_directory() . '/components/sidebar/sidebar.functions.php';
 
