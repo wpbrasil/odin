@@ -6,13 +6,26 @@
 	@extend .mb-5;
 	overflow-wrap: break-word;
 
-	&-header {
-		&__title {
-			@extend .h2;
-
+	// Meta author post
+	&__meta-author {
+		&-wrapper {
+			@extend .d-flex;
+			@extend .align-items-center;
+			img {
+				@extend .mr-2;
+				@extend .rounded-circle;
+			}
 		}
 	}
 
+	// Header post
+	&-header {
+		&__title {
+			@extend .h2;
+		}
+	}
+
+	// Body post
 	&-body {
 		@extend .mt-3;
 
@@ -21,6 +34,7 @@
 		}
 	}
 
+	// Footer post
 	&-footer {
 		@extend .clearfix;
 	}
