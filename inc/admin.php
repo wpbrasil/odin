@@ -4,14 +4,20 @@
  */
 
 /**
- * Custom admin scripts.
+ * Load scripts and styles in admin area.
  */
-function odin_admin_scripts() {
-	wp_enqueue_style( 'odin-inc-admin', get_template_directory_uri() . '/inc/assets/css/custom-admin.css' );
+function odin_enqueue_scripts_admin() {
+	$template_url = get_template_directory_uri();
+
+	// Use minified libraries if SCRIPT_DEBUG is turned off.
+	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+
+	wp_enqueue_script( 'odin-admin-script', $template_url . '/dist/js/admin' . $suffix . '.js', array( 'jquery' ), null, true );
+	wp_enqueue_style( 'odin-admin-style', $template_url . '/dist/css/admin' . $suffix . '.css' );
 }
 
-add_action( 'admin_enqueue_scripts', 'odin_admin_scripts' );
-add_action( 'login_enqueue_scripts', 'odin_admin_scripts' );
+add_action( 'admin_enqueue_scripts', 'odin_enqueue_scripts_admin' );
+add_action( 'login_enqueue_scripts', 'odin_enqueue_scripts_admin' );
 
 /**
  * Remove logo from admin bar.
