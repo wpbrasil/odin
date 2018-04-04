@@ -45,6 +45,8 @@ require_once get_template_directory() . '/inc/enqueue-scripts.php';
  * Odin Components.
  */
 require_once get_template_directory() . '/components/banner/banner.functions.php';
+require_once get_template_directory() . '/components/post/post.functions.php';
+require_once get_template_directory() . '/components/sidebar/sidebar.functions.php';
 
 /**
  * Odin Widgets.
@@ -187,27 +189,6 @@ if ( ! function_exists( 'odin_setup_features' ) ) {
 }
 
 add_action( 'after_setup_theme', 'odin_setup_features' );
-
-/**
- * Register widget areas.
- *
- * @since 2.2.0
- */
-function odin_widgets_init() {
-	register_sidebar(
-		array(
-			'name' => __( 'Main Sidebar', 'odin' ),
-			'id' => 'main-sidebar',
-			'description' => __( 'Site Main Sidebar', 'odin' ),
-			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-			'after_widget' => '</aside>',
-			'before_title' => '<h3 class="widgettitle widget-title">',
-			'after_title' => '</h3>',
-		)
-	);
-}
-
-add_action( 'widgets_init', 'odin_widgets_init' );
 
 /**
  * Flush Rewrite Rules for new CPTs and Taxonomies.

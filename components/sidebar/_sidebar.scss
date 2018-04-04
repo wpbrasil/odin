@@ -14,9 +14,9 @@
 	}
 
 	//
-	// Widgets general
+	// Widgets
 	//
-	.widget {
+	.odin-widget {
 		@extend .mb-3;
 
 		ul {
@@ -25,8 +25,7 @@
 			}
 		}
 
-		&-title,
-		.widgettitle {
+		&-title {
 			@extend .h2;
 			@extend .mt-0;
 			@extend .mb-3;
