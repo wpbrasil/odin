@@ -97,3 +97,57 @@ $wp-spacer: 1.5rem !default;
 	word-break: break-all;
 	hyphens: auto;
 }
+
+//
+// Default widget
+//
+.widget {
+
+	ul {
+		li {
+			word-wrap: break-word;
+		}
+	}
+
+	widgettitle {
+		@extend .h2;
+		@extend .mt-0;
+		@extend .mb-3;
+	}
+}
+
+//
+// Tag cloud widget
+//
+.widget_tag_cloud {
+	@each $child, $random in (1: 30, 2: 23, 3: 29, 4: 23, 5: 23, 6: 23, 7: 21, 8: 16, 9: 14, 10: 25, 11: 26, 12: 32) {
+	  a:nth-child(#{$child}) {
+	    font-size: #{$random}px !important;
+	  }
+	}
+}
+
+//
+// Calendar widget
+//
+.widget_calendar {
+	.calendar_wrap > table {
+		@extend .table;
+		@extend .table-bordered;
+		@extend .table-sm;
+
+		> caption {
+			text-align: center;
+		}
+
+		> tfoot {
+			#prev {
+				@extend .text-sm-left;
+			}
+
+			#next {
+				@extend .text-sm-right;
+			}
+		}
+	}
+}
