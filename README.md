@@ -1,70 +1,32 @@
-# Odin Framework #
+<p align="center"><a href="http://wpod.in/" target="_blank" rel="noopener noreferrer"><img width="100" src="https://camo.githubusercontent.com/f51173b8da26083e2cfdc893ef532a8bc2457bcb/68747470733a2f2f692e696d6775722e636f6d2f4464654d6755782e706e67" alt="Odin logo"></a></p>
 
-[Ver essa documentação em Português do Brasil](https://github.com/wpbrasil/odin/blob/master/docs/README-pt_BR.md)
+# Odin
 
-![Odin Framework](https://i.imgur.com/DdeMgUx.png)
+Odin is a base theme made in [@wpbrasil](https://github.com/wpbrasil) to ~kick ass~ help developing of WordPress themes.
 
-* [Website](http://wpod.in/)
-* [Odin Expo](http://expo.wpod.in/)
-* [GitHub](https://github.com/wpbrasil/odin)
-* [WordPress Brasil Group on Facebook](https://www.facebook.com/groups/wordpress.brasil)
+* [Odin](http://wpod.in/)
+* [Docs](https://github.com/wpbrasil/odin/tree/master/docs)
+* [Expo](http://expo.wpod.in/)
+* [Toolkit](https://github.com/wpbrasil/odin-toolkit)
+* [WordPress Brasil](https://github.com/wpbrasil/)
 
-## Project Description ##
+## Getting start
 
-Welcome to Odin, a base-theme developed by [WordPress Brasil Group](https://www.facebook.com/groups/wordpress.brasil), to help on agile development of themes for WordPress.
+```bash
+# install dependencies
+npm install
 
-## Installation ##
+# serve with live reload at localhost:3000
+npm run dev
 
-Send the folder "odin" to the default themes folder from WordPress `wp-content/themes` or send the zipball using the WordPress Theme Installer.
+# build for production with minification
+npm run build
+```
 
-## Documentation ##
+For detailed explanation on how things work, consult the [docs for Odin](https://github.com/wpbrasil/odin/tree/master/docs).
 
-Informations about how-to use the classes and functions from Odin is on the [Official Wiki](https://github.com/wpbrasil/odin/wiki/)
+## License
 
-## Plugins Support ##
+[MIT](http://opensource.org/licenses/MIT). And all PHP files [GPLv2](http://www.gnu.org/licenses/gpl-2.0.txt).
 
-Odin supports natively these plugins:
-
-* [WooCommerce](http://wordpress.org/extend/plugins/woocommerce/)
-* [JetPack](http://wordpress.org/extend/plugins/jetpack/) Infinite Scroll
-
-## References ##
-
-* [Bootstrap](http://getbootstrap.com/)
-* [Bootstrap Sass](https://github.com/twbs/bootstrap-sass)
-* [HTML5shiv](https://github.com/aFarkas/html5shiv)
-* [matchMedia() polyfill](https://github.com/paulirish/matchMedia.js/)
-* [Respond.js](https://github.com/scottjehl/Respond)
-* [Sass](http://sass-lang.com/)
-* [Compass](http://compass-style.org/)
-* [Grunt.js](http://gruntjs.com/)
-* [aq_resize](https://github.com/sy4mil/Aqua-Resizer)
-* [FitVids](https://github.com/davatron5000/FitVids.js)
-* [EditorConfig](http://editorconfig.org/)
-* [goqr.me](http://goqr.me/)
-* [Google Maps](https://developers.google.com/maps/)
-
-## Bugs and Sugestions ##
-
-The Odin Framework is an **Open Source** project. Anyone can (and should) help us to improve it.
-
-Report bugs or do suggestions using the [Issues/Project Forum](https://github.com/wpbrasil/odin/issues)
-
-## Contribute to the Project ##
-
-To contribute, just click on the **Fork** button, create a *Branch*, improve the code and send it with a **Pull Request**.
-
-More details about how to contribute and send Pull Requests in [GitHub Collaborating](https://help.github.com/categories/63/articles).
-
-[How to colaborate to opensource projects on GitHub](http://www.youtube.com/watch?v=H3olaBo83As)
-
-## Changelog ##
-
-[Changelog here!](https://github.com/wpbrasil/odin/blob/master/docs/CHANGELOG.md)
-
-## Copyright and License ##
-
-Copyright 2013 - 2018 - WordPress Brasil Group.
-
-The PHP code is licensed with [GPLv2](http://www.gnu.org/licenses/gpl-2.0.txt).
-All the CSS, SCSS, JS, images files and others, not including the PHP files is licensed with [MIT](http://opensource.org/licenses/MIT) or by the license specified inside the file.
+Copyright (c) 2013-Present, [@wpbrasil](https://github.com/wpbrasil).
