@@ -23,4 +23,5 @@ require_once get_template_directory() . '/components/banner/banner.functions.php
 require_once get_template_directory() . '/components/comments/comments.functions.php';
 require_once get_template_directory() . '/components/footer/footer.functions.php';
 require_once get_template_directory() . '/components/post/post.functions.php';
+require_once get_template_directory() . '/components/shared/brand-logo.functions.php';
 require_once get_template_directory() . '/components/sidebar/sidebar.functions.php';
