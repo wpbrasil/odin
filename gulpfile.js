@@ -40,21 +40,25 @@ const config = {
       " * <%= package.repository.url %>\n" +
       " */\n\n",
   "js": {
-      "src": "{src,components}/**/*.js",
+      "src": "{assets,components}/**/*.js",
       "dest": "dist/js/"
   },
   "css": {
-      "src": "{src,components}/**/*.{scss,sass}",
+      "src": "{assets,components}/**/*.{scss,sass}",
       "dest": "dist/css/",
       "includePaths": [
           path.resolve(__dirname, "./"),
-          path.resolve(__dirname, "./src/css/"),
+          path.resolve(__dirname, "./assets/css/"),
           path.resolve(__dirname, "./node_modules/")
       ]
   },
   "images": {
-      "src": "src/img/**/*",
+      "src": "assets/img/**/*",
       "dest": "dist/img/"
+  },
+  "fonts": {
+      "src": "{assets/fonts/**/,node_modules/@fortawesome/fontawesome-free-webfonts/webfonts/}",
+      "dest": "dist/fonts/"
   }
 }
 
@@ -93,7 +97,6 @@ gulp.task('js:dist', ['js:compile'], function() {
         .pipe(flatten())
         .pipe(gulp.dest(config.js.dest));
 });
-
 
 // Process SASS files styles
 gulp.task('css:compile', function() {
@@ -144,6 +147,13 @@ gulp.task('img:dist', function() {
         .pipe(gulp.dest(config.images.dest));
 });
 
+// Copy fonts files to dist
+gulp.task('fonts:dist', function() {
+    return gulp.src(config.fonts.src+'*.{svg,eot,ttf,woff,woff2}')
+        .pipe(flatten())
+        .pipe(gulp.dest(config.fonts.dest));
+});
+
 // Starts a BrowerSync instance
 gulp.task('serve', function(){
     browserSync.init(package.serveDev);
@@ -161,7 +171,8 @@ gulp.task('watch', ['default'], function(done) {
 gulp.task('default', [
 	'js:dist',
 	'css:dist',
-	'img:dist'
+	'img:dist',
+	'fonts:dist'
 ]);
 
 // Compile, init serve and watch files
