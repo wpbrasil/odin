@@ -1,6 +1,6 @@
 <?php
 /**
- * Nagivation Topbar component.
+ * Navigation Topbar Component.
  *
  * @package Odin
  * @subpackage Custom_Theme
