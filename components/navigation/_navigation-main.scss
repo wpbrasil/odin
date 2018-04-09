@@ -4,6 +4,7 @@
 .odin-navMain {
 	@extend .navbar;
 	@extend .navbar-expand-md;
+	@extend .navbar-dark;
 	@extend .py-2;
 	background: $odin-navigation-main-bg;
 	color: $odin-navigation-main-color;
@@ -17,7 +18,7 @@
 	 */
 	&__toggler {
 		@extend .navbar-toggler;
-		span {
+		> span {
 			@extend .navbar-toggler-icon;
 		}
 	}

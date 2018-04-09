@@ -22,7 +22,6 @@
 	}
 
 	&-wrapper {
-		@extend .px-5;
 		@extend .d-flex;
 		@extend .flex-column;
 		@extend .flex-md-row;
@@ -33,7 +32,6 @@
 
 	// Content
 	&-content {
-		@extend .px-5;
 		@extend .text-center;
 		word-break: break-all;
 
