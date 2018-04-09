@@ -4,4 +4,4 @@
  * --------------------------------------------------------------------------
  */
 
-console.log('hello admin area, by Odin');
+window.console.log('hello admin area, by Odin');

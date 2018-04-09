@@ -46,4 +46,4 @@
  * --------------------------------------------------------------------------
  */
 
-console.log('hello theme area, by Odin');
+window.console.log('hello theme area, by Odin');
