@@ -11,8 +11,8 @@
 if ( ! function_exists( 'odin_theme_support' ) ) {
 	function odin_theme_support() {
 
-		// Add post_thumbnails suport.
-		add_theme_support( 'post-thumbnails' );
+		// Add customize selective refresh widgets.
+		add_theme_support( 'customize-selective-refresh-widgets' );
 
 		// Add feed link support.
 		add_theme_support( 'automatic-feed-links' );
