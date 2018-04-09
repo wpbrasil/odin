@@ -33,19 +33,6 @@ if ( ! function_exists( 'odin_theme_support' ) ) {
 		// 	'posts_per_page' => get_option( 'posts_per_page' ),
 		// ) );
 
-		// Add support for Post Formats.
-		add_theme_support( 'post-formats', array(
-		    'aside',
-		    'gallery',
-		    'link',
-		    'image',
-		    'quote',
-		    'status',
-		    'video',
-		    'audio',
-		    'chat',
-		) );
-
 		// Add the excerpt on pages.
 		// add_post_type_support( 'page', 'excerpt' );
 
