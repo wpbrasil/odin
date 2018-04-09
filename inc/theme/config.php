@@ -17,17 +17,6 @@ if ( ! function_exists( 'odin_theme_support' ) ) {
 		// Add feed link support.
 		add_theme_support( 'automatic-feed-links' );
 
-		// Add support custom header support.
-		add_theme_support( 'custom-header', array(
-			'width'         => 1400,
-			'height'        => 600,
-			'flex-width'    => true,
-			'flex-height'   => true,
-			'header-text'   => false,
-			'default-image' => '',
-			'uploads'       => true,
-		) );
-
 		// Add support custom background support.
 		add_theme_support( 'custom-background', array(
 			'default-color' => '',
