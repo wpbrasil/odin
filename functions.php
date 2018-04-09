@@ -16,19 +16,19 @@
 /**
  * Core Odin Framework.
  */
-require_once get_template_directory() . '/inc/core.php';
+require_once get_template_directory() . '/inc/core/core.php';
 
 /**
  * Admin.
  */
-require_once get_template_directory() . '/inc/admin.php';
+require_once get_template_directory() . '/inc/admin/admin.php';
 
 /**
- * Admin.
+ * Theme.
  */
-require_once get_template_directory() . '/inc/theme.php';
+require_once get_template_directory() . '/inc/theme/theme.php';
 
 /**
  * Woocommerce.
  */
-require_once get_template_directory() . '/inc/woocommerce.php';
+require_once get_template_directory() . '/inc/woocommerce/woocommerce.php';
