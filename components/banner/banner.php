@@ -24,12 +24,6 @@ if ( ! odin_get_banner_title() ) {
 
 		</div>
 
-		<?php
-		/**
-		 * Scroll Link Banner Component.
-		 */
-		get_template_part( 'components/banner/parts/scroll-link-banner' ); ?>
-
 	</div>
 
 </div>
