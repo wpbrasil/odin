@@ -7,20 +7,6 @@
  */
 
 /**
- * Loads script Banner.
- */
-if ( ! function_exists( 'odin_banner_component_enqueue_script' ) ) {
-	function odin_banner_component_enqueue_script() {
-		// Use minified libraries if SCRIPT_DEBUG is turned off.
-		$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
-
-		wp_enqueue_script( 'odin-banner-component-script', get_template_directory_uri() . '/dist/js/banner' . $suffix . '.js', array( 'jquery' ), null, true );
-	}
-
-	add_action( 'wp_enqueue_scripts', 'odin_banner_component_enqueue_script' );
-}
-
-/**
  * Get banner title.
  */
 if ( ! function_exists( 'odin_get_banner_title' ) ) {
