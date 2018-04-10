@@ -26,7 +26,8 @@
     "build": "gulp",
     "build:js": "cross-env NODE_ENV=development gulp js:compile js:dist",
     "build:css": "cross-env NODE_ENV=production gulp css:compile css:dist",
-    "build:img": "cross-env NODE_ENV=production gulp img:dist"
+    "build:img": "cross-env NODE_ENV=production gulp img:dist",
+    "lang:checktextdomain": "gulp lang:checktextdomain",
   },
   "engines": {
     "node": ">= 8.9.4"
@@ -35,6 +36,7 @@
     "browser-sync": "^2.23.6",
     "cross-env": "^5.1.4",
     "gulp": "^3.9.1",
+    "gulp-checktextdomain": "^2.1.1",
     "gulp-file-include": "^2.0.1",
     "gulp-flatten": "^0.4.0",
     "gulp-header": "2.0.5",

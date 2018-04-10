@@ -27,6 +27,9 @@ const sassGlob    = require('gulp-sass-glob');
 // Media.
 const imagemin    = require('gulp-imagemin');
 
+// Language.
+const checktextdomain = require('gulp-checktextdomain');
+
 /**
  * Config to project
  */
@@ -152,6 +155,31 @@ gulp.task('fonts:dist', function() {
     return gulp.src(config.fonts.src+'*.{svg,eot,ttf,woff,woff2}')
         .pipe(flatten())
         .pipe(gulp.dest(config.fonts.dest));
+});
+
+// Check text domain in PHP files
+gulp.task('lang:checktextdomain', function() {
+    return gulp
+    .src(['**/*.php','!node_modules'])
+    .pipe(checktextdomain({
+        text_domain: package.name,
+        keywords: [
+            '__:1,2d',
+            '_e:1,2d',
+            '_x:1,2c,3d',
+            'esc_html__:1,2d',
+            'esc_html_e:1,2d',
+            'esc_html_x:1,2c,3d',
+            'esc_attr__:1,2d',
+            'esc_attr_e:1,2d',
+            'esc_attr_x:1,2c,3d',
+            '_ex:1,2c,3d',
+            '_n:1,2,4d',
+            '_nx:1,2,4c,5d',
+            '_n_noop:1,2,3d',
+            '_nx_noop:1,2,3c,4d'
+        ],
+    }));
 });
 
 // Starts a BrowerSync instance
