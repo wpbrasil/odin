@@ -399,7 +399,7 @@ function odin_breadcrumbs( $homepage = '' ) {
 
 		// Gets pagination.
 		if ( get_query_var( 'paged' ) ) {
-			echo ' (' . sprintf( __( 'Page %s', 'abelman' ), get_query_var( 'paged' ) ) . ')';
+			echo ' (' . sprintf( __( 'Page %s', 'odin' ), get_query_var( 'paged' ) ) . ')';
 		}
 
 		echo '</ol>';
