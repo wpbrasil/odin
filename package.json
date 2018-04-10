@@ -27,6 +27,7 @@
     "build:js": "cross-env NODE_ENV=development gulp js:compile js:dist",
     "build:css": "cross-env NODE_ENV=production gulp css:compile css:dist",
     "build:img": "cross-env NODE_ENV=production gulp img:dist",
+    "build:fonts": "cross-env NODE_ENV=production gulp fonts:dist",
     "lang:checktextdomain": "gulp lang:checktextdomain",
     "lang:addtextdomain": "wpi18n addtextdomain --exclude='node_modules' --main-file='style.css'",
     "lang:makepot": "wpi18n makepot --domain-path='languages' --exclude='node_modules' --type='wp-theme' --main-file='style.css'"
