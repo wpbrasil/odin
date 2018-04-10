@@ -14,9 +14,9 @@
  */
 
 /**
- * Core Odin Framework.
+ * Plugins.
  */
-require_once get_template_directory() . '/inc/core/core.php';
+require_once get_template_directory() . '/inc/plugins/plugins.php';
 
 /**
  * Admin.
