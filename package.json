@@ -28,6 +28,8 @@
     "build:css": "cross-env NODE_ENV=production gulp css:compile css:dist",
     "build:img": "cross-env NODE_ENV=production gulp img:dist",
     "lang:checktextdomain": "gulp lang:checktextdomain",
+    "lang:addtextdomain": "wpi18n addtextdomain --exclude='node_modules' --main-file='style.css'",
+    "lang:makepot": "wpi18n makepot --domain-path='languages' --exclude='node_modules' --type='wp-theme' --main-file='style.css'"
   },
   "engines": {
     "node": ">= 8.9.4"
@@ -50,7 +52,8 @@
     "jshint": "^2.9.5",
     "jshint-stylish": "^2.2.1",
     "node-fs": "^0.1.7",
-    "node-sass": "^4.8.3"
+    "node-sass": "^4.8.3",
+    "node-wp-i18n": "^1.1.0"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free-webfonts": "^1.0.4",
