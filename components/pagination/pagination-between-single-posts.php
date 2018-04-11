@@ -10,10 +10,10 @@
 
 ?>
 
-<div class="odin-pagination-between-single-posts">
+<nav class="odin-pagination-between-single-posts">
 
-	<?php previous_post_link( '<div class="pagination-between-single-posts__item"><span>&laquo; %link</span></div>' ); ?>
+	<?php previous_post_link( '<div class="odin-pagination-between-single-posts__item"><span>&laquo; %link</span></div>' ); ?>
 
-	<?php next_post_link( '<div class="pagination-between-single-posts__item"><span>%link &raquo;</span></div>' ); ?>
+	<?php next_post_link( '<div class="odin-pagination-between-single-posts__item"><span>%link &raquo;</span></div>' ); ?>
 
-</div>
+</nav>

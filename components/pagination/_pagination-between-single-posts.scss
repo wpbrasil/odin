@@ -5,10 +5,11 @@
 	@extend .pagination;
 	@extend .justify-content-between;
 
-	> &__item {
-		@extend .page-item;
-		span {
-			@extend .page-link;
+	&__item {
+	 	@extend .page-item;
+
+		> span {
+		 	@extend .page-link;
 		}
 	}
 }
