@@ -58,8 +58,9 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free-webfonts": "^1.0.4",
-    "bootstrap": "^4.0.0",
+    "@fortawesome/fontawesome-free-webfonts": "^1.0.6",
+    "bootstrap": "^4.1.0",
     "jquery": "^3.3.1",
-    "popper.js": "^1.14.1"
+    "popper.js": "^1.14.3"
   }
 }
