@@ -57,7 +57,6 @@
     "node-wp-i18n": "^1.1.0"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free-webfonts": "^1.0.4",
     "@fortawesome/fontawesome-free-webfonts": "^1.0.6",
     "bootstrap": "^4.1.0",
     "jquery": "^3.3.1",
