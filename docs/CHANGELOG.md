@@ -1,5 +1,8 @@
 ## Changelog ##
 
+#### v2.2.9 - 05/08/2018 ####
+-Removed sourcemap: 'none' in Gruntfile.js, because it was giving error while compiling scss/sass files to CSS
+
 #### v2.2.8 - 01/09/2015 ####
 - Added metabox in terms page #318 #319 
 - Added Post Status class #310 
