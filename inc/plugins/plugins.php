@@ -11,7 +11,7 @@
  *
  * @link http://tgmpluginactivation.com/
  */
-require_once get_template_directory() . '/inc/plugins/tgm/class-tgm-plugin-activation.php';
+//require_once get_template_directory() . '/inc/plugins/tgm/class-tgm-plugin-activation.php';
 
 /**
  * Register the required plugins for this theme.
