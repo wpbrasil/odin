@@ -1,0 +1,16 @@
+//
+// WordPress TinyMCE editor Style
+//
+
+// Import Theme Style
+@import "theme.min.css";
+
+// Editor Only
+html {
+	max-width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 30px;
+}
+
+

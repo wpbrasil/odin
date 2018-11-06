@@ -28,9 +28,10 @@ Thumbs.db
 bower_components
 node_modules
 .sass-cache
+vendor
 
 # Ignore project files
 sftp-config.json
 .ftppass
 *.zip
-src/node_modules/*
+dist

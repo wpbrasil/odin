@@ -1,0 +1,25 @@
+/*!
+ * Brand Logo Component
+ */
+
+
+.odin-brand-logo {
+	@extend .d-flex;
+	@extend .align-items-center;
+
+	// Inside Navigation Topbar Component
+	.odin-navigation-topbar & {
+		&__link,
+		.custom-logo-link {
+			@extend .navbar-brand;
+		}
+
+		&__image,
+		.custom-logo {
+			// Update the height/width and in assets/css/theme/_variables.scss
+			// Update the ratio image in components/shared/brand-logo.functions.php
+			height: $odin-navigation-topbar-brand-logo-height;
+			width: $odin-navigation-topbar-brand-logo-width;
+		}
+	}
+}

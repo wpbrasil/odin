@@ -1,0 +1,14 @@
+/*!
+ * Content 404 Component
+ */
+
+.odin-main {
+	.error404 & {
+		@extend .text-center;
+
+		.odin-formSearch {
+			@extend .d-flex;
+			@extend .justify-content-center;
+		}
+	}
+}

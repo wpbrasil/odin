@@ -1,0 +1,41 @@
+/*!
+ * Post Component
+ */
+
+.odin-post {
+	@extend .mb-5;
+	overflow-wrap: break-word;
+
+	// Meta author post
+	&__meta-author {
+		&-wrapper {
+			@extend .d-flex;
+			@extend .align-items-center;
+			img {
+				@extend .mr-2;
+				@extend .rounded-circle;
+			}
+		}
+	}
+
+	// Header post
+	&-header {
+		&__title {
+			@extend .h2;
+		}
+	}
+
+	// Body post
+	&-body {
+		@extend .mt-3;
+
+		img {
+			@extend .img-fluid;
+		}
+	}
+
+	// Footer post
+	&-footer {
+		@extend .clearfix;
+	}
+}

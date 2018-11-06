@@ -1,0 +1,21 @@
+//
+// Theme Sass variables
+//
+
+//
+// Theme
+//
+@import "theme/variables";
+
+//
+// Bootstrap 4
+//
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+
+//
+// Font Awesome 5
+//
+@import '@fortawesome/fontawesome-free-webfonts/scss/variables';
+@import '@fortawesome/fontawesome-free-webfonts/scss/mixins';

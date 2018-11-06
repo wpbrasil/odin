@@ -1,0 +1,18 @@
+/*!
+ * Form Comment Component
+ */
+.odin-commentForm {
+
+	&__group {
+		@extend .form-group;
+	}
+
+	&__control {
+		@extend .form-control;
+	}
+
+	&__btn {
+		@extend .btn;
+		@extend .btn-secondary;
+	}
+}

@@ -1,0 +1,41 @@
+/*!
+ * Footer Component
+ */
+.odin-footer {
+
+	// Wrapper
+	&-wrapper {
+		@extend .container;
+		@extend .py-5;
+	}
+
+	// Copyright
+	&__copyright {
+		@extend .text-center;
+	}
+
+	// Widgets
+	&__widgets {
+		@extend .row;
+		@extend .justify-content-around;
+
+		.odin-widget,
+		.widget {
+			@extend .col-lg-4;
+			@extend .d-print-none;
+			@extend .mb-3;
+		}
+	}
+
+	// Sticky footer styled
+	// @link https://css-tricks.com/couple-takes-sticky-footer
+	@at-root .odin-app-wrapper {
+		display: flex;
+		min-height: 100vh;
+		flex-direction: column;
+	}
+
+	@at-root .odin-app-body {
+  		flex: 1;
+	}
+}

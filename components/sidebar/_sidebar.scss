@@ -1,0 +1,26 @@
+/*!
+ * Sidebar Component
+ */
+.odin-sidebar {
+	@extend .col-lg-4;
+	@extend .d-print-none;
+	@extend .d-md-none;
+	@extend .d-lg-block;
+	background: $odin-sidebar-bg;
+	color: $odin-sidebar-color;
+
+	&-wrapper{
+		@extend .p-5;
+	}
+
+	//
+	// Widgets
+	//
+	&__widgets {
+		.odin-widget,
+		.widget {
+			@extend .mb-3;
+		}
+	}
+
+}

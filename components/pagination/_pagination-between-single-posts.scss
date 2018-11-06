@@ -1,0 +1,15 @@
+/*!
+ * Pagination Between Single Posts.
+ */
+.odin-pagination-between-single-posts {
+	@extend .pagination;
+	@extend .justify-content-between;
+
+	&__item {
+	 	@extend .page-item;
+
+		> span {
+		 	@extend .page-link;
+		}
+	}
+}

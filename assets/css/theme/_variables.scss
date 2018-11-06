@@ -1,0 +1,59 @@
+//
+// Theme Sass variables
+//
+
+//
+// Bootstrap 4.
+//
+// Try add value to $body-bg or $body-color variables
+// @link http://getbootstrap.com/docs/4.0/getting-started/theming
+//
+$primary: #007bff;
+
+//
+// Font Awesome 5.
+//
+$fa-font-path: '../fonts/';
+$fa-font-size-base: 16px;
+$fa-css-prefix: fa;
+$fa-border-color: #eee;
+$fa-inverse: #fff;
+$fa-li-width: 2em;
+
+//
+// WordPress Admin.
+//
+$wp-login-bg: #f1f1f1;
+$wp-login-logo: '../img/admin-logo-login.png';
+$wp-login-logo-width: 80px;
+$wp-login-logo-height: 80px;
+
+//
+// App Components.
+//
+
+// Navigation Topbar Component.
+$odin-navigation-topbar-bg: $primary;
+$odin-navigation-topbar-color: #e9ecef;
+$odin-navigation-topbar-link-color: #ffffff;
+$odin-navigation-topbar-brand-logo-height: 50px;
+$odin-navigation-topbar-brand-logo-width: auto;
+$odin-navigation-topbar-formSearch-color: #ffffff;
+$odin-navigation-topbar-formSearch-bg: none;
+$odin-navigation-topbar-formSearch-border-color: #ffffff;
+$odin-navigation-topbar-formSearch-placeholder-color: rgba(255, 255, 255, 0.6);
+
+// Navigation Main Component.
+$odin-navigation-main-bg: $primary;
+$odin-navigation-main-color: #e9ecef;
+$odin-navigation-main-link-color: #ffffff;
+
+// Banner Component.
+$odin-banner-height: 400px;
+$odin-banner-bg: darken($primary,10%);
+$odin-banner-color: #f8f9fa;
+
+// Sidebar Component.
+$odin-sidebar-bg: #e9ecef;
+$odin-sidebar-color: #343a40;
+

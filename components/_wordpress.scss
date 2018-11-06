@@ -1,0 +1,153 @@
+/*!
+ * WordPress Native Classes
+ */
+
+//
+// Variables WordPress
+//
+
+$wp-spacer: 1.5rem !default;
+
+//
+// Image
+//
+
+.widget img,
+[class*="wp-image-"],
+.gallery-item .attachment-thumbnail,
+.gallery-item .gallery-icon  {
+	max-width: 100%;
+	height: auto;
+	line-height: 1px;
+}
+
+//
+// Figure
+//
+
+.gallery-item,
+.wp-caption {
+	display: inline-block;
+	max-width: 100%;
+	height: auto;
+
+	img {
+		margin-bottom: 0.5rem;
+  	line-height: 1;
+	}
+
+	figcaption {
+		font-size: 90%;
+	}
+}
+
+//
+// Gallery
+//
+
+@if mixin-exists(make-row) {
+	@for $i from 1 through 9 {
+		.gallery-columns-#{$i} {
+			@include make-row();
+
+			.gallery-item {
+				@include make-col-ready();
+				@include make-col(12 / $i);
+			}
+		}
+	}
+}
+
+
+//
+// Alignments
+//
+
+.alignnone {
+	margin: $wp-spacer 0;
+}
+
+.alignright {
+	@extend .float-right;
+	margin: $wp-spacer 0 $wp-spacer $wp-spacer;
+}
+
+.alignleft {
+	@extend .float-left;
+	margin: $wp-spacer $wp-spacer $wp-spacer 0;
+}
+
+.aligncenter {
+	display: block;
+	margin: $wp-spacer auto;
+}
+
+//
+// Fix break word
+//
+// Specify that the browser can break a line of text inside the targeted element onto multiple lines in an otherwise unbreakable place.
+// @link https://css-tricks.com/almanac/properties/o/overflow-wrap/
+//
+
+.hentry,
+.comment,
+#comments {
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	word-break: break-all;
+	hyphens: auto;
+}
+
+//
+// Default widget
+//
+.widget {
+
+	ul {
+		li {
+			word-wrap: break-word;
+		}
+	}
+
+	widgettitle {
+		@extend .h2;
+		@extend .mt-0;
+		@extend .mb-3;
+	}
+}
+
+//
+// Tag cloud widget
+//
+.widget_tag_cloud {
+	@each $child, $random in (1: 30, 2: 23, 3: 29, 4: 23, 5: 23, 6: 23, 7: 21, 8: 16, 9: 14, 10: 25, 11: 26, 12: 32) {
+	  a:nth-child(#{$child}) {
+	    font-size: #{$random}px !important;
+	  }
+	}
+}
+
+//
+// Calendar widget
+//
+.widget_calendar {
+	.calendar_wrap > table {
+		@extend .table;
+		@extend .table-bordered;
+		@extend .table-sm;
+
+		> caption {
+			text-align: center;
+		}
+
+		> tfoot {
+			#prev {
+				@extend .text-sm-left;
+			}
+
+			#next {
+				@extend .text-sm-right;
+			}
+		}
+	}
+}

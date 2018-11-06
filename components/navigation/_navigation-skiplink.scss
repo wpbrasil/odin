@@ -1,0 +1,12 @@
+/*!
+ * Navigation Skiplink Component
+ */
+.odin-navigationSkiplink {
+ 	&__item {
+		@include sr-only;
+  		@include sr-only-focusable;
+		@extend .d-block;
+		@extend .p-3;
+		outline: 0;
+	}
+}

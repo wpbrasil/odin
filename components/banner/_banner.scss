@@ -1,0 +1,75 @@
+/*!
+ * Banner Component
+ */
+.odin-banner {
+	@extend .container-fluid;
+	@extend .clearfix;
+	position: relative;
+	min-height: $odin-banner-height;
+
+	// Background image with ::after
+	&::after {
+		background: $odin-banner-bg;
+		min-height: $odin-banner-height;
+		content: "";
+		opacity: 1;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		position: absolute;
+		z-index: -1;
+	}
+
+	&-wrapper {
+		@extend .d-flex;
+		@extend .flex-column;
+		@extend .flex-md-row;
+		@extend .justify-content-center;
+		@extend .align-items-center;
+		min-height: $odin-banner-height;
+	}
+
+	// Content
+	&-content {
+		@extend .text-center;
+		word-break: break-all;
+
+		// Header title
+		&__title {
+			@extend .display-4;
+			@extend .mb-3;
+			color: $odin-banner-color;
+		}
+
+		// Header description
+		&__description {
+			@extend .h5;
+			@extend .px-1;
+			color: $odin-banner-color;
+		}
+	}
+
+	// Banner styled in phones and tables
+	@include media-breakpoint-down(md) {
+		&,
+		&::after,
+		&-wrapper {
+			min-height: 150px !important;
+		}
+
+		&-content {
+			word-break: normal;
+
+			&__title {
+				font-size: 1.5rem;
+				font-weight: bold;
+			}
+
+			&__description {
+				font-size: 1rem;
+				font-weight: bold;
+			}
+		}
+	}
+}

@@ -1,0 +1,77 @@
+/*!
+ * Navigation Main Component
+ */
+.odin-navMain {
+	@extend .navbar;
+	@extend .navbar-expand-md;
+	@extend .navbar-dark;
+	@extend .py-2;
+	background: $odin-navigation-main-bg;
+	color: $odin-navigation-main-color;
+
+	&-wrapper {
+		@extend .container;
+	}
+
+	/*
+	 * Toggler button
+	 */
+	&__toggler {
+		@extend .navbar-toggler;
+		> span {
+			@extend .navbar-toggler-icon;
+		}
+	}
+
+	/*
+	 * Collapse area
+	 */
+	&__collapse {
+		@extend .collapse;
+		@extend .navbar-collapse;
+	}
+
+	/*
+	 * Main menu
+	 */
+	&__mainMenu {
+		@extend .navbar-nav;
+
+		.menu-item {
+			@extend .nav-item;
+
+			> a {
+				@extend .nav-link;
+				color: $odin-navigation-main-link-color;
+			}
+
+			&.current-menu-item {
+				@extend .active;
+			}
+
+			&.menu-item-has-children {
+				@extend .dropdown;
+
+				&:hover > .dropdown-menu {
+				  display: block; /* BS4 dropdown hover */
+				}
+
+				> a {
+					@extend .dropdown-toggle;
+
+					&:active {
+				    	pointer-events: none; /* BS4 dropdown hover: Without this, clicking will make it sticky */
+					}
+				}
+
+				> ul {
+					@extend .dropdown-menu;
+
+					.menu-item a {
+						@extend .dropdown-item;
+					}
+				}
+			}
+		}
+	}
+}

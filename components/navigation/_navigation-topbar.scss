@@ -1,0 +1,24 @@
+/*!
+ * Nagivation Topbar Component
+ */
+.odin-navigation-topbar {
+	@extend .py-1;
+	background: $odin-navigation-topbar-bg;
+	color: $odin-navigation-topbar-color;
+
+	&-wrapper {
+		@extend .container;
+	}
+
+	&-container {
+		@extend .d-flex;
+		@extend .flex-column;
+		@extend .flex-sm-row;
+		@extend .justify-content-between;
+		@extend .align-items-center;
+	}
+
+	a {
+		color: $odin-navigation-topbar-link-color;
+	}
+}

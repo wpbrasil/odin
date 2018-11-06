@@ -1,0 +1,11 @@
+/*!
+ * Main Component
+ */
+
+.odin-main {
+	@extend .col-lg-8;
+
+	&-wrapper{
+		@extend .p-5;
+	}
+}

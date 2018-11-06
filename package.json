@@ -1,0 +1,66 @@
+{
+  "name": "odin",
+  "version": "3.0.0",
+  "description": "Base Theme for developing WordPress.",
+  "title": "Odin",
+  "homepage": "http://wpod.in",
+  "author": {
+    "name": "WordPress Brasil",
+    "url": "https://github.com/wpbrasil"
+  },
+  "serveDev": {
+    "proxy": "localhost:8080",
+    "port": 3000,
+    "notify": false
+  },
+  "license": {
+    "type": "MIT",
+    "url": "http://opensource.org/licenses/MIT"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/wpbrasil/odin"
+  },
+  "scripts": {
+    "dev": "gulp dev-server",
+    "build": "gulp",
+    "build:js": "cross-env NODE_ENV=development gulp js:compile js:dist",
+    "build:css": "cross-env NODE_ENV=production gulp css:compile css:dist",
+    "build:img": "cross-env NODE_ENV=production gulp img:dist",
+    "build:fonts": "cross-env NODE_ENV=production gulp fonts:dist",
+    "lang:checktextdomain": "gulp lang:checktextdomain",
+    "lang:addtextdomain": "wpi18n addtextdomain --exclude='node_modules' --main-file='style.css'",
+    "lang:makepot": "wpi18n makepot --domain-path='languages' --exclude='node_modules' --type='wp-theme' --main-file='style.css'"
+  },
+  "engines": {
+    "node": ">= 8.9.4"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.23.6",
+    "cross-env": "^5.1.4",
+    "gulp": "^3.9.1",
+    "gulp-checktextdomain": "^2.1.1",
+    "gulp-file-include": "^2.0.1",
+    "gulp-flatten": "^0.4.0",
+    "gulp-header": "2.0.5",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-jshint": "^2.1.0",
+    "gulp-plumber": "^1.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^4.0.1",
+    "gulp-sass-glob": "^1.0.9",
+    "gulp-uglify": "^3.0.0",
+    "jshint": "^2.9.5",
+    "jshint-stylish": "^2.2.1",
+    "node-fs": "^0.1.7",
+    "node-sass": "^4.8.3",
+    "node-wp-i18n": "^1.1.1"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free-webfonts": "^1.0.6",
+    "bootstrap": "^4.1.3",
+    "jquery": "^3.3.1",
+    "natives": "^1.1.6",
+    "popper.js": "^1.14.3"
+  }
+}

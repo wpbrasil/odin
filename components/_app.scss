@@ -1,0 +1,15 @@
+/*!
+ * App Component
+ */
+
+.odin-app {
+	&-body {
+		@extend .container;
+
+		// Wrapper
+		&-wrapper{
+			@extend .row;
+			@extend .justify-content-around;
+		}
+	}
+}

@@ -1,0 +1,48 @@
+/*!
+ * Form Search Component
+ */
+.odin-formSearch {
+	@extend .form-inline;
+
+	&__group {
+		@extend .form-group;
+	}
+
+	&__label {
+		@extend .sr-only;
+	}
+
+	&__control {
+		@extend .form-control;
+	}
+
+	&__btn {
+		@extend .btn;
+		@extend .btn-primary;
+		@extend .mx-2;
+	}
+
+	// Inside Navigation Topbar Component
+	.odin-navigation-topbar & {
+
+		&__control {
+			background: $odin-navigation-topbar-formSearch-bg;
+			color: $odin-navigation-topbar-formSearch-color;
+			border-color: $odin-navigation-topbar-formSearch-border-color;
+
+			&:focus {
+				border-color: $odin-navigation-topbar-formSearch-color;
+  				box-shadow: 0 0 0 0.2rem $odin-navigation-topbar-formSearch-placeholder-color;
+			}
+			&::placeholder {
+			    color: $odin-navigation-topbar-formSearch-placeholder-color;
+			}
+		}
+
+		&__btn {
+			@extend .btn-outline-light;
+			@extend .mx-2;
+		}
+
+	}
+}

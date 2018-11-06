@@ -1,0 +1,58 @@
+/*!
+ * Comments Area
+ */
+
+.odin-comments {
+	@extend .my-5;
+
+	// Title
+	&__title {
+		@extend .h3;
+	}
+}
+
+/*!
+ * Comment Single
+ */
+
+.odin-comment {
+	// Wrappper
+	&-wrapper {
+		@extend .media;
+		@extend .mb-4;
+	}
+
+	// Avatar
+	&-avatar {
+		@extend .align-self-start;
+		@extend .mr-4;
+
+		img {
+			@extend .rounded-circle;
+		}
+	}
+
+	// Body
+	&-body {
+		@extend .media-body;
+
+		&__header {
+			@extend .h6;
+		}
+
+		&__content {
+			.odin-alert-info {
+				@extend .alert;
+				@extend .alert-info;
+			}
+
+			img {
+				@extend .img-fluid;
+			}
+
+			iframe {
+				@extend .embed-responsive;
+			}
+		}
+	}
+}
