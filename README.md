@@ -4,11 +4,11 @@
 
 Odin is a base theme made in [@wpbrasil](https://github.com/wpbrasil) to ~kick ass~ help developing of WordPress themes.
 
-* [Odin](http://wpod.in/)
-* [Docs](https://github.com/wpbrasil/odin/tree/master/docs)
-* [Expo](http://expo.wpod.in/)
-* [Toolkit](https://github.com/wpbrasil/odin-toolkit)
-* [WordPress Brasil](https://github.com/wpbrasil/)
+- [Odin](http://wpod.in/)
+- [Docs](https://github.com/wpbrasil/odin/tree/master/docs)
+- [Expo](http://expo.wpod.in/)
+- [Toolkit](https://github.com/wpbrasil/odin-toolkit)
+- [WordPress Brasil](https://github.com/wpbrasil/)
 
 ## Getting start
 
@@ -22,6 +22,9 @@ npm run dev
 # build for production with minification
 npm run build
 ```
+
+**To fix dependencies on Windows
+https://github.com/nodejs/node-gyp#on-windows**
 
 For detailed explanation on how things work, consult the [docs for Odin](https://github.com/wpbrasil/odin/tree/master/docs).
 
