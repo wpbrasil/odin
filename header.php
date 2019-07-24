@@ -21,6 +21,11 @@
 </head>
 
 <body <?php body_class(); ?>>
+	
+	if ( function_exists( 'wp_body_open' ) ) {
+		wp_body_open();
+	}
+	
 	<a id="skippy" class="sr-only sr-only-focusable" href="#content">
 		<div class="container">
 			<span class="skiplink-text"><?php _e( 'Skip to content', 'odin' ); ?></span>
