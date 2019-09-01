@@ -49,7 +49,7 @@ function odin_admin_logo_title() {
 	return get_bloginfo( 'name' );
 }
 
-add_filter( 'login_headertitle', 'odin_admin_logo_title' );
+add_filter( 'login_headertext', 'odin_admin_logo_title' );
 
 /**
  * Remove widgets dashboard.
