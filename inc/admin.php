@@ -49,7 +49,13 @@ function odin_admin_logo_title() {
 	return get_bloginfo( 'name' );
 }
 
-add_filter( 'login_headertitle', 'odin_admin_logo_title' );
+$wp_version = get_bloginfo( 'version' );
+
+if ( version_compare( $wp_version, '5.2', '>=' ) ) {
+	add_filter( 'login_headertext', 'odin_admin_logo_title' );
+}else{
+  add_filter( 'login_headertitle', 'odin_admin_logo_title' );
+}
 
 /**
  * Remove widgets dashboard.
