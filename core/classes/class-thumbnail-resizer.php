@@ -129,7 +129,7 @@ class Odin_Thumbnail_Resizer {
 
 		// Get image size after cropping.
 		$dimensions = image_resize_dimensions( $original_width, $original_height, $width, $height, $crop );
-                if ( $dimensions ) {
+        if ( $dimensions ) {
 			$original_width = $dimensions[4];
 			$original_height = $dimensions[5];
 		}
