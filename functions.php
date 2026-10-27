@@ -47,38 +47,38 @@ require_once get_template_directory() . '/core/classes/widgets/class-widget-like
 if ( ! function_exists( 'odin_setup_features' ) ) {
 
 	/**
-	 * Setup theme features.
+- 	Setup theme features.
 	 *
-	 * @since 2.2.0
+- 	@since 2.2.0
 	 */
 	function odin_setup_features() {
 
 		/**
-		 * Add support for multiple languages.
+- 		Add support for multiple languages.
 		 */
 		load_theme_textdomain( 'odin', get_template_directory() . '/languages' );
 
 		/**
-		 * Register nav menus.
+- 		Register nav menus.
 		 */
 		register_nav_menus(
 			array(
-				'main-menu' => __( 'Main Menu', 'odin' )
+				'main-menu' => __( 'Main Menu', 'odin' ),
 			)
 		);
 
 		/*
-		 * Add post_thumbnails suport.
+- 		Add post_thumbnails support.
 		 */
 		add_theme_support( 'post-thumbnails' );
 
 		/**
-		 * Add feed link.
+- 		Add feed link.
 		 */
 		add_theme_support( 'automatic-feed-links' );
 
 		/**
-		 * Support Custom Header.
+- 		Support Custom Header.
 		 */
 		$default = array(
 			'width'         => 0,
@@ -93,7 +93,7 @@ if ( ! function_exists( 'odin_setup_features' ) ) {
 		add_theme_support( 'custom-header', $default );
 
 		/**
-		 * Support Custom Background.
+- 		Support Custom Background.
 		 */
 		$defaults = array(
 			'default-color' => '',
@@ -103,12 +103,12 @@ if ( ! function_exists( 'odin_setup_features' ) ) {
 		add_theme_support( 'custom-background', $defaults );
 
 		/**
-		 * Support Custom Editor Style.
+- 		Support Custom Editor Style.
 		 */
 		add_editor_style( 'assets/css/editor-style.css' );
 
 		/**
-		 * Add support for infinite scroll.
+- 		Add support for infinite scroll.
 		 */
 		add_theme_support(
 			'infinite-scroll',
@@ -118,12 +118,12 @@ if ( ! function_exists( 'odin_setup_features' ) ) {
 				'container'      => 'content',
 				'wrapper'        => false,
 				'render'         => false,
-				'posts_per_page' => get_option( 'posts_per_page' )
+				'posts_per_page' => get_option( 'posts_per_page' ),
 			)
 		);
 
 		/**
-		 * Add support for Post Formats.
+- 		Add support for Post Formats.
 		 */
 		// add_theme_support( 'post-formats', array(
 		//     'aside',
@@ -138,12 +138,12 @@ if ( ! function_exists( 'odin_setup_features' ) ) {
 		// ) );
 
 		/**
-		 * Support The Excerpt on pages.
+- 		Support The Excerpt on pages.
 		 */
 		// add_post_type_support( 'page', 'excerpt' );
 
 		/**
-		 * Switch default core markup for search form, comment form, and comments to output valid HTML5.
+- 		Switch default core markup for search form, comment form, and comments to output valid HTML5.
 		 */
 		add_theme_support(
 			'html5',
@@ -152,28 +152,31 @@ if ( ! function_exists( 'odin_setup_features' ) ) {
 				'comment-form',
 				'comment-list',
 				'gallery',
-				'caption'
+				'caption',
 			)
 		);
 
 		/*
-		 * Let WordPress manage the document title.
-		 * By adding theme support, we declare that this theme does not use a
-		 * hard-coded <title> tag in the document head, and expect WordPress to
-		 * provide it for us.
+- 		Let WordPress manage the document title.
+- 		By adding theme support, we declare that this theme does not use a
+- 		hard-coded <title> tag in the document head, and expect WordPress to
+- 		provide it for us.
 		 */
 		add_theme_support( 'title-tag' );
 
 		/*
-		 * Enable support for custom logo.
+- 		Enable support for custom logo.
 		 *
-		 *  @since Odin 2.2.10
+- 		@since Odin 2.2.10
 		 */
-		add_theme_support( 'custom-logo', array(
-			'height'      => 240,
-			'width'       => 240,
-			'flex-height' => true,
-		) );
+		add_theme_support(
+			'custom-logo',
+			array(
+				'height'      => 240,
+				'width'       => 240,
+				'flex-height' => true,
+			)
+		);
 	}
 }
 
@@ -187,13 +190,13 @@ add_action( 'after_setup_theme', 'odin_setup_features' );
 function odin_widgets_init() {
 	register_sidebar(
 		array(
-			'name' => __( 'Main Sidebar', 'odin' ),
-			'id' => 'main-sidebar',
-			'description' => __( 'Site Main Sidebar', 'odin' ),
+			'name'          => __( 'Main Sidebar', 'odin' ),
+			'id'            => 'main-sidebar',
+			'description'   => __( 'Site Main Sidebar', 'odin' ),
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-			'after_widget' => '</aside>',
-			'before_title' => '<h3 class="widgettitle widget-title">',
-			'after_title' => '</h3>',
+			'after_widget'  => '</aside>',
+			'before_title'  => '<h3 class="widgettitle widget-title">',
+			'after_title'   => '</h3>',
 		)
 	);
 }
@@ -222,9 +225,12 @@ function odin_enqueue_scripts() {
 	// Loads Odin main stylesheet.
 	wp_enqueue_style( 'odin-style', get_stylesheet_uri(), array(), null, 'all' );
 
-	// Html5Shiv
-	wp_enqueue_script( 'html5shiv', $template_url . '/assets/js/html5.js' );
+	// Html5Shiv.
+	wp_enqueue_script( 'html5shiv', $template_url . '/assets/js/html5.js', array(), null, false );
 	wp_script_add_data( 'html5shiv', 'conditional', 'lt IE 9' );
+
+	// D3.js (Carregado via CDN no rodapé)
+	wp_enqueue_script( 'd3-js', 'https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js', array(), '7.9.0', true );
 
 	// General scripts.
 	if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
@@ -269,7 +275,7 @@ function odin_stylesheet_uri( $uri, $dir ) {
 add_filter( 'stylesheet_uri', 'odin_stylesheet_uri', 10, 2 );
 
 /**
- * Query WooCommerce activation
+ * Query WooCommerce activation.
  *
  * @since  2.2.6
  *
